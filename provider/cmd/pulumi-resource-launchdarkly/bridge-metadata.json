@@ -1,0 +1,793 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "launchdarkly_access_token": {
+                "current": "launchdarkly:index/accessToken:AccessToken",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_roles": {
+                        "maxItemsOne": false
+                    },
+                    "inline_roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "policy_statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_audit_log_subscription": {
+                "current": "launchdarkly:index/auditLogSubscription:AuditLogSubscription",
+                "majorVersion": 1,
+                "fields": {
+                    "statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_custom_role": {
+                "current": "launchdarkly:index/customRole:CustomRole",
+                "majorVersion": 1,
+                "fields": {
+                    "policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "policy_statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_destination": {
+                "current": "launchdarkly:index/destination:Destination",
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_environment": {
+                "current": "launchdarkly:index/environment:Environment",
+                "majorVersion": 1,
+                "fields": {
+                    "approval_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "required_approval_tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_feature_flag": {
+                "current": "launchdarkly:index/featureFlag:FeatureFlag",
+                "majorVersion": 1,
+                "fields": {
+                    "client_side_availability": {
+                        "maxItemsOne": false
+                    },
+                    "custom_properties": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_feature_flag_environment": {
+                "current": "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment",
+                "majorVersion": 1,
+                "fields": {
+                    "context_targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "fallthrough": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rollout_weights": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "prerequisites": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clauses": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "rollout_weights": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_flag_trigger": {
+                "current": "launchdarkly:index/flagTrigger:FlagTrigger",
+                "majorVersion": 1,
+                "fields": {
+                    "instructions": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "launchdarkly_metric": {
+                "current": "launchdarkly:index/metric:Metric",
+                "majorVersion": 1,
+                "fields": {
+                    "randomization_units": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_project": {
+                "current": "launchdarkly:index/project:Project",
+                "majorVersion": 1,
+                "fields": {
+                    "default_client_side_availability": {
+                        "maxItemsOne": false
+                    },
+                    "environments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "approval_settings": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "required_approval_tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_relay_proxy_configuration": {
+                "current": "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration",
+                "majorVersion": 1,
+                "fields": {
+                    "policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_segment": {
+                "current": "launchdarkly:index/segment:Segment",
+                "majorVersion": 1,
+                "fields": {
+                    "excluded": {
+                        "maxItemsOne": false
+                    },
+                    "excluded_contexts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "included": {
+                        "maxItemsOne": false
+                    },
+                    "included_contexts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clauses": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_team": {
+                "current": "launchdarkly:index/team:Team",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_role_keys": {
+                        "maxItemsOne": false
+                    },
+                    "maintainers": {
+                        "maxItemsOne": false
+                    },
+                    "member_ids": {
+                        "maxItemsOne": false
+                    },
+                    "role_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_team_member": {
+                "current": "launchdarkly:index/teamMember:TeamMember",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_roles": {
+                        "maxItemsOne": false
+                    },
+                    "role_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_webhook": {
+                "current": "launchdarkly:index/webhook:Webhook",
+                "majorVersion": 1,
+                "fields": {
+                    "statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "launchdarkly_audit_log_subscription": {
+                "current": "launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription",
+                "majorVersion": 1,
+                "fields": {
+                    "statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_environment": {
+                "current": "launchdarkly:index/getEnvironment:getEnvironment",
+                "majorVersion": 1,
+                "fields": {
+                    "approval_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "required_approval_tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_feature_flag": {
+                "current": "launchdarkly:index/getFeatureFlag:getFeatureFlag",
+                "majorVersion": 1,
+                "fields": {
+                    "client_side_availability": {
+                        "maxItemsOne": false
+                    },
+                    "custom_properties": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "value": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_feature_flag_environment": {
+                "current": "launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment",
+                "majorVersion": 1,
+                "fields": {
+                    "context_targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "fallthrough": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rollout_weights": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "prerequisites": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clauses": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "rollout_weights": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_flag_trigger": {
+                "current": "launchdarkly:index/getFlagTrigger:getFlagTrigger",
+                "majorVersion": 1,
+                "fields": {
+                    "instructions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_metric": {
+                "current": "launchdarkly:index/getMetric:getMetric",
+                "majorVersion": 1,
+                "fields": {
+                    "randomization_units": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_project": {
+                "current": "launchdarkly:index/getProject:getProject",
+                "majorVersion": 1,
+                "fields": {
+                    "client_side_availability": {
+                        "maxItemsOne": false
+                    },
+                    "default_client_side_availability": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_relay_proxy_configuration": {
+                "current": "launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration",
+                "majorVersion": 1,
+                "fields": {
+                    "policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_segment": {
+                "current": "launchdarkly:index/getSegment:getSegment",
+                "majorVersion": 1,
+                "fields": {
+                    "excluded": {
+                        "maxItemsOne": false
+                    },
+                    "excluded_contexts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "included": {
+                        "maxItemsOne": false
+                    },
+                    "included_contexts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clauses": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_team": {
+                "current": "launchdarkly:index/getTeam:getTeam",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_role_keys": {
+                        "maxItemsOne": false
+                    },
+                    "maintainers": {
+                        "maxItemsOne": false
+                    },
+                    "project_keys": {
+                        "maxItemsOne": false
+                    },
+                    "role_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_team_member": {
+                "current": "launchdarkly:index/getTeamMember:getTeamMember",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_roles": {
+                        "maxItemsOne": false
+                    },
+                    "role_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_team_members": {
+                "current": "launchdarkly:index/getTeamMembers:getTeamMembers",
+                "majorVersion": 1,
+                "fields": {
+                    "emails": {
+                        "maxItemsOne": false
+                    },
+                    "team_members": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_roles": {
+                                    "maxItemsOne": false
+                                },
+                                "role_attributes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "launchdarkly_webhook": {
+                "current": "launchdarkly:index/getWebhook:getWebhook",
+                "majorVersion": 1,
+                "fields": {
+                    "statements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_actions": {
+                                    "maxItemsOne": false
+                                },
+                                "not_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}
