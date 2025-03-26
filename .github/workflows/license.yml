@@ -61,4 +61,5 @@ jobs:
             github.com/pjbgf/sha1cd,
             github.com/pulumi,
             github.com/segmentio/asm,
+            github.com/launchdarkly/api-client-go,
             golang.org
