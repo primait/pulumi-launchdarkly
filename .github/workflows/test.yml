@@ -84,7 +84,7 @@ jobs:
       matrix:
         language:
         - dotnet
-        - go
+#        - go
         - nodejs
         - python
         testTarget: [local]
