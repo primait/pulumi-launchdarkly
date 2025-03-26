@@ -58,27 +58,32 @@ jobs:
     uses: ./.github/workflows/license.yml
     secrets: inherit
 
-  publish:
-    name: publish
-    permissions:
-      contents: write
-      id-token: write
+#  publish:
+#    name: publish
+#    permissions:
+#      contents: write
+#      id-token: write
+#    needs:
+#      - prerequisites
+#      - build_provider
+#      - test
+#      - license_check
+#    uses: ./.github/workflows/publish.yml
+#    secrets: inherit
+#    with:
+#      version: ${{ needs.prerequisites.outputs.version }}
+#      isPrerelease: true
+#      skipGoSdk: true
+#      skipJavaSdk: true
+
+  tag_release_if_labeled_needs_release:
+    name: Tag release if labeled as needs-release
+#    needs: publish
     needs:
       - prerequisites
       - build_provider
       - test
       - license_check
-    uses: ./.github/workflows/publish.yml
-    secrets: inherit
-    with:
-      version: ${{ needs.prerequisites.outputs.version }}
-      isPrerelease: true
-      skipGoSdk: true
-      skipJavaSdk: true
-
-  tag_release_if_labeled_needs_release:
-    name: Tag release if labeled as needs-release
-    needs: publish
     runs-on: ubuntu-latest
     steps:
     - name: check if this commit needs release
