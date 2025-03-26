@@ -23,6 +23,7 @@ jobs:
         with:
           # Persist credentials so pull-workflow-changes can push a new branch.
           persist-credentials: true
+          submodules: true
       - name: Regenerate the workflow files via https://github.com/pulumi/ci-mgmt
         run: |
           make ci-mgmt
