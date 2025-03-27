@@ -67,7 +67,7 @@ class GetAuditLogSubscriptionResult:
     @pulumi.getter(name="integrationKey")
     def integration_key(self) -> str:
         """
-        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`.
+        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
         """
         return pulumi.get(self, "integration_key")
 
@@ -139,7 +139,7 @@ def get_audit_log_subscription(id: Optional[str] = None,
 
 
     :param str id: The audit log subscription ID.
-    :param str integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`.
+    :param str integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -175,7 +175,7 @@ def get_audit_log_subscription_output(id: Optional[pulumi.Input[str]] = None,
 
 
     :param str id: The audit log subscription ID.
-    :param str integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`.
+    :param str integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
     """
     __args__ = dict()
     __args__['id'] = id

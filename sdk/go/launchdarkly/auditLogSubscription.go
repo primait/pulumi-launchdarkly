@@ -19,7 +19,7 @@ type AuditLogSubscription struct {
 	pulumi.CustomResourceState
 
 	Config pulumi.StringMapOutput `pulumi:"config"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringOutput `pulumi:"integrationKey"`
 	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -74,7 +74,7 @@ func GetAuditLogSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AuditLogSubscription resources.
 type auditLogSubscriptionState struct {
 	Config map[string]string `pulumi:"config"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey *string `pulumi:"integrationKey"`
 	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
 	Name *string `pulumi:"name"`
@@ -88,7 +88,7 @@ type auditLogSubscriptionState struct {
 
 type AuditLogSubscriptionState struct {
 	Config pulumi.StringMapInput
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringPtrInput
 	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
 	Name pulumi.StringPtrInput
@@ -106,7 +106,7 @@ func (AuditLogSubscriptionState) ElementType() reflect.Type {
 
 type auditLogSubscriptionArgs struct {
 	Config map[string]string `pulumi:"config"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey string `pulumi:"integrationKey"`
 	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
 	Name *string `pulumi:"name"`
@@ -121,7 +121,7 @@ type auditLogSubscriptionArgs struct {
 // The set of arguments for constructing a AuditLogSubscription resource.
 type AuditLogSubscriptionArgs struct {
 	Config pulumi.StringMapInput
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringInput
 	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
 	Name pulumi.StringPtrInput
@@ -224,7 +224,7 @@ func (o AuditLogSubscriptionOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuditLogSubscription) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
-// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o AuditLogSubscriptionOutput) IntegrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditLogSubscription) pulumi.StringOutput { return v.IntegrationKey }).(pulumi.StringOutput)
 }
