@@ -141,7 +141,7 @@ namespace Pulumi.Launchdarkly
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/primait/pulumi-launchdarkly/releases/",
+                PluginDownloadURL = "github://api.github.com/primait/pulumi-launchdarkly",
                 AdditionalSecretOutputs =
                 {
                     "token",

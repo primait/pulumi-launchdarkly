@@ -53,7 +53,7 @@ namespace Pulumi.Launchdarkly
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/primait/pulumi-launchdarkly/releases/";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/primait/pulumi-launchdarkly";
             return dst;
         }
 
@@ -61,7 +61,7 @@ namespace Pulumi.Launchdarkly
         {
             var dst = src ?? new global::Pulumi.InvokeOutputOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/primait/pulumi-launchdarkly/releases/";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/primait/pulumi-launchdarkly";
             return dst;
         }
 
