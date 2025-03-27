@@ -1,5 +1,6 @@
 README.md
 pyproject.toml
+setup.py
 pulumi_launchdarkly/__init__.py
 pulumi_launchdarkly/_inputs.py
 pulumi_launchdarkly/_utilities.py
@@ -38,6 +39,7 @@ pulumi_launchdarkly/webhook.py
 pulumi_launchdarkly.egg-info/PKG-INFO
 pulumi_launchdarkly.egg-info/SOURCES.txt
 pulumi_launchdarkly.egg-info/dependency_links.txt
+pulumi_launchdarkly.egg-info/not-zip-safe
 pulumi_launchdarkly.egg-info/requires.txt
 pulumi_launchdarkly.egg-info/top_level.txt
 pulumi_launchdarkly/config/__init__.py
