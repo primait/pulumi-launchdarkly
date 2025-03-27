@@ -41,6 +41,7 @@ jobs:
         with:
           # Persist credentials so upgrade-provider can push a new branch.
           persist-credentials: true
+          submodules: true
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:

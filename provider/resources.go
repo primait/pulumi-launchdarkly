@@ -20,11 +20,12 @@ import (
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	launchdarkly "github.com/launchdarkly/terraform-provider-launchdarkly/launchdarkly"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
-	launchdarkly "github.com/launchdarkly/terraform-provider-launchdarkly/launchdarkly"
 
 	"github.com/primait/pulumi-launchdarkly/provider/pkg/version"
 )
@@ -135,9 +136,9 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/primait/pulumi-launchdarkly",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "launchdarkly",
+		GitHubOrg:        "launchdarkly",
 		UpstreamRepoPath: "./upstream",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.

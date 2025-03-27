@@ -33,6 +33,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+          submodules: true
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:
@@ -60,4 +61,5 @@ jobs:
             github.com/pjbgf/sha1cd,
             github.com/pulumi,
             github.com/segmentio/asm,
+            github.com/launchdarkly/api-client-go,
             golang.org
