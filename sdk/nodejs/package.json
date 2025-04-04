@@ -23,6 +23,6 @@
         "resource": true,
         "name": "launchdarkly",
         "version": "1.0.0-alpha.0+dev",
-        "server": "https://github.com/primait/pulumi-launchdarkly/releases/"
+        "server": "github://api.github.com/primait/pulumi-launchdarkly"
     }
 }
