@@ -166,10 +166,12 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__.__dict__["access_token"] = access_token
+            __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
             __props__.__dict__["api_host"] = api_host
             __props__.__dict__["http_timeout"] = pulumi.Output.from_input(http_timeout).apply(pulumi.runtime.to_json) if http_timeout is not None else None
-            __props__.__dict__["oauth_token"] = oauth_token
+            __props__.__dict__["oauth_token"] = None if oauth_token is None else pulumi.Output.secret(oauth_token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessToken", "oauthToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'launchdarkly',
             resource_name,

@@ -145,6 +145,12 @@ func Provider() tfbridge.ProviderInfo {
 			"region": {
 				Type: "launchdarkly:region/region:Region",
 			},
+			"access_token": {
+				Secret: tfbridge.True(),
+			},
+			"oauth_token": {
+				Secret: tfbridge.True(),
+			},
 		},
 		// If extra types are needed for configuration, they can be added here.
 		ExtraTypes: map[string]schema.ComplexTypeSpec{

@@ -54,12 +54,14 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessToken"] = args ? args.accessToken : undefined;
+            resourceInputs["accessToken"] = args?.accessToken ? pulumi.secret(args.accessToken) : undefined;
             resourceInputs["apiHost"] = args ? args.apiHost : undefined;
             resourceInputs["httpTimeout"] = pulumi.output(args ? args.httpTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["oauthToken"] = args ? args.oauthToken : undefined;
+            resourceInputs["oauthToken"] = args?.oauthToken ? pulumi.secret(args.oauthToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accessToken", "oauthToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

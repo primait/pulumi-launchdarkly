@@ -60,6 +60,11 @@ namespace Pulumi.Launchdarkly
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/primait/pulumi-launchdarkly",
+                AdditionalSecretOutputs =
+                {
+                    "accessToken",
+                    "oauthToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -70,14 +75,24 @@ namespace Pulumi.Launchdarkly
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+
         /// <summary>
         /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
         /// [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
         /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
         /// must provide either `access_token` or `oauth_token`.
         /// </summary>
-        [Input("accessToken")]
-        public Input<string>? AccessToken { get; set; }
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The LaunchDarkly host address. If this argument is not specified, the default host address is
@@ -92,12 +107,22 @@ namespace Pulumi.Launchdarkly
         [Input("httpTimeout", json: true)]
         public Input<int>? HttpTimeout { get; set; }
 
+        [Input("oauthToken")]
+        private Input<string>? _oauthToken;
+
         /// <summary>
         /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
         /// environment variable. You must provide either `access_token` or `oauth_token`.
         /// </summary>
-        [Input("oauthToken")]
-        public Input<string>? OauthToken { get; set; }
+        public Input<string>? OauthToken
+        {
+            get => _oauthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProviderArgs()
         {
