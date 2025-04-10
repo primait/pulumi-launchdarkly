@@ -48,7 +48,8 @@
         "variables": {
             "accessToken": {
                 "type": "string",
-                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n"
+                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             },
             "apiHost": {
                 "type": "string",
@@ -60,7 +61,8 @@
             },
             "oauthToken": {
                 "type": "string",
-                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n"
+                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             }
         }
     },
@@ -1775,7 +1777,8 @@
         "properties": {
             "accessToken": {
                 "type": "string",
-                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n"
+                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             },
             "apiHost": {
                 "type": "string",
@@ -1787,13 +1790,15 @@
             },
             "oauthToken": {
                 "type": "string",
-                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n"
+                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             }
         },
         "inputProperties": {
             "accessToken": {
                 "type": "string",
-                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n"
+                "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             },
             "apiHost": {
                 "type": "string",
@@ -1805,7 +1810,8 @@
             },
             "oauthToken": {
                 "type": "string",
-                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n"
+                "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
+                "secret": true
             }
         }
     },
