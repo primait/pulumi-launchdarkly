@@ -41,9 +41,34 @@ jobs:
           submodules: true
       # Without ldid cross-compiling Node binaries on a Linux worker intended to work on darwin-arm64 fails to sign the
       # binaries properly and they do not work as expected. See https://github.com/pulumi/pulumi-awsx/issues/1490
-      - uses: MOZGIII/install-ldid-action@d5ab465f3a66a4d60a59882b935eb30e18e8d043
-        with:
-          tag: v2.1.5-procursus2
+      - name: Install ldid
+        run: |
+          set -e
+          case "${{ matrix.platform.os }}-${{ matrix.platform.arch }}" in
+            linux-amd64)
+              ARCH=linux_x86_64
+              ;;
+            linux-arm64)
+              ARCH=linux_arm64
+              ;;
+            darwin-amd64)
+              ARCH=darwin_x86_64
+              ;;
+            darwin-arm64)
+              ARCH=darwin_arm64
+              ;;
+            windows-amd64)
+              ARCH=windows_x86_64.exe
+              ;;
+            *)
+              echo "Unsupported platform: ${{ matrix.platform.os }}-${{ matrix.platform.arch }}"
+              exit 1
+              ;;
+          esac
+          URL="https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus2/ldid_${ARCH}"
+          curl -L "$URL" -o ldid
+          chmod +x ldid
+          sudo mv ldid /usr/local/bin/ldid
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:
