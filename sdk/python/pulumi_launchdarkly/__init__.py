@@ -33,6 +33,7 @@ from .relay_proxy_configuration import *
 from .segment import *
 from .team import *
 from .team_member import *
+from .team_role_mapping import *
 from .webhook import *
 from ._inputs import *
 from . import outputs
@@ -160,6 +161,14 @@ _utilities.register(
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/teamMember:TeamMember": "TeamMember"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/teamRoleMapping",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/teamRoleMapping:TeamRoleMapping": "TeamRoleMapping"
   }
  },
  {

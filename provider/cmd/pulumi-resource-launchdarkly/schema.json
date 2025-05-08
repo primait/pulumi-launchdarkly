@@ -4131,6 +4131,60 @@
                 "type": "object"
             }
         },
+        "launchdarkly:index/teamRoleMapping:TeamRoleMapping": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as launchdarkly from \"@pulumi/launchdarkly\";\n\nconst platformTeam = new launchdarkly.TeamRoleMapping(\"platform_team\", {\n    teamKey: \"platform_team\",\n    customRoleKeys: [\n        \"platform\",\n        \"nomad-administrators\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_launchdarkly as launchdarkly\n\nplatform_team = launchdarkly.TeamRoleMapping(\"platform_team\",\n    team_key=\"platform_team\",\n    custom_role_keys=[\n        \"platform\",\n        \"nomad-administrators\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Launchdarkly = Pulumi.Launchdarkly;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var platformTeam = new Launchdarkly.TeamRoleMapping(\"platform_team\", new()\n    {\n        TeamKey = \"platform_team\",\n        CustomRoleKeys = new[]\n        {\n            \"platform\",\n            \"nomad-administrators\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := launchdarkly.NewTeamRoleMapping(ctx, \"platform_team\", \u0026launchdarkly.TeamRoleMappingArgs{\n\t\t\tTeamKey: pulumi.String(\"platform_team\"),\n\t\t\tCustomRoleKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"platform\"),\n\t\t\t\tpulumi.String(\"nomad-administrators\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.launchdarkly.TeamRoleMapping;\nimport com.pulumi.launchdarkly.TeamRoleMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var platformTeam = new TeamRoleMapping(\"platformTeam\", TeamRoleMappingArgs.builder()\n            .teamKey(\"platform_team\")\n            .customRoleKeys(            \n                \"platform\",\n                \"nomad-administrators\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  platformTeam:\n    type: launchdarkly:TeamRoleMapping\n    name: platform_team\n    properties:\n      teamKey: platform_team\n      customRoleKeys:\n        - platform\n        - nomad-administrators\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA LaunchDarkly team/role mapping can be imported using the team key:\n\n```sh\n$ pulumi import launchdarkly:index/teamRoleMapping:TeamRoleMapping platform_team platform_team\n```\n",
+            "properties": {
+                "customRoleKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.\n"
+                },
+                "teamKey": {
+                    "type": "string",
+                    "description": "The team key.\n"
+                }
+            },
+            "required": [
+                "customRoleKeys",
+                "teamKey"
+            ],
+            "inputProperties": {
+                "customRoleKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.\n"
+                },
+                "teamKey": {
+                    "type": "string",
+                    "description": "The team key.\n"
+                }
+            },
+            "requiredInputs": [
+                "customRoleKeys",
+                "teamKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamRoleMapping resources.\n",
+                "properties": {
+                    "customRoleKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.\n"
+                    },
+                    "teamKey": {
+                        "type": "string",
+                        "description": "The team key.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "launchdarkly:index/webhook:Webhook": {
             "description": "Provides a LaunchDarkly webhook resource.\n\nThis resource allows you to create and manage webhooks within your LaunchDarkly organization.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as launchdarkly from \"@pulumi/launchdarkly\";\n\nconst example = new launchdarkly.Webhook(\"example\", {\n    url: \"http://webhooks.com/webhook\",\n    name: \"Example Webhook\",\n    tags: [\"terraform\"],\n    on: true,\n    statements: [\n        {\n            actions: [\"*\"],\n            effect: \"allow\",\n            resources: [\"proj/*:env/production:flag/*\"],\n        },\n        {\n            actions: [\"*\"],\n            effect: \"allow\",\n            resources: [\"proj/test:env/production:segment/*\"],\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_launchdarkly as launchdarkly\n\nexample = launchdarkly.Webhook(\"example\",\n    url=\"http://webhooks.com/webhook\",\n    name=\"Example Webhook\",\n    tags=[\"terraform\"],\n    on=True,\n    statements=[\n        {\n            \"actions\": [\"*\"],\n            \"effect\": \"allow\",\n            \"resources\": [\"proj/*:env/production:flag/*\"],\n        },\n        {\n            \"actions\": [\"*\"],\n            \"effect\": \"allow\",\n            \"resources\": [\"proj/test:env/production:segment/*\"],\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Launchdarkly = Pulumi.Launchdarkly;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Launchdarkly.Webhook(\"example\", new()\n    {\n        Url = \"http://webhooks.com/webhook\",\n        Name = \"Example Webhook\",\n        Tags = new[]\n        {\n            \"terraform\",\n        },\n        On = true,\n        Statements = new[]\n        {\n            new Launchdarkly.Inputs.WebhookStatementArgs\n            {\n                Actions = new[]\n                {\n                    \"*\",\n                },\n                Effect = \"allow\",\n                Resources = new[]\n                {\n                    \"proj/*:env/production:flag/*\",\n                },\n            },\n            new Launchdarkly.Inputs.WebhookStatementArgs\n            {\n                Actions = new[]\n                {\n                    \"*\",\n                },\n                Effect = \"allow\",\n                Resources = new[]\n                {\n                    \"proj/test:env/production:segment/*\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := launchdarkly.NewWebhook(ctx, \"example\", \u0026launchdarkly.WebhookArgs{\n\t\t\tUrl:  pulumi.String(\"http://webhooks.com/webhook\"),\n\t\t\tName: pulumi.String(\"Example Webhook\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"terraform\"),\n\t\t\t},\n\t\t\tOn: pulumi.Bool(true),\n\t\t\tStatements: launchdarkly.WebhookStatementArray{\n\t\t\t\t\u0026launchdarkly.WebhookStatementArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tEffect: pulumi.String(\"allow\"),\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"proj/*:env/production:flag/*\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026launchdarkly.WebhookStatementArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"*\"),\n\t\t\t\t\t},\n\t\t\t\t\tEffect: pulumi.String(\"allow\"),\n\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"proj/test:env/production:segment/*\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.launchdarkly.Webhook;\nimport com.pulumi.launchdarkly.WebhookArgs;\nimport com.pulumi.launchdarkly.inputs.WebhookStatementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Webhook(\"example\", WebhookArgs.builder()\n            .url(\"http://webhooks.com/webhook\")\n            .name(\"Example Webhook\")\n            .tags(\"terraform\")\n            .on(true)\n            .statements(            \n                WebhookStatementArgs.builder()\n                    .actions(\"*\")\n                    .effect(\"allow\")\n                    .resources(\"proj/*:env/production:flag/*\")\n                    .build(),\n                WebhookStatementArgs.builder()\n                    .actions(\"*\")\n                    .effect(\"allow\")\n                    .resources(\"proj/test:env/production:segment/*\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: launchdarkly:Webhook\n    properties:\n      url: http://webhooks.com/webhook\n      name: Example Webhook\n      tags:\n        - terraform\n      on: true\n      statements:\n        - actions:\n            - '*'\n          effect: allow\n          resources:\n            - proj/*:env/production:flag/*\n        - actions:\n            - '*'\n          effect: allow\n          resources:\n            - proj/test:env/production:segment/*\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLaunchDarkly webhooks can be imported using the webhook's 24 character ID\n\n```sh\n$ pulumi import launchdarkly:index/webhook:Webhook example 57c0af609969090743529967\n```\n\n",
             "properties": {

@@ -145,6 +145,11 @@ export type TeamMember = import("./teamMember").TeamMember;
 export const TeamMember: typeof import("./teamMember").TeamMember = null as any;
 utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
 
+export { TeamRoleMappingArgs, TeamRoleMappingState } from "./teamRoleMapping";
+export type TeamRoleMapping = import("./teamRoleMapping").TeamRoleMapping;
+export const TeamRoleMapping: typeof import("./teamRoleMapping").TeamRoleMapping = null as any;
+utilities.lazyLoad(exports, ["TeamRoleMapping"], () => require("./teamRoleMapping"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -194,6 +199,8 @@ const _module = {
                 return new Team(name, <any>undefined, { urn })
             case "launchdarkly:index/teamMember:TeamMember":
                 return new TeamMember(name, <any>undefined, { urn })
+            case "launchdarkly:index/teamRoleMapping:TeamRoleMapping":
+                return new TeamRoleMapping(name, <any>undefined, { urn })
             case "launchdarkly:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -215,6 +222,7 @@ pulumi.runtime.registerResourceModule("launchdarkly", "index/relayProxyConfigura
 pulumi.runtime.registerResourceModule("launchdarkly", "index/segment", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/team", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/teamMember", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/teamRoleMapping", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("launchdarkly", {
     version: utilities.getVersion(),
