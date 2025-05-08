@@ -15,12 +15,15 @@
 package launchdarkly
 
 import (
+	"context"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
 	launchdarkly "github.com/launchdarkly/terraform-provider-launchdarkly/launchdarkly"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -44,6 +47,13 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
+
+	muxProvider := pfbridge.MuxShimWithPF(
+		context.Background(),
+		shimv2.NewProvider(launchdarkly.Provider()),
+		launchdarkly.NewPluginProvider(version.Version)(),
+	)
+
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
@@ -106,7 +116,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(launchdarkly.Provider()),
+		P: muxProvider,
 
 		Name:    "launchdarkly",
 		Version: version.Version,
