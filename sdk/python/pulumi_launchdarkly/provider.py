@@ -45,7 +45,7 @@ class ProviderArgs:
             pulumi.set(__self__, "oauth_token", oauth_token)
 
     @property
-    @pulumi.getter(name="accessToken")
+    @pulumi.getter
     def access_token(self) -> Optional[pulumi.Input[str]]:
         """
         The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
@@ -60,7 +60,7 @@ class ProviderArgs:
         pulumi.set(self, "access_token", value)
 
     @property
-    @pulumi.getter(name="apiHost")
+    @pulumi.getter
     def api_host(self) -> Optional[pulumi.Input[str]]:
         """
         The LaunchDarkly host address. If this argument is not specified, the default host address is
@@ -73,7 +73,7 @@ class ProviderArgs:
         pulumi.set(self, "api_host", value)
 
     @property
-    @pulumi.getter(name="httpTimeout")
+    @pulumi.getter
     def http_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
@@ -85,7 +85,7 @@ class ProviderArgs:
         pulumi.set(self, "http_timeout", value)
 
     @property
-    @pulumi.getter(name="oauthToken")
+    @pulumi.getter
     def oauth_token(self) -> Optional[pulumi.Input[str]]:
         """
         An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
@@ -170,7 +170,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_host"] = api_host
             __props__.__dict__["http_timeout"] = pulumi.Output.from_input(http_timeout).apply(pulumi.runtime.to_json) if http_timeout is not None else None
             __props__.__dict__["oauth_token"] = None if oauth_token is None else pulumi.Output.secret(oauth_token)
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessToken", "oauthToken"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["access_token", "oauth_token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'launchdarkly',
@@ -179,7 +179,7 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     @property
-    @pulumi.getter(name="accessToken")
+    @pulumi.getter
     def access_token(self) -> pulumi.Output[Optional[str]]:
         """
         The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
@@ -190,7 +190,7 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "access_token")
 
     @property
-    @pulumi.getter(name="apiHost")
+    @pulumi.getter
     def api_host(self) -> pulumi.Output[Optional[str]]:
         """
         The LaunchDarkly host address. If this argument is not specified, the default host address is
@@ -199,7 +199,7 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "api_host")
 
     @property
-    @pulumi.getter(name="oauthToken")
+    @pulumi.getter
     def oauth_token(self) -> pulumi.Output[Optional[str]]:
         """
         An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`

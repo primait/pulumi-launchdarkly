@@ -45,6 +45,7 @@
         "segment.ts",
         "team.ts",
         "teamMember.ts",
+        "teamRoleMapping.ts",
         "types/enums/index.ts",
         "types/enums/region/index.ts",
         "types/index.ts",

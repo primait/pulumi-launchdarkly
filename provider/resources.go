@@ -15,12 +15,15 @@
 package launchdarkly
 
 import (
+	"context"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
 	launchdarkly "github.com/launchdarkly/terraform-provider-launchdarkly/launchdarkly"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -44,6 +47,13 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
+
+	muxProvider := pfbridge.MuxShimWithPF(
+		context.Background(),
+		shimv2.NewProvider(launchdarkly.Provider()),
+		launchdarkly.NewPluginProvider(version.Version)(),
+	)
+
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
@@ -106,7 +116,7 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(launchdarkly.Provider()),
+		P: muxProvider,
 
 		Name:    "launchdarkly",
 		Version: version.Version,
@@ -139,6 +149,12 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "launchdarkly",
 		UpstreamRepoPath: "./upstream",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		// PreConfigureCallbackWithLogger: func(ctx context.Context, host *pulumi_provider.HostClient, vars pulumi_resource.PropertyMap, config pulumi_tf_shim.ResourceConfig) error {
+		// 	host.Log(ctx, diag.Warning, "urn:pulumi:production::stub",
+		// 		fmt.Sprintf("PreConfigureCallbackWithLogger called with \nhost: \n%+v \nvars:\n %+v \nconfig:\n %+v \n", host, vars, config),
+		// 	)
+		// 	return nil
+		// },
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -147,9 +163,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"access_token": {
 				Secret: tfbridge.True(),
+				Name:   "access_token",
 			},
 			"oauth_token": {
 				Secret: tfbridge.True(),
+				Name:   "oauth_token",
+			},
+			"api_host": {
+				Name: "api_host",
+			},
+			"http_timeout": {
+				Name: "http_timeout",
 			},
 		},
 		// If extra types are needed for configuration, they can be added here.

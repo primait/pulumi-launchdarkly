@@ -15,23 +15,23 @@ var _ = internal.GetEnvOrDefault
 // [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
 // authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
 // must provide either `accessToken` or `oauthToken`.
-func GetAccessToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "launchdarkly:accessToken")
+func GetAccess_token(ctx *pulumi.Context) string {
+	return config.Get(ctx, "launchdarkly:access_token")
 }
 
 // The LaunchDarkly host address. If this argument is not specified, the default host address is
 // `https://app.launchdarkly.com`
-func GetApiHost(ctx *pulumi.Context) string {
-	return config.Get(ctx, "launchdarkly:apiHost")
+func GetApi_host(ctx *pulumi.Context) string {
+	return config.Get(ctx, "launchdarkly:api_host")
 }
 
 // The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
-func GetHttpTimeout(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "launchdarkly:httpTimeout")
+func GetHttp_timeout(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "launchdarkly:http_timeout")
 }
 
 // An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
 // environment variable. You must provide either `accessToken` or `oauthToken`.
-func GetOauthToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "launchdarkly:oauthToken")
+func GetOauth_token(ctx *pulumi.Context) string {
+	return config.Get(ctx, "launchdarkly:oauth_token")
 }

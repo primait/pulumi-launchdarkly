@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/primait/pulumi-launchdarkly/sdk
 
 go 1.22
 

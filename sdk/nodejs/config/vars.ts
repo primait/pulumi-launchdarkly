@@ -13,10 +13,10 @@ const __config = new pulumi.Config("launchdarkly");
  * authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
  * must provide either `accessToken` or `oauthToken`.
  */
-export declare const accessToken: string | undefined;
-Object.defineProperty(exports, "accessToken", {
+export declare const access_token: string | undefined;
+Object.defineProperty(exports, "access_token", {
     get() {
-        return __config.get("accessToken");
+        return __config.get("access_token");
     },
     enumerable: true,
 });
@@ -25,10 +25,10 @@ Object.defineProperty(exports, "accessToken", {
  * The LaunchDarkly host address. If this argument is not specified, the default host address is
  * `https://app.launchdarkly.com`
  */
-export declare const apiHost: string | undefined;
-Object.defineProperty(exports, "apiHost", {
+export declare const api_host: string | undefined;
+Object.defineProperty(exports, "api_host", {
     get() {
-        return __config.get("apiHost");
+        return __config.get("api_host");
     },
     enumerable: true,
 });
@@ -36,10 +36,10 @@ Object.defineProperty(exports, "apiHost", {
 /**
  * The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
  */
-export declare const httpTimeout: number | undefined;
-Object.defineProperty(exports, "httpTimeout", {
+export declare const http_timeout: number | undefined;
+Object.defineProperty(exports, "http_timeout", {
     get() {
-        return __config.getObject<number>("httpTimeout");
+        return __config.getObject<number>("http_timeout");
     },
     enumerable: true,
 });
@@ -48,10 +48,10 @@ Object.defineProperty(exports, "httpTimeout", {
  * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
  * environment variable. You must provide either `accessToken` or `oauthToken`.
  */
-export declare const oauthToken: string | undefined;
-Object.defineProperty(exports, "oauthToken", {
+export declare const oauth_token: string | undefined;
+Object.defineProperty(exports, "oauth_token", {
     get() {
-        return __config.get("oauthToken");
+        return __config.get("oauth_token");
     },
     enumerable: true,
 });
