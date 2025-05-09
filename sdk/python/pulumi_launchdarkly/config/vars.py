@@ -28,7 +28,7 @@ class _ExportableConfig(types.ModuleType):
         authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
         must provide either `access_token` or `oauth_token`.
         """
-        return __config__.get('accessToken')
+        return __config__.get('access_token')
 
     @property
     def api_host(self) -> Optional[str]:
@@ -36,14 +36,14 @@ class _ExportableConfig(types.ModuleType):
         The LaunchDarkly host address. If this argument is not specified, the default host address is
         `https://app.launchdarkly.com`
         """
-        return __config__.get('apiHost')
+        return __config__.get('api_host')
 
     @property
     def http_timeout(self) -> Optional[int]:
         """
         The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
         """
-        return __config__.get_int('httpTimeout')
+        return __config__.get_int('http_timeout')
 
     @property
     def oauth_token(self) -> Optional[str]:
@@ -51,5 +51,5 @@ class _ExportableConfig(types.ModuleType):
         An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
         environment variable. You must provide either `access_token` or `oauth_token`.
         """
-        return __config__.get('oauthToken')
+        return __config__.get('oauth_token')
 

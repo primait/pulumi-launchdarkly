@@ -14,7 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
-accessToken: Optional[str]
+access_token: Optional[str]
 """
 The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
 [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
@@ -22,18 +22,18 @@ authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACC
 must provide either `access_token` or `oauth_token`.
 """
 
-apiHost: Optional[str]
+api_host: Optional[str]
 """
 The LaunchDarkly host address. If this argument is not specified, the default host address is
 `https://app.launchdarkly.com`
 """
 
-httpTimeout: Optional[int]
+http_timeout: Optional[int]
 """
 The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
 """
 
-oauthToken: Optional[str]
+oauth_token: Optional[str]
 """
 An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
 environment variable. You must provide either `access_token` or `oauth_token`.

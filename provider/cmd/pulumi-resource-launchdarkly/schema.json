@@ -46,20 +46,20 @@
     },
     "config": {
         "variables": {
-            "accessToken": {
+            "access_token": {
                 "type": "string",
                 "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
                 "secret": true
             },
-            "apiHost": {
+            "api_host": {
                 "type": "string",
                 "description": "The LaunchDarkly host address. If this argument is not specified, the default host address is\n`https://app.launchdarkly.com`\n"
             },
-            "httpTimeout": {
+            "http_timeout": {
                 "type": "integer",
                 "description": "The HTTP timeout (in seconds) when making API calls to LaunchDarkly.\n"
             },
-            "oauthToken": {
+            "oauth_token": {
                 "type": "string",
                 "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
                 "secret": true
@@ -1775,40 +1775,40 @@
     "provider": {
         "description": "The provider type for the launchdarkly package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
-            "accessToken": {
+            "access_token": {
                 "type": "string",
                 "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
                 "secret": true
             },
-            "apiHost": {
+            "api_host": {
                 "type": "string",
                 "description": "The LaunchDarkly host address. If this argument is not specified, the default host address is\n`https://app.launchdarkly.com`\n"
             },
-            "httpTimeout": {
+            "http_timeout": {
                 "type": "integer",
                 "description": "The HTTP timeout (in seconds) when making API calls to LaunchDarkly.\n"
             },
-            "oauthToken": {
+            "oauth_token": {
                 "type": "string",
                 "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
                 "secret": true
             }
         },
         "inputProperties": {
-            "accessToken": {
+            "access_token": {
                 "type": "string",
                 "description": "The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or\n[service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to\nauthenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You\nmust provide either `access_token` or `oauth_token`.\n",
                 "secret": true
             },
-            "apiHost": {
+            "api_host": {
                 "type": "string",
                 "description": "The LaunchDarkly host address. If this argument is not specified, the default host address is\n`https://app.launchdarkly.com`\n"
             },
-            "httpTimeout": {
+            "http_timeout": {
                 "type": "integer",
                 "description": "The HTTP timeout (in seconds) when making API calls to LaunchDarkly.\n"
             },
-            "oauthToken": {
+            "oauth_token": {
                 "type": "string",
                 "description": "An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`\nenvironment variable. You must provide either `access_token` or `oauth_token`.\n",
                 "secret": true

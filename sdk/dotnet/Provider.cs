@@ -24,22 +24,22 @@ namespace Pulumi.Launchdarkly
         /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
         /// must provide either `access_token` or `oauth_token`.
         /// </summary>
-        [Output("accessToken")]
-        public Output<string?> AccessToken { get; private set; } = null!;
+        [Output("access_token")]
+        public Output<string?> Access_token { get; private set; } = null!;
 
         /// <summary>
         /// The LaunchDarkly host address. If this argument is not specified, the default host address is
         /// `https://app.launchdarkly.com`
         /// </summary>
-        [Output("apiHost")]
-        public Output<string?> ApiHost { get; private set; } = null!;
+        [Output("api_host")]
+        public Output<string?> Api_host { get; private set; } = null!;
 
         /// <summary>
         /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
         /// environment variable. You must provide either `access_token` or `oauth_token`.
         /// </summary>
-        [Output("oauthToken")]
-        public Output<string?> OauthToken { get; private set; } = null!;
+        [Output("oauth_token")]
+        public Output<string?> Oauth_token { get; private set; } = null!;
 
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace Pulumi.Launchdarkly
                 PluginDownloadURL = "github://api.github.com/primait/pulumi-launchdarkly",
                 AdditionalSecretOutputs =
                 {
-                    "accessToken",
-                    "oauthToken",
+                    "access_token",
+                    "oauth_token",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -75,8 +75,8 @@ namespace Pulumi.Launchdarkly
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessToken")]
-        private Input<string>? _accessToken;
+        [Input("access_token")]
+        private Input<string>? _access_token;
 
         /// <summary>
         /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
@@ -84,13 +84,13 @@ namespace Pulumi.Launchdarkly
         /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
         /// must provide either `access_token` or `oauth_token`.
         /// </summary>
-        public Input<string>? AccessToken
+        public Input<string>? Access_token
         {
-            get => _accessToken;
+            get => _access_token;
             set
             {
                 var emptySecret = Output.CreateSecret(0);
-                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+                _access_token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 
@@ -98,29 +98,29 @@ namespace Pulumi.Launchdarkly
         /// The LaunchDarkly host address. If this argument is not specified, the default host address is
         /// `https://app.launchdarkly.com`
         /// </summary>
-        [Input("apiHost")]
-        public Input<string>? ApiHost { get; set; }
+        [Input("api_host")]
+        public Input<string>? Api_host { get; set; }
 
         /// <summary>
         /// The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
         /// </summary>
-        [Input("httpTimeout", json: true)]
-        public Input<int>? HttpTimeout { get; set; }
+        [Input("http_timeout", json: true)]
+        public Input<int>? Http_timeout { get; set; }
 
-        [Input("oauthToken")]
-        private Input<string>? _oauthToken;
+        [Input("oauth_token")]
+        private Input<string>? _oauth_token;
 
         /// <summary>
         /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
         /// environment variable. You must provide either `access_token` or `oauth_token`.
         /// </summary>
-        public Input<string>? OauthToken
+        public Input<string>? Oauth_token
         {
-            get => _oauthToken;
+            get => _oauth_token;
             set
             {
                 var emptySecret = Output.CreateSecret(0);
-                _oauthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+                _oauth_token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

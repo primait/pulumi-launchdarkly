@@ -32,49 +32,49 @@ namespace Pulumi.Launchdarkly
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("launchdarkly");
 
-        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken"));
+        private static readonly __Value<string?> _access_token = new __Value<string?>(() => __config.Get("access_token"));
         /// <summary>
         /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
         /// [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
         /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
         /// must provide either `access_token` or `oauth_token`.
         /// </summary>
-        public static string? AccessToken
+        public static string? Access_token
         {
-            get => _accessToken.Get();
-            set => _accessToken.Set(value);
+            get => _access_token.Get();
+            set => _access_token.Set(value);
         }
 
-        private static readonly __Value<string?> _apiHost = new __Value<string?>(() => __config.Get("apiHost"));
+        private static readonly __Value<string?> _api_host = new __Value<string?>(() => __config.Get("api_host"));
         /// <summary>
         /// The LaunchDarkly host address. If this argument is not specified, the default host address is
         /// `https://app.launchdarkly.com`
         /// </summary>
-        public static string? ApiHost
+        public static string? Api_host
         {
-            get => _apiHost.Get();
-            set => _apiHost.Set(value);
+            get => _api_host.Get();
+            set => _api_host.Set(value);
         }
 
-        private static readonly __Value<int?> _httpTimeout = new __Value<int?>(() => __config.GetInt32("httpTimeout"));
+        private static readonly __Value<int?> _http_timeout = new __Value<int?>(() => __config.GetInt32("http_timeout"));
         /// <summary>
         /// The HTTP timeout (in seconds) when making API calls to LaunchDarkly.
         /// </summary>
-        public static int? HttpTimeout
+        public static int? Http_timeout
         {
-            get => _httpTimeout.Get();
-            set => _httpTimeout.Set(value);
+            get => _http_timeout.Get();
+            set => _http_timeout.Set(value);
         }
 
-        private static readonly __Value<string?> _oauthToken = new __Value<string?>(() => __config.Get("oauthToken"));
+        private static readonly __Value<string?> _oauth_token = new __Value<string?>(() => __config.Get("oauth_token"));
         /// <summary>
         /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
         /// environment variable. You must provide either `access_token` or `oauth_token`.
         /// </summary>
-        public static string? OauthToken
+        public static string? Oauth_token
         {
-            get => _oauthToken.Get();
-            set => _oauthToken.Set(value);
+            get => _oauth_token.Get();
+            set => _oauth_token.Set(value);
         }
 
     }
