@@ -149,6 +149,12 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "launchdarkly",
 		UpstreamRepoPath: "./upstream",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		// PreConfigureCallbackWithLogger: func(ctx context.Context, host *pulumi_provider.HostClient, vars pulumi_resource.PropertyMap, config pulumi_tf_shim.ResourceConfig) error {
+		// 	host.Log(ctx, diag.Warning, "urn:pulumi:production::stub",
+		// 		fmt.Sprintf("PreConfigureCallbackWithLogger called with \nhost: \n%+v \nvars:\n %+v \nconfig:\n %+v \n", host, vars, config),
+		// 	)
+		// 	return nil
+		// },
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
