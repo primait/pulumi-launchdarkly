@@ -163,9 +163,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"access_token": {
 				Secret: tfbridge.True(),
+				Name:   "access_token",
 			},
 			"oauth_token": {
 				Secret: tfbridge.True(),
+				Name:   "oauth_token",
+			},
+			"api_host": {
+				Name: "api_host",
+			},
+			"http_timeout": {
+				Name: "http_timeout",
 			},
 		},
 		// If extra types are needed for configuration, they can be added here.
