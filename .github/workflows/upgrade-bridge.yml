@@ -11,8 +11,15 @@ on:
       kind:
         description: Overrides the kind of upgrade. Must be one of `all`, `bridge`, `provider`, `code`, `pf`, or `pulumi`.
         required: false
-        type: string
+        type: choice
         default: "bridge"
+        options:
+          - all
+          - bridge
+          - provider
+          - code
+          - pf
+          - pulumi
       target-bridge-version:
         description: pulumi-terraform-bridge version or hash reference
         required: false
@@ -26,21 +33,6 @@ on:
              - "": Use the same version as pulumi-terraform-bridge
              - A go version such as "v3.90.1"
              - A commit SHA in pulumi/pulumi such as "ac71ebc1d34e5ccfd1a7fed61e6ff43a3160f3cb"
-        required: false
-        type: string
-        default: ""
-      pr-reviewers:
-        description: Reviewers to assign to the auto-opened pull request
-        required: false
-        type: string
-        default: ""
-      pr-description:
-        description: Extra description to add to the auto-opened pull request
-        required: false
-        type: string
-        default: ""
-      pr-title-prefix:
-        description: Prefix to add to the auto-opened pull request title
         required: false
         type: string
         default: ""
@@ -88,6 +80,33 @@ jobs:
       uses: ./.github/actions/setup-tools
       with:
         tools: pulumictl, pulumicli, dotnet, go, nodejs, python
+    - name: Format validation - target_bridge_version
+      # Run this step only when the current TASK cares about the bridge version
+      if: github.event_name == 'repository_dispatch'
+      env:
+        TARGET_BRIDGE_VERSION: ${{ inputs.target-bridge-version }}   # adapt if you export it differently
+      run: |
+        # Allowed: the literal string “latest”, a semver tag (e.g. v2.49.0[-rc.1]),
+        # or a 40-char git SHA.
+        [[ "$TARGET_BRIDGE_VERSION" == "latest" ]] && exit 0
+        [[ "$TARGET_BRIDGE_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.\-]+)?$ ]] && exit 0
+        [[ "$TARGET_BRIDGE_VERSION" =~ ^[0-9a-f]{40}$ ]] && exit 0
+
+        echo "❌ target-bridge-version must be 'latest', a semver (vX.Y.Z), or a 40-char SHA" >&2
+        exit 1    
+    - name: Format validation - target_pulumi_version
+      # Run this step only when the current TASK cares about the pulumi version
+      if: github.event_name == 'repository_dispatch'
+      env:
+        TARGET_PULUMI_VERSION: ${{ inputs.target-pulumi-version }}   # adapt if you export it differently
+      run: |
+        # Allowed: empty string "", a semver tag (e.g. v3.90.1[-rc.2]), or a 40-char git SHA.
+        [[ -z "$TARGET_PULUMI_VERSION" ]] && exit 0
+        [[ "$TARGET_PULUMI_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.\-]+)?$ ]] && exit 0
+        [[ "$TARGET_PULUMI_VERSION" =~ ^[0-9a-f]{40}$ ]] && exit 0
+
+        echo "❌ target-pulumi-version must be empty, a semver (vX.Y.Z), or a 40-char SHA" >&2
+        exit 1
     - name: Call upgrade provider action
       if: github.event_name == 'workflow_dispatch'
       uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
@@ -98,9 +117,6 @@ jobs:
         automerge: ${{ inputs.automerge }}
         target-bridge-version: ${{ inputs.target-bridge-version }}
         target-pulumi-version: ${{ inputs.target-pulumi-version }}
-        pr-reviewers: ${{ inputs.pr-reviewers }}
-        pr-description: ${{ inputs.pr-description }}
-        pr-title-prefix: ${{ inputs.pr-title-prefix }}
     - name: Call upgrade provider action
       if: github.event_name == 'repository_dispatch'
       uses: pulumi/pulumi-upgrade-provider-action@ff5cb5907aecba099e61146c4d4d074c7fd6ca99 # v0.0.15
