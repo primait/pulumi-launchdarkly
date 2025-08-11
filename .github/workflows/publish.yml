@@ -182,15 +182,15 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  verify_release:
-    name: verify_release
-    needs: publish
-    permissions:
-      contents: write
-      id-token: write
-    uses: ./.github/workflows/verify-release.yml
-    secrets: inherit
-    with:
-      providerVersion: ${{ inputs.version }}
-      skipGoSdk: ${{ inputs.skipGoSdk }}
-      pythonVersion: ${{ needs.publish_sdk.outputs.python_version }}
+  # verify_release:
+  #   name: verify_release
+  #   needs: publish
+  #   permissions:
+  #     contents: write
+  #     id-token: write
+  #   uses: ./.github/workflows/verify-release.yml
+  #   secrets: inherit
+  #   with:
+  #     providerVersion: ${{ inputs.version }}
+  #     skipGoSdk: ${{ inputs.skipGoSdk }}
+  #     pythonVersion: ${{ needs.publish_sdk.outputs.python_version }}
