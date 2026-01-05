@@ -78,7 +78,7 @@ namespace Pulumi.Launchdarkly
         public Output<Outputs.FlagTriggerInstructions> Instructions { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("integrationKey")]
         public Output<string> IntegrationKey { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Launchdarkly
         public Input<Inputs.FlagTriggerInstructionsArgs> Instructions { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Launchdarkly
         public Input<Inputs.FlagTriggerInstructionsGetArgs>? Instructions { get; set; }
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey")]
         public Input<string>? IntegrationKey { get; set; }

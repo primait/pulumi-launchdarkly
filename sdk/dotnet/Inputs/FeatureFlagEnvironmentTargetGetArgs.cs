@@ -16,7 +16,7 @@ namespace Pulumi.Launchdarkly.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// List of `user` strings to target.
+        /// List of `User` strings to target.
         /// </summary>
         public InputList<string> Values
         {

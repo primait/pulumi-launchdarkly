@@ -14,19 +14,19 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagEnvironmentFallthroughResult
     {
         /// <summary>
-        /// Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
+        /// Group percentage rollout by a custom attribute. This argument is only valid if RolloutWeights is also specified.
         /// </summary>
         public readonly string BucketBy;
         /// <summary>
-        /// The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
+        /// The context kind associated with the specified rollout. This argument is only valid if RolloutWeights is also specified. If omitted, defaults to `User`.
         /// </summary>
         public readonly string ContextKind;
         /// <summary>
-        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
+        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `True`. The sum of the `RolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `Variation` or `RolloutWeights`.
         /// </summary>
         public readonly ImmutableArray<int> RolloutWeights;
         /// <summary>
-        /// The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
+        /// The default integer variation index to serve if no `Prerequisites`, `Target`, or `Rules` apply. You must specify either `Variation` or `RolloutWeights`.
         /// </summary>
         public readonly int Variation;
 

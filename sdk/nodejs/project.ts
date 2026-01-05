@@ -106,28 +106,26 @@ export class Project extends pulumi.CustomResource {
     /**
      * A block describing which client-side SDKs can use new flags by default.
      */
-    public readonly defaultClientSideAvailabilities!: pulumi.Output<outputs.ProjectDefaultClientSideAvailability[]>;
-    public readonly environments!: pulumi.Output<outputs.ProjectEnvironment[]>;
+    declare public readonly defaultClientSideAvailabilities: pulumi.Output<outputs.ProjectDefaultClientSideAvailability[]>;
+    declare public readonly environments: pulumi.Output<outputs.ProjectEnvironment[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-     * `defaultClientSideAvailability` to maintain future compatibility.
+     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
      */
-    public readonly includeInSnippet!: pulumi.Output<boolean>;
+    declare public readonly includeInSnippet: pulumi.Output<boolean>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-     * a new one.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The project's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -142,26 +140,26 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["defaultClientSideAvailabilities"] = state ? state.defaultClientSideAvailabilities : undefined;
-            resourceInputs["environments"] = state ? state.environments : undefined;
-            resourceInputs["includeInSnippet"] = state ? state.includeInSnippet : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["defaultClientSideAvailabilities"] = state?.defaultClientSideAvailabilities;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["includeInSnippet"] = state?.includeInSnippet;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.environments === undefined) && !opts.urn) {
+            if (args?.environments === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environments'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["defaultClientSideAvailabilities"] = args ? args.defaultClientSideAvailabilities : undefined;
-            resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["includeInSnippet"] = args ? args.includeInSnippet : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["defaultClientSideAvailabilities"] = args?.defaultClientSideAvailabilities;
+            resourceInputs["environments"] = args?.environments;
+            resourceInputs["includeInSnippet"] = args?.includeInSnippet;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -178,15 +176,13 @@ export interface ProjectState {
     defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
     environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-     * `defaultClientSideAvailability` to maintain future compatibility.
+     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-     * a new one.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -209,15 +205,13 @@ export interface ProjectArgs {
     defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
     environments: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-     * `defaultClientSideAvailability` to maintain future compatibility.
+     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-     * a new one.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**

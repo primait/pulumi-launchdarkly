@@ -13,7 +13,7 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class FeatureFlagEnvironmentPrerequisiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The prerequisite feature flag's `key`.
+        /// The prerequisite feature flag's `Key`.
         /// </summary>
         [Input("flagKey", required: true)]
         public Input<string> FlagKey { get; set; } = null!;

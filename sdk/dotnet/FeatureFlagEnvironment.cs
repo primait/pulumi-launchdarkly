@@ -325,13 +325,13 @@ namespace Pulumi.Launchdarkly
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        /// Nested block describing the default variation to serve if no `Prerequisites`, `Target`, or `Rules` apply.
         /// </summary>
         [Output("fallthrough")]
         public Output<Outputs.FeatureFlagEnvironmentFallthrough> Fallthrough { get; private set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("flagId")]
         public Output<string> FlagId { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.Launchdarkly
         public Output<int> OffVariation { get; private set; } = null!;
 
         /// <summary>
-        /// Whether targeting is enabled. Defaults to `false` if not set.
+        /// Whether targeting is enabled. Defaults to `False` if not set.
         /// </summary>
         [Output("on")]
         public Output<bool?> On { get; private set; } = null!;
@@ -367,7 +367,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<Outputs.FeatureFlagEnvironmentTarget>> Targets { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+        /// Whether to send event data back to LaunchDarkly. Defaults to `False` if not set.
         /// </summary>
         [Output("trackEvents")]
         public Output<bool?> TrackEvents { get; private set; } = null!;
@@ -438,13 +438,13 @@ namespace Pulumi.Launchdarkly
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        /// Nested block describing the default variation to serve if no `Prerequisites`, `Target`, or `Rules` apply.
         /// </summary>
         [Input("fallthrough", required: true)]
         public Input<Inputs.FeatureFlagEnvironmentFallthroughArgs> Fallthrough { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagId", required: true)]
         public Input<string> FlagId { get; set; } = null!;
@@ -456,7 +456,7 @@ namespace Pulumi.Launchdarkly
         public Input<int> OffVariation { get; set; } = null!;
 
         /// <summary>
-        /// Whether targeting is enabled. Defaults to `false` if not set.
+        /// Whether targeting is enabled. Defaults to `False` if not set.
         /// </summary>
         [Input("on")]
         public Input<bool>? On { get; set; }
@@ -498,7 +498,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+        /// Whether to send event data back to LaunchDarkly. Defaults to `False` if not set.
         /// </summary>
         [Input("trackEvents")]
         public Input<bool>? TrackEvents { get; set; }
@@ -530,13 +530,13 @@ namespace Pulumi.Launchdarkly
         public Input<string>? EnvKey { get; set; }
 
         /// <summary>
-        /// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        /// Nested block describing the default variation to serve if no `Prerequisites`, `Target`, or `Rules` apply.
         /// </summary>
         [Input("fallthrough")]
         public Input<Inputs.FeatureFlagEnvironmentFallthroughGetArgs>? Fallthrough { get; set; }
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagId")]
         public Input<string>? FlagId { get; set; }
@@ -548,7 +548,7 @@ namespace Pulumi.Launchdarkly
         public Input<int>? OffVariation { get; set; }
 
         /// <summary>
-        /// Whether targeting is enabled. Defaults to `false` if not set.
+        /// Whether targeting is enabled. Defaults to `False` if not set.
         /// </summary>
         [Input("on")]
         public Input<bool>? On { get; set; }
@@ -590,7 +590,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+        /// Whether to send event data back to LaunchDarkly. Defaults to `False` if not set.
         /// </summary>
         [Input("trackEvents")]
         public Input<bool>? TrackEvents { get; set; }

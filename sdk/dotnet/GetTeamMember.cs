@@ -168,7 +168,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string LastName;
         /// <summary>
-        /// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+        /// The role associated with team member. Possible roles are `Owner`, `Reader`, `Writer`, or `Admin`.
         /// </summary>
         public readonly string Role;
         /// <summary>

@@ -65,11 +65,9 @@ type TeamMember struct {
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
 	// TThe team member's family name. Once created, this cannot be updated except by the team member.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-	// specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-	// is a string array of resource keys that apply.
+	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 	RoleAttributes TeamMemberRoleAttributeArrayOutput `pulumi:"roleAttributes"`
 }
 
@@ -114,11 +112,9 @@ type teamMemberState struct {
 	FirstName *string `pulumi:"firstName"`
 	// TThe team member's family name. Once created, this cannot be updated except by the team member.
 	LastName *string `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-	// specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-	// is a string array of resource keys that apply.
+	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 	RoleAttributes []TeamMemberRoleAttribute `pulumi:"roleAttributes"`
 }
 
@@ -131,11 +127,9 @@ type TeamMemberState struct {
 	FirstName pulumi.StringPtrInput
 	// TThe team member's family name. Once created, this cannot be updated except by the team member.
 	LastName pulumi.StringPtrInput
-	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-	// specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-	// is a string array of resource keys that apply.
+	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 	RoleAttributes TeamMemberRoleAttributeArrayInput
 }
 
@@ -152,11 +146,9 @@ type teamMemberArgs struct {
 	FirstName *string `pulumi:"firstName"`
 	// TThe team member's family name. Once created, this cannot be updated except by the team member.
 	LastName *string `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-	// specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-	// is a string array of resource keys that apply.
+	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 	RoleAttributes []TeamMemberRoleAttribute `pulumi:"roleAttributes"`
 }
 
@@ -170,11 +162,9 @@ type TeamMemberArgs struct {
 	FirstName pulumi.StringPtrInput
 	// TThe team member's family name. Once created, this cannot be updated except by the team member.
 	LastName pulumi.StringPtrInput
-	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-	// specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-	// is a string array of resource keys that apply.
+	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 	RoleAttributes TeamMemberRoleAttributeArrayInput
 }
 
@@ -285,14 +275,12 @@ func (o TeamMemberOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-// specify a role, `reader` is assigned by default.
+// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 func (o TeamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-// is a string array of resource keys that apply.
+// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
 func (o TeamMemberOutput) RoleAttributes() TeamMemberRoleAttributeArrayOutput {
 	return o.ApplyT(func(v *TeamMember) TeamMemberRoleAttributeArrayOutput { return v.RoleAttributes }).(TeamMemberRoleAttributeArrayOutput)
 }

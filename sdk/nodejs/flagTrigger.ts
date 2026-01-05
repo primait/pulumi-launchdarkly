@@ -71,32 +71,32 @@ export class FlagTrigger extends pulumi.CustomResource {
     /**
      * Whether the trigger is currently active or not.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly envKey!: pulumi.Output<string>;
+    declare public readonly envKey: pulumi.Output<string>;
     /**
      * The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly flagKey!: pulumi.Output<string>;
+    declare public readonly flagKey: pulumi.Output<string>;
     /**
      * Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
      */
-    public readonly instructions!: pulumi.Output<outputs.FlagTriggerInstructions>;
+    declare public readonly instructions: pulumi.Output<outputs.FlagTriggerInstructions>;
     /**
      * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly integrationKey!: pulumi.Output<string>;
-    public /*out*/ readonly maintainerId!: pulumi.Output<string>;
+    declare public readonly integrationKey: pulumi.Output<string>;
+    declare public /*out*/ readonly maintainerId: pulumi.Output<string>;
     /**
      * The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * The unique URL used to invoke the trigger.
      */
-    public /*out*/ readonly triggerUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly triggerUrl: pulumi.Output<string>;
 
     /**
      * Create a FlagTrigger resource with the given unique name, arguments, and options.
@@ -111,40 +111,40 @@ export class FlagTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlagTriggerState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["envKey"] = state ? state.envKey : undefined;
-            resourceInputs["flagKey"] = state ? state.flagKey : undefined;
-            resourceInputs["instructions"] = state ? state.instructions : undefined;
-            resourceInputs["integrationKey"] = state ? state.integrationKey : undefined;
-            resourceInputs["maintainerId"] = state ? state.maintainerId : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["triggerUrl"] = state ? state.triggerUrl : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["envKey"] = state?.envKey;
+            resourceInputs["flagKey"] = state?.flagKey;
+            resourceInputs["instructions"] = state?.instructions;
+            resourceInputs["integrationKey"] = state?.integrationKey;
+            resourceInputs["maintainerId"] = state?.maintainerId;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["triggerUrl"] = state?.triggerUrl;
         } else {
             const args = argsOrState as FlagTriggerArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.envKey === undefined) && !opts.urn) {
+            if (args?.envKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envKey'");
             }
-            if ((!args || args.flagKey === undefined) && !opts.urn) {
+            if (args?.flagKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flagKey'");
             }
-            if ((!args || args.instructions === undefined) && !opts.urn) {
+            if (args?.instructions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instructions'");
             }
-            if ((!args || args.integrationKey === undefined) && !opts.urn) {
+            if (args?.integrationKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationKey'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["envKey"] = args ? args.envKey : undefined;
-            resourceInputs["flagKey"] = args ? args.flagKey : undefined;
-            resourceInputs["instructions"] = args ? args.instructions : undefined;
-            resourceInputs["integrationKey"] = args ? args.integrationKey : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["envKey"] = args?.envKey;
+            resourceInputs["flagKey"] = args?.flagKey;
+            resourceInputs["instructions"] = args?.instructions;
+            resourceInputs["integrationKey"] = args?.integrationKey;
+            resourceInputs["projectKey"] = args?.projectKey;
             resourceInputs["maintainerId"] = undefined /*out*/;
             resourceInputs["triggerUrl"] = undefined /*out*/;
         }

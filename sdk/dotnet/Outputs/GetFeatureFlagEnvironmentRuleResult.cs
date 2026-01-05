@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagEnvironmentRuleResult
     {
         /// <summary>
-        /// Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
+        /// Group percentage rollout by a custom attribute. This argument is only valid if `RolloutWeights` is also specified.
         /// </summary>
         public readonly string? BucketBy;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentRuleClauseResult> Clauses;
         /// <summary>
-        /// The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
+        /// The context kind associated with the specified rollout. This argument is only valid if `RolloutWeights` is also specified. Defaults to `User` if omitted.
         /// </summary>
         public readonly string? ContextKind;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
+        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `True`. The sum of the `RolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `Variation` or `RolloutWeights`.
         /// </summary>
         public readonly ImmutableArray<int> RolloutWeights;
         /// <summary>
-        /// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
+        /// The integer variation index to serve if the rule clauses evaluate to `True`. You must specify either `Variation` or `RolloutWeights`
         /// </summary>
         public readonly int? Variation;
 

@@ -167,7 +167,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? EnvKey { get; set; }
 
         /// <summary>
-        /// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

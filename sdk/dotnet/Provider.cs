@@ -19,24 +19,19 @@ namespace Pulumi.Launchdarkly
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-        /// [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-        /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-        /// must provide either `access_token` or `oauth_token`.
+        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         [Output("access_token")]
         public Output<string?> Access_token { get; private set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly host address. If this argument is not specified, the default host address is
-        /// `https://app.launchdarkly.com`
+        /// The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         /// </summary>
         [Output("api_host")]
         public Output<string?> Api_host { get; private set; } = null!;
 
         /// <summary>
-        /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-        /// environment variable. You must provide either `access_token` or `oauth_token`.
+        /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         [Output("oauth_token")]
         public Output<string?> Oauth_token { get; private set; } = null!;
@@ -85,10 +80,7 @@ namespace Pulumi.Launchdarkly
         private Input<string>? _access_token;
 
         /// <summary>
-        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-        /// [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-        /// authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-        /// must provide either `access_token` or `oauth_token`.
+        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         public Input<string>? Access_token
         {
@@ -101,8 +93,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The LaunchDarkly host address. If this argument is not specified, the default host address is
-        /// `https://app.launchdarkly.com`
+        /// The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         /// </summary>
         [Input("api_host")]
         public Input<string>? Api_host { get; set; }
@@ -117,8 +108,7 @@ namespace Pulumi.Launchdarkly
         private Input<string>? _oauth_token;
 
         /// <summary>
-        /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-        /// environment variable. You must provide either `access_token` or `oauth_token`.
+        /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         public Input<string>? Oauth_token
         {

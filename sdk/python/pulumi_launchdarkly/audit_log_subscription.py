@@ -29,7 +29,7 @@ class AuditLogSubscriptionArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuditLogSubscription resource.
-        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.bool] on: Whether or not you want your subscription enabled, i.e. to actively send events.
         :param pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]] statements: A block representing the resources to which you wish to subscribe.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
@@ -57,7 +57,7 @@ class AuditLogSubscriptionArgs:
     @pulumi.getter(name="integrationKey")
     def integration_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "integration_key")
 
@@ -125,7 +125,7 @@ class _AuditLogSubscriptionState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AuditLogSubscription resources.
-        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         :param pulumi.Input[_builtins.bool] on: Whether or not you want your subscription enabled, i.e. to actively send events.
         :param pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]] statements: A block representing the resources to which you wish to subscribe.
@@ -157,7 +157,7 @@ class _AuditLogSubscriptionState:
     @pulumi.getter(name="integrationKey")
     def integration_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "integration_key")
 
@@ -232,9 +232,11 @@ class AuditLogSubscription(pulumi.CustomResource):
 
         This resource allows you to create and manage LaunchDarkly audit log subscriptions.
 
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         :param pulumi.Input[_builtins.bool] on: Whether or not you want your subscription enabled, i.e. to actively send events.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]] statements: A block representing the resources to which you wish to subscribe.
@@ -250,6 +252,8 @@ class AuditLogSubscription(pulumi.CustomResource):
         Provides a LaunchDarkly audit log subscription resource.
 
         This resource allows you to create and manage LaunchDarkly audit log subscriptions.
+
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param AuditLogSubscriptionArgs args: The arguments to use to populate this resource's properties.
@@ -318,7 +322,7 @@ class AuditLogSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         :param pulumi.Input[_builtins.bool] on: Whether or not you want your subscription enabled, i.e. to actively send events.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]] statements: A block representing the resources to which you wish to subscribe.
@@ -345,7 +349,7 @@ class AuditLogSubscription(pulumi.CustomResource):
     @pulumi.getter(name="integrationKey")
     def integration_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "integration_key")
 

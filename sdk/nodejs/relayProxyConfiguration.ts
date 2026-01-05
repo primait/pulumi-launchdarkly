@@ -67,19 +67,19 @@ export class RelayProxyConfiguration extends pulumi.CustomResource {
     /**
      * The last 4 characters of the Relay Proxy configuration's unique key.
      */
-    public /*out*/ readonly displayKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayKey: pulumi.Output<string>;
     /**
      * The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
      */
-    public /*out*/ readonly fullKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullKey: pulumi.Output<string>;
     /**
      * The human-readable name for your Relay Proxy configuration.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
      */
-    public readonly policies!: pulumi.Output<outputs.RelayProxyConfigurationPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.RelayProxyConfigurationPolicy[]>;
 
     /**
      * Create a RelayProxyConfiguration resource with the given unique name, arguments, and options.
@@ -94,17 +94,17 @@ export class RelayProxyConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RelayProxyConfigurationState | undefined;
-            resourceInputs["displayKey"] = state ? state.displayKey : undefined;
-            resourceInputs["fullKey"] = state ? state.fullKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["displayKey"] = state?.displayKey;
+            resourceInputs["fullKey"] = state?.fullKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policies"] = state?.policies;
         } else {
             const args = argsOrState as RelayProxyConfigurationArgs | undefined;
-            if ((!args || args.policies === undefined) && !opts.urn) {
+            if (args?.policies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policies"] = args?.policies;
             resourceInputs["displayKey"] = undefined /*out*/;
             resourceInputs["fullKey"] = undefined /*out*/;
         }

@@ -62,7 +62,7 @@ namespace Pulumi.Launchdarkly
     public partial class Metric : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
         /// </summary>
         [Output("analysisType")]
         public Output<string?> AnalysisType { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.Launchdarkly
         public Output<bool> IsActive { get; private set; } = null!;
 
         /// <summary>
-        /// Whether a `custom` metric is a numeric metric or not.
+        /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Output("isNumeric")]
         public Output<bool?> IsNumeric { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
+        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
         /// </summary>
         [Output("percentileValue")]
         public Output<int?> PercentileValue { get; private set; } = null!;
@@ -155,19 +155,19 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Required for kind `custom`) The unit for numeric `custom` metrics.
+        /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
         /// </summary>
         [Output("unit")]
         public Output<string?> Unit { get; private set; } = null!;
 
         /// <summary>
-        /// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+        /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
         /// </summary>
         [Output("unitAggregationType")]
         public Output<string?> UnitAggregationType { get; private set; } = null!;
 
         /// <summary>
-        /// List of nested `url` blocks describing URLs that you want to associate with the metric.
+        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<Outputs.MetricUrl>> Urls { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Launchdarkly
     public sealed class MetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
         /// </summary>
         [Input("analysisType")]
         public Input<string>? AnalysisType { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsActive { get; set; }
 
         /// <summary>
-        /// Whether a `custom` metric is a numeric metric or not.
+        /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Input("isNumeric")]
         public Input<bool>? IsNumeric { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
+        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
         /// </summary>
         [Input("percentileValue")]
         public Input<int>? PercentileValue { get; set; }
@@ -331,13 +331,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// (Required for kind `custom`) The unit for numeric `custom` metrics.
+        /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 
         /// <summary>
-        /// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+        /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
         /// </summary>
         [Input("unitAggregationType")]
         public Input<string>? UnitAggregationType { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.MetricUrlArgs>? _urls;
 
         /// <summary>
-        /// List of nested `url` blocks describing URLs that you want to associate with the metric.
+        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
         /// </summary>
         public InputList<Inputs.MetricUrlArgs> Urls
         {
@@ -363,7 +363,7 @@ namespace Pulumi.Launchdarkly
     public sealed class MetricState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
         /// </summary>
         [Input("analysisType")]
         public Input<string>? AnalysisType { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsActive { get; set; }
 
         /// <summary>
-        /// Whether a `custom` metric is a numeric metric or not.
+        /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Input("isNumeric")]
         public Input<bool>? IsNumeric { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -420,7 +420,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
+        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
         /// </summary>
         [Input("percentileValue")]
         public Input<int>? PercentileValue { get; set; }
@@ -468,13 +468,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// (Required for kind `custom`) The unit for numeric `custom` metrics.
+        /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 
         /// <summary>
-        /// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+        /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
         /// </summary>
         [Input("unitAggregationType")]
         public Input<string>? UnitAggregationType { get; set; }
@@ -483,7 +483,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.MetricUrlGetArgs>? _urls;
 
         /// <summary>
-        /// List of nested `url` blocks describing URLs that you want to associate with the metric.
+        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
         /// </summary>
         public InputList<Inputs.MetricUrlGetArgs> Urls
         {

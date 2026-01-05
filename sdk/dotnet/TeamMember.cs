@@ -73,15 +73,13 @@ namespace Pulumi.Launchdarkly
         public Output<string?> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        /// specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `Reader`, `Writer`, `NoAccess`, or `Admin`. If you don't specify a role, `Reader` is assigned by default.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        /// is a string array of resource keys that apply.
+        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         /// </summary>
         [Output("roleAttributes")]
         public Output<ImmutableArray<Outputs.TeamMemberRoleAttribute>> RoleAttributes { get; private set; } = null!;
@@ -164,8 +162,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        /// specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `Reader`, `Writer`, `NoAccess`, or `Admin`. If you don't specify a role, `Reader` is assigned by default.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -174,8 +171,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.TeamMemberRoleAttributeArgs>? _roleAttributes;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        /// is a string array of resource keys that apply.
+        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         /// </summary>
         public InputList<Inputs.TeamMemberRoleAttributeArgs> RoleAttributes
         {
@@ -222,8 +218,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        /// specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `Reader`, `Writer`, `NoAccess`, or `Admin`. If you don't specify a role, `Reader` is assigned by default.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -232,8 +227,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.TeamMemberRoleAttributeGetArgs>? _roleAttributes;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        /// is a string array of resource keys that apply.
+        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         /// </summary>
         public InputList<Inputs.TeamMemberRoleAttributeGetArgs> RoleAttributes
         {

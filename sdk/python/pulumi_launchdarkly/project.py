@@ -29,11 +29,9 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-               a new one.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-               `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
@@ -64,8 +62,7 @@ class ProjectArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        a new one.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -90,8 +87,7 @@ class ProjectArgs:
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
     def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        `default_client_side_availability` to maintain future compatibility.
+        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -136,10 +132,8 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-               `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-               a new one.
+        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
@@ -185,8 +179,7 @@ class _ProjectState:
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
     def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        `default_client_side_availability` to maintain future compatibility.
+        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -198,8 +191,7 @@ class _ProjectState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        a new one.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -315,10 +307,8 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-               `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-               a new one.
+        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
@@ -459,10 +449,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-               `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-               a new one.
+        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
@@ -496,8 +484,7 @@ class Project(pulumi.CustomResource):
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
     def include_in_snippet(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        `default_client_side_availability` to maintain future compatibility.
+        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -505,8 +492,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        a new one.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 

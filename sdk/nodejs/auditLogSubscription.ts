@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * Provides a LaunchDarkly audit log subscription resource.
  *
  * This resource allows you to create and manage LaunchDarkly audit log subscriptions.
+ *
+ * ## Example Usage
  */
 export class AuditLogSubscription extends pulumi.CustomResource {
     /**
@@ -40,27 +42,27 @@ export class AuditLogSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === AuditLogSubscription.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly integrationKey!: pulumi.Output<string>;
+    declare public readonly integrationKey: pulumi.Output<string>;
     /**
      * A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether or not you want your subscription enabled, i.e. to actively send events.
      */
-    public readonly on!: pulumi.Output<boolean>;
+    declare public readonly on: pulumi.Output<boolean>;
     /**
      * A block representing the resources to which you wish to subscribe.
      */
-    public readonly statements!: pulumi.Output<outputs.AuditLogSubscriptionStatement[]>;
+    declare public readonly statements: pulumi.Output<outputs.AuditLogSubscriptionStatement[]>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AuditLogSubscription resource with the given unique name, arguments, and options.
@@ -75,32 +77,32 @@ export class AuditLogSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditLogSubscriptionState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["integrationKey"] = state ? state.integrationKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["on"] = state ? state.on : undefined;
-            resourceInputs["statements"] = state ? state.statements : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["integrationKey"] = state?.integrationKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["on"] = state?.on;
+            resourceInputs["statements"] = state?.statements;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AuditLogSubscriptionArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.integrationKey === undefined) && !opts.urn) {
+            if (args?.integrationKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationKey'");
             }
-            if ((!args || args.on === undefined) && !opts.urn) {
+            if (args?.on === undefined && !opts.urn) {
                 throw new Error("Missing required property 'on'");
             }
-            if ((!args || args.statements === undefined) && !opts.urn) {
+            if (args?.statements === undefined && !opts.urn) {
                 throw new Error("Missing required property 'statements'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["integrationKey"] = args ? args.integrationKey : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["on"] = args ? args.on : undefined;
-            resourceInputs["statements"] = args ? args.statements : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["integrationKey"] = args?.integrationKey;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["on"] = args?.on;
+            resourceInputs["statements"] = args?.statements;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuditLogSubscription.__pulumiType, name, resourceInputs, opts);
@@ -113,7 +115,7 @@ export class AuditLogSubscription extends pulumi.CustomResource {
 export interface AuditLogSubscriptionState {
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     integrationKey?: pulumi.Input<string>;
     /**
@@ -140,7 +142,7 @@ export interface AuditLogSubscriptionState {
 export interface AuditLogSubscriptionArgs {
     config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     integrationKey: pulumi.Input<string>;
     /**

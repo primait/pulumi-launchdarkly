@@ -65,7 +65,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> DisplayKey { get; private set; } = null!;
 
         /// <summary>
-        /// The Relay Proxy configuration's unique key. Because the `full_key` is only exposed upon creation, it will not be available if the resource is imported.
+        /// The Relay Proxy configuration's unique key. Because the `FullKey` is only exposed upon creation, it will not be available if the resource is imported.
         /// </summary>
         [Output("fullKey")]
         public Output<string> FullKey { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Launchdarkly
         private Input<string>? _fullKey;
 
         /// <summary>
-        /// The Relay Proxy configuration's unique key. Because the `full_key` is only exposed upon creation, it will not be available if the resource is imported.
+        /// The Relay Proxy configuration's unique key. Because the `FullKey` is only exposed upon creation, it will not be available if the resource is imported.
         /// </summary>
         public Input<string>? FullKey
         {

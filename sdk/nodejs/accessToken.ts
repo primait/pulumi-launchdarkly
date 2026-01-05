@@ -66,43 +66,43 @@ export class AccessToken extends pulumi.CustomResource {
     /**
      * A list of custom role IDs to use as access limits for the access token.
      */
-    public readonly customRoles!: pulumi.Output<string[] | undefined>;
+    declare public readonly customRoles: pulumi.Output<string[] | undefined>;
     /**
      * The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly defaultApiVersion!: pulumi.Output<number>;
+    declare public readonly defaultApiVersion: pulumi.Output<number>;
     /**
      * An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
      *
      * @deprecated 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
      */
-    public readonly expire!: pulumi.Output<number | undefined>;
+    declare public readonly expire: pulumi.Output<number | undefined>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
      */
-    public readonly inlineRoles!: pulumi.Output<outputs.AccessTokenInlineRole[] | undefined>;
+    declare public readonly inlineRoles: pulumi.Output<outputs.AccessTokenInlineRole[] | undefined>;
     /**
      * A human-friendly name for the access token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
      *
      * @deprecated 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
      */
-    public readonly policyStatements!: pulumi.Output<outputs.AccessTokenPolicyStatement[] | undefined>;
+    declare public readonly policyStatements: pulumi.Output<outputs.AccessTokenPolicyStatement[] | undefined>;
     /**
      * A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly serviceToken!: pulumi.Output<boolean | undefined>;
+    declare public readonly serviceToken: pulumi.Output<boolean | undefined>;
     /**
      * The access token used to authorize usage of the LaunchDarkly API.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a AccessToken resource with the given unique name, arguments, and options.
@@ -117,25 +117,25 @@ export class AccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessTokenState | undefined;
-            resourceInputs["customRoles"] = state ? state.customRoles : undefined;
-            resourceInputs["defaultApiVersion"] = state ? state.defaultApiVersion : undefined;
-            resourceInputs["expire"] = state ? state.expire : undefined;
-            resourceInputs["inlineRoles"] = state ? state.inlineRoles : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyStatements"] = state ? state.policyStatements : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["serviceToken"] = state ? state.serviceToken : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["customRoles"] = state?.customRoles;
+            resourceInputs["defaultApiVersion"] = state?.defaultApiVersion;
+            resourceInputs["expire"] = state?.expire;
+            resourceInputs["inlineRoles"] = state?.inlineRoles;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyStatements"] = state?.policyStatements;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["serviceToken"] = state?.serviceToken;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as AccessTokenArgs | undefined;
-            resourceInputs["customRoles"] = args ? args.customRoles : undefined;
-            resourceInputs["defaultApiVersion"] = args ? args.defaultApiVersion : undefined;
-            resourceInputs["expire"] = args ? args.expire : undefined;
-            resourceInputs["inlineRoles"] = args ? args.inlineRoles : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyStatements"] = args ? args.policyStatements : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["serviceToken"] = args ? args.serviceToken : undefined;
+            resourceInputs["customRoles"] = args?.customRoles;
+            resourceInputs["defaultApiVersion"] = args?.defaultApiVersion;
+            resourceInputs["expire"] = args?.expire;
+            resourceInputs["inlineRoles"] = args?.inlineRoles;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyStatements"] = args?.policyStatements;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["serviceToken"] = args?.serviceToken;
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

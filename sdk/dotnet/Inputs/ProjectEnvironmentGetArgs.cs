@@ -59,7 +59,7 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<string> Color { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("confirmChanges")]
         public Input<bool>? ConfirmChanges { get; set; }
@@ -71,7 +71,7 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<bool>? Critical { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
@@ -111,13 +111,13 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("requireComments")]
         public Input<bool>? RequireComments { get; set; }
 
         /// <summary>
-        /// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
         /// </summary>
         [Input("secureMode")]
         public Input<bool>? SecureMode { get; set; }

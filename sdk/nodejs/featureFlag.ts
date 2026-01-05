@@ -120,59 +120,59 @@ export class FeatureFlag extends pulumi.CustomResource {
     /**
      * Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
      */
-    public readonly archived!: pulumi.Output<boolean | undefined>;
-    public readonly clientSideAvailabilities!: pulumi.Output<outputs.FeatureFlagClientSideAvailability[]>;
+    declare public readonly archived: pulumi.Output<boolean | undefined>;
+    declare public readonly clientSideAvailabilities: pulumi.Output<outputs.FeatureFlagClientSideAvailability[]>;
     /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
      */
-    public readonly customProperties!: pulumi.Output<outputs.FeatureFlagCustomProperty[] | undefined>;
+    declare public readonly customProperties: pulumi.Output<outputs.FeatureFlagCustomProperty[] | undefined>;
     /**
      * A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
      */
-    public readonly defaults!: pulumi.Output<outputs.FeatureFlagDefaults>;
+    declare public readonly defaults: pulumi.Output<outputs.FeatureFlagDefaults>;
     /**
      * The feature flag's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
      */
-    public readonly includeInSnippet!: pulumi.Output<boolean>;
+    declare public readonly includeInSnippet: pulumi.Output<boolean>;
     /**
      * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
-    public readonly maintainerId!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
+    declare public readonly maintainerId: pulumi.Output<string>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
      */
-    public readonly maintainerTeamKey!: pulumi.Output<string>;
+    declare public readonly maintainerTeamKey: pulumi.Output<string>;
     /**
      * The human-readable name of the feature flag.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether the flag is a temporary flag.
      */
-    public readonly temporary!: pulumi.Output<boolean | undefined>;
+    declare public readonly temporary: pulumi.Output<boolean | undefined>;
     /**
      * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly variationType!: pulumi.Output<string>;
+    declare public readonly variationType: pulumi.Output<string>;
     /**
      * An array of possible variations for the flag
      */
-    public readonly variations!: pulumi.Output<outputs.FeatureFlagVariation[]>;
+    declare public readonly variations: pulumi.Output<outputs.FeatureFlagVariation[]>;
 
     /**
      * Create a FeatureFlag resource with the given unique name, arguments, and options.
@@ -187,47 +187,47 @@ export class FeatureFlag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
-            resourceInputs["archived"] = state ? state.archived : undefined;
-            resourceInputs["clientSideAvailabilities"] = state ? state.clientSideAvailabilities : undefined;
-            resourceInputs["customProperties"] = state ? state.customProperties : undefined;
-            resourceInputs["defaults"] = state ? state.defaults : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["includeInSnippet"] = state ? state.includeInSnippet : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["maintainerId"] = state ? state.maintainerId : undefined;
-            resourceInputs["maintainerTeamKey"] = state ? state.maintainerTeamKey : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["temporary"] = state ? state.temporary : undefined;
-            resourceInputs["variationType"] = state ? state.variationType : undefined;
-            resourceInputs["variations"] = state ? state.variations : undefined;
+            resourceInputs["archived"] = state?.archived;
+            resourceInputs["clientSideAvailabilities"] = state?.clientSideAvailabilities;
+            resourceInputs["customProperties"] = state?.customProperties;
+            resourceInputs["defaults"] = state?.defaults;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["includeInSnippet"] = state?.includeInSnippet;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["maintainerId"] = state?.maintainerId;
+            resourceInputs["maintainerTeamKey"] = state?.maintainerTeamKey;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["temporary"] = state?.temporary;
+            resourceInputs["variationType"] = state?.variationType;
+            resourceInputs["variations"] = state?.variations;
         } else {
             const args = argsOrState as FeatureFlagArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            if ((!args || args.variationType === undefined) && !opts.urn) {
+            if (args?.variationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'variationType'");
             }
-            resourceInputs["archived"] = args ? args.archived : undefined;
-            resourceInputs["clientSideAvailabilities"] = args ? args.clientSideAvailabilities : undefined;
-            resourceInputs["customProperties"] = args ? args.customProperties : undefined;
-            resourceInputs["defaults"] = args ? args.defaults : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["includeInSnippet"] = args ? args.includeInSnippet : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["maintainerId"] = args ? args.maintainerId : undefined;
-            resourceInputs["maintainerTeamKey"] = args ? args.maintainerTeamKey : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["temporary"] = args ? args.temporary : undefined;
-            resourceInputs["variationType"] = args ? args.variationType : undefined;
-            resourceInputs["variations"] = args ? args.variations : undefined;
+            resourceInputs["archived"] = args?.archived;
+            resourceInputs["clientSideAvailabilities"] = args?.clientSideAvailabilities;
+            resourceInputs["customProperties"] = args?.customProperties;
+            resourceInputs["defaults"] = args?.defaults;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["includeInSnippet"] = args?.includeInSnippet;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["maintainerId"] = args?.maintainerId;
+            resourceInputs["maintainerTeamKey"] = args?.maintainerTeamKey;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectKey"] = args?.projectKey;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["temporary"] = args?.temporary;
+            resourceInputs["variationType"] = args?.variationType;
+            resourceInputs["variations"] = args?.variations;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureFlag.__pulumiType, name, resourceInputs, opts);

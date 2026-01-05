@@ -15,11 +15,11 @@ namespace Pulumi.Launchdarkly.Outputs
     {
         /// <summary>
         /// The list of action specifiers defining the actions to which the statement applies.
-        /// Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        /// Either `Actions` or `NotActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        /// Either `Allow` or `Deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         /// </summary>
         public readonly string Effect;
         /// <summary>

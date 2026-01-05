@@ -25,15 +25,10 @@ class ProviderArgs:
                  oauth_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-               [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-               authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-               must provide either `access_token` or `oauth_token`.
-        :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is
-               `https://app.launchdarkly.com`
+        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
-        :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-               environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
@@ -48,10 +43,7 @@ class ProviderArgs:
     @pulumi.getter
     def access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-        [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-        authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-        must provide either `access_token` or `oauth_token`.
+        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "access_token")
 
@@ -63,8 +55,7 @@ class ProviderArgs:
     @pulumi.getter
     def api_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The LaunchDarkly host address. If this argument is not specified, the default host address is
-        `https://app.launchdarkly.com`
+        The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         """
         return pulumi.get(self, "api_host")
 
@@ -88,8 +79,7 @@ class ProviderArgs:
     @pulumi.getter
     def oauth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-        environment variable. You must provide either `access_token` or `oauth_token`.
+        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "oauth_token")
 
@@ -117,15 +107,10 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-               [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-               authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-               must provide either `access_token` or `oauth_token`.
-        :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is
-               `https://app.launchdarkly.com`
+        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
-        :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-               environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         ...
     @overload
@@ -183,10 +168,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def access_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-        [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-        authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-        must provide either `access_token` or `oauth_token`.
+        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "access_token")
 
@@ -194,8 +176,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def api_host(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The LaunchDarkly host address. If this argument is not specified, the default host address is
-        `https://app.launchdarkly.com`
+        The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         """
         return pulumi.get(self, "api_host")
 
@@ -203,8 +184,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def oauth_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-        environment variable. You must provide either `access_token` or `oauth_token`.
+        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "oauth_token")
 

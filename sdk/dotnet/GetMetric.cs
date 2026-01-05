@@ -151,7 +151,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetMetricResult
     {
         /// <summary>
-        /// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
         /// </summary>
         public readonly string AnalysisType;
         /// <summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly bool IsActive;
         /// <summary>
-        /// Whether a `custom` metric is a numeric metric or not.
+        /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         public readonly bool IsNumeric;
         /// <summary>
@@ -183,7 +183,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The metric type. Available choices are `click`, `custom`, and `pageview`.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`.
         /// </summary>
         public readonly string Kind;
         public readonly string MaintainerId;
@@ -192,7 +192,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
+        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
         /// </summary>
         public readonly int PercentileValue;
         /// <summary>
@@ -216,15 +216,15 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// (Required for kind `custom`) The unit for numeric `custom` metrics.
+        /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
         /// </summary>
         public readonly string Unit;
         /// <summary>
-        /// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+        /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
         /// </summary>
         public readonly string UnitAggregationType;
         /// <summary>
-        /// List of nested `url` blocks describing URLs that you want to associate with the metric.
+        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMetricUrlResult> Urls;
         /// <summary>

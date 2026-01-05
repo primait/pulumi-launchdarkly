@@ -166,11 +166,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string EnvKey;
         /// <summary>
-        /// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects excluded from the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentExcludedContextResult> ExcludedContexts;
         /// <summary>
-        /// List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys excluded from the segment. To target on other context kinds, use the ExcludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<string> Excludeds;
         /// <summary>
@@ -178,11 +178,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects included in the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentIncludedContextResult> IncludedContexts;
         /// <summary>
-        /// List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys included in the segment. To target on other context kinds, use the IncludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<string> Includeds;
         /// <summary>
@@ -198,7 +198,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentRuleResult> Rules;
         /// <summary>
@@ -207,7 +207,7 @@ namespace Pulumi.Launchdarkly
         public readonly ImmutableArray<string> Tags;
         public readonly bool Unbounded;
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
+        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`.
         /// </summary>
         public readonly string UnboundedContextKind;
 

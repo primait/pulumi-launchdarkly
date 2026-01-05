@@ -149,7 +149,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
+        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `IncludeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         /// </summary>
         [Output("includeInSnippet")]
         public Output<bool> IncludeInSnippet { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> MaintainerId { get; private set; } = null!;
 
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         [Output("maintainerTeamKey")]
         public Output<string> MaintainerTeamKey { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Launchdarkly
         public Output<bool?> Temporary { get; private set; } = null!;
 
         /// <summary>
-        /// The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's variation type: `Boolean`, `String`, `Number` or `Json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("variationType")]
         public Output<string> VariationType { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
+        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `IncludeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         [Input("maintainerTeamKey")]
         public Input<string>? MaintainerTeamKey { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Temporary { get; set; }
 
         /// <summary>
-        /// The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's variation type: `Boolean`, `String`, `Number` or `Json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("variationType", required: true)]
         public Input<string> VariationType { get; set; } = null!;
@@ -406,7 +406,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
+        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `IncludeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
@@ -421,7 +421,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         [Input("maintainerTeamKey")]
         public Input<string>? MaintainerTeamKey { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Temporary { get; set; }
 
         /// <summary>
-        /// The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The feature flag's variation type: `Boolean`, `String`, `Number` or `Json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("variationType")]
         public Input<string>? VariationType { get; set; }

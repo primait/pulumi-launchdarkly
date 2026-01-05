@@ -116,15 +116,13 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<Outputs.ProjectEnvironment>> Environments { get; private set; } = null!;
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        /// `default_client_side_availability` to maintain future compatibility.
+        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `DefaultClientSideAvailability` to maintain future compatibility.
         /// </summary>
         [Output("includeInSnippet")]
         public Output<bool> IncludeInSnippet { get; private set; } = null!;
 
         /// <summary>
-        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        /// a new one.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -209,15 +207,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        /// `default_client_side_availability` to maintain future compatibility.
+        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `DefaultClientSideAvailability` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        /// a new one.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -269,15 +265,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-        /// `default_client_side_availability` to maintain future compatibility.
+        /// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `DefaultClientSideAvailability` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-        /// a new one.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

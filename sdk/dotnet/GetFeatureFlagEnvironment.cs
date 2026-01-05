@@ -103,7 +103,7 @@ namespace Pulumi.Launchdarkly
         public string EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
         /// </summary>
         [Input("flagId", required: true)]
         public string FlagId { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
         /// </summary>
         [Input("flagId", required: true)]
         public Input<string> FlagId { get; set; } = null!;
@@ -147,11 +147,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string EnvKey;
         /// <summary>
-        /// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        /// Nested block describing the default variation to serve if no `Prerequisites`, `Target`, or `Rules` apply.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentFallthroughResult> Fallthroughs;
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
         /// </summary>
         public readonly string FlagId;
         /// <summary>
@@ -163,7 +163,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly int OffVariation;
         /// <summary>
-        /// Whether targeting is enabled. Defaults to `false` if not set.
+        /// Whether targeting is enabled. Defaults to `False` if not set.
         /// </summary>
         public readonly bool On;
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentTargetResult> Targets;
         /// <summary>
-        /// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+        /// Whether to send event data back to LaunchDarkly. Defaults to `False` if not set.
         /// </summary>
         public readonly bool TrackEvents;
 

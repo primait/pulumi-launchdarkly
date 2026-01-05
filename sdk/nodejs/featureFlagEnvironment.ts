@@ -236,43 +236,43 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
     /**
      * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
      */
-    public readonly contextTargets!: pulumi.Output<outputs.FeatureFlagEnvironmentContextTarget[] | undefined>;
+    declare public readonly contextTargets: pulumi.Output<outputs.FeatureFlagEnvironmentContextTarget[] | undefined>;
     /**
      * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly envKey!: pulumi.Output<string>;
+    declare public readonly envKey: pulumi.Output<string>;
     /**
      * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
      */
-    public readonly fallthrough!: pulumi.Output<outputs.FeatureFlagEnvironmentFallthrough>;
+    declare public readonly fallthrough: pulumi.Output<outputs.FeatureFlagEnvironmentFallthrough>;
     /**
      * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly flagId!: pulumi.Output<string>;
+    declare public readonly flagId: pulumi.Output<string>;
     /**
      * The index of the variation to serve if targeting is disabled.
      */
-    public readonly offVariation!: pulumi.Output<number>;
+    declare public readonly offVariation: pulumi.Output<number>;
     /**
      * Whether targeting is enabled. Defaults to `false` if not set.
      */
-    public readonly on!: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean | undefined>;
     /**
      * List of nested blocks describing prerequisite feature flags rules.
      */
-    public readonly prerequisites!: pulumi.Output<outputs.FeatureFlagEnvironmentPrerequisite[] | undefined>;
+    declare public readonly prerequisites: pulumi.Output<outputs.FeatureFlagEnvironmentPrerequisite[] | undefined>;
     /**
      * List of logical targeting rules.
      */
-    public readonly rules!: pulumi.Output<outputs.FeatureFlagEnvironmentRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.FeatureFlagEnvironmentRule[] | undefined>;
     /**
      * Set of nested blocks describing the individual user targets for each variation.
      */
-    public readonly targets!: pulumi.Output<outputs.FeatureFlagEnvironmentTarget[] | undefined>;
+    declare public readonly targets: pulumi.Output<outputs.FeatureFlagEnvironmentTarget[] | undefined>;
     /**
      * Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
      */
-    public readonly trackEvents!: pulumi.Output<boolean | undefined>;
+    declare public readonly trackEvents: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a FeatureFlagEnvironment resource with the given unique name, arguments, and options.
@@ -287,40 +287,40 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagEnvironmentState | undefined;
-            resourceInputs["contextTargets"] = state ? state.contextTargets : undefined;
-            resourceInputs["envKey"] = state ? state.envKey : undefined;
-            resourceInputs["fallthrough"] = state ? state.fallthrough : undefined;
-            resourceInputs["flagId"] = state ? state.flagId : undefined;
-            resourceInputs["offVariation"] = state ? state.offVariation : undefined;
-            resourceInputs["on"] = state ? state.on : undefined;
-            resourceInputs["prerequisites"] = state ? state.prerequisites : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
-            resourceInputs["trackEvents"] = state ? state.trackEvents : undefined;
+            resourceInputs["contextTargets"] = state?.contextTargets;
+            resourceInputs["envKey"] = state?.envKey;
+            resourceInputs["fallthrough"] = state?.fallthrough;
+            resourceInputs["flagId"] = state?.flagId;
+            resourceInputs["offVariation"] = state?.offVariation;
+            resourceInputs["on"] = state?.on;
+            resourceInputs["prerequisites"] = state?.prerequisites;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["targets"] = state?.targets;
+            resourceInputs["trackEvents"] = state?.trackEvents;
         } else {
             const args = argsOrState as FeatureFlagEnvironmentArgs | undefined;
-            if ((!args || args.envKey === undefined) && !opts.urn) {
+            if (args?.envKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envKey'");
             }
-            if ((!args || args.fallthrough === undefined) && !opts.urn) {
+            if (args?.fallthrough === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fallthrough'");
             }
-            if ((!args || args.flagId === undefined) && !opts.urn) {
+            if (args?.flagId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flagId'");
             }
-            if ((!args || args.offVariation === undefined) && !opts.urn) {
+            if (args?.offVariation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'offVariation'");
             }
-            resourceInputs["contextTargets"] = args ? args.contextTargets : undefined;
-            resourceInputs["envKey"] = args ? args.envKey : undefined;
-            resourceInputs["fallthrough"] = args ? args.fallthrough : undefined;
-            resourceInputs["flagId"] = args ? args.flagId : undefined;
-            resourceInputs["offVariation"] = args ? args.offVariation : undefined;
-            resourceInputs["on"] = args ? args.on : undefined;
-            resourceInputs["prerequisites"] = args ? args.prerequisites : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
-            resourceInputs["trackEvents"] = args ? args.trackEvents : undefined;
+            resourceInputs["contextTargets"] = args?.contextTargets;
+            resourceInputs["envKey"] = args?.envKey;
+            resourceInputs["fallthrough"] = args?.fallthrough;
+            resourceInputs["flagId"] = args?.flagId;
+            resourceInputs["offVariation"] = args?.offVariation;
+            resourceInputs["on"] = args?.on;
+            resourceInputs["prerequisites"] = args?.prerequisites;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["targets"] = args?.targets;
+            resourceInputs["trackEvents"] = args?.trackEvents;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureFlagEnvironment.__pulumiType, name, resourceInputs, opts);
