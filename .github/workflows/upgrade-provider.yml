@@ -13,6 +13,8 @@ permissions:
   pull-requests: write
 
 env:
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  TF_APPEND_USER_AGENT: pulumi
   GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -27,10 +29,14 @@ jobs:
           # Persist credentials so upgrade-provider can push a new branch.
           persist-credentials: true
           submodules: true
-      - name: Setup tools
-        uses: ./.github/actions/setup-tools
+      - name: Setup Mise
+        uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          tools: pulumictl, pulumicli, dotnet, go, nodejs, python
+          version: 2025.11.6
+          github_token: ${{ env.GITHUB_TOKEN }}
+          cache_save: false
       - name: Install upgrade-provider
         run: go install github.com/pulumi/upgrade-provider@main
         shell: bash
