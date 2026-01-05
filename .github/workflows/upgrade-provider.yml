@@ -13,6 +13,8 @@ permissions:
   pull-requests: write
 
 env:
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  TF_APPEND_USER_AGENT: pulumi
   GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -29,8 +31,14 @@ jobs:
           submodules: true
       - name: Setup tools
         uses: ./.github/actions/setup-tools
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          tools: pulumictl, pulumicli, dotnet, go, nodejs, python
+          version: 2025.11.6
+          github_token: ${{ steps.app-auth.outputs.token }}
+          plugin_install: https://github.com/pulumi/vfox-pulumi
+          # only saving the cache in the prerequisites job
+          cache_save: false
       - name: Install upgrade-provider
         run: go install github.com/pulumi/upgrade-provider@main
         shell: bash
