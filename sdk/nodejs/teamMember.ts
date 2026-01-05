@@ -67,29 +67,27 @@ export class TeamMember extends pulumi.CustomResource {
     /**
      * The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
      */
-    public readonly customRoles!: pulumi.Output<string[] | undefined>;
+    declare public readonly customRoles: pulumi.Output<string[] | undefined>;
     /**
      * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The team member's given name. Once created, this cannot be updated except by the team member.
      */
-    public readonly firstName!: pulumi.Output<string | undefined>;
+    declare public readonly firstName: pulumi.Output<string | undefined>;
     /**
      * TThe team member's family name. Once created, this cannot be updated except by the team member.
      */
-    public readonly lastName!: pulumi.Output<string | undefined>;
+    declare public readonly lastName: pulumi.Output<string | undefined>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-     * specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-     * is a string array of resource keys that apply.
+     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    public readonly roleAttributes!: pulumi.Output<outputs.TeamMemberRoleAttribute[] | undefined>;
+    declare public readonly roleAttributes: pulumi.Output<outputs.TeamMemberRoleAttribute[] | undefined>;
 
     /**
      * Create a TeamMember resource with the given unique name, arguments, and options.
@@ -104,23 +102,23 @@ export class TeamMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamMemberState | undefined;
-            resourceInputs["customRoles"] = state ? state.customRoles : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["roleAttributes"] = state ? state.roleAttributes : undefined;
+            resourceInputs["customRoles"] = state?.customRoles;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["roleAttributes"] = state?.roleAttributes;
         } else {
             const args = argsOrState as TeamMemberArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            resourceInputs["customRoles"] = args ? args.customRoles : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["roleAttributes"] = args ? args.roleAttributes : undefined;
+            resourceInputs["customRoles"] = args?.customRoles;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["roleAttributes"] = args?.roleAttributes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamMember.__pulumiType, name, resourceInputs, opts);
@@ -148,13 +146,11 @@ export interface TeamMemberState {
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-     * specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
     role?: pulumi.Input<string>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-     * is a string array of resource keys that apply.
+     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
     roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[]>;
 }
@@ -180,13 +176,11 @@ export interface TeamMemberArgs {
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't
-     * specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
     role?: pulumi.Input<string>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-     * is a string array of resource keys that apply.
+     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
     roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[]>;
 }

@@ -73,82 +73,82 @@ export class Metric extends pulumi.CustomResource {
     /**
      * The method for analyzing metric events. Available choices are `mean` and `percentile`.
      */
-    public readonly analysisType!: pulumi.Output<string | undefined>;
+    declare public readonly analysisType: pulumi.Output<string | undefined>;
     /**
      * The description of the metric's purpose.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The event key for your metric (if custom metric)
      */
-    public readonly eventKey!: pulumi.Output<string | undefined>;
+    declare public readonly eventKey: pulumi.Output<string | undefined>;
     /**
      * Include units that did not send any events and set their value to 0.
      */
-    public readonly includeUnitsWithoutEvents!: pulumi.Output<boolean>;
+    declare public readonly includeUnitsWithoutEvents: pulumi.Output<boolean>;
     /**
      * Ignored. All metrics are considered active.
      *
      * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
      */
-    public readonly isActive!: pulumi.Output<boolean>;
+    declare public readonly isActive: pulumi.Output<boolean>;
     /**
      * Whether a `custom` metric is a numeric metric or not.
      */
-    public readonly isNumeric!: pulumi.Output<boolean | undefined>;
+    declare public readonly isNumeric: pulumi.Output<boolean | undefined>;
     /**
      * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly kind!: pulumi.Output<string>;
-    public readonly maintainerId!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
+    declare public readonly maintainerId: pulumi.Output<string>;
     /**
      * The human-friendly name for the metric.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
      */
-    public readonly percentileValue!: pulumi.Output<number | undefined>;
+    declare public readonly percentileValue: pulumi.Output<number | undefined>;
     /**
      * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
      */
-    public readonly randomizationUnits!: pulumi.Output<string[]>;
+    declare public readonly randomizationUnits: pulumi.Output<string[]>;
     /**
      * The CSS selector for your metric (if click metric)
      */
-    public readonly selector!: pulumi.Output<string | undefined>;
+    declare public readonly selector: pulumi.Output<string | undefined>;
     /**
      * The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
      */
-    public readonly successCriteria!: pulumi.Output<string>;
+    declare public readonly successCriteria: pulumi.Output<string>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * (Required for kind `custom`) The unit for numeric `custom` metrics.
      */
-    public readonly unit!: pulumi.Output<string | undefined>;
+    declare public readonly unit: pulumi.Output<string | undefined>;
     /**
      * The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
      */
-    public readonly unitAggregationType!: pulumi.Output<string | undefined>;
+    declare public readonly unitAggregationType: pulumi.Output<string | undefined>;
     /**
      * List of nested `url` blocks describing URLs that you want to associate with the metric.
      */
-    public readonly urls!: pulumi.Output<outputs.MetricUrl[] | undefined>;
+    declare public readonly urls: pulumi.Output<outputs.MetricUrl[] | undefined>;
     /**
      * Version of the metric
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a Metric resource with the given unique name, arguments, and options.
@@ -163,56 +163,56 @@ export class Metric extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricState | undefined;
-            resourceInputs["analysisType"] = state ? state.analysisType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventKey"] = state ? state.eventKey : undefined;
-            resourceInputs["includeUnitsWithoutEvents"] = state ? state.includeUnitsWithoutEvents : undefined;
-            resourceInputs["isActive"] = state ? state.isActive : undefined;
-            resourceInputs["isNumeric"] = state ? state.isNumeric : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["maintainerId"] = state ? state.maintainerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["percentileValue"] = state ? state.percentileValue : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["randomizationUnits"] = state ? state.randomizationUnits : undefined;
-            resourceInputs["selector"] = state ? state.selector : undefined;
-            resourceInputs["successCriteria"] = state ? state.successCriteria : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["unit"] = state ? state.unit : undefined;
-            resourceInputs["unitAggregationType"] = state ? state.unitAggregationType : undefined;
-            resourceInputs["urls"] = state ? state.urls : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["analysisType"] = state?.analysisType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventKey"] = state?.eventKey;
+            resourceInputs["includeUnitsWithoutEvents"] = state?.includeUnitsWithoutEvents;
+            resourceInputs["isActive"] = state?.isActive;
+            resourceInputs["isNumeric"] = state?.isNumeric;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["maintainerId"] = state?.maintainerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["percentileValue"] = state?.percentileValue;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["randomizationUnits"] = state?.randomizationUnits;
+            resourceInputs["selector"] = state?.selector;
+            resourceInputs["successCriteria"] = state?.successCriteria;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["unit"] = state?.unit;
+            resourceInputs["unitAggregationType"] = state?.unitAggregationType;
+            resourceInputs["urls"] = state?.urls;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["analysisType"] = args ? args.analysisType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventKey"] = args ? args.eventKey : undefined;
-            resourceInputs["includeUnitsWithoutEvents"] = args ? args.includeUnitsWithoutEvents : undefined;
-            resourceInputs["isActive"] = args ? args.isActive : undefined;
-            resourceInputs["isNumeric"] = args ? args.isNumeric : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["maintainerId"] = args ? args.maintainerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["percentileValue"] = args ? args.percentileValue : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
-            resourceInputs["randomizationUnits"] = args ? args.randomizationUnits : undefined;
-            resourceInputs["selector"] = args ? args.selector : undefined;
-            resourceInputs["successCriteria"] = args ? args.successCriteria : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["unit"] = args ? args.unit : undefined;
-            resourceInputs["unitAggregationType"] = args ? args.unitAggregationType : undefined;
-            resourceInputs["urls"] = args ? args.urls : undefined;
+            resourceInputs["analysisType"] = args?.analysisType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventKey"] = args?.eventKey;
+            resourceInputs["includeUnitsWithoutEvents"] = args?.includeUnitsWithoutEvents;
+            resourceInputs["isActive"] = args?.isActive;
+            resourceInputs["isNumeric"] = args?.isNumeric;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["maintainerId"] = args?.maintainerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["percentileValue"] = args?.percentileValue;
+            resourceInputs["projectKey"] = args?.projectKey;
+            resourceInputs["randomizationUnits"] = args?.randomizationUnits;
+            resourceInputs["selector"] = args?.selector;
+            resourceInputs["successCriteria"] = args?.successCriteria;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["unit"] = args?.unit;
+            resourceInputs["unitAggregationType"] = args?.unitAggregationType;
+            resourceInputs["urls"] = args?.urls;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

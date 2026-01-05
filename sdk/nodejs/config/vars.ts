@@ -8,10 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("launchdarkly");
 
 /**
- * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
- * [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
- * authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
- * must provide either `accessToken` or `oauthToken`.
+ * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
  */
 export declare const access_token: string | undefined;
 Object.defineProperty(exports, "access_token", {
@@ -22,8 +19,7 @@ Object.defineProperty(exports, "access_token", {
 });
 
 /**
- * The LaunchDarkly host address. If this argument is not specified, the default host address is
- * `https://app.launchdarkly.com`
+ * The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
  */
 export declare const api_host: string | undefined;
 Object.defineProperty(exports, "api_host", {
@@ -45,8 +41,7 @@ Object.defineProperty(exports, "http_timeout", {
 });
 
 /**
- * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
- * environment variable. You must provide either `accessToken` or `oauthToken`.
+ * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
  */
 export declare const oauth_token: string | undefined;
 Object.defineProperty(exports, "oauth_token", {

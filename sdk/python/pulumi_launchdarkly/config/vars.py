@@ -23,18 +23,14 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def access_token(self) -> Optional[str]:
         """
-        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-        [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-        authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-        must provide either `access_token` or `oauth_token`.
+        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return __config__.get('access_token')
 
     @_builtins.property
     def api_host(self) -> Optional[str]:
         """
-        The LaunchDarkly host address. If this argument is not specified, the default host address is
-        `https://app.launchdarkly.com`
+        The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         """
         return __config__.get('api_host')
 
@@ -48,8 +44,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def oauth_token(self) -> Optional[str]:
         """
-        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-        environment variable. You must provide either `access_token` or `oauth_token`.
+        An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return __config__.get('oauth_token')
 

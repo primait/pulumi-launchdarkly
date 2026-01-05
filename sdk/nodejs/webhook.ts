@@ -77,27 +77,27 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * The webhook's human-readable name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies whether the webhook is enabled.
      */
-    public readonly on!: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean | undefined>;
     /**
      * The secret used to sign the webhook.
      */
-    public readonly secret!: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     /**
      * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
      */
-    public readonly statements!: pulumi.Output<outputs.WebhookStatement[] | undefined>;
+    declare public readonly statements: pulumi.Output<outputs.WebhookStatement[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The URL of the remote webhook.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a Webhook resource with the given unique name, arguments, and options.
@@ -112,23 +112,23 @@ export class Webhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["on"] = state ? state.on : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["statements"] = state ? state.statements : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["on"] = state?.on;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["statements"] = state?.statements;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as WebhookArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["on"] = args ? args.on : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["on"] = args?.on;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["statements"] = args ? args.statements : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["statements"] = args?.statements;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };

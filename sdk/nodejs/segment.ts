@@ -214,56 +214,56 @@ export class Segment extends pulumi.CustomResource {
     /**
      * The segment's creation date represented as a UNIX epoch timestamp.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<number>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<number>;
     /**
      * The description of the segment's purpose.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly envKey!: pulumi.Output<string>;
+    declare public readonly envKey: pulumi.Output<string>;
     /**
      * List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    public readonly excludedContexts!: pulumi.Output<outputs.SegmentExcludedContext[] | undefined>;
+    declare public readonly excludedContexts: pulumi.Output<outputs.SegmentExcludedContext[] | undefined>;
     /**
      * List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    public readonly excludeds!: pulumi.Output<string[] | undefined>;
+    declare public readonly excludeds: pulumi.Output<string[] | undefined>;
     /**
      * List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    public readonly includedContexts!: pulumi.Output<outputs.SegmentIncludedContext[] | undefined>;
+    declare public readonly includedContexts: pulumi.Output<outputs.SegmentIncludedContext[] | undefined>;
     /**
      * List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    public readonly includeds!: pulumi.Output<string[] | undefined>;
+    declare public readonly includeds: pulumi.Output<string[] | undefined>;
     /**
      * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The human-friendly name for the segment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    public readonly rules!: pulumi.Output<outputs.SegmentRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.SegmentRule[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly unbounded!: pulumi.Output<boolean | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly unbounded: pulumi.Output<boolean | undefined>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly unboundedContextKind!: pulumi.Output<string>;
+    declare public readonly unboundedContextKind: pulumi.Output<string>;
 
     /**
      * Create a Segment resource with the given unique name, arguments, and options.
@@ -278,44 +278,44 @@ export class Segment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SegmentState | undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envKey"] = state ? state.envKey : undefined;
-            resourceInputs["excludedContexts"] = state ? state.excludedContexts : undefined;
-            resourceInputs["excludeds"] = state ? state.excludeds : undefined;
-            resourceInputs["includedContexts"] = state ? state.includedContexts : undefined;
-            resourceInputs["includeds"] = state ? state.includeds : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["unbounded"] = state ? state.unbounded : undefined;
-            resourceInputs["unboundedContextKind"] = state ? state.unboundedContextKind : undefined;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envKey"] = state?.envKey;
+            resourceInputs["excludedContexts"] = state?.excludedContexts;
+            resourceInputs["excludeds"] = state?.excludeds;
+            resourceInputs["includedContexts"] = state?.includedContexts;
+            resourceInputs["includeds"] = state?.includeds;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["unbounded"] = state?.unbounded;
+            resourceInputs["unboundedContextKind"] = state?.unboundedContextKind;
         } else {
             const args = argsOrState as SegmentArgs | undefined;
-            if ((!args || args.envKey === undefined) && !opts.urn) {
+            if (args?.envKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envKey'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envKey"] = args ? args.envKey : undefined;
-            resourceInputs["excludedContexts"] = args ? args.excludedContexts : undefined;
-            resourceInputs["excludeds"] = args ? args.excludeds : undefined;
-            resourceInputs["includedContexts"] = args ? args.includedContexts : undefined;
-            resourceInputs["includeds"] = args ? args.includeds : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["unbounded"] = args ? args.unbounded : undefined;
-            resourceInputs["unboundedContextKind"] = args ? args.unboundedContextKind : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envKey"] = args?.envKey;
+            resourceInputs["excludedContexts"] = args?.excludedContexts;
+            resourceInputs["excludeds"] = args?.excludeds;
+            resourceInputs["includedContexts"] = args?.includedContexts;
+            resourceInputs["includeds"] = args?.includeds;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectKey"] = args?.projectKey;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["unbounded"] = args?.unbounded;
+            resourceInputs["unboundedContextKind"] = args?.unboundedContextKind;
             resourceInputs["creationDate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

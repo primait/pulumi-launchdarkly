@@ -59,11 +59,11 @@ export class TeamRoleMapping extends pulumi.CustomResource {
     /**
      * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    public readonly customRoleKeys!: pulumi.Output<string[]>;
+    declare public readonly customRoleKeys: pulumi.Output<string[]>;
     /**
      * The team key.
      */
-    public readonly teamKey!: pulumi.Output<string>;
+    declare public readonly teamKey: pulumi.Output<string>;
 
     /**
      * Create a TeamRoleMapping resource with the given unique name, arguments, and options.
@@ -78,18 +78,18 @@ export class TeamRoleMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamRoleMappingState | undefined;
-            resourceInputs["customRoleKeys"] = state ? state.customRoleKeys : undefined;
-            resourceInputs["teamKey"] = state ? state.teamKey : undefined;
+            resourceInputs["customRoleKeys"] = state?.customRoleKeys;
+            resourceInputs["teamKey"] = state?.teamKey;
         } else {
             const args = argsOrState as TeamRoleMappingArgs | undefined;
-            if ((!args || args.customRoleKeys === undefined) && !opts.urn) {
+            if (args?.customRoleKeys === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customRoleKeys'");
             }
-            if ((!args || args.teamKey === undefined) && !opts.urn) {
+            if (args?.teamKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamKey'");
             }
-            resourceInputs["customRoleKeys"] = args ? args.customRoleKeys : undefined;
-            resourceInputs["teamKey"] = args ? args.teamKey : undefined;
+            resourceInputs["customRoleKeys"] = args?.customRoleKeys;
+            resourceInputs["teamKey"] = args?.teamKey;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamRoleMapping.__pulumiType, name, resourceInputs, opts);

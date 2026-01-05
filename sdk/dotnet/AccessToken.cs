@@ -77,7 +77,7 @@ namespace Pulumi.Launchdarkly
         public Output<int> DefaultApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
+        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
         /// </summary>
         [Output("expire")]
         public Output<int?> Expire { get; private set; } = null!;
@@ -95,13 +95,13 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
         /// </summary>
         [Output("policyStatements")]
         public Output<ImmutableArray<Outputs.AccessTokenPolicyStatement>> PolicyStatements { get; private set; } = null!;
 
         /// <summary>
-        /// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
+        /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Launchdarkly
         public Input<int>? DefaultApiVersion { get; set; }
 
         /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
+        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
         /// </summary>
         [Input("expire")]
         public Input<int>? Expire { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.AccessTokenPolicyStatementArgs>? _policyStatements;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
         /// </summary>
         [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
         public InputList<Inputs.AccessTokenPolicyStatementArgs> PolicyStatements
@@ -225,7 +225,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
+        /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.Launchdarkly
         public Input<int>? DefaultApiVersion { get; set; }
 
         /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
+        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
         /// </summary>
         [Input("expire")]
         public Input<int>? Expire { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.AccessTokenPolicyStatementGetArgs>? _policyStatements;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
         /// </summary>
         [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
         public InputList<Inputs.AccessTokenPolicyStatementGetArgs> PolicyStatements
@@ -300,7 +300,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
+        /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

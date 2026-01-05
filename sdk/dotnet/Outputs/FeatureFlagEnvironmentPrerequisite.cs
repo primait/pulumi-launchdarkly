@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class FeatureFlagEnvironmentPrerequisite
     {
         /// <summary>
-        /// The prerequisite feature flag's `key`.
+        /// The prerequisite feature flag's `Key`.
         /// </summary>
         public readonly string FlagKey;
         /// <summary>

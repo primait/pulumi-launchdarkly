@@ -13,19 +13,19 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class EnvironmentApprovalSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+        /// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `Launchdarkly`.
         /// </summary>
         [Input("autoApplyApprovedChanges")]
         public Input<bool>? AutoApplyApprovedChanges { get; set; }
 
         /// <summary>
-        /// Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+        /// Set to `True` if changes can be applied as long as the `MinNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `True`.
         /// </summary>
         [Input("canApplyDeclinedChanges")]
         public Input<bool>? CanApplyDeclinedChanges { get; set; }
 
         /// <summary>
-        /// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+        /// Set to `True` if requesters can approve or decline their own request. They may always comment. Defaults to `False`.
         /// </summary>
         [Input("canReviewOwnRequest")]
         public Input<bool>? CanReviewOwnRequest { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<int>? MinNumApprovals { get; set; }
 
         /// <summary>
-        /// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+        /// Set to `True` for changes to flags in this environment to require approval. You may only set `Required` to true if `RequiredApprovalTags` is not set and vice versa. Defaults to `False`.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Launchdarkly.Inputs
         private InputList<string>? _requiredApprovalTags;
 
         /// <summary>
-        /// An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+        /// An array of tags used to specify which flags with those tags require approval. You may only set `RequiredApprovalTags` if `Required` is set to `False` and vice versa.
         /// </summary>
         public InputList<string> RequiredApprovalTags
         {
@@ -58,10 +58,10 @@ namespace Pulumi.Launchdarkly.Inputs
         private InputMap<string>? _serviceConfig;
 
         /// <summary>
-        /// The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
+        /// The configuration for the service associated with this approval. This is specific to each approval service. For a `ServiceKind` of `Servicenow`, the following fields apply:
         /// 
-        /// 	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-        /// 	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+        /// 	 - `Template` (String) The SysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+        /// 	 - `DetailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         /// </summary>
         public InputMap<string> ServiceConfig
         {
@@ -70,7 +70,7 @@ namespace Pulumi.Launchdarkly.Inputs
         }
 
         /// <summary>
-        /// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        /// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `Servicenow`, `Launchdarkly`. If you use a value other than `Launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         /// </summary>
         [Input("serviceKind")]
         public Input<string>? ServiceKind { get; set; }

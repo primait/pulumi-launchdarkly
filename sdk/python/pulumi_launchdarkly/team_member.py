@@ -33,10 +33,8 @@ class TeamMemberArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
-        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-               specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-               is a string array of resource keys that apply.
+        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         pulumi.set(__self__, "email", email)
         if custom_roles is not None:
@@ -102,8 +100,7 @@ class TeamMemberArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 
@@ -115,8 +112,7 @@ class TeamMemberArgs:
     @pulumi.getter(name="roleAttributes")
     def role_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        is a string array of resource keys that apply.
+        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         return pulumi.get(self, "role_attributes")
 
@@ -140,10 +136,8 @@ class _TeamMemberState:
         :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
-        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-               specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-               is a string array of resource keys that apply.
+        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         if custom_roles is not None:
             pulumi.set(__self__, "custom_roles", custom_roles)
@@ -210,8 +204,7 @@ class _TeamMemberState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 
@@ -223,8 +216,7 @@ class _TeamMemberState:
     @pulumi.getter(name="roleAttributes")
     def role_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        is a string array of resource keys that apply.
+        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         return pulumi.get(self, "role_attributes")
 
@@ -280,10 +272,8 @@ class TeamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
-        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-               specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-               is a string array of resource keys that apply.
+        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         ...
     @overload
@@ -384,10 +374,8 @@ class TeamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
-        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-               specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-               is a string array of resource keys that apply.
+        :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,8 +425,7 @@ class TeamMember(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't
-        specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 
@@ -446,8 +433,7 @@ class TeamMember(pulumi.CustomResource):
     @pulumi.getter(name="roleAttributes")
     def role_attributes(self) -> pulumi.Output[Optional[Sequence['outputs.TeamMemberRoleAttribute']]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value
-        is a string array of resource keys that apply.
+        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         return pulumi.get(self, "role_attributes")
 

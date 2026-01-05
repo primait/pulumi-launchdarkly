@@ -103,7 +103,7 @@ namespace Pulumi.Launchdarkly
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         [Input("integrationKey", required: true)]
         public string IntegrationKey { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         public readonly string IntegrationKey;
         /// <summary>

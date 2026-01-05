@@ -76,27 +76,27 @@ export class CustomRole extends pulumi.CustomResource {
     /**
      * The base permission level - either `reader` or `noAccess`. While newer API versions default to `noAccess`, this field defaults to `reader` in keeping with previous API versions.
      */
-    public readonly basePermissions!: pulumi.Output<string | undefined>;
+    declare public readonly basePermissions: pulumi.Output<string | undefined>;
     /**
      * Description of the custom role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * A name for the custom role. This must be unique within your organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * @deprecated 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
      */
-    public readonly policies!: pulumi.Output<outputs.CustomRolePolicy[] | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.CustomRolePolicy[] | undefined>;
     /**
      * An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
      */
-    public readonly policyStatements!: pulumi.Output<outputs.CustomRolePolicyStatement[] | undefined>;
+    declare public readonly policyStatements: pulumi.Output<outputs.CustomRolePolicyStatement[] | undefined>;
 
     /**
      * Create a CustomRole resource with the given unique name, arguments, and options.
@@ -111,23 +111,23 @@ export class CustomRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoleState | undefined;
-            resourceInputs["basePermissions"] = state ? state.basePermissions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["policyStatements"] = state ? state.policyStatements : undefined;
+            resourceInputs["basePermissions"] = state?.basePermissions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["policyStatements"] = state?.policyStatements;
         } else {
             const args = argsOrState as CustomRoleArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["basePermissions"] = args ? args.basePermissions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["policyStatements"] = args ? args.policyStatements : undefined;
+            resourceInputs["basePermissions"] = args?.basePermissions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["policyStatements"] = args?.policyStatements;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomRole.__pulumiType, name, resourceInputs, opts);

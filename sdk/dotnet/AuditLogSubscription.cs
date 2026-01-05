@@ -13,6 +13,8 @@ namespace Pulumi.Launchdarkly
     /// Provides a LaunchDarkly audit log subscription resource.
     /// 
     /// This resource allows you to create and manage LaunchDarkly audit log subscriptions.
+    /// 
+    /// ## Example Usage
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/auditLogSubscription:AuditLogSubscription")]
     public partial class AuditLogSubscription : global::Pulumi.CustomResource
@@ -21,7 +23,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("integrationKey")]
         public Output<string> IntegrationKey { get; private set; } = null!;
@@ -106,7 +108,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
@@ -164,7 +166,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey")]
         public Input<string>? IntegrationKey { get; set; }

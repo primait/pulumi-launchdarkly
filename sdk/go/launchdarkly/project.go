@@ -109,13 +109,11 @@ type Project struct {
 	// A block describing which client-side SDKs can use new flags by default.
 	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayOutput `pulumi:"defaultClientSideAvailabilities"`
 	Environments                    ProjectEnvironmentArrayOutput                   `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-	// `defaultClientSideAvailability` to maintain future compatibility.
+	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 	//
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 	IncludeInSnippet pulumi.BoolOutput `pulumi:"includeInSnippet"`
-	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-	// a new one.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The project's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -162,13 +160,11 @@ type projectState struct {
 	// A block describing which client-side SDKs can use new flags by default.
 	DefaultClientSideAvailabilities []ProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
 	Environments                    []ProjectEnvironment                   `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-	// `defaultClientSideAvailability` to maintain future compatibility.
+	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 	//
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-	// a new one.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
@@ -180,13 +176,11 @@ type ProjectState struct {
 	// A block describing which client-side SDKs can use new flags by default.
 	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayInput
 	Environments                    ProjectEnvironmentArrayInput
-	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-	// `defaultClientSideAvailability` to maintain future compatibility.
+	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 	//
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-	// a new one.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The project's name.
 	Name pulumi.StringPtrInput
@@ -202,13 +196,11 @@ type projectArgs struct {
 	// A block describing which client-side SDKs can use new flags by default.
 	DefaultClientSideAvailabilities []ProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
 	Environments                    []ProjectEnvironment                   `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-	// `defaultClientSideAvailability` to maintain future compatibility.
+	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 	//
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-	// a new one.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
@@ -221,13 +213,11 @@ type ProjectArgs struct {
 	// A block describing which client-side SDKs can use new flags by default.
 	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayInput
 	Environments                    ProjectEnvironmentArrayInput
-	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-	// `defaultClientSideAvailability` to maintain future compatibility.
+	// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 	//
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-	// a new one.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The project's name.
 	Name pulumi.StringPtrInput
@@ -333,16 +323,14 @@ func (o ProjectOutput) Environments() ProjectEnvironmentArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectEnvironmentArrayOutput { return v.Environments }).(ProjectEnvironmentArrayOutput)
 }
 
-// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to
-// `defaultClientSideAvailability` to maintain future compatibility.
+// Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
 //
 // Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
 func (o ProjectOutput) IncludeInSnippet() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.IncludeInSnippet }).(pulumi.BoolOutput)
 }
 
-// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of
-// a new one.
+// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o ProjectOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }

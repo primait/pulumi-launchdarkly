@@ -19,7 +19,7 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<string> Attribute { get; set; } = null!;
 
         /// <summary>
-        /// The context kind associated with this rule clause. If omitted, defaults to `user`.
+        /// The context kind associated with this rule clause. If omitted, defaults to `User`.
         /// </summary>
         [Input("contextKind")]
         public Input<string>? ContextKind { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<bool>? Negate { get; set; }
 
         /// <summary>
-        /// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        /// The operator associated with the rule clause. Available options are `In`, `endsWith`, `startsWith`, `Matches`, `Contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `Before`, `After`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         /// </summary>
         [Input("op", required: true)]
         public Input<string> Op { get; set; } = null!;
 
         /// <summary>
-        /// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+        /// The type for each of the clause's values. Available types are `Boolean`, `String`, and `Number`. If omitted, `ValueType` defaults to `String`.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

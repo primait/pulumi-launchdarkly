@@ -14,11 +14,11 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagEnvironmentContextTargetResult
     {
         /// <summary>
-        /// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+        /// The context kind on which the flag should target in this environment. User (`User`) targets should be specified as `Targets` attribute blocks.
         /// </summary>
         public readonly string ContextKind;
         /// <summary>
-        /// List of `user` strings to target.
+        /// List of `User` strings to target.
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>

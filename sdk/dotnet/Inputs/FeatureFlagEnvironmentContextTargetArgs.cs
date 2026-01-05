@@ -13,7 +13,7 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class FeatureFlagEnvironmentContextTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+        /// The context kind on which the flag should target in this environment. User (`User`) targets should be specified as `Targets` attribute blocks.
         /// </summary>
         [Input("contextKind", required: true)]
         public Input<string> ContextKind { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Launchdarkly.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// List of `user` strings to target.
+        /// List of `User` strings to target.
         /// </summary>
         public InputList<string> Values
         {

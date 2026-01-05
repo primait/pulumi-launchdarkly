@@ -27,7 +27,7 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string Color;
         /// <summary>
-        /// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         public readonly bool? ConfirmChanges;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly bool? Critical;
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         public readonly bool? DefaultTrackEvents;
         /// <summary>
@@ -55,11 +55,11 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         public readonly bool? RequireComments;
         /// <summary>
-        /// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
         /// </summary>
         public readonly bool? SecureMode;
         /// <summary>

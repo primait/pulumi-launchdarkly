@@ -31,7 +31,7 @@ namespace Pulumi.Launchdarkly.Inputs
         }
 
         /// <summary>
-        /// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
+        /// The context kind associated with this segment rule. This argument is only valid if `Weight` is also specified. If omitted, defaults to `User`.
         /// </summary>
         [Input("rolloutContextKind")]
         public Input<string>? RolloutContextKind { get; set; }

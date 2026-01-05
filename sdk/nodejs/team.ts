@@ -75,31 +75,31 @@ export class Team extends pulumi.CustomResource {
     /**
      * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    public readonly customRoleKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly customRoleKeys: pulumi.Output<string[] | undefined>;
     /**
      * The team description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * List of member IDs for users who maintain the team.
      */
-    public readonly maintainers!: pulumi.Output<string[] | undefined>;
+    declare public readonly maintainers: pulumi.Output<string[] | undefined>;
     /**
      * List of member IDs who belong to the team.
      */
-    public readonly memberIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly memberIds: pulumi.Output<string[] | undefined>;
     /**
      * A human-friendly name for the team.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    public readonly roleAttributes!: pulumi.Output<outputs.TeamRoleAttribute[] | undefined>;
+    declare public readonly roleAttributes: pulumi.Output<outputs.TeamRoleAttribute[] | undefined>;
 
     /**
      * Create a Team resource with the given unique name, arguments, and options.
@@ -114,25 +114,25 @@ export class Team extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamState | undefined;
-            resourceInputs["customRoleKeys"] = state ? state.customRoleKeys : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["maintainers"] = state ? state.maintainers : undefined;
-            resourceInputs["memberIds"] = state ? state.memberIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roleAttributes"] = state ? state.roleAttributes : undefined;
+            resourceInputs["customRoleKeys"] = state?.customRoleKeys;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["maintainers"] = state?.maintainers;
+            resourceInputs["memberIds"] = state?.memberIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roleAttributes"] = state?.roleAttributes;
         } else {
             const args = argsOrState as TeamArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["customRoleKeys"] = args ? args.customRoleKeys : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["maintainers"] = args ? args.maintainers : undefined;
-            resourceInputs["memberIds"] = args ? args.memberIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roleAttributes"] = args ? args.roleAttributes : undefined;
+            resourceInputs["customRoleKeys"] = args?.customRoleKeys;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["maintainers"] = args?.maintainers;
+            resourceInputs["memberIds"] = args?.memberIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roleAttributes"] = args?.roleAttributes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Team.__pulumiType, name, resourceInputs, opts);

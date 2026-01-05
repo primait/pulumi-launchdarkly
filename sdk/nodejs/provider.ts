@@ -26,22 +26,17 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-     * [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-     * authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-     * must provide either `accessToken` or `oauthToken`.
+     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
-    public readonly access_token!: pulumi.Output<string | undefined>;
+    declare public readonly access_token: pulumi.Output<string | undefined>;
     /**
-     * The LaunchDarkly host address. If this argument is not specified, the default host address is
-     * `https://app.launchdarkly.com`
+     * The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
      */
-    public readonly api_host!: pulumi.Output<string | undefined>;
+    declare public readonly api_host: pulumi.Output<string | undefined>;
     /**
-     * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-     * environment variable. You must provide either `accessToken` or `oauthToken`.
+     * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
-    public readonly oauth_token!: pulumi.Output<string | undefined>;
+    declare public readonly oauth_token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -55,8 +50,8 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["access_token"] = args?.access_token ? pulumi.secret(args.access_token) : undefined;
-            resourceInputs["api_host"] = args ? args.api_host : undefined;
-            resourceInputs["http_timeout"] = pulumi.output(args ? args.http_timeout : undefined).apply(JSON.stringify);
+            resourceInputs["api_host"] = args?.api_host;
+            resourceInputs["http_timeout"] = pulumi.output(args?.http_timeout).apply(JSON.stringify);
             resourceInputs["oauth_token"] = args?.oauth_token ? pulumi.secret(args.oauth_token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -80,15 +75,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or
-     * [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to
-     * authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You
-     * must provide either `accessToken` or `oauthToken`.
+     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
     access_token?: pulumi.Input<string>;
     /**
-     * The LaunchDarkly host address. If this argument is not specified, the default host address is
-     * `https://app.launchdarkly.com`
+     * The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
      */
     api_host?: pulumi.Input<string>;
     /**
@@ -96,8 +87,7 @@ export interface ProviderArgs {
      */
     http_timeout?: pulumi.Input<number>;
     /**
-     * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN`
-     * environment variable. You must provide either `accessToken` or `oauthToken`.
+     * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
     oauth_token?: pulumi.Input<string>;
 }

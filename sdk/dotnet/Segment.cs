@@ -293,25 +293,25 @@ namespace Pulumi.Launchdarkly
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects excluded from the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("excludedContexts")]
         public Output<ImmutableArray<Outputs.SegmentExcludedContext>> ExcludedContexts { get; private set; } = null!;
 
         /// <summary>
-        /// List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys excluded from the segment. To target on other context kinds, use the ExcludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("excludeds")]
         public Output<ImmutableArray<string>> Excludeds { get; private set; } = null!;
 
         /// <summary>
-        /// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects included in the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("includedContexts")]
         public Output<ImmutableArray<Outputs.SegmentIncludedContext>> IncludedContexts { get; private set; } = null!;
 
         /// <summary>
-        /// List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys included in the segment. To target on other context kinds, use the IncludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("includeds")]
         public Output<ImmutableArray<string>> Includeds { get; private set; } = null!;
@@ -335,7 +335,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SegmentRule>> Rules { get; private set; } = null!;
@@ -350,7 +350,7 @@ namespace Pulumi.Launchdarkly
         public Output<bool?> Unbounded { get; private set; } = null!;
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("unboundedContextKind")]
         public Output<string> UnboundedContextKind { get; private set; } = null!;
@@ -418,7 +418,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentExcludedContextArgs>? _excludedContexts;
 
         /// <summary>
-        /// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects excluded from the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentExcludedContextArgs> ExcludedContexts
         {
@@ -430,7 +430,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _excludeds;
 
         /// <summary>
-        /// List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys excluded from the segment. To target on other context kinds, use the ExcludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<string> Excludeds
         {
@@ -442,7 +442,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentIncludedContextArgs>? _includedContexts;
 
         /// <summary>
-        /// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects included in the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentIncludedContextArgs> IncludedContexts
         {
@@ -454,7 +454,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _includeds;
 
         /// <summary>
-        /// List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys included in the segment. To target on other context kinds, use the IncludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<string> Includeds
         {
@@ -484,7 +484,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentRuleArgs>? _rules;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentRuleArgs> Rules
         {
@@ -508,7 +508,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Unbounded { get; set; }
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }
@@ -543,7 +543,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentExcludedContextGetArgs>? _excludedContexts;
 
         /// <summary>
-        /// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects excluded from the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentExcludedContextGetArgs> ExcludedContexts
         {
@@ -555,7 +555,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _excludeds;
 
         /// <summary>
-        /// List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys excluded from the segment. To target on other context kinds, use the ExcludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<string> Excludeds
         {
@@ -567,7 +567,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentIncludedContextGetArgs>? _includedContexts;
 
         /// <summary>
-        /// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of non-user target objects included in the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentIncludedContextGetArgs> IncludedContexts
         {
@@ -579,7 +579,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _includeds;
 
         /// <summary>
-        /// List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of user keys included in the segment. To target on other context kinds, use the IncludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<string> Includeds
         {
@@ -609,7 +609,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentRuleGetArgs> Rules
         {
@@ -633,7 +633,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Unbounded { get; set; }
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }

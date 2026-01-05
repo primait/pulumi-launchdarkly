@@ -36,24 +36,15 @@ class EnvironmentArgs:
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-               and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-               creation of a new one.
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-               when not set.
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-               field will default to `false` when not set. To learn more, read [Data
-               Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-               the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-               settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-               when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-               `false` when not set.
+        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         pulumi.set(__self__, "color", color)
@@ -94,8 +85,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        and the creation of a new one.
+        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -107,8 +97,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        creation of a new one.
+        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -129,8 +118,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
@@ -154,9 +142,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        field will default to `false` when not set. To learn more, read [Data
-        Export](https://docs.launchdarkly.com/home/data-export).
+        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -168,9 +154,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -194,8 +178,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
@@ -207,8 +190,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        `false` when not set.
+        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
@@ -252,25 +234,16 @@ class _EnvironmentState:
         :param pulumi.Input[_builtins.str] api_key: The environment's SDK key.
         :param pulumi.Input[_builtins.str] client_side_id: The environment's client-side ID.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-               when not set.
+        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-               field will default to `false` when not set. To learn more, read [Data
-               Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-               the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-               settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-               and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] mobile_key: The environment's mobile key.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-               creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-               when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-               `false` when not set.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         if api_key is not None:
@@ -353,8 +326,7 @@ class _EnvironmentState:
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
@@ -378,9 +350,7 @@ class _EnvironmentState:
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        field will default to `false` when not set. To learn more, read [Data
-        Export](https://docs.launchdarkly.com/home/data-export).
+        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -392,9 +362,7 @@ class _EnvironmentState:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -406,8 +374,7 @@ class _EnvironmentState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        and the creation of a new one.
+        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -443,8 +410,7 @@ class _EnvironmentState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        creation of a new one.
+        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -456,8 +422,7 @@ class _EnvironmentState:
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
@@ -469,8 +434,7 @@ class _EnvironmentState:
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        `false` when not set.
+        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
@@ -554,24 +518,15 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-               when not set.
+        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-               field will default to `false` when not set. To learn more, read [Data
-               Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-               the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-               settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-               and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-               creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-               when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-               `false` when not set.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         ...
@@ -715,25 +670,16 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key: The environment's SDK key.
         :param pulumi.Input[_builtins.str] client_side_id: The environment's client-side ID.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-               when not set.
+        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-               field will default to `false` when not set. To learn more, read [Data
-               Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-               the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-               settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-               and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] mobile_key: The environment's mobile key.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-               creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-               when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-               `false` when not set.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -790,8 +736,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
@@ -807,9 +752,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        field will default to `false` when not set. To learn more, read [Data
-        Export](https://docs.launchdarkly.com/home/data-export).
+        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -817,9 +760,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -827,8 +768,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        and the creation of a new one.
+        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -852,8 +792,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        creation of a new one.
+        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -861,8 +800,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        when not set.
+        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
@@ -870,8 +808,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        `false` when not set.
+        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 

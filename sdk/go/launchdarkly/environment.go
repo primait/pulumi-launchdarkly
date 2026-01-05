@@ -83,34 +83,25 @@ type Environment struct {
 	ClientSideId pulumi.StringOutput `pulumi:"clientSideId"`
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color pulumi.StringOutput `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges pulumi.BoolPtrOutput `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
 	Critical pulumi.BoolPtrOutput `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-	// field will default to `false` when not set. To learn more, read [Data
-	// Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents pulumi.BoolPtrOutput `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-	// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-	// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-	// and the creation of a new one.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey pulumi.StringOutput `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-	// creation of a new one.
+	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrOutput `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-	// `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 	SecureMode pulumi.BoolPtrOutput `pulumi:"secureMode"`
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -168,34 +159,25 @@ type environmentState struct {
 	ClientSideId *string `pulumi:"clientSideId"`
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color *string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
 	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-	// field will default to `false` when not set. To learn more, read [Data
-	// Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-	// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-	// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-	// and the creation of a new one.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey *string `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-	// creation of a new one.
+	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments *bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-	// `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 	SecureMode *bool `pulumi:"secureMode"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
@@ -209,34 +191,25 @@ type EnvironmentState struct {
 	ClientSideId pulumi.StringPtrInput
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color pulumi.StringPtrInput
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges pulumi.BoolPtrInput
 	// Denotes whether the environment is critical.
 	Critical pulumi.BoolPtrInput
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-	// field will default to `false` when not set. To learn more, read [Data
-	// Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents pulumi.BoolPtrInput
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-	// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-	// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-	// and the creation of a new one.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The environment's mobile key.
 	MobileKey pulumi.StringPtrInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-	// creation of a new one.
+	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrInput
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-	// `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 	SecureMode pulumi.BoolPtrInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -250,32 +223,23 @@ type environmentArgs struct {
 	ApprovalSettings []EnvironmentApprovalSetting `pulumi:"approvalSettings"`
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
 	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-	// field will default to `false` when not set. To learn more, read [Data
-	// Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-	// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-	// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-	// and the creation of a new one.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-	// creation of a new one.
+	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments *bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-	// `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 	SecureMode *bool `pulumi:"secureMode"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
@@ -286,32 +250,23 @@ type EnvironmentArgs struct {
 	ApprovalSettings EnvironmentApprovalSettingArrayInput
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color pulumi.StringInput
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges pulumi.BoolPtrInput
 	// Denotes whether the environment is critical.
 	Critical pulumi.BoolPtrInput
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-	// field will default to `false` when not set. To learn more, read [Data
-	// Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents pulumi.BoolPtrInput
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-	// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-	// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-	// and the creation of a new one.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-	// creation of a new one.
+	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-	// when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrInput
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-	// `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 	SecureMode pulumi.BoolPtrInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -423,8 +378,7 @@ func (o EnvironmentOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-// when not set.
+// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 func (o EnvironmentOutput) ConfirmChanges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
 }
@@ -434,22 +388,17 @@ func (o EnvironmentOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-// field will default to `false` when not set. To learn more, read [Data
-// Export](https://docs.launchdarkly.com/home/data-export).
+// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 func (o EnvironmentOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
 }
 
-// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 func (o EnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.IntPtrOutput { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
-// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-// and the creation of a new one.
+// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o EnvironmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -464,20 +413,17 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-// creation of a new one.
+// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o EnvironmentOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-// when not set.
+// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 func (o EnvironmentOutput) RequireComments() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.RequireComments }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-// `false` when not set.
+// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
 func (o EnvironmentOutput) SecureMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.SecureMode }).(pulumi.BoolPtrOutput)
 }

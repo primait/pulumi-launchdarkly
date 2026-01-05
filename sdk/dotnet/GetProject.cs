@@ -130,7 +130,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// A map describing which client-side SDKs can use new flags by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        /// A map describing which client-side SDKs can use new flags by default. Please migrate to `DefaultClientSideAvailability` to maintain future compatibility.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectClientSideAvailabilityResult> ClientSideAvailabilities;
         /// <summary>

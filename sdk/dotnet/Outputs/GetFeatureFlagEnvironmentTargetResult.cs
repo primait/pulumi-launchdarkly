@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagEnvironmentTargetResult
     {
         /// <summary>
-        /// List of `user` strings to target.
+        /// List of `User` strings to target.
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>

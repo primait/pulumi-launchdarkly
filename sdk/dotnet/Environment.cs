@@ -92,8 +92,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> Color { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Output("confirmChanges")]
         public Output<bool?> ConfirmChanges { get; private set; } = null!;
@@ -105,24 +104,19 @@ namespace Pulumi.Launchdarkly
         public Output<bool?> Critical { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        /// field will default to `false` when not set. To learn more, read [Data
-        /// Export](https://docs.launchdarkly.com/home/data-export).
+        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Output("defaultTrackEvents")]
         public Output<bool?> DefaultTrackEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        /// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        /// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Output("defaultTtl")]
         public Output<int?> DefaultTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        /// and the creation of a new one.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -140,22 +134,19 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        /// creation of a new one.
+        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Output("requireComments")]
         public Output<bool?> RequireComments { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        /// `false` when not set.
+        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
         /// </summary>
         [Output("secureMode")]
         public Output<bool?> SecureMode { get; private set; } = null!;
@@ -234,8 +225,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> Color { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("confirmChanges")]
         public Input<bool>? ConfirmChanges { get; set; }
@@ -247,24 +237,19 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Critical { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        /// field will default to `false` when not set. To learn more, read [Data
-        /// Export](https://docs.launchdarkly.com/home/data-export).
+        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        /// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        /// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        /// and the creation of a new one.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -276,22 +261,19 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        /// creation of a new one.
+        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
 
         /// <summary>
-        /// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("requireComments")]
         public Input<bool>? RequireComments { get; set; }
 
         /// <summary>
-        /// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        /// `false` when not set.
+        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
         /// </summary>
         [Input("secureMode")]
         public Input<bool>? SecureMode { get; set; }
@@ -363,8 +345,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Color { get; set; }
 
         /// <summary>
-        /// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("confirmChanges")]
         public Input<bool>? ConfirmChanges { get; set; }
@@ -376,24 +357,19 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Critical { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This
-        /// field will default to `false` when not set. To learn more, read [Data
-        /// Export](https://docs.launchdarkly.com/home/data-export).
+        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using
-        /// the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL
-        /// settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource
-        /// and the creation of a new one.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -421,22 +397,19 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the
-        /// creation of a new one.
+        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
         /// <summary>
-        /// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false`
-        /// when not set.
+        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
         /// </summary>
         [Input("requireComments")]
         public Input<bool>? RequireComments { get; set; }
 
         /// <summary>
-        /// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to
-        /// `false` when not set.
+        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
         /// </summary>
         [Input("secureMode")]
         public Input<bool>? SecureMode { get; set; }

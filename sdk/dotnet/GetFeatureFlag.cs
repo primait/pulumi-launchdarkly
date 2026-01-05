@@ -106,7 +106,7 @@ namespace Pulumi.Launchdarkly
         public string? MaintainerId { get; set; }
 
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         [Input("maintainerTeamKey")]
         public string? MaintainerTeamKey { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         [Input("maintainerTeamKey")]
         public Input<string>? MaintainerTeamKey { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
+        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `IncludeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         /// </summary>
         public readonly bool IncludeInSnippet;
         /// <summary>
@@ -187,7 +187,7 @@ namespace Pulumi.Launchdarkly
         public readonly string Key;
         public readonly string MaintainerId;
         /// <summary>
-        /// The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
+        /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set
         /// </summary>
         public readonly string MaintainerTeamKey;
         /// <summary>

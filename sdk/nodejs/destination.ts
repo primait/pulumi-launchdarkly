@@ -138,31 +138,31 @@ export class Destination extends pulumi.CustomResource {
     /**
      * The destination-specific configuration. To learn more, read Destination-Specific Configs
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
      * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly envKey!: pulumi.Output<string>;
+    declare public readonly envKey: pulumi.Output<string>;
     /**
      * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * A human-readable name for your data export destination.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether the data export destination is on or not.
      */
-    public readonly on!: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean | undefined>;
     /**
      * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    public readonly projectKey!: pulumi.Output<string>;
+    declare public readonly projectKey: pulumi.Output<string>;
     /**
      * Tags associated with your resource.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Destination resource with the given unique name, arguments, and options.
@@ -177,34 +177,34 @@ export class Destination extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DestinationState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["envKey"] = state ? state.envKey : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["on"] = state ? state.on : undefined;
-            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["envKey"] = state?.envKey;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["on"] = state?.on;
+            resourceInputs["projectKey"] = state?.projectKey;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DestinationArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.envKey === undefined) && !opts.urn) {
+            if (args?.envKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envKey'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.projectKey === undefined) && !opts.urn) {
+            if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["envKey"] = args ? args.envKey : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["on"] = args ? args.on : undefined;
-            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["envKey"] = args?.envKey;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["on"] = args?.on;
+            resourceInputs["projectKey"] = args?.projectKey;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Destination.__pulumiType, name, resourceInputs, opts);
