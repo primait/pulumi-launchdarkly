@@ -32,7 +32,7 @@ jobs:
         with:
           tools: pulumictl, pulumicli, dotnet, go, nodejs, python
       - name: Install upgrade-provider
-        run: go install github.com/pulumi/upgrade-provider@$main
+        run: go install github.com/pulumi/upgrade-provider@main
         shell: bash
       - name: "Set up git identity"
         run: |
