@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a LaunchDarkly flag trigger resource.
+//
+// > **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+//
+// This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
+//
+// > **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+//
 // ## Example Usage
 //
 // ```go
@@ -55,7 +63,9 @@ import (
 //
 // The unique trigger ID can be found in your saved trigger URL:
 //
+// ```sh
 // https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+// ```
 //
 // Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
 type FlagTrigger struct {
@@ -71,7 +81,8 @@ type FlagTrigger struct {
 	Instructions FlagTriggerInstructionsOutput `pulumi:"instructions"`
 	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringOutput `pulumi:"integrationKey"`
-	MaintainerId   pulumi.StringOutput `pulumi:"maintainerId"`
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// The unique URL used to invoke the trigger.
@@ -140,7 +151,8 @@ type flagTriggerState struct {
 	Instructions *FlagTriggerInstructions `pulumi:"instructions"`
 	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey *string `pulumi:"integrationKey"`
-	MaintainerId   *string `pulumi:"maintainerId"`
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	MaintainerId *string `pulumi:"maintainerId"`
 	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// The unique URL used to invoke the trigger.
@@ -158,7 +170,8 @@ type FlagTriggerState struct {
 	Instructions FlagTriggerInstructionsPtrInput
 	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringPtrInput
-	MaintainerId   pulumi.StringPtrInput
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	MaintainerId pulumi.StringPtrInput
 	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// The unique URL used to invoke the trigger.
@@ -312,6 +325,7 @@ func (o FlagTriggerOutput) IntegrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.IntegrationKey }).(pulumi.StringOutput)
 }
 
+// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
 func (o FlagTriggerOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.MaintainerId }).(pulumi.StringOutput)
 }

@@ -104,6 +104,9 @@ export class Metric extends pulumi.CustomResource {
      * The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly kind: pulumi.Output<string>;
+    /**
+     * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+     */
     declare public readonly maintainerId: pulumi.Output<string>;
     /**
      * The human-friendly name for the metric.
@@ -258,6 +261,9 @@ export interface MetricState {
      * The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     kind?: pulumi.Input<string>;
+    /**
+     * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+     */
     maintainerId?: pulumi.Input<string>;
     /**
      * The human-friendly name for the metric.
@@ -343,6 +349,9 @@ export interface MetricArgs {
      * The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     kind: pulumi.Input<string>;
+    /**
+     * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+     */
     maintainerId?: pulumi.Input<string>;
     /**
      * The human-friendly name for the metric.

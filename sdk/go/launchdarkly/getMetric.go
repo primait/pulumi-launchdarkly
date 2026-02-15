@@ -84,7 +84,8 @@ type LookupMetricResult struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The metric type. Available choices are `click`, `custom`, and `pageview`.
-	Kind         string `pulumi:"kind"`
+	Kind string `pulumi:"kind"`
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId string `pulumi:"maintainerId"`
 	// The human-friendly name for the metric.
 	Name string `pulumi:"name"`
@@ -197,6 +198,7 @@ func (o LookupMetricResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 func (o LookupMetricResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }

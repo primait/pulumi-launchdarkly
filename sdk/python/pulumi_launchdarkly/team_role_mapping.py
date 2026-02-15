@@ -104,6 +104,12 @@ class TeamRoleMapping(pulumi.CustomResource):
                  team_key: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a LaunchDarkly team to custom role mapping resource.
+
+        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
+
+        > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
         ## Example Usage
 
         ```python
@@ -138,6 +144,12 @@ class TeamRoleMapping(pulumi.CustomResource):
                  args: TeamRoleMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a LaunchDarkly team to custom role mapping resource.
+
+        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
+
+        > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
         ## Example Usage
 
         ```python

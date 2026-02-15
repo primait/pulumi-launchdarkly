@@ -54,7 +54,8 @@ func LookupFeatureFlag(ctx *pulumi.Context, args *LookupFeatureFlagArgs, opts ..
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagArgs struct {
 	// The unique feature flag key that references the flag in your application code.
-	Key          string  `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
@@ -80,7 +81,8 @@ type LookupFeatureFlagResult struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet bool `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code.
-	Key          string `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey string `pulumi:"maintainerTeamKey"`
@@ -110,7 +112,8 @@ func LookupFeatureFlagOutput(ctx *pulumi.Context, args LookupFeatureFlagOutputAr
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagOutputArgs struct {
 	// The unique feature flag key that references the flag in your application code.
-	Key          pulumi.StringInput    `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId pulumi.StringPtrInput `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey pulumi.StringPtrInput `pulumi:"maintainerTeamKey"`
@@ -180,6 +183,7 @@ func (o LookupFeatureFlagResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 func (o LookupFeatureFlagResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }

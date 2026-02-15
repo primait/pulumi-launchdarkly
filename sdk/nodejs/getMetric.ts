@@ -95,6 +95,9 @@ export interface GetMetricResult {
      * The metric type. Available choices are `click`, `custom`, and `pageview`.
      */
     readonly kind: string;
+    /**
+     * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+     */
     readonly maintainerId: string;
     /**
      * The human-friendly name for the metric.

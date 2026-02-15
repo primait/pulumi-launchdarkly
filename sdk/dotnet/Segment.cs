@@ -265,7 +265,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// ## Import
     /// 
-    /// #LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
+    /// LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
     /// 
     /// ```sh
     /// $ pulumi import launchdarkly:index/segment:Segment example example-project/example-environment/example-segment-key
@@ -346,6 +346,9 @@ namespace Pulumi.Launchdarkly
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// </summary>
         [Output("unbounded")]
         public Output<bool?> Unbounded { get; private set; } = null!;
 
@@ -504,6 +507,9 @@ namespace Pulumi.Launchdarkly
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// </summary>
         [Input("unbounded")]
         public Input<bool>? Unbounded { get; set; }
 
@@ -629,6 +635,9 @@ namespace Pulumi.Launchdarkly
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// </summary>
         [Input("unbounded")]
         public Input<bool>? Unbounded { get; set; }
 

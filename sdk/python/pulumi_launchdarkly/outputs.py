@@ -2691,6 +2691,9 @@ class GetFeatureFlagVariationResult(dict):
                  description: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
         """
+        :param _builtins.str value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+               
+               If you wish to define an empty string variation, you must still define the value field on the variations block like so:
         :param _builtins.str description: The variation's description.
         :param _builtins.str name: The name of the variation.
         """
@@ -2703,6 +2706,11 @@ class GetFeatureFlagVariationResult(dict):
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+
+        If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+        """
         return pulumi.get(self, "value")
 
     @_builtins.property

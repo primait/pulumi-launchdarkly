@@ -55,23 +55,17 @@ import * as utilities from "./utilities";
  *
  * **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
  *
- * terraform
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * resource "launchdarkly_project" "example" {
+ * const example = new launchdarkly.Project("example", {
+ *     name: "testProject",
+ *     key: "%s",
+ * });
+ * ```
  *
- *   lifecycle {
- *
- *     ignore_changes = [environments]
- *
- *   }
- *
- *   name = "testProject"
- *
- *   key = "%s"
- *
- * # environments not included on this configuration will not be affected by subsequent applies
- *
- * }
+ * **Note:** Following an import, the first apply may show a diff in the order of your environments as Terraform realigns its state with the order of configurations in your project configuration. This will not change your environments or their SDK keys.
  *
  * **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
  */
@@ -107,6 +101,11 @@ export class Project extends pulumi.CustomResource {
      * A block describing which client-side SDKs can use new flags by default.
      */
     declare public readonly defaultClientSideAvailabilities: pulumi.Output<outputs.ProjectDefaultClientSideAvailability[]>;
+    /**
+     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     *
+     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+     */
     declare public readonly environments: pulumi.Output<outputs.ProjectEnvironment[]>;
     /**
      * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
@@ -174,6 +173,11 @@ export interface ProjectState {
      * A block describing which client-side SDKs can use new flags by default.
      */
     defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    /**
+     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     *
+     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+     */
     environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
      * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
@@ -203,6 +207,11 @@ export interface ProjectArgs {
      * A block describing which client-side SDKs can use new flags by default.
      */
     defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    /**
+     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     *
+     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+     */
     environments: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
      * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.

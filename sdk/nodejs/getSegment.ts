@@ -108,6 +108,9 @@ export interface GetSegmentResult {
      * Tags associated with your resource.
      */
     readonly tags: string[];
+    /**
+     * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+     */
     readonly unbounded: boolean;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
