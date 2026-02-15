@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a LaunchDarkly feature flag resource.
+//
+// This resource allows you to create and manage feature flags within your LaunchDarkly organization.
+//
+// > **Note:** This resource is for global-level feature flag configuration. Unexpected behavior may result if your environment-level configurations are not also managed from Terraform.
+//
 // ## Example Usage
 //
 // ```go
@@ -141,7 +147,8 @@ type FeatureFlag struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolOutput `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key          pulumi.StringOutput `pulumi:"key"`
+	Key pulumi.StringOutput `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey pulumi.StringOutput `pulumi:"maintainerTeamKey"`
@@ -212,7 +219,8 @@ type featureFlagState struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key          *string `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
@@ -245,7 +253,8 @@ type FeatureFlagState struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
 	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key          pulumi.StringPtrInput
+	Key pulumi.StringPtrInput
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId pulumi.StringPtrInput
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey pulumi.StringPtrInput
@@ -282,7 +291,8 @@ type featureFlagArgs struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key          string  `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
@@ -316,7 +326,8 @@ type FeatureFlagArgs struct {
 	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
 	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key          pulumi.StringInput
+	Key pulumi.StringInput
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId pulumi.StringPtrInput
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey pulumi.StringPtrInput
@@ -457,6 +468,7 @@ func (o FeatureFlagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
+// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 func (o FeatureFlagOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.MaintainerId }).(pulumi.StringOutput)
 }

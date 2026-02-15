@@ -232,7 +232,7 @@ import (
 //
 // ## Import
 //
-// #LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
+// LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
 //
 // ```sh
 // $ pulumi import launchdarkly:index/segment:Segment example example-project/example-environment/example-segment-key
@@ -263,8 +263,9 @@ type Segment struct {
 	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
 	Rules SegmentRuleArrayOutput `pulumi:"rules"`
 	// Tags associated with your resource.
-	Tags      pulumi.StringArrayOutput `pulumi:"tags"`
-	Unbounded pulumi.BoolPtrOutput     `pulumi:"unbounded"`
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	Unbounded pulumi.BoolPtrOutput `pulumi:"unbounded"`
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	UnboundedContextKind pulumi.StringOutput `pulumi:"unboundedContextKind"`
 }
@@ -331,8 +332,9 @@ type segmentState struct {
 	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
 	Rules []SegmentRule `pulumi:"rules"`
 	// Tags associated with your resource.
-	Tags      []string `pulumi:"tags"`
-	Unbounded *bool    `pulumi:"unbounded"`
+	Tags []string `pulumi:"tags"`
+	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	Unbounded *bool `pulumi:"unbounded"`
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	UnboundedContextKind *string `pulumi:"unboundedContextKind"`
 }
@@ -361,7 +363,8 @@ type SegmentState struct {
 	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
 	Rules SegmentRuleArrayInput
 	// Tags associated with your resource.
-	Tags      pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Unbounded pulumi.BoolPtrInput
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	UnboundedContextKind pulumi.StringPtrInput
@@ -393,8 +396,9 @@ type segmentArgs struct {
 	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
 	Rules []SegmentRule `pulumi:"rules"`
 	// Tags associated with your resource.
-	Tags      []string `pulumi:"tags"`
-	Unbounded *bool    `pulumi:"unbounded"`
+	Tags []string `pulumi:"tags"`
+	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	Unbounded *bool `pulumi:"unbounded"`
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	UnboundedContextKind *string `pulumi:"unboundedContextKind"`
 }
@@ -422,7 +426,8 @@ type SegmentArgs struct {
 	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
 	Rules SegmentRuleArrayInput
 	// Tags associated with your resource.
-	Tags      pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Unbounded pulumi.BoolPtrInput
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	UnboundedContextKind pulumi.StringPtrInput
@@ -575,6 +580,7 @@ func (o SegmentOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o SegmentOutput) Unbounded() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Segment) pulumi.BoolPtrOutput { return v.Unbounded }).(pulumi.BoolPtrOutput)
 }

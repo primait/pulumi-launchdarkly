@@ -138,6 +138,9 @@ namespace Pulumi.Launchdarkly
     [OutputType]
     public sealed class GetAuditLogSubscriptionResult
     {
+        /// <summary>
+        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`. Refer to the `formVariables` field in the corresponding `integrations/&lt;integration_key&gt;/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
         /// The audit log subscription ID.

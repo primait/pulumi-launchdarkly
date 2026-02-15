@@ -51,6 +51,7 @@ class MetricArgs:
         :param pulumi.Input[_builtins.bool] include_units_without_events: Include units that did not send any events and set their value to 0.
         :param pulumi.Input[_builtins.bool] is_active: Ignored. All metrics are considered active.
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] randomization_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
@@ -212,6 +213,9 @@ class MetricArgs:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
@@ -360,6 +364,7 @@ class _MetricState:
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -516,6 +521,9 @@ class _MetricState:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
@@ -725,6 +733,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -890,6 +899,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -996,6 +1006,9 @@ class Metric(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        """
         return pulumi.get(self, "maintainer_id")
 
     @_builtins.property

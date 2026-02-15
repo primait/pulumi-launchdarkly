@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly environment resource.
+    /// 
+    /// This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `launchdarkly.Project` resource to manage your environments.
+    /// 
+    /// &gt; **Note:** Mixing the use of nested `Environments` blocks in the [`launchdarkly.Project`] resource and `launchdarkly.Environment` resources is not recommended.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

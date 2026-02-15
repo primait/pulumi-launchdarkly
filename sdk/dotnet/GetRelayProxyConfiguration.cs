@@ -12,6 +12,14 @@ namespace Pulumi.Launchdarkly
     public static class GetRelayProxyConfiguration
     {
         /// <summary>
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// 
+        /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+        /// 
+        /// This data source allows you to retrieve Relay Proxy configuration information from your LaunchDarkly organization.
+        /// 
+        /// &gt; **Note:** It is not possible for this data source to retrieve your Relay Proxy configuration's unique key. This is because the unique key is only exposed upon creation. If you need to reference the Relay Proxy configuration's unique key in your terraform config, use the `launchdarkly.RelayProxyConfiguration` resource instead.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +42,14 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRelayProxyConfigurationResult>("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args ?? new GetRelayProxyConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// 
+        /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+        /// 
+        /// This data source allows you to retrieve Relay Proxy configuration information from your LaunchDarkly organization.
+        /// 
+        /// &gt; **Note:** It is not possible for this data source to retrieve your Relay Proxy configuration's unique key. This is because the unique key is only exposed upon creation. If you need to reference the Relay Proxy configuration's unique key in your terraform config, use the `launchdarkly.RelayProxyConfiguration` resource instead.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +72,14 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.Invoke<GetRelayProxyConfigurationResult>("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args ?? new GetRelayProxyConfigurationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// 
+        /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+        /// 
+        /// This data source allows you to retrieve Relay Proxy configuration information from your LaunchDarkly organization.
+        /// 
+        /// &gt; **Note:** It is not possible for this data source to retrieve your Relay Proxy configuration's unique key. This is because the unique key is only exposed upon creation. If you need to reference the Relay Proxy configuration's unique key in your terraform config, use the `launchdarkly.RelayProxyConfiguration` resource instead.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

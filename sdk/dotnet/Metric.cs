@@ -109,6 +109,9 @@ namespace Pulumi.Launchdarkly
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
+        /// <summary>
+        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
 
@@ -273,6 +276,9 @@ namespace Pulumi.Launchdarkly
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
+        /// <summary>
+        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
@@ -410,6 +416,9 @@ namespace Pulumi.Launchdarkly
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 

@@ -81,25 +81,26 @@ namespace Pulumi.Launchdarkly
     /// $ pulumi import launchdarkly:index/project:Project example example-project
     /// ```
     /// 
-    /// **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
+    /// **IMPORTANT:** Please note that, regardless of how many `Environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
     /// 
-    /// terraform
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Launchdarkly = Pulumi.Launchdarkly;
     /// 
-    /// resource "launchdarkly_project" "example" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Launchdarkly.Project("example", new()
+    ///     {
+    ///         Name = "testProject",
+    ///         Key = "%s",
+    ///     });
     /// 
-    ///   lifecycle {
+    /// });
+    /// ```
     /// 
-    ///     ignore_changes = [environments]
-    /// 
-    ///   }
-    /// 
-    ///   name = "testProject"
-    /// 
-    ///   key = "%s"
-    /// 
-    /// # environments not included on this configuration will not be affected by subsequent applies
-    /// 
-    /// }
+    /// **Note:** Following an import, the first apply may show a diff in the order of your environments as Terraform realigns its state with the order of configurations in your project configuration. This will not change your environments or their SDK keys.
     /// 
     /// **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
     /// </summary>
@@ -112,6 +113,11 @@ namespace Pulumi.Launchdarkly
         [Output("defaultClientSideAvailabilities")]
         public Output<ImmutableArray<Outputs.ProjectDefaultClientSideAvailability>> DefaultClientSideAvailabilities { get; private set; } = null!;
 
+        /// <summary>
+        /// List of nested `Environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        /// 
+        /// &gt; **Note:** Mixing the use of nested `Environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        /// </summary>
         [Output("environments")]
         public Output<ImmutableArray<Outputs.ProjectEnvironment>> Environments { get; private set; } = null!;
 
@@ -200,6 +206,12 @@ namespace Pulumi.Launchdarkly
 
         [Input("environments", required: true)]
         private InputList<Inputs.ProjectEnvironmentArgs>? _environments;
+
+        /// <summary>
+        /// List of nested `Environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        /// 
+        /// &gt; **Note:** Mixing the use of nested `Environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        /// </summary>
         public InputList<Inputs.ProjectEnvironmentArgs> Environments
         {
             get => _environments ?? (_environments = new InputList<Inputs.ProjectEnvironmentArgs>());
@@ -258,6 +270,12 @@ namespace Pulumi.Launchdarkly
 
         [Input("environments")]
         private InputList<Inputs.ProjectEnvironmentGetArgs>? _environments;
+
+        /// <summary>
+        /// List of nested `Environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        /// 
+        /// &gt; **Note:** Mixing the use of nested `Environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        /// </summary>
         public InputList<Inputs.ProjectEnvironmentGetArgs> Environments
         {
             get => _environments ?? (_environments = new InputList<Inputs.ProjectEnvironmentGetArgs>());

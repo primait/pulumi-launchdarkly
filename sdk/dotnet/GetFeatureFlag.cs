@@ -102,6 +102,9 @@ namespace Pulumi.Launchdarkly
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         [Input("maintainerId")]
         public string? MaintainerId { get; set; }
 
@@ -131,6 +134,9 @@ namespace Pulumi.Launchdarkly
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
@@ -185,6 +191,9 @@ namespace Pulumi.Launchdarkly
         /// The unique feature flag key that references the flag in your application code.
         /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         public readonly string MaintainerId;
         /// <summary>
         /// The key of the associated team that maintains this feature flag. `MaintainerId` cannot be set if `MaintainerTeamKey` is set

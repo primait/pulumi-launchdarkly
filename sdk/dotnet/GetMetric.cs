@@ -186,6 +186,9 @@ namespace Pulumi.Launchdarkly
         /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`.
         /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// </summary>
         public readonly string MaintainerId;
         /// <summary>
         /// The human-friendly name for the metric.

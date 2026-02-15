@@ -46,6 +46,7 @@ class FeatureFlagArgs:
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
@@ -192,6 +193,9 @@ class FeatureFlagArgs:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
@@ -285,6 +289,7 @@ class _FeatureFlagState:
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -412,6 +417,9 @@ class _FeatureFlagState:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
@@ -526,6 +534,12 @@ class FeatureFlag(pulumi.CustomResource):
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
                  __props__=None):
         """
+        Provides a LaunchDarkly feature flag resource.
+
+        This resource allows you to create and manage feature flags within your LaunchDarkly organization.
+
+        > **Note:** This resource is for global-level feature flag configuration. Unexpected behavior may result if your environment-level configurations are not also managed from Terraform.
+
         ## Example Usage
 
         ```python
@@ -614,6 +628,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -629,6 +644,12 @@ class FeatureFlag(pulumi.CustomResource):
                  args: FeatureFlagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a LaunchDarkly feature flag resource.
+
+        This resource allows you to create and manage feature flags within your LaunchDarkly organization.
+
+        > **Note:** This resource is for global-level feature flag configuration. Unexpected behavior may result if your environment-level configurations are not also managed from Terraform.
+
         ## Example Usage
 
         ```python
@@ -807,6 +828,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -893,6 +915,9 @@ class FeatureFlag(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @_builtins.property

@@ -79,33 +79,28 @@ __all__ = [
     'GetTeamRoleAttributeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AccessTokenInlineRoleArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    AccessTokenInlineRoleArgsDict: TypeAlias = Mapping[str, Any]
+class AccessTokenInlineRoleArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class AccessTokenInlineRoleArgs:
@@ -195,31 +190,28 @@ class AccessTokenInlineRoleArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class AccessTokenPolicyStatementArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    AccessTokenPolicyStatementArgsDict: TypeAlias = Mapping[str, Any]
+class AccessTokenPolicyStatementArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class AccessTokenPolicyStatementArgs:
@@ -309,31 +301,28 @@ class AccessTokenPolicyStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class AuditLogSubscriptionStatementArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    AuditLogSubscriptionStatementArgsDict: TypeAlias = Mapping[str, Any]
+class AuditLogSubscriptionStatementArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class AuditLogSubscriptionStatementArgs:
@@ -423,13 +412,10 @@ class AuditLogSubscriptionStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class CustomRolePolicyArgsDict(TypedDict):
-        actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        effect: pulumi.Input[_builtins.str]
-        resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-elif False:
-    CustomRolePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class CustomRolePolicyArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    effect: pulumi.Input[_builtins.str]
+    resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
 
 @pulumi.input_type
 class CustomRolePolicyArgs:
@@ -469,31 +455,28 @@ class CustomRolePolicyArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class CustomRolePolicyStatementArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    CustomRolePolicyStatementArgsDict: TypeAlias = Mapping[str, Any]
+class CustomRolePolicyStatementArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class CustomRolePolicyStatementArgs:
@@ -583,45 +566,42 @@ class CustomRolePolicyStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class EnvironmentApprovalSettingArgsDict(TypedDict):
-        auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-        """
-        can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-        """
-        can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-        """
-        min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-        """
-        required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
-        """
-        required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
-        """
-        service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
+class EnvironmentApprovalSettingArgsDict(TypedDict):
+    auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+    """
+    can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+    """
+    can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+    """
+    min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+    """
+    required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+    """
+    service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-        """
-        service_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-        """
-elif False:
-    EnvironmentApprovalSettingArgsDict: TypeAlias = Mapping[str, Any]
+    	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+    	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+    """
+    service_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+    """
 
 @pulumi.input_type
 class EnvironmentApprovalSettingArgs:
@@ -764,18 +744,15 @@ class EnvironmentApprovalSettingArgs:
         pulumi.set(self, "service_kind", value)
 
 
-if not MYPY:
-    class FeatureFlagClientSideAvailabilityArgsDict(TypedDict):
-        using_environment_id: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this flag is available to SDKs using the client-side ID.
-        """
-        using_mobile_key: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this flag is available to SDKs using a mobile key.
-        """
-elif False:
-    FeatureFlagClientSideAvailabilityArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagClientSideAvailabilityArgsDict(TypedDict):
+    using_environment_id: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this flag is available to SDKs using the client-side ID.
+    """
+    using_mobile_key: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this flag is available to SDKs using a mobile key.
+    """
 
 @pulumi.input_type
 class FeatureFlagClientSideAvailabilityArgs:
@@ -816,22 +793,19 @@ class FeatureFlagClientSideAvailabilityArgs:
         pulumi.set(self, "using_mobile_key", value)
 
 
-if not MYPY:
-    class FeatureFlagCustomPropertyArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The unique custom property key.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the custom property.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of custom property value strings.
-        """
-elif False:
-    FeatureFlagCustomPropertyArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagCustomPropertyArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The unique custom property key.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the custom property.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of custom property value strings.
+    """
 
 @pulumi.input_type
 class FeatureFlagCustomPropertyArgs:
@@ -885,18 +859,15 @@ class FeatureFlagCustomPropertyArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class FeatureFlagDefaultsArgsDict(TypedDict):
-        off_variation: pulumi.Input[_builtins.int]
-        """
-        The index of the variation the flag will default to in all new environments when off.
-        """
-        on_variation: pulumi.Input[_builtins.int]
-        """
-        The index of the variation the flag will default to in all new environments when on.
-        """
-elif False:
-    FeatureFlagDefaultsArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagDefaultsArgsDict(TypedDict):
+    off_variation: pulumi.Input[_builtins.int]
+    """
+    The index of the variation the flag will default to in all new environments when off.
+    """
+    on_variation: pulumi.Input[_builtins.int]
+    """
+    The index of the variation the flag will default to in all new environments when on.
+    """
 
 @pulumi.input_type
 class FeatureFlagDefaultsArgs:
@@ -935,22 +906,19 @@ class FeatureFlagDefaultsArgs:
         pulumi.set(self, "on_variation", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentContextTargetArgsDict(TypedDict):
-        context_kind: pulumi.Input[_builtins.str]
-        """
-        The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of `user` strings to target.
-        """
-        variation: pulumi.Input[_builtins.int]
-        """
-        The index of the variation to serve if a user target value is matched.
-        """
-elif False:
-    FeatureFlagEnvironmentContextTargetArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentContextTargetArgsDict(TypedDict):
+    context_kind: pulumi.Input[_builtins.str]
+    """
+    The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of `user` strings to target.
+    """
+    variation: pulumi.Input[_builtins.int]
+    """
+    The index of the variation to serve if a user target value is matched.
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentContextTargetArgs:
@@ -1004,26 +972,23 @@ class FeatureFlagEnvironmentContextTargetArgs:
         pulumi.set(self, "variation", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentFallthroughArgsDict(TypedDict):
-        bucket_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
-        """
-        context_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
-        """
-        rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        """
-        variation: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
-        """
-elif False:
-    FeatureFlagEnvironmentFallthroughArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentFallthroughArgsDict(TypedDict):
+    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
+    """
+    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
+    """
+    rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
+    """
+    variation: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentFallthroughArgs:
@@ -1096,18 +1061,15 @@ class FeatureFlagEnvironmentFallthroughArgs:
         pulumi.set(self, "variation", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentPrerequisiteArgsDict(TypedDict):
-        flag_key: pulumi.Input[_builtins.str]
-        """
-        The prerequisite feature flag's `key`.
-        """
-        variation: pulumi.Input[_builtins.int]
-        """
-        The index of the prerequisite feature flag's variation to target.
-        """
-elif False:
-    FeatureFlagEnvironmentPrerequisiteArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentPrerequisiteArgsDict(TypedDict):
+    flag_key: pulumi.Input[_builtins.str]
+    """
+    The prerequisite feature flag's `key`.
+    """
+    variation: pulumi.Input[_builtins.int]
+    """
+    The index of the prerequisite feature flag's variation to target.
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentPrerequisiteArgs:
@@ -1146,34 +1108,31 @@ class FeatureFlagEnvironmentPrerequisiteArgs:
         pulumi.set(self, "variation", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentRuleArgsDict(TypedDict):
-        bucket_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
-        """
-        clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgsDict']]]]
-        """
-        List of nested blocks specifying the logical clauses to evaluate
-        """
-        context_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A human-readable description of the targeting rule.
-        """
-        rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        """
-        variation: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
-        """
-elif False:
-    FeatureFlagEnvironmentRuleArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentRuleArgsDict(TypedDict):
+    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
+    """
+    clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgsDict']]]]
+    """
+    List of nested blocks specifying the logical clauses to evaluate
+    """
+    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A human-readable description of the targeting rule.
+    """
+    rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
+    """
+    variation: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentRuleArgs:
@@ -1278,34 +1237,31 @@ class FeatureFlagEnvironmentRuleArgs:
         pulumi.set(self, "variation", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentRuleClauseArgsDict(TypedDict):
-        attribute: pulumi.Input[_builtins.str]
-        """
-        The user attribute to operate on
-        """
-        op: pulumi.Input[_builtins.str]
-        """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of values associated with the rule clause.
-        """
-        context_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The context kind associated with this rule clause. If omitted, defaults to `user`.
-        """
-        negate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to negate the rule clause.
-        """
-        value_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
-        """
-elif False:
-    FeatureFlagEnvironmentRuleClauseArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentRuleClauseArgsDict(TypedDict):
+    attribute: pulumi.Input[_builtins.str]
+    """
+    The user attribute to operate on
+    """
+    op: pulumi.Input[_builtins.str]
+    """
+    The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of values associated with the rule clause.
+    """
+    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The context kind associated with this rule clause. If omitted, defaults to `user`.
+    """
+    negate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to negate the rule clause.
+    """
+    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentRuleClauseArgs:
@@ -1407,18 +1363,15 @@ class FeatureFlagEnvironmentRuleClauseArgs:
         pulumi.set(self, "value_type", value)
 
 
-if not MYPY:
-    class FeatureFlagEnvironmentTargetArgsDict(TypedDict):
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of `user` strings to target.
-        """
-        variation: pulumi.Input[_builtins.int]
-        """
-        The index of the variation to serve if a user target value is matched.
-        """
-elif False:
-    FeatureFlagEnvironmentTargetArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagEnvironmentTargetArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of `user` strings to target.
+    """
+    variation: pulumi.Input[_builtins.int]
+    """
+    The index of the variation to serve if a user target value is matched.
+    """
 
 @pulumi.input_type
 class FeatureFlagEnvironmentTargetArgs:
@@ -1457,22 +1410,19 @@ class FeatureFlagEnvironmentTargetArgs:
         pulumi.set(self, "variation", value)
 
 
-if not MYPY:
-    class FeatureFlagVariationArgsDict(TypedDict):
-        value: pulumi.Input[_builtins.str]
-        """
-        The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The feature flag's description.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The human-readable name of the feature flag.
-        """
-elif False:
-    FeatureFlagVariationArgsDict: TypeAlias = Mapping[str, Any]
+class FeatureFlagVariationArgsDict(TypedDict):
+    value: pulumi.Input[_builtins.str]
+    """
+    The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The feature flag's description.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The human-readable name of the feature flag.
+    """
 
 @pulumi.input_type
 class FeatureFlagVariationArgs:
@@ -1528,14 +1478,11 @@ class FeatureFlagVariationArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class FlagTriggerInstructionsArgsDict(TypedDict):
-        kind: pulumi.Input[_builtins.str]
-        """
-        The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
-        """
-elif False:
-    FlagTriggerInstructionsArgsDict: TypeAlias = Mapping[str, Any]
+class FlagTriggerInstructionsArgsDict(TypedDict):
+    kind: pulumi.Input[_builtins.str]
+    """
+    The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
+    """
 
 @pulumi.input_type
 class FlagTriggerInstructionsArgs:
@@ -1559,26 +1506,23 @@ class FlagTriggerInstructionsArgs:
         pulumi.set(self, "kind", value)
 
 
-if not MYPY:
-    class MetricUrlArgsDict(TypedDict):
-        kind: pulumi.Input[_builtins.str]
-        """
-        The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
-        """
-        pattern: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Required for kind `regex`) The regex pattern to match by.
-        """
-        substring: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Required for kind `substring`) The URL substring to match by.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Required for kind `exact` and `canonical`) The exact or canonical URL.
-        """
-elif False:
-    MetricUrlArgsDict: TypeAlias = Mapping[str, Any]
+class MetricUrlArgsDict(TypedDict):
+    kind: pulumi.Input[_builtins.str]
+    """
+    The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+    """
+    pattern: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Required for kind `regex`) The regex pattern to match by.
+    """
+    substring: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Required for kind `substring`) The URL substring to match by.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Required for kind `exact` and `canonical`) The exact or canonical URL.
+    """
 
 @pulumi.input_type
 class MetricUrlArgs:
@@ -1650,12 +1594,9 @@ class MetricUrlArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ProjectDefaultClientSideAvailabilityArgsDict(TypedDict):
-        using_environment_id: pulumi.Input[_builtins.bool]
-        using_mobile_key: pulumi.Input[_builtins.bool]
-elif False:
-    ProjectDefaultClientSideAvailabilityArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectDefaultClientSideAvailabilityArgsDict(TypedDict):
+    using_environment_id: pulumi.Input[_builtins.bool]
+    using_mobile_key: pulumi.Input[_builtins.bool]
 
 @pulumi.input_type
 class ProjectDefaultClientSideAvailabilityArgs:
@@ -1684,63 +1625,60 @@ class ProjectDefaultClientSideAvailabilityArgs:
         pulumi.set(self, "using_mobile_key", value)
 
 
-if not MYPY:
-    class ProjectEnvironmentArgsDict(TypedDict):
-        color: pulumi.Input[_builtins.str]
-        """
-        The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the environment.
-        """
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The environment's SDK key.
-        """
-        approval_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgsDict']]]]
-        client_side_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The environment's client-side ID.
-        """
-        confirm_changes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        """
-        critical: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Denotes whether the environment is critical.
-        """
-        default_track_events: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        """
-        default_ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        """
-        mobile_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The environment's mobile key.
-        """
-        require_comments: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        """
-        secure_mode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Tags associated with your resource.
-        """
-elif False:
-    ProjectEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+class ProjectEnvironmentArgsDict(TypedDict):
+    color: pulumi.Input[_builtins.str]
+    """
+    The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the environment.
+    """
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The environment's SDK key.
+    """
+    approval_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgsDict']]]]
+    client_side_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The environment's client-side ID.
+    """
+    confirm_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+    """
+    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Denotes whether the environment is critical.
+    """
+    default_track_events: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+    """
+    default_ttl: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+    """
+    mobile_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The environment's mobile key.
+    """
+    require_comments: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+    """
+    secure_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Tags associated with your resource.
+    """
 
 @pulumi.input_type
 class ProjectEnvironmentArgs:
@@ -1966,45 +1904,42 @@ class ProjectEnvironmentArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class ProjectEnvironmentApprovalSettingArgsDict(TypedDict):
-        auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-        """
-        can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-        """
-        can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-        """
-        min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-        """
-        required: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
-        """
-        required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
-        """
-        service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
+class ProjectEnvironmentApprovalSettingArgsDict(TypedDict):
+    auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+    """
+    can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+    """
+    can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+    """
+    min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+    """
+    required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+    """
+    service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-        """
-        service_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-        """
-elif False:
-    ProjectEnvironmentApprovalSettingArgsDict: TypeAlias = Mapping[str, Any]
+    	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+    	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+    """
+    service_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+    """
 
 @pulumi.input_type
 class ProjectEnvironmentApprovalSettingArgs:
@@ -2147,31 +2082,28 @@ class ProjectEnvironmentApprovalSettingArgs:
         pulumi.set(self, "service_kind", value)
 
 
-if not MYPY:
-    class RelayProxyConfigurationPolicyArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    RelayProxyConfigurationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class RelayProxyConfigurationPolicyArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class RelayProxyConfigurationPolicyArgs:
@@ -2261,18 +2193,15 @@ class RelayProxyConfigurationPolicyArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class SegmentExcludedContextArgsDict(TypedDict):
-        context_kind: pulumi.Input[_builtins.str]
-        """
-        The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of target object keys included in or excluded from the segment.
-        """
-elif False:
-    SegmentExcludedContextArgsDict: TypeAlias = Mapping[str, Any]
+class SegmentExcludedContextArgsDict(TypedDict):
+    context_kind: pulumi.Input[_builtins.str]
+    """
+    The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of target object keys included in or excluded from the segment.
+    """
 
 @pulumi.input_type
 class SegmentExcludedContextArgs:
@@ -2311,18 +2240,15 @@ class SegmentExcludedContextArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class SegmentIncludedContextArgsDict(TypedDict):
-        context_kind: pulumi.Input[_builtins.str]
-        """
-        The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List of target object keys included in or excluded from the segment.
-        """
-elif False:
-    SegmentIncludedContextArgsDict: TypeAlias = Mapping[str, Any]
+class SegmentIncludedContextArgsDict(TypedDict):
+    context_kind: pulumi.Input[_builtins.str]
+    """
+    The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of target object keys included in or excluded from the segment.
+    """
 
 @pulumi.input_type
 class SegmentIncludedContextArgs:
@@ -2361,26 +2287,23 @@ class SegmentIncludedContextArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class SegmentRuleArgsDict(TypedDict):
-        bucket_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute by which to group contexts together.
-        """
-        clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgsDict']]]]
-        """
-        List of nested blocks specifying the logical clauses to evaluate
-        """
-        rollout_context_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The integer weight of the rule (between 1 and 100000).
-        """
-elif False:
-    SegmentRuleArgsDict: TypeAlias = Mapping[str, Any]
+class SegmentRuleArgsDict(TypedDict):
+    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attribute by which to group contexts together.
+    """
+    clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgsDict']]]]
+    """
+    List of nested blocks specifying the logical clauses to evaluate
+    """
+    rollout_context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
+    """
+    weight: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The integer weight of the rule (between 1 and 100000).
+    """
 
 @pulumi.input_type
 class SegmentRuleArgs:
@@ -2453,34 +2376,31 @@ class SegmentRuleArgs:
         pulumi.set(self, "weight", value)
 
 
-if not MYPY:
-    class SegmentRuleClauseArgsDict(TypedDict):
-        attribute: pulumi.Input[_builtins.str]
-        """
-        The user attribute to operate on
-        """
-        op: pulumi.Input[_builtins.str]
-        """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of values associated with the rule clause.
-        """
-        context_kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The context kind associated with this rule clause. If omitted, defaults to `user`.
-        """
-        negate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to negate the rule clause.
-        """
-        value_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
-        """
-elif False:
-    SegmentRuleClauseArgsDict: TypeAlias = Mapping[str, Any]
+class SegmentRuleClauseArgsDict(TypedDict):
+    attribute: pulumi.Input[_builtins.str]
+    """
+    The user attribute to operate on
+    """
+    op: pulumi.Input[_builtins.str]
+    """
+    The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of values associated with the rule clause.
+    """
+    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The context kind associated with this rule clause. If omitted, defaults to `user`.
+    """
+    negate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to negate the rule clause.
+    """
+    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+    """
 
 @pulumi.input_type
 class SegmentRuleClauseArgs:
@@ -2582,18 +2502,15 @@ class SegmentRuleClauseArgs:
         pulumi.set(self, "value_type", value)
 
 
-if not MYPY:
-    class TeamMemberRoleAttributeArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-elif False:
-    TeamMemberRoleAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class TeamMemberRoleAttributeArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
+    """
 
 @pulumi.input_type
 class TeamMemberRoleAttributeArgs:
@@ -2632,18 +2549,15 @@ class TeamMemberRoleAttributeArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class TeamRoleAttributeArgsDict(TypedDict):
-        key: pulumi.Input[_builtins.str]
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-elif False:
-    TeamRoleAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class TeamRoleAttributeArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
+    """
 
 @pulumi.input_type
 class TeamRoleAttributeArgs:
@@ -2682,31 +2596,28 @@ class TeamRoleAttributeArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class WebhookStatementArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        """
-        actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-elif False:
-    WebhookStatementArgsDict: TypeAlias = Mapping[str, Any]
+class WebhookStatementArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+    """
+    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement applies.
+    Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+    """
+    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of action specifiers defining the actions to which the statement does not apply.
+    """
+    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement does not apply.
+    """
+    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of resource specifiers defining the resources to which the statement applies.
+    """
 
 @pulumi.input_type
 class WebhookStatementArgs:
@@ -2796,18 +2707,15 @@ class WebhookStatementArgs:
         pulumi.set(self, "resources", value)
 
 
-if not MYPY:
-    class GetTeamMemberRoleAttributeArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-elif False:
-    GetTeamMemberRoleAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class GetTeamMemberRoleAttributeArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
+    """
 
 @pulumi.input_type
 class GetTeamMemberRoleAttributeArgs:
@@ -2846,18 +2754,15 @@ class GetTeamMemberRoleAttributeArgs:
         pulumi.set(self, "values", value)
 
 
-if not MYPY:
-    class GetTeamRoleAttributeArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-elif False:
-    GetTeamRoleAttributeArgsDict: TypeAlias = Mapping[str, Any]
+class GetTeamRoleAttributeArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
+    """
 
 @pulumi.input_type
 class GetTeamRoleAttributeArgs:

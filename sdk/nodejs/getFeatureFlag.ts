@@ -42,6 +42,9 @@ export interface GetFeatureFlagArgs {
      * The unique feature flag key that references the flag in your application code.
      */
     key: string;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     maintainerId?: string;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
@@ -88,6 +91,9 @@ export interface GetFeatureFlagResult {
      * The unique feature flag key that references the flag in your application code.
      */
     readonly key: string;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     readonly maintainerId: string;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
@@ -153,6 +159,9 @@ export interface GetFeatureFlagOutputArgs {
      * The unique feature flag key that references the flag in your application code.
      */
     key: pulumi.Input<string>;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     maintainerId?: pulumi.Input<string>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
