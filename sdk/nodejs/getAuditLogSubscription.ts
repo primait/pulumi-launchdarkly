@@ -50,6 +50,9 @@ export interface GetAuditLogSubscriptionArgs {
  * A collection of values returned by getAuditLogSubscription.
  */
 export interface GetAuditLogSubscriptionResult {
+    /**
+     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+     */
     readonly config: {[key: string]: string};
     /**
      * The audit log subscription ID.

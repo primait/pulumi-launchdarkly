@@ -120,6 +120,12 @@ namespace Pulumi.Launchdarkly
         [Input("flagKey", required: true)]
         public string FlagKey { get; set; } = null!;
 
+        /// <summary>
+        /// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+        /// `
+        /// https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        /// `
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
@@ -146,6 +152,12 @@ namespace Pulumi.Launchdarkly
         [Input("flagKey", required: true)]
         public Input<string> FlagKey { get; set; } = null!;
 
+        /// <summary>
+        /// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+        /// `
+        /// https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        /// `
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
@@ -171,6 +183,12 @@ namespace Pulumi.Launchdarkly
         /// The unique key of the associated flag.
         /// </summary>
         public readonly string FlagKey;
+        /// <summary>
+        /// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+        /// `
+        /// https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        /// `
+        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetFlagTriggerInstructionResult> Instructions;
         public readonly string IntegrationKey;

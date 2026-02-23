@@ -53,6 +53,9 @@ class GetAuditLogSubscriptionResult:
     @_builtins.property
     @pulumi.getter
     def config(self) -> Mapping[str, _builtins.str]:
+        """
+        The set of configuration fields corresponding to the value defined for `integration_key`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        """
         return pulumi.get(self, "config")
 
     @_builtins.property

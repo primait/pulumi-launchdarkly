@@ -21,6 +21,11 @@ namespace Pulumi.Launchdarkly.Outputs
         /// The name of the variation.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The variation value. The value's type must correspond to the `VariationType` argument. For example: `VariationType = "boolean"` accepts only `True` or `False`. The `Number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+        /// 
+        /// If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

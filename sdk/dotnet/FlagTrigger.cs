@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly flag trigger resource.
+    /// 
+    /// &gt; **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
+    /// This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
+    /// 
+    /// &gt; **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -46,7 +54,9 @@ namespace Pulumi.Launchdarkly
     /// 
     /// The unique trigger ID can be found in your saved trigger URL:
     /// 
+    /// ```sh
     /// https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+    /// ```
     /// 
     /// Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
     /// </summary>
@@ -83,6 +93,9 @@ namespace Pulumi.Launchdarkly
         [Output("integrationKey")]
         public Output<string> IntegrationKey { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
 
@@ -223,6 +236,9 @@ namespace Pulumi.Launchdarkly
         [Input("integrationKey")]
         public Input<string>? IntegrationKey { get; set; }
 
+        /// <summary>
+        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 

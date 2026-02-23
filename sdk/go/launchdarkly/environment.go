@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a LaunchDarkly environment resource.
+//
+// This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `Project` resource to manage your environments.
+//
+// > **Note:** Mixing the use of nested `environments` blocks in the [`Project`] resource and `Environment` resources is not recommended.
+//
 // ## Example Usage
 //
 // ```go

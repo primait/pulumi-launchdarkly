@@ -168,6 +168,9 @@ class GetMetricResult:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
+        """
+        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        """
         return pulumi.get(self, "maintainer_id")
 
     @_builtins.property

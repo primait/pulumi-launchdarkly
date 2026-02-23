@@ -142,6 +142,9 @@ class GetFeatureFlagResult:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
+        """
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @_builtins.property
@@ -247,6 +250,7 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
 
 
     :param _builtins.str key: The unique feature flag key that references the flag in your application code.
+    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
     :param _builtins.str maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
     :param _builtins.str project_key: The feature flag's project key.
     """
@@ -297,6 +301,7 @@ def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
 
 
     :param _builtins.str key: The unique feature flag key that references the flag in your application code.
+    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
     :param _builtins.str maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
     :param _builtins.str project_key: The feature flag's project key.
     """

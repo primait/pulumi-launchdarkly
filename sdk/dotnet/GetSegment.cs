@@ -205,6 +205,9 @@ namespace Pulumi.Launchdarkly
         /// Tags associated with your resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+        /// </summary>
         public readonly bool Unbounded;
         /// <summary>
         /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`.

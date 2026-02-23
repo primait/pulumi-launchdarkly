@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+    /// 
+    /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
+    /// This resource allows you to create and manage Relay Proxy configurations within your LaunchDarkly organization.
+    /// 
+    /// &gt; **Note:** This resource will store the full plaintext secret for your Relay Proxy configuration's unique key in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -53,7 +61,9 @@ namespace Pulumi.Launchdarkly
     /// 
     /// The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting 'Edit configuration':
     /// 
+    /// ```sh
     /// https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+    /// ```
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration")]
     public partial class RelayProxyConfiguration : global::Pulumi.CustomResource

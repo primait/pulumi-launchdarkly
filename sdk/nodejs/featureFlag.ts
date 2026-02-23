@@ -8,6 +8,12 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a LaunchDarkly feature flag resource.
+ *
+ * This resource allows you to create and manage feature flags within your LaunchDarkly organization.
+ *
+ * > **Note:** This resource is for global-level feature flag configuration. Unexpected behavior may result if your environment-level configurations are not also managed from Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -144,6 +150,9 @@ export class FeatureFlag extends pulumi.CustomResource {
      * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     declare public readonly maintainerId: pulumi.Output<string>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
@@ -265,6 +274,9 @@ export interface FeatureFlagState {
      * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     maintainerId?: pulumi.Input<string>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
@@ -327,6 +339,9 @@ export interface FeatureFlagArgs {
      * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
+    /**
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     */
     maintainerId?: pulumi.Input<string>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
