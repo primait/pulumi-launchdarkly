@@ -60,7 +60,10 @@ type LookupFlagTriggerArgs struct {
 	// The unique key of the environment the flag trigger will work in.
 	EnvKey string `pulumi:"envKey"`
 	// The unique key of the associated flag.
-	FlagKey    string `pulumi:"flagKey"`
+	FlagKey string `pulumi:"flagKey"`
+	// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+	// `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+	// `
 	Id         string `pulumi:"id"`
 	ProjectKey string `pulumi:"projectKey"`
 }
@@ -71,7 +74,10 @@ type LookupFlagTriggerResult struct {
 	// The unique key of the environment the flag trigger will work in.
 	EnvKey string `pulumi:"envKey"`
 	// The unique key of the associated flag.
-	FlagKey        string                      `pulumi:"flagKey"`
+	FlagKey string `pulumi:"flagKey"`
+	// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+	// `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+	// `
 	Id             string                      `pulumi:"id"`
 	Instructions   []GetFlagTriggerInstruction `pulumi:"instructions"`
 	IntegrationKey string                      `pulumi:"integrationKey"`
@@ -94,7 +100,10 @@ type LookupFlagTriggerOutputArgs struct {
 	// The unique key of the environment the flag trigger will work in.
 	EnvKey pulumi.StringInput `pulumi:"envKey"`
 	// The unique key of the associated flag.
-	FlagKey    pulumi.StringInput `pulumi:"flagKey"`
+	FlagKey pulumi.StringInput `pulumi:"flagKey"`
+	// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+	// `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+	// `
 	Id         pulumi.StringInput `pulumi:"id"`
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 }
@@ -132,6 +141,9 @@ func (o LookupFlagTriggerResultOutput) FlagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTriggerResult) string { return v.FlagKey }).(pulumi.StringOutput)
 }
 
+// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
+// `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+// `
 func (o LookupFlagTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }

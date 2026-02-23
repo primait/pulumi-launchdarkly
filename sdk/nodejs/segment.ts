@@ -177,7 +177,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * #LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
+ * LaunchDarkly segments can be imported using the segment's ID in the form `project_key/env_key/segment_key`
  *
  * ```sh
  * $ pulumi import launchdarkly:index/segment:Segment example example-project/example-environment/example-segment-key
@@ -259,6 +259,9 @@ export class Segment extends pulumi.CustomResource {
      * Tags associated with your resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     */
     declare public readonly unbounded: pulumi.Output<boolean | undefined>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -375,6 +378,9 @@ export interface SegmentState {
      * Tags associated with your resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     */
     unbounded?: pulumi.Input<boolean>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -430,6 +436,9 @@ export interface SegmentArgs {
      * Tags associated with your resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     */
     unbounded?: pulumi.Input<boolean>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.

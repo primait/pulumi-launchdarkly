@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly feature flag resource.
+    /// 
+    /// This resource allows you to create and manage feature flags within your LaunchDarkly organization.
+    /// 
+    /// &gt; **Note:** This resource is for global-level feature flag configuration. Unexpected behavior may result if your environment-level configurations are not also managed from Terraform.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -160,6 +166,9 @@ namespace Pulumi.Launchdarkly
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
 
@@ -302,6 +311,9 @@ namespace Pulumi.Launchdarkly
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
@@ -417,6 +429,9 @@ namespace Pulumi.Launchdarkly
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 

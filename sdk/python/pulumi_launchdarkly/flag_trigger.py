@@ -134,6 +134,7 @@ class _FlagTriggerState:
         :param pulumi.Input[_builtins.str] flag_key: The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input['FlagTriggerInstructionsArgs'] instructions: Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
         :param pulumi.Input[_builtins.str] integration_key: The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
         :param pulumi.Input[_builtins.str] project_key: The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] trigger_url: The unique URL used to invoke the trigger.
         """
@@ -217,6 +218,9 @@ class _FlagTriggerState:
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
@@ -262,6 +266,14 @@ class FlagTrigger(pulumi.CustomResource):
                  project_key: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a LaunchDarkly flag trigger resource.
+
+        > **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
+
+        > **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+
         ## Example Usage
 
         ```python
@@ -289,7 +301,9 @@ class FlagTrigger(pulumi.CustomResource):
 
         The unique trigger ID can be found in your saved trigger URL:
 
+        ```sh
         https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        ```
 
         Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
 
@@ -309,6 +323,14 @@ class FlagTrigger(pulumi.CustomResource):
                  args: FlagTriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a LaunchDarkly flag trigger resource.
+
+        > **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
+
+        > **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+
         ## Example Usage
 
         ```python
@@ -336,7 +358,9 @@ class FlagTrigger(pulumi.CustomResource):
 
         The unique trigger ID can be found in your saved trigger URL:
 
+        ```sh
         https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        ```
 
         Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
 
@@ -422,6 +446,7 @@ class FlagTrigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] flag_key: The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']] instructions: Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
         :param pulumi.Input[_builtins.str] integration_key: The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
         :param pulumi.Input[_builtins.str] project_key: The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] trigger_url: The unique URL used to invoke the trigger.
         """
@@ -482,6 +507,9 @@ class FlagTrigger(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        """
         return pulumi.get(self, "maintainer_id")
 
     @_builtins.property

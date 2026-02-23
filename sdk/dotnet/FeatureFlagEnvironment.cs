@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly environment-specific feature flag resource.
+    /// 
+    /// This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
+    /// 
+    /// &gt; **Note:** If you intend to attach a feature flag to any experiments, we do _not_ recommend configuring environment-specific flag settings using Terraform. Subsequent applies may overwrite the changes made by experiments and break your experiment. An alternate workaround is to use the lifecycle.ignore_changes Terraform meta-argument on the `Fallthrough` field to prevent potential overwrites.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

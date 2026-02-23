@@ -84,7 +84,8 @@ type Metric struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Kind         pulumi.StringOutput `pulumi:"kind"`
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The human-friendly name for the metric.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -166,7 +167,8 @@ type metricState struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Kind         *string `pulumi:"kind"`
+	Kind *string `pulumi:"kind"`
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The human-friendly name for the metric.
 	Name *string `pulumi:"name"`
@@ -210,7 +212,8 @@ type MetricState struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Kind         pulumi.StringPtrInput
+	Kind pulumi.StringPtrInput
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId pulumi.StringPtrInput
 	// The human-friendly name for the metric.
 	Name pulumi.StringPtrInput
@@ -258,7 +261,8 @@ type metricArgs struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Kind         string  `pulumi:"kind"`
+	Kind string `pulumi:"kind"`
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The human-friendly name for the metric.
 	Name *string `pulumi:"name"`
@@ -301,7 +305,8 @@ type MetricArgs struct {
 	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Kind         pulumi.StringInput
+	Kind pulumi.StringInput
+	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 	MaintainerId pulumi.StringPtrInput
 	// The human-friendly name for the metric.
 	Name pulumi.StringPtrInput
@@ -454,6 +459,7 @@ func (o MetricOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
 func (o MetricOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringOutput { return v.MaintainerId }).(pulumi.StringOutput)
 }

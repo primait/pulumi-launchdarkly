@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
+    /// Provides a LaunchDarkly access token resource.
+    /// 
+    /// This resource allows you to create and manage access tokens within your LaunchDarkly organization.
+    /// 
+    /// &gt; **Note:** This resource will store the full plaintext secret for your access token in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+    /// 
+    /// The resource must contain either a "role", "CustomRole" or an "InlineRoles" (previously "PolicyStatements") block. As of v1.7.0, "PolicyStatements" has been deprecated in favor of "InlineRoles".
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

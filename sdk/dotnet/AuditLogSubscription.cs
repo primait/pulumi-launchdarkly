@@ -19,6 +19,9 @@ namespace Pulumi.Launchdarkly
     [LaunchdarklyResourceType("launchdarkly:index/auditLogSubscription:AuditLogSubscription")]
     public partial class AuditLogSubscription : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`. Refer to the `formVariables` field in the corresponding `integrations/&lt;integration_key&gt;/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
@@ -101,6 +104,10 @@ namespace Pulumi.Launchdarkly
     {
         [Input("config", required: true)]
         private InputMap<string>? _config;
+
+        /// <summary>
+        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`. Refer to the `formVariables` field in the corresponding `integrations/&lt;integration_key&gt;/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        /// </summary>
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -159,6 +166,10 @@ namespace Pulumi.Launchdarkly
     {
         [Input("config")]
         private InputMap<string>? _config;
+
+        /// <summary>
+        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`. Refer to the `formVariables` field in the corresponding `integrations/&lt;integration_key&gt;/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        /// </summary>
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());

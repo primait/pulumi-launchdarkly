@@ -8,6 +8,14 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+ *
+ * > **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ *
+ * This resource allows you to create and manage Relay Proxy configurations within your LaunchDarkly organization.
+ *
+ * > **Note:** This resource will store the full plaintext secret for your Relay Proxy configuration's unique key in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +42,9 @@ import * as utilities from "./utilities";
  *
  * The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting 'Edit configuration':
  *
+ * ```sh
  * https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+ * ```
  */
 export class RelayProxyConfiguration extends pulumi.CustomResource {
     /**
