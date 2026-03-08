@@ -29,6 +29,7 @@ class TeamMemberArgs:
                  role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a TeamMember resource.
+
         :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
@@ -132,6 +133,7 @@ class _TeamMemberState:
                  role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering TeamMember resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
@@ -266,6 +268,7 @@ class TeamMember(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/teamMember:TeamMember example 5f05565b48be0b441fb63020
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
@@ -308,6 +311,7 @@ class TeamMember(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/teamMember:TeamMember example 5f05565b48be0b441fb63020
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamMemberArgs args: The arguments to use to populate this resource's properties.

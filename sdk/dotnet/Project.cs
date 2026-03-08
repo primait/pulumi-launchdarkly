@@ -32,6 +32,8 @@ namespace Pulumi.Launchdarkly
     ///         {
     ///             "terraform",
     ///         },
+    ///         RequireViewAssociationForNewFlags = false,
+    ///         RequireViewAssociationForNewSegments = false,
     ///         Environments = new[]
     ///         {
     ///             new Launchdarkly.Inputs.ProjectEnvironmentArgs
@@ -140,6 +142,18 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Output("requireViewAssociationForNewFlags")]
+        public Output<bool?> RequireViewAssociationForNewFlags { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Output("requireViewAssociationForNewSegments")]
+        public Output<bool?> RequireViewAssociationForNewSegments { get; private set; } = null!;
+
+        /// <summary>
         /// Tags associated with your resource.
         /// </summary>
         [Output("tags")]
@@ -236,6 +250,18 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewFlags")]
+        public Input<bool>? RequireViewAssociationForNewFlags { get; set; }
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewSegments")]
+        public Input<bool>? RequireViewAssociationForNewSegments { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -299,6 +325,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewFlags")]
+        public Input<bool>? RequireViewAssociationForNewFlags { get; set; }
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewSegments")]
+        public Input<bool>? RequireViewAssociationForNewSegments { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

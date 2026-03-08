@@ -29,6 +29,7 @@ class FlagTriggerArgs:
                  project_key: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FlagTrigger resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the trigger is currently active or not.
         :param pulumi.Input[_builtins.str] env_key: The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] flag_key: The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -129,6 +130,7 @@ class _FlagTriggerState:
                  trigger_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlagTrigger resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the trigger is currently active or not.
         :param pulumi.Input[_builtins.str] env_key: The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] flag_key: The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -307,6 +309,7 @@ class FlagTrigger(pulumi.CustomResource):
 
         Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the trigger is currently active or not.
@@ -363,6 +366,7 @@ class FlagTrigger(pulumi.CustomResource):
         ```
 
         Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
+
 
         :param str resource_name: The name of the resource.
         :param FlagTriggerArgs args: The arguments to use to populate this resource's properties.

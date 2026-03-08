@@ -35,6 +35,7 @@
         "getTeam.ts",
         "getTeamMember.ts",
         "getTeamMembers.ts",
+        "getView.ts",
         "getWebhook.ts",
         "index.ts",
         "metric.ts",
@@ -52,6 +53,9 @@
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
+        "view.ts",
+        "viewFilterLinks.ts",
+        "viewLinks.ts",
         "webhook.ts"
     ]
 }

@@ -35,9 +35,11 @@ class FeatureFlagArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
+                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
+                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
+
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -52,6 +54,7 @@ class FeatureFlagArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
@@ -83,6 +86,8 @@ class FeatureFlagArgs:
             pulumi.set(__self__, "temporary", temporary)
         if variations is not None:
             pulumi.set(__self__, "variations", variations)
+        if view_keys is not None:
+            pulumi.set(__self__, "view_keys", view_keys)
 
     @_builtins.property
     @pulumi.getter
@@ -262,6 +267,18 @@ class FeatureFlagArgs:
     def variations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
         pulumi.set(self, "variations", value)
 
+    @_builtins.property
+    @pulumi.getter(name="viewKeys")
+    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        """
+        return pulumi.get(self, "view_keys")
+
+    @view_keys.setter
+    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "view_keys", value)
+
 
 @pulumi.input_type
 class _FeatureFlagState:
@@ -280,9 +297,11 @@ class _FeatureFlagState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: Optional[pulumi.Input[_builtins.bool]] = None,
                  variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
+                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
+                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlag resources.
+
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
@@ -297,6 +316,7 @@ class _FeatureFlagState:
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
@@ -331,6 +351,8 @@ class _FeatureFlagState:
             pulumi.set(__self__, "variation_type", variation_type)
         if variations is not None:
             pulumi.set(__self__, "variations", variations)
+        if view_keys is not None:
+            pulumi.set(__self__, "view_keys", view_keys)
 
     @_builtins.property
     @pulumi.getter
@@ -510,6 +532,18 @@ class _FeatureFlagState:
     def variations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
         pulumi.set(self, "variations", value)
 
+    @_builtins.property
+    @pulumi.getter(name="viewKeys")
+    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        """
+        return pulumi.get(self, "view_keys")
+
+    @view_keys.setter
+    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "view_keys", value)
+
 
 @pulumi.type_token("launchdarkly:index/featureFlag:FeatureFlag")
 class FeatureFlag(pulumi.CustomResource):
@@ -532,6 +566,7 @@ class FeatureFlag(pulumi.CustomResource):
                  temporary: Optional[pulumi.Input[_builtins.bool]] = None,
                  variation_type: Optional[pulumi.Input[_builtins.str]] = None,
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly feature flag resource.
@@ -610,6 +645,36 @@ class FeatureFlag(pulumi.CustomResource):
                 "on_variation": 1,
                 "off_variation": 0,
             })
+        # Example: Feature flag with view associations
+        # This approach is ideal for modular Terraform where each flag is managed in its own file
+        checkout_flow = launchdarkly.FeatureFlag("checkout_flow",
+            project_key="example-project",
+            key="checkout-flow-redesign",
+            name="Checkout Flow Redesign",
+            description="New checkout experience with improved UX",
+            variation_type="boolean",
+            view_keys=[
+                "payments-team",
+                "frontend-team",
+            ],
+            tags=[
+                "checkout",
+                "payments",
+                "frontend",
+            ])
+        # Example: Flag managed in a module that can specify its own views
+        # This enables a modular structure where each team/domain can manage their flags
+        # without needing to coordinate with a central view_links resource
+        mobile_app_feature = launchdarkly.FeatureFlag("mobile_app_feature",
+            project_key="example-project",
+            key="mobile-push-notifications",
+            name="Mobile Push Notifications",
+            variation_type="boolean",
+            view_keys=["mobile-team"],
+            tags=[
+                "mobile",
+                "notifications",
+            ])
         ```
 
         ## Import
@@ -619,6 +684,7 @@ class FeatureFlag(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/featureFlag:FeatureFlag building_materials example-project/building-materials
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -636,6 +702,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         ...
     @overload
@@ -720,6 +787,36 @@ class FeatureFlag(pulumi.CustomResource):
                 "on_variation": 1,
                 "off_variation": 0,
             })
+        # Example: Feature flag with view associations
+        # This approach is ideal for modular Terraform where each flag is managed in its own file
+        checkout_flow = launchdarkly.FeatureFlag("checkout_flow",
+            project_key="example-project",
+            key="checkout-flow-redesign",
+            name="Checkout Flow Redesign",
+            description="New checkout experience with improved UX",
+            variation_type="boolean",
+            view_keys=[
+                "payments-team",
+                "frontend-team",
+            ],
+            tags=[
+                "checkout",
+                "payments",
+                "frontend",
+            ])
+        # Example: Flag managed in a module that can specify its own views
+        # This enables a modular structure where each team/domain can manage their flags
+        # without needing to coordinate with a central view_links resource
+        mobile_app_feature = launchdarkly.FeatureFlag("mobile_app_feature",
+            project_key="example-project",
+            key="mobile-push-notifications",
+            name="Mobile Push Notifications",
+            variation_type="boolean",
+            view_keys=["mobile-team"],
+            tags=[
+                "mobile",
+                "notifications",
+            ])
         ```
 
         ## Import
@@ -729,6 +826,7 @@ class FeatureFlag(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/featureFlag:FeatureFlag building_materials example-project/building-materials
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagArgs args: The arguments to use to populate this resource's properties.
@@ -760,6 +858,7 @@ class FeatureFlag(pulumi.CustomResource):
                  temporary: Optional[pulumi.Input[_builtins.bool]] = None,
                  variation_type: Optional[pulumi.Input[_builtins.str]] = None,
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -790,6 +889,7 @@ class FeatureFlag(pulumi.CustomResource):
                 raise TypeError("Missing required property 'variation_type'")
             __props__.__dict__["variation_type"] = variation_type
             __props__.__dict__["variations"] = variations
+            __props__.__dict__["view_keys"] = view_keys
         super(FeatureFlag, __self__).__init__(
             'launchdarkly:index/featureFlag:FeatureFlag',
             resource_name,
@@ -814,7 +914,8 @@ class FeatureFlag(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             temporary: Optional[pulumi.Input[_builtins.bool]] = None,
             variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None) -> 'FeatureFlag':
+            variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+            view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FeatureFlag':
         """
         Get an existing FeatureFlag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -836,6 +937,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -856,6 +958,7 @@ class FeatureFlag(pulumi.CustomResource):
         __props__.__dict__["temporary"] = temporary
         __props__.__dict__["variation_type"] = variation_type
         __props__.__dict__["variations"] = variations
+        __props__.__dict__["view_keys"] = view_keys
         return FeatureFlag(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -975,4 +1078,12 @@ class FeatureFlag(pulumi.CustomResource):
         An array of possible variations for the flag
         """
         return pulumi.get(self, "variations")
+
+    @_builtins.property
+    @pulumi.getter(name="viewKeys")
+    def view_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        """
+        return pulumi.get(self, "view_keys")
 
