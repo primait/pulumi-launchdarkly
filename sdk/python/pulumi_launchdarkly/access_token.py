@@ -31,6 +31,7 @@ class AccessTokenArgs:
                  service_token: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccessToken resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: A list of custom role IDs to use as access limits for the access token.
         :param pulumi.Input[_builtins.int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
@@ -176,6 +177,7 @@ class _AccessTokenState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessToken resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: A list of custom role IDs to use as access limits for the access token.
         :param pulumi.Input[_builtins.int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
@@ -370,6 +372,7 @@ class AccessToken(pulumi.CustomResource):
             service_token=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: A list of custom role IDs to use as access limits for the access token.
@@ -419,6 +422,7 @@ class AccessToken(pulumi.CustomResource):
             }],
             service_token=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessTokenArgs args: The arguments to use to populate this resource's properties.

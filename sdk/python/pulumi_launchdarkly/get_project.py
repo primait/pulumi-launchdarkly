@@ -27,7 +27,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, client_side_availabilities=None, default_client_side_availabilities=None, id=None, key=None, name=None, tags=None):
+    def __init__(__self__, client_side_availabilities=None, default_client_side_availabilities=None, id=None, key=None, name=None, require_view_association_for_new_flags=None, require_view_association_for_new_segments=None, tags=None):
         if client_side_availabilities and not isinstance(client_side_availabilities, list):
             raise TypeError("Expected argument 'client_side_availabilities' to be a list")
         pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
@@ -43,6 +43,12 @@ class GetProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if require_view_association_for_new_flags and not isinstance(require_view_association_for_new_flags, bool):
+            raise TypeError("Expected argument 'require_view_association_for_new_flags' to be a bool")
+        pulumi.set(__self__, "require_view_association_for_new_flags", require_view_association_for_new_flags)
+        if require_view_association_for_new_segments and not isinstance(require_view_association_for_new_segments, bool):
+            raise TypeError("Expected argument 'require_view_association_for_new_segments' to be a bool")
+        pulumi.set(__self__, "require_view_association_for_new_segments", require_view_association_for_new_segments)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -89,6 +95,22 @@ class GetProjectResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewFlags")
+    def require_view_association_for_new_flags(self) -> _builtins.bool:
+        """
+        Whether new flags created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_flags")
+
+    @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewSegments")
+    def require_view_association_for_new_segments(self) -> _builtins.bool:
+        """
+        Whether new segments created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_segments")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
@@ -108,6 +130,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             id=self.id,
             key=self.key,
             name=self.name,
+            require_view_association_for_new_flags=self.require_view_association_for_new_flags,
+            require_view_association_for_new_segments=self.require_view_association_for_new_segments,
             tags=self.tags)
 
 
@@ -143,6 +167,8 @@ def get_project(key: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         name=pulumi.get(__ret__, 'name'),
+        require_view_association_for_new_flags=pulumi.get(__ret__, 'require_view_association_for_new_flags'),
+        require_view_association_for_new_segments=pulumi.get(__ret__, 'require_view_association_for_new_segments'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_project_output(key: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
@@ -175,4 +201,6 @@ def get_project_output(key: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         name=pulumi.get(__response__, 'name'),
+        require_view_association_for_new_flags=pulumi.get(__response__, 'require_view_association_for_new_flags'),
+        require_view_association_for_new_segments=pulumi.get(__response__, 'require_view_association_for_new_segments'),
         tags=pulumi.get(__response__, 'tags')))

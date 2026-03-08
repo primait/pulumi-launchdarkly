@@ -30,6 +30,7 @@ class TeamArgs:
                  role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a Team resource.
+
         :param pulumi.Input[_builtins.str] key: The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         :param pulumi.Input[_builtins.str] description: The team description.
@@ -149,6 +150,7 @@ class _TeamState:
                  role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Team resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         :param pulumi.Input[_builtins.str] description: The team description.
         :param pulumi.Input[_builtins.str] key: The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -307,6 +309,7 @@ class Team(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/team:Team platform_team platform_team
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
@@ -358,6 +361,7 @@ class Team(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/team:Team platform_team platform_team
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

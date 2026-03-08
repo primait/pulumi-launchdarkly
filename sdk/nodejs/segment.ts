@@ -173,6 +173,51 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
+ * // Example: Segment with view associations
+ * // This approach is ideal for modular Terraform where each segment is managed in its own file
+ * const premiumUsers = new launchdarkly.Segment("premium_users", {
+ *     key: "premium-users",
+ *     projectKey: "example-project",
+ *     envKey: "production",
+ *     name: "Premium Users",
+ *     description: "Users with premium subscriptions",
+ *     viewKeys: [
+ *         "sales-team",
+ *         "customer-success",
+ *     ],
+ *     tags: [
+ *         "premium",
+ *         "subscription",
+ *     ],
+ *     rules: [{
+ *         clauses: [{
+ *             attribute: "plan",
+ *             op: "in",
+ *             values: [
+ *                 "premium",
+ *                 "enterprise",
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * // Example: Segment managed in a module that can specify its own views
+ * // This enables a modular structure where each team/domain can manage their segments
+ * // without needing to coordinate with a central view_links resource
+ * const betaTesters = new launchdarkly.Segment("beta_testers", {
+ *     key: "beta-testers",
+ *     projectKey: "example-project",
+ *     envKey: "staging",
+ *     name: "Beta Testers",
+ *     viewKeys: ["product-team"],
+ *     tags: [
+ *         "beta",
+ *         "testing",
+ *     ],
+ *     includeds: [
+ *         "user123",
+ *         "user456",
+ *     ],
+ * });
  * ```
  *
  * ## Import
@@ -267,6 +312,10 @@ export class Segment extends pulumi.CustomResource {
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly unboundedContextKind: pulumi.Output<string>;
+    /**
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     */
+    declare public readonly viewKeys: pulumi.Output<string[]>;
 
     /**
      * Create a Segment resource with the given unique name, arguments, and options.
@@ -295,6 +344,7 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["tags"] = state?.tags;
             resourceInputs["unbounded"] = state?.unbounded;
             resourceInputs["unboundedContextKind"] = state?.unboundedContextKind;
+            resourceInputs["viewKeys"] = state?.viewKeys;
         } else {
             const args = argsOrState as SegmentArgs | undefined;
             if (args?.envKey === undefined && !opts.urn) {
@@ -319,6 +369,7 @@ export class Segment extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["unbounded"] = args?.unbounded;
             resourceInputs["unboundedContextKind"] = args?.unboundedContextKind;
+            resourceInputs["viewKeys"] = args?.viewKeys;
             resourceInputs["creationDate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -386,6 +437,10 @@ export interface SegmentState {
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     unboundedContextKind?: pulumi.Input<string>;
+    /**
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     */
+    viewKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -444,4 +499,8 @@ export interface SegmentArgs {
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     unboundedContextKind?: pulumi.Input<string>;
+    /**
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     */
+    viewKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

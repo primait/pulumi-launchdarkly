@@ -71,6 +71,8 @@ __all__ = [
     'TeamMemberRoleAttributeArgsDict',
     'TeamRoleAttributeArgs',
     'TeamRoleAttributeArgsDict',
+    'ViewLinksSegmentArgs',
+    'ViewLinksSegmentArgsDict',
     'WebhookStatementArgs',
     'WebhookStatementArgsDict',
     'GetTeamMemberRoleAttributeArgs',
@@ -2594,6 +2596,53 @@ class TeamRoleAttributeArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "values", value)
+
+
+class ViewLinksSegmentArgsDict(TypedDict):
+    environment_id: pulumi.Input[_builtins.str]
+    """
+    The environment ID of the segment.
+    """
+    segment_key: pulumi.Input[_builtins.str]
+    """
+    The key of the segment.
+    """
+
+@pulumi.input_type
+class ViewLinksSegmentArgs:
+    def __init__(__self__, *,
+                 environment_id: pulumi.Input[_builtins.str],
+                 segment_key: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] environment_id: The environment ID of the segment.
+        :param pulumi.Input[_builtins.str] segment_key: The key of the segment.
+        """
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "segment_key", segment_key)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The environment ID of the segment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "environment_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="segmentKey")
+    def segment_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The key of the segment.
+        """
+        return pulumi.get(self, "segment_key")
+
+    @segment_key.setter
+    def segment_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "segment_key", value)
 
 
 class WebhookStatementArgsDict(TypedDict):

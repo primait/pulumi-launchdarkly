@@ -741,6 +741,17 @@ export interface GetTeamRoleAttribute {
     values: string[];
 }
 
+export interface GetViewLinkedSegment {
+    /**
+     * The environment ID of the segment.
+     */
+    environmentId: string;
+    /**
+     * The key of the segment.
+     */
+    segmentKey: string;
+}
+
 export interface GetWebhookStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
@@ -995,6 +1006,17 @@ export interface TeamRoleAttribute {
      * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
      */
     values: string[];
+}
+
+export interface ViewLinksSegment {
+    /**
+     * The environment ID of the segment.
+     */
+    environmentId: string;
+    /**
+     * The key of the segment.
+     */
+    segmentKey: string;
 }
 
 export interface WebhookStatement {

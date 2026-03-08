@@ -213,6 +213,14 @@ namespace Pulumi.Launchdarkly
         /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`.
         /// </summary>
         public readonly string UnboundedContextKind;
+        /// <summary>
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public readonly ImmutableArray<string> ViewKeys;
+        /// <summary>
+        /// A list of view keys that this segment is linked to.
+        /// </summary>
+        public readonly ImmutableArray<string> Views;
 
         [OutputConstructor]
         private GetSegmentResult(
@@ -244,7 +252,11 @@ namespace Pulumi.Launchdarkly
 
             bool unbounded,
 
-            string unboundedContextKind)
+            string unboundedContextKind,
+
+            ImmutableArray<string> viewKeys,
+
+            ImmutableArray<string> views)
         {
             CreationDate = creationDate;
             Description = description;
@@ -261,6 +273,8 @@ namespace Pulumi.Launchdarkly
             Tags = tags;
             Unbounded = unbounded;
             UnboundedContextKind = unboundedContextKind;
+            ViewKeys = viewKeys;
+            Views = views;
         }
     }
 }

@@ -113,6 +113,48 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
+    ///     // Example: Feature flag with view associations
+    ///     // This approach is ideal for modular Terraform where each flag is managed in its own file
+    ///     var checkoutFlow = new Launchdarkly.FeatureFlag("checkout_flow", new()
+    ///     {
+    ///         ProjectKey = "example-project",
+    ///         Key = "checkout-flow-redesign",
+    ///         Name = "Checkout Flow Redesign",
+    ///         Description = "New checkout experience with improved UX",
+    ///         VariationType = "boolean",
+    ///         ViewKeys = new[]
+    ///         {
+    ///             "payments-team",
+    ///             "frontend-team",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "checkout",
+    ///             "payments",
+    ///             "frontend",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example: Flag managed in a module that can specify its own views
+    ///     // This enables a modular structure where each team/domain can manage their flags
+    ///     // without needing to coordinate with a central view_links resource
+    ///     var mobileAppFeature = new Launchdarkly.FeatureFlag("mobile_app_feature", new()
+    ///     {
+    ///         ProjectKey = "example-project",
+    ///         Key = "mobile-push-notifications",
+    ///         Name = "Mobile Push Notifications",
+    ///         VariationType = "boolean",
+    ///         ViewKeys = new[]
+    ///         {
+    ///             "mobile-team",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "mobile",
+    ///             "notifications",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -213,6 +255,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("variations")]
         public Output<ImmutableArray<Outputs.FeatureFlagVariation>> Variations { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        [Output("viewKeys")]
+        public Output<ImmutableArray<string>> ViewKeys { get; private set; } = null!;
 
 
         /// <summary>
@@ -371,6 +419,18 @@ namespace Pulumi.Launchdarkly
             set => _variations = value;
         }
 
+        [Input("viewKeys")]
+        private InputList<string>? _viewKeys;
+
+        /// <summary>
+        /// A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public InputList<string> ViewKeys
+        {
+            get => _viewKeys ?? (_viewKeys = new InputList<string>());
+            set => _viewKeys = value;
+        }
+
         public FeatureFlagArgs()
         {
         }
@@ -487,6 +547,18 @@ namespace Pulumi.Launchdarkly
         {
             get => _variations ?? (_variations = new InputList<Inputs.FeatureFlagVariationGetArgs>());
             set => _variations = value;
+        }
+
+        [Input("viewKeys")]
+        private InputList<string>? _viewKeys;
+
+        /// <summary>
+        /// A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public InputList<string> ViewKeys
+        {
+            get => _viewKeys ?? (_viewKeys = new InputList<string>());
+            set => _viewKeys = value;
         }
 
         public FeatureFlagState()

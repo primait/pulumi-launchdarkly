@@ -105,6 +105,11 @@ export const getTeamMembers: typeof import("./getTeamMembers").getTeamMembers = 
 export const getTeamMembersOutput: typeof import("./getTeamMembers").getTeamMembersOutput = null as any;
 utilities.lazyLoad(exports, ["getTeamMembers","getTeamMembersOutput"], () => require("./getTeamMembers"));
 
+export { GetViewArgs, GetViewResult, GetViewOutputArgs } from "./getView";
+export const getView: typeof import("./getView").getView = null as any;
+export const getViewOutput: typeof import("./getView").getViewOutput = null as any;
+utilities.lazyLoad(exports, ["getView","getViewOutput"], () => require("./getView"));
+
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
@@ -147,6 +152,21 @@ export { TeamRoleMappingArgs, TeamRoleMappingState } from "./teamRoleMapping";
 export type TeamRoleMapping = import("./teamRoleMapping").TeamRoleMapping;
 export const TeamRoleMapping: typeof import("./teamRoleMapping").TeamRoleMapping = null as any;
 utilities.lazyLoad(exports, ["TeamRoleMapping"], () => require("./teamRoleMapping"));
+
+export { ViewArgs, ViewState } from "./view";
+export type View = import("./view").View;
+export const View: typeof import("./view").View = null as any;
+utilities.lazyLoad(exports, ["View"], () => require("./view"));
+
+export { ViewFilterLinksArgs, ViewFilterLinksState } from "./viewFilterLinks";
+export type ViewFilterLinks = import("./viewFilterLinks").ViewFilterLinks;
+export const ViewFilterLinks: typeof import("./viewFilterLinks").ViewFilterLinks = null as any;
+utilities.lazyLoad(exports, ["ViewFilterLinks"], () => require("./viewFilterLinks"));
+
+export { ViewLinksArgs, ViewLinksState } from "./viewLinks";
+export type ViewLinks = import("./viewLinks").ViewLinks;
+export const ViewLinks: typeof import("./viewLinks").ViewLinks = null as any;
+utilities.lazyLoad(exports, ["ViewLinks"], () => require("./viewLinks"));
 
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
@@ -199,6 +219,12 @@ const _module = {
                 return new TeamMember(name, <any>undefined, { urn })
             case "launchdarkly:index/teamRoleMapping:TeamRoleMapping":
                 return new TeamRoleMapping(name, <any>undefined, { urn })
+            case "launchdarkly:index/view:View":
+                return new View(name, <any>undefined, { urn })
+            case "launchdarkly:index/viewFilterLinks:ViewFilterLinks":
+                return new ViewFilterLinks(name, <any>undefined, { urn })
+            case "launchdarkly:index/viewLinks:ViewLinks":
+                return new ViewLinks(name, <any>undefined, { urn })
             case "launchdarkly:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -221,6 +247,9 @@ pulumi.runtime.registerResourceModule("launchdarkly", "index/segment", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/team", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/teamMember", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/teamRoleMapping", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/view", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/viewFilterLinks", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/viewLinks", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("launchdarkly", {
     version: utilities.getVersion(),
