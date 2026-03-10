@@ -51,6 +51,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamMember{}
 	case "launchdarkly:index/teamRoleMapping:TeamRoleMapping":
 		r = &TeamRoleMapping{}
+	case "launchdarkly:index/view:View":
+		r = &View{}
+	case "launchdarkly:index/viewFilterLinks:ViewFilterLinks":
+		r = &ViewFilterLinks{}
+	case "launchdarkly:index/viewLinks:ViewLinks":
+		r = &ViewLinks{}
 	case "launchdarkly:index/webhook:Webhook":
 		r = &Webhook{}
 	default:
@@ -157,6 +163,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/teamRoleMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/view",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/viewFilterLinks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/viewLinks",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

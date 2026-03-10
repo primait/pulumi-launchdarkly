@@ -28,6 +28,7 @@ class DestinationArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Destination resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
         :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -144,6 +145,7 @@ class _DestinationState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Destination resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
         :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -365,6 +367,7 @@ class Destination(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/destination:Destination example example-project/example-env/57c0af609969090743529967
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
@@ -479,6 +482,7 @@ class Destination(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/destination:Destination example example-project/example-env/57c0af609969090743529967
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DestinationArgs args: The arguments to use to populate this resource's properties.

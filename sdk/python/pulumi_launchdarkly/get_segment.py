@@ -27,7 +27,7 @@ class GetSegmentResult:
     """
     A collection of values returned by getSegment.
     """
-    def __init__(__self__, creation_date=None, description=None, env_key=None, excluded_contexts=None, excludeds=None, id=None, included_contexts=None, includeds=None, key=None, name=None, project_key=None, rules=None, tags=None, unbounded=None, unbounded_context_kind=None):
+    def __init__(__self__, creation_date=None, description=None, env_key=None, excluded_contexts=None, excludeds=None, id=None, included_contexts=None, includeds=None, key=None, name=None, project_key=None, rules=None, tags=None, unbounded=None, unbounded_context_kind=None, view_keys=None, views=None):
         if creation_date and not isinstance(creation_date, int):
             raise TypeError("Expected argument 'creation_date' to be a int")
         pulumi.set(__self__, "creation_date", creation_date)
@@ -73,6 +73,12 @@ class GetSegmentResult:
         if unbounded_context_kind and not isinstance(unbounded_context_kind, str):
             raise TypeError("Expected argument 'unbounded_context_kind' to be a str")
         pulumi.set(__self__, "unbounded_context_kind", unbounded_context_kind)
+        if view_keys and not isinstance(view_keys, list):
+            raise TypeError("Expected argument 'view_keys' to be a list")
+        pulumi.set(__self__, "view_keys", view_keys)
+        if views and not isinstance(views, list):
+            raise TypeError("Expected argument 'views' to be a list")
+        pulumi.set(__self__, "views", views)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
@@ -194,6 +200,22 @@ class GetSegmentResult:
         """
         return pulumi.get(self, "unbounded_context_kind")
 
+    @_builtins.property
+    @pulumi.getter(name="viewKeys")
+    def view_keys(self) -> Sequence[_builtins.str]:
+        """
+        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        """
+        return pulumi.get(self, "view_keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def views(self) -> Sequence[_builtins.str]:
+        """
+        A list of view keys that this segment is linked to.
+        """
+        return pulumi.get(self, "views")
+
 
 class AwaitableGetSegmentResult(GetSegmentResult):
     # pylint: disable=using-constant-test
@@ -215,7 +237,9 @@ class AwaitableGetSegmentResult(GetSegmentResult):
             rules=self.rules,
             tags=self.tags,
             unbounded=self.unbounded,
-            unbounded_context_kind=self.unbounded_context_kind)
+            unbounded_context_kind=self.unbounded_context_kind,
+            view_keys=self.view_keys,
+            views=self.views)
 
 
 def get_segment(env_key: Optional[_builtins.str] = None,
@@ -265,7 +289,9 @@ def get_segment(env_key: Optional[_builtins.str] = None,
         rules=pulumi.get(__ret__, 'rules'),
         tags=pulumi.get(__ret__, 'tags'),
         unbounded=pulumi.get(__ret__, 'unbounded'),
-        unbounded_context_kind=pulumi.get(__ret__, 'unbounded_context_kind'))
+        unbounded_context_kind=pulumi.get(__ret__, 'unbounded_context_kind'),
+        view_keys=pulumi.get(__ret__, 'view_keys'),
+        views=pulumi.get(__ret__, 'views'))
 def get_segment_output(env_key: Optional[pulumi.Input[_builtins.str]] = None,
                        key: Optional[pulumi.Input[_builtins.str]] = None,
                        project_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -312,4 +338,6 @@ def get_segment_output(env_key: Optional[pulumi.Input[_builtins.str]] = None,
         rules=pulumi.get(__response__, 'rules'),
         tags=pulumi.get(__response__, 'tags'),
         unbounded=pulumi.get(__response__, 'unbounded'),
-        unbounded_context_kind=pulumi.get(__response__, 'unbounded_context_kind')))
+        unbounded_context_kind=pulumi.get(__response__, 'unbounded_context_kind'),
+        view_keys=pulumi.get(__response__, 'view_keys'),
+        views=pulumi.get(__response__, 'views')))

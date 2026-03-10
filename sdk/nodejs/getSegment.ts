@@ -116,6 +116,14 @@ export interface GetSegmentResult {
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
      */
     readonly unboundedContextKind: string;
+    /**
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     */
+    readonly viewKeys: string[];
+    /**
+     * A list of view keys that this segment is linked to.
+     */
+    readonly views: string[];
 }
 /**
  * Provides a LaunchDarkly segment data source.

@@ -36,6 +36,8 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("terraform"),
 //				},
+//				RequireViewAssociationForNewFlags:    pulumi.Bool(false),
+//				RequireViewAssociationForNewSegments: pulumi.Bool(false),
 //				Environments: launchdarkly.ProjectEnvironmentArray{
 //					&launchdarkly.ProjectEnvironmentArgs{
 //						Key:   pulumi.String("production"),
@@ -129,6 +131,10 @@ type Project struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The project's name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags pulumi.BoolPtrOutput `pulumi:"requireViewAssociationForNewFlags"`
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments pulumi.BoolPtrOutput `pulumi:"requireViewAssociationForNewSegments"`
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
@@ -183,6 +189,10 @@ type projectState struct {
 	Key *string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags *bool `pulumi:"requireViewAssociationForNewFlags"`
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments *bool `pulumi:"requireViewAssociationForNewSegments"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -202,6 +212,10 @@ type ProjectState struct {
 	Key pulumi.StringPtrInput
 	// The project's name.
 	Name pulumi.StringPtrInput
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags pulumi.BoolPtrInput
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments pulumi.BoolPtrInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
 }
@@ -225,6 +239,10 @@ type projectArgs struct {
 	Key string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags *bool `pulumi:"requireViewAssociationForNewFlags"`
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments *bool `pulumi:"requireViewAssociationForNewSegments"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -245,6 +263,10 @@ type ProjectArgs struct {
 	Key pulumi.StringInput
 	// The project's name.
 	Name pulumi.StringPtrInput
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags pulumi.BoolPtrInput
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments pulumi.BoolPtrInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
 }
@@ -365,6 +387,16 @@ func (o ProjectOutput) Key() pulumi.StringOutput {
 // The project's name.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether new flags created in this project must be associated with at least one view.
+func (o ProjectOutput) RequireViewAssociationForNewFlags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.RequireViewAssociationForNewFlags }).(pulumi.BoolPtrOutput)
+}
+
+// Whether new segments created in this project must be associated with at least one view.
+func (o ProjectOutput) RequireViewAssociationForNewSegments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.RequireViewAssociationForNewSegments }).(pulumi.BoolPtrOutput)
 }
 
 // Tags associated with your resource.
