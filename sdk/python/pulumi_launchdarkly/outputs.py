@@ -44,6 +44,7 @@ __all__ = [
     'SegmentRuleClause',
     'TeamMemberRoleAttribute',
     'TeamRoleAttribute',
+    'ViewLinksSegment',
     'WebhookStatement',
     'GetAuditLogSubscriptionStatementResult',
     'GetEnvironmentApprovalSettingResult',
@@ -71,6 +72,7 @@ __all__ = [
     'GetTeamMembersTeamMemberResult',
     'GetTeamMembersTeamMemberRoleAttributeResult',
     'GetTeamRoleAttributeResult',
+    'GetViewLinkedSegmentResult',
     'GetWebhookStatementResult',
 ]
 
@@ -2025,6 +2027,54 @@ class TeamRoleAttribute(dict):
 
 
 @pulumi.output_type
+class ViewLinksSegment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentId":
+            suggest = "environment_id"
+        elif key == "segmentKey":
+            suggest = "segment_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ViewLinksSegment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ViewLinksSegment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ViewLinksSegment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_id: _builtins.str,
+                 segment_key: _builtins.str):
+        """
+        :param _builtins.str environment_id: The environment ID of the segment.
+        :param _builtins.str segment_key: The key of the segment.
+        """
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "segment_key", segment_key)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID of the segment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentKey")
+    def segment_key(self) -> _builtins.str:
+        """
+        The key of the segment.
+        """
+        return pulumi.get(self, "segment_key")
+
+
+@pulumi.output_type
 class WebhookStatement(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3308,6 +3358,35 @@ class GetTeamRoleAttributeResult(dict):
         A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetViewLinkedSegmentResult(dict):
+    def __init__(__self__, *,
+                 environment_id: _builtins.str,
+                 segment_key: _builtins.str):
+        """
+        :param _builtins.str environment_id: The environment ID of the segment.
+        :param _builtins.str segment_key: The key of the segment.
+        """
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "segment_key", segment_key)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID of the segment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentKey")
+    def segment_key(self) -> _builtins.str:
+        """
+        The key of the segment.
+        """
+        return pulumi.get(self, "segment_key")
 
 
 @pulumi.output_type

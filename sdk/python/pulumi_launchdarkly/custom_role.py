@@ -29,6 +29,7 @@ class CustomRoleArgs:
                  policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         The set of arguments for constructing a CustomRole resource.
+
         :param pulumi.Input[_builtins.str] key: A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] base_permissions: The base permission level - either `reader` or `no_access`. While newer API versions default to `no_access`, this field defaults to `reader` in keeping with previous API versions.
         :param pulumi.Input[_builtins.str] description: Description of the custom role.
@@ -132,6 +133,7 @@ class _CustomRoleState:
                  policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomRole resources.
+
         :param pulumi.Input[_builtins.str] base_permissions: The base permission level - either `reader` or `no_access`. While newer API versions default to `no_access`, this field defaults to `reader` in keeping with previous API versions.
         :param pulumi.Input[_builtins.str] description: Description of the custom role.
         :param pulumi.Input[_builtins.str] key: A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -275,6 +277,7 @@ class CustomRole(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/customRole:CustomRole example example-role-key-1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_permissions: The base permission level - either `reader` or `no_access`. While newer API versions default to `no_access`, this field defaults to `reader` in keeping with previous API versions.
@@ -325,6 +328,7 @@ class CustomRole(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/customRole:CustomRole example example-role-key-1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomRoleArgs args: The arguments to use to populate this resource's properties.

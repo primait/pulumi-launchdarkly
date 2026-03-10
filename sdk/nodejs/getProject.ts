@@ -69,6 +69,14 @@ export interface GetProjectResult {
      */
     readonly name: string;
     /**
+     * Whether new flags created in this project must be associated with at least one view.
+     */
+    readonly requireViewAssociationForNewFlags: boolean;
+    /**
+     * Whether new segments created in this project must be associated with at least one view.
+     */
+    readonly requireViewAssociationForNewSegments: boolean;
+    /**
      * Tags associated with your resource.
      */
     readonly tags: string[];

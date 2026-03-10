@@ -25,6 +25,7 @@ class RelayProxyConfigurationArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RelayProxyConfiguration resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]] policies: The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
         :param pulumi.Input[_builtins.str] name: The human-readable name for your Relay Proxy configuration.
         """
@@ -66,6 +67,7 @@ class _RelayProxyConfigurationState:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering RelayProxyConfiguration resources.
+
         :param pulumi.Input[_builtins.str] display_key: The last 4 characters of the Relay Proxy configuration's unique key.
         :param pulumi.Input[_builtins.str] full_key: The Relay Proxy configuration's unique key. Because the `full_key` is only exposed upon creation, it will not be available if the resource is imported.
         :param pulumi.Input[_builtins.str] name: The human-readable name for your Relay Proxy configuration.
@@ -176,6 +178,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
         https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The human-readable name for your Relay Proxy configuration.
@@ -224,6 +227,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
         ```sh
         https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RelayProxyConfigurationArgs args: The arguments to use to populate this resource's properties.

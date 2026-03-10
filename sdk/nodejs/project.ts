@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     key: "example-project",
  *     name: "Example project",
  *     tags: ["terraform"],
+ *     requireViewAssociationForNewFlags: false,
+ *     requireViewAssociationForNewSegments: false,
  *     environments: [
  *         {
  *             key: "production",
@@ -122,6 +124,14 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Whether new flags created in this project must be associated with at least one view.
+     */
+    declare public readonly requireViewAssociationForNewFlags: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether new segments created in this project must be associated with at least one view.
+     */
+    declare public readonly requireViewAssociationForNewSegments: pulumi.Output<boolean | undefined>;
+    /**
      * Tags associated with your resource.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
@@ -144,6 +154,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["includeInSnippet"] = state?.includeInSnippet;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
+            resourceInputs["requireViewAssociationForNewFlags"] = state?.requireViewAssociationForNewFlags;
+            resourceInputs["requireViewAssociationForNewSegments"] = state?.requireViewAssociationForNewSegments;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
@@ -158,6 +170,8 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["includeInSnippet"] = args?.includeInSnippet;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
+            resourceInputs["requireViewAssociationForNewFlags"] = args?.requireViewAssociationForNewFlags;
+            resourceInputs["requireViewAssociationForNewSegments"] = args?.requireViewAssociationForNewSegments;
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -194,6 +208,14 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Whether new flags created in this project must be associated with at least one view.
+     */
+    requireViewAssociationForNewFlags?: pulumi.Input<boolean>;
+    /**
+     * Whether new segments created in this project must be associated with at least one view.
+     */
+    requireViewAssociationForNewSegments?: pulumi.Input<boolean>;
+    /**
      * Tags associated with your resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -227,6 +249,14 @@ export interface ProjectArgs {
      * The project's name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether new flags created in this project must be associated with at least one view.
+     */
+    requireViewAssociationForNewFlags?: pulumi.Input<boolean>;
+    /**
+     * Whether new segments created in this project must be associated with at least one view.
+     */
+    requireViewAssociationForNewSegments?: pulumi.Input<boolean>;
     /**
      * Tags associated with your resource.
      */

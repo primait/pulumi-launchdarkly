@@ -260,6 +260,71 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
+    ///     // Example: Segment with view associations
+    ///     // This approach is ideal for modular Terraform where each segment is managed in its own file
+    ///     var premiumUsers = new Launchdarkly.Segment("premium_users", new()
+    ///     {
+    ///         Key = "premium-users",
+    ///         ProjectKey = "example-project",
+    ///         EnvKey = "production",
+    ///         Name = "Premium Users",
+    ///         Description = "Users with premium subscriptions",
+    ///         ViewKeys = new[]
+    ///         {
+    ///             "sales-team",
+    ///             "customer-success",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "premium",
+    ///             "subscription",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Launchdarkly.Inputs.SegmentRuleArgs
+    ///             {
+    ///                 Clauses = new[]
+    ///                 {
+    ///                     new Launchdarkly.Inputs.SegmentRuleClauseArgs
+    ///                     {
+    ///                         Attribute = "plan",
+    ///                         Op = "in",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "premium",
+    ///                             "enterprise",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example: Segment managed in a module that can specify its own views
+    ///     // This enables a modular structure where each team/domain can manage their segments
+    ///     // without needing to coordinate with a central view_links resource
+    ///     var betaTesters = new Launchdarkly.Segment("beta_testers", new()
+    ///     {
+    ///         Key = "beta-testers",
+    ///         ProjectKey = "example-project",
+    ///         EnvKey = "staging",
+    ///         Name = "Beta Testers",
+    ///         ViewKeys = new[]
+    ///         {
+    ///             "product-team",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "beta",
+    ///             "testing",
+    ///         },
+    ///         Includeds = new[]
+    ///         {
+    ///             "user123",
+    ///             "user456",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -357,6 +422,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("unboundedContextKind")]
         public Output<string> UnboundedContextKind { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        [Output("viewKeys")]
+        public Output<ImmutableArray<string>> ViewKeys { get; private set; } = null!;
 
 
         /// <summary>
@@ -519,6 +590,18 @@ namespace Pulumi.Launchdarkly
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }
 
+        [Input("viewKeys")]
+        private InputList<string>? _viewKeys;
+
+        /// <summary>
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public InputList<string> ViewKeys
+        {
+            get => _viewKeys ?? (_viewKeys = new InputList<string>());
+            set => _viewKeys = value;
+        }
+
         public SegmentArgs()
         {
         }
@@ -646,6 +729,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }
+
+        [Input("viewKeys")]
+        private InputList<string>? _viewKeys;
+
+        /// <summary>
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public InputList<string> ViewKeys
+        {
+            get => _viewKeys ?? (_viewKeys = new InputList<string>());
+            set => _viewKeys = value;
+        }
 
         public SegmentState()
         {
