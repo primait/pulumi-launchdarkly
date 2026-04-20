@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupRelayProxyConfiguration(ctx, &launchdarkly.LookupRelayProxyConfigurationArgs{
+//			_, err := launchdarkly.GetRelayProxyConfiguration(ctx, &launchdarkly.LookupRelayProxyConfigurationArgs{
 //				Id: "123456789abcdef123456789",
 //			}, nil)
 //			if err != nil {

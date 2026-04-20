@@ -42,6 +42,7 @@ class MetricArgs:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]] = None):
         """
         The set of arguments for constructing a Metric resource.
+
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -356,6 +357,7 @@ class _MetricState:
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Metric resources.
+
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
         :param pulumi.Input[_builtins.str] description: The description of the metric's purpose.
         :param pulumi.Input[_builtins.str] event_key: The event key for your metric (if custom metric)
@@ -723,6 +725,7 @@ class Metric(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/metric:Metric example example-project/example-metric-key
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
@@ -784,6 +787,7 @@ class Metric(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/metric:Metric example example-project/example-metric-key
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MetricArgs args: The arguments to use to populate this resource's properties.

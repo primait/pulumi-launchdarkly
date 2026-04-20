@@ -30,7 +30,7 @@ namespace Pulumi.Launchdarkly
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Currently the following five types of destinations are available: kinesis, google-pubsub, mparticle, azure-event-hubs, and segment. Please note that config fields will vary depending on which destination you are trying to configure / access.
-    ///     var kinesisExample = new Launchdarkly.Destination("kinesis_example", new()
+    ///     var kinesisExample = new Launchdarkly.Index.Destination("kinesis_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         EnvKey = "example-env",
@@ -49,7 +49,7 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
-    ///     var pubsubExample = new Launchdarkly.Destination("pubsub_example", new()
+    ///     var pubsubExample = new Launchdarkly.Index.Destination("pubsub_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         EnvKey = "example-env",
@@ -67,7 +67,7 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
-    ///     var mparticleExample = new Launchdarkly.Destination("mparticle_example", new()
+    ///     var mparticleExample = new Launchdarkly.Index.Destination("mparticle_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         EnvKey = "example-env",
@@ -99,7 +99,7 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
-    ///     var azureExample = new Launchdarkly.Destination("azure_example", new()
+    ///     var azureExample = new Launchdarkly.Index.Destination("azure_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         EnvKey = "example-env",
@@ -119,7 +119,7 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
-    ///     var segmentExample = new Launchdarkly.Destination("segment_example", new()
+    ///     var segmentExample = new Launchdarkly.Index.Destination("segment_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         EnvKey = "example-env",

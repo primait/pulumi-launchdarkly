@@ -3696,6 +3696,112 @@ func (o TeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) TeamRoleAttribute
 	}).(TeamRoleAttributeOutput)
 }
 
+type ViewLinksSegment struct {
+	// The environment ID of the segment.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey string `pulumi:"segmentKey"`
+}
+
+// ViewLinksSegmentInput is an input type that accepts ViewLinksSegmentArgs and ViewLinksSegmentOutput values.
+// You can construct a concrete instance of `ViewLinksSegmentInput` via:
+//
+//	ViewLinksSegmentArgs{...}
+type ViewLinksSegmentInput interface {
+	pulumi.Input
+
+	ToViewLinksSegmentOutput() ViewLinksSegmentOutput
+	ToViewLinksSegmentOutputWithContext(context.Context) ViewLinksSegmentOutput
+}
+
+type ViewLinksSegmentArgs struct {
+	// The environment ID of the segment.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey pulumi.StringInput `pulumi:"segmentKey"`
+}
+
+func (ViewLinksSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewLinksSegment)(nil)).Elem()
+}
+
+func (i ViewLinksSegmentArgs) ToViewLinksSegmentOutput() ViewLinksSegmentOutput {
+	return i.ToViewLinksSegmentOutputWithContext(context.Background())
+}
+
+func (i ViewLinksSegmentArgs) ToViewLinksSegmentOutputWithContext(ctx context.Context) ViewLinksSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewLinksSegmentOutput)
+}
+
+// ViewLinksSegmentArrayInput is an input type that accepts ViewLinksSegmentArray and ViewLinksSegmentArrayOutput values.
+// You can construct a concrete instance of `ViewLinksSegmentArrayInput` via:
+//
+//	ViewLinksSegmentArray{ ViewLinksSegmentArgs{...} }
+type ViewLinksSegmentArrayInput interface {
+	pulumi.Input
+
+	ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput
+	ToViewLinksSegmentArrayOutputWithContext(context.Context) ViewLinksSegmentArrayOutput
+}
+
+type ViewLinksSegmentArray []ViewLinksSegmentInput
+
+func (ViewLinksSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewLinksSegment)(nil)).Elem()
+}
+
+func (i ViewLinksSegmentArray) ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput {
+	return i.ToViewLinksSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i ViewLinksSegmentArray) ToViewLinksSegmentArrayOutputWithContext(ctx context.Context) ViewLinksSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewLinksSegmentArrayOutput)
+}
+
+type ViewLinksSegmentOutput struct{ *pulumi.OutputState }
+
+func (ViewLinksSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewLinksSegment)(nil)).Elem()
+}
+
+func (o ViewLinksSegmentOutput) ToViewLinksSegmentOutput() ViewLinksSegmentOutput {
+	return o
+}
+
+func (o ViewLinksSegmentOutput) ToViewLinksSegmentOutputWithContext(ctx context.Context) ViewLinksSegmentOutput {
+	return o
+}
+
+// The environment ID of the segment.
+func (o ViewLinksSegmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewLinksSegment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The key of the segment.
+func (o ViewLinksSegmentOutput) SegmentKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewLinksSegment) string { return v.SegmentKey }).(pulumi.StringOutput)
+}
+
+type ViewLinksSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ViewLinksSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewLinksSegment)(nil)).Elem()
+}
+
+func (o ViewLinksSegmentArrayOutput) ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput {
+	return o
+}
+
+func (o ViewLinksSegmentArrayOutput) ToViewLinksSegmentArrayOutputWithContext(ctx context.Context) ViewLinksSegmentArrayOutput {
+	return o
+}
+
+func (o ViewLinksSegmentArrayOutput) Index(i pulumi.IntInput) ViewLinksSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ViewLinksSegment {
+		return vs[0].([]ViewLinksSegment)[vs[1].(int)]
+	}).(ViewLinksSegmentOutput)
+}
+
 type WebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
 	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -6942,6 +7048,112 @@ func (o GetTeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) GetTeamRoleAtt
 	}).(GetTeamRoleAttributeOutput)
 }
 
+type GetViewLinkedSegment struct {
+	// The environment ID of the segment.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey string `pulumi:"segmentKey"`
+}
+
+// GetViewLinkedSegmentInput is an input type that accepts GetViewLinkedSegmentArgs and GetViewLinkedSegmentOutput values.
+// You can construct a concrete instance of `GetViewLinkedSegmentInput` via:
+//
+//	GetViewLinkedSegmentArgs{...}
+type GetViewLinkedSegmentInput interface {
+	pulumi.Input
+
+	ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput
+	ToGetViewLinkedSegmentOutputWithContext(context.Context) GetViewLinkedSegmentOutput
+}
+
+type GetViewLinkedSegmentArgs struct {
+	// The environment ID of the segment.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey pulumi.StringInput `pulumi:"segmentKey"`
+}
+
+func (GetViewLinkedSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (i GetViewLinkedSegmentArgs) ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput {
+	return i.ToGetViewLinkedSegmentOutputWithContext(context.Background())
+}
+
+func (i GetViewLinkedSegmentArgs) ToGetViewLinkedSegmentOutputWithContext(ctx context.Context) GetViewLinkedSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewLinkedSegmentOutput)
+}
+
+// GetViewLinkedSegmentArrayInput is an input type that accepts GetViewLinkedSegmentArray and GetViewLinkedSegmentArrayOutput values.
+// You can construct a concrete instance of `GetViewLinkedSegmentArrayInput` via:
+//
+//	GetViewLinkedSegmentArray{ GetViewLinkedSegmentArgs{...} }
+type GetViewLinkedSegmentArrayInput interface {
+	pulumi.Input
+
+	ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput
+	ToGetViewLinkedSegmentArrayOutputWithContext(context.Context) GetViewLinkedSegmentArrayOutput
+}
+
+type GetViewLinkedSegmentArray []GetViewLinkedSegmentInput
+
+func (GetViewLinkedSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (i GetViewLinkedSegmentArray) ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput {
+	return i.ToGetViewLinkedSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetViewLinkedSegmentArray) ToGetViewLinkedSegmentArrayOutputWithContext(ctx context.Context) GetViewLinkedSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewLinkedSegmentArrayOutput)
+}
+
+type GetViewLinkedSegmentOutput struct{ *pulumi.OutputState }
+
+func (GetViewLinkedSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (o GetViewLinkedSegmentOutput) ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentOutput) ToGetViewLinkedSegmentOutputWithContext(ctx context.Context) GetViewLinkedSegmentOutput {
+	return o
+}
+
+// The environment ID of the segment.
+func (o GetViewLinkedSegmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The key of the segment.
+func (o GetViewLinkedSegmentOutput) SegmentKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.SegmentKey }).(pulumi.StringOutput)
+}
+
+type GetViewLinkedSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetViewLinkedSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (o GetViewLinkedSegmentArrayOutput) ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentArrayOutput) ToGetViewLinkedSegmentArrayOutputWithContext(ctx context.Context) GetViewLinkedSegmentArrayOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentArrayOutput) Index(i pulumi.IntInput) GetViewLinkedSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetViewLinkedSegment {
+		return vs[0].([]GetViewLinkedSegment)[vs[1].(int)]
+	}).(GetViewLinkedSegmentOutput)
+}
+
 type GetWebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
 	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -7135,6 +7347,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamMemberRoleAttributeArrayInput)(nil)).Elem(), TeamMemberRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeInput)(nil)).Elem(), TeamRoleAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeArrayInput)(nil)).Elem(), TeamRoleAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentInput)(nil)).Elem(), ViewLinksSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentArrayInput)(nil)).Elem(), ViewLinksSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementInput)(nil)).Elem(), WebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementArrayInput)(nil)).Elem(), WebhookStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArgs{})
@@ -7189,6 +7403,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttributeArrayInput)(nil)).Elem(), GetTeamMembersTeamMemberRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeInput)(nil)).Elem(), GetTeamRoleAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeArrayInput)(nil)).Elem(), GetTeamRoleAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentInput)(nil)).Elem(), GetViewLinkedSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentArrayInput)(nil)).Elem(), GetViewLinkedSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementInput)(nil)).Elem(), GetWebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementArrayInput)(nil)).Elem(), GetWebhookStatementArray{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleOutput{})
@@ -7247,6 +7463,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamMemberRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TeamRoleAttributeOutput{})
 	pulumi.RegisterOutputType(TeamRoleAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ViewLinksSegmentOutput{})
+	pulumi.RegisterOutputType(ViewLinksSegmentArrayOutput{})
 	pulumi.RegisterOutputType(WebhookStatementOutput{})
 	pulumi.RegisterOutputType(WebhookStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementOutput{})
@@ -7301,6 +7519,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTeamMembersTeamMemberRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamRoleAttributeOutput{})
 	pulumi.RegisterOutputType(GetTeamRoleAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetViewLinkedSegmentOutput{})
+	pulumi.RegisterOutputType(GetViewLinkedSegmentArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementArrayOutput{})
 }

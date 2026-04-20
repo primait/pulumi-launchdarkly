@@ -94,7 +94,7 @@ import (
 //				Config: pulumi.StringMap{
 //					"api_key":         pulumi.String("apiKeyfromMParticle"),
 //					"secret":          pulumi.String("mParticleSecret"),
-//					"user_identities": pulumi.String(json0),
+//					"user_identities": pulumi.String(pulumi.String(json0)),
 //					"environment":     pulumi.String("production"),
 //				},
 //				On: pulumi.Bool(true),

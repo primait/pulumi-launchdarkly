@@ -591,6 +591,17 @@ export interface TeamRoleAttribute {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ViewLinksSegment {
+    /**
+     * The environment ID of the segment.
+     */
+    environmentId: pulumi.Input<string>;
+    /**
+     * The key of the segment.
+     */
+    segmentKey: pulumi.Input<string>;
+}
+
 export interface WebhookStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.

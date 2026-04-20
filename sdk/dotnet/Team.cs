@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var platformTeam = new Launchdarkly.Team("platform_team", new()
+    ///     var platformTeam = new Launchdarkly.Index.Team("platform_team", new()
     ///     {
     ///         Key = "platform_team",
     ///         Name = "Platform team",

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupFlagTrigger(ctx, &launchdarkly.LookupFlagTriggerArgs{
+//			_, err := launchdarkly.GetFlagTrigger(ctx, &launchdarkly.LookupFlagTriggerArgs{
 //				Id:         "61d490757f7821150815518f",
 //				FlagKey:    "example-flag",
 //				ProjectKey: "the-big-project",

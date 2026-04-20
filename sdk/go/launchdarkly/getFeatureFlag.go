@@ -14,33 +14,6 @@ import (
 // Provides a LaunchDarkly feature flag data source.
 //
 // This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupFeatureFlag(ctx, &launchdarkly.LookupFeatureFlagArgs{
-//				Key:        "example-flag",
-//				ProjectKey: "example-project",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupFeatureFlag(ctx *pulumi.Context, args *LookupFeatureFlagArgs, opts ...pulumi.InvokeOption) (*LookupFeatureFlagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeatureFlagResult
@@ -98,6 +71,10 @@ type LookupFeatureFlagResult struct {
 	VariationType string `pulumi:"variationType"`
 	// An array of possible variations for the flag
 	Variations []GetFeatureFlagVariation `pulumi:"variations"`
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	ViewKeys []string `pulumi:"viewKeys"`
+	// A list of view keys that this feature flag is linked to.
+	Views []string `pulumi:"views"`
 }
 
 func LookupFeatureFlagOutput(ctx *pulumi.Context, args LookupFeatureFlagOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureFlagResultOutput {
@@ -221,6 +198,16 @@ func (o LookupFeatureFlagResultOutput) VariationType() pulumi.StringOutput {
 // An array of possible variations for the flag
 func (o LookupFeatureFlagResultOutput) Variations() GetFeatureFlagVariationArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagVariation { return v.Variations }).(GetFeatureFlagVariationArrayOutput)
+}
+
+// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+func (o LookupFeatureFlagResultOutput) ViewKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) []string { return v.ViewKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of view keys that this feature flag is linked to.
+func (o LookupFeatureFlagResultOutput) Views() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) []string { return v.Views }).(pulumi.StringArrayOutput)
 }
 
 func init() {

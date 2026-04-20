@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupMetric(ctx, &launchdarkly.LookupMetricArgs{
+//			_, err := launchdarkly.GetMetric(ctx, &launchdarkly.LookupMetricArgs{
 //				Key:        "example-metric",
 //				ProjectKey: "example-project",
 //			}, nil)

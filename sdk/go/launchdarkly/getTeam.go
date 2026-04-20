@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupTeam(ctx, &launchdarkly.LookupTeamArgs{
+//			_, err := launchdarkly.GetTeam(ctx, &launchdarkly.LookupTeamArgs{
 //				Key: "platform_team",
 //			}, nil)
 //			if err != nil {

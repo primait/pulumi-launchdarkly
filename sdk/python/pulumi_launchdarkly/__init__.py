@@ -26,6 +26,7 @@ from .get_segment import *
 from .get_team import *
 from .get_team_member import *
 from .get_team_members import *
+from .get_view import *
 from .get_webhook import *
 from .metric import *
 from .project import *
@@ -35,6 +36,9 @@ from .segment import *
 from .team import *
 from .team_member import *
 from .team_role_mapping import *
+from .view import *
+from .view_filter_links import *
+from .view_links import *
 from .webhook import *
 from ._inputs import *
 from . import outputs
@@ -170,6 +174,30 @@ _utilities.register(
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/teamRoleMapping:TeamRoleMapping": "TeamRoleMapping"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/view",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/view:View": "View"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/viewFilterLinks",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/viewFilterLinks:ViewFilterLinks": "ViewFilterLinks"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/viewLinks",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/viewLinks:ViewLinks": "ViewLinks"
   }
  },
  {

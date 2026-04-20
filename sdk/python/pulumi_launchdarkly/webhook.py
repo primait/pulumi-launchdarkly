@@ -29,6 +29,7 @@ class WebhookArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Webhook resource.
+
         :param pulumi.Input[_builtins.str] url: The URL of the remote webhook.
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
@@ -132,6 +133,7 @@ class _WebhookState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
+
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
         :param pulumi.Input[_builtins.str] secret: The secret used to sign the webhook.
@@ -276,6 +278,7 @@ class Webhook(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/webhook:Webhook example 57c0af609969090743529967
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
@@ -328,6 +331,7 @@ class Webhook(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/webhook:Webhook example 57c0af609969090743529967
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebhookArgs args: The arguments to use to populate this resource's properties.
