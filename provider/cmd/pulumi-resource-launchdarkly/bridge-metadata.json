@@ -161,6 +161,9 @@
                     },
                     "variations": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -347,6 +350,9 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -396,6 +402,28 @@
                 "current": "launchdarkly:index/teamRoleMapping:TeamRoleMapping",
                 "fields": {
                     "custom_role_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_view": {
+                "current": "launchdarkly:index/view:View",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_view_filter_links": {
+                "current": "launchdarkly:index/viewFilterLinks:ViewFilterLinks"
+            },
+            "launchdarkly_view_links": {
+                "current": "launchdarkly:index/viewLinks:ViewLinks",
+                "fields": {
+                    "flags": {
+                        "maxItemsOne": false
+                    },
+                    "segments": {
                         "maxItemsOne": false
                     }
                 }
@@ -497,6 +525,12 @@
                         "maxItemsOne": false
                     },
                     "variations": {
+                        "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
+                    },
+                    "views": {
                         "maxItemsOne": false
                     }
                 }
@@ -667,6 +701,12 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
+                    },
+                    "views": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -740,6 +780,20 @@
                     }
                 }
             },
+            "launchdarkly_view": {
+                "current": "launchdarkly:index/getView:getView",
+                "fields": {
+                    "linked_flags": {
+                        "maxItemsOne": false
+                    },
+                    "linked_segments": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "launchdarkly_webhook": {
                 "current": "launchdarkly:index/getWebhook:getWebhook",
                 "fields": {
@@ -787,6 +841,9 @@
             "launchdarkly:index/team:Team": 0,
             "launchdarkly:index/teamMember:TeamMember": 0,
             "launchdarkly:index/teamRoleMapping:TeamRoleMapping": 1,
+            "launchdarkly:index/view:View": 0,
+            "launchdarkly:index/viewFilterLinks:ViewFilterLinks": 0,
+            "launchdarkly:index/viewLinks:ViewLinks": 0,
             "launchdarkly:index/webhook:Webhook": 0
         },
         "functions": {
@@ -802,6 +859,7 @@
             "launchdarkly:index/getTeam:getTeam": 0,
             "launchdarkly:index/getTeamMember:getTeamMember": 0,
             "launchdarkly:index/getTeamMembers:getTeamMembers": 0,
+            "launchdarkly:index/getView:getView": 0,
             "launchdarkly:index/getWebhook:getWebhook": 0
         }
     }
