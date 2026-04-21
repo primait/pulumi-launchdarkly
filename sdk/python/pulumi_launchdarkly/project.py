@@ -26,9 +26,12 @@ class ProjectArgs:
                  default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
                  include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
                
                > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
@@ -36,6 +39,8 @@ class ProjectArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] name: The project's name.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         pulumi.set(__self__, "environments", environments)
@@ -49,6 +54,10 @@ class ProjectArgs:
             pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if require_view_association_for_new_flags is not None:
+            pulumi.set(__self__, "require_view_association_for_new_flags", require_view_association_for_new_flags)
+        if require_view_association_for_new_segments is not None:
+            pulumi.set(__self__, "require_view_association_for_new_segments", require_view_association_for_new_segments)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -116,6 +125,30 @@ class ProjectArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewFlags")
+    def require_view_association_for_new_flags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether new flags created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_flags")
+
+    @require_view_association_for_new_flags.setter
+    def require_view_association_for_new_flags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "require_view_association_for_new_flags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewSegments")
+    def require_view_association_for_new_segments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether new segments created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_segments")
+
+    @require_view_association_for_new_segments.setter
+    def require_view_association_for_new_segments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "require_view_association_for_new_segments", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -136,9 +169,12 @@ class _ProjectState:
                  include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
                
@@ -146,6 +182,8 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         if default_client_side_availabilities is not None:
@@ -161,6 +199,10 @@ class _ProjectState:
             pulumi.set(__self__, "key", key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if require_view_association_for_new_flags is not None:
+            pulumi.set(__self__, "require_view_association_for_new_flags", require_view_association_for_new_flags)
+        if require_view_association_for_new_segments is not None:
+            pulumi.set(__self__, "require_view_association_for_new_segments", require_view_association_for_new_segments)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -228,6 +270,30 @@ class _ProjectState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewFlags")
+    def require_view_association_for_new_flags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether new flags created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_flags")
+
+    @require_view_association_for_new_flags.setter
+    def require_view_association_for_new_flags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "require_view_association_for_new_flags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewSegments")
+    def require_view_association_for_new_segments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether new segments created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_segments")
+
+    @require_view_association_for_new_segments.setter
+    def require_view_association_for_new_segments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "require_view_association_for_new_segments", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -251,6 +317,8 @@ class Project(pulumi.CustomResource):
                  include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -268,6 +336,8 @@ class Project(pulumi.CustomResource):
             key="example-project",
             name="Example project",
             tags=["terraform"],
+            require_view_association_for_new_flags=False,
+            require_view_association_for_new_segments=False,
             environments=[
                 {
                     "key": "production",
@@ -313,6 +383,7 @@ class Project(pulumi.CustomResource):
 
         **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
@@ -322,6 +393,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         ...
@@ -345,6 +418,8 @@ class Project(pulumi.CustomResource):
             key="example-project",
             name="Example project",
             tags=["terraform"],
+            require_view_association_for_new_flags=False,
+            require_view_association_for_new_segments=False,
             environments=[
                 {
                     "key": "production",
@@ -390,6 +465,7 @@ class Project(pulumi.CustomResource):
 
         **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
+
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -410,6 +486,8 @@ class Project(pulumi.CustomResource):
                  include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -429,6 +507,8 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
             __props__.__dict__["name"] = name
+            __props__.__dict__["require_view_association_for_new_flags"] = require_view_association_for_new_flags
+            __props__.__dict__["require_view_association_for_new_segments"] = require_view_association_for_new_segments
             __props__.__dict__["tags"] = tags
         super(Project, __self__).__init__(
             'launchdarkly:index/project:Project',
@@ -445,6 +525,8 @@ class Project(pulumi.CustomResource):
             include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
+            require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -460,6 +542,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
+        :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -471,6 +555,8 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["include_in_snippet"] = include_in_snippet
         __props__.__dict__["key"] = key
         __props__.__dict__["name"] = name
+        __props__.__dict__["require_view_association_for_new_flags"] = require_view_association_for_new_flags
+        __props__.__dict__["require_view_association_for_new_segments"] = require_view_association_for_new_segments
         __props__.__dict__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -516,6 +602,22 @@ class Project(pulumi.CustomResource):
         The project's name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewFlags")
+    def require_view_association_for_new_flags(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether new flags created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_flags")
+
+    @_builtins.property
+    @pulumi.getter(name="requireViewAssociationForNewSegments")
+    def require_view_association_for_new_segments(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether new segments created in this project must be associated with at least one view.
+        """
+        return pulumi.get(self, "require_view_association_for_new_segments")
 
     @_builtins.property
     @pulumi.getter

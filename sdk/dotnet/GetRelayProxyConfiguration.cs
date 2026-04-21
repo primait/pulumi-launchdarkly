@@ -30,7 +30,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetRelayProxyConfiguration.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetRelayProxyConfiguration.Invoke(new()
         ///     {
         ///         Id = "123456789abcdef123456789",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetRelayProxyConfiguration.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetRelayProxyConfiguration.Invoke(new()
         ///     {
         ///         Id = "123456789abcdef123456789",
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetRelayProxyConfiguration.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetRelayProxyConfiguration.Invoke(new()
         ///     {
         ///         Id = "123456789abcdef123456789",
         ///     });

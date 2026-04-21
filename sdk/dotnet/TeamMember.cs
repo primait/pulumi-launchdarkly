@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.TeamMember("example", new()
+    ///     var example = new Launchdarkly.Index.TeamMember("example", new()
     ///     {
     ///         Email = "example.user@example.com",
     ///         FirstName = "Jesse",

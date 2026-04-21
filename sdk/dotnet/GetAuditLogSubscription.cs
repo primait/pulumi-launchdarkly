@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",
@@ -53,7 +53,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",
@@ -80,7 +80,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",
@@ -103,7 +103,7 @@ namespace Pulumi.Launchdarkly
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Jira`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         [Input("integrationKey", required: true)]
         public string IntegrationKey { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Jira`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
+        /// The integration key. Supported integration keys are `Chronosphere`, `Cloudtrail`, `Datadog`, `Dynatrace`, `dynatrace-v2`, `Elastic`, `Grafana`, `Honeycomb`, `Jira`, `Kosli`, `Last9`, `Logdna`, `Msteams`, `new-relic-apm`, `Pagerduty`, `Signalfx`, `Slack`, and `Splunk`.
         /// </summary>
         public readonly string IntegrationKey;
         /// <summary>

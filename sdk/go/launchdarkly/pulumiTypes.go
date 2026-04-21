@@ -285,6 +285,227 @@ func (o AccessTokenPolicyStatementArrayOutput) Index(i pulumi.IntInput) AccessTo
 	}).(AccessTokenPolicyStatementOutput)
 }
 
+type AiConfigVariationType struct {
+	// The variation's key.
+	Key *string `pulumi:"key"`
+	// The variation's name.
+	Name *string `pulumi:"name"`
+	// The variation's ID.
+	VariationId *string `pulumi:"variationId"`
+}
+
+// AiConfigVariationTypeInput is an input type that accepts AiConfigVariationTypeArgs and AiConfigVariationTypeOutput values.
+// You can construct a concrete instance of `AiConfigVariationTypeInput` via:
+//
+//	AiConfigVariationTypeArgs{...}
+type AiConfigVariationTypeInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationTypeOutput() AiConfigVariationTypeOutput
+	ToAiConfigVariationTypeOutputWithContext(context.Context) AiConfigVariationTypeOutput
+}
+
+type AiConfigVariationTypeArgs struct {
+	// The variation's key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The variation's name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The variation's ID.
+	VariationId pulumi.StringPtrInput `pulumi:"variationId"`
+}
+
+func (AiConfigVariationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationType)(nil)).Elem()
+}
+
+func (i AiConfigVariationTypeArgs) ToAiConfigVariationTypeOutput() AiConfigVariationTypeOutput {
+	return i.ToAiConfigVariationTypeOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationTypeArgs) ToAiConfigVariationTypeOutputWithContext(ctx context.Context) AiConfigVariationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationTypeOutput)
+}
+
+// AiConfigVariationTypeArrayInput is an input type that accepts AiConfigVariationTypeArray and AiConfigVariationTypeArrayOutput values.
+// You can construct a concrete instance of `AiConfigVariationTypeArrayInput` via:
+//
+//	AiConfigVariationTypeArray{ AiConfigVariationTypeArgs{...} }
+type AiConfigVariationTypeArrayInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationTypeArrayOutput() AiConfigVariationTypeArrayOutput
+	ToAiConfigVariationTypeArrayOutputWithContext(context.Context) AiConfigVariationTypeArrayOutput
+}
+
+type AiConfigVariationTypeArray []AiConfigVariationTypeInput
+
+func (AiConfigVariationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiConfigVariationType)(nil)).Elem()
+}
+
+func (i AiConfigVariationTypeArray) ToAiConfigVariationTypeArrayOutput() AiConfigVariationTypeArrayOutput {
+	return i.ToAiConfigVariationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationTypeArray) ToAiConfigVariationTypeArrayOutputWithContext(ctx context.Context) AiConfigVariationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationTypeArrayOutput)
+}
+
+type AiConfigVariationTypeOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationType)(nil)).Elem()
+}
+
+func (o AiConfigVariationTypeOutput) ToAiConfigVariationTypeOutput() AiConfigVariationTypeOutput {
+	return o
+}
+
+func (o AiConfigVariationTypeOutput) ToAiConfigVariationTypeOutputWithContext(ctx context.Context) AiConfigVariationTypeOutput {
+	return o
+}
+
+// The variation's key.
+func (o AiConfigVariationTypeOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiConfigVariationType) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The variation's name.
+func (o AiConfigVariationTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiConfigVariationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The variation's ID.
+func (o AiConfigVariationTypeOutput) VariationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiConfigVariationType) *string { return v.VariationId }).(pulumi.StringPtrOutput)
+}
+
+type AiConfigVariationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiConfigVariationType)(nil)).Elem()
+}
+
+func (o AiConfigVariationTypeArrayOutput) ToAiConfigVariationTypeArrayOutput() AiConfigVariationTypeArrayOutput {
+	return o
+}
+
+func (o AiConfigVariationTypeArrayOutput) ToAiConfigVariationTypeArrayOutputWithContext(ctx context.Context) AiConfigVariationTypeArrayOutput {
+	return o
+}
+
+func (o AiConfigVariationTypeArrayOutput) Index(i pulumi.IntInput) AiConfigVariationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiConfigVariationType {
+		return vs[0].([]AiConfigVariationType)[vs[1].(int)]
+	}).(AiConfigVariationTypeOutput)
+}
+
+type AiConfigVariationMessage struct {
+	// The content of the message.
+	Content string `pulumi:"content"`
+	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	Role string `pulumi:"role"`
+}
+
+// AiConfigVariationMessageInput is an input type that accepts AiConfigVariationMessageArgs and AiConfigVariationMessageOutput values.
+// You can construct a concrete instance of `AiConfigVariationMessageInput` via:
+//
+//	AiConfigVariationMessageArgs{...}
+type AiConfigVariationMessageInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationMessageOutput() AiConfigVariationMessageOutput
+	ToAiConfigVariationMessageOutputWithContext(context.Context) AiConfigVariationMessageOutput
+}
+
+type AiConfigVariationMessageArgs struct {
+	// The content of the message.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (AiConfigVariationMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationMessage)(nil)).Elem()
+}
+
+func (i AiConfigVariationMessageArgs) ToAiConfigVariationMessageOutput() AiConfigVariationMessageOutput {
+	return i.ToAiConfigVariationMessageOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationMessageArgs) ToAiConfigVariationMessageOutputWithContext(ctx context.Context) AiConfigVariationMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationMessageOutput)
+}
+
+// AiConfigVariationMessageArrayInput is an input type that accepts AiConfigVariationMessageArray and AiConfigVariationMessageArrayOutput values.
+// You can construct a concrete instance of `AiConfigVariationMessageArrayInput` via:
+//
+//	AiConfigVariationMessageArray{ AiConfigVariationMessageArgs{...} }
+type AiConfigVariationMessageArrayInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationMessageArrayOutput() AiConfigVariationMessageArrayOutput
+	ToAiConfigVariationMessageArrayOutputWithContext(context.Context) AiConfigVariationMessageArrayOutput
+}
+
+type AiConfigVariationMessageArray []AiConfigVariationMessageInput
+
+func (AiConfigVariationMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiConfigVariationMessage)(nil)).Elem()
+}
+
+func (i AiConfigVariationMessageArray) ToAiConfigVariationMessageArrayOutput() AiConfigVariationMessageArrayOutput {
+	return i.ToAiConfigVariationMessageArrayOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationMessageArray) ToAiConfigVariationMessageArrayOutputWithContext(ctx context.Context) AiConfigVariationMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationMessageArrayOutput)
+}
+
+type AiConfigVariationMessageOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationMessage)(nil)).Elem()
+}
+
+func (o AiConfigVariationMessageOutput) ToAiConfigVariationMessageOutput() AiConfigVariationMessageOutput {
+	return o
+}
+
+func (o AiConfigVariationMessageOutput) ToAiConfigVariationMessageOutputWithContext(ctx context.Context) AiConfigVariationMessageOutput {
+	return o
+}
+
+// The content of the message.
+func (o AiConfigVariationMessageOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v AiConfigVariationMessage) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+func (o AiConfigVariationMessageOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v AiConfigVariationMessage) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type AiConfigVariationMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiConfigVariationMessage)(nil)).Elem()
+}
+
+func (o AiConfigVariationMessageArrayOutput) ToAiConfigVariationMessageArrayOutput() AiConfigVariationMessageArrayOutput {
+	return o
+}
+
+func (o AiConfigVariationMessageArrayOutput) ToAiConfigVariationMessageArrayOutputWithContext(ctx context.Context) AiConfigVariationMessageArrayOutput {
+	return o
+}
+
+func (o AiConfigVariationMessageArrayOutput) Index(i pulumi.IntInput) AiConfigVariationMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiConfigVariationMessage {
+		return vs[0].([]AiConfigVariationMessage)[vs[1].(int)]
+	}).(AiConfigVariationMessageOutput)
+}
+
 type AuditLogSubscriptionStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
 	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -2129,6 +2350,238 @@ func (o FeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) FeatureFlagVar
 	}).(FeatureFlagVariationOutput)
 }
 
+type FlagTemplatesBooleanDefaults struct {
+	// The description for the false variation.
+	FalseDescription string `pulumi:"falseDescription"`
+	// The display name for the false variation.
+	FalseDisplayName string `pulumi:"falseDisplayName"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	OffVariation int `pulumi:"offVariation"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	OnVariation int `pulumi:"onVariation"`
+	// The description for the true variation.
+	TrueDescription string `pulumi:"trueDescription"`
+	// The display name for the true variation.
+	TrueDisplayName string `pulumi:"trueDisplayName"`
+}
+
+// FlagTemplatesBooleanDefaultsInput is an input type that accepts FlagTemplatesBooleanDefaultsArgs and FlagTemplatesBooleanDefaultsOutput values.
+// You can construct a concrete instance of `FlagTemplatesBooleanDefaultsInput` via:
+//
+//	FlagTemplatesBooleanDefaultsArgs{...}
+type FlagTemplatesBooleanDefaultsInput interface {
+	pulumi.Input
+
+	ToFlagTemplatesBooleanDefaultsOutput() FlagTemplatesBooleanDefaultsOutput
+	ToFlagTemplatesBooleanDefaultsOutputWithContext(context.Context) FlagTemplatesBooleanDefaultsOutput
+}
+
+type FlagTemplatesBooleanDefaultsArgs struct {
+	// The description for the false variation.
+	FalseDescription pulumi.StringInput `pulumi:"falseDescription"`
+	// The display name for the false variation.
+	FalseDisplayName pulumi.StringInput `pulumi:"falseDisplayName"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	OffVariation pulumi.IntInput `pulumi:"offVariation"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	OnVariation pulumi.IntInput `pulumi:"onVariation"`
+	// The description for the true variation.
+	TrueDescription pulumi.StringInput `pulumi:"trueDescription"`
+	// The display name for the true variation.
+	TrueDisplayName pulumi.StringInput `pulumi:"trueDisplayName"`
+}
+
+func (FlagTemplatesBooleanDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlagTemplatesBooleanDefaults)(nil)).Elem()
+}
+
+func (i FlagTemplatesBooleanDefaultsArgs) ToFlagTemplatesBooleanDefaultsOutput() FlagTemplatesBooleanDefaultsOutput {
+	return i.ToFlagTemplatesBooleanDefaultsOutputWithContext(context.Background())
+}
+
+func (i FlagTemplatesBooleanDefaultsArgs) ToFlagTemplatesBooleanDefaultsOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTemplatesBooleanDefaultsOutput)
+}
+
+func (i FlagTemplatesBooleanDefaultsArgs) ToFlagTemplatesBooleanDefaultsPtrOutput() FlagTemplatesBooleanDefaultsPtrOutput {
+	return i.ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i FlagTemplatesBooleanDefaultsArgs) ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTemplatesBooleanDefaultsOutput).ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(ctx)
+}
+
+// FlagTemplatesBooleanDefaultsPtrInput is an input type that accepts FlagTemplatesBooleanDefaultsArgs, FlagTemplatesBooleanDefaultsPtr and FlagTemplatesBooleanDefaultsPtrOutput values.
+// You can construct a concrete instance of `FlagTemplatesBooleanDefaultsPtrInput` via:
+//
+//	        FlagTemplatesBooleanDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlagTemplatesBooleanDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToFlagTemplatesBooleanDefaultsPtrOutput() FlagTemplatesBooleanDefaultsPtrOutput
+	ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(context.Context) FlagTemplatesBooleanDefaultsPtrOutput
+}
+
+type flagTemplatesBooleanDefaultsPtrType FlagTemplatesBooleanDefaultsArgs
+
+func FlagTemplatesBooleanDefaultsPtr(v *FlagTemplatesBooleanDefaultsArgs) FlagTemplatesBooleanDefaultsPtrInput {
+	return (*flagTemplatesBooleanDefaultsPtrType)(v)
+}
+
+func (*flagTemplatesBooleanDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlagTemplatesBooleanDefaults)(nil)).Elem()
+}
+
+func (i *flagTemplatesBooleanDefaultsPtrType) ToFlagTemplatesBooleanDefaultsPtrOutput() FlagTemplatesBooleanDefaultsPtrOutput {
+	return i.ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *flagTemplatesBooleanDefaultsPtrType) ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTemplatesBooleanDefaultsPtrOutput)
+}
+
+type FlagTemplatesBooleanDefaultsOutput struct{ *pulumi.OutputState }
+
+func (FlagTemplatesBooleanDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlagTemplatesBooleanDefaults)(nil)).Elem()
+}
+
+func (o FlagTemplatesBooleanDefaultsOutput) ToFlagTemplatesBooleanDefaultsOutput() FlagTemplatesBooleanDefaultsOutput {
+	return o
+}
+
+func (o FlagTemplatesBooleanDefaultsOutput) ToFlagTemplatesBooleanDefaultsOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsOutput {
+	return o
+}
+
+func (o FlagTemplatesBooleanDefaultsOutput) ToFlagTemplatesBooleanDefaultsPtrOutput() FlagTemplatesBooleanDefaultsPtrOutput {
+	return o.ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o FlagTemplatesBooleanDefaultsOutput) ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlagTemplatesBooleanDefaults) *FlagTemplatesBooleanDefaults {
+		return &v
+	}).(FlagTemplatesBooleanDefaultsPtrOutput)
+}
+
+// The description for the false variation.
+func (o FlagTemplatesBooleanDefaultsOutput) FalseDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.FalseDescription }).(pulumi.StringOutput)
+}
+
+// The display name for the false variation.
+func (o FlagTemplatesBooleanDefaultsOutput) FalseDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.FalseDisplayName }).(pulumi.StringOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+func (o FlagTemplatesBooleanDefaultsOutput) OffVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) int { return v.OffVariation }).(pulumi.IntOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+func (o FlagTemplatesBooleanDefaultsOutput) OnVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) int { return v.OnVariation }).(pulumi.IntOutput)
+}
+
+// The description for the true variation.
+func (o FlagTemplatesBooleanDefaultsOutput) TrueDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.TrueDescription }).(pulumi.StringOutput)
+}
+
+// The display name for the true variation.
+func (o FlagTemplatesBooleanDefaultsOutput) TrueDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.TrueDisplayName }).(pulumi.StringOutput)
+}
+
+type FlagTemplatesBooleanDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlagTemplatesBooleanDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlagTemplatesBooleanDefaults)(nil)).Elem()
+}
+
+func (o FlagTemplatesBooleanDefaultsPtrOutput) ToFlagTemplatesBooleanDefaultsPtrOutput() FlagTemplatesBooleanDefaultsPtrOutput {
+	return o
+}
+
+func (o FlagTemplatesBooleanDefaultsPtrOutput) ToFlagTemplatesBooleanDefaultsPtrOutputWithContext(ctx context.Context) FlagTemplatesBooleanDefaultsPtrOutput {
+	return o
+}
+
+func (o FlagTemplatesBooleanDefaultsPtrOutput) Elem() FlagTemplatesBooleanDefaultsOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) FlagTemplatesBooleanDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret FlagTemplatesBooleanDefaults
+		return ret
+	}).(FlagTemplatesBooleanDefaultsOutput)
+}
+
+// The description for the false variation.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FalseDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name for the false variation.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FalseDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) OffVariation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.OffVariation
+	}).(pulumi.IntPtrOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.OnVariation
+	}).(pulumi.IntPtrOutput)
+}
+
+// The description for the true variation.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) TrueDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrueDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name for the true variation.
+func (o FlagTemplatesBooleanDefaultsPtrOutput) TrueDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrueDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
 type FlagTriggerInstructions struct {
 	// The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
 	Kind string `pulumi:"kind"`
@@ -3696,6 +4149,112 @@ func (o TeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) TeamRoleAttribute
 	}).(TeamRoleAttributeOutput)
 }
 
+type ViewLinksSegment struct {
+	// The environment ID of the segment.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey string `pulumi:"segmentKey"`
+}
+
+// ViewLinksSegmentInput is an input type that accepts ViewLinksSegmentArgs and ViewLinksSegmentOutput values.
+// You can construct a concrete instance of `ViewLinksSegmentInput` via:
+//
+//	ViewLinksSegmentArgs{...}
+type ViewLinksSegmentInput interface {
+	pulumi.Input
+
+	ToViewLinksSegmentOutput() ViewLinksSegmentOutput
+	ToViewLinksSegmentOutputWithContext(context.Context) ViewLinksSegmentOutput
+}
+
+type ViewLinksSegmentArgs struct {
+	// The environment ID of the segment.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey pulumi.StringInput `pulumi:"segmentKey"`
+}
+
+func (ViewLinksSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewLinksSegment)(nil)).Elem()
+}
+
+func (i ViewLinksSegmentArgs) ToViewLinksSegmentOutput() ViewLinksSegmentOutput {
+	return i.ToViewLinksSegmentOutputWithContext(context.Background())
+}
+
+func (i ViewLinksSegmentArgs) ToViewLinksSegmentOutputWithContext(ctx context.Context) ViewLinksSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewLinksSegmentOutput)
+}
+
+// ViewLinksSegmentArrayInput is an input type that accepts ViewLinksSegmentArray and ViewLinksSegmentArrayOutput values.
+// You can construct a concrete instance of `ViewLinksSegmentArrayInput` via:
+//
+//	ViewLinksSegmentArray{ ViewLinksSegmentArgs{...} }
+type ViewLinksSegmentArrayInput interface {
+	pulumi.Input
+
+	ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput
+	ToViewLinksSegmentArrayOutputWithContext(context.Context) ViewLinksSegmentArrayOutput
+}
+
+type ViewLinksSegmentArray []ViewLinksSegmentInput
+
+func (ViewLinksSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewLinksSegment)(nil)).Elem()
+}
+
+func (i ViewLinksSegmentArray) ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput {
+	return i.ToViewLinksSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i ViewLinksSegmentArray) ToViewLinksSegmentArrayOutputWithContext(ctx context.Context) ViewLinksSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewLinksSegmentArrayOutput)
+}
+
+type ViewLinksSegmentOutput struct{ *pulumi.OutputState }
+
+func (ViewLinksSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewLinksSegment)(nil)).Elem()
+}
+
+func (o ViewLinksSegmentOutput) ToViewLinksSegmentOutput() ViewLinksSegmentOutput {
+	return o
+}
+
+func (o ViewLinksSegmentOutput) ToViewLinksSegmentOutputWithContext(ctx context.Context) ViewLinksSegmentOutput {
+	return o
+}
+
+// The environment ID of the segment.
+func (o ViewLinksSegmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewLinksSegment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The key of the segment.
+func (o ViewLinksSegmentOutput) SegmentKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewLinksSegment) string { return v.SegmentKey }).(pulumi.StringOutput)
+}
+
+type ViewLinksSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ViewLinksSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewLinksSegment)(nil)).Elem()
+}
+
+func (o ViewLinksSegmentArrayOutput) ToViewLinksSegmentArrayOutput() ViewLinksSegmentArrayOutput {
+	return o
+}
+
+func (o ViewLinksSegmentArrayOutput) ToViewLinksSegmentArrayOutputWithContext(ctx context.Context) ViewLinksSegmentArrayOutput {
+	return o
+}
+
+func (o ViewLinksSegmentArrayOutput) Index(i pulumi.IntInput) ViewLinksSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ViewLinksSegment {
+		return vs[0].([]ViewLinksSegment)[vs[1].(int)]
+	}).(ViewLinksSegmentOutput)
+}
+
 type WebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
 	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -3830,6 +4389,227 @@ func (o WebhookStatementArrayOutput) Index(i pulumi.IntInput) WebhookStatementOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookStatement {
 		return vs[0].([]WebhookStatement)[vs[1].(int)]
 	}).(WebhookStatementOutput)
+}
+
+type GetAiConfigVariationType struct {
+	// The variation's key.
+	Key string `pulumi:"key"`
+	// The variation's name.
+	Name string `pulumi:"name"`
+	// The variation's ID.
+	VariationId string `pulumi:"variationId"`
+}
+
+// GetAiConfigVariationTypeInput is an input type that accepts GetAiConfigVariationTypeArgs and GetAiConfigVariationTypeOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationTypeInput` via:
+//
+//	GetAiConfigVariationTypeArgs{...}
+type GetAiConfigVariationTypeInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationTypeOutput() GetAiConfigVariationTypeOutput
+	ToGetAiConfigVariationTypeOutputWithContext(context.Context) GetAiConfigVariationTypeOutput
+}
+
+type GetAiConfigVariationTypeArgs struct {
+	// The variation's key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The variation's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The variation's ID.
+	VariationId pulumi.StringInput `pulumi:"variationId"`
+}
+
+func (GetAiConfigVariationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationType)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationTypeArgs) ToGetAiConfigVariationTypeOutput() GetAiConfigVariationTypeOutput {
+	return i.ToGetAiConfigVariationTypeOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationTypeArgs) ToGetAiConfigVariationTypeOutputWithContext(ctx context.Context) GetAiConfigVariationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationTypeOutput)
+}
+
+// GetAiConfigVariationTypeArrayInput is an input type that accepts GetAiConfigVariationTypeArray and GetAiConfigVariationTypeArrayOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationTypeArrayInput` via:
+//
+//	GetAiConfigVariationTypeArray{ GetAiConfigVariationTypeArgs{...} }
+type GetAiConfigVariationTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationTypeArrayOutput() GetAiConfigVariationTypeArrayOutput
+	ToGetAiConfigVariationTypeArrayOutputWithContext(context.Context) GetAiConfigVariationTypeArrayOutput
+}
+
+type GetAiConfigVariationTypeArray []GetAiConfigVariationTypeInput
+
+func (GetAiConfigVariationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiConfigVariationType)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationTypeArray) ToGetAiConfigVariationTypeArrayOutput() GetAiConfigVariationTypeArrayOutput {
+	return i.ToGetAiConfigVariationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationTypeArray) ToGetAiConfigVariationTypeArrayOutputWithContext(ctx context.Context) GetAiConfigVariationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationTypeArrayOutput)
+}
+
+type GetAiConfigVariationTypeOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationType)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationTypeOutput) ToGetAiConfigVariationTypeOutput() GetAiConfigVariationTypeOutput {
+	return o
+}
+
+func (o GetAiConfigVariationTypeOutput) ToGetAiConfigVariationTypeOutputWithContext(ctx context.Context) GetAiConfigVariationTypeOutput {
+	return o
+}
+
+// The variation's key.
+func (o GetAiConfigVariationTypeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiConfigVariationType) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The variation's name.
+func (o GetAiConfigVariationTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiConfigVariationType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The variation's ID.
+func (o GetAiConfigVariationTypeOutput) VariationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiConfigVariationType) string { return v.VariationId }).(pulumi.StringOutput)
+}
+
+type GetAiConfigVariationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiConfigVariationType)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationTypeArrayOutput) ToGetAiConfigVariationTypeArrayOutput() GetAiConfigVariationTypeArrayOutput {
+	return o
+}
+
+func (o GetAiConfigVariationTypeArrayOutput) ToGetAiConfigVariationTypeArrayOutputWithContext(ctx context.Context) GetAiConfigVariationTypeArrayOutput {
+	return o
+}
+
+func (o GetAiConfigVariationTypeArrayOutput) Index(i pulumi.IntInput) GetAiConfigVariationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiConfigVariationType {
+		return vs[0].([]GetAiConfigVariationType)[vs[1].(int)]
+	}).(GetAiConfigVariationTypeOutput)
+}
+
+type GetAiConfigVariationMessage struct {
+	// The content of the message.
+	Content string `pulumi:"content"`
+	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	Role string `pulumi:"role"`
+}
+
+// GetAiConfigVariationMessageInput is an input type that accepts GetAiConfigVariationMessageArgs and GetAiConfigVariationMessageOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationMessageInput` via:
+//
+//	GetAiConfigVariationMessageArgs{...}
+type GetAiConfigVariationMessageInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationMessageOutput() GetAiConfigVariationMessageOutput
+	ToGetAiConfigVariationMessageOutputWithContext(context.Context) GetAiConfigVariationMessageOutput
+}
+
+type GetAiConfigVariationMessageArgs struct {
+	// The content of the message.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetAiConfigVariationMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationMessage)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationMessageArgs) ToGetAiConfigVariationMessageOutput() GetAiConfigVariationMessageOutput {
+	return i.ToGetAiConfigVariationMessageOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationMessageArgs) ToGetAiConfigVariationMessageOutputWithContext(ctx context.Context) GetAiConfigVariationMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationMessageOutput)
+}
+
+// GetAiConfigVariationMessageArrayInput is an input type that accepts GetAiConfigVariationMessageArray and GetAiConfigVariationMessageArrayOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationMessageArrayInput` via:
+//
+//	GetAiConfigVariationMessageArray{ GetAiConfigVariationMessageArgs{...} }
+type GetAiConfigVariationMessageArrayInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationMessageArrayOutput() GetAiConfigVariationMessageArrayOutput
+	ToGetAiConfigVariationMessageArrayOutputWithContext(context.Context) GetAiConfigVariationMessageArrayOutput
+}
+
+type GetAiConfigVariationMessageArray []GetAiConfigVariationMessageInput
+
+func (GetAiConfigVariationMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiConfigVariationMessage)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationMessageArray) ToGetAiConfigVariationMessageArrayOutput() GetAiConfigVariationMessageArrayOutput {
+	return i.ToGetAiConfigVariationMessageArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationMessageArray) ToGetAiConfigVariationMessageArrayOutputWithContext(ctx context.Context) GetAiConfigVariationMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationMessageArrayOutput)
+}
+
+type GetAiConfigVariationMessageOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationMessage)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationMessageOutput) ToGetAiConfigVariationMessageOutput() GetAiConfigVariationMessageOutput {
+	return o
+}
+
+func (o GetAiConfigVariationMessageOutput) ToGetAiConfigVariationMessageOutputWithContext(ctx context.Context) GetAiConfigVariationMessageOutput {
+	return o
+}
+
+// The content of the message.
+func (o GetAiConfigVariationMessageOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiConfigVariationMessage) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+func (o GetAiConfigVariationMessageOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiConfigVariationMessage) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetAiConfigVariationMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiConfigVariationMessage)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationMessageArrayOutput) ToGetAiConfigVariationMessageArrayOutput() GetAiConfigVariationMessageArrayOutput {
+	return o
+}
+
+func (o GetAiConfigVariationMessageArrayOutput) ToGetAiConfigVariationMessageArrayOutputWithContext(ctx context.Context) GetAiConfigVariationMessageArrayOutput {
+	return o
+}
+
+func (o GetAiConfigVariationMessageArrayOutput) Index(i pulumi.IntInput) GetAiConfigVariationMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiConfigVariationMessage {
+		return vs[0].([]GetAiConfigVariationMessage)[vs[1].(int)]
+	}).(GetAiConfigVariationMessageOutput)
 }
 
 type GetAuditLogSubscriptionStatement struct {
@@ -5318,6 +6098,148 @@ func (o GetFeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) GetFeatureF
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFlagVariation {
 		return vs[0].([]GetFeatureFlagVariation)[vs[1].(int)]
 	}).(GetFeatureFlagVariationOutput)
+}
+
+type GetFlagTemplatesBooleanDefault struct {
+	// The description for the false variation.
+	FalseDescription string `pulumi:"falseDescription"`
+	// The display name for the false variation.
+	FalseDisplayName string `pulumi:"falseDisplayName"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	OffVariation int `pulumi:"offVariation"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	OnVariation int `pulumi:"onVariation"`
+	// The description for the true variation.
+	TrueDescription string `pulumi:"trueDescription"`
+	// The display name for the true variation.
+	TrueDisplayName string `pulumi:"trueDisplayName"`
+}
+
+// GetFlagTemplatesBooleanDefaultInput is an input type that accepts GetFlagTemplatesBooleanDefaultArgs and GetFlagTemplatesBooleanDefaultOutput values.
+// You can construct a concrete instance of `GetFlagTemplatesBooleanDefaultInput` via:
+//
+//	GetFlagTemplatesBooleanDefaultArgs{...}
+type GetFlagTemplatesBooleanDefaultInput interface {
+	pulumi.Input
+
+	ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput
+	ToGetFlagTemplatesBooleanDefaultOutputWithContext(context.Context) GetFlagTemplatesBooleanDefaultOutput
+}
+
+type GetFlagTemplatesBooleanDefaultArgs struct {
+	// The description for the false variation.
+	FalseDescription pulumi.StringInput `pulumi:"falseDescription"`
+	// The display name for the false variation.
+	FalseDisplayName pulumi.StringInput `pulumi:"falseDisplayName"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	OffVariation pulumi.IntInput `pulumi:"offVariation"`
+	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	OnVariation pulumi.IntInput `pulumi:"onVariation"`
+	// The description for the true variation.
+	TrueDescription pulumi.StringInput `pulumi:"trueDescription"`
+	// The display name for the true variation.
+	TrueDisplayName pulumi.StringInput `pulumi:"trueDisplayName"`
+}
+
+func (GetFlagTemplatesBooleanDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTemplatesBooleanDefault)(nil)).Elem()
+}
+
+func (i GetFlagTemplatesBooleanDefaultArgs) ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput {
+	return i.ToGetFlagTemplatesBooleanDefaultOutputWithContext(context.Background())
+}
+
+func (i GetFlagTemplatesBooleanDefaultArgs) ToGetFlagTemplatesBooleanDefaultOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTemplatesBooleanDefaultOutput)
+}
+
+// GetFlagTemplatesBooleanDefaultArrayInput is an input type that accepts GetFlagTemplatesBooleanDefaultArray and GetFlagTemplatesBooleanDefaultArrayOutput values.
+// You can construct a concrete instance of `GetFlagTemplatesBooleanDefaultArrayInput` via:
+//
+//	GetFlagTemplatesBooleanDefaultArray{ GetFlagTemplatesBooleanDefaultArgs{...} }
+type GetFlagTemplatesBooleanDefaultArrayInput interface {
+	pulumi.Input
+
+	ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput
+	ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(context.Context) GetFlagTemplatesBooleanDefaultArrayOutput
+}
+
+type GetFlagTemplatesBooleanDefaultArray []GetFlagTemplatesBooleanDefaultInput
+
+func (GetFlagTemplatesBooleanDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlagTemplatesBooleanDefault)(nil)).Elem()
+}
+
+func (i GetFlagTemplatesBooleanDefaultArray) ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput {
+	return i.ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlagTemplatesBooleanDefaultArray) ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTemplatesBooleanDefaultArrayOutput)
+}
+
+type GetFlagTemplatesBooleanDefaultOutput struct{ *pulumi.OutputState }
+
+func (GetFlagTemplatesBooleanDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTemplatesBooleanDefault)(nil)).Elem()
+}
+
+func (o GetFlagTemplatesBooleanDefaultOutput) ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput {
+	return o
+}
+
+func (o GetFlagTemplatesBooleanDefaultOutput) ToGetFlagTemplatesBooleanDefaultOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultOutput {
+	return o
+}
+
+// The description for the false variation.
+func (o GetFlagTemplatesBooleanDefaultOutput) FalseDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.FalseDescription }).(pulumi.StringOutput)
+}
+
+// The display name for the false variation.
+func (o GetFlagTemplatesBooleanDefaultOutput) FalseDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.FalseDisplayName }).(pulumi.StringOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+func (o GetFlagTemplatesBooleanDefaultOutput) OffVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) int { return v.OffVariation }).(pulumi.IntOutput)
+}
+
+// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+func (o GetFlagTemplatesBooleanDefaultOutput) OnVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) int { return v.OnVariation }).(pulumi.IntOutput)
+}
+
+// The description for the true variation.
+func (o GetFlagTemplatesBooleanDefaultOutput) TrueDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.TrueDescription }).(pulumi.StringOutput)
+}
+
+// The display name for the true variation.
+func (o GetFlagTemplatesBooleanDefaultOutput) TrueDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.TrueDisplayName }).(pulumi.StringOutput)
+}
+
+type GetFlagTemplatesBooleanDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlagTemplatesBooleanDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlagTemplatesBooleanDefault)(nil)).Elem()
+}
+
+func (o GetFlagTemplatesBooleanDefaultArrayOutput) ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput {
+	return o
+}
+
+func (o GetFlagTemplatesBooleanDefaultArrayOutput) ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultArrayOutput {
+	return o
+}
+
+func (o GetFlagTemplatesBooleanDefaultArrayOutput) Index(i pulumi.IntInput) GetFlagTemplatesBooleanDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlagTemplatesBooleanDefault {
+		return vs[0].([]GetFlagTemplatesBooleanDefault)[vs[1].(int)]
+	}).(GetFlagTemplatesBooleanDefaultOutput)
 }
 
 type GetFlagTriggerInstruction struct {
@@ -6942,6 +7864,112 @@ func (o GetTeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) GetTeamRoleAtt
 	}).(GetTeamRoleAttributeOutput)
 }
 
+type GetViewLinkedSegment struct {
+	// The environment ID of the segment.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey string `pulumi:"segmentKey"`
+}
+
+// GetViewLinkedSegmentInput is an input type that accepts GetViewLinkedSegmentArgs and GetViewLinkedSegmentOutput values.
+// You can construct a concrete instance of `GetViewLinkedSegmentInput` via:
+//
+//	GetViewLinkedSegmentArgs{...}
+type GetViewLinkedSegmentInput interface {
+	pulumi.Input
+
+	ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput
+	ToGetViewLinkedSegmentOutputWithContext(context.Context) GetViewLinkedSegmentOutput
+}
+
+type GetViewLinkedSegmentArgs struct {
+	// The environment ID of the segment.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The key of the segment.
+	SegmentKey pulumi.StringInput `pulumi:"segmentKey"`
+}
+
+func (GetViewLinkedSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (i GetViewLinkedSegmentArgs) ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput {
+	return i.ToGetViewLinkedSegmentOutputWithContext(context.Background())
+}
+
+func (i GetViewLinkedSegmentArgs) ToGetViewLinkedSegmentOutputWithContext(ctx context.Context) GetViewLinkedSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewLinkedSegmentOutput)
+}
+
+// GetViewLinkedSegmentArrayInput is an input type that accepts GetViewLinkedSegmentArray and GetViewLinkedSegmentArrayOutput values.
+// You can construct a concrete instance of `GetViewLinkedSegmentArrayInput` via:
+//
+//	GetViewLinkedSegmentArray{ GetViewLinkedSegmentArgs{...} }
+type GetViewLinkedSegmentArrayInput interface {
+	pulumi.Input
+
+	ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput
+	ToGetViewLinkedSegmentArrayOutputWithContext(context.Context) GetViewLinkedSegmentArrayOutput
+}
+
+type GetViewLinkedSegmentArray []GetViewLinkedSegmentInput
+
+func (GetViewLinkedSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (i GetViewLinkedSegmentArray) ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput {
+	return i.ToGetViewLinkedSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetViewLinkedSegmentArray) ToGetViewLinkedSegmentArrayOutputWithContext(ctx context.Context) GetViewLinkedSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetViewLinkedSegmentArrayOutput)
+}
+
+type GetViewLinkedSegmentOutput struct{ *pulumi.OutputState }
+
+func (GetViewLinkedSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (o GetViewLinkedSegmentOutput) ToGetViewLinkedSegmentOutput() GetViewLinkedSegmentOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentOutput) ToGetViewLinkedSegmentOutputWithContext(ctx context.Context) GetViewLinkedSegmentOutput {
+	return o
+}
+
+// The environment ID of the segment.
+func (o GetViewLinkedSegmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The key of the segment.
+func (o GetViewLinkedSegmentOutput) SegmentKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.SegmentKey }).(pulumi.StringOutput)
+}
+
+type GetViewLinkedSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetViewLinkedSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetViewLinkedSegment)(nil)).Elem()
+}
+
+func (o GetViewLinkedSegmentArrayOutput) ToGetViewLinkedSegmentArrayOutput() GetViewLinkedSegmentArrayOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentArrayOutput) ToGetViewLinkedSegmentArrayOutputWithContext(ctx context.Context) GetViewLinkedSegmentArrayOutput {
+	return o
+}
+
+func (o GetViewLinkedSegmentArrayOutput) Index(i pulumi.IntInput) GetViewLinkedSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetViewLinkedSegment {
+		return vs[0].([]GetViewLinkedSegment)[vs[1].(int)]
+	}).(GetViewLinkedSegmentOutput)
+}
+
 type GetWebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
 	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -7083,6 +8111,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenInlineRoleArrayInput)(nil)).Elem(), AccessTokenInlineRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementInput)(nil)).Elem(), AccessTokenPolicyStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementArrayInput)(nil)).Elem(), AccessTokenPolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeInput)(nil)).Elem(), AiConfigVariationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeArrayInput)(nil)).Elem(), AiConfigVariationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageInput)(nil)).Elem(), AiConfigVariationMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageArrayInput)(nil)).Elem(), AiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementInput)(nil)).Elem(), AuditLogSubscriptionStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementArrayInput)(nil)).Elem(), AuditLogSubscriptionStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyInput)(nil)).Elem(), CustomRolePolicyArgs{})
@@ -7111,6 +8143,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagEnvironmentTargetArrayInput)(nil)).Elem(), FeatureFlagEnvironmentTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagVariationInput)(nil)).Elem(), FeatureFlagVariationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagVariationArrayInput)(nil)).Elem(), FeatureFlagVariationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlagTemplatesBooleanDefaultsInput)(nil)).Elem(), FlagTemplatesBooleanDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlagTemplatesBooleanDefaultsPtrInput)(nil)).Elem(), FlagTemplatesBooleanDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsPtrInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricUrlInput)(nil)).Elem(), MetricUrlArgs{})
@@ -7135,8 +8169,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamMemberRoleAttributeArrayInput)(nil)).Elem(), TeamMemberRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeInput)(nil)).Elem(), TeamRoleAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeArrayInput)(nil)).Elem(), TeamRoleAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentInput)(nil)).Elem(), ViewLinksSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentArrayInput)(nil)).Elem(), ViewLinksSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementInput)(nil)).Elem(), WebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementArrayInput)(nil)).Elem(), WebhookStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeInput)(nil)).Elem(), GetAiConfigVariationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeArrayInput)(nil)).Elem(), GetAiConfigVariationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageInput)(nil)).Elem(), GetAiConfigVariationMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageArrayInput)(nil)).Elem(), GetAiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementArrayInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingInput)(nil)).Elem(), GetEnvironmentApprovalSettingArgs{})
@@ -7161,6 +8201,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentTargetArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationInput)(nil)).Elem(), GetFeatureFlagVariationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationArrayInput)(nil)).Elem(), GetFeatureFlagVariationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTemplatesBooleanDefaultInput)(nil)).Elem(), GetFlagTemplatesBooleanDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTemplatesBooleanDefaultArrayInput)(nil)).Elem(), GetFlagTemplatesBooleanDefaultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionInput)(nil)).Elem(), GetFlagTriggerInstructionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionArrayInput)(nil)).Elem(), GetFlagTriggerInstructionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricUrlInput)(nil)).Elem(), GetMetricUrlArgs{})
@@ -7189,12 +8231,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttributeArrayInput)(nil)).Elem(), GetTeamMembersTeamMemberRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeInput)(nil)).Elem(), GetTeamRoleAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeArrayInput)(nil)).Elem(), GetTeamRoleAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentInput)(nil)).Elem(), GetViewLinkedSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentArrayInput)(nil)).Elem(), GetViewLinkedSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementInput)(nil)).Elem(), GetWebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementArrayInput)(nil)).Elem(), GetWebhookStatementArray{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleOutput{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleArrayOutput{})
 	pulumi.RegisterOutputType(AccessTokenPolicyStatementOutput{})
 	pulumi.RegisterOutputType(AccessTokenPolicyStatementArrayOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationTypeOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationMessageOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogSubscriptionStatementOutput{})
 	pulumi.RegisterOutputType(AuditLogSubscriptionStatementArrayOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyOutput{})
@@ -7223,6 +8271,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureFlagEnvironmentTargetArrayOutput{})
 	pulumi.RegisterOutputType(FeatureFlagVariationOutput{})
 	pulumi.RegisterOutputType(FeatureFlagVariationArrayOutput{})
+	pulumi.RegisterOutputType(FlagTemplatesBooleanDefaultsOutput{})
+	pulumi.RegisterOutputType(FlagTemplatesBooleanDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(FlagTriggerInstructionsOutput{})
 	pulumi.RegisterOutputType(FlagTriggerInstructionsPtrOutput{})
 	pulumi.RegisterOutputType(MetricUrlOutput{})
@@ -7247,8 +8297,14 @@ func init() {
 	pulumi.RegisterOutputType(TeamMemberRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TeamRoleAttributeOutput{})
 	pulumi.RegisterOutputType(TeamRoleAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ViewLinksSegmentOutput{})
+	pulumi.RegisterOutputType(ViewLinksSegmentArrayOutput{})
 	pulumi.RegisterOutputType(WebhookStatementOutput{})
 	pulumi.RegisterOutputType(WebhookStatementArrayOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationTypeOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationMessageOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingOutput{})
@@ -7273,6 +8329,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationArrayOutput{})
+	pulumi.RegisterOutputType(GetFlagTemplatesBooleanDefaultOutput{})
+	pulumi.RegisterOutputType(GetFlagTemplatesBooleanDefaultArrayOutput{})
 	pulumi.RegisterOutputType(GetFlagTriggerInstructionOutput{})
 	pulumi.RegisterOutputType(GetFlagTriggerInstructionArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricUrlOutput{})
@@ -7301,6 +8359,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTeamMembersTeamMemberRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamRoleAttributeOutput{})
 	pulumi.RegisterOutputType(GetTeamRoleAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetViewLinkedSegmentOutput{})
+	pulumi.RegisterOutputType(GetViewLinkedSegmentArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementArrayOutput{})
 }

@@ -28,7 +28,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.RelayProxyConfiguration("example", new()
+    ///     var example = new Launchdarkly.Index.RelayProxyConfiguration("example", new()
     ///     {
     ///         Name = "example-config",
     ///         Policies = new[]

@@ -27,7 +27,7 @@ class GetFeatureFlagResult:
     """
     A collection of values returned by getFeatureFlag.
     """
-    def __init__(__self__, archived=None, client_side_availabilities=None, custom_properties=None, defaults=None, description=None, id=None, include_in_snippet=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None):
+    def __init__(__self__, archived=None, client_side_availabilities=None, custom_properties=None, defaults=None, description=None, id=None, include_in_snippet=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None, view_keys=None, views=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -76,6 +76,12 @@ class GetFeatureFlagResult:
         if variations and not isinstance(variations, list):
             raise TypeError("Expected argument 'variations' to be a list")
         pulumi.set(__self__, "variations", variations)
+        if view_keys and not isinstance(view_keys, list):
+            raise TypeError("Expected argument 'view_keys' to be a list")
+        pulumi.set(__self__, "view_keys", view_keys)
+        if views and not isinstance(views, list):
+            raise TypeError("Expected argument 'views' to be a list")
+        pulumi.set(__self__, "views", views)
 
     @_builtins.property
     @pulumi.getter
@@ -203,6 +209,22 @@ class GetFeatureFlagResult:
         """
         return pulumi.get(self, "variations")
 
+    @_builtins.property
+    @pulumi.getter(name="viewKeys")
+    def view_keys(self) -> Sequence[_builtins.str]:
+        """
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        """
+        return pulumi.get(self, "view_keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def views(self) -> Sequence[_builtins.str]:
+        """
+        A list of view keys that this feature flag is linked to.
+        """
+        return pulumi.get(self, "views")
+
 
 class AwaitableGetFeatureFlagResult(GetFeatureFlagResult):
     # pylint: disable=using-constant-test
@@ -225,7 +247,9 @@ class AwaitableGetFeatureFlagResult(GetFeatureFlagResult):
             tags=self.tags,
             temporary=self.temporary,
             variation_type=self.variation_type,
-            variations=self.variations)
+            variations=self.variations,
+            view_keys=self.view_keys,
+            views=self.views)
 
 
 def get_feature_flag(key: Optional[_builtins.str] = None,
@@ -237,16 +261,6 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
     Provides a LaunchDarkly feature flag data source.
 
     This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_launchdarkly as launchdarkly
-
-    example = launchdarkly.get_feature_flag(key="example-flag",
-        project_key="example-project")
-    ```
 
 
     :param _builtins.str key: The unique feature flag key that references the flag in your application code.
@@ -278,7 +292,9 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         temporary=pulumi.get(__ret__, 'temporary'),
         variation_type=pulumi.get(__ret__, 'variation_type'),
-        variations=pulumi.get(__ret__, 'variations'))
+        variations=pulumi.get(__ret__, 'variations'),
+        view_keys=pulumi.get(__ret__, 'view_keys'),
+        views=pulumi.get(__ret__, 'views'))
 def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
                             maintainer_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             maintainer_team_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -288,16 +304,6 @@ def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
     Provides a LaunchDarkly feature flag data source.
 
     This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_launchdarkly as launchdarkly
-
-    example = launchdarkly.get_feature_flag(key="example-flag",
-        project_key="example-project")
-    ```
 
 
     :param _builtins.str key: The unique feature flag key that references the flag in your application code.
@@ -328,4 +334,6 @@ def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
         tags=pulumi.get(__response__, 'tags'),
         temporary=pulumi.get(__response__, 'temporary'),
         variation_type=pulumi.get(__response__, 'variation_type'),
-        variations=pulumi.get(__response__, 'variations')))
+        variations=pulumi.get(__response__, 'variations'),
+        view_keys=pulumi.get(__response__, 'view_keys'),
+        views=pulumi.get(__response__, 'views')))

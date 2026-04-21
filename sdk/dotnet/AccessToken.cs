@@ -28,14 +28,14 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var readerToken = new Launchdarkly.AccessToken("reader_token", new()
+    ///     var readerToken = new Launchdarkly.Index.AccessToken("reader_token", new()
     ///     {
     ///         Name = "Reader token managed by Terraform",
     ///         Role = "reader",
     ///     });
     /// 
     ///     // With a custom role
-    ///     var customRoleToken = new Launchdarkly.AccessToken("custom_role_token", new()
+    ///     var customRoleToken = new Launchdarkly.Index.AccessToken("custom_role_token", new()
     ///     {
     ///         Name = "DevOps",
     ///         CustomRoles = new[]
@@ -45,7 +45,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // With an inline custom role (policy statements)
-    ///     var tokenWithPolicyStatements = new Launchdarkly.AccessToken("token_with_policy_statements", new()
+    ///     var tokenWithPolicyStatements = new Launchdarkly.Index.AccessToken("token_with_policy_statements", new()
     ///     {
     ///         Name = "Integration service token",
     ///         InlineRoles = new[]

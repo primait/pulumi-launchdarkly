@@ -27,7 +27,7 @@ namespace Pulumi.Launchdarkly
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This example shows the use of prerequisites, targets, context targets, rules, and fallthrough for a feature flag environment
-    ///     var numberFfEnv = new Launchdarkly.FeatureFlagEnvironment("number_ff_env", new()
+    ///     var numberFfEnv = new Launchdarkly.Index.FeatureFlagEnvironment("number_ff_env", new()
     ///     {
     ///         FlagId = number.Id,
     ///         EnvKey = staging.Key,
@@ -120,7 +120,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // This example shows the minimum configuration required to create a feature flag environment
-    ///     var basicFlagEnvironment = new Launchdarkly.FeatureFlagEnvironment("basic_flag_environment", new()
+    ///     var basicFlagEnvironment = new Launchdarkly.Index.FeatureFlagEnvironment("basic_flag_environment", new()
     ///     {
     ///         FlagId = basicFlag.Id,
     ///         EnvKey = "development",
@@ -133,7 +133,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // This example shows a feature flag environment with a targeting rule that uses every clause operator
-    ///     var bigFlagEnvironment = new Launchdarkly.FeatureFlagEnvironment("big_flag_environment", new()
+    ///     var bigFlagEnvironment = new Launchdarkly.Index.FeatureFlagEnvironment("big_flag_environment", new()
     ///     {
     ///         FlagId = bigFlag.Id,
     ///         EnvKey = "development",

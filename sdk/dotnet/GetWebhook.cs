@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetWebhook.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetWebhook.Invoke(new()
         ///     {
         ///         Id = "57c0af6099690907435299",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetWebhook.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetWebhook.Invoke(new()
         ///     {
         ///         Id = "57c0af6099690907435299",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetWebhook.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetWebhook.Invoke(new()
         ///     {
         ///         Id = "57c0af6099690907435299",
         ///     });

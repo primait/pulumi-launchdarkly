@@ -28,7 +28,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var platformTeam = Launchdarkly.GetTeam.Invoke(new()
+        ///     var platformTeam = Launchdarkly.Index.GetTeam.Invoke(new()
         ///     {
         ///         Key = "platform_team",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var platformTeam = Launchdarkly.GetTeam.Invoke(new()
+        ///     var platformTeam = Launchdarkly.Index.GetTeam.Invoke(new()
         ///     {
         ///         Key = "platform_team",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var platformTeam = Launchdarkly.GetTeam.Invoke(new()
+        ///     var platformTeam = Launchdarkly.Index.GetTeam.Invoke(new()
         ///     {
         ///         Key = "platform_team",
         ///     });

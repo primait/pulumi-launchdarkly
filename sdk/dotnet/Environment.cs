@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var staging = new Launchdarkly.Environment("staging", new()
+    ///     var staging = new Launchdarkly.Index.Environment("staging", new()
     ///     {
     ///         Name = "Staging",
     ///         Key = "staging",
@@ -39,7 +39,7 @@ namespace Pulumi.Launchdarkly
     ///         ProjectKey = example.Key,
     ///     });
     /// 
-    ///     var approvalsExample = new Launchdarkly.Environment("approvals_example", new()
+    ///     var approvalsExample = new Launchdarkly.Index.Environment("approvals_example", new()
     ///     {
     ///         Name = "Approvals Example Environment",
     ///         Key = "approvals-example",

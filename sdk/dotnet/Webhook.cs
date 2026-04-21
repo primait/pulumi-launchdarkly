@@ -24,7 +24,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Webhook("example", new()
+    ///     var example = new Launchdarkly.Index.Webhook("example", new()
     ///     {
     ///         Url = "http://webhooks.com/webhook",
     ///         Name = "Example Webhook",

@@ -11,18 +11,6 @@ import * as utilities from "./utilities";
  * Provides a LaunchDarkly feature flag data source.
  *
  * This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
- *
- * const example = launchdarkly.getFeatureFlag({
- *     key: "example-flag",
- *     projectKey: "example-project",
- * });
- * ```
  */
 export function getFeatureFlag(args: GetFeatureFlagArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureFlagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -123,23 +111,19 @@ export interface GetFeatureFlagResult {
      * An array of possible variations for the flag
      */
     readonly variations: outputs.GetFeatureFlagVariation[];
+    /**
+     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     */
+    readonly viewKeys: string[];
+    /**
+     * A list of view keys that this feature flag is linked to.
+     */
+    readonly views: string[];
 }
 /**
  * Provides a LaunchDarkly feature flag data source.
  *
  * This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
- *
- * const example = launchdarkly.getFeatureFlag({
- *     key: "example-flag",
- *     projectKey: "example-project",
- * });
- * ```
  */
 export function getFeatureFlagOutput(args: GetFeatureFlagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureFlagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

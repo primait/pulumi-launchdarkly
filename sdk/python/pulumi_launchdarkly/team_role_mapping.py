@@ -23,6 +23,7 @@ class TeamRoleMappingArgs:
                  team_key: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a TeamRoleMapping resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         :param pulumi.Input[_builtins.str] team_key: The team key.
         """
@@ -61,6 +62,7 @@ class _TeamRoleMappingState:
                  team_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamRoleMapping resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         :param pulumi.Input[_builtins.str] team_key: The team key.
         """
@@ -132,6 +134,7 @@ class TeamRoleMapping(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/teamRoleMapping:TeamRoleMapping platform_team platform_team
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
@@ -171,6 +174,7 @@ class TeamRoleMapping(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/teamRoleMapping:TeamRoleMapping platform_team platform_team
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TeamRoleMappingArgs args: The arguments to use to populate this resource's properties.

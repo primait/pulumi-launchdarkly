@@ -41,7 +41,7 @@ export interface GetAuditLogSubscriptionArgs {
      */
     id: string;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
      */
     integrationKey: string;
 }
@@ -59,7 +59,7 @@ export interface GetAuditLogSubscriptionResult {
      */
     readonly id: string;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
      */
     readonly integrationKey: string;
     /**
@@ -113,7 +113,7 @@ export interface GetAuditLogSubscriptionOutputArgs {
      */
     id: pulumi.Input<string>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`.
      */
     integrationKey: pulumi.Input<string>;
 }
