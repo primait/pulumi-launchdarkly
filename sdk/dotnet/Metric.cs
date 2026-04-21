@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Metric("example", new()
+    ///     var example = new Launchdarkly.Index.Metric("example", new()
     ///     {
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
     ///         Key = "example-metric",

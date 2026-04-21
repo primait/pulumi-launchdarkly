@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetTeamMember.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetTeamMember.Invoke(new()
         ///     {
         ///         Email = "example@example.com",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetTeamMember.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetTeamMember.Invoke(new()
         ///     {
         ///         Email = "example@example.com",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetTeamMember.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetTeamMember.Invoke(new()
         ///     {
         ///         Email = "example@example.com",
         ///     });

@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var platformTeam = new Launchdarkly.TeamRoleMapping("platform_team", new()
+    ///     var platformTeam = new Launchdarkly.Index.TeamRoleMapping("platform_team", new()
     ///     {
     ///         TeamKey = "platform_team",
     ///         CustomRoleKeys = new[]

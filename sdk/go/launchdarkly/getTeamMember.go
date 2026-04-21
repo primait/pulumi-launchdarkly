@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupTeamMember(ctx, &launchdarkly.LookupTeamMemberArgs{
+//			_, err := launchdarkly.GetTeamMember(ctx, &launchdarkly.LookupTeamMemberArgs{
 //				Email: "example@example.com",
 //			}, nil)
 //			if err != nil {

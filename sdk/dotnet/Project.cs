@@ -24,7 +24,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Project("example", new()
+    ///     var example = new Launchdarkly.Index.Project("example", new()
     ///     {
     ///         Key = "example-project",
     ///         Name = "Example project",
@@ -32,6 +32,8 @@ namespace Pulumi.Launchdarkly
     ///         {
     ///             "terraform",
     ///         },
+    ///         RequireViewAssociationForNewFlags = false,
+    ///         RequireViewAssociationForNewSegments = false,
     ///         Environments = new[]
     ///         {
     ///             new Launchdarkly.Inputs.ProjectEnvironmentArgs
@@ -91,7 +93,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Project("example", new()
+    ///     var example = new Launchdarkly.Index.Project("example", new()
     ///     {
     ///         Name = "testProject",
     ///         Key = "%s",
@@ -138,6 +140,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Output("requireViewAssociationForNewFlags")]
+        public Output<bool?> RequireViewAssociationForNewFlags { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Output("requireViewAssociationForNewSegments")]
+        public Output<bool?> RequireViewAssociationForNewSegments { get; private set; } = null!;
 
         /// <summary>
         /// Tags associated with your resource.
@@ -236,6 +250,18 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewFlags")]
+        public Input<bool>? RequireViewAssociationForNewFlags { get; set; }
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewSegments")]
+        public Input<bool>? RequireViewAssociationForNewSegments { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -299,6 +325,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewFlags")]
+        public Input<bool>? RequireViewAssociationForNewFlags { get; set; }
+
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        [Input("requireViewAssociationForNewSegments")]
+        public Input<bool>? RequireViewAssociationForNewSegments { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

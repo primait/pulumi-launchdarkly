@@ -28,7 +28,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetFlagTrigger.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetFlagTrigger.Invoke(new()
         ///     {
         ///         Id = "61d490757f7821150815518f",
         ///         FlagKey = "example-flag",
@@ -59,7 +59,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetFlagTrigger.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetFlagTrigger.Invoke(new()
         ///     {
         ///         Id = "61d490757f7821150815518f",
         ///         FlagKey = "example-flag",
@@ -90,7 +90,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetFlagTrigger.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetFlagTrigger.Invoke(new()
         ///     {
         ///         Id = "61d490757f7821150815518f",
         ///         FlagKey = "example-flag",

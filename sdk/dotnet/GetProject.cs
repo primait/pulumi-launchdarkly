@@ -28,7 +28,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetProject.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetProject.Invoke(new()
         ///     {
         ///         Key = "example-project",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetProject.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetProject.Invoke(new()
         ///     {
         ///         Key = "example-project",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.GetProject.Invoke(new()
+        ///     var example = Launchdarkly.Index.GetProject.Invoke(new()
         ///     {
         ///         Key = "example-project",
         ///     });
@@ -150,6 +150,14 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Whether new flags created in this project must be associated with at least one view.
+        /// </summary>
+        public readonly bool RequireViewAssociationForNewFlags;
+        /// <summary>
+        /// Whether new segments created in this project must be associated with at least one view.
+        /// </summary>
+        public readonly bool RequireViewAssociationForNewSegments;
+        /// <summary>
         /// Tags associated with your resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -166,6 +174,10 @@ namespace Pulumi.Launchdarkly
 
             string name,
 
+            bool requireViewAssociationForNewFlags,
+
+            bool requireViewAssociationForNewSegments,
+
             ImmutableArray<string> tags)
         {
             ClientSideAvailabilities = clientSideAvailabilities;
@@ -173,6 +185,8 @@ namespace Pulumi.Launchdarkly
             Id = id;
             Key = key;
             Name = name;
+            RequireViewAssociationForNewFlags = requireViewAssociationForNewFlags;
+            RequireViewAssociationForNewSegments = requireViewAssociationForNewSegments;
             Tags = tags;
         }
     }

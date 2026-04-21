@@ -54,6 +54,32 @@ export interface AccessTokenPolicyStatement {
     resources?: string[];
 }
 
+export interface AiConfigVariation {
+    /**
+     * The variation's key.
+     */
+    key: string;
+    /**
+     * The variation's name.
+     */
+    name: string;
+    /**
+     * The variation's ID.
+     */
+    variationId: string;
+}
+
+export interface AiConfigVariationMessage {
+    /**
+     * The content of the message.
+     */
+    content: string;
+    /**
+     * The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+     */
+    role: string;
+}
+
 export interface AuditLogSubscriptionStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
@@ -308,11 +334,64 @@ export interface FeatureFlagVariation {
     value: string;
 }
 
+export interface FlagTemplatesBooleanDefaults {
+    /**
+     * The description for the false variation.
+     */
+    falseDescription: string;
+    /**
+     * The display name for the false variation.
+     */
+    falseDisplayName: string;
+    /**
+     * The variation index of the boolean flag variation to serve when the flag's targeting is off.
+     */
+    offVariation: number;
+    /**
+     * The variation index of the boolean flag variation to serve when the flag's targeting is on.
+     */
+    onVariation: number;
+    /**
+     * The description for the true variation.
+     */
+    trueDescription: string;
+    /**
+     * The display name for the true variation.
+     */
+    trueDisplayName: string;
+}
+
 export interface FlagTriggerInstructions {
     /**
      * The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
      */
     kind: string;
+}
+
+export interface GetAiConfigVariation {
+    /**
+     * The variation's key.
+     */
+    key: string;
+    /**
+     * The variation's name.
+     */
+    name: string;
+    /**
+     * The variation's ID.
+     */
+    variationId: string;
+}
+
+export interface GetAiConfigVariationMessage {
+    /**
+     * The content of the message.
+     */
+    content: string;
+    /**
+     * The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+     */
+    role: string;
 }
 
 export interface GetAuditLogSubscriptionStatement {
@@ -541,6 +620,33 @@ export interface GetFeatureFlagVariation {
     value: string;
 }
 
+export interface GetFlagTemplatesBooleanDefault {
+    /**
+     * The description for the false variation.
+     */
+    falseDescription: string;
+    /**
+     * The display name for the false variation.
+     */
+    falseDisplayName: string;
+    /**
+     * The variation index of the boolean flag variation to serve when the flag's targeting is off.
+     */
+    offVariation: number;
+    /**
+     * The variation index of the boolean flag variation to serve when the flag's targeting is on.
+     */
+    onVariation: number;
+    /**
+     * The description for the true variation.
+     */
+    trueDescription: string;
+    /**
+     * The display name for the true variation.
+     */
+    trueDisplayName: string;
+}
+
 export interface GetFlagTriggerInstruction {
     /**
      * The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
@@ -739,6 +845,17 @@ export interface GetTeamRoleAttribute {
      * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
      */
     values: string[];
+}
+
+export interface GetViewLinkedSegment {
+    /**
+     * The environment ID of the segment.
+     */
+    environmentId: string;
+    /**
+     * The key of the segment.
+     */
+    segmentKey: string;
 }
 
 export interface GetWebhookStatement {
@@ -995,6 +1112,17 @@ export interface TeamRoleAttribute {
      * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
      */
     values: string[];
+}
+
+export interface ViewLinksSegment {
+    /**
+     * The environment ID of the segment.
+     */
+    environmentId: string;
+    /**
+     * The key of the segment.
+     */
+    segmentKey: string;
 }
 
 export interface WebhookStatement {

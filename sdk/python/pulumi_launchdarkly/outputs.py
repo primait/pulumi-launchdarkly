@@ -18,6 +18,8 @@ from . import outputs
 __all__ = [
     'AccessTokenInlineRole',
     'AccessTokenPolicyStatement',
+    'AiConfigVariation',
+    'AiConfigVariationMessage',
     'AuditLogSubscriptionStatement',
     'CustomRolePolicy',
     'CustomRolePolicyStatement',
@@ -32,6 +34,7 @@ __all__ = [
     'FeatureFlagEnvironmentRuleClause',
     'FeatureFlagEnvironmentTarget',
     'FeatureFlagVariation',
+    'FlagTemplatesBooleanDefaults',
     'FlagTriggerInstructions',
     'MetricUrl',
     'ProjectDefaultClientSideAvailability',
@@ -44,7 +47,10 @@ __all__ = [
     'SegmentRuleClause',
     'TeamMemberRoleAttribute',
     'TeamRoleAttribute',
+    'ViewLinksSegment',
     'WebhookStatement',
+    'GetAiConfigVariationResult',
+    'GetAiConfigVariationMessageResult',
     'GetAuditLogSubscriptionStatementResult',
     'GetEnvironmentApprovalSettingResult',
     'GetFeatureFlagClientSideAvailabilityResult',
@@ -57,6 +63,7 @@ __all__ = [
     'GetFeatureFlagEnvironmentRuleClauseResult',
     'GetFeatureFlagEnvironmentTargetResult',
     'GetFeatureFlagVariationResult',
+    'GetFlagTemplatesBooleanDefaultResult',
     'GetFlagTriggerInstructionResult',
     'GetMetricUrlResult',
     'GetProjectClientSideAvailabilityResult',
@@ -71,6 +78,7 @@ __all__ = [
     'GetTeamMembersTeamMemberResult',
     'GetTeamMembersTeamMemberRoleAttributeResult',
     'GetTeamRoleAttributeResult',
+    'GetViewLinkedSegmentResult',
     'GetWebhookStatementResult',
 ]
 
@@ -246,6 +254,95 @@ class AccessTokenPolicyStatement(dict):
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class AiConfigVariation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "variationId":
+            suggest = "variation_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiConfigVariation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiConfigVariation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiConfigVariation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 variation_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The variation's key.
+        :param _builtins.str name: The variation's name.
+        :param _builtins.str variation_id: The variation's ID.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if variation_id is not None:
+            pulumi.set(__self__, "variation_id", variation_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The variation's key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The variation's name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="variationId")
+    def variation_id(self) -> Optional[_builtins.str]:
+        """
+        The variation's ID.
+        """
+        return pulumi.get(self, "variation_id")
+
+
+@pulumi.output_type
+class AiConfigVariationMessage(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 role: _builtins.str):
+        """
+        :param _builtins.str content: The content of the message.
+        :param _builtins.str role: The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        The content of the message.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -1170,6 +1267,106 @@ class FeatureFlagVariation(dict):
 
 
 @pulumi.output_type
+class FlagTemplatesBooleanDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "falseDescription":
+            suggest = "false_description"
+        elif key == "falseDisplayName":
+            suggest = "false_display_name"
+        elif key == "offVariation":
+            suggest = "off_variation"
+        elif key == "onVariation":
+            suggest = "on_variation"
+        elif key == "trueDescription":
+            suggest = "true_description"
+        elif key == "trueDisplayName":
+            suggest = "true_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FlagTemplatesBooleanDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FlagTemplatesBooleanDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FlagTemplatesBooleanDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 false_description: _builtins.str,
+                 false_display_name: _builtins.str,
+                 off_variation: _builtins.int,
+                 on_variation: _builtins.int,
+                 true_description: _builtins.str,
+                 true_display_name: _builtins.str):
+        """
+        :param _builtins.str false_description: The description for the false variation.
+        :param _builtins.str false_display_name: The display name for the false variation.
+        :param _builtins.int off_variation: The variation index of the boolean flag variation to serve when the flag's targeting is off.
+        :param _builtins.int on_variation: The variation index of the boolean flag variation to serve when the flag's targeting is on.
+        :param _builtins.str true_description: The description for the true variation.
+        :param _builtins.str true_display_name: The display name for the true variation.
+        """
+        pulumi.set(__self__, "false_description", false_description)
+        pulumi.set(__self__, "false_display_name", false_display_name)
+        pulumi.set(__self__, "off_variation", off_variation)
+        pulumi.set(__self__, "on_variation", on_variation)
+        pulumi.set(__self__, "true_description", true_description)
+        pulumi.set(__self__, "true_display_name", true_display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="falseDescription")
+    def false_description(self) -> _builtins.str:
+        """
+        The description for the false variation.
+        """
+        return pulumi.get(self, "false_description")
+
+    @_builtins.property
+    @pulumi.getter(name="falseDisplayName")
+    def false_display_name(self) -> _builtins.str:
+        """
+        The display name for the false variation.
+        """
+        return pulumi.get(self, "false_display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="offVariation")
+    def off_variation(self) -> _builtins.int:
+        """
+        The variation index of the boolean flag variation to serve when the flag's targeting is off.
+        """
+        return pulumi.get(self, "off_variation")
+
+    @_builtins.property
+    @pulumi.getter(name="onVariation")
+    def on_variation(self) -> _builtins.int:
+        """
+        The variation index of the boolean flag variation to serve when the flag's targeting is on.
+        """
+        return pulumi.get(self, "on_variation")
+
+    @_builtins.property
+    @pulumi.getter(name="trueDescription")
+    def true_description(self) -> _builtins.str:
+        """
+        The description for the true variation.
+        """
+        return pulumi.get(self, "true_description")
+
+    @_builtins.property
+    @pulumi.getter(name="trueDisplayName")
+    def true_display_name(self) -> _builtins.str:
+        """
+        The display name for the true variation.
+        """
+        return pulumi.get(self, "true_display_name")
+
+
+@pulumi.output_type
 class FlagTriggerInstructions(dict):
     def __init__(__self__, *,
                  kind: _builtins.str):
@@ -2025,6 +2222,54 @@ class TeamRoleAttribute(dict):
 
 
 @pulumi.output_type
+class ViewLinksSegment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentId":
+            suggest = "environment_id"
+        elif key == "segmentKey":
+            suggest = "segment_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ViewLinksSegment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ViewLinksSegment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ViewLinksSegment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_id: _builtins.str,
+                 segment_key: _builtins.str):
+        """
+        :param _builtins.str environment_id: The environment ID of the segment.
+        :param _builtins.str segment_key: The key of the segment.
+        """
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "segment_key", segment_key)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID of the segment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentKey")
+    def segment_key(self) -> _builtins.str:
+        """
+        The key of the segment.
+        """
+        return pulumi.get(self, "segment_key")
+
+
+@pulumi.output_type
 class WebhookStatement(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2109,6 +2354,75 @@ class WebhookStatement(dict):
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetAiConfigVariationResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 name: _builtins.str,
+                 variation_id: _builtins.str):
+        """
+        :param _builtins.str key: The variation's key.
+        :param _builtins.str name: The variation's name.
+        :param _builtins.str variation_id: The variation's ID.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "variation_id", variation_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The variation's key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The variation's name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="variationId")
+    def variation_id(self) -> _builtins.str:
+        """
+        The variation's ID.
+        """
+        return pulumi.get(self, "variation_id")
+
+
+@pulumi.output_type
+class GetAiConfigVariationMessageResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 role: _builtins.str):
+        """
+        :param _builtins.str content: The content of the message.
+        :param _builtins.str role: The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        The content of the message.
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -2731,6 +3045,79 @@ class GetFeatureFlagVariationResult(dict):
 
 
 @pulumi.output_type
+class GetFlagTemplatesBooleanDefaultResult(dict):
+    def __init__(__self__, *,
+                 false_description: _builtins.str,
+                 false_display_name: _builtins.str,
+                 off_variation: _builtins.int,
+                 on_variation: _builtins.int,
+                 true_description: _builtins.str,
+                 true_display_name: _builtins.str):
+        """
+        :param _builtins.str false_description: The description for the false variation.
+        :param _builtins.str false_display_name: The display name for the false variation.
+        :param _builtins.int off_variation: The variation index of the boolean flag variation to serve when the flag's targeting is off.
+        :param _builtins.int on_variation: The variation index of the boolean flag variation to serve when the flag's targeting is on.
+        :param _builtins.str true_description: The description for the true variation.
+        :param _builtins.str true_display_name: The display name for the true variation.
+        """
+        pulumi.set(__self__, "false_description", false_description)
+        pulumi.set(__self__, "false_display_name", false_display_name)
+        pulumi.set(__self__, "off_variation", off_variation)
+        pulumi.set(__self__, "on_variation", on_variation)
+        pulumi.set(__self__, "true_description", true_description)
+        pulumi.set(__self__, "true_display_name", true_display_name)
+
+    @_builtins.property
+    @pulumi.getter(name="falseDescription")
+    def false_description(self) -> _builtins.str:
+        """
+        The description for the false variation.
+        """
+        return pulumi.get(self, "false_description")
+
+    @_builtins.property
+    @pulumi.getter(name="falseDisplayName")
+    def false_display_name(self) -> _builtins.str:
+        """
+        The display name for the false variation.
+        """
+        return pulumi.get(self, "false_display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="offVariation")
+    def off_variation(self) -> _builtins.int:
+        """
+        The variation index of the boolean flag variation to serve when the flag's targeting is off.
+        """
+        return pulumi.get(self, "off_variation")
+
+    @_builtins.property
+    @pulumi.getter(name="onVariation")
+    def on_variation(self) -> _builtins.int:
+        """
+        The variation index of the boolean flag variation to serve when the flag's targeting is on.
+        """
+        return pulumi.get(self, "on_variation")
+
+    @_builtins.property
+    @pulumi.getter(name="trueDescription")
+    def true_description(self) -> _builtins.str:
+        """
+        The description for the true variation.
+        """
+        return pulumi.get(self, "true_description")
+
+    @_builtins.property
+    @pulumi.getter(name="trueDisplayName")
+    def true_display_name(self) -> _builtins.str:
+        """
+        The display name for the true variation.
+        """
+        return pulumi.get(self, "true_display_name")
+
+
+@pulumi.output_type
 class GetFlagTriggerInstructionResult(dict):
     def __init__(__self__, *,
                  kind: _builtins.str):
@@ -3308,6 +3695,35 @@ class GetTeamRoleAttributeResult(dict):
         A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetViewLinkedSegmentResult(dict):
+    def __init__(__self__, *,
+                 environment_id: _builtins.str,
+                 segment_key: _builtins.str):
+        """
+        :param _builtins.str environment_id: The environment ID of the segment.
+        :param _builtins.str segment_key: The key of the segment.
+        """
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "segment_key", segment_key)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID of the segment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentKey")
+    def segment_key(self) -> _builtins.str:
+        """
+        The key of the segment.
+        """
+        return pulumi.get(self, "segment_key")
 
 
 @pulumi.output_type

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupProject(ctx, &launchdarkly.LookupProjectArgs{
+//			_, err := launchdarkly.GetProject(ctx, &launchdarkly.LookupProjectArgs{
 //				Key: "example-project",
 //			}, nil)
 //			if err != nil {
@@ -72,6 +72,10 @@ type LookupProjectResult struct {
 	Key string `pulumi:"key"`
 	// The project's name.
 	Name string `pulumi:"name"`
+	// Whether new flags created in this project must be associated with at least one view.
+	RequireViewAssociationForNewFlags bool `pulumi:"requireViewAssociationForNewFlags"`
+	// Whether new segments created in this project must be associated with at least one view.
+	RequireViewAssociationForNewSegments bool `pulumi:"requireViewAssociationForNewSegments"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -137,6 +141,16 @@ func (o LookupProjectResultOutput) Key() pulumi.StringOutput {
 // The project's name.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether new flags created in this project must be associated with at least one view.
+func (o LookupProjectResultOutput) RequireViewAssociationForNewFlags() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.RequireViewAssociationForNewFlags }).(pulumi.BoolOutput)
+}
+
+// Whether new segments created in this project must be associated with at least one view.
+func (o LookupProjectResultOutput) RequireViewAssociationForNewSegments() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupProjectResult) bool { return v.RequireViewAssociationForNewSegments }).(pulumi.BoolOutput)
 }
 
 // Tags associated with your resource.

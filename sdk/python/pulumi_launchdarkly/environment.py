@@ -35,6 +35,7 @@ class EnvironmentArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
+
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
         :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -231,6 +232,7 @@ class _EnvironmentState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
+
         :param pulumi.Input[_builtins.str] api_key: The environment's SDK key.
         :param pulumi.Input[_builtins.str] client_side_id: The environment's client-side ID.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
@@ -521,6 +523,7 @@ class Environment(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/environment:Environment staging example-project/staging
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
@@ -587,6 +590,7 @@ class Environment(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/environment:Environment staging example-project/staging
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

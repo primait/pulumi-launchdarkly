@@ -47,6 +47,31 @@
                     }
                 }
             },
+            "launchdarkly_ai_config": {
+                "current": "launchdarkly:index/aiConfig:AiConfig",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_ai_config_variation": {
+                "current": "launchdarkly:index/aiConfigVariation:AiConfigVariation",
+                "fields": {
+                    "messages": {
+                        "maxItemsOne": false
+                    },
+                    "tool_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_ai_tool": {
+                "current": "launchdarkly:index/aiTool:AiTool"
+            },
             "launchdarkly_audit_log_subscription": {
                 "current": "launchdarkly:index/auditLogSubscription:AuditLogSubscription",
                 "fields": {
@@ -161,6 +186,9 @@
                     },
                     "variations": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -222,6 +250,17 @@
                     }
                 }
             },
+            "launchdarkly_flag_templates": {
+                "current": "launchdarkly:index/flagTemplates:FlagTemplates",
+                "fields": {
+                    "boolean_defaults": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "launchdarkly_flag_trigger": {
                 "current": "launchdarkly:index/flagTrigger:FlagTrigger",
                 "fields": {
@@ -240,6 +279,14 @@
                         "maxItemsOne": false
                     },
                     "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_model_config": {
+                "current": "launchdarkly:index/modelConfig:ModelConfig",
+                "fields": {
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -347,6 +394,9 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -400,6 +450,28 @@
                     }
                 }
             },
+            "launchdarkly_view": {
+                "current": "launchdarkly:index/view:View",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_view_filter_links": {
+                "current": "launchdarkly:index/viewFilterLinks:ViewFilterLinks"
+            },
+            "launchdarkly_view_links": {
+                "current": "launchdarkly:index/viewLinks:ViewLinks",
+                "fields": {
+                    "flags": {
+                        "maxItemsOne": false
+                    },
+                    "segments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "launchdarkly_webhook": {
                 "current": "launchdarkly:index/webhook:Webhook",
                 "fields": {
@@ -429,6 +501,31 @@
             }
         },
         "datasources": {
+            "launchdarkly_ai_config": {
+                "current": "launchdarkly:index/getAiConfig:getAiConfig",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_ai_config_variation": {
+                "current": "launchdarkly:index/getAiConfigVariation:getAiConfigVariation",
+                "fields": {
+                    "messages": {
+                        "maxItemsOne": false
+                    },
+                    "tool_keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_ai_tool": {
+                "current": "launchdarkly:index/getAiTool:getAiTool"
+            },
             "launchdarkly_audit_log_subscription": {
                 "current": "launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription",
                 "fields": {
@@ -498,6 +595,12 @@
                     },
                     "variations": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
+                    },
+                    "views": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -559,6 +662,17 @@
                     }
                 }
             },
+            "launchdarkly_flag_templates": {
+                "current": "launchdarkly:index/getFlagTemplates:getFlagTemplates",
+                "fields": {
+                    "boolean_defaults": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "launchdarkly_flag_trigger": {
                 "current": "launchdarkly:index/getFlagTrigger:getFlagTrigger",
                 "fields": {
@@ -577,6 +691,14 @@
                         "maxItemsOne": false
                     },
                     "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "launchdarkly_model_config": {
+                "current": "launchdarkly:index/getModelConfig:getModelConfig",
+                "fields": {
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -667,6 +789,12 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "view_keys": {
+                        "maxItemsOne": false
+                    },
+                    "views": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -740,6 +868,20 @@
                     }
                 }
             },
+            "launchdarkly_view": {
+                "current": "launchdarkly:index/getView:getView",
+                "fields": {
+                    "linked_flags": {
+                        "maxItemsOne": false
+                    },
+                    "linked_segments": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "launchdarkly_webhook": {
                 "current": "launchdarkly:index/getWebhook:getWebhook",
                 "fields": {
@@ -773,35 +915,49 @@
     "mux": {
         "resources": {
             "launchdarkly:index/accessToken:AccessToken": 0,
+            "launchdarkly:index/aiConfig:AiConfig": 0,
+            "launchdarkly:index/aiConfigVariation:AiConfigVariation": 0,
+            "launchdarkly:index/aiTool:AiTool": 0,
             "launchdarkly:index/auditLogSubscription:AuditLogSubscription": 0,
             "launchdarkly:index/customRole:CustomRole": 0,
             "launchdarkly:index/destination:Destination": 0,
             "launchdarkly:index/environment:Environment": 0,
             "launchdarkly:index/featureFlag:FeatureFlag": 0,
             "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment": 0,
+            "launchdarkly:index/flagTemplates:FlagTemplates": 0,
             "launchdarkly:index/flagTrigger:FlagTrigger": 0,
             "launchdarkly:index/metric:Metric": 0,
+            "launchdarkly:index/modelConfig:ModelConfig": 0,
             "launchdarkly:index/project:Project": 0,
             "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration": 0,
             "launchdarkly:index/segment:Segment": 0,
             "launchdarkly:index/team:Team": 0,
             "launchdarkly:index/teamMember:TeamMember": 0,
             "launchdarkly:index/teamRoleMapping:TeamRoleMapping": 1,
+            "launchdarkly:index/view:View": 0,
+            "launchdarkly:index/viewFilterLinks:ViewFilterLinks": 0,
+            "launchdarkly:index/viewLinks:ViewLinks": 0,
             "launchdarkly:index/webhook:Webhook": 0
         },
         "functions": {
+            "launchdarkly:index/getAiConfig:getAiConfig": 0,
+            "launchdarkly:index/getAiConfigVariation:getAiConfigVariation": 0,
+            "launchdarkly:index/getAiTool:getAiTool": 0,
             "launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription": 0,
             "launchdarkly:index/getEnvironment:getEnvironment": 0,
             "launchdarkly:index/getFeatureFlag:getFeatureFlag": 0,
             "launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment": 0,
+            "launchdarkly:index/getFlagTemplates:getFlagTemplates": 0,
             "launchdarkly:index/getFlagTrigger:getFlagTrigger": 0,
             "launchdarkly:index/getMetric:getMetric": 0,
+            "launchdarkly:index/getModelConfig:getModelConfig": 0,
             "launchdarkly:index/getProject:getProject": 0,
             "launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration": 0,
             "launchdarkly:index/getSegment:getSegment": 0,
             "launchdarkly:index/getTeam:getTeam": 0,
             "launchdarkly:index/getTeamMember:getTeamMember": 0,
             "launchdarkly:index/getTeamMembers:getTeamMembers": 0,
+            "launchdarkly:index/getView:getView": 0,
             "launchdarkly:index/getWebhook:getWebhook": 0
         }
     }

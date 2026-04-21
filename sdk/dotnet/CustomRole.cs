@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.CustomRole("example", new()
+    ///     var example = new Launchdarkly.Index.CustomRole("example", new()
     ///     {
     ///         Key = "example-role-key-1",
     ///         Name = "example role",

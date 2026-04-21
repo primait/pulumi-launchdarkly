@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupSegment(ctx, &launchdarkly.LookupSegmentArgs{
+//			_, err := launchdarkly.GetSegment(ctx, &launchdarkly.LookupSegmentArgs{
 //				Key:        "example-segment",
 //				ProjectKey: "example-project",
 //				EnvKey:     "example-env",
@@ -94,6 +94,10 @@ type LookupSegmentResult struct {
 	Unbounded bool `pulumi:"unbounded"`
 	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
 	UnboundedContextKind string `pulumi:"unboundedContextKind"`
+	// A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	ViewKeys []string `pulumi:"viewKeys"`
+	// A list of view keys that this segment is linked to.
+	Views []string `pulumi:"views"`
 }
 
 func LookupSegmentOutput(ctx *pulumi.Context, args LookupSegmentOutputArgs, opts ...pulumi.InvokeOption) LookupSegmentResultOutput {
@@ -207,6 +211,16 @@ func (o LookupSegmentResultOutput) Unbounded() pulumi.BoolOutput {
 // For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
 func (o LookupSegmentResultOutput) UnboundedContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.UnboundedContextKind }).(pulumi.StringOutput)
+}
+
+// A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+func (o LookupSegmentResultOutput) ViewKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSegmentResult) []string { return v.ViewKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of view keys that this segment is linked to.
+func (o LookupSegmentResultOutput) Views() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSegmentResult) []string { return v.Views }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -33,6 +33,7 @@ class FeatureFlagEnvironmentArgs:
                  track_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a FeatureFlagEnvironment resource.
+
         :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
         :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -197,6 +198,7 @@ class _FeatureFlagEnvironmentState:
                  track_events: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagEnvironment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
         :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
@@ -568,6 +570,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment example example-project/example-env/example-flag-key
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
@@ -787,6 +790,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
         ```sh
         $ pulumi import launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment example example-project/example-env/example-flag-key
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagEnvironmentArgs args: The arguments to use to populate this resource's properties.

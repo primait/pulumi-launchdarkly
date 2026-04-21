@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "launchdarkly:index/accessToken:AccessToken":
 		r = &AccessToken{}
+	case "launchdarkly:index/aiConfig:AiConfig":
+		r = &AiConfig{}
+	case "launchdarkly:index/aiConfigVariation:AiConfigVariation":
+		r = &AiConfigVariation{}
+	case "launchdarkly:index/aiTool:AiTool":
+		r = &AiTool{}
 	case "launchdarkly:index/auditLogSubscription:AuditLogSubscription":
 		r = &AuditLogSubscription{}
 	case "launchdarkly:index/customRole:CustomRole":
@@ -35,10 +41,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureFlag{}
 	case "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment":
 		r = &FeatureFlagEnvironment{}
+	case "launchdarkly:index/flagTemplates:FlagTemplates":
+		r = &FlagTemplates{}
 	case "launchdarkly:index/flagTrigger:FlagTrigger":
 		r = &FlagTrigger{}
 	case "launchdarkly:index/metric:Metric":
 		r = &Metric{}
+	case "launchdarkly:index/modelConfig:ModelConfig":
+		r = &ModelConfig{}
 	case "launchdarkly:index/project:Project":
 		r = &Project{}
 	case "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration":
@@ -51,6 +61,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamMember{}
 	case "launchdarkly:index/teamRoleMapping:TeamRoleMapping":
 		r = &TeamRoleMapping{}
+	case "launchdarkly:index/view:View":
+		r = &View{}
+	case "launchdarkly:index/viewFilterLinks:ViewFilterLinks":
+		r = &ViewFilterLinks{}
+	case "launchdarkly:index/viewLinks:ViewLinks":
+		r = &ViewLinks{}
 	case "launchdarkly:index/webhook:Webhook":
 		r = &Webhook{}
 	default:
@@ -91,6 +107,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/aiConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/aiConfigVariation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/aiTool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/auditLogSubscription",
 		&module{version},
 	)
@@ -121,12 +152,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/flagTemplates",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/flagTrigger",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/metric",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/modelConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -157,6 +198,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/teamRoleMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/view",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/viewFilterLinks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/viewLinks",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

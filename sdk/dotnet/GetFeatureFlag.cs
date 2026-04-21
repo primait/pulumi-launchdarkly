@@ -15,25 +15,6 @@ namespace Pulumi.Launchdarkly
         /// Provides a LaunchDarkly feature flag data source.
         /// 
         /// This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Launchdarkly = Pulumi.Launchdarkly;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Launchdarkly.GetFeatureFlag.Invoke(new()
-        ///     {
-        ///         Key = "example-flag",
-        ///         ProjectKey = "example-project",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetFeatureFlagResult> InvokeAsync(GetFeatureFlagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagArgs(), options.WithDefaults());
@@ -42,25 +23,6 @@ namespace Pulumi.Launchdarkly
         /// Provides a LaunchDarkly feature flag data source.
         /// 
         /// This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Launchdarkly = Pulumi.Launchdarkly;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Launchdarkly.GetFeatureFlag.Invoke(new()
-        ///     {
-        ///         Key = "example-flag",
-        ///         ProjectKey = "example-project",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFeatureFlagResult> Invoke(GetFeatureFlagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagInvokeArgs(), options.WithDefaults());
@@ -69,25 +31,6 @@ namespace Pulumi.Launchdarkly
         /// Provides a LaunchDarkly feature flag data source.
         /// 
         /// This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Launchdarkly = Pulumi.Launchdarkly;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Launchdarkly.GetFeatureFlag.Invoke(new()
-        ///     {
-        ///         Key = "example-flag",
-        ///         ProjectKey = "example-project",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetFeatureFlagResult> Invoke(GetFeatureFlagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagInvokeArgs(), options.WithDefaults());
@@ -223,6 +166,14 @@ namespace Pulumi.Launchdarkly
         /// An array of possible variations for the flag
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagVariationResult> Variations;
+        /// <summary>
+        /// A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// </summary>
+        public readonly ImmutableArray<string> ViewKeys;
+        /// <summary>
+        /// A list of view keys that this feature flag is linked to.
+        /// </summary>
+        public readonly ImmutableArray<string> Views;
 
         [OutputConstructor]
         private GetFeatureFlagResult(
@@ -256,7 +207,11 @@ namespace Pulumi.Launchdarkly
 
             string variationType,
 
-            ImmutableArray<Outputs.GetFeatureFlagVariationResult> variations)
+            ImmutableArray<Outputs.GetFeatureFlagVariationResult> variations,
+
+            ImmutableArray<string> viewKeys,
+
+            ImmutableArray<string> views)
         {
             Archived = archived;
             ClientSideAvailabilities = clientSideAvailabilities;
@@ -274,6 +229,8 @@ namespace Pulumi.Launchdarkly
             Temporary = temporary;
             VariationType = variationType;
             Variations = variations;
+            ViewKeys = viewKeys;
+            Views = views;
         }
     }
 }
