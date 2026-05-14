@@ -62,6 +62,10 @@ export interface GetFeatureFlagResult {
      */
     readonly defaults: outputs.GetFeatureFlagDefault[];
     /**
+     * Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+     */
+    readonly deprecated: boolean;
+    /**
      * The feature flag's description.
      */
     readonly description: string;
@@ -146,11 +150,11 @@ export interface GetFeatureFlagOutputArgs {
     /**
      * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The feature flag's project key.
      */

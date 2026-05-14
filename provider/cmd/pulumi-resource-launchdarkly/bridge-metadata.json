@@ -269,6 +269,12 @@
                     }
                 }
             },
+            "launchdarkly_ip_allowlist_config": {
+                "current": "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig"
+            },
+            "launchdarkly_ip_allowlist_entry": {
+                "current": "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry"
+            },
             "launchdarkly_metric": {
                 "current": "launchdarkly:index/metric:Metric",
                 "fields": {
@@ -926,6 +932,8 @@
             "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment": 0,
             "launchdarkly:index/flagTemplates:FlagTemplates": 0,
             "launchdarkly:index/flagTrigger:FlagTrigger": 0,
+            "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig": 0,
+            "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry": 0,
             "launchdarkly:index/metric:Metric": 0,
             "launchdarkly:index/modelConfig:ModelConfig": 0,
             "launchdarkly:index/project:Project": 0,

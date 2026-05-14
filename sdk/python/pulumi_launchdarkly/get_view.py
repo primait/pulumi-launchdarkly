@@ -27,16 +27,13 @@ class GetViewResult:
     """
     A collection of values returned by getView.
     """
-    def __init__(__self__, archived=None, description=None, generate_sdk_keys=None, id=None, key=None, linked_flags=None, linked_segments=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None):
+    def __init__(__self__, archived=None, description=None, id=None, key=None, linked_flags=None, linked_segments=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if generate_sdk_keys and not isinstance(generate_sdk_keys, bool):
-            raise TypeError("Expected argument 'generate_sdk_keys' to be a bool")
-        pulumi.set(__self__, "generate_sdk_keys", generate_sdk_keys)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -80,14 +77,6 @@ class GetViewResult:
         The view's description.
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter(name="generateSdkKeys")
-    def generate_sdk_keys(self) -> _builtins.bool:
-        """
-        Whether SDK keys are generated for this view.
-        """
-        return pulumi.get(self, "generate_sdk_keys")
 
     @_builtins.property
     @pulumi.getter
@@ -170,7 +159,6 @@ class AwaitableGetViewResult(GetViewResult):
         return GetViewResult(
             archived=self.archived,
             description=self.description,
-            generate_sdk_keys=self.generate_sdk_keys,
             id=self.id,
             key=self.key,
             linked_flags=self.linked_flags,
@@ -203,7 +191,6 @@ def get_view(key: Optional[_builtins.str] = None,
     return AwaitableGetViewResult(
         archived=pulumi.get(__ret__, 'archived'),
         description=pulumi.get(__ret__, 'description'),
-        generate_sdk_keys=pulumi.get(__ret__, 'generate_sdk_keys'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         linked_flags=pulumi.get(__ret__, 'linked_flags'),
@@ -213,8 +200,8 @@ def get_view(key: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_key=pulumi.get(__ret__, 'project_key'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_view_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                    project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_view_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                    project_key: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetViewResult]:
     """
     Provides a LaunchDarkly view data source.
@@ -233,7 +220,6 @@ def get_view_output(key: Optional[pulumi.Input[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetViewResult(
         archived=pulumi.get(__response__, 'archived'),
         description=pulumi.get(__response__, 'description'),
-        generate_sdk_keys=pulumi.get(__response__, 'generate_sdk_keys'),
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         linked_flags=pulumi.get(__response__, 'linked_flags'),

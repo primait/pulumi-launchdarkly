@@ -195,59 +195,59 @@ export interface AiConfigVariationState {
     /**
      * The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    configKey?: pulumi.Input<string>;
+    configKey?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of the variation.
      */
-    creationDate?: pulumi.Input<number>;
+    creationDate?: pulumi.Input<number | undefined>;
     /**
      * The variation's description (used in agent mode).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The variation's instructions (used in agent mode).
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * A list of messages for completion mode. Each message has a `role` and `content`.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.AiConfigVariationMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.AiConfigVariationMessage>[] | undefined>;
     /**
      * A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The key of a model config resource to use for this variation. Conflicts with `model`.
      */
-    modelConfigKey?: pulumi.Input<string>;
+    modelConfigKey?: pulumi.Input<string | undefined>;
     /**
      * The variation's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * The state of the variation. Must be `archived` or `published`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
      */
-    toolKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The internal ID of the variation.
      */
-    variationId?: pulumi.Input<string>;
+    variationId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the variation.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -261,11 +261,11 @@ export interface AiConfigVariationArgs {
     /**
      * The variation's description (used in agent mode).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The variation's instructions (used in agent mode).
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -273,19 +273,19 @@ export interface AiConfigVariationArgs {
     /**
      * A list of messages for completion mode. Each message has a `role` and `content`.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.AiConfigVariationMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.AiConfigVariationMessage>[] | undefined>;
     /**
      * A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The key of a model config resource to use for this variation. Conflicts with `model`.
      */
-    modelConfigKey?: pulumi.Input<string>;
+    modelConfigKey?: pulumi.Input<string | undefined>;
     /**
      * The variation's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -293,9 +293,9 @@ export interface AiConfigVariationArgs {
     /**
      * The state of the variation. Must be `archived` or `published`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
      */
-    toolKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

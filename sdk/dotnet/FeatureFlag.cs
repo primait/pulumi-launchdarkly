@@ -27,7 +27,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var buildingMaterials = new Launchdarkly.Index.FeatureFlag("building_materials", new()
+    ///     var buildingMaterials = new Launchdarkly.FeatureFlag("building_materials", new()
     ///     {
     ///         ProjectKey = example.Key,
     ///         Key = "building-materials",
@@ -77,7 +77,7 @@ namespace Pulumi.Launchdarkly
     ///         },
     ///     });
     /// 
-    ///     var jsonExample = new Launchdarkly.Index.FeatureFlag("json_example", new()
+    ///     var jsonExample = new Launchdarkly.FeatureFlag("json_example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         Key = "json-example",
@@ -115,7 +115,7 @@ namespace Pulumi.Launchdarkly
     /// 
     ///     // Example: Feature flag with view associations
     ///     // This approach is ideal for modular Terraform where each flag is managed in its own file
-    ///     var checkoutFlow = new Launchdarkly.Index.FeatureFlag("checkout_flow", new()
+    ///     var checkoutFlow = new Launchdarkly.FeatureFlag("checkout_flow", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         Key = "checkout-flow-redesign",
@@ -138,7 +138,7 @@ namespace Pulumi.Launchdarkly
     ///     // Example: Flag managed in a module that can specify its own views
     ///     // This enables a modular structure where each team/domain can manage their flags
     ///     // without needing to coordinate with a central view_links resource
-    ///     var mobileAppFeature = new Launchdarkly.Index.FeatureFlag("mobile_app_feature", new()
+    ///     var mobileAppFeature = new Launchdarkly.FeatureFlag("mobile_app_feature", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         Key = "mobile-push-notifications",
@@ -189,6 +189,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("defaults")]
         public Output<Outputs.FeatureFlagDefaults> Defaults { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        /// </summary>
+        [Output("deprecated")]
+        public Output<bool?> Deprecated { get; private set; } = null!;
 
         /// <summary>
         /// The feature flag's description.
@@ -342,6 +348,12 @@ namespace Pulumi.Launchdarkly
         public Input<Inputs.FeatureFlagDefaultsArgs>? Defaults { get; set; }
 
         /// <summary>
+        /// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        /// </summary>
+        [Input("deprecated")]
+        public Input<bool>? Deprecated { get; set; }
+
+        /// <summary>
         /// The feature flag's description.
         /// </summary>
         [Input("description")]
@@ -470,6 +482,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("defaults")]
         public Input<Inputs.FeatureFlagDefaultsGetArgs>? Defaults { get; set; }
+
+        /// <summary>
+        /// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        /// </summary>
+        [Input("deprecated")]
+        public Input<bool>? Deprecated { get; set; }
 
         /// <summary>
         /// The feature flag's description.

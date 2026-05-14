@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetAiConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetAiConfig.Invoke(new()
         ///     {
         ///         Key = "customer-assistant",
         ///         ProjectKey = "example-project",
@@ -53,7 +53,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetAiConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetAiConfig.Invoke(new()
         ///     {
         ///         Key = "customer-assistant",
         ///         ProjectKey = "example-project",
@@ -80,7 +80,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetAiConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetAiConfig.Invoke(new()
         ///     {
         ///         Key = "customer-assistant",
         ///         ProjectKey = "example-project",

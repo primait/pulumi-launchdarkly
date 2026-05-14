@@ -125,7 +125,7 @@ def get_relay_proxy_configuration(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_relay_proxy_configuration_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_relay_proxy_configuration_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRelayProxyConfigurationResult]:
     """
     Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).

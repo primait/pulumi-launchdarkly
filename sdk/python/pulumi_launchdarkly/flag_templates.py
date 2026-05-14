@@ -23,8 +23,8 @@ class FlagTemplatesArgs:
     def __init__(__self__, *,
                  boolean_defaults: pulumi.Input['FlagTemplatesBooleanDefaultsArgs'],
                  project_key: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a FlagTemplates resource.
 
@@ -66,36 +66,36 @@ class FlagTemplatesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new flags should be temporary by default.
         """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
-    def temporary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary", value)
 
 
 @pulumi.input_type
 class _FlagTemplatesState:
     def __init__(__self__, *,
-                 boolean_defaults: Optional[pulumi.Input['FlagTemplatesBooleanDefaultsArgs']] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None):
+                 boolean_defaults: pulumi.Input[Optional['FlagTemplatesBooleanDefaultsArgs']] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering FlagTemplates resources.
 
@@ -115,50 +115,50 @@ class _FlagTemplatesState:
 
     @_builtins.property
     @pulumi.getter(name="booleanDefaults")
-    def boolean_defaults(self) -> Optional[pulumi.Input['FlagTemplatesBooleanDefaultsArgs']]:
+    def boolean_defaults(self) -> pulumi.Input[Optional['FlagTemplatesBooleanDefaultsArgs']]:
         """
         A block describing the default boolean flag variation settings.
         """
         return pulumi.get(self, "boolean_defaults")
 
     @boolean_defaults.setter
-    def boolean_defaults(self, value: Optional[pulumi.Input['FlagTemplatesBooleanDefaultsArgs']]):
+    def boolean_defaults(self, value: pulumi.Input[Optional['FlagTemplatesBooleanDefaultsArgs']]):
         pulumi.set(self, "boolean_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new flags should be temporary by default.
         """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
-    def temporary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary", value)
 
 
@@ -168,10 +168,10 @@ class FlagTemplates(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_defaults: Optional[pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly flag templates resource.
@@ -273,10 +273,10 @@ class FlagTemplates(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_defaults: Optional[pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,10 +304,10 @@ class FlagTemplates(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_defaults: Optional[pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            temporary: Optional[pulumi.Input[_builtins.bool]] = None) -> 'FlagTemplates':
+            boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            temporary: pulumi.Input[Optional[_builtins.bool]] = None) -> 'FlagTemplates':
         """
         Get an existing FlagTemplates resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

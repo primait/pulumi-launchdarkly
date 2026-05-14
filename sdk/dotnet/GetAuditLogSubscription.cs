@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",
@@ -53,7 +53,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",
@@ -80,7 +80,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Launchdarkly.Index.GetAuditLogSubscription.Invoke(new()
+        ///     var test = Launchdarkly.GetAuditLogSubscription.Invoke(new()
         ///     {
         ///         Id = "5f0cd446a77cba0b4c5644a7",
         ///         IntegrationKey = "msteams",

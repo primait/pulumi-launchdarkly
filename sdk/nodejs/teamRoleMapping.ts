@@ -109,11 +109,11 @@ export interface TeamRoleMappingState {
     /**
      * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    customRoleKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoleKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The team key.
      */
-    teamKey?: pulumi.Input<string>;
+    teamKey?: pulumi.Input<string | undefined>;
 }
 
 /**

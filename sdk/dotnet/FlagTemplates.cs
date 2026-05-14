@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.FlagTemplates("example", new()
+    ///     var example = new Launchdarkly.FlagTemplates("example", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         Tags = new[]

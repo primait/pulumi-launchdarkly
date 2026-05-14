@@ -21,10 +21,10 @@ class ViewFilterLinksArgs:
     def __init__(__self__, *,
                  project_key: pulumi.Input[_builtins.str],
                  view_key: pulumi.Input[_builtins.str],
-                 flag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconcile_on_apply: Optional[pulumi.Input[_builtins.bool]] = None,
-                 segment_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_filter_environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 flag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconcile_on_apply: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_filter_environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ViewFilterLinks resource.
 
@@ -72,63 +72,63 @@ class ViewFilterLinksArgs:
 
     @_builtins.property
     @pulumi.getter(name="flagFilter")
-    def flag_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flag_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter expression to match feature flags for linking to the view. Uses the same filter syntax as the flag list API endpoint (e.g. `tags:frontend`, `status:active`).
         """
         return pulumi.get(self, "flag_filter")
 
     @flag_filter.setter
-    def flag_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flag_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flag_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="reconcileOnApply")
-    def reconcile_on_apply(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconcile_on_apply(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform will show an in-place update on each apply and `resolved_at` will change every run.
         """
         return pulumi.get(self, "reconcile_on_apply")
 
     @reconcile_on_apply.setter
-    def reconcile_on_apply(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconcile_on_apply(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconcile_on_apply", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentFilter")
-    def segment_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter expression to match segments for linking to the view. Uses the segment query filter syntax (e.g. `tags anyOf ["backend"]`, `query = "my-segment"`, `unbounded = true`). Requires `segment_filter_environment_id` to be set.
         """
         return pulumi.get(self, "segment_filter")
 
     @segment_filter.setter
-    def segment_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentFilterEnvironmentId")
-    def segment_filter_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_filter_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment ID to use when resolving segment filters. Required when `segment_filter` is set. This is the environment's opaque ID (e.g. from `launchdarkly_project.environments[*].client_side_id`).
         """
         return pulumi.get(self, "segment_filter_environment_id")
 
     @segment_filter_environment_id.setter
-    def segment_filter_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_filter_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_filter_environment_id", value)
 
 
 @pulumi.input_type
 class _ViewFilterLinksState:
     def __init__(__self__, *,
-                 flag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconcile_on_apply: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resolved_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_filter_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 flag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconcile_on_apply: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resolved_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_filter_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ViewFilterLinks resources.
 
@@ -157,86 +157,86 @@ class _ViewFilterLinksState:
 
     @_builtins.property
     @pulumi.getter(name="flagFilter")
-    def flag_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flag_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter expression to match feature flags for linking to the view. Uses the same filter syntax as the flag list API endpoint (e.g. `tags:frontend`, `status:active`).
         """
         return pulumi.get(self, "flag_filter")
 
     @flag_filter.setter
-    def flag_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flag_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flag_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter(name="reconcileOnApply")
-    def reconcile_on_apply(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconcile_on_apply(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform will show an in-place update on each apply and `resolved_at` will change every run.
         """
         return pulumi.get(self, "reconcile_on_apply")
 
     @reconcile_on_apply.setter
-    def reconcile_on_apply(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconcile_on_apply(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconcile_on_apply", value)
 
     @_builtins.property
     @pulumi.getter(name="resolvedAt")
-    def resolved_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resolved_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of the last successful filter resolution. This value updates when the resource is created or updated, and on every apply when `reconcile_on_apply` is true.
         """
         return pulumi.get(self, "resolved_at")
 
     @resolved_at.setter
-    def resolved_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resolved_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resolved_at", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentFilter")
-    def segment_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A filter expression to match segments for linking to the view. Uses the segment query filter syntax (e.g. `tags anyOf ["backend"]`, `query = "my-segment"`, `unbounded = true`). Requires `segment_filter_environment_id` to be set.
         """
         return pulumi.get(self, "segment_filter")
 
     @segment_filter.setter
-    def segment_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentFilterEnvironmentId")
-    def segment_filter_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_filter_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment ID to use when resolving segment filters. Required when `segment_filter` is set. This is the environment's opaque ID (e.g. from `launchdarkly_project.environments[*].client_side_id`).
         """
         return pulumi.get(self, "segment_filter_environment_id")
 
     @segment_filter_environment_id.setter
-    def segment_filter_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_filter_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_filter_environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKey")
-    def view_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
     @view_key.setter
-    def view_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_key", value)
 
 
@@ -246,15 +246,19 @@ class ViewFilterLinks(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconcile_on_apply: Optional[pulumi.Input[_builtins.bool]] = None,
-                 segment_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_filter_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 flag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconcile_on_apply: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_filter_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly view filter links resource for linking resources to views using filter expressions.
+
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to link all flags and/or segments matching a filter expression to a specific view. The filter is resolved at apply time — the backend finds all resources matching the filter and links them to the view.
 
@@ -313,6 +317,10 @@ class ViewFilterLinks(pulumi.CustomResource):
         """
         Provides a LaunchDarkly view filter links resource for linking resources to views using filter expressions.
 
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+
         This resource allows you to link all flags and/or segments matching a filter expression to a specific view. The filter is resolved at apply time — the backend finds all resources matching the filter and links them to the view.
 
         > **Note:** Filter-based links are point-in-time. By default, filters are resolved only when this resource is created or updated (for example, when `flag_filter` changes). Set `reconcile_on_apply = true` to force re-resolution on every `pulumi up`.
@@ -367,12 +375,12 @@ class ViewFilterLinks(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconcile_on_apply: Optional[pulumi.Input[_builtins.bool]] = None,
-                 segment_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_filter_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 flag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconcile_on_apply: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_filter_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -403,13 +411,13 @@ class ViewFilterLinks(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            flag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            reconcile_on_apply: Optional[pulumi.Input[_builtins.bool]] = None,
-            resolved_at: Optional[pulumi.Input[_builtins.str]] = None,
-            segment_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            segment_filter_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            view_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'ViewFilterLinks':
+            flag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            reconcile_on_apply: pulumi.Input[Optional[_builtins.bool]] = None,
+            resolved_at: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_filter_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            view_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ViewFilterLinks':
         """
         Get an existing ViewFilterLinks resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

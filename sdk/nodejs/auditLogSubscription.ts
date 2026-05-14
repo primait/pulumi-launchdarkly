@@ -119,27 +119,27 @@ export interface AuditLogSubscriptionState {
     /**
      * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    integrationKey?: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether or not you want your subscription enabled, i.e. to actively send events.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * A block representing the resources to which you wish to subscribe.
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.AuditLogSubscriptionStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.AuditLogSubscriptionStatement>[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface AuditLogSubscriptionArgs {
     /**
      * A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether or not you want your subscription enabled, i.e. to actively send events.
      */
@@ -169,5 +169,5 @@ export interface AuditLogSubscriptionArgs {
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

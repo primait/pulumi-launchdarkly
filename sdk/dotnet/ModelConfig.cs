@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.ModelConfig("example", new()
+    ///     var example = new Launchdarkly.ModelConfig("example", new()
     ///     {
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
     ///         Key = "gpt-4-turbo",

@@ -25,7 +25,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.AiTool("example", new()
+    ///     var example = new Launchdarkly.AiTool("example", new()
     ///     {
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
     ///         Key = "web-search",

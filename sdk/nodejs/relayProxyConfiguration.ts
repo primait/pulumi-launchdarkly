@@ -132,19 +132,19 @@ export interface RelayProxyConfigurationState {
     /**
      * The last 4 characters of the Relay Proxy configuration's unique key.
      */
-    displayKey?: pulumi.Input<string>;
+    displayKey?: pulumi.Input<string | undefined>;
     /**
      * The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
      */
-    fullKey?: pulumi.Input<string>;
+    fullKey?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name for your Relay Proxy configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.RelayProxyConfigurationPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.RelayProxyConfigurationPolicy>[] | undefined>;
 }
 
 /**
@@ -154,7 +154,7 @@ export interface RelayProxyConfigurationArgs {
     /**
      * The human-readable name for your Relay Proxy configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
      */

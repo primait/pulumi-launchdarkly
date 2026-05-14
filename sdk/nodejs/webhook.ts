@@ -144,27 +144,27 @@ export interface WebhookState {
     /**
      * The webhook's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the webhook is enabled.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * The secret used to sign the webhook.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URL of the remote webhook.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,23 +174,23 @@ export interface WebhookArgs {
     /**
      * The webhook's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the webhook is enabled.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * The secret used to sign the webhook.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URL of the remote webhook.
      */

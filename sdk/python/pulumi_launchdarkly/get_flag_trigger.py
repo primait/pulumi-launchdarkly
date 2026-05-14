@@ -181,10 +181,10 @@ def get_flag_trigger(env_key: Optional[_builtins.str] = None,
         maintainer_id=pulumi.get(__ret__, 'maintainer_id'),
         project_key=pulumi.get(__ret__, 'project_key'),
         trigger_url=pulumi.get(__ret__, 'trigger_url'))
-def get_flag_trigger_output(env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                            flag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                            id: Optional[pulumi.Input[_builtins.str]] = None,
-                            project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flag_trigger_output(env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                            flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                            id: pulumi.Input[Optional[_builtins.str]] = None,
+                            project_key: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlagTriggerResult]:
     """
     Provides a LaunchDarkly flag trigger data source.

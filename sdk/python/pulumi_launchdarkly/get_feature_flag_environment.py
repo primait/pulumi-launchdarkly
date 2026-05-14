@@ -210,8 +210,8 @@ def get_feature_flag_environment(env_key: Optional[_builtins.str] = None,
         rules=pulumi.get(__ret__, 'rules'),
         targets=pulumi.get(__ret__, 'targets'),
         track_events=pulumi.get(__ret__, 'track_events'))
-def get_feature_flag_environment_output(env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                                        flag_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_feature_flag_environment_output(env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                                        flag_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureFlagEnvironmentResult]:
     """
     Provides a LaunchDarkly environment-specific feature flag data source.

@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly view filter links resource for linking resources to views using filter expressions.
  *
+ * > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ *
+ * > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+ *
  * This resource allows you to link all flags and/or segments matching a filter expression to a specific view. The filter is resolved at apply time — the backend finds all resources matching the filter and links them to the view.
  *
  * > **Note:** Filter-based links are point-in-time. By default, filters are resolved only when this resource is created or updated (for example, when `flagFilter` changes). Set `reconcileOnApply = true` to force re-resolution on every `pulumi up`.
@@ -153,31 +157,31 @@ export interface ViewFilterLinksState {
     /**
      * A filter expression to match feature flags for linking to the view. Uses the same filter syntax as the flag list API endpoint (e.g. `tags:frontend`, `status:active`).
      */
-    flagFilter?: pulumi.Input<string>;
+    flagFilter?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform will show an in-place update on each apply and `resolvedAt` will change every run.
      */
-    reconcileOnApply?: pulumi.Input<boolean>;
+    reconcileOnApply?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp of the last successful filter resolution. This value updates when the resource is created or updated, and on every apply when `reconcileOnApply` is true.
      */
-    resolvedAt?: pulumi.Input<string>;
+    resolvedAt?: pulumi.Input<string | undefined>;
     /**
      * A filter expression to match segments for linking to the view. Uses the segment query filter syntax (e.g. `tags anyOf ["backend"]`, `query = "my-segment"`, `unbounded = true`). Requires `segmentFilterEnvironmentId` to be set.
      */
-    segmentFilter?: pulumi.Input<string>;
+    segmentFilter?: pulumi.Input<string | undefined>;
     /**
      * The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID (e.g. from `launchdarkly_project.environments[*].client_side_id`).
      */
-    segmentFilterEnvironmentId?: pulumi.Input<string>;
+    segmentFilterEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    viewKey?: pulumi.Input<string>;
+    viewKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,7 +191,7 @@ export interface ViewFilterLinksArgs {
     /**
      * A filter expression to match feature flags for linking to the view. Uses the same filter syntax as the flag list API endpoint (e.g. `tags:frontend`, `status:active`).
      */
-    flagFilter?: pulumi.Input<string>;
+    flagFilter?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -195,15 +199,15 @@ export interface ViewFilterLinksArgs {
     /**
      * Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform will show an in-place update on each apply and `resolvedAt` will change every run.
      */
-    reconcileOnApply?: pulumi.Input<boolean>;
+    reconcileOnApply?: pulumi.Input<boolean | undefined>;
     /**
      * A filter expression to match segments for linking to the view. Uses the segment query filter syntax (e.g. `tags anyOf ["backend"]`, `query = "my-segment"`, `unbounded = true`). Requires `segmentFilterEnvironmentId` to be set.
      */
-    segmentFilter?: pulumi.Input<string>;
+    segmentFilter?: pulumi.Input<string | undefined>;
     /**
      * The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID (e.g. from `launchdarkly_project.environments[*].client_side_id`).
      */
-    segmentFilterEnvironmentId?: pulumi.Input<string>;
+    segmentFilterEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */

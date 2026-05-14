@@ -24,17 +24,17 @@ class SegmentArgs:
                  env_key: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 excluded_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unbounded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unbounded_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Segment resource.
 
@@ -117,155 +117,155 @@ class SegmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the segment's purpose.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedContexts")
-    def excluded_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]:
+    def excluded_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]:
         """
         List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "excluded_contexts")
 
     @excluded_contexts.setter
-    def excluded_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]):
+    def excluded_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]):
         pulumi.set(self, "excluded_contexts", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "excludeds")
 
     @excludeds.setter
-    def excludeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludeds", value)
 
     @_builtins.property
     @pulumi.getter(name="includedContexts")
-    def included_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]:
+    def included_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]:
         """
         List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "included_contexts")
 
     @included_contexts.setter
-    def included_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]):
+    def included_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]):
         pulumi.set(self, "included_contexts", value)
 
     @_builtins.property
     @pulumi.getter
-    def includeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def includeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "includeds")
 
     @includeds.setter
-    def includeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def includeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "includeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-friendly name for the segment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
         """
         List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def unbounded(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unbounded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded")
 
     @unbounded.setter
-    def unbounded(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unbounded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unbounded", value)
 
     @_builtins.property
     @pulumi.getter(name="unboundedContextKind")
-    def unbounded_context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unbounded_context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
     @unbounded_context_kind.setter
-    def unbounded_context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unbounded_context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unbounded_context_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKeys")
-    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
     @view_keys.setter
-    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def view_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "view_keys", value)
 
 
 @pulumi.input_type
 class _SegmentState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 excluded_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unbounded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unbounded_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Segment resources.
 
@@ -318,182 +318,182 @@ class _SegmentState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The segment's creation date represented as a UNIX epoch timestamp.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the segment's purpose.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="envKey")
-    def env_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
     @env_key.setter
-    def env_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_key", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedContexts")
-    def excluded_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]:
+    def excluded_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]:
         """
         List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "excluded_contexts")
 
     @excluded_contexts.setter
-    def excluded_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]):
+    def excluded_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentExcludedContextArgs']]]]):
         pulumi.set(self, "excluded_contexts", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excludeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "excludeds")
 
     @excludeds.setter
-    def excludeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excludeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excludeds", value)
 
     @_builtins.property
     @pulumi.getter(name="includedContexts")
-    def included_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]:
+    def included_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]:
         """
         List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "included_contexts")
 
     @included_contexts.setter
-    def included_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]):
+    def included_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentIncludedContextArgs']]]]):
         pulumi.set(self, "included_contexts", value)
 
     @_builtins.property
     @pulumi.getter
-    def includeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def includeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "includeds")
 
     @includeds.setter
-    def includeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def includeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "includeds", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-friendly name for the segment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
         """
         List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def unbounded(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unbounded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded")
 
     @unbounded.setter
-    def unbounded(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unbounded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unbounded", value)
 
     @_builtins.property
     @pulumi.getter(name="unboundedContextKind")
-    def unbounded_context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unbounded_context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
     @unbounded_context_kind.setter
-    def unbounded_context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unbounded_context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unbounded_context_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKeys")
-    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
     @view_keys.setter
-    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def view_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "view_keys", value)
 
 
@@ -503,20 +503,20 @@ class Segment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 excluded_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unbounded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unbounded_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly segment resource.
@@ -990,20 +990,20 @@ class Segment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 excluded_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
-                 excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
-                 includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unbounded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unbounded_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+                 excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+                 includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1044,21 +1044,21 @@ class Segment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            env_key: Optional[pulumi.Input[_builtins.str]] = None,
-            excluded_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
-            excludeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            included_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
-            includeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            unbounded: Optional[pulumi.Input[_builtins.bool]] = None,
-            unbounded_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-            view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Segment':
+            creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            env_key: pulumi.Input[Optional[_builtins.str]] = None,
+            excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+            excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+            includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
+            unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Segment':
         """
         Get an existing Segment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -211,67 +211,67 @@ export interface EnvironmentState {
     /**
      * The environment's SDK key.
      */
-    apiKey?: pulumi.Input<string>;
-    approvalSettings?: pulumi.Input<pulumi.Input<inputs.EnvironmentApprovalSetting>[]>;
+    apiKey?: pulumi.Input<string | undefined>;
+    approvalSettings?: pulumi.Input<pulumi.Input<inputs.EnvironmentApprovalSetting>[] | undefined>;
     /**
      * The environment's client-side ID.
      */
-    clientSideId?: pulumi.Input<string>;
+    clientSideId?: pulumi.Input<string | undefined>;
     /**
      * The color swatch as an RGB hex value with no leading `#`. For example: `000000`
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
      */
-    confirmChanges?: pulumi.Input<boolean>;
+    confirmChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Denotes whether the environment is critical.
      */
-    critical?: pulumi.Input<boolean>;
+    critical?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
-    defaultTrackEvents?: pulumi.Input<boolean>;
+    defaultTrackEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The environment's mobile key.
      */
-    mobileKey?: pulumi.Input<string>;
+    mobileKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
      */
-    requireComments?: pulumi.Input<boolean>;
+    requireComments?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
      */
-    secureMode?: pulumi.Input<boolean>;
+    secureMode?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
-    approvalSettings?: pulumi.Input<pulumi.Input<inputs.EnvironmentApprovalSetting>[]>;
+    approvalSettings?: pulumi.Input<pulumi.Input<inputs.EnvironmentApprovalSetting>[] | undefined>;
     /**
      * The color swatch as an RGB hex value with no leading `#`. For example: `000000`
      */
@@ -279,19 +279,19 @@ export interface EnvironmentArgs {
     /**
      * Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
      */
-    confirmChanges?: pulumi.Input<boolean>;
+    confirmChanges?: pulumi.Input<boolean | undefined>;
     /**
      * Denotes whether the environment is critical.
      */
-    critical?: pulumi.Input<boolean>;
+    critical?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
-    defaultTrackEvents?: pulumi.Input<boolean>;
+    defaultTrackEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -299,7 +299,7 @@ export interface EnvironmentArgs {
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -307,13 +307,13 @@ export interface EnvironmentArgs {
     /**
      * Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
      */
-    requireComments?: pulumi.Input<boolean>;
+    requireComments?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
      */
-    secureMode?: pulumi.Input<boolean>;
+    secureMode?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

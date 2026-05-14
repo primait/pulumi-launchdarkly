@@ -177,55 +177,55 @@ export interface AiConfigState {
     /**
      * A timestamp of when the AI Config was created.
      */
-    creationDate?: pulumi.Input<number>;
+    creationDate?: pulumi.Input<number | undefined>;
     /**
      * The AI Config's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The key of the evaluation metric associated with this AI Config.
      */
-    evaluationMetricKey?: pulumi.Input<string>;
+    evaluationMetricKey?: pulumi.Input<string | undefined>;
     /**
      * Whether the evaluation metric is inverted.
      */
-    isInverted?: pulumi.Input<boolean>;
+    isInverted?: pulumi.Input<boolean | undefined>;
     /**
      * The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The AI Config's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of variation summaries for this AI Config.
      */
-    variations?: pulumi.Input<pulumi.Input<inputs.AiConfigVariation>[]>;
+    variations?: pulumi.Input<pulumi.Input<inputs.AiConfigVariation>[] | undefined>;
     /**
      * The version of the AI Config.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -235,15 +235,15 @@ export interface AiConfigArgs {
     /**
      * The AI Config's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The key of the evaluation metric associated with this AI Config.
      */
-    evaluationMetricKey?: pulumi.Input<string>;
+    evaluationMetricKey?: pulumi.Input<string | undefined>;
     /**
      * Whether the evaluation metric is inverted.
      */
-    isInverted?: pulumi.Input<boolean>;
+    isInverted?: pulumi.Input<boolean | undefined>;
     /**
      * The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -251,19 +251,19 @@ export interface AiConfigArgs {
     /**
      * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The AI Config's human-readable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -271,5 +271,5 @@ export interface AiConfigArgs {
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

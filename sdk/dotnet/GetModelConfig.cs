@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetModelConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetModelConfig.Invoke(new()
         ///     {
         ///         Key = "gpt-4-turbo",
         ///         ProjectKey = "example-project",
@@ -53,7 +53,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetModelConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetModelConfig.Invoke(new()
         ///     {
         ///         Key = "gpt-4-turbo",
         ///         ProjectKey = "example-project",
@@ -80,7 +80,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetModelConfig.Invoke(new()
+        ///     var example = Launchdarkly.GetModelConfig.Invoke(new()
         ///     {
         ///         Key = "gpt-4-turbo",
         ///         ProjectKey = "example-project",

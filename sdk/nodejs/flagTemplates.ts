@@ -130,19 +130,19 @@ export interface FlagTemplatesState {
     /**
      * A block describing the default boolean flag variation settings.
      */
-    booleanDefaults?: pulumi.Input<inputs.FlagTemplatesBooleanDefaults>;
+    booleanDefaults?: pulumi.Input<inputs.FlagTemplatesBooleanDefaults | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether new flags should be temporary by default.
      */
-    temporary?: pulumi.Input<boolean>;
+    temporary?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -160,9 +160,9 @@ export interface FlagTemplatesArgs {
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether new flags should be temporary by default.
      */
-    temporary?: pulumi.Input<boolean>;
+    temporary?: pulumi.Input<boolean | undefined>;
 }

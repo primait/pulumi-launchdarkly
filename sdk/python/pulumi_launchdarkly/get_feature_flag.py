@@ -27,7 +27,7 @@ class GetFeatureFlagResult:
     """
     A collection of values returned by getFeatureFlag.
     """
-    def __init__(__self__, archived=None, client_side_availabilities=None, custom_properties=None, defaults=None, description=None, id=None, include_in_snippet=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None, view_keys=None, views=None):
+    def __init__(__self__, archived=None, client_side_availabilities=None, custom_properties=None, defaults=None, deprecated=None, description=None, id=None, include_in_snippet=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None, view_keys=None, views=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -40,6 +40,9 @@ class GetFeatureFlagResult:
         if defaults and not isinstance(defaults, list):
             raise TypeError("Expected argument 'defaults' to be a list")
         pulumi.set(__self__, "defaults", defaults)
+        if deprecated and not isinstance(deprecated, bool):
+            raise TypeError("Expected argument 'deprecated' to be a bool")
+        pulumi.set(__self__, "deprecated", deprecated)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -111,6 +114,14 @@ class GetFeatureFlagResult:
         A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
         """
         return pulumi.get(self, "defaults")
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> _builtins.bool:
+        """
+        Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        """
+        return pulumi.get(self, "deprecated")
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +247,7 @@ class AwaitableGetFeatureFlagResult(GetFeatureFlagResult):
             client_side_availabilities=self.client_side_availabilities,
             custom_properties=self.custom_properties,
             defaults=self.defaults,
+            deprecated=self.deprecated,
             description=self.description,
             id=self.id,
             include_in_snippet=self.include_in_snippet,
@@ -281,6 +293,7 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
         client_side_availabilities=pulumi.get(__ret__, 'client_side_availabilities'),
         custom_properties=pulumi.get(__ret__, 'custom_properties'),
         defaults=pulumi.get(__ret__, 'defaults'),
+        deprecated=pulumi.get(__ret__, 'deprecated'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         include_in_snippet=pulumi.get(__ret__, 'include_in_snippet'),
@@ -295,10 +308,10 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
         variations=pulumi.get(__ret__, 'variations'),
         view_keys=pulumi.get(__ret__, 'view_keys'),
         views=pulumi.get(__ret__, 'views'))
-def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                            maintainer_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            maintainer_team_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_feature_flag_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                            maintainer_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            maintainer_team_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project_key: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureFlagResult]:
     """
     Provides a LaunchDarkly feature flag data source.
@@ -323,6 +336,7 @@ def get_feature_flag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
         client_side_availabilities=pulumi.get(__response__, 'client_side_availabilities'),
         custom_properties=pulumi.get(__response__, 'custom_properties'),
         defaults=pulumi.get(__response__, 'defaults'),
+        deprecated=pulumi.get(__response__, 'deprecated'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         include_in_snippet=pulumi.get(__response__, 'include_in_snippet'),

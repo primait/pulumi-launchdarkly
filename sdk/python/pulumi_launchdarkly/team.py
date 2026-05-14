@@ -22,12 +22,12 @@ __all__ = ['TeamArgs', 'Team']
 class TeamArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 member_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 member_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a Team resource.
 
@@ -67,87 +67,87 @@ class TeamArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRoleKeys")
-    def custom_role_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_role_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
 
     @custom_role_keys.setter
-    def custom_role_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_role_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_role_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintainers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def maintainers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of member IDs for users who maintain the team.
         """
         return pulumi.get(self, "maintainers")
 
     @maintainers.setter
-    def maintainers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def maintainers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "maintainers", value)
 
     @_builtins.property
     @pulumi.getter(name="memberIds")
-    def member_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def member_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of member IDs who belong to the team.
         """
         return pulumi.get(self, "member_ids")
 
     @member_ids.setter
-    def member_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def member_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "member_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for the team.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]:
+    def role_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]:
         """
         A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         return pulumi.get(self, "role_attributes")
 
     @role_attributes.setter
-    def role_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]):
+    def role_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]):
         pulumi.set(self, "role_attributes", value)
 
 
 @pulumi.input_type
 class _TeamState:
     def __init__(__self__, *,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 member_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 member_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Team resources.
 
@@ -176,86 +176,86 @@ class _TeamState:
 
     @_builtins.property
     @pulumi.getter(name="customRoleKeys")
-    def custom_role_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_role_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
 
     @custom_role_keys.setter
-    def custom_role_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_role_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_role_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintainers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def maintainers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of member IDs for users who maintain the team.
         """
         return pulumi.get(self, "maintainers")
 
     @maintainers.setter
-    def maintainers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def maintainers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "maintainers", value)
 
     @_builtins.property
     @pulumi.getter(name="memberIds")
-    def member_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def member_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of member IDs who belong to the team.
         """
         return pulumi.get(self, "member_ids")
 
     @member_ids.setter
-    def member_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def member_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "member_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for the team.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]:
+    def role_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]:
         """
         A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
         """
         return pulumi.get(self, "role_attributes")
 
     @role_attributes.setter
-    def role_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]):
+    def role_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamRoleAttributeArgs']]]]):
         pulumi.set(self, "role_attributes", value)
 
 
@@ -265,13 +265,13 @@ class Team(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 member_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None,
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 member_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly team resource.
@@ -378,13 +378,13 @@ class Team(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 member_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None,
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 member_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,13 +413,13 @@ class Team(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            member_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None) -> 'Team':
+            custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            member_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamRoleAttributeArgs', 'TeamRoleAttributeArgsDict']]]]] = None) -> 'Team':
         """
         Get an existing Team resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

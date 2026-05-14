@@ -120,14 +120,14 @@ class FlagTriggerArgs:
 @pulumi.input_type
 class _FlagTriggerState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 flag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input['FlagTriggerInstructionsArgs']] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional['FlagTriggerInstructionsArgs']] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlagTrigger resources.
 
@@ -159,98 +159,98 @@ class _FlagTriggerState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the trigger is currently active or not.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="envKey")
-    def env_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
     @env_key.setter
-    def env_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_key", value)
 
     @_builtins.property
     @pulumi.getter(name="flagKey")
-    def flag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_key")
 
     @flag_key.setter
-    def flag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flag_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input['FlagTriggerInstructionsArgs']]:
+    def instructions(self) -> pulumi.Input[Optional['FlagTriggerInstructionsArgs']]:
         """
         Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
         """
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input['FlagTriggerInstructionsArgs']]):
+    def instructions(self, value: pulumi.Input[Optional['FlagTriggerInstructionsArgs']]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationKey")
-    def integration_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "integration_key")
 
     @integration_key.setter
-    def integration_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerUrl")
-    def trigger_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique URL used to invoke the trigger.
         """
         return pulumi.get(self, "trigger_url")
 
     @trigger_url.setter
-    def trigger_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_url", value)
 
 
@@ -260,12 +260,12 @@ class FlagTrigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 flag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly flag trigger resource.
@@ -383,12 +383,12 @@ class FlagTrigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 flag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -430,14 +430,14 @@ class FlagTrigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            env_key: Optional[pulumi.Input[_builtins.str]] = None,
-            flag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            instructions: Optional[pulumi.Input[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
-            integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlagTrigger':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            env_key: pulumi.Input[Optional[_builtins.str]] = None,
+            flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            instructions: pulumi.Input[Optional[Union['FlagTriggerInstructionsArgs', 'FlagTriggerInstructionsArgsDict']]] = None,
+            integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlagTrigger':
         """
         Get an existing FlagTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

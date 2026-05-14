@@ -12,6 +12,10 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly view resource.
     /// 
+    /// &gt; **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
+    /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+    /// 
     /// This resource allows you to create and manage views within your LaunchDarkly project.
     /// 
     /// ## Example Usage
@@ -24,7 +28,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.View("example", new()
+    ///     var example = new Launchdarkly.View("example", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         Key = "example-view",
@@ -40,7 +44,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Alternative example with team maintainer instead of individual maintainer
-    ///     var teamMaintained = new Launchdarkly.Index.View("team_maintained", new()
+    ///     var teamMaintained = new Launchdarkly.View("team_maintained", new()
     ///     {
     ///         ProjectKey = "example-project",
     ///         Key = "team-view",
@@ -70,12 +74,6 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether to generate SDK keys for this view.
-        /// </summary>
-        [Output("generateSdkKeys")]
-        public Output<bool?> GenerateSdkKeys { get; private set; } = null!;
 
         /// <summary>
         /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -173,12 +171,6 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to generate SDK keys for this view.
-        /// </summary>
-        [Input("generateSdkKeys")]
-        public Input<bool>? GenerateSdkKeys { get; set; }
-
-        /// <summary>
         /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
@@ -239,12 +231,6 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Whether to generate SDK keys for this view.
-        /// </summary>
-        [Input("generateSdkKeys")]
-        public Input<bool>? GenerateSdkKeys { get; set; }
 
         /// <summary>
         /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.

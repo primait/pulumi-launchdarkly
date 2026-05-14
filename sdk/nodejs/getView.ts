@@ -47,10 +47,6 @@ export interface GetViewResult {
      */
     readonly description: string;
     /**
-     * Whether SDK keys are generated for this view.
-     */
-    readonly generateSdkKeys: boolean;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

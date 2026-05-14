@@ -22,11 +22,11 @@ __all__ = ['WebhookArgs', 'Webhook']
 class WebhookArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Webhook resource.
 
@@ -63,74 +63,74 @@ class WebhookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the webhook is enabled.
         """
         return pulumi.get(self, "on")
 
     @on.setter
-    def on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret used to sign the webhook.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
+    def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
         """
         List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]]):
+    def statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]):
         pulumi.set(self, "statements", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _WebhookState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
 
@@ -156,74 +156,74 @@ class _WebhookState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the webhook is enabled.
         """
         return pulumi.get(self, "on")
 
     @on.setter
-    def on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret used to sign the webhook.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
+    def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
         """
         List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]]]):
+    def statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]):
         pulumi.set(self, "statements", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the remote webhook.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -233,12 +233,12 @@ class Webhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly webhook resource.
@@ -348,12 +348,12 @@ class Webhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -383,12 +383,12 @@ class Webhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            on: Optional[pulumi.Input[_builtins.bool]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Webhook':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Webhook':
         """
         Get an existing Webhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

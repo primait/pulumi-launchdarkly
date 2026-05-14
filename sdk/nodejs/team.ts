@@ -146,31 +146,31 @@ export interface TeamState {
     /**
      * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    customRoleKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoleKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The team description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * List of member IDs for users who maintain the team.
      */
-    maintainers?: pulumi.Input<pulumi.Input<string>[]>;
+    maintainers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of member IDs who belong to the team.
      */
-    memberIds?: pulumi.Input<pulumi.Input<string>[]>;
+    memberIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A human-friendly name for the team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[]>;
+    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[] | undefined>;
 }
 
 /**
@@ -180,11 +180,11 @@ export interface TeamArgs {
     /**
      * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    customRoleKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoleKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The team description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -192,17 +192,17 @@ export interface TeamArgs {
     /**
      * List of member IDs for users who maintain the team.
      */
-    maintainers?: pulumi.Input<pulumi.Input<string>[]>;
+    maintainers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of member IDs who belong to the team.
      */
-    memberIds?: pulumi.Input<pulumi.Input<string>[]>;
+    memberIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A human-friendly name for the team.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[]>;
+    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[] | undefined>;
 }

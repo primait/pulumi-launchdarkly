@@ -58,8 +58,8 @@ class TeamRoleMappingArgs:
 @pulumi.input_type
 class _TeamRoleMappingState:
     def __init__(__self__, *,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 team_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 team_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamRoleMapping resources.
 
@@ -73,26 +73,26 @@ class _TeamRoleMappingState:
 
     @_builtins.property
     @pulumi.getter(name="customRoleKeys")
-    def custom_role_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_role_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
 
     @custom_role_keys.setter
-    def custom_role_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_role_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_role_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="teamKey")
-    def team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key.
         """
         return pulumi.get(self, "team_key")
 
     @team_key.setter
-    def team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_key", value)
 
 
@@ -102,8 +102,8 @@ class TeamRoleMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 team_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 team_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly team to custom role mapping resource.
@@ -191,8 +191,8 @@ class TeamRoleMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 team_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 team_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,8 +218,8 @@ class TeamRoleMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_role_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            team_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'TeamRoleMapping':
+            custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            team_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'TeamRoleMapping':
         """
         Get an existing TeamRoleMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

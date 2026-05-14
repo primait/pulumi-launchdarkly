@@ -154,7 +154,7 @@ def get_webhook(id: Optional[_builtins.str] = None,
         statements=pulumi.get(__ret__, 'statements'),
         tags=pulumi.get(__ret__, 'tags'),
         url=pulumi.get(__ret__, 'url'))
-def get_webhook_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_webhook_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhookResult]:
     """
     Provides a LaunchDarkly webhook data source.

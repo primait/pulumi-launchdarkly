@@ -24,7 +24,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.AiConfigVariation("example", new()
+    ///     var example = new Launchdarkly.AiConfigVariation("example", new()
     ///     {
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
     ///         ConfigKey = exampleLaunchdarklyAiConfig.Key,

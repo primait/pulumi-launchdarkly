@@ -22,7 +22,7 @@ __all__ = ['RelayProxyConfigurationArgs', 'RelayProxyConfiguration']
 class RelayProxyConfigurationArgs:
     def __init__(__self__, *,
                  policies: pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RelayProxyConfiguration resource.
 
@@ -47,24 +47,24 @@ class RelayProxyConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name for your Relay Proxy configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RelayProxyConfigurationState:
     def __init__(__self__, *,
-                 display_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]] = None):
+                 display_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering RelayProxyConfiguration resources.
 
@@ -84,50 +84,50 @@ class _RelayProxyConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="displayKey")
-    def display_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last 4 characters of the Relay Proxy configuration's unique key.
         """
         return pulumi.get(self, "display_key")
 
     @display_key.setter
-    def display_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_key", value)
 
     @_builtins.property
     @pulumi.getter(name="fullKey")
-    def full_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Relay Proxy configuration's unique key. Because the `full_key` is only exposed upon creation, it will not be available if the resource is imported.
         """
         return pulumi.get(self, "full_key")
 
     @full_key.setter
-    def full_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name for your Relay Proxy configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]]:
         """
         The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
         """
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RelayProxyConfigurationPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
 
@@ -137,8 +137,8 @@ class RelayProxyConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
@@ -244,8 +244,8 @@ class RelayProxyConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,10 +273,10 @@ class RelayProxyConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_key: Optional[pulumi.Input[_builtins.str]] = None,
-            full_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None) -> 'RelayProxyConfiguration':
+            display_key: pulumi.Input[Optional[_builtins.str]] = None,
+            full_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None) -> 'RelayProxyConfiguration':
         """
         Get an existing RelayProxyConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -186,39 +186,39 @@ export interface ProjectState {
     /**
      * A block describing which client-side SDKs can use new flags by default.
      */
-    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[] | undefined>;
     /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
      *
      * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
      */
-    environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
+    environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[] | undefined>;
     /**
      * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
      */
-    includeInSnippet?: pulumi.Input<boolean>;
+    includeInSnippet?: pulumi.Input<boolean | undefined>;
     /**
      * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The project's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether new flags created in this project must be associated with at least one view.
      */
-    requireViewAssociationForNewFlags?: pulumi.Input<boolean>;
+    requireViewAssociationForNewFlags?: pulumi.Input<boolean | undefined>;
     /**
      * Whether new segments created in this project must be associated with at least one view.
      */
-    requireViewAssociationForNewSegments?: pulumi.Input<boolean>;
+    requireViewAssociationForNewSegments?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -228,7 +228,7 @@ export interface ProjectArgs {
     /**
      * A block describing which client-side SDKs can use new flags by default.
      */
-    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[] | undefined>;
     /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
      *
@@ -240,7 +240,7 @@ export interface ProjectArgs {
      *
      * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
      */
-    includeInSnippet?: pulumi.Input<boolean>;
+    includeInSnippet?: pulumi.Input<boolean | undefined>;
     /**
      * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -248,17 +248,17 @@ export interface ProjectArgs {
     /**
      * The project's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether new flags created in this project must be associated with at least one view.
      */
-    requireViewAssociationForNewFlags?: pulumi.Input<boolean>;
+    requireViewAssociationForNewFlags?: pulumi.Input<boolean | undefined>;
     /**
      * Whether new segments created in this project must be associated with at least one view.
      */
-    requireViewAssociationForNewSegments?: pulumi.Input<boolean>;
+    requireViewAssociationForNewSegments?: pulumi.Input<boolean | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -21,13 +21,12 @@ class ViewArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_sdk_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a View resource.
 
@@ -35,7 +34,6 @@ class ViewArgs:
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.bool] generate_sdk_keys: Whether to generate SDK keys for this view.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
@@ -47,8 +45,6 @@ class ViewArgs:
             pulumi.set(__self__, "archived", archived)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if generate_sdk_keys is not None:
-            pulumi.set(__self__, "generate_sdk_keys", generate_sdk_keys)
         if maintainer_id is not None:
             pulumi.set(__self__, "maintainer_id", maintainer_id)
         if maintainer_team_key is not None:
@@ -84,107 +80,93 @@ class ViewArgs:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the view is archived.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="generateSdkKeys")
-    def generate_sdk_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to generate SDK keys for this view.
-        """
-        return pulumi.get(self, "generate_sdk_keys")
-
-    @generate_sdk_keys.setter
-    def generate_sdk_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "generate_sdk_keys", value)
-
-    @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ViewState:
     def __init__(__self__, *,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_sdk_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering View resources.
 
         :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.bool] generate_sdk_keys: Whether to generate SDK keys for this view.
         :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
@@ -196,8 +178,6 @@ class _ViewState:
             pulumi.set(__self__, "archived", archived)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if generate_sdk_keys is not None:
-            pulumi.set(__self__, "generate_sdk_keys", generate_sdk_keys)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if maintainer_id is not None:
@@ -213,110 +193,98 @@ class _ViewState:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the view is archived.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="generateSdkKeys")
-    def generate_sdk_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to generate SDK keys for this view.
-        """
-        return pulumi.get(self, "generate_sdk_keys")
-
-    @generate_sdk_keys.setter
-    def generate_sdk_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "generate_sdk_keys", value)
-
-    @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -326,18 +294,21 @@ class View(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_sdk_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly view resource.
+
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to create and manage views within your LaunchDarkly project.
 
@@ -373,7 +344,6 @@ class View(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.bool] generate_sdk_keys: Whether to generate SDK keys for this view.
         :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
@@ -389,6 +359,10 @@ class View(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a LaunchDarkly view resource.
+
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to create and manage views within your LaunchDarkly project.
 
@@ -435,15 +409,14 @@ class View(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_sdk_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -455,7 +428,6 @@ class View(pulumi.CustomResource):
 
             __props__.__dict__["archived"] = archived
             __props__.__dict__["description"] = description
-            __props__.__dict__["generate_sdk_keys"] = generate_sdk_keys
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -476,15 +448,14 @@ class View(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archived: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            generate_sdk_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'View':
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'View':
         """
         Get an existing View resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -494,7 +465,6 @@ class View(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.bool] generate_sdk_keys: Whether to generate SDK keys for this view.
         :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
@@ -508,7 +478,6 @@ class View(pulumi.CustomResource):
 
         __props__.__dict__["archived"] = archived
         __props__.__dict__["description"] = description
-        __props__.__dict__["generate_sdk_keys"] = generate_sdk_keys
         __props__.__dict__["key"] = key
         __props__.__dict__["maintainer_id"] = maintainer_id
         __props__.__dict__["maintainer_team_key"] = maintainer_team_key
@@ -532,14 +501,6 @@ class View(pulumi.CustomResource):
         The view's description.
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter(name="generateSdkKeys")
-    def generate_sdk_keys(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether to generate SDK keys for this view.
-        """
-        return pulumi.get(self, "generate_sdk_keys")
 
     @_builtins.property
     @pulumi.getter

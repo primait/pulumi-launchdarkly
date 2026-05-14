@@ -344,9 +344,9 @@ def get_metric(is_active: Optional[_builtins.bool] = None,
         unit_aggregation_type=pulumi.get(__ret__, 'unit_aggregation_type'),
         urls=pulumi.get(__ret__, 'urls'),
         version=pulumi.get(__ret__, 'version'))
-def get_metric_output(is_active: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                      key: Optional[pulumi.Input[_builtins.str]] = None,
-                      project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_metric_output(is_active: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                      key: pulumi.Input[Optional[_builtins.str]] = None,
+                      project_key: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetricResult]:
     """
     Provides a LaunchDarkly metric data source.

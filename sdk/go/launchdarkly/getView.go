@@ -38,8 +38,6 @@ type LookupViewResult struct {
 	Archived bool `pulumi:"archived"`
 	// The view's description.
 	Description string `pulumi:"description"`
-	// Whether SDK keys are generated for this view.
-	GenerateSdkKeys bool `pulumi:"generateSdkKeys"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The view's unique key.
@@ -104,11 +102,6 @@ func (o LookupViewResultOutput) Archived() pulumi.BoolOutput {
 // The view's description.
 func (o LookupViewResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Whether SDK keys are generated for this view.
-func (o LookupViewResultOutput) GenerateSdkKeys() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupViewResult) bool { return v.GenerateSdkKeys }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

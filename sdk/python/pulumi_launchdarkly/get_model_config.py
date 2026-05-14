@@ -248,8 +248,8 @@ def get_model_config(key: Optional[_builtins.str] = None,
         project_key=pulumi.get(__ret__, 'project_key'),
         tags=pulumi.get(__ret__, 'tags'),
         version=pulumi.get(__ret__, 'version'))
-def get_model_config_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                            project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_model_config_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                            project_key: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetModelConfigResult]:
     """
     Provides a LaunchDarkly model config data source.

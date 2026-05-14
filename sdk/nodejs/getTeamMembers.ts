@@ -109,5 +109,5 @@ export interface GetTeamMembersOutputArgs {
     /**
      * A boolean to determine whether to ignore members that weren't found.
      */
-    ignoreMissing?: pulumi.Input<boolean>;
+    ignoreMissing?: pulumi.Input<boolean | undefined>;
 }

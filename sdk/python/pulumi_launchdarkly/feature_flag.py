@@ -24,19 +24,20 @@ class FeatureFlagArgs:
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
                  variation_type: pulumi.Input[_builtins.str],
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
-                 custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
-                 defaults: Optional[pulumi.Input['FeatureFlagDefaultsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
+                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
+                 defaults: pulumi.Input[Optional['FeatureFlagDefaultsArgs']] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
 
@@ -46,6 +47,7 @@ class FeatureFlagArgs:
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
@@ -67,6 +69,8 @@ class FeatureFlagArgs:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if deprecated is not None:
+            pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if include_in_snippet is not None:
@@ -127,184 +131,198 @@ class FeatureFlagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
+    def client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
         return pulumi.get(self, "client_side_availabilities")
 
     @client_side_availabilities.setter
-    def client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
+    def client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
         pulumi.set(self, "client_side_availabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
+    def custom_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
         """
         List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         """
         return pulumi.get(self, "custom_properties")
 
     @custom_properties.setter
-    def custom_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
+    def custom_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
         pulumi.set(self, "custom_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def defaults(self) -> Optional[pulumi.Input['FeatureFlagDefaultsArgs']]:
+    def defaults(self) -> pulumi.Input[Optional['FeatureFlagDefaultsArgs']]:
         """
         A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
         """
         return pulumi.get(self, "defaults")
 
     @defaults.setter
-    def defaults(self, value: Optional[pulumi.Input['FeatureFlagDefaultsArgs']]):
+    def defaults(self, value: pulumi.Input[Optional['FeatureFlagDefaultsArgs']]):
         pulumi.set(self, "defaults", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @deprecated.setter
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deprecated", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="includeInSnippet")
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
     @include_in_snippet.setter
-    def include_in_snippet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_in_snippet", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the feature flag.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the flag is a temporary flag.
         """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
-    def temporary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary", value)
 
     @_builtins.property
     @pulumi.getter
-    def variations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
+    def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
         """
         An array of possible variations for the flag
         """
         return pulumi.get(self, "variations")
 
     @variations.setter
-    def variations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
+    def variations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
         pulumi.set(self, "variations", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKeys")
-    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
     @view_keys.setter
-    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def view_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "view_keys", value)
 
 
 @pulumi.input_type
 class _FeatureFlagState:
     def __init__(__self__, *,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
-                 custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
-                 defaults: Optional[pulumi.Input['FeatureFlagDefaultsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
+                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
+                 defaults: pulumi.Input[Optional['FeatureFlagDefaultsArgs']] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlag resources.
 
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -326,6 +344,8 @@ class _FeatureFlagState:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if deprecated is not None:
+            pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if include_in_snippet is not None:
@@ -356,192 +376,204 @@ class _FeatureFlagState:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
+    def client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
         return pulumi.get(self, "client_side_availabilities")
 
     @client_side_availabilities.setter
-    def client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
+    def client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
         pulumi.set(self, "client_side_availabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
+    def custom_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
         """
         List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         """
         return pulumi.get(self, "custom_properties")
 
     @custom_properties.setter
-    def custom_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
+    def custom_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
         pulumi.set(self, "custom_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def defaults(self) -> Optional[pulumi.Input['FeatureFlagDefaultsArgs']]:
+    def defaults(self) -> pulumi.Input[Optional['FeatureFlagDefaultsArgs']]:
         """
         A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
         """
         return pulumi.get(self, "defaults")
 
     @defaults.setter
-    def defaults(self, value: Optional[pulumi.Input['FeatureFlagDefaultsArgs']]):
+    def defaults(self, value: pulumi.Input[Optional['FeatureFlagDefaultsArgs']]):
         pulumi.set(self, "defaults", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @deprecated.setter
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deprecated", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="includeInSnippet")
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
     @include_in_snippet.setter
-    def include_in_snippet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_in_snippet", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the feature flag.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the flag is a temporary flag.
         """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
-    def temporary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def temporary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "temporary", value)
 
     @_builtins.property
     @pulumi.getter(name="variationType")
-    def variation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "variation_type")
 
     @variation_type.setter
-    def variation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def variations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
+    def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
         """
         An array of possible variations for the flag
         """
         return pulumi.get(self, "variations")
 
     @variations.setter
-    def variations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
+    def variations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
         pulumi.set(self, "variations", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKeys")
-    def view_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
     @view_keys.setter
-    def view_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def view_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "view_keys", value)
 
 
@@ -551,22 +583,23 @@ class FeatureFlag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-                 custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
-                 defaults: Optional[pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
+                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly feature flag resource.
@@ -691,6 +724,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -843,22 +877,23 @@ class FeatureFlag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-                 custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
-                 defaults: Optional[pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
-                 view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
+                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temporary: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -872,6 +907,7 @@ class FeatureFlag(pulumi.CustomResource):
             __props__.__dict__["client_side_availabilities"] = client_side_availabilities
             __props__.__dict__["custom_properties"] = custom_properties
             __props__.__dict__["defaults"] = defaults
+            __props__.__dict__["deprecated"] = deprecated
             __props__.__dict__["description"] = description
             __props__.__dict__["include_in_snippet"] = include_in_snippet
             if key is None and not opts.urn:
@@ -900,22 +936,23 @@ class FeatureFlag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archived: Optional[pulumi.Input[_builtins.bool]] = None,
-            client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-            custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
-            defaults: Optional[pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            temporary: Optional[pulumi.Input[_builtins.bool]] = None,
-            variation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
-            view_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FeatureFlag':
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
+            custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+            defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            temporary: pulumi.Input[Optional[_builtins.bool]] = None,
+            variation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+            view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FeatureFlag':
         """
         Get an existing FeatureFlag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -926,6 +963,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
         :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -947,6 +985,7 @@ class FeatureFlag(pulumi.CustomResource):
         __props__.__dict__["client_side_availabilities"] = client_side_availabilities
         __props__.__dict__["custom_properties"] = custom_properties
         __props__.__dict__["defaults"] = defaults
+        __props__.__dict__["deprecated"] = deprecated
         __props__.__dict__["description"] = description
         __props__.__dict__["include_in_snippet"] = include_in_snippet
         __props__.__dict__["key"] = key
@@ -989,6 +1028,14 @@ class FeatureFlag(pulumi.CustomResource):
         A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
         """
         return pulumi.get(self, "defaults")
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        """
+        return pulumi.get(self, "deprecated")
 
     @_builtins.property
     @pulumi.getter

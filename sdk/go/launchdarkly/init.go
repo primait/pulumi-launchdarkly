@@ -45,6 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlagTemplates{}
 	case "launchdarkly:index/flagTrigger:FlagTrigger":
 		r = &FlagTrigger{}
+	case "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig":
+		r = &IpAllowlistConfig{}
+	case "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry":
+		r = &IpAllowlistEntry{}
 	case "launchdarkly:index/metric:Metric":
 		r = &Metric{}
 	case "launchdarkly:index/modelConfig:ModelConfig":
@@ -158,6 +162,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/flagTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/ipAllowlistConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/ipAllowlistEntry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

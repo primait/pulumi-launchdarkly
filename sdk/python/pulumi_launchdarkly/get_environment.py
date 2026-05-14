@@ -269,9 +269,9 @@ def get_environment(critical: Optional[_builtins.bool] = None,
         require_comments=pulumi.get(__ret__, 'require_comments'),
         secure_mode=pulumi.get(__ret__, 'secure_mode'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_environment_output(critical: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                           key: Optional[pulumi.Input[_builtins.str]] = None,
-                           project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_environment_output(critical: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                           key: pulumi.Input[Optional[_builtins.str]] = None,
+                           project_key: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Provides a LaunchDarkly environment data source.
