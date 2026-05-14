@@ -25,8 +25,8 @@ class AuditLogSubscriptionArgs:
                  integration_key: pulumi.Input[_builtins.str],
                  on: pulumi.Input[_builtins.bool],
                  statements: pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuditLogSubscription resource.
 
@@ -96,38 +96,38 @@ class AuditLogSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _AuditLogSubscriptionState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AuditLogSubscription resources.
 
@@ -153,74 +153,74 @@ class _AuditLogSubscriptionState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The set of configuration fields corresponding to the value defined for `integration_key`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationKey")
-    def integration_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, and `splunk`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "integration_key")
 
     @integration_key.setter
-    def integration_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not you want your subscription enabled, i.e. to actively send events.
         """
         return pulumi.get(self, "on")
 
     @on.setter
-    def on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on", value)
 
     @_builtins.property
     @pulumi.getter
-    def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]]:
+    def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]]:
         """
         A block representing the resources to which you wish to subscribe.
         """
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]]):
+    def statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuditLogSubscriptionStatementArgs']]]]):
         pulumi.set(self, "statements", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -230,12 +230,12 @@ class AuditLogSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly audit log subscription resource.
@@ -283,12 +283,12 @@ class AuditLogSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,12 +322,12 @@ class AuditLogSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            integration_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            on: Optional[pulumi.Input[_builtins.bool]] = None,
-            statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AuditLogSubscription':
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            integration_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on: pulumi.Input[Optional[_builtins.bool]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AuditLogSubscription':
         """
         Get an existing AuditLogSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

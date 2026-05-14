@@ -340,43 +340,43 @@ export interface FeatureFlagEnvironmentState {
     /**
      * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
      */
-    contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[]>;
+    contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[] | undefined>;
     /**
      * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    envKey?: pulumi.Input<string>;
+    envKey?: pulumi.Input<string | undefined>;
     /**
      * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
      */
-    fallthrough?: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough>;
+    fallthrough?: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough | undefined>;
     /**
      * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    flagId?: pulumi.Input<string>;
+    flagId?: pulumi.Input<string | undefined>;
     /**
      * The index of the variation to serve if targeting is disabled.
      */
-    offVariation?: pulumi.Input<number>;
+    offVariation?: pulumi.Input<number | undefined>;
     /**
      * Whether targeting is enabled. Defaults to `false` if not set.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * List of nested blocks describing prerequisite feature flags rules.
      */
-    prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[]>;
+    prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[] | undefined>;
     /**
      * List of logical targeting rules.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[] | undefined>;
     /**
      * Set of nested blocks describing the individual user targets for each variation.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[] | undefined>;
     /**
      * Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
      */
-    trackEvents?: pulumi.Input<boolean>;
+    trackEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -386,7 +386,7 @@ export interface FeatureFlagEnvironmentArgs {
     /**
      * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
      */
-    contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[]>;
+    contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[] | undefined>;
     /**
      * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -406,21 +406,21 @@ export interface FeatureFlagEnvironmentArgs {
     /**
      * Whether targeting is enabled. Defaults to `false` if not set.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * List of nested blocks describing prerequisite feature flags rules.
      */
-    prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[]>;
+    prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[] | undefined>;
     /**
      * List of logical targeting rules.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[] | undefined>;
     /**
      * Set of nested blocks describing the individual user targets for each variation.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[] | undefined>;
     /**
      * Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
      */
-    trackEvents?: pulumi.Input<boolean>;
+    trackEvents?: pulumi.Input<boolean | undefined>;
 }

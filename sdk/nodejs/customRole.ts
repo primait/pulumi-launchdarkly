@@ -141,27 +141,27 @@ export interface CustomRoleState {
     /**
      * The base permission level - either `reader` or `noAccess`. While newer API versions default to `noAccess`, this field defaults to `reader` in keeping with previous API versions.
      */
-    basePermissions?: pulumi.Input<string>;
+    basePermissions?: pulumi.Input<string | undefined>;
     /**
      * Description of the custom role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * A name for the custom role. This must be unique within your organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * @deprecated 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[] | undefined>;
     /**
      * An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
      */
-    policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[]>;
+    policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[] | undefined>;
 }
 
 /**
@@ -171,11 +171,11 @@ export interface CustomRoleArgs {
     /**
      * The base permission level - either `reader` or `noAccess`. While newer API versions default to `noAccess`, this field defaults to `reader` in keeping with previous API versions.
      */
-    basePermissions?: pulumi.Input<string>;
+    basePermissions?: pulumi.Input<string | undefined>;
     /**
      * Description of the custom role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -183,13 +183,13 @@ export interface CustomRoleArgs {
     /**
      * A name for the custom role. This must be unique within your organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * @deprecated 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[] | undefined>;
     /**
      * An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
      */
-    policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[]>;
+    policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[] | undefined>;
 }

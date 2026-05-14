@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly view resource.
  *
+ * > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ *
+ * > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+ *
  * This resource allows you to create and manage views within your LaunchDarkly project.
  *
  * ## Example Usage
@@ -75,10 +79,6 @@ export class View extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Whether to generate SDK keys for this view.
-     */
-    declare public readonly generateSdkKeys: pulumi.Output<boolean | undefined>;
-    /**
      * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
@@ -118,7 +118,6 @@ export class View extends pulumi.CustomResource {
             const state = argsOrState as ViewState | undefined;
             resourceInputs["archived"] = state?.archived;
             resourceInputs["description"] = state?.description;
-            resourceInputs["generateSdkKeys"] = state?.generateSdkKeys;
             resourceInputs["key"] = state?.key;
             resourceInputs["maintainerId"] = state?.maintainerId;
             resourceInputs["maintainerTeamKey"] = state?.maintainerTeamKey;
@@ -135,7 +134,6 @@ export class View extends pulumi.CustomResource {
             }
             resourceInputs["archived"] = args?.archived;
             resourceInputs["description"] = args?.description;
-            resourceInputs["generateSdkKeys"] = args?.generateSdkKeys;
             resourceInputs["key"] = args?.key;
             resourceInputs["maintainerId"] = args?.maintainerId;
             resourceInputs["maintainerTeamKey"] = args?.maintainerTeamKey;
@@ -155,39 +153,35 @@ export interface ViewState {
     /**
      * Whether the view is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * The view's description.
      */
-    description?: pulumi.Input<string>;
-    /**
-     * Whether to generate SDK keys for this view.
-     */
-    generateSdkKeys?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The view's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -197,15 +191,11 @@ export interface ViewArgs {
     /**
      * Whether the view is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * The view's description.
      */
-    description?: pulumi.Input<string>;
-    /**
-     * Whether to generate SDK keys for this view.
-     */
-    generateSdkKeys?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -213,15 +203,15 @@ export interface ViewArgs {
     /**
      * The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The view's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -229,5 +219,5 @@ export interface ViewArgs {
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

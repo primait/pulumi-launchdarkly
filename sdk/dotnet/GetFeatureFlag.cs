@@ -119,6 +119,10 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagDefaultResult> Defaults;
         /// <summary>
+        /// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        /// </summary>
+        public readonly bool Deprecated;
+        /// <summary>
         /// The feature flag's description.
         /// </summary>
         public readonly string Description;
@@ -185,6 +189,8 @@ namespace Pulumi.Launchdarkly
 
             ImmutableArray<Outputs.GetFeatureFlagDefaultResult> defaults,
 
+            bool deprecated,
+
             string description,
 
             string id,
@@ -217,6 +223,7 @@ namespace Pulumi.Launchdarkly
             ClientSideAvailabilities = clientSideAvailabilities;
             CustomProperties = customProperties;
             Defaults = defaults;
+            Deprecated = deprecated;
             Description = description;
             Id = id;
             IncludeInSnippet = includeInSnippet;

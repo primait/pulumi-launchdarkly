@@ -160,39 +160,39 @@ export interface AiToolState {
     /**
      * The creation timestamp of the AI tool.
      */
-    creationDate?: pulumi.Input<number>;
+    creationDate?: pulumi.Input<number | undefined>;
     /**
      * A JSON string representing custom application-level metadata for the AI tool.
      */
-    customParameters?: pulumi.Input<string>;
+    customParameters?: pulumi.Input<string | undefined>;
     /**
      * The AI tool's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * A JSON string representing the JSON Schema for the tool's parameters.
      */
-    schemaJson?: pulumi.Input<string>;
+    schemaJson?: pulumi.Input<string | undefined>;
     /**
      * The version of the AI tool.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -202,11 +202,11 @@ export interface AiToolArgs {
     /**
      * A JSON string representing custom application-level metadata for the AI tool.
      */
-    customParameters?: pulumi.Input<string>;
+    customParameters?: pulumi.Input<string | undefined>;
     /**
      * The AI tool's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -214,11 +214,11 @@ export interface AiToolArgs {
     /**
      * The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
      */
-    maintainerTeamKey?: pulumi.Input<string>;
+    maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */

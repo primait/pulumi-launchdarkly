@@ -23,12 +23,12 @@ class ProjectArgs:
     def __init__(__self__, *,
                  environments: pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]],
                  key: pulumi.Input[_builtins.str],
-                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -89,89 +89,89 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+    def default_client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
         """
         A block describing which client-side SDKs can use new flags by default.
         """
         return pulumi.get(self, "default_client_side_availabilities")
 
     @default_client_side_availabilities.setter
-    def default_client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
+    def default_client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
         pulumi.set(self, "default_client_side_availabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="includeInSnippet")
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
     @include_in_snippet.setter
-    def include_in_snippet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_in_snippet", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewFlags")
-    def require_view_association_for_new_flags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_view_association_for_new_flags(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new flags created in this project must be associated with at least one view.
         """
         return pulumi.get(self, "require_view_association_for_new_flags")
 
     @require_view_association_for_new_flags.setter
-    def require_view_association_for_new_flags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_view_association_for_new_flags(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_view_association_for_new_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewSegments")
-    def require_view_association_for_new_segments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_view_association_for_new_segments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new segments created in this project must be associated with at least one view.
         """
         return pulumi.get(self, "require_view_association_for_new_segments")
 
     @require_view_association_for_new_segments.setter
-    def require_view_association_for_new_segments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_view_association_for_new_segments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_view_association_for_new_segments", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -208,19 +208,19 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+    def default_client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
         """
         A block describing which client-side SDKs can use new flags by default.
         """
         return pulumi.get(self, "default_client_side_availabilities")
 
     @default_client_side_availabilities.setter
-    def default_client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
+    def default_client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
         pulumi.set(self, "default_client_side_availabilities", value)
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]:
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]:
         """
         List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
 
@@ -229,80 +229,80 @@ class _ProjectState:
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]):
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]):
         pulumi.set(self, "environments", value)
 
     @_builtins.property
     @pulumi.getter(name="includeInSnippet")
     @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def include_in_snippet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
     @include_in_snippet.setter
-    def include_in_snippet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_in_snippet", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewFlags")
-    def require_view_association_for_new_flags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_view_association_for_new_flags(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new flags created in this project must be associated with at least one view.
         """
         return pulumi.get(self, "require_view_association_for_new_flags")
 
     @require_view_association_for_new_flags.setter
-    def require_view_association_for_new_flags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_view_association_for_new_flags(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_view_association_for_new_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewSegments")
-    def require_view_association_for_new_segments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_view_association_for_new_segments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new segments created in this project must be associated with at least one view.
         """
         return pulumi.get(self, "require_view_association_for_new_segments")
 
     @require_view_association_for_new_segments.setter
-    def require_view_association_for_new_segments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_view_association_for_new_segments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_view_association_for_new_segments", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -312,14 +312,14 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly project resource.
@@ -481,14 +481,14 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-                 include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
+                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,14 +520,14 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-            environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-            include_in_snippet: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            require_view_association_for_new_flags: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_view_association_for_new_segments: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Project':
+            default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
+            include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

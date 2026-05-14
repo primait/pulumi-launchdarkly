@@ -12,6 +12,10 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly view filter links resource for linking resources to views using filter expressions.
     /// 
+    /// &gt; **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
+    /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+    /// 
     /// This resource allows you to link all flags and/or segments matching a filter expression to a specific view. The filter is resolved at apply time — the backend finds all resources matching the filter and links them to the view.
     /// 
     /// &gt; **Note:** Filter-based links are point-in-time. By default, filters are resolved only when this resource is created or updated (for example, when `FlagFilter` changes). Set `ReconcileOnApply = true` to force re-resolution on every `pulumi up`.
@@ -35,7 +39,7 @@ namespace Pulumi.Launchdarkly
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Link all flags tagged "frontend" to a view
-    ///     var frontendFlags = new Launchdarkly.Index.ViewFilterLinks("frontend_flags", new()
+    ///     var frontendFlags = new Launchdarkly.ViewFilterLinks("frontend_flags", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "frontend-team",
@@ -43,7 +47,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Link both flags and segments matching a tag
-    ///     var platformResources = new Launchdarkly.Index.ViewFilterLinks("platform_resources", new()
+    ///     var platformResources = new Launchdarkly.ViewFilterLinks("platform_resources", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "platform-team",
@@ -53,7 +57,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Link only segments matching a filter
-    ///     var betaSegments = new Launchdarkly.Index.ViewFilterLinks("beta_segments", new()
+    ///     var betaSegments = new Launchdarkly.ViewFilterLinks("beta_segments", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "beta-program",

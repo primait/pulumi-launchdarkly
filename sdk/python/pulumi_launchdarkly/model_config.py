@@ -22,14 +22,14 @@ class ModelConfigArgs:
                  key: pulumi.Input[_builtins.str],
                  model_id: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 cost_per_input_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 cost_per_output_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cost_per_input_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 cost_per_output_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ModelConfig resource.
 
@@ -103,117 +103,117 @@ class ModelConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="costPerInputToken")
-    def cost_per_input_token(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cost_per_input_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_input_token")
 
     @cost_per_input_token.setter
-    def cost_per_input_token(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cost_per_input_token(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cost_per_input_token", value)
 
     @_builtins.property
     @pulumi.getter(name="costPerOutputToken")
-    def cost_per_output_token(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cost_per_output_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_output_token")
 
     @cost_per_output_token.setter
-    def cost_per_output_token(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cost_per_output_token(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cost_per_output_token", value)
 
     @_builtins.property
     @pulumi.getter(name="customParameters")
-    def custom_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "custom_parameters")
 
     @custom_parameters.setter
-    def custom_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "icon")
 
     @icon.setter
-    def icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "icon", value)
 
     @_builtins.property
     @pulumi.getter(name="modelProvider")
-    def model_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_provider")
 
     @model_provider.setter
-    def model_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ModelConfigState:
     def __init__(__self__, *,
-                 cost_per_input_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 cost_per_output_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_: Optional[pulumi.Input[_builtins.bool]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 cost_per_input_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 cost_per_output_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_: pulumi.Input[Optional[_builtins.bool]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ModelConfig resources.
 
@@ -260,158 +260,158 @@ class _ModelConfigState:
 
     @_builtins.property
     @pulumi.getter(name="costPerInputToken")
-    def cost_per_input_token(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cost_per_input_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_input_token")
 
     @cost_per_input_token.setter
-    def cost_per_input_token(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cost_per_input_token(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cost_per_input_token", value)
 
     @_builtins.property
     @pulumi.getter(name="costPerOutputToken")
-    def cost_per_output_token(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cost_per_output_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_output_token")
 
     @cost_per_output_token.setter
-    def cost_per_output_token(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cost_per_output_token(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cost_per_output_token", value)
 
     @_builtins.property
     @pulumi.getter(name="customParameters")
-    def custom_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "custom_parameters")
 
     @custom_parameters.setter
-    def custom_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="global")
-    def global_(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def global_(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the model config is available globally.
         """
         return pulumi.get(self, "global_")
 
     @global_.setter
-    def global_(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def global_(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "global_", value)
 
     @_builtins.property
     @pulumi.getter
-    def icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "icon")
 
     @icon.setter
-    def icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "icon", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="modelId")
-    def model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_id")
 
     @model_id.setter
-    def model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_id", value)
 
     @_builtins.property
     @pulumi.getter(name="modelProvider")
-    def model_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_provider")
 
     @model_provider.setter
-    def model_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the model config.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -421,17 +421,17 @@ class ModelConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cost_per_input_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 cost_per_output_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cost_per_input_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 cost_per_output_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly model config resource.
@@ -532,17 +532,17 @@ class ModelConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cost_per_input_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 cost_per_output_token: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cost_per_input_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 cost_per_output_token: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,19 +581,19 @@ class ModelConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cost_per_input_token: Optional[pulumi.Input[_builtins.float]] = None,
-            cost_per_output_token: Optional[pulumi.Input[_builtins.float]] = None,
-            custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-            global_: Optional[pulumi.Input[_builtins.bool]] = None,
-            icon: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            model_id: Optional[pulumi.Input[_builtins.str]] = None,
-            model_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'ModelConfig':
+            cost_per_input_token: pulumi.Input[Optional[_builtins.float]] = None,
+            cost_per_output_token: pulumi.Input[Optional[_builtins.float]] = None,
+            custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            global_: pulumi.Input[Optional[_builtins.bool]] = None,
+            icon: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            model_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'ModelConfig':
         """
         Get an existing ModelConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -266,9 +266,9 @@ def get_ai_config_variation(config_key: Optional[_builtins.str] = None,
         tool_keys=pulumi.get(__ret__, 'tool_keys'),
         variation_id=pulumi.get(__ret__, 'variation_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_ai_config_variation_output(config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                                   key: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_config_variation_output(config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                                   key: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project_key: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiConfigVariationResult]:
     """
     Provides a LaunchDarkly AI Config variation data source.

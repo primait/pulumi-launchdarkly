@@ -24,15 +24,15 @@ class EnvironmentArgs:
                  color: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
-                 confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 critical: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
+                 confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 critical: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -108,128 +108,128 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
+    def approval_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
         return pulumi.get(self, "approval_settings")
 
     @approval_settings.setter
-    def approval_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
+    def approval_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
         pulumi.set(self, "approval_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
-    def confirm_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confirm_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
     @confirm_changes.setter
-    def confirm_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confirm_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confirm_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def critical(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the environment is critical.
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def critical(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "critical", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
-    def default_track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
     @default_track_events.setter
-    def default_track_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_track_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_track_events", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="requireComments")
-    def require_comments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_comments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
     @require_comments.setter
-    def require_comments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_comments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_comments", value)
 
     @_builtins.property
     @pulumi.getter(name="secureMode")
-    def secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
     @secure_mode.setter
-    def secure_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
-                 client_side_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 critical: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mobile_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
+                 client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 critical: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mobile_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -281,179 +281,179 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's SDK key.
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
+    def approval_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
         return pulumi.get(self, "approval_settings")
 
     @approval_settings.setter
-    def approval_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
+    def approval_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
         pulumi.set(self, "approval_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSideId")
-    def client_side_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_side_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's client-side ID.
         """
         return pulumi.get(self, "client_side_id")
 
     @client_side_id.setter
-    def client_side_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_side_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_side_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The color swatch as an RGB hex value with no leading `#`. For example: `000000`
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
-    def confirm_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confirm_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
     @confirm_changes.setter
-    def confirm_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confirm_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confirm_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def critical(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the environment is critical.
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def critical(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "critical", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
-    def default_track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
     @default_track_events.setter
-    def default_track_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_track_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_track_events", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="mobileKey")
-    def mobile_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's mobile key.
         """
         return pulumi.get(self, "mobile_key")
 
     @mobile_key.setter
-    def mobile_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter(name="requireComments")
-    def require_comments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_comments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
     @require_comments.setter
-    def require_comments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_comments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_comments", value)
 
     @_builtins.property
     @pulumi.getter(name="secureMode")
-    def secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
     @secure_mode.setter
-    def secure_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -463,18 +463,18 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 critical: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 critical: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly environment resource.
@@ -607,18 +607,18 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 critical: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 critical: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -661,21 +661,21 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
-            client_side_id: Optional[pulumi.Input[_builtins.str]] = None,
-            color: Optional[pulumi.Input[_builtins.str]] = None,
-            confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-            critical: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            mobile_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-            secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+            client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+            critical: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            mobile_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+            secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

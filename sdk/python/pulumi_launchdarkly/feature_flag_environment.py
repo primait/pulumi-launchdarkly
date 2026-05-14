@@ -25,12 +25,12 @@ class FeatureFlagEnvironmentArgs:
                  fallthrough: pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'],
                  flag_id: pulumi.Input[_builtins.str],
                  off_variation: pulumi.Input[_builtins.int],
-                 context_targets: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prerequisites: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]] = None,
-                 track_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 context_targets: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]] = None,
+                 track_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a FeatureFlagEnvironment resource.
 
@@ -112,90 +112,90 @@ class FeatureFlagEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextTargets")
-    def context_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
+    def context_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
         """
         The set of nested blocks describing the individual targets for non-user context kinds for each variation.
         """
         return pulumi.get(self, "context_targets")
 
     @context_targets.setter
-    def context_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]):
+    def context_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]):
         pulumi.set(self, "context_targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether targeting is enabled. Defaults to `false` if not set.
         """
         return pulumi.get(self, "on")
 
     @on.setter
-    def on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on", value)
 
     @_builtins.property
     @pulumi.getter
-    def prerequisites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
+    def prerequisites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
         """
         List of nested blocks describing prerequisite feature flags rules.
         """
         return pulumi.get(self, "prerequisites")
 
     @prerequisites.setter
-    def prerequisites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]):
+    def prerequisites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]):
         pulumi.set(self, "prerequisites", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]:
         """
         List of logical targeting rules.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
         """
         Set of nested blocks describing the individual user targets for each variation.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter(name="trackEvents")
-    def track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         return pulumi.get(self, "track_events")
 
     @track_events.setter
-    def track_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def track_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "track_events", value)
 
 
 @pulumi.input_type
 class _FeatureFlagEnvironmentState:
     def __init__(__self__, *,
-                 context_targets: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fallthrough: Optional[pulumi.Input['FeatureFlagEnvironmentFallthroughArgs']] = None,
-                 flag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 off_variation: Optional[pulumi.Input[_builtins.int]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prerequisites: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]] = None,
-                 track_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 context_targets: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fallthrough: pulumi.Input[Optional['FeatureFlagEnvironmentFallthroughArgs']] = None,
+                 flag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 off_variation: pulumi.Input[Optional[_builtins.int]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]] = None,
+                 track_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagEnvironment resources.
 
@@ -233,122 +233,122 @@ class _FeatureFlagEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="contextTargets")
-    def context_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
+    def context_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
         """
         The set of nested blocks describing the individual targets for non-user context kinds for each variation.
         """
         return pulumi.get(self, "context_targets")
 
     @context_targets.setter
-    def context_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]):
+    def context_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]):
         pulumi.set(self, "context_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="envKey")
-    def env_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
     @env_key.setter
-    def env_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def fallthrough(self) -> Optional[pulumi.Input['FeatureFlagEnvironmentFallthroughArgs']]:
+    def fallthrough(self) -> pulumi.Input[Optional['FeatureFlagEnvironmentFallthroughArgs']]:
         """
         Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
         """
         return pulumi.get(self, "fallthrough")
 
     @fallthrough.setter
-    def fallthrough(self, value: Optional[pulumi.Input['FeatureFlagEnvironmentFallthroughArgs']]):
+    def fallthrough(self, value: pulumi.Input[Optional['FeatureFlagEnvironmentFallthroughArgs']]):
         pulumi.set(self, "fallthrough", value)
 
     @_builtins.property
     @pulumi.getter(name="flagId")
-    def flag_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
     @flag_id.setter
-    def flag_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flag_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flag_id", value)
 
     @_builtins.property
     @pulumi.getter(name="offVariation")
-    def off_variation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def off_variation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index of the variation to serve if targeting is disabled.
         """
         return pulumi.get(self, "off_variation")
 
     @off_variation.setter
-    def off_variation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def off_variation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "off_variation", value)
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether targeting is enabled. Defaults to `false` if not set.
         """
         return pulumi.get(self, "on")
 
     @on.setter
-    def on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on", value)
 
     @_builtins.property
     @pulumi.getter
-    def prerequisites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
+    def prerequisites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
         """
         List of nested blocks describing prerequisite feature flags rules.
         """
         return pulumi.get(self, "prerequisites")
 
     @prerequisites.setter
-    def prerequisites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]):
+    def prerequisites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]):
         pulumi.set(self, "prerequisites", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]:
         """
         List of logical targeting rules.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
         """
         Set of nested blocks describing the individual user targets for each variation.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter(name="trackEvents")
-    def track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         return pulumi.get(self, "track_events")
 
     @track_events.setter
-    def track_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def track_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "track_events", value)
 
 
@@ -358,16 +358,16 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fallthrough: Optional[pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
-                 flag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 off_variation: Optional[pulumi.Input[_builtins.int]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prerequisites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
-                 track_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 context_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fallthrough: pulumi.Input[Optional[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
+                 flag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 off_variation: pulumi.Input[Optional[_builtins.int]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
+                 track_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly environment-specific feature flag resource.
@@ -807,16 +807,16 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
-                 env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fallthrough: Optional[pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
-                 flag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 off_variation: Optional[pulumi.Input[_builtins.int]] = None,
-                 on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prerequisites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
-                 track_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 context_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
+                 env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fallthrough: pulumi.Input[Optional[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
+                 flag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 off_variation: pulumi.Input[Optional[_builtins.int]] = None,
+                 on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
+                 track_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -854,16 +854,16 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            context_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
-            env_key: Optional[pulumi.Input[_builtins.str]] = None,
-            fallthrough: Optional[pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
-            flag_id: Optional[pulumi.Input[_builtins.str]] = None,
-            off_variation: Optional[pulumi.Input[_builtins.int]] = None,
-            on: Optional[pulumi.Input[_builtins.bool]] = None,
-            prerequisites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
-            track_events: Optional[pulumi.Input[_builtins.bool]] = None) -> 'FeatureFlagEnvironment':
+            context_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]]] = None,
+            env_key: pulumi.Input[Optional[_builtins.str]] = None,
+            fallthrough: pulumi.Input[Optional[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']]] = None,
+            flag_id: pulumi.Input[Optional[_builtins.str]] = None,
+            off_variation: pulumi.Input[Optional[_builtins.int]] = None,
+            on: pulumi.Input[Optional[_builtins.bool]] = None,
+            prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]]] = None,
+            track_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'FeatureFlagEnvironment':
         """
         Get an existing FeatureFlagEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

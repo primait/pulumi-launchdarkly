@@ -158,8 +158,8 @@ def get_audit_log_subscription(id: Optional[_builtins.str] = None,
         on=pulumi.get(__ret__, 'on'),
         statements=pulumi.get(__ret__, 'statements'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_audit_log_subscription_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      integration_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_audit_log_subscription_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      integration_key: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuditLogSubscriptionResult]:
     """
     Provides a LaunchDarkly audit log subscription data source.

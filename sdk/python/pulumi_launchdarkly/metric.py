@@ -24,22 +24,22 @@ class MetricArgs:
                  key: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 analysis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_units_without_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_numeric: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percentile_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 randomization_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_aggregation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]] = None):
+                 analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]] = None):
         """
         The set of arguments for constructing a Metric resource.
 
@@ -140,221 +140,221 @@ class MetricArgs:
 
     @_builtins.property
     @pulumi.getter(name="analysisType")
-    def analysis_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analysis_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method for analyzing metric events. Available choices are `mean` and `percentile`.
         """
         return pulumi.get(self, "analysis_type")
 
     @analysis_type.setter
-    def analysis_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analysis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analysis_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the metric's purpose.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
-    def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The event key for your metric (if custom metric)
         """
         return pulumi.get(self, "event_key")
 
     @event_key.setter
-    def event_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_key", value)
 
     @_builtins.property
     @pulumi.getter(name="includeUnitsWithoutEvents")
-    def include_units_without_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_units_without_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Include units that did not send any events and set their value to 0.
         """
         return pulumi.get(self, "include_units_without_events")
 
     @include_units_without_events.setter
-    def include_units_without_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_units_without_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_units_without_events", value)
 
     @_builtins.property
     @pulumi.getter(name="isActive")
     @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignored. All metrics are considered active.
         """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
-    def is_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_active", value)
 
     @_builtins.property
     @pulumi.getter(name="isNumeric")
-    def is_numeric(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_numeric(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a `custom` metric is a numeric metric or not.
         """
         return pulumi.get(self, "is_numeric")
 
     @is_numeric.setter
-    def is_numeric(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_numeric(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_numeric", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-friendly name for the metric.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="percentileValue")
-    def percentile_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percentile_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         """
         return pulumi.get(self, "percentile_value")
 
     @percentile_value.setter
-    def percentile_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percentile_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percentile_value", value)
 
     @_builtins.property
     @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def randomization_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
         """
         return pulumi.get(self, "randomization_units")
 
     @randomization_units.setter
-    def randomization_units(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def randomization_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "randomization_units", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CSS selector for your metric (if click metric)
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selector", value)
 
     @_builtins.property
     @pulumi.getter(name="successCriteria")
-    def success_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def success_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
         """
         return pulumi.get(self, "success_criteria")
 
     @success_criteria.setter
-    def success_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def success_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "success_criteria", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required for kind `custom`) The unit for numeric `custom` metrics.
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
     @_builtins.property
     @pulumi.getter(name="unitAggregationType")
-    def unit_aggregation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_aggregation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
         """
         return pulumi.get(self, "unit_aggregation_type")
 
     @unit_aggregation_type.setter
-    def unit_aggregation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_aggregation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_aggregation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]:
         """
         List of nested `url` blocks describing URLs that you want to associate with the metric.
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]):
         pulumi.set(self, "urls", value)
 
 
 @pulumi.input_type
 class _MetricState:
     def __init__(__self__, *,
-                 analysis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_units_without_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_numeric: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percentile_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 randomization_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_aggregation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Metric resources.
 
@@ -425,243 +425,243 @@ class _MetricState:
 
     @_builtins.property
     @pulumi.getter(name="analysisType")
-    def analysis_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analysis_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method for analyzing metric events. Available choices are `mean` and `percentile`.
         """
         return pulumi.get(self, "analysis_type")
 
     @analysis_type.setter
-    def analysis_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analysis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analysis_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the metric's purpose.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
-    def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The event key for your metric (if custom metric)
         """
         return pulumi.get(self, "event_key")
 
     @event_key.setter
-    def event_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_key", value)
 
     @_builtins.property
     @pulumi.getter(name="includeUnitsWithoutEvents")
-    def include_units_without_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_units_without_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Include units that did not send any events and set their value to 0.
         """
         return pulumi.get(self, "include_units_without_events")
 
     @include_units_without_events.setter
-    def include_units_without_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_units_without_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_units_without_events", value)
 
     @_builtins.property
     @pulumi.getter(name="isActive")
     @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignored. All metrics are considered active.
         """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
-    def is_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_active", value)
 
     @_builtins.property
     @pulumi.getter(name="isNumeric")
-    def is_numeric(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_numeric(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a `custom` metric is a numeric metric or not.
         """
         return pulumi.get(self, "is_numeric")
 
     @is_numeric.setter
-    def is_numeric(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_numeric(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_numeric", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-friendly name for the metric.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="percentileValue")
-    def percentile_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percentile_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         """
         return pulumi.get(self, "percentile_value")
 
     @percentile_value.setter
-    def percentile_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percentile_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percentile_value", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def randomization_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
         """
         return pulumi.get(self, "randomization_units")
 
     @randomization_units.setter
-    def randomization_units(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def randomization_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "randomization_units", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CSS selector for your metric (if click metric)
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selector", value)
 
     @_builtins.property
     @pulumi.getter(name="successCriteria")
-    def success_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def success_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
         """
         return pulumi.get(self, "success_criteria")
 
     @success_criteria.setter
-    def success_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def success_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "success_criteria", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required for kind `custom`) The unit for numeric `custom` metrics.
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
     @_builtins.property
     @pulumi.getter(name="unitAggregationType")
-    def unit_aggregation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_aggregation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
         """
         return pulumi.get(self, "unit_aggregation_type")
 
     @unit_aggregation_type.setter
-    def unit_aggregation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_aggregation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_aggregation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]:
         """
         List of nested `url` blocks describing URLs that you want to associate with the metric.
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]):
         pulumi.set(self, "urls", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version of the metric
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -671,25 +671,25 @@ class Metric(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analysis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_units_without_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_numeric: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percentile_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 randomization_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_aggregation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+                 analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly metric resource.
@@ -804,25 +804,25 @@ class Metric(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analysis_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_units_without_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_numeric: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percentile_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 randomization_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_aggregation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+                 analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -868,26 +868,26 @@ class Metric(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            analysis_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_key: Optional[pulumi.Input[_builtins.str]] = None,
-            include_units_without_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_active: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_numeric: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            percentile_value: Optional[pulumi.Input[_builtins.int]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            randomization_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            selector: Optional[pulumi.Input[_builtins.str]] = None,
-            success_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            unit: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_aggregation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'Metric':
+            analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_key: pulumi.Input[Optional[_builtins.str]] = None,
+            include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            selector: pulumi.Input[Optional[_builtins.str]] = None,
+            success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            unit: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Metric':
         """
         Get an existing Metric resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

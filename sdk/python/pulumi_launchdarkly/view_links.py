@@ -23,8 +23,8 @@ class ViewLinksArgs:
     def __init__(__self__, *,
                  project_key: pulumi.Input[_builtins.str],
                  view_key: pulumi.Input[_builtins.str],
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]] = None):
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]] = None):
         """
         The set of arguments for constructing a ViewLinks resource.
 
@@ -66,36 +66,36 @@ class ViewLinksArgs:
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of feature flag keys to link to the view.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]:
+    def segments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]:
         """
         A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
         """
         return pulumi.get(self, "segments")
 
     @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]):
+    def segments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]):
         pulumi.set(self, "segments", value)
 
 
 @pulumi.input_type
 class _ViewLinksState:
     def __init__(__self__, *,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ViewLinks resources.
 
@@ -115,50 +115,50 @@ class _ViewLinksState:
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of feature flag keys to link to the view.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]:
+    def segments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]:
         """
         A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
         """
         return pulumi.get(self, "segments")
 
     @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]):
+    def segments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ViewLinksSegmentArgs']]]]):
         pulumi.set(self, "segments", value)
 
     @_builtins.property
     @pulumi.getter(name="viewKey")
-    def view_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
     @view_key.setter
-    def view_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_key", value)
 
 
@@ -168,13 +168,17 @@ class ViewLinks(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly view links resource for managing bulk resource linkage to views.
+
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
 
@@ -311,6 +315,10 @@ class ViewLinks(pulumi.CustomResource):
         """
         Provides a LaunchDarkly view links resource for managing bulk resource linkage to views.
 
+        > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+
+        > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+
         This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
 
         > **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
@@ -445,10 +453,10 @@ class ViewLinks(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
-                 view_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
+                 view_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -476,10 +484,10 @@ class ViewLinks(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
-            view_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'ViewLinks':
+            flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]]] = None,
+            view_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ViewLinks':
         """
         Get an existing ViewLinks resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

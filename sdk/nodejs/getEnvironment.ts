@@ -144,7 +144,7 @@ export interface GetEnvironmentOutputArgs {
     /**
      * Denotes whether the environment is critical.
      */
-    critical?: pulumi.Input<boolean>;
+    critical?: pulumi.Input<boolean | undefined>;
     /**
      * The project-unique key for the environment.
      */

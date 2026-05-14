@@ -22,10 +22,10 @@ class AiToolArgs:
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
                  schema_json: pulumi.Input[_builtins.str],
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiTool resource.
 
@@ -87,65 +87,65 @@ class AiToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="customParameters")
-    def custom_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing custom application-level metadata for the AI tool.
         """
         return pulumi.get(self, "custom_parameters")
 
     @custom_parameters.setter
-    def custom_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI tool's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this AI tool. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this AI tool. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
 
 @pulumi.input_type
 class _AiToolState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AiTool resources.
 
@@ -180,110 +180,110 @@ class _AiToolState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation timestamp of the AI tool.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="customParameters")
-    def custom_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing custom application-level metadata for the AI tool.
         """
         return pulumi.get(self, "custom_parameters")
 
     @custom_parameters.setter
-    def custom_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI tool's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this AI tool. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this AI tool. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaJson")
-    def schema_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing the JSON Schema for the tool's parameters.
         """
         return pulumi.get(self, "schema_json")
 
     @schema_json.setter
-    def schema_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the AI tool.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -293,13 +293,13 @@ class AiTool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_json: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly AI tool resource.
@@ -406,13 +406,13 @@ class AiTool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_json: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -447,15 +447,15 @@ class AiTool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-            custom_parameters: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            schema_json: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'AiTool':
+            creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_json: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'AiTool':
         """
         Get an existing AiTool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

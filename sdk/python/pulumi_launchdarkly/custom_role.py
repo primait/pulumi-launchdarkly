@@ -22,11 +22,11 @@ __all__ = ['CustomRoleArgs', 'CustomRole']
 class CustomRoleArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 base_permissions: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]] = None,
-                 policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
+                 base_permissions: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]] = None,
+                 policy_statements: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         The set of arguments for constructing a CustomRole resource.
 
@@ -65,72 +65,72 @@ class CustomRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="basePermissions")
-    def base_permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base permission level - either `reader` or `no_access`. While newer API versions default to `no_access`, this field defaults to `reader` in keeping with previous API versions.
         """
         return pulumi.get(self, "base_permissions")
 
     @base_permissions.setter
-    def base_permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the custom role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the custom role. This must be unique within your organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.""")
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter(name="policyStatements")
-    def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
+    def policy_statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
         """
         An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
         """
         return pulumi.get(self, "policy_statements")
 
     @policy_statements.setter
-    def policy_statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]):
+    def policy_statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]):
         pulumi.set(self, "policy_statements", value)
 
 
 @pulumi.input_type
 class _CustomRoleState:
     def __init__(__self__, *,
-                 base_permissions: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]] = None,
-                 policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
+                 base_permissions: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]] = None,
+                 policy_statements: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomRole resources.
 
@@ -158,72 +158,72 @@ class _CustomRoleState:
 
     @_builtins.property
     @pulumi.getter(name="basePermissions")
-    def base_permissions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_permissions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base permission level - either `reader` or `no_access`. While newer API versions default to `no_access`, this field defaults to `reader` in keeping with previous API versions.
         """
         return pulumi.get(self, "base_permissions")
 
     @base_permissions.setter
-    def base_permissions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_permissions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the custom role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the custom role. This must be unique within your organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.""")
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter(name="policyStatements")
-    def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
+    def policy_statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
         """
         An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
         """
         return pulumi.get(self, "policy_statements")
 
     @policy_statements.setter
-    def policy_statements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]):
+    def policy_statements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]):
         pulumi.set(self, "policy_statements", value)
 
 
@@ -233,12 +233,12 @@ class CustomRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_permissions: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
-                 policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None,
+                 base_permissions: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
+                 policy_statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly custom role resource.
@@ -345,12 +345,12 @@ class CustomRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_permissions: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
-                 policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None,
+                 base_permissions: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
+                 policy_statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,12 +378,12 @@ class CustomRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_permissions: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
-            policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None) -> 'CustomRole':
+            base_permissions: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyArgs', 'CustomRolePolicyArgsDict']]]]] = None,
+            policy_statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomRolePolicyStatementArgs', 'CustomRolePolicyStatementArgsDict']]]]] = None) -> 'CustomRole':
         """
         Get an existing CustomRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

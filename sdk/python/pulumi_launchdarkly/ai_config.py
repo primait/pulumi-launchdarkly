@@ -23,14 +23,14 @@ class AiConfigArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_metric_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_inverted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_metric_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_inverted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AiConfig resource.
 
@@ -90,117 +90,117 @@ class AiConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationMetricKey")
-    def evaluation_metric_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_metric_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the evaluation metric associated with this AI Config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
     @evaluation_metric_key.setter
-    def evaluation_metric_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_metric_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_metric_key", value)
 
     @_builtins.property
     @pulumi.getter(name="isInverted")
-    def is_inverted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_inverted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the evaluation metric is inverted.
         """
         return pulumi.get(self, "is_inverted")
 
     @is_inverted.setter
-    def is_inverted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_inverted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_inverted", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _AiConfigState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_metric_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_inverted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_metric_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_inverted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AiConfig resources.
 
@@ -247,158 +247,158 @@ class _AiConfigState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A timestamp of when the AI Config was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationMetricKey")
-    def evaluation_metric_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_metric_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the evaluation metric associated with this AI Config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
     @evaluation_metric_key.setter
-    def evaluation_metric_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_metric_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_metric_key", value)
 
     @_builtins.property
     @pulumi.getter(name="isInverted")
-    def is_inverted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_inverted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the evaluation metric is inverted.
         """
         return pulumi.get(self, "is_inverted")
 
     @is_inverted.setter
-    def is_inverted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_inverted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_inverted", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerId")
-    def maintainer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
     @maintainer_id.setter
-    def maintainer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainerTeamKey")
-    def maintainer_team_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
     @maintainer_team_key.setter
-    def maintainer_team_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintainer_team_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintainer_team_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def variations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]]]:
+    def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationArgs']]]]:
         """
         A list of variation summaries for this AI Config.
         """
         return pulumi.get(self, "variations")
 
     @variations.setter
-    def variations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]]]):
+    def variations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationArgs']]]]):
         pulumi.set(self, "variations", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the AI Config.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -408,16 +408,16 @@ class AiConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_metric_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_inverted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_metric_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_inverted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly AI Config resource.
@@ -511,16 +511,16 @@ class AiConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_metric_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_inverted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_metric_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_inverted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -557,19 +557,19 @@ class AiConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            evaluation_metric_key: Optional[pulumi.Input[_builtins.str]] = None,
-            is_inverted: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintainer_team_key: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'AiConfig':
+            creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_metric_key: pulumi.Input[Optional[_builtins.str]] = None,
+            is_inverted: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'AiConfig':
         """
         Get an existing AiConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,7 +24,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.Project("example", new()
+    ///     var example = new Launchdarkly.Project("example", new()
     ///     {
     ///         Key = "example-project",
     ///         Name = "Example project",
@@ -93,7 +93,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Launchdarkly.Index.Project("example", new()
+    ///     var example = new Launchdarkly.Project("example", new()
     ///     {
     ///         Name = "testProject",
     ///         Key = "%s",

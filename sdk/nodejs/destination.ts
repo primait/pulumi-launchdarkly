@@ -218,31 +218,31 @@ export interface DestinationState {
     /**
      * The destination-specific configuration. To learn more, read Destination-Specific Configs
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    envKey?: pulumi.Input<string>;
+    envKey?: pulumi.Input<string | undefined>;
     /**
      * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * A human-readable name for your data export destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the data export destination is on or not.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -264,11 +264,11 @@ export interface DestinationArgs {
     /**
      * A human-readable name for your data export destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the data export destination is on or not.
      */
-    on?: pulumi.Input<boolean>;
+    on?: pulumi.Input<boolean | undefined>;
     /**
      * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -276,5 +276,5 @@ export interface DestinationArgs {
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

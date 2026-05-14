@@ -173,8 +173,8 @@ def get_team(key: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_keys=pulumi.get(__ret__, 'project_keys'),
         role_attributes=pulumi.get(__ret__, 'role_attributes'))
-def get_team_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                    role_attributes: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamRoleAttributeArgs', 'GetTeamRoleAttributeArgsDict']]]]] = None,
+def get_team_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                    role_attributes: pulumi.Input[Optional[Optional[Sequence[Union['GetTeamRoleAttributeArgs', 'GetTeamRoleAttributeArgsDict']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamResult]:
     """
     Provides a LaunchDarkly team data source.

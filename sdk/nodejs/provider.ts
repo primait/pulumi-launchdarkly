@@ -77,19 +77,19 @@ export interface ProviderArgs {
     /**
      * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
-    access_token?: pulumi.Input<string>;
+    access_token?: pulumi.Input<string | undefined>;
     /**
      * The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
      */
-    api_host?: pulumi.Input<string>;
+    api_host?: pulumi.Input<string | undefined>;
     /**
      * The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
      */
-    http_timeout?: pulumi.Input<number>;
+    http_timeout?: pulumi.Input<number | undefined>;
     /**
      * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
-    oauth_token?: pulumi.Input<string>;
+    oauth_token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

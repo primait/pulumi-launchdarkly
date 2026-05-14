@@ -24,14 +24,14 @@ class AiConfigVariationInitArgs:
                  config_key: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AiConfigVariation resource.
 
@@ -105,118 +105,118 @@ class AiConfigVariationInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's description (used in agent mode).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's instructions (used in agent mode).
         """
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]:
         """
         A list of messages for completion mode. Each message has a `role` and `content`.
         """
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="modelConfigKey")
-    def model_config_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of a model config resource to use for this variation. Conflicts with `model`.
         """
         return pulumi.get(self, "model_config_key")
 
     @model_config_key.setter
-    def model_config_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_config_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_config_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the variation. Must be `archived` or `published`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="toolKeys")
-    def tool_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 
     @tool_keys.setter
-    def tool_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tool_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tool_keys", value)
 
 
 @pulumi.input_type
 class _AiConfigVariationState:
     def __init__(__self__, *,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 variation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 variation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AiConfigVariation resources.
 
@@ -266,170 +266,170 @@ class _AiConfigVariationState:
 
     @_builtins.property
     @pulumi.getter(name="configKey")
-    def config_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
     @config_key.setter
-    def config_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_key", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation timestamp of the variation.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's description (used in agent mode).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's instructions (used in agent mode).
         """
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]:
         """
         A list of messages for completion mode. Each message has a `role` and `content`.
         """
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="modelConfigKey")
-    def model_config_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of a model config resource to use for this variation. Conflicts with `model`.
         """
         return pulumi.get(self, "model_config_key")
 
     @model_config_key.setter
-    def model_config_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_config_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_config_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's human-readable name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
-    def project_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the variation. Must be `archived` or `published`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="toolKeys")
-    def tool_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 
     @tool_keys.setter
-    def tool_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tool_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tool_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="variationId")
-    def variation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internal ID of the variation.
         """
         return pulumi.get(self, "variation_id")
 
     @variation_id.setter
-    def variation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variation_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the variation.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -439,17 +439,17 @@ class AiConfigVariation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly AI Config variation resource.
@@ -562,17 +562,17 @@ class AiConfigVariation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,20 +612,20 @@ class AiConfigVariation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_key: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instructions: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
-            model: Optional[pulumi.Input[_builtins.str]] = None,
-            model_config_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_key: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tool_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            variation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'AiConfigVariation':
+            config_key: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_key: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            variation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'AiConfigVariation':
         """
         Get an existing AiConfigVariation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

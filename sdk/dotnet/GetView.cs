@@ -90,10 +90,6 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether SDK keys are generated for this view.
-        /// </summary>
-        public readonly bool GenerateSdkKeys;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -136,8 +132,6 @@ namespace Pulumi.Launchdarkly
 
             string description,
 
-            bool generateSdkKeys,
-
             string id,
 
             string key,
@@ -158,7 +152,6 @@ namespace Pulumi.Launchdarkly
         {
             Archived = archived;
             Description = description;
-            GenerateSdkKeys = generateSdkKeys;
             Id = id;
             Key = key;
             LinkedFlags = linkedFlags;

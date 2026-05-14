@@ -37,6 +37,8 @@ from .get_team_member import *
 from .get_team_members import *
 from .get_view import *
 from .get_webhook import *
+from .ip_allowlist_config import *
+from .ip_allowlist_entry import *
 from .metric import *
 from .model_config import *
 from .project import *
@@ -160,6 +162,22 @@ _utilities.register(
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/flagTrigger:FlagTrigger": "FlagTrigger"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/ipAllowlistConfig",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig": "IpAllowlistConfig"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/ipAllowlistEntry",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry": "IpAllowlistEntry"
   }
  },
  {

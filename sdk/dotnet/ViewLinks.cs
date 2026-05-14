@@ -12,6 +12,10 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly view links resource for managing bulk resource linkage to views.
     /// 
+    /// &gt; **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
+    /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+    /// 
     /// This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
     /// 
     /// &gt; **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
@@ -48,7 +52,7 @@ namespace Pulumi.Launchdarkly
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example: Frontend team view with bulk flag and segment assignments
-    ///     var frontendTeam = new Launchdarkly.Index.ViewLinks("frontend_team", new()
+    ///     var frontendTeam = new Launchdarkly.ViewLinks("frontend_team", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "frontend-team",
@@ -81,7 +85,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: Mobile team view with different flags
-    ///     var mobileTeam = new Launchdarkly.Index.ViewLinks("mobile_team", new()
+    ///     var mobileTeam = new Launchdarkly.ViewLinks("mobile_team", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "mobile-team",
@@ -97,7 +101,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: Shared features across teams
-    ///     var sharedFeatures = new Launchdarkly.Index.ViewLinks("shared_features", new()
+    ///     var sharedFeatures = new Launchdarkly.ViewLinks("shared_features", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "shared-features",
@@ -111,7 +115,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Demonstrating updates - adding/removing flags and segments from a view
-    ///     var backendTeam = new Launchdarkly.Index.ViewLinks("backend_team", new()
+    ///     var backendTeam = new Launchdarkly.ViewLinks("backend_team", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "backend-team",
@@ -137,7 +141,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: View with only segments (no flags)
-    ///     var segmentsOnly = new Launchdarkly.Index.ViewLinks("segments_only", new()
+    ///     var segmentsOnly = new Launchdarkly.ViewLinks("segments_only", new()
     ///     {
     ///         ProjectKey = "my-project",
     ///         ViewKey = "user-segments-view",

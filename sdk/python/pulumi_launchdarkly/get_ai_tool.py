@@ -196,8 +196,8 @@ def get_ai_tool(key: Optional[_builtins.str] = None,
         project_key=pulumi.get(__ret__, 'project_key'),
         schema_json=pulumi.get(__ret__, 'schema_json'),
         version=pulumi.get(__ret__, 'version'))
-def get_ai_tool_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                       project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_tool_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                       project_key: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiToolResult]:
     """
     Provides a LaunchDarkly AI tool data source.

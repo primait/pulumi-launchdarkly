@@ -119,7 +119,7 @@ def get_flag_templates(project_key: Optional[_builtins.str] = None,
         project_key=pulumi.get(__ret__, 'project_key'),
         tags=pulumi.get(__ret__, 'tags'),
         temporary=pulumi.get(__ret__, 'temporary'))
-def get_flag_templates_output(project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flag_templates_output(project_key: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlagTemplatesResult]:
     """
     Provides a LaunchDarkly flag templates data source.

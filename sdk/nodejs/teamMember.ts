@@ -132,27 +132,27 @@ export interface TeamMemberState {
     /**
      * The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
      */
-    customRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The team member's given name. Once created, this cannot be updated except by the team member.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * TThe team member's family name. Once created, this cannot be updated except by the team member.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[]>;
+    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[] | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface TeamMemberArgs {
     /**
      * The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
      */
-    customRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -170,17 +170,17 @@ export interface TeamMemberArgs {
     /**
      * The team member's given name. Once created, this cannot be updated except by the team member.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * TThe team member's family name. Once created, this cannot be updated except by the team member.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[]>;
+    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[] | undefined>;
 }

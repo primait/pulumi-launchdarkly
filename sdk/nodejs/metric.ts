@@ -230,85 +230,85 @@ export interface MetricState {
     /**
      * The method for analyzing metric events. Available choices are `mean` and `percentile`.
      */
-    analysisType?: pulumi.Input<string>;
+    analysisType?: pulumi.Input<string | undefined>;
     /**
      * The description of the metric's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The event key for your metric (if custom metric)
      */
-    eventKey?: pulumi.Input<string>;
+    eventKey?: pulumi.Input<string | undefined>;
     /**
      * Include units that did not send any events and set their value to 0.
      */
-    includeUnitsWithoutEvents?: pulumi.Input<boolean>;
+    includeUnitsWithoutEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Ignored. All metrics are considered active.
      *
      * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * Whether a `custom` metric is a numeric metric or not.
      */
-    isNumeric?: pulumi.Input<boolean>;
+    isNumeric?: pulumi.Input<boolean | undefined>;
     /**
      * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The human-friendly name for the metric.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
      */
-    percentileValue?: pulumi.Input<number>;
+    percentileValue?: pulumi.Input<number | undefined>;
     /**
      * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
      */
-    randomizationUnits?: pulumi.Input<pulumi.Input<string>[]>;
+    randomizationUnits?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The CSS selector for your metric (if click metric)
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
      */
-    successCriteria?: pulumi.Input<string>;
+    successCriteria?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Required for kind `custom`) The unit for numeric `custom` metrics.
      */
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
     /**
      * The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
      */
-    unitAggregationType?: pulumi.Input<string>;
+    unitAggregationType?: pulumi.Input<string | undefined>;
     /**
      * List of nested `url` blocks describing URLs that you want to associate with the metric.
      */
-    urls?: pulumi.Input<pulumi.Input<inputs.MetricUrl>[]>;
+    urls?: pulumi.Input<pulumi.Input<inputs.MetricUrl>[] | undefined>;
     /**
      * Version of the metric
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -318,29 +318,29 @@ export interface MetricArgs {
     /**
      * The method for analyzing metric events. Available choices are `mean` and `percentile`.
      */
-    analysisType?: pulumi.Input<string>;
+    analysisType?: pulumi.Input<string | undefined>;
     /**
      * The description of the metric's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The event key for your metric (if custom metric)
      */
-    eventKey?: pulumi.Input<string>;
+    eventKey?: pulumi.Input<string | undefined>;
     /**
      * Include units that did not send any events and set their value to 0.
      */
-    includeUnitsWithoutEvents?: pulumi.Input<boolean>;
+    includeUnitsWithoutEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Ignored. All metrics are considered active.
      *
      * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * Whether a `custom` metric is a numeric metric or not.
      */
-    isNumeric?: pulumi.Input<boolean>;
+    isNumeric?: pulumi.Input<boolean | undefined>;
     /**
      * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -352,15 +352,15 @@ export interface MetricArgs {
     /**
      * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The human-friendly name for the metric.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
      */
-    percentileValue?: pulumi.Input<number>;
+    percentileValue?: pulumi.Input<number | undefined>;
     /**
      * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -368,29 +368,29 @@ export interface MetricArgs {
     /**
      * A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
      */
-    randomizationUnits?: pulumi.Input<pulumi.Input<string>[]>;
+    randomizationUnits?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The CSS selector for your metric (if click metric)
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
      */
-    successCriteria?: pulumi.Input<string>;
+    successCriteria?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Required for kind `custom`) The unit for numeric `custom` metrics.
      */
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
     /**
      * The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
      */
-    unitAggregationType?: pulumi.Input<string>;
+    unitAggregationType?: pulumi.Input<string | undefined>;
     /**
      * List of nested `url` blocks describing URLs that you want to associate with the metric.
      */
-    urls?: pulumi.Input<pulumi.Input<inputs.MetricUrl>[]>;
+    urls?: pulumi.Input<pulumi.Input<inputs.MetricUrl>[] | undefined>;
 }

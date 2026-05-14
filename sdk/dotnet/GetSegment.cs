@@ -26,7 +26,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetSegment.Invoke(new()
+        ///     var example = Launchdarkly.GetSegment.Invoke(new()
         ///     {
         ///         Key = "example-segment",
         ///         ProjectKey = "example-project",
@@ -54,7 +54,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetSegment.Invoke(new()
+        ///     var example = Launchdarkly.GetSegment.Invoke(new()
         ///     {
         ///         Key = "example-segment",
         ///         ProjectKey = "example-project",
@@ -82,7 +82,7 @@ namespace Pulumi.Launchdarkly
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Launchdarkly.Index.GetSegment.Invoke(new()
+        ///     var example = Launchdarkly.GetSegment.Invoke(new()
         ///     {
         ///         Key = "example-segment",
         ///         ProjectKey = "example-project",

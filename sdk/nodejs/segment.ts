@@ -384,63 +384,63 @@ export interface SegmentState {
     /**
      * The segment's creation date represented as a UNIX epoch timestamp.
      */
-    creationDate?: pulumi.Input<number>;
+    creationDate?: pulumi.Input<number | undefined>;
     /**
      * The description of the segment's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    envKey?: pulumi.Input<string>;
+    envKey?: pulumi.Input<string | undefined>;
     /**
      * List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    excludedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentExcludedContext>[]>;
+    excludedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentExcludedContext>[] | undefined>;
     /**
      * List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    excludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    includedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentIncludedContext>[]>;
+    includedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentIncludedContext>[] | undefined>;
     /**
      * List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The human-friendly name for the segment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.SegmentRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.SegmentRule>[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    unbounded?: pulumi.Input<boolean>;
+    unbounded?: pulumi.Input<boolean | undefined>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    unboundedContextKind?: pulumi.Input<string>;
+    unboundedContextKind?: pulumi.Input<string | undefined>;
     /**
      * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
-    viewKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -450,7 +450,7 @@ export interface SegmentArgs {
     /**
      * The description of the segment's purpose.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -458,19 +458,19 @@ export interface SegmentArgs {
     /**
      * List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    excludedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentExcludedContext>[]>;
+    excludedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentExcludedContext>[] | undefined>;
     /**
      * List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    excludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    includedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentIncludedContext>[]>;
+    includedContexts?: pulumi.Input<pulumi.Input<inputs.SegmentIncludedContext>[] | undefined>;
     /**
      * List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
      */
-    includeds?: pulumi.Input<pulumi.Input<string>[]>;
+    includeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -478,7 +478,7 @@ export interface SegmentArgs {
     /**
      * The human-friendly name for the segment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -486,21 +486,21 @@ export interface SegmentArgs {
     /**
      * List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.SegmentRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.SegmentRule>[] | undefined>;
     /**
      * Tags associated with your resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    unbounded?: pulumi.Input<boolean>;
+    unbounded?: pulumi.Input<boolean | undefined>;
     /**
      * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    unboundedContextKind?: pulumi.Input<string>;
+    unboundedContextKind?: pulumi.Input<string | undefined>;
     /**
      * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
-    viewKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

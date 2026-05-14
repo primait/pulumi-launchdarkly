@@ -121,5 +121,5 @@ export interface GetTeamOutputArgs {
     /**
      * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.GetTeamRoleAttributeArgs>[]>;
+    roleAttributes?: pulumi.Input<pulumi.Input<inputs.GetTeamRoleAttributeArgs>[] | undefined>;
 }

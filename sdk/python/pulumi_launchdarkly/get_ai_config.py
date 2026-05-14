@@ -249,8 +249,8 @@ def get_ai_config(key: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         variations=pulumi.get(__ret__, 'variations'),
         version=pulumi.get(__ret__, 'version'))
-def get_ai_config_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                         project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_config_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                         project_key: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiConfigResult]:
     """
     Provides a LaunchDarkly AI Config data source.

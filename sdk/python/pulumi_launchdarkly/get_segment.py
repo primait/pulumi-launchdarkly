@@ -292,9 +292,9 @@ def get_segment(env_key: Optional[_builtins.str] = None,
         unbounded_context_kind=pulumi.get(__ret__, 'unbounded_context_kind'),
         view_keys=pulumi.get(__ret__, 'view_keys'),
         views=pulumi.get(__ret__, 'views'))
-def get_segment_output(env_key: Optional[pulumi.Input[_builtins.str]] = None,
-                       key: Optional[pulumi.Input[_builtins.str]] = None,
-                       project_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_segment_output(env_key: pulumi.Input[Optional[_builtins.str]] = None,
+                       key: pulumi.Input[Optional[_builtins.str]] = None,
+                       project_key: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSegmentResult]:
     """
     Provides a LaunchDarkly segment data source.

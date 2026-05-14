@@ -25,7 +25,7 @@ namespace Pulumi.Launchdarkly
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This example shows the use of tags, targets, context targets, and rules for a segment
-    ///     var example = new Launchdarkly.Index.Segment("example", new()
+    ///     var example = new Launchdarkly.Segment("example", new()
     ///     {
     ///         Key = "example-segment-key",
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
@@ -84,7 +84,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // This example shows a segment configured to have an unbounded number of individual targets
-    ///     var big_example = new Launchdarkly.Index.Segment("big-example", new()
+    ///     var big_example = new Launchdarkly.Segment("big-example", new()
     ///     {
     ///         Key = "example-big-segment-key",
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
@@ -101,7 +101,7 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // This example shows a segment with a targeting rule that uses all clause operators
-    ///     var segmentWithAllClauseOperators = new Launchdarkly.Index.Segment("segment_with_all_clause_operators", new()
+    ///     var segmentWithAllClauseOperators = new Launchdarkly.Segment("segment_with_all_clause_operators", new()
     ///     {
     ///         Name = "Segment with all clause operators",
     ///         Key = "segment-operators",
@@ -262,7 +262,7 @@ namespace Pulumi.Launchdarkly
     /// 
     ///     // Example: Segment with view associations
     ///     // This approach is ideal for modular Terraform where each segment is managed in its own file
-    ///     var premiumUsers = new Launchdarkly.Index.Segment("premium_users", new()
+    ///     var premiumUsers = new Launchdarkly.Segment("premium_users", new()
     ///     {
     ///         Key = "premium-users",
     ///         ProjectKey = "example-project",
@@ -303,7 +303,7 @@ namespace Pulumi.Launchdarkly
     ///     // Example: Segment managed in a module that can specify its own views
     ///     // This enables a modular structure where each team/domain can manage their segments
     ///     // without needing to coordinate with a central view_links resource
-    ///     var betaTesters = new Launchdarkly.Index.Segment("beta_testers", new()
+    ///     var betaTesters = new Launchdarkly.Segment("beta_testers", new()
     ///     {
     ///         Key = "beta-testers",
     ///         ProjectKey = "example-project",

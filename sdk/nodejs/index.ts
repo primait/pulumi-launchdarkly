@@ -160,6 +160,16 @@ export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 
+export { IpAllowlistConfigArgs, IpAllowlistConfigState } from "./ipAllowlistConfig";
+export type IpAllowlistConfig = import("./ipAllowlistConfig").IpAllowlistConfig;
+export const IpAllowlistConfig: typeof import("./ipAllowlistConfig").IpAllowlistConfig = null as any;
+utilities.lazyLoad(exports, ["IpAllowlistConfig"], () => require("./ipAllowlistConfig"));
+
+export { IpAllowlistEntryArgs, IpAllowlistEntryState } from "./ipAllowlistEntry";
+export type IpAllowlistEntry = import("./ipAllowlistEntry").IpAllowlistEntry;
+export const IpAllowlistEntry: typeof import("./ipAllowlistEntry").IpAllowlistEntry = null as any;
+utilities.lazyLoad(exports, ["IpAllowlistEntry"], () => require("./ipAllowlistEntry"));
+
 export { MetricArgs, MetricState } from "./metric";
 export type Metric = import("./metric").Metric;
 export const Metric: typeof import("./metric").Metric = null as any;
@@ -263,6 +273,10 @@ const _module = {
                 return new FlagTemplates(name, <any>undefined, { urn })
             case "launchdarkly:index/flagTrigger:FlagTrigger":
                 return new FlagTrigger(name, <any>undefined, { urn })
+            case "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig":
+                return new IpAllowlistConfig(name, <any>undefined, { urn })
+            case "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry":
+                return new IpAllowlistEntry(name, <any>undefined, { urn })
             case "launchdarkly:index/metric:Metric":
                 return new Metric(name, <any>undefined, { urn })
             case "launchdarkly:index/modelConfig:ModelConfig":
@@ -304,6 +318,8 @@ pulumi.runtime.registerResourceModule("launchdarkly", "index/featureFlag", _modu
 pulumi.runtime.registerResourceModule("launchdarkly", "index/featureFlagEnvironment", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/flagTemplates", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/flagTrigger", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/ipAllowlistConfig", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/ipAllowlistEntry", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/metric", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/modelConfig", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/project", _module)

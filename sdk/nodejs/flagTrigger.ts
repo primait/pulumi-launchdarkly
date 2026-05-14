@@ -175,35 +175,35 @@ export interface FlagTriggerState {
     /**
      * Whether the trigger is currently active or not.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    envKey?: pulumi.Input<string>;
+    envKey?: pulumi.Input<string | undefined>;
     /**
      * The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    flagKey?: pulumi.Input<string>;
+    flagKey?: pulumi.Input<string | undefined>;
     /**
      * Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
      */
-    instructions?: pulumi.Input<inputs.FlagTriggerInstructions>;
+    instructions?: pulumi.Input<inputs.FlagTriggerInstructions | undefined>;
     /**
      * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    integrationKey?: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
      */
-    maintainerId?: pulumi.Input<string>;
+    maintainerId?: pulumi.Input<string | undefined>;
     /**
      * The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * The unique URL used to invoke the trigger.
      */
-    triggerUrl?: pulumi.Input<string>;
+    triggerUrl?: pulumi.Input<string | undefined>;
 }
 
 /**

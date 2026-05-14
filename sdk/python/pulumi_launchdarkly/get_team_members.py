@@ -122,8 +122,8 @@ def get_team_members(emails: Optional[Sequence[_builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
         team_members=pulumi.get(__ret__, 'team_members'))
-def get_team_members_output(emails: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                            ignore_missing: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_team_members_output(emails: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                            ignore_missing: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamMembersResult]:
     """
     Provides a LaunchDarkly team members data source.

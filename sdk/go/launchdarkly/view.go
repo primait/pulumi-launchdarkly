@@ -14,6 +14,10 @@ import (
 
 // Provides a LaunchDarkly view resource.
 //
+// > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+//
+// > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+//
 // This resource allows you to create and manage views within your LaunchDarkly project.
 //
 // ## Example Usage
@@ -39,7 +43,7 @@ import (
 //					pulumi.String("terraform"),
 //					pulumi.String("example"),
 //				},
-//				GenerateSdkKeys: pulumi.Bool(true),
+//				GenerateSdkKeys: true,
 //				MaintainerId:    pulumi.String("507f1f77bcf86cd799439011"),
 //			})
 //			if err != nil {
@@ -71,8 +75,6 @@ type View struct {
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// The view's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to generate SDK keys for this view.
-	GenerateSdkKeys pulumi.BoolPtrOutput `pulumi:"generateSdkKeys"`
 	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
@@ -127,8 +129,6 @@ type viewState struct {
 	Archived *bool `pulumi:"archived"`
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// Whether to generate SDK keys for this view.
-	GenerateSdkKeys *bool `pulumi:"generateSdkKeys"`
 	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
@@ -148,8 +148,6 @@ type ViewState struct {
 	Archived pulumi.BoolPtrInput
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// Whether to generate SDK keys for this view.
-	GenerateSdkKeys pulumi.BoolPtrInput
 	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
@@ -173,8 +171,6 @@ type viewArgs struct {
 	Archived *bool `pulumi:"archived"`
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// Whether to generate SDK keys for this view.
-	GenerateSdkKeys *bool `pulumi:"generateSdkKeys"`
 	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
@@ -195,8 +191,6 @@ type ViewArgs struct {
 	Archived pulumi.BoolPtrInput
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// Whether to generate SDK keys for this view.
-	GenerateSdkKeys pulumi.BoolPtrInput
 	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
@@ -306,11 +300,6 @@ func (o ViewOutput) Archived() pulumi.BoolPtrOutput {
 // The view's description.
 func (o ViewOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Whether to generate SDK keys for this view.
-func (o ViewOutput) GenerateSdkKeys() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *View) pulumi.BoolPtrOutput { return v.GenerateSdkKeys }).(pulumi.BoolPtrOutput)
 }
 
 // The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.

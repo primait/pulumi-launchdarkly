@@ -92,20 +92,20 @@ class AccessTokenInlineRoleArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -114,10 +114,10 @@ class AccessTokenInlineRoleArgsDict(TypedDict):
 class AccessTokenInlineRoleArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -150,7 +150,7 @@ class AccessTokenInlineRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -158,43 +158,43 @@ class AccessTokenInlineRoleArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -203,20 +203,20 @@ class AccessTokenPolicyStatementArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -225,10 +225,10 @@ class AccessTokenPolicyStatementArgsDict(TypedDict):
 class AccessTokenPolicyStatementArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -261,7 +261,7 @@ class AccessTokenPolicyStatementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -269,56 +269,56 @@ class AccessTokenPolicyStatementArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
 class AiConfigVariationArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The variation's key.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The variation's name.
     """
-    variation_id: NotRequired[pulumi.Input[_builtins.str]]
+    variation_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The variation's ID.
     """
@@ -326,9 +326,9 @@ class AiConfigVariationArgsDict(TypedDict):
 @pulumi.input_type
 class AiConfigVariationArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variation_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variation_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The variation's key.
         :param pulumi.Input[_builtins.str] name: The variation's name.
@@ -343,38 +343,38 @@ class AiConfigVariationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="variationId")
-    def variation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The variation's ID.
         """
         return pulumi.get(self, "variation_id")
 
     @variation_id.setter
-    def variation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variation_id", value)
 
 
@@ -430,20 +430,20 @@ class AuditLogSubscriptionStatementArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -452,10 +452,10 @@ class AuditLogSubscriptionStatementArgsDict(TypedDict):
 class AuditLogSubscriptionStatementArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -488,7 +488,7 @@ class AuditLogSubscriptionStatementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -496,43 +496,43 @@ class AuditLogSubscriptionStatementArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -584,20 +584,20 @@ class CustomRolePolicyStatementArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -606,10 +606,10 @@ class CustomRolePolicyStatementArgsDict(TypedDict):
 class CustomRolePolicyStatementArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -642,7 +642,7 @@ class CustomRolePolicyStatementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -650,79 +650,79 @@ class CustomRolePolicyStatementArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
 class EnvironmentApprovalSettingArgsDict(TypedDict):
-    auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_apply_approved_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
     """
-    can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    can_apply_declined_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
     """
-    can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
+    can_review_own_request: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
     """
-    min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    min_num_approvals: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
     """
-    required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    required_approval_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
     """
-    service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    service_config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
     	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
     	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
     """
-    service_kind: NotRequired[pulumi.Input[_builtins.str]]
+    service_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
     """
@@ -730,14 +730,14 @@ class EnvironmentApprovalSettingArgsDict(TypedDict):
 @pulumi.input_type
 class EnvironmentApprovalSettingArgs:
     def __init__(__self__, *,
-                 auto_apply_approved_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 can_apply_declined_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 can_review_own_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_num_approvals: Optional[pulumi.Input[_builtins.int]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 required_approval_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_apply_approved_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 can_apply_declined_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 can_review_own_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_num_approvals: pulumi.Input[Optional[_builtins.int]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 required_approval_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_apply_approved_changes: Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
         :param pulumi.Input[_builtins.bool] can_apply_declined_changes: Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -770,79 +770,79 @@ class EnvironmentApprovalSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoApplyApprovedChanges")
-    def auto_apply_approved_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_apply_approved_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
         """
         return pulumi.get(self, "auto_apply_approved_changes")
 
     @auto_apply_approved_changes.setter
-    def auto_apply_approved_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_apply_approved_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_apply_approved_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="canApplyDeclinedChanges")
-    def can_apply_declined_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_apply_declined_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
         """
         return pulumi.get(self, "can_apply_declined_changes")
 
     @can_apply_declined_changes.setter
-    def can_apply_declined_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_apply_declined_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_apply_declined_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="canReviewOwnRequest")
-    def can_review_own_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_review_own_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
         """
         return pulumi.get(self, "can_review_own_request")
 
     @can_review_own_request.setter
-    def can_review_own_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_review_own_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_review_own_request", value)
 
     @_builtins.property
     @pulumi.getter(name="minNumApprovals")
-    def min_num_approvals(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_num_approvals(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
         """
         return pulumi.get(self, "min_num_approvals")
 
     @min_num_approvals.setter
-    def min_num_approvals(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_num_approvals(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_num_approvals", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredApprovalTags")
-    def required_approval_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def required_approval_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         """
         return pulumi.get(self, "required_approval_tags")
 
     @required_approval_tags.setter
-    def required_approval_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def required_approval_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "required_approval_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
@@ -852,28 +852,28 @@ class EnvironmentApprovalSettingArgs:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceKind")
-    def service_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         return pulumi.get(self, "service_kind")
 
     @service_kind.setter
-    def service_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_kind", value)
 
 
 class FeatureFlagClientSideAvailabilityArgsDict(TypedDict):
-    using_environment_id: NotRequired[pulumi.Input[_builtins.bool]]
+    using_environment_id: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this flag is available to SDKs using the client-side ID.
     """
-    using_mobile_key: NotRequired[pulumi.Input[_builtins.bool]]
+    using_mobile_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this flag is available to SDKs using a mobile key.
     """
@@ -881,8 +881,8 @@ class FeatureFlagClientSideAvailabilityArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureFlagClientSideAvailabilityArgs:
     def __init__(__self__, *,
-                 using_environment_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 using_mobile_key: Optional[pulumi.Input[_builtins.bool]] = None):
+                 using_environment_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 using_mobile_key: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] using_environment_id: Whether this flag is available to SDKs using the client-side ID.
         :param pulumi.Input[_builtins.bool] using_mobile_key: Whether this flag is available to SDKs using a mobile key.
@@ -894,26 +894,26 @@ class FeatureFlagClientSideAvailabilityArgs:
 
     @_builtins.property
     @pulumi.getter(name="usingEnvironmentId")
-    def using_environment_id(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def using_environment_id(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this flag is available to SDKs using the client-side ID.
         """
         return pulumi.get(self, "using_environment_id")
 
     @using_environment_id.setter
-    def using_environment_id(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def using_environment_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "using_environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="usingMobileKey")
-    def using_mobile_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def using_mobile_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this flag is available to SDKs using a mobile key.
         """
         return pulumi.get(self, "using_mobile_key")
 
     @using_mobile_key.setter
-    def using_mobile_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def using_mobile_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "using_mobile_key", value)
 
 
@@ -1097,19 +1097,19 @@ class FeatureFlagEnvironmentContextTargetArgs:
 
 
 class FeatureFlagEnvironmentFallthroughArgsDict(TypedDict):
-    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
     """
-    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    context_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
     """
-    rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    rollout_weights: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
     """
-    variation: NotRequired[pulumi.Input[_builtins.int]]
+    variation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
     """
@@ -1117,10 +1117,10 @@ class FeatureFlagEnvironmentFallthroughArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureFlagEnvironmentFallthroughArgs:
     def __init__(__self__, *,
-                 bucket_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 variation: Optional[pulumi.Input[_builtins.int]] = None):
+                 bucket_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 variation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
         :param pulumi.Input[_builtins.str] context_kind: The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
@@ -1138,50 +1138,50 @@ class FeatureFlagEnvironmentFallthroughArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
-    def bucket_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
         """
         return pulumi.get(self, "bucket_by")
 
     @bucket_by.setter
-    def bucket_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_by", value)
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
         """
         return pulumi.get(self, "context_kind")
 
     @context_kind.setter
-    def context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutWeights")
-    def rollout_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def rollout_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         """
         return pulumi.get(self, "rollout_weights")
 
     @rollout_weights.setter
-    def rollout_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def rollout_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "rollout_weights", value)
 
     @_builtins.property
     @pulumi.getter
-    def variation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def variation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
         """
         return pulumi.get(self, "variation")
 
     @variation.setter
-    def variation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def variation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "variation", value)
 
 
@@ -1233,27 +1233,27 @@ class FeatureFlagEnvironmentPrerequisiteArgs:
 
 
 class FeatureFlagEnvironmentRuleArgsDict(TypedDict):
-    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
     """
-    clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgsDict']]]]
+    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]]
     """
     List of nested blocks specifying the logical clauses to evaluate
     """
-    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    context_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-readable description of the targeting rule.
     """
-    rollout_weights: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    rollout_weights: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
     """
-    variation: NotRequired[pulumi.Input[_builtins.int]]
+    variation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
     """
@@ -1261,12 +1261,12 @@ class FeatureFlagEnvironmentRuleArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureFlagEnvironmentRuleArgs:
     def __init__(__self__, *,
-                 bucket_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 clauses: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]] = None,
-                 context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 variation: Optional[pulumi.Input[_builtins.int]] = None):
+                 bucket_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 clauses: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]] = None,
+                 context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 variation: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]] clauses: List of nested blocks specifying the logical clauses to evaluate
@@ -1290,74 +1290,74 @@ class FeatureFlagEnvironmentRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
-    def bucket_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
         """
         return pulumi.get(self, "bucket_by")
 
     @bucket_by.setter
-    def bucket_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def clauses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]:
+    def clauses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]:
         """
         List of nested blocks specifying the logical clauses to evaluate
         """
         return pulumi.get(self, "clauses")
 
     @clauses.setter
-    def clauses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]):
+    def clauses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]):
         pulumi.set(self, "clauses", value)
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
         """
         return pulumi.get(self, "context_kind")
 
     @context_kind.setter
-    def context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context_kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the targeting rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutWeights")
-    def rollout_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def rollout_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         """
         return pulumi.get(self, "rollout_weights")
 
     @rollout_weights.setter
-    def rollout_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def rollout_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "rollout_weights", value)
 
     @_builtins.property
     @pulumi.getter
-    def variation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def variation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
         """
         return pulumi.get(self, "variation")
 
     @variation.setter
-    def variation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def variation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "variation", value)
 
 
@@ -1374,15 +1374,15 @@ class FeatureFlagEnvironmentRuleClauseArgsDict(TypedDict):
     """
     The list of values associated with the rule clause.
     """
-    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    context_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The context kind associated with this rule clause. If omitted, defaults to `user`.
     """
-    negate: NotRequired[pulumi.Input[_builtins.bool]]
+    negate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to negate the rule clause.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
     """
@@ -1393,9 +1393,9 @@ class FeatureFlagEnvironmentRuleClauseArgs:
                  attribute: pulumi.Input[_builtins.str],
                  op: pulumi.Input[_builtins.str],
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: The user attribute to operate on
         :param pulumi.Input[_builtins.str] op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
@@ -1452,38 +1452,38 @@ class FeatureFlagEnvironmentRuleClauseArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context kind associated with this rule clause. If omitted, defaults to `user`.
         """
         return pulumi.get(self, "context_kind")
 
     @context_kind.setter
-    def context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context_kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def negate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to negate the rule clause.
         """
         return pulumi.get(self, "negate")
 
     @negate.setter
-    def negate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def negate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "negate", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
@@ -1539,11 +1539,11 @@ class FeatureFlagVariationArgsDict(TypedDict):
     """
     The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The feature flag's description.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The human-readable name of the feature flag.
     """
@@ -1552,8 +1552,8 @@ class FeatureFlagVariationArgsDict(TypedDict):
 class FeatureFlagVariationArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
@@ -1579,26 +1579,26 @@ class FeatureFlagVariationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The feature flag's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the feature flag.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -1758,15 +1758,15 @@ class MetricUrlArgsDict(TypedDict):
     """
     The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
     """
-    pattern: NotRequired[pulumi.Input[_builtins.str]]
+    pattern: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Required for kind `regex`) The regex pattern to match by.
     """
-    substring: NotRequired[pulumi.Input[_builtins.str]]
+    substring: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Required for kind `substring`) The URL substring to match by.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Required for kind `exact` and `canonical`) The exact or canonical URL.
     """
@@ -1775,9 +1775,9 @@ class MetricUrlArgsDict(TypedDict):
 class MetricUrlArgs:
     def __init__(__self__, *,
                  kind: pulumi.Input[_builtins.str],
-                 pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 substring: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 substring: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kind: The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
         :param pulumi.Input[_builtins.str] pattern: (Required for kind `regex`) The regex pattern to match by.
@@ -1806,38 +1806,38 @@ class MetricUrlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required for kind `regex`) The regex pattern to match by.
         """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pattern", value)
 
     @_builtins.property
     @pulumi.getter
-    def substring(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def substring(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required for kind `substring`) The URL substring to match by.
         """
         return pulumi.get(self, "substring")
 
     @substring.setter
-    def substring(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def substring(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "substring", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required for kind `exact` and `canonical`) The exact or canonical URL.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -1885,44 +1885,44 @@ class ProjectEnvironmentArgsDict(TypedDict):
     """
     The name of the environment.
     """
-    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The environment's SDK key.
     """
-    approval_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgsDict']]]]
-    client_side_id: NotRequired[pulumi.Input[_builtins.str]]
+    approval_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]]
+    client_side_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The environment's client-side ID.
     """
-    confirm_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    confirm_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
     """
-    critical: NotRequired[pulumi.Input[_builtins.bool]]
+    critical: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Denotes whether the environment is critical.
     """
-    default_track_events: NotRequired[pulumi.Input[_builtins.bool]]
+    default_track_events: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
     """
-    default_ttl: NotRequired[pulumi.Input[_builtins.int]]
+    default_ttl: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
     """
-    mobile_key: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The environment's mobile key.
     """
-    require_comments: NotRequired[pulumi.Input[_builtins.bool]]
+    require_comments: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
     """
-    secure_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    secure_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Tags associated with your resource.
     """
@@ -1933,17 +1933,17 @@ class ProjectEnvironmentArgs:
                  color: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 approval_settings: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]] = None,
-                 client_side_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 confirm_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 critical: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_track_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 mobile_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_comments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]] = None,
+                 client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 critical: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 mobile_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
         :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
@@ -2023,167 +2023,167 @@ class ProjectEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's SDK key.
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]:
+    def approval_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]:
         return pulumi.get(self, "approval_settings")
 
     @approval_settings.setter
-    def approval_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]):
+    def approval_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]):
         pulumi.set(self, "approval_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSideId")
-    def client_side_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_side_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's client-side ID.
         """
         return pulumi.get(self, "client_side_id")
 
     @client_side_id.setter
-    def client_side_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_side_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_side_id", value)
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
-    def confirm_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confirm_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
     @confirm_changes.setter
-    def confirm_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confirm_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confirm_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def critical(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the environment is critical.
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def critical(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "critical", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
-    def default_track_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
     @default_track_events.setter
-    def default_track_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_track_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_track_events", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="mobileKey")
-    def mobile_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment's mobile key.
         """
         return pulumi.get(self, "mobile_key")
 
     @mobile_key.setter
-    def mobile_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile_key", value)
 
     @_builtins.property
     @pulumi.getter(name="requireComments")
-    def require_comments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_comments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
     @require_comments.setter
-    def require_comments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_comments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_comments", value)
 
     @_builtins.property
     @pulumi.getter(name="secureMode")
-    def secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
     @secure_mode.setter
-    def secure_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with your resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class ProjectEnvironmentApprovalSettingArgsDict(TypedDict):
-    auto_apply_approved_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_apply_approved_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
     """
-    can_apply_declined_changes: NotRequired[pulumi.Input[_builtins.bool]]
+    can_apply_declined_changes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
     """
-    can_review_own_request: NotRequired[pulumi.Input[_builtins.bool]]
+    can_review_own_request: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
     """
-    min_num_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    min_num_approvals: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
     """
-    required_approval_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    required_approval_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
     """
-    service_config: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    service_config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
     	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
     	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
     """
-    service_kind: NotRequired[pulumi.Input[_builtins.str]]
+    service_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
     """
@@ -2191,14 +2191,14 @@ class ProjectEnvironmentApprovalSettingArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectEnvironmentApprovalSettingArgs:
     def __init__(__self__, *,
-                 auto_apply_approved_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 can_apply_declined_changes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 can_review_own_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_num_approvals: Optional[pulumi.Input[_builtins.int]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 required_approval_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_apply_approved_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 can_apply_declined_changes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 can_review_own_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_num_approvals: pulumi.Input[Optional[_builtins.int]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 required_approval_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_apply_approved_changes: Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
         :param pulumi.Input[_builtins.bool] can_apply_declined_changes: Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -2231,79 +2231,79 @@ class ProjectEnvironmentApprovalSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoApplyApprovedChanges")
-    def auto_apply_approved_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_apply_approved_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
         """
         return pulumi.get(self, "auto_apply_approved_changes")
 
     @auto_apply_approved_changes.setter
-    def auto_apply_approved_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_apply_approved_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_apply_approved_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="canApplyDeclinedChanges")
-    def can_apply_declined_changes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_apply_declined_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
         """
         return pulumi.get(self, "can_apply_declined_changes")
 
     @can_apply_declined_changes.setter
-    def can_apply_declined_changes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_apply_declined_changes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_apply_declined_changes", value)
 
     @_builtins.property
     @pulumi.getter(name="canReviewOwnRequest")
-    def can_review_own_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_review_own_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
         """
         return pulumi.get(self, "can_review_own_request")
 
     @can_review_own_request.setter
-    def can_review_own_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_review_own_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_review_own_request", value)
 
     @_builtins.property
     @pulumi.getter(name="minNumApprovals")
-    def min_num_approvals(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_num_approvals(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
         """
         return pulumi.get(self, "min_num_approvals")
 
     @min_num_approvals.setter
-    def min_num_approvals(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_num_approvals(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_num_approvals", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredApprovalTags")
-    def required_approval_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def required_approval_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         """
         return pulumi.get(self, "required_approval_tags")
 
     @required_approval_tags.setter
-    def required_approval_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def required_approval_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "required_approval_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceConfig")
-    def service_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
@@ -2313,19 +2313,19 @@ class ProjectEnvironmentApprovalSettingArgs:
         return pulumi.get(self, "service_config")
 
     @service_config.setter
-    def service_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceKind")
-    def service_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         return pulumi.get(self, "service_kind")
 
     @service_kind.setter
-    def service_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_kind", value)
 
 
@@ -2334,20 +2334,20 @@ class RelayProxyConfigurationPolicyArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -2356,10 +2356,10 @@ class RelayProxyConfigurationPolicyArgsDict(TypedDict):
 class RelayProxyConfigurationPolicyArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -2392,7 +2392,7 @@ class RelayProxyConfigurationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -2400,43 +2400,43 @@ class RelayProxyConfigurationPolicyArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -2535,19 +2535,19 @@ class SegmentIncludedContextArgs:
 
 
 class SegmentRuleArgsDict(TypedDict):
-    bucket_by: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The attribute by which to group contexts together.
     """
-    clauses: NotRequired[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgsDict']]]]
+    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]]
     """
     List of nested blocks specifying the logical clauses to evaluate
     """
-    rollout_context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_context_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The integer weight of the rule (between 1 and 100000).
     """
@@ -2555,10 +2555,10 @@ class SegmentRuleArgsDict(TypedDict):
 @pulumi.input_type
 class SegmentRuleArgs:
     def __init__(__self__, *,
-                 bucket_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 clauses: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]] = None,
-                 rollout_context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 bucket_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 clauses: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]] = None,
+                 rollout_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_by: The attribute by which to group contexts together.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgs']]] clauses: List of nested blocks specifying the logical clauses to evaluate
@@ -2576,50 +2576,50 @@ class SegmentRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
-    def bucket_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute by which to group contexts together.
         """
         return pulumi.get(self, "bucket_by")
 
     @bucket_by.setter
-    def bucket_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def clauses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]:
+    def clauses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]:
         """
         List of nested blocks specifying the logical clauses to evaluate
         """
         return pulumi.get(self, "clauses")
 
     @clauses.setter
-    def clauses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]):
+    def clauses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]):
         pulumi.set(self, "clauses", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutContextKind")
-    def rollout_context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
         """
         return pulumi.get(self, "rollout_context_kind")
 
     @rollout_context_kind.setter
-    def rollout_context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_context_kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The integer weight of the rule (between 1 and 100000).
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -2636,15 +2636,15 @@ class SegmentRuleClauseArgsDict(TypedDict):
     """
     The list of values associated with the rule clause.
     """
-    context_kind: NotRequired[pulumi.Input[_builtins.str]]
+    context_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The context kind associated with this rule clause. If omitted, defaults to `user`.
     """
-    negate: NotRequired[pulumi.Input[_builtins.bool]]
+    negate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to negate the rule clause.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
     """
@@ -2655,9 +2655,9 @@ class SegmentRuleClauseArgs:
                  attribute: pulumi.Input[_builtins.str],
                  op: pulumi.Input[_builtins.str],
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 context_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 context_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: The user attribute to operate on
         :param pulumi.Input[_builtins.str] op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
@@ -2714,38 +2714,38 @@ class SegmentRuleClauseArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context kind associated with this rule clause. If omitted, defaults to `user`.
         """
         return pulumi.get(self, "context_kind")
 
     @context_kind.setter
-    def context_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context_kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def negate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to negate the rule clause.
         """
         return pulumi.get(self, "negate")
 
     @negate.setter
-    def negate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def negate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "negate", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
         """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
@@ -2895,20 +2895,20 @@ class WebhookStatementArgsDict(TypedDict):
     """
     Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
     """
-    actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement applies.
     Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
     """
-    not_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of action specifiers defining the actions to which the statement does not apply.
     """
-    not_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    not_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement does not apply.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of resource specifiers defining the resources to which the statement applies.
     """
@@ -2917,10 +2917,10 @@ class WebhookStatementArgsDict(TypedDict):
 class WebhookStatementArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 not_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 not_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: The list of action specifiers defining the actions to which the statement applies.
@@ -2953,7 +2953,7 @@ class WebhookStatementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
         Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
@@ -2961,43 +2961,43 @@ class WebhookStatementArgs:
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
         return pulumi.get(self, "not_actions")
 
     @not_actions.setter
-    def not_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def not_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
         return pulumi.get(self, "not_resources")
 
     @not_resources.setter
-    def not_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def not_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "not_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 

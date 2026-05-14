@@ -45,6 +45,8 @@ type LookupFeatureFlagResult struct {
 	CustomProperties []GetFeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults []GetFeatureFlagDefault `pulumi:"defaults"`
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated bool `pulumi:"deprecated"`
 	// The feature flag's description.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -136,6 +138,11 @@ func (o LookupFeatureFlagResultOutput) CustomProperties() GetFeatureFlagCustomPr
 // A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 func (o LookupFeatureFlagResultOutput) Defaults() GetFeatureFlagDefaultArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagDefault { return v.Defaults }).(GetFeatureFlagDefaultArrayOutput)
+}
+
+// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+func (o LookupFeatureFlagResultOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
 // The feature flag's description.

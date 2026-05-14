@@ -160,43 +160,43 @@ export interface AccessTokenState {
     /**
      * A list of custom role IDs to use as access limits for the access token.
      */
-    customRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    defaultApiVersion?: pulumi.Input<number>;
+    defaultApiVersion?: pulumi.Input<number | undefined>;
     /**
      * An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
      *
      * @deprecated 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
      */
-    expire?: pulumi.Input<number>;
+    expire?: pulumi.Input<number | undefined>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
      */
-    inlineRoles?: pulumi.Input<pulumi.Input<inputs.AccessTokenInlineRole>[]>;
+    inlineRoles?: pulumi.Input<pulumi.Input<inputs.AccessTokenInlineRole>[] | undefined>;
     /**
      * A human-friendly name for the access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
      *
      * @deprecated 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
      */
-    policyStatements?: pulumi.Input<pulumi.Input<inputs.AccessTokenPolicyStatement>[]>;
+    policyStatements?: pulumi.Input<pulumi.Input<inputs.AccessTokenPolicyStatement>[] | undefined>;
     /**
      * A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    serviceToken?: pulumi.Input<boolean>;
+    serviceToken?: pulumi.Input<boolean | undefined>;
     /**
      * The access token used to authorize usage of the LaunchDarkly API.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,37 +206,37 @@ export interface AccessTokenArgs {
     /**
      * A list of custom role IDs to use as access limits for the access token.
      */
-    customRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    defaultApiVersion?: pulumi.Input<number>;
+    defaultApiVersion?: pulumi.Input<number | undefined>;
     /**
      * An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
      *
      * @deprecated 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
      */
-    expire?: pulumi.Input<number>;
+    expire?: pulumi.Input<number | undefined>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
      */
-    inlineRoles?: pulumi.Input<pulumi.Input<inputs.AccessTokenInlineRole>[]>;
+    inlineRoles?: pulumi.Input<pulumi.Input<inputs.AccessTokenInlineRole>[] | undefined>;
     /**
      * A human-friendly name for the access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
      *
      * @deprecated 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
      */
-    policyStatements?: pulumi.Input<pulumi.Input<inputs.AccessTokenPolicyStatement>[]>;
+    policyStatements?: pulumi.Input<pulumi.Input<inputs.AccessTokenPolicyStatement>[] | undefined>;
     /**
      * A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    serviceToken?: pulumi.Input<boolean>;
+    serviceToken?: pulumi.Input<boolean | undefined>;
 }

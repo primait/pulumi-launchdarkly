@@ -179,7 +179,7 @@ export interface GetMetricOutputArgs {
      *
      * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */

@@ -180,6 +180,8 @@ type FeatureFlag struct {
 	CustomProperties FeatureFlagCustomPropertyArrayOutput `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults FeatureFlagDefaultsOutput `pulumi:"defaults"`
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated pulumi.BoolPtrOutput `pulumi:"deprecated"`
 	// The feature flag's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
@@ -254,6 +256,8 @@ type featureFlagState struct {
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated *bool `pulumi:"deprecated"`
 	// The feature flag's description.
 	Description *string `pulumi:"description"`
 	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
@@ -290,6 +294,8 @@ type FeatureFlagState struct {
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults FeatureFlagDefaultsPtrInput
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated pulumi.BoolPtrInput
 	// The feature flag's description.
 	Description pulumi.StringPtrInput
 	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
@@ -330,6 +336,8 @@ type featureFlagArgs struct {
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated *bool `pulumi:"deprecated"`
 	// The feature flag's description.
 	Description *string `pulumi:"description"`
 	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
@@ -367,6 +375,8 @@ type FeatureFlagArgs struct {
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 	Defaults FeatureFlagDefaultsPtrInput
+	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	Deprecated pulumi.BoolPtrInput
 	// The feature flag's description.
 	Description pulumi.StringPtrInput
 	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
@@ -499,6 +509,11 @@ func (o FeatureFlagOutput) CustomProperties() FeatureFlagCustomPropertyArrayOutp
 // A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
 func (o FeatureFlagOutput) Defaults() FeatureFlagDefaultsOutput {
 	return o.ApplyT(func(v *FeatureFlag) FeatureFlagDefaultsOutput { return v.Defaults }).(FeatureFlagDefaultsOutput)
+}
+
+// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+func (o FeatureFlagOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolPtrOutput { return v.Deprecated }).(pulumi.BoolPtrOutput)
 }
 
 // The feature flag's description.

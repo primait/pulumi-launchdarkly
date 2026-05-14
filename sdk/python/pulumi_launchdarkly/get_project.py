@@ -170,7 +170,7 @@ def get_project(key: Optional[_builtins.str] = None,
         require_view_association_for_new_flags=pulumi.get(__ret__, 'require_view_association_for_new_flags'),
         require_view_association_for_new_segments=pulumi.get(__ret__, 'require_view_association_for_new_segments'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_project_output(key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_output(key: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Provides a LaunchDarkly project data source.

@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly view links resource for managing bulk resource linkage to views.
  *
+ * > **Note:** Views are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ *
+ * > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
+ *
  * This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
  *
  * > **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
@@ -220,19 +224,19 @@ export interface ViewLinksState {
     /**
      * A set of feature flag keys to link to the view.
      */
-    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    flags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
      */
-    segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[]>;
+    segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
      * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
-    viewKey?: pulumi.Input<string>;
+    viewKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,7 +246,7 @@ export interface ViewLinksArgs {
     /**
      * A set of feature flag keys to link to the view.
      */
-    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    flags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
@@ -250,7 +254,7 @@ export interface ViewLinksArgs {
     /**
      * A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
      */
-    segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[]>;
+    segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
      * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
