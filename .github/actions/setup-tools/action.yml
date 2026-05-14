@@ -28,7 +28,7 @@ runs:
       if: inputs.tools == 'all' || contains(inputs.tools, 'go')
       uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5
       with:
-        go-version: "1.21.x"
+        go-version: "1.25.x"
         cache-dependency-path: |
           provider/*.sum
           upstream/*.sum
@@ -74,7 +74,7 @@ runs:
       if: inputs.tools == 'all' || contains(inputs.tools, 'python')
       uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
       with:
-        python-version: 3.11.8
+        python-version: 3.11.15
 
     - name: Setup Java
       if: inputs.tools == 'all' || contains(inputs.tools, 'java')
