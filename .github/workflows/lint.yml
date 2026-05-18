@@ -40,4 +40,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: lint
-      run: make lint
+      run: make lint_provider
