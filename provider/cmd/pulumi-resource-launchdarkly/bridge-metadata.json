@@ -918,6 +918,11 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "launchdarkly_team_role_mapping": {}
+        }
+    },
     "mux": {
         "resources": {
             "launchdarkly:index/accessToken:AccessToken": 0,
