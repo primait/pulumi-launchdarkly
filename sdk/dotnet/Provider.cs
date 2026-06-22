@@ -104,6 +104,12 @@ namespace Pulumi.Launchdarkly
         [Input("http_timeout", json: true)]
         public Input<int>? Http_timeout { get; set; }
 
+        /// <summary>
+        /// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+        /// </summary>
+        [Input("maxConcurrency", json: true)]
+        public Input<int>? MaxConcurrency { get; set; }
+
         [Input("oauth_token")]
         private Input<string>? _oauth_token;
 

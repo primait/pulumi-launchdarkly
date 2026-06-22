@@ -22,6 +22,7 @@ class ProviderArgs:
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -29,6 +30,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
+        :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
         :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         if access_token is not None:
@@ -37,6 +39,8 @@ class ProviderArgs:
             pulumi.set(__self__, "api_host", api_host)
         if http_timeout is not None:
             pulumi.set(__self__, "http_timeout", http_timeout)
+        if max_concurrency is not None:
+            pulumi.set(__self__, "max_concurrency", max_concurrency)
         if oauth_token is not None:
             pulumi.set(__self__, "oauth_token", oauth_token)
 
@@ -77,6 +81,18 @@ class ProviderArgs:
         pulumi.set(self, "http_timeout", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxConcurrency")
+    def max_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+        """
+        return pulumi.get(self, "max_concurrency")
+
+    @max_concurrency.setter
+    def max_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_concurrency", value)
+
+    @_builtins.property
     @pulumi.getter
     def oauth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -98,6 +114,7 @@ class Provider(pulumi.ProviderResource):
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -112,6 +129,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
+        :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
         :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         ...
@@ -145,6 +163,7 @@ class Provider(pulumi.ProviderResource):
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -158,6 +177,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
             __props__.__dict__["api_host"] = api_host
             __props__.__dict__["http_timeout"] = pulumi.Output.from_input(http_timeout).apply(pulumi.runtime.to_json) if http_timeout is not None else None
+            __props__.__dict__["max_concurrency"] = pulumi.Output.from_input(max_concurrency).apply(pulumi.runtime.to_json) if max_concurrency is not None else None
             __props__.__dict__["oauth_token"] = None if oauth_token is None else pulumi.Output.secret(oauth_token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["access_token", "oauth_token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

@@ -62,6 +62,16 @@ namespace Pulumi.Launchdarkly
             set => _http_timeout.Set(value);
         }
 
+        private static readonly __Value<int?> _maxConcurrency = new __Value<int?>(() => __config.GetInt32("maxConcurrency"));
+        /// <summary>
+        /// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+        /// </summary>
+        public static int? MaxConcurrency
+        {
+            get => _maxConcurrency.Get();
+            set => _maxConcurrency.Set(value);
+        }
+
         private static readonly __Value<string?> _oauth_token = new __Value<string?>(() => __config.Get("oauth_token"));
         /// <summary>
         /// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.

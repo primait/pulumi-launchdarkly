@@ -41,6 +41,17 @@ Object.defineProperty(exports, "http_timeout", {
 });
 
 /**
+ * The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+ */
+export declare const maxConcurrency: number | undefined;
+Object.defineProperty(exports, "maxConcurrency", {
+    get() {
+        return __config.getObject<number>("maxConcurrency");
+    },
+    enumerable: true,
+});
+
+/**
  * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
  */
 export declare const oauth_token: string | undefined;

@@ -52,7 +52,7 @@ import (
 //				ProjectKey:  pulumi.Any(exampleLaunchdarklyProject.Key),
 //				Key:         pulumi.String("web-search"),
 //				Description: pulumi.String("Search the web for information"),
-//				SchemaJson:  pulumi.String(pulumi.String(json0)),
+//				SchemaJson:  pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err

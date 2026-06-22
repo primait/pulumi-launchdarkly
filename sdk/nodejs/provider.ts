@@ -52,6 +52,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["access_token"] = args?.access_token ? pulumi.secret(args.access_token) : undefined;
             resourceInputs["api_host"] = args?.api_host;
             resourceInputs["http_timeout"] = pulumi.output(args?.http_timeout).apply(JSON.stringify);
+            resourceInputs["maxConcurrency"] = pulumi.output(args?.maxConcurrency).apply(JSON.stringify);
             resourceInputs["oauth_token"] = args?.oauth_token ? pulumi.secret(args.oauth_token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -86,6 +87,10 @@ export interface ProviderArgs {
      * The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
      */
     http_timeout?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+     */
+    maxConcurrency?: pulumi.Input<number | undefined>;
     /**
      * An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */

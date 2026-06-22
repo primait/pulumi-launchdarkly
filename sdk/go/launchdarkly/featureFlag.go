@@ -102,11 +102,11 @@ import (
 //				Variations: launchdarkly.FeatureFlagVariationArray{
 //					&launchdarkly.FeatureFlagVariationArgs{
 //						Name:  pulumi.String("Single foo"),
-//						Value: pulumi.String(pulumi.String(json0)),
+//						Value: pulumi.String(json0),
 //					},
 //					&launchdarkly.FeatureFlagVariationArgs{
 //						Name:  pulumi.String("Multiple foos"),
-//						Value: pulumi.String(pulumi.String(json1)),
+//						Value: pulumi.String(json1),
 //					},
 //				},
 //				Defaults: &launchdarkly.FeatureFlagDefaultsArgs{

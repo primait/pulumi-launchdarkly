@@ -1237,7 +1237,7 @@ class FeatureFlagEnvironmentRuleArgsDict(TypedDict):
     """
     Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
     """
-    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgs']]]]]
+    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleClauseArgsDict']]]]]
     """
     List of nested blocks specifying the logical clauses to evaluate
     """
@@ -1889,7 +1889,7 @@ class ProjectEnvironmentArgsDict(TypedDict):
     """
     The environment's SDK key.
     """
-    approval_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgs']]]]]
+    approval_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentApprovalSettingArgsDict']]]]]
     client_side_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The environment's client-side ID.
@@ -2539,7 +2539,7 @@ class SegmentRuleArgsDict(TypedDict):
     """
     The attribute by which to group contexts together.
     """
-    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgs']]]]]
+    clauses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleClauseArgsDict']]]]]
     """
     List of nested blocks specifying the logical clauses to evaluate
     """

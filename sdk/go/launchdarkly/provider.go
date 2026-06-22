@@ -60,6 +60,8 @@ type providerArgs struct {
 	Api_host *string `pulumi:"api_host"`
 	// The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
 	Http_timeout *int `pulumi:"http_timeout"`
+	// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+	MaxConcurrency *int `pulumi:"maxConcurrency"`
 	// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 	Oauth_token *string `pulumi:"oauth_token"`
 }
@@ -72,6 +74,8 @@ type ProviderArgs struct {
 	Api_host pulumi.StringPtrInput
 	// The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
 	Http_timeout pulumi.IntPtrInput
+	// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+	MaxConcurrency pulumi.IntPtrInput
 	// An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 	Oauth_token pulumi.StringPtrInput
 }
