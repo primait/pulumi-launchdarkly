@@ -29,6 +29,11 @@ http_timeout: Optional[int]
 The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
 """
 
+maxConcurrency: Optional[int]
+"""
+The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+"""
+
 oauth_token: Optional[str]
 """
 An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.

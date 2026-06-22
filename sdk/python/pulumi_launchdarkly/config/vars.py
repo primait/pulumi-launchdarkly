@@ -42,6 +42,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('http_timeout')
 
     @_builtins.property
+    def max_concurrency(self) -> Optional[int]:
+        """
+        The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
+        """
+        return __config__.get_int('maxConcurrency')
+
+    @_builtins.property
     def oauth_token(self) -> Optional[str]:
         """
         An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
