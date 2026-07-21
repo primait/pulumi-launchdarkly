@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pulumi-launchdarkly
+  description: Pulumi Provider for LaunchDarkly
+tags:
+- python
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/team-developer-experience
+  system: prima.it
