@@ -29,5 +29,5 @@ var pulumiSchema []byte
 
 func main() {
 	tfbridge.Main(context.Background(), "launchdarkly", launchdarkly.Provider(),
-		tfbridge.ProviderMetadata{PulumiSchema: pulumiSchema})
+		tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }
