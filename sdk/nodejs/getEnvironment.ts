@@ -59,30 +59,36 @@ export interface GetEnvironmentResult {
      * The environment's SDK key.
      */
     readonly apiKey: string;
-    readonly approvalSettings: outputs.GetEnvironmentApprovalSetting[];
+    /**
+     * Approval settings for this environment / project.
+     */
+    readonly approvalSettings: outputs.GetEnvironmentApprovalSettings;
     /**
      * The environment's client-side ID.
      */
     readonly clientSideId: string;
+    /**
+     * The color swatch as an RGB hex value with no leading `#`.
+     */
     readonly color: string;
     /**
-     * Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+     * Whether flag/segment changes require confirmation.
      */
     readonly confirmChanges: boolean;
     /**
      * Denotes whether the environment is critical.
      */
-    readonly critical?: boolean;
+    readonly critical: boolean;
     /**
-     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+     * Whether data export is enabled for new flags.
      */
     readonly defaultTrackEvents: boolean;
     /**
-     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+     * The default TTL (0-60 minutes).
      */
     readonly defaultTtl: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID in the format `project_key/key`.
      */
     readonly id: string;
     /**
@@ -93,21 +99,28 @@ export interface GetEnvironmentResult {
      * The environment's mobile key.
      */
     readonly mobileKey: string;
+    /**
+     * The name of the environment.
+     */
     readonly name: string;
     /**
      * The environment's project key.
      */
     readonly projectKey: string;
     /**
-     * Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+     * Whether flag/segment changes require comments.
      */
     readonly requireComments: boolean;
     /**
-     * Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+     * Whether secure mode is enabled.
      */
     readonly secureMode: boolean;
     /**
-     * Tags associated with your resource.
+     * Approval settings for segment changes in this environment.
+     */
+    readonly segmentApprovalSettings: outputs.GetEnvironmentSegmentApprovalSettings;
+    /**
+     * Tags.
      */
     readonly tags: string[];
 }

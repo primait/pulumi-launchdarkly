@@ -154,30 +154,36 @@ namespace Pulumi.Launchdarkly
         /// The environment's SDK key.
         /// </summary>
         public readonly string ApiKey;
-        public readonly ImmutableArray<Outputs.GetEnvironmentApprovalSettingResult> ApprovalSettings;
+        /// <summary>
+        /// Approval settings for this environment / project.
+        /// </summary>
+        public readonly Outputs.GetEnvironmentApprovalSettingsResult ApprovalSettings;
         /// <summary>
         /// The environment's client-side ID.
         /// </summary>
         public readonly string ClientSideId;
+        /// <summary>
+        /// The color swatch as an RGB hex value with no leading `#`.
+        /// </summary>
         public readonly string Color;
         /// <summary>
-        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
+        /// Whether flag/segment changes require confirmation.
         /// </summary>
         public readonly bool ConfirmChanges;
         /// <summary>
         /// Denotes whether the environment is critical.
         /// </summary>
-        public readonly bool? Critical;
+        public readonly bool Critical;
         /// <summary>
-        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        /// Whether data export is enabled for new flags.
         /// </summary>
         public readonly bool DefaultTrackEvents;
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// The default TTL (0-60 minutes).
         /// </summary>
         public readonly int DefaultTtl;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID in the format `project_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -188,21 +194,28 @@ namespace Pulumi.Launchdarkly
         /// The environment's mobile key.
         /// </summary>
         public readonly string MobileKey;
+        /// <summary>
+        /// The name of the environment.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The environment's project key.
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
+        /// Whether flag/segment changes require comments.
         /// </summary>
         public readonly bool RequireComments;
         /// <summary>
-        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
+        /// Whether secure mode is enabled.
         /// </summary>
         public readonly bool SecureMode;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Approval settings for segment changes in this environment.
+        /// </summary>
+        public readonly Outputs.GetEnvironmentSegmentApprovalSettingsResult SegmentApprovalSettings;
+        /// <summary>
+        /// Tags.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 
@@ -210,7 +223,7 @@ namespace Pulumi.Launchdarkly
         private GetEnvironmentResult(
             string apiKey,
 
-            ImmutableArray<Outputs.GetEnvironmentApprovalSettingResult> approvalSettings,
+            Outputs.GetEnvironmentApprovalSettingsResult approvalSettings,
 
             string clientSideId,
 
@@ -218,7 +231,7 @@ namespace Pulumi.Launchdarkly
 
             bool confirmChanges,
 
-            bool? critical,
+            bool critical,
 
             bool defaultTrackEvents,
 
@@ -238,6 +251,8 @@ namespace Pulumi.Launchdarkly
 
             bool secureMode,
 
+            Outputs.GetEnvironmentSegmentApprovalSettingsResult segmentApprovalSettings,
+
             ImmutableArray<string> tags)
         {
             ApiKey = apiKey;
@@ -255,6 +270,7 @@ namespace Pulumi.Launchdarkly
             ProjectKey = projectKey;
             RequireComments = requireComments;
             SecureMode = secureMode;
+            SegmentApprovalSettings = segmentApprovalSettings;
             Tags = tags;
         }
     }

@@ -38,20 +38,20 @@ class SegmentArgs:
         """
         The set of arguments for constructing a Segment resource.
 
-        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
-        :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]] rules: List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] unbounded_context_kind: For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         pulumi.set(__self__, "env_key", env_key)
         pulumi.set(__self__, "key", key)
@@ -83,7 +83,7 @@ class SegmentArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -95,7 +95,7 @@ class SegmentArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -107,7 +107,7 @@ class SegmentArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -191,7 +191,7 @@ class SegmentArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
         """
-        List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "rules")
 
@@ -215,7 +215,7 @@ class SegmentArgs:
     @pulumi.getter
     def unbounded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded")
 
@@ -227,7 +227,7 @@ class SegmentArgs:
     @pulumi.getter(name="unboundedContextKind")
     def unbounded_context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
@@ -239,7 +239,7 @@ class SegmentArgs:
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
@@ -271,19 +271,19 @@ class _SegmentState:
 
         :param pulumi.Input[_builtins.int] creation_date: The segment's creation date represented as a UNIX epoch timestamp.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
-        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentExcludedContextArgs']]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentIncludedContextArgs']]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
-        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]] rules: List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] unbounded_context_kind: For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -344,7 +344,7 @@ class _SegmentState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -404,7 +404,7 @@ class _SegmentState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -428,7 +428,7 @@ class _SegmentState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -440,7 +440,7 @@ class _SegmentState:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SegmentRuleArgs']]]]:
         """
-        List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "rules")
 
@@ -464,7 +464,7 @@ class _SegmentState:
     @pulumi.getter
     def unbounded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded")
 
@@ -476,7 +476,7 @@ class _SegmentState:
     @pulumi.getter(name="unboundedContextKind")
     def unbounded_context_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
@@ -488,7 +488,7 @@ class _SegmentState:
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
@@ -522,6 +522,8 @@ class Segment(pulumi.CustomResource):
         Provides a LaunchDarkly segment resource.
 
         This resource allows you to create and manage segments within your LaunchDarkly organization.
+
+        > **Note:** When [segment approvals](https://launchdarkly.com/docs/home/releases/approvals) are enabled for an environment, segment **targeting** changes (`included`, `excluded`, `rules`, `included_contexts`, `excluded_contexts`) require approval. To let pulumi up these changes non-interactively, grant its access token a custom role (`CustomRole`) that includes the `bypassRequiredSegmentApproval` action. Without that permission, `pulumi up` fails with an "approval is required" error. In that case, manage targeting through the approval workflow, for example with `lifecycle { ignore_changes = [included, excluded, rules] }`, disable segment approvals for the environment, or switch to a token that has the bypass permission. A segment with no targeting can be created and managed regardless.
 
         ## Example Usage
 
@@ -738,19 +740,19 @@ class Segment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
-        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
-        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] unbounded_context_kind: For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         ...
     @overload
@@ -762,6 +764,8 @@ class Segment(pulumi.CustomResource):
         Provides a LaunchDarkly segment resource.
 
         This resource allows you to create and manage segments within your LaunchDarkly organization.
+
+        > **Note:** When [segment approvals](https://launchdarkly.com/docs/home/releases/approvals) are enabled for an environment, segment **targeting** changes (`included`, `excluded`, `rules`, `included_contexts`, `excluded_contexts`) require approval. To let pulumi up these changes non-interactively, grant its access token a custom role (`CustomRole`) that includes the `bypassRequiredSegmentApproval` action. Without that permission, `pulumi up` fails with an "approval is required" error. In that case, manage targeting through the approval workflow, for example with `lifecycle { ignore_changes = [included, excluded, rules] }`, disable segment approvals for the environment, or switch to a token that has the bypass permission. A segment with no targeting can be created and managed regardless.
 
         ## Example Usage
 
@@ -1068,19 +1072,19 @@ class Segment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_date: The segment's creation date represented as a UNIX epoch timestamp.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
-        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
-        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] unbounded_context_kind: For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1123,7 +1127,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -1163,7 +1167,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -1179,7 +1183,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -1187,7 +1191,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[Sequence['outputs.SegmentRule']]]:
         """
-        List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         """
         return pulumi.get(self, "rules")
 
@@ -1201,9 +1205,9 @@ class Segment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def unbounded(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def unbounded(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded")
 
@@ -1211,7 +1215,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="unboundedContextKind")
     def unbounded_context_kind(self) -> pulumi.Output[_builtins.str]:
         """
-        For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
@@ -1219,7 +1223,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 

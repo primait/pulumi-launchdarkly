@@ -28,8 +28,8 @@ class GetFlagTemplatesResult:
     A collection of values returned by getFlagTemplates.
     """
     def __init__(__self__, boolean_defaults=None, id=None, project_key=None, tags=None, temporary=None):
-        if boolean_defaults and not isinstance(boolean_defaults, list):
-            raise TypeError("Expected argument 'boolean_defaults' to be a list")
+        if boolean_defaults and not isinstance(boolean_defaults, dict):
+            raise TypeError("Expected argument 'boolean_defaults' to be a dict")
         pulumi.set(__self__, "boolean_defaults", boolean_defaults)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -46,9 +46,9 @@ class GetFlagTemplatesResult:
 
     @_builtins.property
     @pulumi.getter(name="booleanDefaults")
-    def boolean_defaults(self) -> Sequence['outputs.GetFlagTemplatesBooleanDefaultResult']:
+    def boolean_defaults(self) -> 'outputs.GetFlagTemplatesBooleanDefaultsResult':
         """
-        A block describing the default boolean flag variation settings.
+        Default boolean flag variation settings.
         """
         return pulumi.get(self, "boolean_defaults")
 
@@ -56,7 +56,7 @@ class GetFlagTemplatesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Project key (the ID).
         """
         return pulumi.get(self, "id")
 
@@ -72,7 +72,7 @@ class GetFlagTemplatesResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags applied by default.
         """
         return pulumi.get(self, "tags")
 
@@ -103,7 +103,19 @@ def get_flag_templates(project_key: Optional[_builtins.str] = None,
     """
     Provides a LaunchDarkly flag templates data source.
 
-    This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+    This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_launchdarkly as launchdarkly
+
+    # Reads the "Custom" flag template settings (default tags, temporary, and boolean
+    # variation defaults) for a project. Only project_key is required. The rest are computed.
+    example = launchdarkly.get_flag_templates(project_key="example-project")
+    pulumi.export("defaultFlagTags", example.tags)
+    ```
 
 
     :param _builtins.str project_key: The project key.
@@ -124,7 +136,19 @@ def get_flag_templates_output(project_key: pulumi.Input[Optional[_builtins.str]]
     """
     Provides a LaunchDarkly flag templates data source.
 
-    This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+    This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_launchdarkly as launchdarkly
+
+    # Reads the "Custom" flag template settings (default tags, temporary, and boolean
+    # variation defaults) for a project. Only project_key is required. The rest are computed.
+    example = launchdarkly.get_flag_templates(project_key="example-project")
+    pulumi.export("defaultFlagTags", example.tags)
+    ```
 
 
     :param _builtins.str project_key: The project key.

@@ -66,29 +66,29 @@ import (
 type AiConfigVariation struct {
 	pulumi.CustomResourceState
 
-	// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringOutput `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate pulumi.IntOutput `pulumi:"creationDate"`
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrOutput `pulumi:"instructions"`
-	// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
 	Messages AiConfigVariationMessageArrayOutput `pulumi:"messages"`
 	// A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
-	Model pulumi.StringPtrOutput `pulumi:"model"`
+	Model pulumi.StringOutput `pulumi:"model"`
 	// The key of a model config resource to use for this variation. Conflicts with `model`.
-	ModelConfigKey pulumi.StringPtrOutput `pulumi:"modelConfigKey"`
+	ModelConfigKey pulumi.StringOutput `pulumi:"modelConfigKey"`
 	// The variation's human-readable name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys pulumi.StringArrayOutput `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId pulumi.StringOutput `pulumi:"variationId"`
@@ -135,15 +135,15 @@ func GetAiConfigVariation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiConfigVariation resources.
 type aiConfigVariationState struct {
-	// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey *string `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate *int `pulumi:"creationDate"`
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description *string `pulumi:"description"`
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions *string `pulumi:"instructions"`
-	// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
 	Messages []AiConfigVariationMessage `pulumi:"messages"`
@@ -153,11 +153,11 @@ type aiConfigVariationState struct {
 	ModelConfigKey *string `pulumi:"modelConfigKey"`
 	// The variation's human-readable name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State *string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys []string `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId *string `pulumi:"variationId"`
@@ -166,15 +166,15 @@ type aiConfigVariationState struct {
 }
 
 type AiConfigVariationState struct {
-	// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringPtrInput
 	// The creation timestamp of the variation.
 	CreationDate pulumi.IntPtrInput
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description pulumi.StringPtrInput
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrInput
-	// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// A list of messages for completion mode. Each message has a `role` and `content`.
 	Messages AiConfigVariationMessageArrayInput
@@ -184,11 +184,11 @@ type AiConfigVariationState struct {
 	ModelConfigKey pulumi.StringPtrInput
 	// The variation's human-readable name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringPtrInput
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys pulumi.StringArrayInput
 	// The internal ID of the variation.
 	VariationId pulumi.StringPtrInput
@@ -201,13 +201,13 @@ func (AiConfigVariationState) ElementType() reflect.Type {
 }
 
 type aiConfigVariationArgs struct {
-	// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey string `pulumi:"configKey"`
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description *string `pulumi:"description"`
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions *string `pulumi:"instructions"`
-	// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
 	Messages []AiConfigVariationMessage `pulumi:"messages"`
@@ -217,23 +217,23 @@ type aiConfigVariationArgs struct {
 	ModelConfigKey *string `pulumi:"modelConfigKey"`
 	// The variation's human-readable name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State *string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys []string `pulumi:"toolKeys"`
 }
 
 // The set of arguments for constructing a AiConfigVariation resource.
 type AiConfigVariationArgs struct {
-	// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringInput
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description pulumi.StringPtrInput
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrInput
-	// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// A list of messages for completion mode. Each message has a `role` and `content`.
 	Messages AiConfigVariationMessageArrayInput
@@ -243,11 +243,11 @@ type AiConfigVariationArgs struct {
 	ModelConfigKey pulumi.StringPtrInput
 	// The variation's human-readable name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringPtrInput
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys pulumi.StringArrayInput
 }
 
@@ -338,7 +338,7 @@ func (o AiConfigVariationOutput) ToAiConfigVariationOutputWithContext(ctx contex
 	return o
 }
 
-// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigVariationOutput) ConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.ConfigKey }).(pulumi.StringOutput)
 }
@@ -348,17 +348,17 @@ func (o AiConfigVariationOutput) CreationDate() pulumi.IntOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.IntOutput { return v.CreationDate }).(pulumi.IntOutput)
 }
 
-// The variation's description (used in agent mode).
+// The variation's description. Used in agent mode.
 func (o AiConfigVariationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The variation's instructions (used in agent mode).
+// The variation's instructions. Used in agent mode.
 func (o AiConfigVariationOutput) Instructions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringPtrOutput { return v.Instructions }).(pulumi.StringPtrOutput)
 }
 
-// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigVariationOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -369,13 +369,13 @@ func (o AiConfigVariationOutput) Messages() AiConfigVariationMessageArrayOutput 
 }
 
 // A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
-func (o AiConfigVariationOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringPtrOutput { return v.Model }).(pulumi.StringPtrOutput)
+func (o AiConfigVariationOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
 // The key of a model config resource to use for this variation. Conflicts with `model`.
-func (o AiConfigVariationOutput) ModelConfigKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringPtrOutput { return v.ModelConfigKey }).(pulumi.StringPtrOutput)
+func (o AiConfigVariationOutput) ModelConfigKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.ModelConfigKey }).(pulumi.StringOutput)
 }
 
 // The variation's human-readable name.
@@ -383,7 +383,7 @@ func (o AiConfigVariationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigVariationOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
@@ -393,7 +393,7 @@ func (o AiConfigVariationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 func (o AiConfigVariationOutput) ToolKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringArrayOutput { return v.ToolKeys }).(pulumi.StringArrayOutput)
 }

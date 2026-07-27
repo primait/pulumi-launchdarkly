@@ -68,14 +68,20 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// LaunchDarkly views are imported using the resource's ID in the form `project_key/view_key`
+//
+// ```sh
+// $ pulumi import launchdarkly:index/view:View example example-project/example-view-key
+// ```
 type View struct {
 	pulumi.CustomResourceState
 
-	// Whether the view is archived.
-	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// The view's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrOutput `pulumi:"maintainerId"`
@@ -83,7 +89,7 @@ type View struct {
 	MaintainerTeamKey pulumi.StringPtrOutput `pulumi:"maintainerTeamKey"`
 	// The view's name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -125,11 +131,9 @@ func GetView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering View resources.
 type viewState struct {
-	// Whether the view is archived.
-	Archived *bool `pulumi:"archived"`
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId *string `pulumi:"maintainerId"`
@@ -137,18 +141,16 @@ type viewState struct {
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
 	// The view's name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type ViewState struct {
-	// Whether the view is archived.
-	Archived pulumi.BoolPtrInput
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrInput
@@ -156,7 +158,7 @@ type ViewState struct {
 	MaintainerTeamKey pulumi.StringPtrInput
 	// The view's name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -167,11 +169,9 @@ func (ViewState) ElementType() reflect.Type {
 }
 
 type viewArgs struct {
-	// Whether the view is archived.
-	Archived *bool `pulumi:"archived"`
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId *string `pulumi:"maintainerId"`
@@ -179,7 +179,7 @@ type viewArgs struct {
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
 	// The view's name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
@@ -187,11 +187,9 @@ type viewArgs struct {
 
 // The set of arguments for constructing a View resource.
 type ViewArgs struct {
-	// Whether the view is archived.
-	Archived pulumi.BoolPtrInput
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrInput
@@ -199,7 +197,7 @@ type ViewArgs struct {
 	MaintainerTeamKey pulumi.StringPtrInput
 	// The view's name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -292,17 +290,12 @@ func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
 }
 
-// Whether the view is archived.
-func (o ViewOutput) Archived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *View) pulumi.BoolPtrOutput { return v.Archived }).(pulumi.BoolPtrOutput)
-}
-
 // The view's description.
 func (o ViewOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ViewOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -322,7 +315,7 @@ func (o ViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ViewOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

@@ -12,11 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly flag templates resource.
-//
-// This resource allows you to manage the "Custom" flag template settings applied to new feature flags created within a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This resource manages the Custom template only.
-//
-// > **Note:** Flag templates are a singleton per project. Destroying this resource only removes it from Terraform state. The flag templates will continue to exist in LaunchDarkly.
+// Manages the Custom flag-template settings for a LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -39,12 +35,12 @@ import (
 //				},
 //				Temporary: pulumi.Bool(false),
 //				BooleanDefaults: &launchdarkly.FlagTemplatesBooleanDefaultsArgs{
-//					TrueDisplayName:  pulumi.String("True"),
-//					FalseDisplayName: pulumi.String("False"),
-//					TrueDescription:  pulumi.String(""),
-//					FalseDescription: pulumi.String(""),
-//					OnVariation:      pulumi.Int(0),
-//					OffVariation:     pulumi.Int(1),
+//					True_display_name:  "True",
+//					False_display_name: "False",
+//					True_description:   "",
+//					False_description:  "",
+//					On_variation:       0,
+//					Off_variation:      1,
 //				},
 //			})
 //			if err != nil {
@@ -66,14 +62,12 @@ import (
 type FlagTemplates struct {
 	pulumi.CustomResourceState
 
-	// A block describing the default boolean flag variation settings.
+	// Default boolean variation settings.
 	BooleanDefaults FlagTemplatesBooleanDefaultsOutput `pulumi:"booleanDefaults"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Whether new flags should be temporary by default.
-	Temporary pulumi.BoolPtrOutput `pulumi:"temporary"`
+	// The project key.
+	ProjectKey pulumi.StringOutput      `pulumi:"projectKey"`
+	Tags       pulumi.StringArrayOutput `pulumi:"tags"`
+	Temporary  pulumi.BoolOutput        `pulumi:"temporary"`
 }
 
 // NewFlagTemplates registers a new resource with the given unique name, arguments, and options.
@@ -112,25 +106,21 @@ func GetFlagTemplates(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlagTemplates resources.
 type flagTemplatesState struct {
-	// A block describing the default boolean flag variation settings.
+	// Default boolean variation settings.
 	BooleanDefaults *FlagTemplatesBooleanDefaults `pulumi:"booleanDefaults"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey *string `pulumi:"projectKey"`
-	// Tags associated with your resource.
-	Tags []string `pulumi:"tags"`
-	// Whether new flags should be temporary by default.
-	Temporary *bool `pulumi:"temporary"`
+	// The project key.
+	ProjectKey *string  `pulumi:"projectKey"`
+	Tags       []string `pulumi:"tags"`
+	Temporary  *bool    `pulumi:"temporary"`
 }
 
 type FlagTemplatesState struct {
-	// A block describing the default boolean flag variation settings.
+	// Default boolean variation settings.
 	BooleanDefaults FlagTemplatesBooleanDefaultsPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key.
 	ProjectKey pulumi.StringPtrInput
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayInput
-	// Whether new flags should be temporary by default.
-	Temporary pulumi.BoolPtrInput
+	Tags       pulumi.StringArrayInput
+	Temporary  pulumi.BoolPtrInput
 }
 
 func (FlagTemplatesState) ElementType() reflect.Type {
@@ -138,26 +128,22 @@ func (FlagTemplatesState) ElementType() reflect.Type {
 }
 
 type flagTemplatesArgs struct {
-	// A block describing the default boolean flag variation settings.
+	// Default boolean variation settings.
 	BooleanDefaults FlagTemplatesBooleanDefaults `pulumi:"booleanDefaults"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
-	Tags []string `pulumi:"tags"`
-	// Whether new flags should be temporary by default.
-	Temporary *bool `pulumi:"temporary"`
+	// The project key.
+	ProjectKey string   `pulumi:"projectKey"`
+	Tags       []string `pulumi:"tags"`
+	Temporary  *bool    `pulumi:"temporary"`
 }
 
 // The set of arguments for constructing a FlagTemplates resource.
 type FlagTemplatesArgs struct {
-	// A block describing the default boolean flag variation settings.
+	// Default boolean variation settings.
 	BooleanDefaults FlagTemplatesBooleanDefaultsInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key.
 	ProjectKey pulumi.StringInput
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayInput
-	// Whether new flags should be temporary by default.
-	Temporary pulumi.BoolPtrInput
+	Tags       pulumi.StringArrayInput
+	Temporary  pulumi.BoolPtrInput
 }
 
 func (FlagTemplatesArgs) ElementType() reflect.Type {
@@ -247,24 +233,22 @@ func (o FlagTemplatesOutput) ToFlagTemplatesOutputWithContext(ctx context.Contex
 	return o
 }
 
-// A block describing the default boolean flag variation settings.
+// Default boolean variation settings.
 func (o FlagTemplatesOutput) BooleanDefaults() FlagTemplatesBooleanDefaultsOutput {
 	return o.ApplyT(func(v *FlagTemplates) FlagTemplatesBooleanDefaultsOutput { return v.BooleanDefaults }).(FlagTemplatesBooleanDefaultsOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key.
 func (o FlagTemplatesOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTemplates) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
 func (o FlagTemplatesOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlagTemplates) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Whether new flags should be temporary by default.
-func (o FlagTemplatesOutput) Temporary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FlagTemplates) pulumi.BoolPtrOutput { return v.Temporary }).(pulumi.BoolPtrOutput)
+func (o FlagTemplatesOutput) Temporary() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FlagTemplates) pulumi.BoolOutput { return v.Temporary }).(pulumi.BoolOutput)
 }
 
 type FlagTemplatesArrayOutput struct{ *pulumi.OutputState }

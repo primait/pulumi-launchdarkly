@@ -26,9 +26,9 @@ func LookupFeatureFlag(ctx *pulumi.Context, args *LookupFeatureFlagArgs, opts ..
 
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagArgs struct {
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key.
 	Key string `pulumi:"key"`
-	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
@@ -38,44 +38,41 @@ type LookupFeatureFlagArgs struct {
 
 // A collection of values returned by getFeatureFlag.
 type LookupFeatureFlagResult struct {
-	// Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-	Archived                 bool                                   `pulumi:"archived"`
-	ClientSideAvailabilities []GetFeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-	CustomProperties []GetFeatureFlagCustomProperty `pulumi:"customProperties"`
-	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
-	Defaults []GetFeatureFlagDefault `pulumi:"defaults"`
-	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+	// Whether the flag is archived.
+	Archived bool `pulumi:"archived"`
+	// Client-side availability settings.
+	ClientSideAvailability GetFeatureFlagClientSideAvailability `pulumi:"clientSideAvailability"`
+	// Custom properties, keyed by the custom property key.
+	CustomProperties map[string]GetFeatureFlagCustomProperties `pulumi:"customProperties"`
+	// Default variation indices for new environments.
+	Defaults GetFeatureFlagDefaults `pulumi:"defaults"`
+	// Whether the flag is deprecated.
 	Deprecated bool `pulumi:"deprecated"`
-	// The feature flag's description.
+	// Feature flag description.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// Composite ID `project_key/key`.
 	Id string `pulumi:"id"`
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-	//
-	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-	IncludeInSnippet bool `pulumi:"includeInSnippet"`
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key.
 	Key string `pulumi:"key"`
-	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId string `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey string `pulumi:"maintainerTeamKey"`
-	// The feature flag's human-readable name
+	// Human-readable name.
 	Name string `pulumi:"name"`
 	// The feature flag's project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags.
 	Tags []string `pulumi:"tags"`
-	// Specifies whether the flag is a temporary flag.
+	// Whether the flag is temporary.
 	Temporary bool `pulumi:"temporary"`
-	// The uniform type for all variations. Can be either "boolean", "string", "number", or "json".
+	// Variation type: "boolean", "string", "number", or "json".
 	VariationType string `pulumi:"variationType"`
-	// An array of possible variations for the flag
+	// Possible variations for the flag.
 	Variations []GetFeatureFlagVariation `pulumi:"variations"`
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// View keys linked to the flag.
 	ViewKeys []string `pulumi:"viewKeys"`
-	// A list of view keys that this feature flag is linked to.
+	// Legacy view keys list.
 	Views []string `pulumi:"views"`
 }
 
@@ -90,9 +87,9 @@ func LookupFeatureFlagOutput(ctx *pulumi.Context, args LookupFeatureFlagOutputAr
 
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagOutputArgs struct {
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+	// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 	MaintainerId pulumi.StringPtrInput `pulumi:"maintainerId"`
 	// The key of the associated team that maintains this feature flag. `maintainerId` cannot be set if `maintainerTeamKey` is set
 	MaintainerTeamKey pulumi.StringPtrInput `pulumi:"maintainerTeamKey"`
@@ -119,55 +116,47 @@ func (o LookupFeatureFlagResultOutput) ToLookupFeatureFlagResultOutputWithContex
 	return o
 }
 
-// Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
+// Whether the flag is archived.
 func (o LookupFeatureFlagResultOutput) Archived() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.Archived }).(pulumi.BoolOutput)
 }
 
-func (o LookupFeatureFlagResultOutput) ClientSideAvailabilities() GetFeatureFlagClientSideAvailabilityArrayOutput {
-	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagClientSideAvailability {
-		return v.ClientSideAvailabilities
-	}).(GetFeatureFlagClientSideAvailabilityArrayOutput)
+// Client-side availability settings.
+func (o LookupFeatureFlagResultOutput) ClientSideAvailability() GetFeatureFlagClientSideAvailabilityOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) GetFeatureFlagClientSideAvailability { return v.ClientSideAvailability }).(GetFeatureFlagClientSideAvailabilityOutput)
 }
 
-// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-func (o LookupFeatureFlagResultOutput) CustomProperties() GetFeatureFlagCustomPropertyArrayOutput {
-	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagCustomProperty { return v.CustomProperties }).(GetFeatureFlagCustomPropertyArrayOutput)
+// Custom properties, keyed by the custom property key.
+func (o LookupFeatureFlagResultOutput) CustomProperties() GetFeatureFlagCustomPropertiesMapOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) map[string]GetFeatureFlagCustomProperties { return v.CustomProperties }).(GetFeatureFlagCustomPropertiesMapOutput)
 }
 
-// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
-func (o LookupFeatureFlagResultOutput) Defaults() GetFeatureFlagDefaultArrayOutput {
-	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagDefault { return v.Defaults }).(GetFeatureFlagDefaultArrayOutput)
+// Default variation indices for new environments.
+func (o LookupFeatureFlagResultOutput) Defaults() GetFeatureFlagDefaultsOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) GetFeatureFlagDefaults { return v.Defaults }).(GetFeatureFlagDefaultsOutput)
 }
 
-// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+// Whether the flag is deprecated.
 func (o LookupFeatureFlagResultOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
-// The feature flag's description.
+// Feature flag description.
 func (o LookupFeatureFlagResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Composite ID `project_key/key`.
 func (o LookupFeatureFlagResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-//
-// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-func (o LookupFeatureFlagResultOutput) IncludeInSnippet() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.IncludeInSnippet }).(pulumi.BoolOutput)
-}
-
-// The unique feature flag key that references the flag in your application code.
+// The unique feature flag key.
 func (o LookupFeatureFlagResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+// The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
 func (o LookupFeatureFlagResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }
@@ -177,7 +166,7 @@ func (o LookupFeatureFlagResultOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The feature flag's human-readable name
+// Human-readable name.
 func (o LookupFeatureFlagResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -187,32 +176,32 @@ func (o LookupFeatureFlagResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags.
 func (o LookupFeatureFlagResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Specifies whether the flag is a temporary flag.
+// Whether the flag is temporary.
 func (o LookupFeatureFlagResultOutput) Temporary() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.Temporary }).(pulumi.BoolOutput)
 }
 
-// The uniform type for all variations. Can be either "boolean", "string", "number", or "json".
+// Variation type: "boolean", "string", "number", or "json".
 func (o LookupFeatureFlagResultOutput) VariationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.VariationType }).(pulumi.StringOutput)
 }
 
-// An array of possible variations for the flag
+// Possible variations for the flag.
 func (o LookupFeatureFlagResultOutput) Variations() GetFeatureFlagVariationArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagVariation { return v.Variations }).(GetFeatureFlagVariationArrayOutput)
 }
 
-// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+// View keys linked to the flag.
 func (o LookupFeatureFlagResultOutput) ViewKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []string { return v.ViewKeys }).(pulumi.StringArrayOutput)
 }
 
-// A list of view keys that this feature flag is linked to.
+// Legacy view keys list.
 func (o LookupFeatureFlagResultOutput) Views() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []string { return v.Views }).(pulumi.StringArrayOutput)
 }

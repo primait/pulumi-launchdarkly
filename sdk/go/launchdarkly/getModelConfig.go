@@ -71,21 +71,21 @@ type LookupModelConfigResult struct {
 	Global bool `pulumi:"global"`
 	// The icon for the model config.
 	Icon string `pulumi:"icon"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of the model config in the format `project_key/model_config_key`.
 	Id string `pulumi:"id"`
 	// The model config's unique key.
 	Key string `pulumi:"key"`
-	// The model identifier (e.g. `gpt-4`, `claude-3`).
+	// The model identifier. For example, `gpt-4` or `claude-3`.
 	ModelId string `pulumi:"modelId"`
-	// The provider name for the model config (e.g. `openai`, `anthropic`).
+	// The provider name for the model config. For example, `openai` or `anthropic`.
 	ModelProvider string `pulumi:"modelProvider"`
 	// The model config's human-readable name.
 	Name string `pulumi:"name"`
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`).
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`.
 	Params string `pulumi:"params"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with the model config.
 	Tags []string `pulumi:"tags"`
 	// The version of the model config.
 	Version int `pulumi:"version"`
@@ -152,7 +152,7 @@ func (o LookupModelConfigResultOutput) Icon() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.Icon }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of the model config in the format `project_key/model_config_key`.
 func (o LookupModelConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -162,12 +162,12 @@ func (o LookupModelConfigResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The model identifier (e.g. `gpt-4`, `claude-3`).
+// The model identifier. For example, `gpt-4` or `claude-3`.
 func (o LookupModelConfigResultOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.ModelId }).(pulumi.StringOutput)
 }
 
-// The provider name for the model config (e.g. `openai`, `anthropic`).
+// The provider name for the model config. For example, `openai` or `anthropic`.
 func (o LookupModelConfigResultOutput) ModelProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.ModelProvider }).(pulumi.StringOutput)
 }
@@ -177,7 +177,7 @@ func (o LookupModelConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`).
+// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`.
 func (o LookupModelConfigResultOutput) Params() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.Params }).(pulumi.StringOutput)
 }
@@ -187,7 +187,7 @@ func (o LookupModelConfigResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with the model config.
 func (o LookupModelConfigResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupModelConfigResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

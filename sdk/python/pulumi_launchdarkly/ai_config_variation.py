@@ -35,17 +35,17 @@ class AiConfigVariationInitArgs:
         """
         The set of arguments for constructing a AiConfigVariation resource.
 
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] description: The variation's description (used in agent mode).
-        :param pulumi.Input[_builtins.str] instructions: The variation's instructions (used in agent mode).
+        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
+        :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
         :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "key", key)
@@ -71,7 +71,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -83,7 +83,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -95,7 +95,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -107,7 +107,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The variation's description (used in agent mode).
+        The variation's description. Used in agent mode.
         """
         return pulumi.get(self, "description")
 
@@ -119,7 +119,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter
     def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The variation's instructions (used in agent mode).
+        The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
 
@@ -191,7 +191,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 
@@ -220,18 +220,18 @@ class _AiConfigVariationState:
         """
         Input properties used for looking up and filtering AiConfigVariation resources.
 
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the variation.
-        :param pulumi.Input[_builtins.str] description: The variation's description (used in agent mode).
-        :param pulumi.Input[_builtins.str] instructions: The variation's instructions (used in agent mode).
-        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
+        :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         :param pulumi.Input[_builtins.str] variation_id: The internal ID of the variation.
         :param pulumi.Input[_builtins.int] version: The version number of the variation.
         """
@@ -268,7 +268,7 @@ class _AiConfigVariationState:
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -292,7 +292,7 @@ class _AiConfigVariationState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The variation's description (used in agent mode).
+        The variation's description. Used in agent mode.
         """
         return pulumi.get(self, "description")
 
@@ -304,7 +304,7 @@ class _AiConfigVariationState:
     @pulumi.getter
     def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The variation's instructions (used in agent mode).
+        The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
 
@@ -316,7 +316,7 @@ class _AiConfigVariationState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -376,7 +376,7 @@ class _AiConfigVariationState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -400,7 +400,7 @@ class _AiConfigVariationState:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 
@@ -491,17 +491,17 @@ class AiConfigVariation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] description: The variation's description (used in agent mode).
-        :param pulumi.Input[_builtins.str] instructions: The variation's instructions (used in agent mode).
-        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
+        :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         ...
     @overload
@@ -633,18 +633,18 @@ class AiConfigVariation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the variation.
-        :param pulumi.Input[_builtins.str] description: The variation's description (used in agent mode).
-        :param pulumi.Input[_builtins.str] instructions: The variation's instructions (used in agent mode).
-        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
+        :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         :param pulumi.Input[_builtins.str] variation_id: The internal ID of the variation.
         :param pulumi.Input[_builtins.int] version: The version number of the variation.
         """
@@ -672,7 +672,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -688,7 +688,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The variation's description (used in agent mode).
+        The variation's description. Used in agent mode.
         """
         return pulumi.get(self, "description")
 
@@ -696,7 +696,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter
     def instructions(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The variation's instructions (used in agent mode).
+        The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
 
@@ -704,7 +704,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -718,7 +718,7 @@ class AiConfigVariation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def model(self) -> pulumi.Output[_builtins.str]:
         """
         A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         """
@@ -726,7 +726,7 @@ class AiConfigVariation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="modelConfigKey")
-    def model_config_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def model_config_key(self) -> pulumi.Output[_builtins.str]:
         """
         The key of a model config resource to use for this variation. Conflicts with `model`.
         """
@@ -744,7 +744,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -758,9 +758,9 @@ class AiConfigVariation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="toolKeys")
-    def tool_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def tool_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 

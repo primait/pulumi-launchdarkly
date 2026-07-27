@@ -19,11 +19,55 @@ import (
 // > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 //
 // This resource allows you to create and manage IP allowlist entries within your LaunchDarkly account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// IP allowlist entries are an Enterprise feature and use a beta API.
+//			// The ip_address may be a single address or a CIDR block. Changing it forces a new entry.
+//			_, err := launchdarkly.NewIpAllowlistEntry(ctx, "office", &launchdarkly.IpAllowlistEntryArgs{
+//				IpAddress:   pulumi.String("203.0.113.0/24"),
+//				Description: pulumi.String("Corporate office network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = launchdarkly.NewIpAllowlistEntry(ctx, "vpn", &launchdarkly.IpAllowlistEntryArgs{
+//				IpAddress:   pulumi.String("198.51.100.42"),
+//				Description: pulumi.String("VPN egress IP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # LaunchDarkly IP allowlist entries are imported using the entry's server-assigned ID
+//
+// ```sh
+// $ pulumi import launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry office 51f9c4a2-1b3d-4e5f-8a9b-0c1d2e3f4a5b
+// ```
 type IpAllowlistEntry struct {
 	pulumi.CustomResourceState
 
 	// A human-readable description of the IP allowlist entry.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The IP address or CIDR block for the allowlist entry. Changing this forces a new resource to be created.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 }
@@ -181,8 +225,8 @@ func (o IpAllowlistEntryOutput) ToIpAllowlistEntryOutputWithContext(ctx context.
 }
 
 // A human-readable description of the IP allowlist entry.
-func (o IpAllowlistEntryOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpAllowlistEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o IpAllowlistEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpAllowlistEntry) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The IP address or CIDR block for the allowlist entry. Changing this forces a new resource to be created.

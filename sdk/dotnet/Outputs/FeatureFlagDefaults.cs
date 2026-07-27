@@ -14,11 +14,11 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class FeatureFlagDefaults
     {
         /// <summary>
-        /// The index of the variation the flag will default to in all new environments when off.
+        /// The index of the variation the flag defaults to in all new environments when off.
         /// </summary>
         public readonly int OffVariation;
         /// <summary>
-        /// The index of the variation the flag will default to in all new environments when on.
+        /// The index of the variation the flag defaults to in all new environments when on.
         /// </summary>
         public readonly int OnVariation;
 

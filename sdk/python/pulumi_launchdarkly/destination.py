@@ -30,12 +30,12 @@ class DestinationArgs:
         The set of arguments for constructing a Destination resource.
 
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-readable name for your data export destination.
         :param pulumi.Input[_builtins.bool] on: Whether the data export destination is on or not.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "env_key", env_key)
@@ -64,7 +64,7 @@ class DestinationArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -76,7 +76,7 @@ class DestinationArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[_builtins.str]:
         """
-        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -88,7 +88,7 @@ class DestinationArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -124,7 +124,7 @@ class DestinationArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 
@@ -147,12 +147,12 @@ class _DestinationState:
         Input properties used for looking up and filtering Destination resources.
 
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-readable name for your data export destination.
         :param pulumi.Input[_builtins.bool] on: Whether the data export destination is on or not.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -185,7 +185,7 @@ class _DestinationState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -197,7 +197,7 @@ class _DestinationState:
     @pulumi.getter
     def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -233,7 +233,7 @@ class _DestinationState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -245,7 +245,7 @@ class _DestinationState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 
@@ -275,7 +275,7 @@ class Destination(pulumi.CustomResource):
 
         Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
 
-        To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
+        To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
 
         ## Example Usage
 
@@ -371,12 +371,12 @@ class Destination(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-readable name for your data export destination.
         :param pulumi.Input[_builtins.bool] on: Whether the data export destination is on or not.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         """
         ...
     @overload
@@ -391,7 +391,7 @@ class Destination(pulumi.CustomResource):
 
         Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
 
-        To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
+        To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
 
         ## Example Usage
 
@@ -555,12 +555,12 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The destination-specific configuration. To learn more, read Destination-Specific Configs
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-readable name for your data export destination.
         :param pulumi.Input[_builtins.bool] on: Whether the data export destination is on or not.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -587,7 +587,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -595,7 +595,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:
         """
-        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -609,7 +609,7 @@ class Destination(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def on(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the data export destination is on or not.
         """
@@ -619,15 +619,15 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 

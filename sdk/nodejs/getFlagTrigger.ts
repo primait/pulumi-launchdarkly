@@ -43,7 +43,7 @@ export function getFlagTrigger(args: GetFlagTriggerArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetFlagTriggerArgs {
     /**
-     * The unique key of the environment the flag trigger will work in.
+     * The unique key of the environment the flag trigger runs in.
      */
     envKey: string;
     /**
@@ -66,7 +66,7 @@ export interface GetFlagTriggerArgs {
 export interface GetFlagTriggerResult {
     readonly enabled: boolean;
     /**
-     * The unique key of the environment the flag trigger will work in.
+     * The unique key of the environment the flag trigger runs in.
      */
     readonly envKey: string;
     /**
@@ -80,7 +80,7 @@ export interface GetFlagTriggerResult {
      * `
      */
     readonly id: string;
-    readonly instructions: outputs.GetFlagTriggerInstruction[];
+    readonly instructions: outputs.GetFlagTriggerInstructions;
     readonly integrationKey: string;
     readonly maintainerId: string;
     readonly projectKey: string;
@@ -122,7 +122,7 @@ export function getFlagTriggerOutput(args: GetFlagTriggerOutputArgs, opts?: pulu
  */
 export interface GetFlagTriggerOutputArgs {
     /**
-     * The unique key of the environment the flag trigger will work in.
+     * The unique key of the environment the flag trigger runs in.
      */
     envKey: pulumi.Input<string>;
     /**

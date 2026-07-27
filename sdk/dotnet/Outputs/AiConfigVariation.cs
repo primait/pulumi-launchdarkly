@@ -13,26 +13,17 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class AiConfigVariation
     {
-        /// <summary>
-        /// The variation's key.
-        /// </summary>
-        public readonly string? Key;
-        /// <summary>
-        /// The variation's name.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// The variation's ID.
-        /// </summary>
-        public readonly string? VariationId;
+        public readonly string Key;
+        public readonly string Name;
+        public readonly string VariationId;
 
         [OutputConstructor]
         private AiConfigVariation(
-            string? key,
+            string key,
 
-            string? name,
+            string name,
 
-            string? variationId)
+            string variationId)
         {
             Key = key;
             Name = name;

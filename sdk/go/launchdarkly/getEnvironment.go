@@ -64,33 +64,38 @@ type LookupEnvironmentArgs struct {
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
 	// The environment's SDK key.
-	ApiKey           string                          `pulumi:"apiKey"`
-	ApprovalSettings []GetEnvironmentApprovalSetting `pulumi:"approvalSettings"`
+	ApiKey string `pulumi:"apiKey"`
+	// Approval settings for this environment / project.
+	ApprovalSettings GetEnvironmentApprovalSettings `pulumi:"approvalSettings"`
 	// The environment's client-side ID.
 	ClientSideId string `pulumi:"clientSideId"`
-	Color        string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+	// The color swatch as an RGB hex value with no leading `#`.
+	Color string `pulumi:"color"`
+	// Whether flag/segment changes require confirmation.
 	ConfirmChanges bool `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
-	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+	Critical bool `pulumi:"critical"`
+	// Whether data export is enabled for new flags.
 	DefaultTrackEvents bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The default TTL (0-60 minutes).
 	DefaultTtl int `pulumi:"defaultTtl"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID in the format `project_key/key`.
 	Id string `pulumi:"id"`
 	// The project-unique key for the environment.
 	Key string `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey string `pulumi:"mobileKey"`
-	Name      string `pulumi:"name"`
+	// The name of the environment.
+	Name string `pulumi:"name"`
 	// The environment's project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+	// Whether flag/segment changes require comments.
 	RequireComments bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+	// Whether secure mode is enabled.
 	SecureMode bool `pulumi:"secureMode"`
-	// Tags associated with your resource.
+	// Approval settings for segment changes in this environment.
+	SegmentApprovalSettings GetEnvironmentSegmentApprovalSettings `pulumi:"segmentApprovalSettings"`
+	// Tags.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -137,8 +142,9 @@ func (o LookupEnvironmentResultOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-func (o LookupEnvironmentResultOutput) ApprovalSettings() GetEnvironmentApprovalSettingArrayOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentApprovalSetting { return v.ApprovalSettings }).(GetEnvironmentApprovalSettingArrayOutput)
+// Approval settings for this environment / project.
+func (o LookupEnvironmentResultOutput) ApprovalSettings() GetEnvironmentApprovalSettingsOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GetEnvironmentApprovalSettings { return v.ApprovalSettings }).(GetEnvironmentApprovalSettingsOutput)
 }
 
 // The environment's client-side ID.
@@ -146,31 +152,32 @@ func (o LookupEnvironmentResultOutput) ClientSideId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ClientSideId }).(pulumi.StringOutput)
 }
 
+// The color swatch as an RGB hex value with no leading `#`.
 func (o LookupEnvironmentResultOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+// Whether flag/segment changes require confirmation.
 func (o LookupEnvironmentResultOutput) ConfirmChanges() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.ConfirmChanges }).(pulumi.BoolOutput)
 }
 
 // Denotes whether the environment is critical.
-func (o LookupEnvironmentResultOutput) Critical() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+func (o LookupEnvironmentResultOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.Critical }).(pulumi.BoolOutput)
 }
 
-// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+// Whether data export is enabled for new flags.
 func (o LookupEnvironmentResultOutput) DefaultTrackEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.DefaultTrackEvents }).(pulumi.BoolOutput)
 }
 
-// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+// The default TTL (0-60 minutes).
 func (o LookupEnvironmentResultOutput) DefaultTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) int { return v.DefaultTtl }).(pulumi.IntOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID in the format `project_key/key`.
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -185,6 +192,7 @@ func (o LookupEnvironmentResultOutput) MobileKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.MobileKey }).(pulumi.StringOutput)
 }
 
+// The name of the environment.
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -194,17 +202,24 @@ func (o LookupEnvironmentResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+// Whether flag/segment changes require comments.
 func (o LookupEnvironmentResultOutput) RequireComments() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.RequireComments }).(pulumi.BoolOutput)
 }
 
-// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+// Whether secure mode is enabled.
 func (o LookupEnvironmentResultOutput) SecureMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) bool { return v.SecureMode }).(pulumi.BoolOutput)
 }
 
-// Tags associated with your resource.
+// Approval settings for segment changes in this environment.
+func (o LookupEnvironmentResultOutput) SegmentApprovalSettings() GetEnvironmentSegmentApprovalSettingsOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GetEnvironmentSegmentApprovalSettings {
+		return v.SegmentApprovalSettings
+	}).(GetEnvironmentSegmentApprovalSettingsOutput)
+}
+
+// Tags.
 func (o LookupEnvironmentResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

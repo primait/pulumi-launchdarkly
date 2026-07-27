@@ -13,13 +13,7 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetFeatureFlagEnvironmentTargetResult
     {
-        /// <summary>
-        /// List of `User` strings to target.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
-        /// <summary>
-        /// The index of the variation to serve if a user target value is matched.
-        /// </summary>
         public readonly int Variation;
 
         [OutputConstructor]

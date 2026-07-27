@@ -21,14 +21,16 @@ class ProviderArgs:
     def __init__(__self__, *,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_flags_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
-        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
+        :param pulumi.Input[_builtins.bool] archive_flags_on_destroy: When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
         :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
@@ -37,6 +39,8 @@ class ProviderArgs:
             pulumi.set(__self__, "access_token", access_token)
         if api_host is not None:
             pulumi.set(__self__, "api_host", api_host)
+        if archive_flags_on_destroy is not None:
+            pulumi.set(__self__, "archive_flags_on_destroy", archive_flags_on_destroy)
         if http_timeout is not None:
             pulumi.set(__self__, "http_timeout", http_timeout)
         if max_concurrency is not None:
@@ -48,7 +52,7 @@ class ProviderArgs:
     @pulumi.getter
     def access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "access_token")
 
@@ -67,6 +71,18 @@ class ProviderArgs:
     @api_host.setter
     def api_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveFlagsOnDestroy")
+    def archive_flags_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
+        """
+        return pulumi.get(self, "archive_flags_on_destroy")
+
+    @archive_flags_on_destroy.setter
+    def archive_flags_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "archive_flags_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +129,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_flags_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -126,8 +143,9 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        :param pulumi.Input[_builtins.str] access_token: The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         :param pulumi.Input[_builtins.str] api_host: The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
+        :param pulumi.Input[_builtins.bool] archive_flags_on_destroy: When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
         :param pulumi.Input[_builtins.int] http_timeout: The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
         :param pulumi.Input[_builtins.str] oauth_token: An OAuth V2 token you use to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_OAUTH_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
@@ -162,6 +180,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_flags_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  http_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  oauth_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -176,6 +195,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
             __props__.__dict__["api_host"] = api_host
+            __props__.__dict__["archive_flags_on_destroy"] = pulumi.Output.from_input(archive_flags_on_destroy).apply(pulumi.runtime.to_json) if archive_flags_on_destroy is not None else None
             __props__.__dict__["http_timeout"] = pulumi.Output.from_input(http_timeout).apply(pulumi.runtime.to_json) if http_timeout is not None else None
             __props__.__dict__["max_concurrency"] = pulumi.Output.from_input(max_concurrency).apply(pulumi.runtime.to_json) if max_concurrency is not None else None
             __props__.__dict__["oauth_token"] = None if oauth_token is None else pulumi.Output.secret(oauth_token)
@@ -191,7 +211,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def access_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+        The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
         """
         return pulumi.get(self, "access_token")
 

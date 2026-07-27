@@ -68,7 +68,7 @@ export interface GetModelConfigResult {
      */
     readonly icon: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the model config in the format `project_key/model_config_key`.
      */
     readonly id: string;
     /**
@@ -76,11 +76,11 @@ export interface GetModelConfigResult {
      */
     readonly key: string;
     /**
-     * The model identifier (e.g. `gpt-4`, `claude-3`).
+     * The model identifier. For example, `gpt-4` or `claude-3`.
      */
     readonly modelId: string;
     /**
-     * The provider name for the model config (e.g. `openai`, `anthropic`).
+     * The provider name for the model config. For example, `openai` or `anthropic`.
      */
     readonly modelProvider: string;
     /**
@@ -88,7 +88,7 @@ export interface GetModelConfigResult {
      */
     readonly name: string;
     /**
-     * A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`).
+     * A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`.
      */
     readonly params: string;
     /**
@@ -96,7 +96,7 @@ export interface GetModelConfigResult {
      */
     readonly projectKey: string;
     /**
-     * Tags associated with your resource.
+     * Tags associated with the model config.
      */
     readonly tags: string[];
     /**

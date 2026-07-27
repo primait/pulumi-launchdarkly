@@ -41,6 +41,14 @@ import * as utilities from "./utilities";
  *     tags: ["team-managed"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * LaunchDarkly views are imported using the resource's ID in the form `project_key/view_key`
+ *
+ * ```sh
+ * $ pulumi import launchdarkly:index/view:View example example-project/example-view-key
+ * ```
  */
 export class View extends pulumi.CustomResource {
     /**
@@ -71,15 +79,11 @@ export class View extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the view is archived.
-     */
-    declare public readonly archived: pulumi.Output<boolean | undefined>;
-    /**
      * The view's description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -95,7 +99,7 @@ export class View extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
@@ -116,7 +120,6 @@ export class View extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ViewState | undefined;
-            resourceInputs["archived"] = state?.archived;
             resourceInputs["description"] = state?.description;
             resourceInputs["key"] = state?.key;
             resourceInputs["maintainerId"] = state?.maintainerId;
@@ -132,7 +135,6 @@ export class View extends pulumi.CustomResource {
             if (args?.projectKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["archived"] = args?.archived;
             resourceInputs["description"] = args?.description;
             resourceInputs["key"] = args?.key;
             resourceInputs["maintainerId"] = args?.maintainerId;
@@ -151,15 +153,11 @@ export class View extends pulumi.CustomResource {
  */
 export interface ViewState {
     /**
-     * Whether the view is archived.
-     */
-    archived?: pulumi.Input<boolean | undefined>;
-    /**
      * The view's description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -175,7 +173,7 @@ export interface ViewState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
@@ -189,15 +187,11 @@ export interface ViewState {
  */
 export interface ViewArgs {
     /**
-     * Whether the view is archived.
-     */
-    archived?: pulumi.Input<boolean | undefined>;
-    /**
      * The view's description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -213,7 +207,7 @@ export interface ViewArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**

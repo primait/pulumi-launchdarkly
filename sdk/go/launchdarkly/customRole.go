@@ -75,17 +75,17 @@ type CustomRole struct {
 	pulumi.CustomResourceState
 
 	// The base permission level - either `reader` or `noAccess`. While newer API versions default to `noAccess`, this field defaults to `reader` in keeping with previous API versions.
-	BasePermissions pulumi.StringPtrOutput `pulumi:"basePermissions"`
+	BasePermissions pulumi.StringOutput `pulumi:"basePermissions"`
 	// Description of the custom role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A name for the custom role. This must be unique within your organization.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-	Policies CustomRolePolicyArrayOutput `pulumi:"policies"`
-	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 	PolicyStatements CustomRolePolicyStatementArrayOutput `pulumi:"policyStatements"`
+	// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+	PolicyStatementsJson pulumi.StringPtrOutput `pulumi:"policyStatementsJson"`
 }
 
 // NewCustomRole registers a new resource with the given unique name, arguments, and options.
@@ -125,14 +125,14 @@ type customRoleState struct {
 	BasePermissions *string `pulumi:"basePermissions"`
 	// Description of the custom role.
 	Description *string `pulumi:"description"`
-	// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// A name for the custom role. This must be unique within your organization.
 	Name *string `pulumi:"name"`
-	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-	Policies []CustomRolePolicy `pulumi:"policies"`
-	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 	PolicyStatements []CustomRolePolicyStatement `pulumi:"policyStatements"`
+	// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+	PolicyStatementsJson *string `pulumi:"policyStatementsJson"`
 }
 
 type CustomRoleState struct {
@@ -140,14 +140,14 @@ type CustomRoleState struct {
 	BasePermissions pulumi.StringPtrInput
 	// Description of the custom role.
 	Description pulumi.StringPtrInput
-	// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// A name for the custom role. This must be unique within your organization.
 	Name pulumi.StringPtrInput
-	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-	Policies CustomRolePolicyArrayInput
-	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 	PolicyStatements CustomRolePolicyStatementArrayInput
+	// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+	PolicyStatementsJson pulumi.StringPtrInput
 }
 
 func (CustomRoleState) ElementType() reflect.Type {
@@ -159,14 +159,14 @@ type customRoleArgs struct {
 	BasePermissions *string `pulumi:"basePermissions"`
 	// Description of the custom role.
 	Description *string `pulumi:"description"`
-	// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// A name for the custom role. This must be unique within your organization.
 	Name *string `pulumi:"name"`
-	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-	Policies []CustomRolePolicy `pulumi:"policies"`
-	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 	PolicyStatements []CustomRolePolicyStatement `pulumi:"policyStatements"`
+	// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+	PolicyStatementsJson *string `pulumi:"policyStatementsJson"`
 }
 
 // The set of arguments for constructing a CustomRole resource.
@@ -175,14 +175,14 @@ type CustomRoleArgs struct {
 	BasePermissions pulumi.StringPtrInput
 	// Description of the custom role.
 	Description pulumi.StringPtrInput
-	// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// A name for the custom role. This must be unique within your organization.
 	Name pulumi.StringPtrInput
-	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-	Policies CustomRolePolicyArrayInput
-	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+	// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 	PolicyStatements CustomRolePolicyStatementArrayInput
+	// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+	PolicyStatementsJson pulumi.StringPtrInput
 }
 
 func (CustomRoleArgs) ElementType() reflect.Type {
@@ -273,8 +273,8 @@ func (o CustomRoleOutput) ToCustomRoleOutputWithContext(ctx context.Context) Cus
 }
 
 // The base permission level - either `reader` or `noAccess`. While newer API versions default to `noAccess`, this field defaults to `reader` in keeping with previous API versions.
-func (o CustomRoleOutput) BasePermissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomRole) pulumi.StringPtrOutput { return v.BasePermissions }).(pulumi.StringPtrOutput)
+func (o CustomRoleOutput) BasePermissions() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomRole) pulumi.StringOutput { return v.BasePermissions }).(pulumi.StringOutput)
 }
 
 // Description of the custom role.
@@ -282,7 +282,7 @@ func (o CustomRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o CustomRoleOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomRole) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -292,14 +292,14 @@ func (o CustomRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
-func (o CustomRoleOutput) Policies() CustomRolePolicyArrayOutput {
-	return o.ApplyT(func(v *CustomRole) CustomRolePolicyArrayOutput { return v.Policies }).(CustomRolePolicyArrayOutput)
-}
-
-// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
+// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` in lieu of your usual resource keys.
 func (o CustomRoleOutput) PolicyStatements() CustomRolePolicyStatementArrayOutput {
 	return o.ApplyT(func(v *CustomRole) CustomRolePolicyStatementArrayOutput { return v.PolicyStatements }).(CustomRolePolicyStatementArrayOutput)
+}
+
+// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `policyStatements` attribute (`resources`, `notResources`, `actions`, `notActions`, `effect`). Mutually exclusive with `policyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/<YOUR_ROLE_ATTRIBUTE>}` inside HCL strings.
+func (o CustomRoleOutput) PolicyStatementsJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomRole) pulumi.StringPtrOutput { return v.PolicyStatementsJson }).(pulumi.StringPtrOutput)
 }
 
 type CustomRoleArrayOutput struct{ *pulumi.OutputState }

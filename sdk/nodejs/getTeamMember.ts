@@ -2,9 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -27,7 +24,6 @@ export function getTeamMember(args: GetTeamMemberArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getTeamMember:getTeamMember", {
         "email": args.email,
-        "roleAttributes": args.roleAttributes,
     }, opts);
 }
 
@@ -39,10 +35,6 @@ export interface GetTeamMemberArgs {
      * The unique email address associated with the team member.
      */
     email: string;
-    /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-     */
-    roleAttributes?: inputs.GetTeamMemberRoleAttribute[];
 }
 
 /**
@@ -58,25 +50,25 @@ export interface GetTeamMemberResult {
      */
     readonly email: string;
     /**
-     * The team member's given name.
+     * First name.
      */
     readonly firstName: string;
     /**
-     * The 24 character alphanumeric ID of the team member.
+     * The 24-character member ID.
      */
     readonly id: string;
     /**
-     * The team member's family name.
+     * Last name.
      */
     readonly lastName: string;
     /**
-     * The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+     * The role associated with the team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
      */
     readonly role: string;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    readonly roleAttributes: outputs.GetTeamMemberRoleAttribute[];
+    readonly roleAttributes: {[key: string]: string[]};
 }
 /**
  * Provides a LaunchDarkly team member data source.
@@ -98,7 +90,6 @@ export function getTeamMemberOutput(args: GetTeamMemberOutputArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("launchdarkly:index/getTeamMember:getTeamMember", {
         "email": args.email,
-        "roleAttributes": args.roleAttributes,
     }, opts);
 }
 
@@ -110,8 +101,4 @@ export interface GetTeamMemberOutputArgs {
      * The unique email address associated with the team member.
      */
     email: pulumi.Input<string>;
-    /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-     */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.GetTeamMemberRoleAttributeArgs>[] | undefined>;
 }

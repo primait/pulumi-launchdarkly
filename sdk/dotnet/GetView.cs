@@ -82,15 +82,11 @@ namespace Pulumi.Launchdarkly
     public sealed class GetViewResult
     {
         /// <summary>
-        /// Whether the view is archived.
-        /// </summary>
-        public readonly bool Archived;
-        /// <summary>
         /// The view's description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// View ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -98,19 +94,19 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// A list of feature flag keys that are linked to this view.
+        /// Feature flag keys linked to this view.
         /// </summary>
         public readonly ImmutableArray<string> LinkedFlags;
         /// <summary>
-        /// A list of segments that are linked to this view.
+        /// Segments linked to this view.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetViewLinkedSegmentResult> LinkedSegments;
         /// <summary>
-        /// The member ID of the maintainer for this view.
+        /// Member ID of the maintainer.
         /// </summary>
         public readonly string MaintainerId;
         /// <summary>
-        /// The team key of the maintainer team for this view.
+        /// Team key of the maintainer team.
         /// </summary>
         public readonly string MaintainerTeamKey;
         /// <summary>
@@ -122,14 +118,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private GetViewResult(
-            bool archived,
-
             string description,
 
             string id,
@@ -150,7 +144,6 @@ namespace Pulumi.Launchdarkly
 
             ImmutableArray<string> tags)
         {
-            Archived = archived;
             Description = description;
             Id = id;
             Key = key;

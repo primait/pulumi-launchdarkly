@@ -15,9 +15,9 @@ import (
 //
 // This resource allows you to create and manage access tokens within your LaunchDarkly organization.
 //
-// > **Note:** This resource will store the full plaintext secret for your access token in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+// > **Note:** This resource stores the full plaintext secret for your access token in Terraform state. Be sure your state is configured securely before using this resource. To learn more, read Sensitive data in state.
 //
-// The resource must contain either a "role", "customRole" or an "inlineRoles" (previously "policyStatements") block. As of v1.7.0, "policyStatements" has been deprecated in favor of "inlineRoles".
+// The resource must contain either a "role", "customRole" or an "inlineRoles" block.
 //
 // ## Example Usage
 //
@@ -79,24 +79,16 @@ type AccessToken struct {
 
 	// A list of custom role IDs to use as access limits for the access token.
 	CustomRoles pulumi.StringArrayOutput `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	DefaultApiVersion pulumi.IntOutput `pulumi:"defaultApiVersion"`
-	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-	Expire pulumi.IntPtrOutput `pulumi:"expire"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+	// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 	InlineRoles AccessTokenInlineRoleArrayOutput `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-	//
-	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-	PolicyStatements AccessTokenPolicyStatementArrayOutput `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ServiceToken pulumi.BoolPtrOutput `pulumi:"serviceToken"`
+	// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
+	ServiceToken pulumi.BoolOutput `pulumi:"serviceToken"`
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token pulumi.StringOutput `pulumi:"token"`
 }
@@ -137,23 +129,15 @@ func GetAccessToken(ctx *pulumi.Context,
 type accessTokenState struct {
 	// A list of custom role IDs to use as access limits for the access token.
 	CustomRoles []string `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	DefaultApiVersion *int `pulumi:"defaultApiVersion"`
-	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-	Expire *int `pulumi:"expire"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+	// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 	InlineRoles []AccessTokenInlineRole `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name *string `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-	//
-	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role *string `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ServiceToken *bool `pulumi:"serviceToken"`
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token *string `pulumi:"token"`
@@ -162,23 +146,15 @@ type accessTokenState struct {
 type AccessTokenState struct {
 	// A list of custom role IDs to use as access limits for the access token.
 	CustomRoles pulumi.StringArrayInput
-	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	DefaultApiVersion pulumi.IntPtrInput
-	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-	Expire pulumi.IntPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+	// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 	InlineRoles AccessTokenInlineRoleArrayInput
 	// A human-friendly name for the access token.
 	Name pulumi.StringPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-	//
-	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-	PolicyStatements AccessTokenPolicyStatementArrayInput
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrInput
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ServiceToken pulumi.BoolPtrInput
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token pulumi.StringPtrInput
@@ -191,23 +167,15 @@ func (AccessTokenState) ElementType() reflect.Type {
 type accessTokenArgs struct {
 	// A list of custom role IDs to use as access limits for the access token.
 	CustomRoles []string `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	DefaultApiVersion *int `pulumi:"defaultApiVersion"`
-	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-	Expire *int `pulumi:"expire"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+	// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 	InlineRoles []AccessTokenInlineRole `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name *string `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-	//
-	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role *string `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ServiceToken *bool `pulumi:"serviceToken"`
 }
 
@@ -215,23 +183,15 @@ type accessTokenArgs struct {
 type AccessTokenArgs struct {
 	// A list of custom role IDs to use as access limits for the access token.
 	CustomRoles pulumi.StringArrayInput
-	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	DefaultApiVersion pulumi.IntPtrInput
-	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-	Expire pulumi.IntPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+	// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 	InlineRoles AccessTokenInlineRoleArrayInput
 	// A human-friendly name for the access token.
 	Name pulumi.StringPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-	//
-	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-	PolicyStatements AccessTokenPolicyStatementArrayInput
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrInput
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ServiceToken pulumi.BoolPtrInput
 }
 
@@ -327,19 +287,12 @@ func (o AccessTokenOutput) CustomRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringArrayOutput { return v.CustomRoles }).(pulumi.StringArrayOutput)
 }
 
-// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AccessTokenOutput) DefaultApiVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.IntOutput { return v.DefaultApiVersion }).(pulumi.IntOutput)
 }
 
-// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions
-//
-// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
-func (o AccessTokenOutput) Expire() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AccessToken) pulumi.IntPtrOutput { return v.Expire }).(pulumi.IntPtrOutput)
-}
-
-// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
 func (o AccessTokenOutput) InlineRoles() AccessTokenInlineRoleArrayOutput {
 	return o.ApplyT(func(v *AccessToken) AccessTokenInlineRoleArrayOutput { return v.InlineRoles }).(AccessTokenInlineRoleArrayOutput)
 }
@@ -349,21 +302,14 @@ func (o AccessTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
-//
-// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
-func (o AccessTokenOutput) PolicyStatements() AccessTokenPolicyStatementArrayOutput {
-	return o.ApplyT(func(v *AccessToken) AccessTokenPolicyStatementArrayOutput { return v.PolicyStatements }).(AccessTokenPolicyStatementArrayOutput)
-}
-
 // A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 func (o AccessTokenOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o AccessTokenOutput) ServiceToken() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessToken) pulumi.BoolPtrOutput { return v.ServiceToken }).(pulumi.BoolPtrOutput)
+// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o AccessTokenOutput) ServiceToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessToken) pulumi.BoolOutput { return v.ServiceToken }).(pulumi.BoolOutput)
 }
 
 // The access token used to authorize usage of the LaunchDarkly API.

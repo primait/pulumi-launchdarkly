@@ -18,13 +18,50 @@ import (
 // > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 //
 // This resource allows you to manage the IP allowlist configuration for your LaunchDarkly account. There is only one configuration per account, so you should define only a single instance of this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// IP allowlists are an Enterprise feature and use a beta API. There is one IP
+//			// allowlist configuration per account, so define only a single instance of this resource.
+//			_, err := launchdarkly.NewIpAllowlistConfig(ctx, "example", &launchdarkly.IpAllowlistConfigArgs{
+//				SessionAllowlistEnabled: pulumi.Bool(true),
+//				ScopedAllowlistEnabled:  pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// The LaunchDarkly IP allowlist configuration is an account singleton and is imported using its fixed ID `ip-allowlist-config`
+//
+// ```sh
+// $ pulumi import launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig example ip-allowlist-config
+// ```
 type IpAllowlistConfig struct {
 	pulumi.CustomResourceState
 
 	// Whether the scoped (API token) IP allowlist is enabled.
-	ScopedAllowlistEnabled pulumi.BoolPtrOutput `pulumi:"scopedAllowlistEnabled"`
+	ScopedAllowlistEnabled pulumi.BoolOutput `pulumi:"scopedAllowlistEnabled"`
 	// Whether the session IP allowlist is enabled.
-	SessionAllowlistEnabled pulumi.BoolPtrOutput `pulumi:"sessionAllowlistEnabled"`
+	SessionAllowlistEnabled pulumi.BoolOutput `pulumi:"sessionAllowlistEnabled"`
 }
 
 // NewIpAllowlistConfig registers a new resource with the given unique name, arguments, and options.
@@ -177,13 +214,13 @@ func (o IpAllowlistConfigOutput) ToIpAllowlistConfigOutputWithContext(ctx contex
 }
 
 // Whether the scoped (API token) IP allowlist is enabled.
-func (o IpAllowlistConfigOutput) ScopedAllowlistEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IpAllowlistConfig) pulumi.BoolPtrOutput { return v.ScopedAllowlistEnabled }).(pulumi.BoolPtrOutput)
+func (o IpAllowlistConfigOutput) ScopedAllowlistEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IpAllowlistConfig) pulumi.BoolOutput { return v.ScopedAllowlistEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether the session IP allowlist is enabled.
-func (o IpAllowlistConfigOutput) SessionAllowlistEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *IpAllowlistConfig) pulumi.BoolPtrOutput { return v.SessionAllowlistEnabled }).(pulumi.BoolPtrOutput)
+func (o IpAllowlistConfigOutput) SessionAllowlistEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *IpAllowlistConfig) pulumi.BoolOutput { return v.SessionAllowlistEnabled }).(pulumi.BoolOutput)
 }
 
 type IpAllowlistConfigArrayOutput struct{ *pulumi.OutputState }

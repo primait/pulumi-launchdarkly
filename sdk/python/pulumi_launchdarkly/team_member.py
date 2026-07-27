@@ -13,8 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['TeamMemberArgs', 'TeamMember']
 
@@ -26,16 +24,16 @@ class TeamMemberArgs:
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]] = None):
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None):
         """
         The set of arguments for constructing a TeamMember resource.
 
-        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         pulumi.set(__self__, "email", email)
         if custom_roles is not None:
@@ -53,7 +51,7 @@ class TeamMemberArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -111,14 +109,14 @@ class TeamMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]:
+    def role_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "role_attributes")
 
     @role_attributes.setter
-    def role_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]):
+    def role_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "role_attributes", value)
 
 
@@ -130,16 +128,16 @@ class _TeamMemberState:
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]] = None):
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None):
         """
         Input properties used for looking up and filtering TeamMember resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
-        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         if custom_roles is not None:
             pulumi.set(__self__, "custom_roles", custom_roles)
@@ -170,7 +168,7 @@ class _TeamMemberState:
     @pulumi.getter
     def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -216,14 +214,14 @@ class _TeamMemberState:
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]:
+    def role_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "role_attributes")
 
     @role_attributes.setter
-    def role_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamMemberRoleAttributeArgs']]]]):
+    def role_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "role_attributes", value)
 
 
@@ -238,14 +236,14 @@ class TeamMember(pulumi.CustomResource):
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]]] = None,
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly team member resource.
 
         This resource allows you to create and manage team members within your LaunchDarkly organization.
 
-        > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
+        > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://launchdarkly.com/docs/home/account/manage-teams).
 
         ## Example Usage
 
@@ -272,11 +270,11 @@ class TeamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
-        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         ...
     @overload
@@ -289,7 +287,7 @@ class TeamMember(pulumi.CustomResource):
 
         This resource allows you to create and manage team members within your LaunchDarkly organization.
 
-        > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
+        > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://launchdarkly.com/docs/home/account/manage-teams).
 
         ## Example Usage
 
@@ -333,7 +331,7 @@ class TeamMember(pulumi.CustomResource):
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]]] = None,
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,7 +364,7 @@ class TeamMember(pulumi.CustomResource):
             first_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_name: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
-            role_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]]] = None) -> 'TeamMember':
+            role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None) -> 'TeamMember':
         """
         Get an existing TeamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -375,11 +373,11 @@ class TeamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
-        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] email: The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] first_name: The team member's given name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] last_name: TThe team member's family name. Once created, this cannot be updated except by the team member.
         :param pulumi.Input[_builtins.str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamMemberRoleAttributeArgs', 'TeamMemberRoleAttributeArgsDict']]]] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -405,7 +403,7 @@ class TeamMember(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -435,9 +433,9 @@ class TeamMember(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> pulumi.Output[Optional[Sequence['outputs.TeamMemberRoleAttribute']]]:
+    def role_attributes(self) -> pulumi.Output[Optional[Mapping[str, Sequence[_builtins.str]]]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "role_attributes")
 

@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("launchdarkly");
 
 /**
- * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+ * The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
  */
 export declare const access_token: string | undefined;
 Object.defineProperty(exports, "access_token", {
@@ -25,6 +25,17 @@ export declare const api_host: string | undefined;
 Object.defineProperty(exports, "api_host", {
     get() {
         return __config.get("api_host");
+    },
+    enumerable: true,
+});
+
+/**
+ * When `true`, removing a `launchdarkly.FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `launchdarkly.FeatureFlag`. Other resources continue to be deleted on destroy.
+ */
+export declare const archiveFlagsOnDestroy: boolean | undefined;
+Object.defineProperty(exports, "archiveFlagsOnDestroy", {
+    get() {
+        return __config.getObject<boolean>("archiveFlagsOnDestroy");
     },
     enumerable: true,
 });

@@ -12,7 +12,7 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly team to custom role mapping resource.
     /// 
-    /// This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `launchdarkly.Team` resource instead.
+    /// This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://launchdarkly.com/docs/home/account/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `launchdarkly.Team` resource instead.
     /// 
     /// &gt; **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
     /// 
@@ -39,6 +39,53 @@ namespace Pulumi.Launchdarkly
     /// });
     /// ```
     /// 
+    /// ### Scoping a shared custom role across teams
+    /// 
+    /// Use `RoleAttributes` to give the same shared custom role different scopes per team. The values resolve into the role's policy via the `${roleAttribute/&lt;key&gt;}` template, so a single role definition can drive per-team access boundaries (see [Role scope](https://launchdarkly.com/docs/home/account/roles/role-scope)).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Launchdarkly = Pulumi.Launchdarkly;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var teamX = new Launchdarkly.TeamRoleMapping("team_x", new()
+    ///     {
+    ///         TeamKey = "team-x",
+    ///         CustomRoleKeys = new[]
+    ///         {
+    ///             "my-shared-role",
+    ///         },
+    ///         RoleAttributes = 
+    ///         {
+    ///             { "domain", new[]
+    ///             {
+    ///                 "DomainX",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    ///     var teamY = new Launchdarkly.TeamRoleMapping("team_y", new()
+    ///     {
+    ///         TeamKey = "team-y",
+    ///         CustomRoleKeys = new[]
+    ///         {
+    ///             "my-shared-role",
+    ///         },
+    ///         RoleAttributes = 
+    ///         {
+    ///             { "domain", new[]
+    ///             {
+    ///                 "DomainY",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A LaunchDarkly team/role mapping can be imported using the team key:
@@ -51,10 +98,18 @@ namespace Pulumi.Launchdarkly
     public partial class TeamRoleMapping : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        /// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         /// </summary>
         [Output("customRoleKeys")]
         public Output<ImmutableArray<string>> CustomRoleKeys { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+        /// 
+        /// &gt; **Note:** `RoleAttributes` is also exposed on the `launchdarkly.Team` resource. If you manage the same team with both resources, only one of them should own `RoleAttributes`. Add `lifecycle { IgnoreChanges = [RoleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        /// </summary>
+        [Output("roleAttributes")]
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>?> RoleAttributes { get; private set; } = null!;
 
         /// <summary>
         /// The team key.
@@ -113,12 +168,26 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _customRoleKeys;
 
         /// <summary>
-        /// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        /// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         /// </summary>
         public InputList<string> CustomRoleKeys
         {
             get => _customRoleKeys ?? (_customRoleKeys = new InputList<string>());
             set => _customRoleKeys = value;
+        }
+
+        [Input("roleAttributes")]
+        private InputMap<ImmutableArray<string>>? _roleAttributes;
+
+        /// <summary>
+        /// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+        /// 
+        /// &gt; **Note:** `RoleAttributes` is also exposed on the `launchdarkly.Team` resource. If you manage the same team with both resources, only one of them should own `RoleAttributes`. Add `lifecycle { IgnoreChanges = [RoleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> RoleAttributes
+        {
+            get => _roleAttributes ?? (_roleAttributes = new InputMap<ImmutableArray<string>>());
+            set => _roleAttributes = value;
         }
 
         /// <summary>
@@ -139,12 +208,26 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _customRoleKeys;
 
         /// <summary>
-        /// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        /// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         /// </summary>
         public InputList<string> CustomRoleKeys
         {
             get => _customRoleKeys ?? (_customRoleKeys = new InputList<string>());
             set => _customRoleKeys = value;
+        }
+
+        [Input("roleAttributes")]
+        private InputMap<ImmutableArray<string>>? _roleAttributes;
+
+        /// <summary>
+        /// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+        /// 
+        /// &gt; **Note:** `RoleAttributes` is also exposed on the `launchdarkly.Team` resource. If you manage the same team with both resources, only one of them should own `RoleAttributes`. Add `lifecycle { IgnoreChanges = [RoleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> RoleAttributes
+        {
+            get => _roleAttributes ?? (_roleAttributes = new InputMap<ImmutableArray<string>>());
+            set => _roleAttributes = value;
         }
 
         /// <summary>

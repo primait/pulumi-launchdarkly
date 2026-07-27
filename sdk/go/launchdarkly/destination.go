@@ -18,7 +18,7 @@ import (
 //
 // Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
 //
-// To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
+// To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
 //
 // ## Example Usage
 //
@@ -162,17 +162,17 @@ type Destination struct {
 
 	// The destination-specific configuration. To learn more, read Destination-Specific Configs
 	Config pulumi.StringMapOutput `pulumi:"config"`
-	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringOutput `pulumi:"envKey"`
-	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A human-readable name for your data export destination.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the data export destination is on or not.
-	On pulumi.BoolPtrOutput `pulumi:"on"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	On pulumi.BoolOutput `pulumi:"on"`
+	// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -220,34 +220,34 @@ func GetDestination(ctx *pulumi.Context,
 type destinationState struct {
 	// The destination-specific configuration. To learn more, read Destination-Specific Configs
 	Config map[string]string `pulumi:"config"`
-	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey *string `pulumi:"envKey"`
-	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Kind *string `pulumi:"kind"`
 	// A human-readable name for your data export destination.
 	Name *string `pulumi:"name"`
 	// Whether the data export destination is on or not.
 	On *bool `pulumi:"on"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type DestinationState struct {
 	// The destination-specific configuration. To learn more, read Destination-Specific Configs
 	Config pulumi.StringMapInput
-	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringPtrInput
-	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Kind pulumi.StringPtrInput
 	// A human-readable name for your data export destination.
 	Name pulumi.StringPtrInput
 	// Whether the data export destination is on or not.
 	On pulumi.BoolPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
-	// Tags associated with your resource.
+	// Tags associated with this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -258,17 +258,17 @@ func (DestinationState) ElementType() reflect.Type {
 type destinationArgs struct {
 	// The destination-specific configuration. To learn more, read Destination-Specific Configs
 	Config map[string]string `pulumi:"config"`
-	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey string `pulumi:"envKey"`
-	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Kind string `pulumi:"kind"`
 	// A human-readable name for your data export destination.
 	Name *string `pulumi:"name"`
 	// Whether the data export destination is on or not.
 	On *bool `pulumi:"on"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -276,17 +276,17 @@ type destinationArgs struct {
 type DestinationArgs struct {
 	// The destination-specific configuration. To learn more, read Destination-Specific Configs
 	Config pulumi.StringMapInput
-	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringInput
-	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Kind pulumi.StringInput
 	// A human-readable name for your data export destination.
 	Name pulumi.StringPtrInput
 	// Whether the data export destination is on or not.
 	On pulumi.BoolPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
-	// Tags associated with your resource.
+	// Tags associated with this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -382,12 +382,12 @@ func (o DestinationOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
-// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o DestinationOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.EnvKey }).(pulumi.StringOutput)
 }
 
-// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o DestinationOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
@@ -398,16 +398,16 @@ func (o DestinationOutput) Name() pulumi.StringOutput {
 }
 
 // Whether the data export destination is on or not.
-func (o DestinationOutput) On() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Destination) pulumi.BoolPtrOutput { return v.On }).(pulumi.BoolPtrOutput)
+func (o DestinationOutput) On() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.On }).(pulumi.BoolOutput)
 }
 
-// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o DestinationOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with this resource.
 func (o DestinationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

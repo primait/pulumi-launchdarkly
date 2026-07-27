@@ -97,19 +97,13 @@ namespace Pulumi.Launchdarkly
     public sealed class GetMetricArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        [Input("isActive")]
-        public bool? IsActive { get; set; }
-
-        /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric's project key.
         /// </summary>
         [Input("projectKey", required: true)]
         public string ProjectKey { get; set; } = null!;
@@ -123,19 +117,13 @@ namespace Pulumi.Launchdarkly
     public sealed class GetMetricInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        [Input("isActive")]
-        public Input<bool>? IsActive { get; set; }
-
-        /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric's project key.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -151,19 +139,23 @@ namespace Pulumi.Launchdarkly
     public sealed class GetMetricResult
     {
         /// <summary>
-        /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
+        /// The method for analyzing metric events.
         /// </summary>
         public readonly string AnalysisType;
+        /// <summary>
+        /// A set of one or more context kinds that this metric can measure events from.
+        /// </summary>
+        public readonly ImmutableArray<string> AnalysisUnits;
         /// <summary>
         /// The description of the metric's purpose.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The event key for your metric (if custom metric)
+        /// The event key for your metric (if custom metric).
         /// </summary>
         public readonly string EventKey;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID in the format `project_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -171,23 +163,19 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly bool IncludeUnitsWithoutEvents;
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        public readonly bool IsActive;
-        /// <summary>
         /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         public readonly bool IsNumeric;
         /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`.
+        /// The metric type.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// The LaunchDarkly member ID of the maintainer.
         /// </summary>
         public readonly string MaintainerId;
         /// <summary>
@@ -195,49 +183,47 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
+        /// The percentile for the analysis method.
         /// </summary>
         public readonly int PercentileValue;
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric's project key.
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        /// </summary>
-        public readonly ImmutableArray<string> RandomizationUnits;
-        /// <summary>
-        /// The CSS selector for your metric (if click metric)
+        /// The CSS selector for your metric (if click metric).
         /// </summary>
         public readonly string Selector;
         /// <summary>
-        /// The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
+        /// The success criteria for your metric (if numeric metric).
         /// </summary>
         public readonly string SuccessCriteria;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with the metric.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
+        /// The unit for numeric `Custom` metrics.
         /// </summary>
         public readonly string Unit;
         /// <summary>
-        /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
+        /// The method by which multiple unit event values are aggregated.
         /// </summary>
         public readonly string UnitAggregationType;
         /// <summary>
-        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
+        /// URLs associated with the metric.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMetricUrlResult> Urls;
         /// <summary>
-        /// Version of the metric
+        /// Version of the metric.
         /// </summary>
         public readonly int Version;
 
         [OutputConstructor]
         private GetMetricResult(
             string analysisType,
+
+            ImmutableArray<string> analysisUnits,
 
             string description,
 
@@ -246,8 +232,6 @@ namespace Pulumi.Launchdarkly
             string id,
 
             bool includeUnitsWithoutEvents,
-
-            bool isActive,
 
             bool isNumeric,
 
@@ -262,8 +246,6 @@ namespace Pulumi.Launchdarkly
             int percentileValue,
 
             string projectKey,
-
-            ImmutableArray<string> randomizationUnits,
 
             string selector,
 
@@ -280,11 +262,11 @@ namespace Pulumi.Launchdarkly
             int version)
         {
             AnalysisType = analysisType;
+            AnalysisUnits = analysisUnits;
             Description = description;
             EventKey = eventKey;
             Id = id;
             IncludeUnitsWithoutEvents = includeUnitsWithoutEvents;
-            IsActive = isActive;
             IsNumeric = isNumeric;
             Key = key;
             Kind = kind;
@@ -292,7 +274,6 @@ namespace Pulumi.Launchdarkly
             Name = name;
             PercentileValue = percentileValue;
             ProjectKey = projectKey;
-            RandomizationUnits = randomizationUnits;
             Selector = selector;
             SuccessCriteria = successCriteria;
             Tags = tags;

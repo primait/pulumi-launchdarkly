@@ -34,27 +34,25 @@ type LookupViewArgs struct {
 
 // A collection of values returned by getView.
 type LookupViewResult struct {
-	// Whether the view is archived.
-	Archived bool `pulumi:"archived"`
 	// The view's description.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// View ID.
 	Id string `pulumi:"id"`
 	// The view's unique key.
 	Key string `pulumi:"key"`
-	// A list of feature flag keys that are linked to this view.
+	// Feature flag keys linked to this view.
 	LinkedFlags []string `pulumi:"linkedFlags"`
-	// A list of segments that are linked to this view.
+	// Segments linked to this view.
 	LinkedSegments []GetViewLinkedSegment `pulumi:"linkedSegments"`
-	// The member ID of the maintainer for this view.
+	// Member ID of the maintainer.
 	MaintainerId string `pulumi:"maintainerId"`
-	// The team key of the maintainer team for this view.
+	// Team key of the maintainer team.
 	MaintainerTeamKey string `pulumi:"maintainerTeamKey"`
 	// The view's name.
 	Name string `pulumi:"name"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -94,17 +92,12 @@ func (o LookupViewResultOutput) ToLookupViewResultOutputWithContext(ctx context.
 	return o
 }
 
-// Whether the view is archived.
-func (o LookupViewResultOutput) Archived() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupViewResult) bool { return v.Archived }).(pulumi.BoolOutput)
-}
-
 // The view's description.
 func (o LookupViewResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// View ID.
 func (o LookupViewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -114,22 +107,22 @@ func (o LookupViewResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A list of feature flag keys that are linked to this view.
+// Feature flag keys linked to this view.
 func (o LookupViewResultOutput) LinkedFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupViewResult) []string { return v.LinkedFlags }).(pulumi.StringArrayOutput)
 }
 
-// A list of segments that are linked to this view.
+// Segments linked to this view.
 func (o LookupViewResultOutput) LinkedSegments() GetViewLinkedSegmentArrayOutput {
 	return o.ApplyT(func(v LookupViewResult) []GetViewLinkedSegment { return v.LinkedSegments }).(GetViewLinkedSegmentArrayOutput)
 }
 
-// The member ID of the maintainer for this view.
+// Member ID of the maintainer.
 func (o LookupViewResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }
 
-// The team key of the maintainer team for this view.
+// Team key of the maintainer team.
 func (o LookupViewResultOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
@@ -144,7 +137,7 @@ func (o LookupViewResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags.
 func (o LookupViewResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupViewResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

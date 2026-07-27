@@ -14,31 +14,31 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetMetricUrlResult
     {
         /// <summary>
-        /// The URL type. Available choices are `Exact`, `Canonical`, `Substring` and `Regex`.
+        /// The URL type.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// (Required for kind `Regex`) The regex pattern to match by.
+        /// The regex pattern to match by.
         /// </summary>
-        public readonly string? Pattern;
+        public readonly string Pattern;
         /// <summary>
-        /// (Required for kind `Substring`) The URL substring to match by.
+        /// The URL substring to match by.
         /// </summary>
-        public readonly string? Substring;
+        public readonly string Substring;
         /// <summary>
-        /// (Required for kind `Exact` and `Canonical`) The exact or canonical URL.
+        /// The exact or canonical URL.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetMetricUrlResult(
             string kind,
 
-            string? pattern,
+            string pattern,
 
-            string? substring,
+            string substring,
 
-            string? url)
+            string url)
         {
             Kind = kind;
             Pattern = pattern;

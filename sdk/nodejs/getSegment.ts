@@ -57,11 +57,11 @@ export interface GetSegmentArgs {
  */
 export interface GetSegmentResult {
     /**
-     * The segment's creation date represented as a UNIX epoch timestamp.
+     * UNIX epoch ms timestamp.
      */
     readonly creationDate: number;
     /**
-     * The description of the segment's purpose.
+     * Segment description.
      */
     readonly description: string;
     /**
@@ -69,23 +69,23 @@ export interface GetSegmentResult {
      */
     readonly envKey: string;
     /**
-     * List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+     * Non-user target objects excluded from the segment.
      */
     readonly excludedContexts: outputs.GetSegmentExcludedContext[];
     /**
-     * List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+     * User keys excluded from the segment.
      */
     readonly excludeds: string[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Composite ID `project_key/env_key/key`.
      */
     readonly id: string;
     /**
-     * List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+     * Non-user target objects included in the segment.
      */
     readonly includedContexts: outputs.GetSegmentIncludedContext[];
     /**
-     * List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+     * User keys included in the segment.
      */
     readonly includeds: string[];
     /**
@@ -93,7 +93,7 @@ export interface GetSegmentResult {
      */
     readonly key: string;
     /**
-     * The human-friendly name for the segment.
+     * Human-friendly name for the segment.
      */
     readonly name: string;
     /**
@@ -101,27 +101,27 @@ export interface GetSegmentResult {
      */
     readonly projectKey: string;
     /**
-     * List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+     * Custom rules applied to the segment.
      */
     readonly rules: outputs.GetSegmentRule[];
     /**
-     * Tags associated with your resource.
+     * Tags.
      */
     readonly tags: string[];
     /**
-     * Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+     * Whether this is a big segment.
      */
     readonly unbounded: boolean;
     /**
-     * For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
+     * Context kind for the big segment.
      */
     readonly unboundedContextKind: string;
     /**
-     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * View keys linked to this segment.
      */
     readonly viewKeys: string[];
     /**
-     * A list of view keys that this segment is linked to.
+     * Legacy view keys list (backwards-compat).
      */
     readonly views: string[];
 }

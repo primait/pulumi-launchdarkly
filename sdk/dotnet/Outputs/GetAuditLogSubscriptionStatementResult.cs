@@ -15,7 +15,6 @@ namespace Pulumi.Launchdarkly.Outputs
     {
         /// <summary>
         /// The list of action specifiers defining the actions to which the statement applies.
-        /// Either `Actions` or `NotActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>

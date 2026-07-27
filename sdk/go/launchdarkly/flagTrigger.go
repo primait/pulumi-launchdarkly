@@ -18,7 +18,7 @@ import (
 //
 // This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
 //
-// > **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+// > **Note:** This resource stores the sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. To learn more, read Sensitive data in state.
 //
 // ## Example Usage
 //
@@ -67,23 +67,23 @@ import (
 // https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
 // ```
 //
-// Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
+// If you did not save this when you created the resource, you must reset it to get a new value, which can cause breaking changes.
 type FlagTrigger struct {
 	pulumi.CustomResourceState
 
 	// Whether the trigger is currently active or not.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringOutput `pulumi:"envKey"`
-	// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	FlagKey pulumi.StringOutput `pulumi:"flagKey"`
-	// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsOutput `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringOutput `pulumi:"integrationKey"`
-	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
-	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// The unique URL used to invoke the trigger.
 	TriggerUrl pulumi.StringOutput `pulumi:"triggerUrl"`
@@ -143,17 +143,17 @@ func GetFlagTrigger(ctx *pulumi.Context,
 type flagTriggerState struct {
 	// Whether the trigger is currently active or not.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey *string `pulumi:"envKey"`
-	// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	FlagKey *string `pulumi:"flagKey"`
-	// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions *FlagTriggerInstructions `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey *string `pulumi:"integrationKey"`
-	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId *string `pulumi:"maintainerId"`
-	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// The unique URL used to invoke the trigger.
 	TriggerUrl *string `pulumi:"triggerUrl"`
@@ -162,17 +162,17 @@ type flagTriggerState struct {
 type FlagTriggerState struct {
 	// Whether the trigger is currently active or not.
 	Enabled pulumi.BoolPtrInput
-	// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringPtrInput
-	// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	FlagKey pulumi.StringPtrInput
-	// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsPtrInput
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringPtrInput
-	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId pulumi.StringPtrInput
-	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// The unique URL used to invoke the trigger.
 	TriggerUrl pulumi.StringPtrInput
@@ -185,15 +185,15 @@ func (FlagTriggerState) ElementType() reflect.Type {
 type flagTriggerArgs struct {
 	// Whether the trigger is currently active or not.
 	Enabled bool `pulumi:"enabled"`
-	// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey string `pulumi:"envKey"`
-	// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	FlagKey string `pulumi:"flagKey"`
-	// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructions `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey string `pulumi:"integrationKey"`
-	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 }
 
@@ -201,15 +201,15 @@ type flagTriggerArgs struct {
 type FlagTriggerArgs struct {
 	// Whether the trigger is currently active or not.
 	Enabled pulumi.BoolInput
-	// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringInput
-	// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	FlagKey pulumi.StringInput
-	// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsInput
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringInput
-	// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 }
 
@@ -305,32 +305,32 @@ func (o FlagTriggerOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o FlagTriggerOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.EnvKey }).(pulumi.StringOutput)
 }
 
-// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o FlagTriggerOutput) FlagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.FlagKey }).(pulumi.StringOutput)
 }
 
-// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
+// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 func (o FlagTriggerOutput) Instructions() FlagTriggerInstructionsOutput {
 	return o.ApplyT(func(v *FlagTrigger) FlagTriggerInstructionsOutput { return v.Instructions }).(FlagTriggerInstructionsOutput)
 }
 
-// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o FlagTriggerOutput) IntegrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.IntegrationKey }).(pulumi.StringOutput)
 }
 
-// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 func (o FlagTriggerOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.MaintainerId }).(pulumi.StringOutput)
 }
 
-// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o FlagTriggerOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

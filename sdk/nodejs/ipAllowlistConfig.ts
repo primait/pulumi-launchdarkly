@@ -12,6 +12,28 @@ import * as utilities from "./utilities";
  * > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
  *
  * This resource allows you to manage the IP allowlist configuration for your LaunchDarkly account. There is only one configuration per account, so you should define only a single instance of this resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * // IP allowlists are an Enterprise feature and use a beta API. There is one IP
+ * // allowlist configuration per account, so define only a single instance of this resource.
+ * const example = new launchdarkly.IpAllowlistConfig("example", {
+ *     sessionAllowlistEnabled: true,
+ *     scopedAllowlistEnabled: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The LaunchDarkly IP allowlist configuration is an account singleton and is imported using its fixed ID `ip-allowlist-config`
+ *
+ * ```sh
+ * $ pulumi import launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig example ip-allowlist-config
+ * ```
  */
 export class IpAllowlistConfig extends pulumi.CustomResource {
     /**
@@ -44,11 +66,11 @@ export class IpAllowlistConfig extends pulumi.CustomResource {
     /**
      * Whether the scoped (API token) IP allowlist is enabled.
      */
-    declare public readonly scopedAllowlistEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly scopedAllowlistEnabled: pulumi.Output<boolean>;
     /**
      * Whether the session IP allowlist is enabled.
      */
-    declare public readonly sessionAllowlistEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly sessionAllowlistEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a IpAllowlistConfig resource with the given unique name, arguments, and options.

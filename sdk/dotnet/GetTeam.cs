@@ -105,18 +105,6 @@ namespace Pulumi.Launchdarkly
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
-        [Input("roleAttributes")]
-        private List<Inputs.GetTeamRoleAttributeArgs>? _roleAttributes;
-
-        /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-        /// </summary>
-        public List<Inputs.GetTeamRoleAttributeArgs> RoleAttributes
-        {
-            get => _roleAttributes ?? (_roleAttributes = new List<Inputs.GetTeamRoleAttributeArgs>());
-            set => _roleAttributes = value;
-        }
-
         public GetTeamArgs()
         {
         }
@@ -131,18 +119,6 @@ namespace Pulumi.Launchdarkly
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        [Input("roleAttributes")]
-        private InputList<Inputs.GetTeamRoleAttributeInputArgs>? _roleAttributes;
-
-        /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-        /// </summary>
-        public InputList<Inputs.GetTeamRoleAttributeInputArgs> RoleAttributes
-        {
-            get => _roleAttributes ?? (_roleAttributes = new InputList<Inputs.GetTeamRoleAttributeInputArgs>());
-            set => _roleAttributes = value;
-        }
-
         public GetTeamInvokeArgs()
         {
         }
@@ -154,7 +130,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetTeamResult
     {
         /// <summary>
-        /// The list of the keys of the custom roles that you have assigned to the team.
+        /// The list of keys of the custom roles assigned to the team.
         /// </summary>
         public readonly ImmutableArray<string> CustomRoleKeys;
         /// <summary>
@@ -162,7 +138,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The team key.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -170,7 +146,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The list of team maintainers as [team member objects](https://www.terraform.io/providers/launchdarkly/launchdarkly/latest/docs/data-sources/team_member).
+        /// Team maintainers.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTeamMaintainerResult> Maintainers;
         /// <summary>
@@ -182,9 +158,9 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<string> ProjectKeys;
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTeamRoleAttributeResult> RoleAttributes;
+        public readonly ImmutableDictionary<string, ImmutableArray<string>> RoleAttributes;
 
         [OutputConstructor]
         private GetTeamResult(
@@ -202,7 +178,7 @@ namespace Pulumi.Launchdarkly
 
             ImmutableArray<string> projectKeys,
 
-            ImmutableArray<Outputs.GetTeamRoleAttributeResult> roleAttributes)
+            ImmutableDictionary<string, ImmutableArray<string>> roleAttributes)
         {
             CustomRoleKeys = customRoleKeys;
             Description = description;

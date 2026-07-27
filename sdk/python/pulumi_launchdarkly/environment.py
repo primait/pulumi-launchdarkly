@@ -24,7 +24,7 @@ class EnvironmentArgs:
                  color: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
+                 approval_settings: pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  critical: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_track_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -32,21 +32,19 @@ class EnvironmentArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_approval_settings: pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
-        :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] color: RGB hex color (no leading #).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
+        :param pulumi.Input[_builtins.int] default_ttl: TTL (0-60 minutes).
+        :param pulumi.Input[_builtins.str] name: Human-readable name.
+        :param pulumi.Input['EnvironmentSegmentApprovalSettingsArgs'] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+               
+               > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "key", key)
@@ -67,6 +65,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "require_comments", require_comments)
         if secure_mode is not None:
             pulumi.set(__self__, "secure_mode", secure_mode)
+        if segment_approval_settings is not None:
+            pulumi.set(__self__, "segment_approval_settings", segment_approval_settings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -74,7 +74,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[_builtins.str]:
         """
-        The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        RGB hex color (no leading #).
         """
         return pulumi.get(self, "color")
 
@@ -86,7 +86,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project-unique key for the environment.
         """
         return pulumi.get(self, "key")
 
@@ -98,7 +98,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key.
         """
         return pulumi.get(self, "project_key")
 
@@ -108,19 +108,16 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
+    def approval_settings(self) -> pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']]:
         return pulumi.get(self, "approval_settings")
 
     @approval_settings.setter
-    def approval_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
+    def approval_settings(self, value: pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']]):
         pulumi.set(self, "approval_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "confirm_changes")
 
     @confirm_changes.setter
@@ -130,9 +127,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter
     def critical(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Denotes whether the environment is critical.
-        """
         return pulumi.get(self, "critical")
 
     @critical.setter
@@ -142,9 +136,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        """
         return pulumi.get(self, "default_track_events")
 
     @default_track_events.setter
@@ -155,7 +146,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        TTL (0-60 minutes).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -167,7 +158,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the environment.
+        Human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -178,9 +169,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "require_comments")
 
     @require_comments.setter
@@ -190,9 +178,6 @@ class EnvironmentArgs:
     @_builtins.property
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "secure_mode")
 
     @secure_mode.setter
@@ -200,11 +185,22 @@ class EnvironmentArgs:
         pulumi.set(self, "secure_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="segmentApprovalSettings")
+    def segment_approval_settings(self) -> pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']]:
+        """
+        Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+
+        > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+        """
+        return pulumi.get(self, "segment_approval_settings")
+
+    @segment_approval_settings.setter
+    def segment_approval_settings(self, value: pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']]):
+        pulumi.set(self, "segment_approval_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags associated with your resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -216,7 +212,7 @@ class EnvironmentArgs:
 class _EnvironmentState:
     def __init__(__self__, *,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]] = None,
+                 approval_settings: pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']] = None,
                  client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -229,24 +225,19 @@ class _EnvironmentState:
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_approval_settings: pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
-        :param pulumi.Input[_builtins.str] api_key: The environment's SDK key.
-        :param pulumi.Input[_builtins.str] client_side_id: The environment's client-side ID.
-        :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] mobile_key: The environment's mobile key.
-        :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] color: RGB hex color (no leading #).
+        :param pulumi.Input[_builtins.int] default_ttl: TTL (0-60 minutes).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
+        :param pulumi.Input[_builtins.str] name: Human-readable name.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
+        :param pulumi.Input['EnvironmentSegmentApprovalSettingsArgs'] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+               
+               > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -276,15 +267,14 @@ class _EnvironmentState:
             pulumi.set(__self__, "require_comments", require_comments)
         if secure_mode is not None:
             pulumi.set(__self__, "secure_mode", secure_mode)
+        if segment_approval_settings is not None:
+            pulumi.set(__self__, "segment_approval_settings", segment_approval_settings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The environment's SDK key.
-        """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
@@ -293,19 +283,16 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]:
+    def approval_settings(self) -> pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']]:
         return pulumi.get(self, "approval_settings")
 
     @approval_settings.setter
-    def approval_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentApprovalSettingArgs']]]]):
+    def approval_settings(self, value: pulumi.Input[Optional['EnvironmentApprovalSettingsArgs']]):
         pulumi.set(self, "approval_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSideId")
     def client_side_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The environment's client-side ID.
-        """
         return pulumi.get(self, "client_side_id")
 
     @client_side_id.setter
@@ -316,7 +303,7 @@ class _EnvironmentState:
     @pulumi.getter
     def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        RGB hex color (no leading #).
         """
         return pulumi.get(self, "color")
 
@@ -327,9 +314,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "confirm_changes")
 
     @confirm_changes.setter
@@ -339,9 +323,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter
     def critical(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Denotes whether the environment is critical.
-        """
         return pulumi.get(self, "critical")
 
     @critical.setter
@@ -351,9 +332,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        """
         return pulumi.get(self, "default_track_events")
 
     @default_track_events.setter
@@ -364,7 +342,7 @@ class _EnvironmentState:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        TTL (0-60 minutes).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -376,7 +354,7 @@ class _EnvironmentState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project-unique key for the environment.
         """
         return pulumi.get(self, "key")
 
@@ -387,9 +365,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="mobileKey")
     def mobile_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The environment's mobile key.
-        """
         return pulumi.get(self, "mobile_key")
 
     @mobile_key.setter
@@ -400,7 +375,7 @@ class _EnvironmentState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the environment.
+        Human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -412,7 +387,7 @@ class _EnvironmentState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key.
         """
         return pulumi.get(self, "project_key")
 
@@ -423,9 +398,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "require_comments")
 
     @require_comments.setter
@@ -435,9 +407,6 @@ class _EnvironmentState:
     @_builtins.property
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        """
         return pulumi.get(self, "secure_mode")
 
     @secure_mode.setter
@@ -445,11 +414,22 @@ class _EnvironmentState:
         pulumi.set(self, "secure_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="segmentApprovalSettings")
+    def segment_approval_settings(self) -> pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']]:
+        """
+        Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+
+        > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+        """
+        return pulumi.get(self, "segment_approval_settings")
+
+    @segment_approval_settings.setter
+    def segment_approval_settings(self, value: pulumi.Input[Optional['EnvironmentSegmentApprovalSettingsArgs']]):
+        pulumi.set(self, "segment_approval_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags associated with your resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -463,7 +443,7 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  critical: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -474,14 +454,11 @@ class Environment(pulumi.CustomResource):
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly environment resource.
-
-        This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `Project` resource to manage your environments.
-
-        > **Note:** Mixing the use of nested `environments` blocks in the [`Project`] resource and `Environment` resources is not recommended.
 
         ## Example Usage
 
@@ -506,12 +483,32 @@ class Environment(pulumi.CustomResource):
                 "terraform",
                 "staging",
             ],
-            approval_settings=[{
+            approval_settings={
                 "required": True,
                 "can_review_own_request": True,
                 "min_num_approvals": 2,
                 "can_apply_declined_changes": True,
-            }],
+            },
+            project_key=example["key"])
+        # Segment approvals are configured separately from flag approval_settings,
+        # via LaunchDarkly's beta approvals API. Note: enabling segment approvals
+        # while you manage launchdarkly_segment resources in Terraform will make
+        # every subsequent segment change require manual approval before it can be
+        # applied. See https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370.
+        segment_approvals_example = launchdarkly.Environment("segment_approvals_example",
+            name="Segment Approvals Example Environment",
+            key="segment-approvals-example",
+            color="ff00ff",
+            tags=[
+                "terraform",
+                "staging",
+            ],
+            segment_approval_settings={
+                "required": True,
+                "can_review_own_request": True,
+                "min_num_approvals": 2,
+                "can_apply_declined_changes": True,
+            },
             project_key=example["key"])
         ```
 
@@ -526,17 +523,14 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] color: RGB hex color (no leading #).
+        :param pulumi.Input[_builtins.int] default_ttl: TTL (0-60 minutes).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
+        :param pulumi.Input[_builtins.str] name: Human-readable name.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
+        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+               
+               > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """
         ...
     @overload
@@ -546,10 +540,6 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a LaunchDarkly environment resource.
-
-        This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `Project` resource to manage your environments.
-
-        > **Note:** Mixing the use of nested `environments` blocks in the [`Project`] resource and `Environment` resources is not recommended.
 
         ## Example Usage
 
@@ -574,12 +564,32 @@ class Environment(pulumi.CustomResource):
                 "terraform",
                 "staging",
             ],
-            approval_settings=[{
+            approval_settings={
                 "required": True,
                 "can_review_own_request": True,
                 "min_num_approvals": 2,
                 "can_apply_declined_changes": True,
-            }],
+            },
+            project_key=example["key"])
+        # Segment approvals are configured separately from flag approval_settings,
+        # via LaunchDarkly's beta approvals API. Note: enabling segment approvals
+        # while you manage launchdarkly_segment resources in Terraform will make
+        # every subsequent segment change require manual approval before it can be
+        # applied. See https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370.
+        segment_approvals_example = launchdarkly.Environment("segment_approvals_example",
+            name="Segment Approvals Example Environment",
+            key="segment-approvals-example",
+            color="ff00ff",
+            tags=[
+                "terraform",
+                "staging",
+            ],
+            segment_approval_settings={
+                "required": True,
+                "can_review_own_request": True,
+                "min_num_approvals": 2,
+                "can_apply_declined_changes": True,
+            },
             project_key=example["key"])
         ```
 
@@ -607,7 +617,7 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  critical: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -618,6 +628,7 @@ class Environment(pulumi.CustomResource):
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -645,6 +656,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["project_key"] = project_key
             __props__.__dict__["require_comments"] = require_comments
             __props__.__dict__["secure_mode"] = secure_mode
+            __props__.__dict__["segment_approval_settings"] = segment_approval_settings
             __props__.__dict__["tags"] = tags
             __props__.__dict__["api_key"] = None
             __props__.__dict__["client_side_id"] = None
@@ -662,7 +674,7 @@ class Environment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_key: pulumi.Input[Optional[_builtins.str]] = None,
-            approval_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentApprovalSettingArgs', 'EnvironmentApprovalSettingArgsDict']]]]] = None,
+            approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
             client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
             color: pulumi.Input[Optional[_builtins.str]] = None,
             confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -675,6 +687,7 @@ class Environment(pulumi.CustomResource):
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
             secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
@@ -683,20 +696,14 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] api_key: The environment's SDK key.
-        :param pulumi.Input[_builtins.str] client_side_id: The environment's client-side ID.
-        :param pulumi.Input[_builtins.str] color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param pulumi.Input[_builtins.bool] confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] critical: Denotes whether the environment is critical.
-        :param pulumi.Input[_builtins.bool] default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        :param pulumi.Input[_builtins.int] default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] mobile_key: The environment's mobile key.
-        :param pulumi.Input[_builtins.str] name: The name of the environment.
-        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.bool] require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        :param pulumi.Input[_builtins.bool] secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] color: RGB hex color (no leading #).
+        :param pulumi.Input[_builtins.int] default_ttl: TTL (0-60 minutes).
+        :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
+        :param pulumi.Input[_builtins.str] name: Human-readable name.
+        :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
+        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+               
+               > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -716,67 +723,53 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["project_key"] = project_key
         __props__.__dict__["require_comments"] = require_comments
         __props__.__dict__["secure_mode"] = secure_mode
+        __props__.__dict__["segment_approval_settings"] = segment_approval_settings
         __props__.__dict__["tags"] = tags
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[_builtins.str]:
-        """
-        The environment's SDK key.
-        """
         return pulumi.get(self, "api_key")
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> pulumi.Output[Sequence['outputs.EnvironmentApprovalSetting']]:
+    def approval_settings(self) -> pulumi.Output[Optional['outputs.EnvironmentApprovalSettings']]:
         return pulumi.get(self, "approval_settings")
 
     @_builtins.property
     @pulumi.getter(name="clientSideId")
     def client_side_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The environment's client-side ID.
-        """
         return pulumi.get(self, "client_side_id")
 
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Output[_builtins.str]:
         """
-        The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        RGB hex color (no leading #).
         """
         return pulumi.get(self, "color")
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
-    def confirm_changes(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        """
+    def confirm_changes(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "confirm_changes")
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Denotes whether the environment is critical.
-        """
+    def critical(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "critical")
 
     @_builtins.property
     @pulumi.getter(name="defaultTrackEvents")
-    def default_track_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        """
+    def default_track_events(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "default_track_events")
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Output[_builtins.int]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        TTL (0-60 minutes).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -784,23 +777,20 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project-unique key for the environment.
         """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter(name="mobileKey")
     def mobile_key(self) -> pulumi.Output[_builtins.str]:
-        """
-        The environment's mobile key.
-        """
         return pulumi.get(self, "mobile_key")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the environment.
+        Human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -808,31 +798,32 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The LaunchDarkly project key.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter(name="requireComments")
-    def require_comments(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        """
+    def require_comments(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "require_comments")
 
     @_builtins.property
     @pulumi.getter(name="secureMode")
-    def secure_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-        """
+    def secure_mode(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "secure_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentApprovalSettings")
+    def segment_approval_settings(self) -> pulumi.Output[Optional['outputs.EnvironmentSegmentApprovalSettings']]:
+        """
+        Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+
+        > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+        """
+        return pulumi.get(self, "segment_approval_settings")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Tags associated with your resource.
-        """
         return pulumi.get(self, "tags")
 

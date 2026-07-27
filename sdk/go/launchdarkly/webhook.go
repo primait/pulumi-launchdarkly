@@ -80,10 +80,10 @@ type Webhook struct {
 	// The webhook's human-readable name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies whether the webhook is enabled.
-	On pulumi.BoolPtrOutput `pulumi:"on"`
+	On pulumi.BoolOutput `pulumi:"on"`
 	// The secret used to sign the webhook.
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
-	// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+	// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 	Statements WebhookStatementArrayOutput `pulumi:"statements"`
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -137,7 +137,7 @@ type webhookState struct {
 	On *bool `pulumi:"on"`
 	// The secret used to sign the webhook.
 	Secret *string `pulumi:"secret"`
-	// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+	// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 	Statements []WebhookStatement `pulumi:"statements"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
@@ -152,7 +152,7 @@ type WebhookState struct {
 	On pulumi.BoolPtrInput
 	// The secret used to sign the webhook.
 	Secret pulumi.StringPtrInput
-	// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+	// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 	Statements WebhookStatementArrayInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -171,7 +171,7 @@ type webhookArgs struct {
 	On *bool `pulumi:"on"`
 	// The secret used to sign the webhook.
 	Secret *string `pulumi:"secret"`
-	// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+	// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 	Statements []WebhookStatement `pulumi:"statements"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
@@ -187,7 +187,7 @@ type WebhookArgs struct {
 	On pulumi.BoolPtrInput
 	// The secret used to sign the webhook.
 	Secret pulumi.StringPtrInput
-	// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+	// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 	Statements WebhookStatementArrayInput
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput
@@ -288,8 +288,8 @@ func (o WebhookOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies whether the webhook is enabled.
-func (o WebhookOutput) On() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Webhook) pulumi.BoolPtrOutput { return v.On }).(pulumi.BoolPtrOutput)
+func (o WebhookOutput) On() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.BoolOutput { return v.On }).(pulumi.BoolOutput)
 }
 
 // The secret used to sign the webhook.
@@ -297,7 +297,7 @@ func (o WebhookOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
-// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
 func (o WebhookOutput) Statements() WebhookStatementArrayOutput {
 	return o.ApplyT(func(v *Webhook) WebhookStatementArrayOutput { return v.Statements }).(WebhookStatementArrayOutput)
 }

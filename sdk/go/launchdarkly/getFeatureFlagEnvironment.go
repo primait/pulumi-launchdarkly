@@ -55,33 +55,33 @@ func LookupFeatureFlagEnvironment(ctx *pulumi.Context, args *LookupFeatureFlagEn
 type LookupFeatureFlagEnvironmentArgs struct {
 	// The environment key.
 	EnvKey string `pulumi:"envKey"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// Flag ID in the format `project_key/flag_key`.
 	FlagId string `pulumi:"flagId"`
 }
 
 // A collection of values returned by getFeatureFlagEnvironment.
 type LookupFeatureFlagEnvironmentResult struct {
-	// The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+	// Individual context-kind targets per variation.
 	ContextTargets []GetFeatureFlagEnvironmentContextTarget `pulumi:"contextTargets"`
 	// The environment key.
 	EnvKey string `pulumi:"envKey"`
-	// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-	Fallthroughs []GetFeatureFlagEnvironmentFallthrough `pulumi:"fallthroughs"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// Default variation served when no other targeting applies.
+	Fallthrough GetFeatureFlagEnvironmentFallthrough `pulumi:"fallthrough"`
+	// Flag ID in the format `project_key/flag_key`.
 	FlagId string `pulumi:"flagId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Composite ID `project_key/env_key/flag_key`.
 	Id string `pulumi:"id"`
-	// The index of the variation to serve if targeting is disabled.
+	// The index of the variation to serve when targeting is off. This is null when the environment has no off variation set (the UI's "Not set" state), which is distinct from a value of `0`.
 	OffVariation int `pulumi:"offVariation"`
-	// Whether targeting is enabled. Defaults to `false` if not set.
+	// Whether targeting is enabled.
 	On bool `pulumi:"on"`
-	// List of nested blocks describing prerequisite feature flags rules.
+	// Prerequisite flag rules.
 	Prerequisites []GetFeatureFlagEnvironmentPrerequisite `pulumi:"prerequisites"`
-	// List of logical targeting rules.
+	// Logical targeting rules.
 	Rules []GetFeatureFlagEnvironmentRule `pulumi:"rules"`
-	// Set of nested blocks describing the individual user targets for each variation.
+	// Individual user targets per variation.
 	Targets []GetFeatureFlagEnvironmentTarget `pulumi:"targets"`
-	// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+	// Whether to send event data back to LaunchDarkly.
 	TrackEvents bool `pulumi:"trackEvents"`
 }
 
@@ -98,7 +98,7 @@ func LookupFeatureFlagEnvironmentOutput(ctx *pulumi.Context, args LookupFeatureF
 type LookupFeatureFlagEnvironmentOutputArgs struct {
 	// The environment key.
 	EnvKey pulumi.StringInput `pulumi:"envKey"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// Flag ID in the format `project_key/flag_key`.
 	FlagId pulumi.StringInput `pulumi:"flagId"`
 }
 
@@ -121,7 +121,7 @@ func (o LookupFeatureFlagEnvironmentResultOutput) ToLookupFeatureFlagEnvironment
 	return o
 }
 
-// The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+// Individual context-kind targets per variation.
 func (o LookupFeatureFlagEnvironmentResultOutput) ContextTargets() GetFeatureFlagEnvironmentContextTargetArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) []GetFeatureFlagEnvironmentContextTarget {
 		return v.ContextTargets
@@ -133,51 +133,49 @@ func (o LookupFeatureFlagEnvironmentResultOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) string { return v.EnvKey }).(pulumi.StringOutput)
 }
 
-// Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-func (o LookupFeatureFlagEnvironmentResultOutput) Fallthroughs() GetFeatureFlagEnvironmentFallthroughArrayOutput {
-	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) []GetFeatureFlagEnvironmentFallthrough {
-		return v.Fallthroughs
-	}).(GetFeatureFlagEnvironmentFallthroughArrayOutput)
+// Default variation served when no other targeting applies.
+func (o LookupFeatureFlagEnvironmentResultOutput) Fallthrough() GetFeatureFlagEnvironmentFallthroughOutput {
+	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) GetFeatureFlagEnvironmentFallthrough { return v.Fallthrough }).(GetFeatureFlagEnvironmentFallthroughOutput)
 }
 
-// The feature flag's unique `id` in the format `project_key/flag_key`.
+// Flag ID in the format `project_key/flag_key`.
 func (o LookupFeatureFlagEnvironmentResultOutput) FlagId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) string { return v.FlagId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Composite ID `project_key/env_key/flag_key`.
 func (o LookupFeatureFlagEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The index of the variation to serve if targeting is disabled.
+// The index of the variation to serve when targeting is off. This is null when the environment has no off variation set (the UI's "Not set" state), which is distinct from a value of `0`.
 func (o LookupFeatureFlagEnvironmentResultOutput) OffVariation() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) int { return v.OffVariation }).(pulumi.IntOutput)
 }
 
-// Whether targeting is enabled. Defaults to `false` if not set.
+// Whether targeting is enabled.
 func (o LookupFeatureFlagEnvironmentResultOutput) On() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) bool { return v.On }).(pulumi.BoolOutput)
 }
 
-// List of nested blocks describing prerequisite feature flags rules.
+// Prerequisite flag rules.
 func (o LookupFeatureFlagEnvironmentResultOutput) Prerequisites() GetFeatureFlagEnvironmentPrerequisiteArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) []GetFeatureFlagEnvironmentPrerequisite {
 		return v.Prerequisites
 	}).(GetFeatureFlagEnvironmentPrerequisiteArrayOutput)
 }
 
-// List of logical targeting rules.
+// Logical targeting rules.
 func (o LookupFeatureFlagEnvironmentResultOutput) Rules() GetFeatureFlagEnvironmentRuleArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) []GetFeatureFlagEnvironmentRule { return v.Rules }).(GetFeatureFlagEnvironmentRuleArrayOutput)
 }
 
-// Set of nested blocks describing the individual user targets for each variation.
+// Individual user targets per variation.
 func (o LookupFeatureFlagEnvironmentResultOutput) Targets() GetFeatureFlagEnvironmentTargetArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) []GetFeatureFlagEnvironmentTarget { return v.Targets }).(GetFeatureFlagEnvironmentTargetArrayOutput)
 }
 
-// Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+// Whether to send event data back to LaunchDarkly.
 func (o LookupFeatureFlagEnvironmentResultOutput) TrackEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFeatureFlagEnvironmentResult) bool { return v.TrackEvents }).(pulumi.BoolOutput)
 }

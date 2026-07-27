@@ -13,44 +13,29 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetFeatureFlagEnvironmentRuleResult
     {
+        public readonly string BucketBy;
         /// <summary>
-        /// Group percentage rollout by a custom attribute. This argument is only valid if `RolloutWeights` is also specified.
-        /// </summary>
-        public readonly string? BucketBy;
-        /// <summary>
-        /// List of nested blocks specifying the logical clauses to evaluate
+        /// Clauses applied as the rule's logical condition.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentRuleClauseResult> Clauses;
-        /// <summary>
-        /// The context kind associated with the specified rollout. This argument is only valid if `RolloutWeights` is also specified. Defaults to `User` if omitted.
-        /// </summary>
-        public readonly string? ContextKind;
-        /// <summary>
-        /// A human-readable description of the targeting rule.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `True`. The sum of the `RolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `Variation` or `RolloutWeights`.
-        /// </summary>
+        public readonly string ContextKind;
+        public readonly string Description;
         public readonly ImmutableArray<int> RolloutWeights;
-        /// <summary>
-        /// The integer variation index to serve if the rule clauses evaluate to `True`. You must specify either `Variation` or `RolloutWeights`
-        /// </summary>
-        public readonly int? Variation;
+        public readonly int Variation;
 
         [OutputConstructor]
         private GetFeatureFlagEnvironmentRuleResult(
-            string? bucketBy,
+            string bucketBy,
 
             ImmutableArray<Outputs.GetFeatureFlagEnvironmentRuleClauseResult> clauses,
 
-            string? contextKind,
+            string contextKind,
 
-            string? description,
+            string description,
 
             ImmutableArray<int> rolloutWeights,
 
-            int? variation)
+            int variation)
         {
             BucketBy = bucketBy;
             Clauses = clauses;

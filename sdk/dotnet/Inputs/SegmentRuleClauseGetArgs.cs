@@ -31,7 +31,7 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<bool>? Negate { get; set; }
 
         /// <summary>
-        /// The operator associated with the rule clause. Available options are `In`, `endsWith`, `startsWith`, `Matches`, `Contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `Before`, `After`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        /// The operator associated with the rule clause. Available options are `In`, `endsWith`, `startsWith`, `Matches`, `Contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `Before`, `After`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         /// </summary>
         [Input("op", required: true)]
         public Input<string> Op { get; set; } = null!;

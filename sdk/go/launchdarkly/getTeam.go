@@ -56,28 +56,26 @@ func LookupTeam(ctx *pulumi.Context, args *LookupTeamArgs, opts ...pulumi.Invoke
 type LookupTeamArgs struct {
 	// The team key.
 	Key string `pulumi:"key"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []GetTeamRoleAttribute `pulumi:"roleAttributes"`
 }
 
 // A collection of values returned by getTeam.
 type LookupTeamResult struct {
-	// The list of the keys of the custom roles that you have assigned to the team.
+	// The list of keys of the custom roles assigned to the team.
 	CustomRoleKeys []string `pulumi:"customRoleKeys"`
 	// The team description.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// The team key.
 	Id string `pulumi:"id"`
 	// The team key.
 	Key string `pulumi:"key"`
-	// The list of team maintainers as [team member objects](https://www.terraform.io/providers/launchdarkly/launchdarkly/latest/docs/data-sources/team_member).
+	// Team maintainers.
 	Maintainers []GetTeamMaintainer `pulumi:"maintainers"`
 	// Human-readable name for the team.
 	Name string `pulumi:"name"`
 	// The list of keys of the projects that the team has any write access to.
 	ProjectKeys []string `pulumi:"projectKeys"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []GetTeamRoleAttribute `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 }
 
 func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pulumi.InvokeOption) LookupTeamResultOutput {
@@ -93,8 +91,6 @@ func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pu
 type LookupTeamOutputArgs struct {
 	// The team key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes GetTeamRoleAttributeArrayInput `pulumi:"roleAttributes"`
 }
 
 func (LookupTeamOutputArgs) ElementType() reflect.Type {
@@ -116,7 +112,7 @@ func (o LookupTeamResultOutput) ToLookupTeamResultOutputWithContext(ctx context.
 	return o
 }
 
-// The list of the keys of the custom roles that you have assigned to the team.
+// The list of keys of the custom roles assigned to the team.
 func (o LookupTeamResultOutput) CustomRoleKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTeamResult) []string { return v.CustomRoleKeys }).(pulumi.StringArrayOutput)
 }
@@ -126,7 +122,7 @@ func (o LookupTeamResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The team key.
 func (o LookupTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -136,7 +132,7 @@ func (o LookupTeamResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The list of team maintainers as [team member objects](https://www.terraform.io/providers/launchdarkly/launchdarkly/latest/docs/data-sources/team_member).
+// Team maintainers.
 func (o LookupTeamResultOutput) Maintainers() GetTeamMaintainerArrayOutput {
 	return o.ApplyT(func(v LookupTeamResult) []GetTeamMaintainer { return v.Maintainers }).(GetTeamMaintainerArrayOutput)
 }
@@ -151,9 +147,9 @@ func (o LookupTeamResultOutput) ProjectKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTeamResult) []string { return v.ProjectKeys }).(pulumi.StringArrayOutput)
 }
 
-// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-func (o LookupTeamResultOutput) RoleAttributes() GetTeamRoleAttributeArrayOutput {
-	return o.ApplyT(func(v LookupTeamResult) []GetTeamRoleAttribute { return v.RoleAttributes }).(GetTeamRoleAttributeArrayOutput)
+// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+func (o LookupTeamResultOutput) RoleAttributes() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v LookupTeamResult) map[string][]string { return v.RoleAttributes }).(pulumi.StringArrayMapOutput)
 }
 
 func init() {

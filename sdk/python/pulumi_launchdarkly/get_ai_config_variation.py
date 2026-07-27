@@ -94,7 +94,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The variation's description (used in agent mode).
+        The variation's description. Used in agent mode.
         """
         return pulumi.get(self, "description")
 
@@ -102,7 +102,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID in the format `project_key/config_key/key`.
         """
         return pulumi.get(self, "id")
 
@@ -110,7 +110,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter
     def instructions(self) -> _builtins.str:
         """
-        The variation's instructions (used in agent mode).
+        The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
 
@@ -126,7 +126,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter
     def messages(self) -> Sequence['outputs.GetAiConfigVariationMessageResult']:
         """
-        A list of messages for completion mode. Each message has a `role` and `content`.
+        A list of messages for completion mode.
         """
         return pulumi.get(self, "messages")
 
@@ -134,7 +134,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter
     def model(self) -> _builtins.str:
         """
-        A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
+        A JSON string representing the inline model configuration.
         """
         return pulumi.get(self, "model")
 
@@ -142,7 +142,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter(name="modelConfigKey")
     def model_config_key(self) -> _builtins.str:
         """
-        The key of a model config resource to use for this variation. Conflicts with `model`.
+        The key of a model config resource used for this variation.
         """
         return pulumi.get(self, "model_config_key")
 
@@ -174,7 +174,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> Sequence[_builtins.str]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         """
         return pulumi.get(self, "tool_keys")
 

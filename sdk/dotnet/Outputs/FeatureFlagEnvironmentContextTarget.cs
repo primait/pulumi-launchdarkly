@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class FeatureFlagEnvironmentContextTarget
     {
         /// <summary>
-        /// The context kind on which the flag should target in this environment. User (`User`) targets should be specified as `Targets` attribute blocks.
+        /// The context kind on which the flag should target in this environment. User (`User`) targets should be specified as `Targets`.
         /// </summary>
         public readonly string ContextKind;
         /// <summary>

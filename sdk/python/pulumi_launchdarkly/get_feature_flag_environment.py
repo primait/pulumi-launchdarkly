@@ -27,16 +27,16 @@ class GetFeatureFlagEnvironmentResult:
     """
     A collection of values returned by getFeatureFlagEnvironment.
     """
-    def __init__(__self__, context_targets=None, env_key=None, fallthroughs=None, flag_id=None, id=None, off_variation=None, on=None, prerequisites=None, rules=None, targets=None, track_events=None):
+    def __init__(__self__, context_targets=None, env_key=None, fallthrough=None, flag_id=None, id=None, off_variation=None, on=None, prerequisites=None, rules=None, targets=None, track_events=None):
         if context_targets and not isinstance(context_targets, list):
             raise TypeError("Expected argument 'context_targets' to be a list")
         pulumi.set(__self__, "context_targets", context_targets)
         if env_key and not isinstance(env_key, str):
             raise TypeError("Expected argument 'env_key' to be a str")
         pulumi.set(__self__, "env_key", env_key)
-        if fallthroughs and not isinstance(fallthroughs, list):
-            raise TypeError("Expected argument 'fallthroughs' to be a list")
-        pulumi.set(__self__, "fallthroughs", fallthroughs)
+        if fallthrough and not isinstance(fallthrough, dict):
+            raise TypeError("Expected argument 'fallthrough' to be a dict")
+        pulumi.set(__self__, "fallthrough", fallthrough)
         if flag_id and not isinstance(flag_id, str):
             raise TypeError("Expected argument 'flag_id' to be a str")
         pulumi.set(__self__, "flag_id", flag_id)
@@ -66,7 +66,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter(name="contextTargets")
     def context_targets(self) -> Sequence['outputs.GetFeatureFlagEnvironmentContextTargetResult']:
         """
-        The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        Individual context-kind targets per variation.
         """
         return pulumi.get(self, "context_targets")
 
@@ -80,17 +80,17 @@ class GetFeatureFlagEnvironmentResult:
 
     @_builtins.property
     @pulumi.getter
-    def fallthroughs(self) -> Sequence['outputs.GetFeatureFlagEnvironmentFallthroughResult']:
+    def fallthrough(self) -> 'outputs.GetFeatureFlagEnvironmentFallthroughResult':
         """
-        Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        Default variation served when no other targeting applies.
         """
-        return pulumi.get(self, "fallthroughs")
+        return pulumi.get(self, "fallthrough")
 
     @_builtins.property
     @pulumi.getter(name="flagId")
     def flag_id(self) -> _builtins.str:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`.
+        Flag ID in the format `project_key/flag_key`.
         """
         return pulumi.get(self, "flag_id")
 
@@ -98,7 +98,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Composite ID `project_key/env_key/flag_key`.
         """
         return pulumi.get(self, "id")
 
@@ -106,7 +106,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> _builtins.int:
         """
-        The index of the variation to serve if targeting is disabled.
+        The index of the variation to serve when targeting is off. This is null when the environment has no off variation set (the UI's "Not set" state), which is distinct from a value of `0`.
         """
         return pulumi.get(self, "off_variation")
 
@@ -114,7 +114,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter
     def on(self) -> _builtins.bool:
         """
-        Whether targeting is enabled. Defaults to `false` if not set.
+        Whether targeting is enabled.
         """
         return pulumi.get(self, "on")
 
@@ -122,7 +122,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter
     def prerequisites(self) -> Sequence['outputs.GetFeatureFlagEnvironmentPrerequisiteResult']:
         """
-        List of nested blocks describing prerequisite feature flags rules.
+        Prerequisite flag rules.
         """
         return pulumi.get(self, "prerequisites")
 
@@ -130,7 +130,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetFeatureFlagEnvironmentRuleResult']:
         """
-        List of logical targeting rules.
+        Logical targeting rules.
         """
         return pulumi.get(self, "rules")
 
@@ -138,7 +138,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter
     def targets(self) -> Sequence['outputs.GetFeatureFlagEnvironmentTargetResult']:
         """
-        Set of nested blocks describing the individual user targets for each variation.
+        Individual user targets per variation.
         """
         return pulumi.get(self, "targets")
 
@@ -146,7 +146,7 @@ class GetFeatureFlagEnvironmentResult:
     @pulumi.getter(name="trackEvents")
     def track_events(self) -> _builtins.bool:
         """
-        Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+        Whether to send event data back to LaunchDarkly.
         """
         return pulumi.get(self, "track_events")
 
@@ -159,7 +159,7 @@ class AwaitableGetFeatureFlagEnvironmentResult(GetFeatureFlagEnvironmentResult):
         return GetFeatureFlagEnvironmentResult(
             context_targets=self.context_targets,
             env_key=self.env_key,
-            fallthroughs=self.fallthroughs,
+            fallthrough=self.fallthrough,
             flag_id=self.flag_id,
             id=self.id,
             off_variation=self.off_variation,
@@ -190,7 +190,7 @@ def get_feature_flag_environment(env_key: Optional[_builtins.str] = None,
 
 
     :param _builtins.str env_key: The environment key.
-    :param _builtins.str flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+    :param _builtins.str flag_id: Flag ID in the format `project_key/flag_key`.
     """
     __args__ = dict()
     __args__['envKey'] = env_key
@@ -201,7 +201,7 @@ def get_feature_flag_environment(env_key: Optional[_builtins.str] = None,
     return AwaitableGetFeatureFlagEnvironmentResult(
         context_targets=pulumi.get(__ret__, 'context_targets'),
         env_key=pulumi.get(__ret__, 'env_key'),
-        fallthroughs=pulumi.get(__ret__, 'fallthroughs'),
+        fallthrough=pulumi.get(__ret__, 'fallthrough'),
         flag_id=pulumi.get(__ret__, 'flag_id'),
         id=pulumi.get(__ret__, 'id'),
         off_variation=pulumi.get(__ret__, 'off_variation'),
@@ -230,7 +230,7 @@ def get_feature_flag_environment_output(env_key: pulumi.Input[Optional[_builtins
 
 
     :param _builtins.str env_key: The environment key.
-    :param _builtins.str flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+    :param _builtins.str flag_id: Flag ID in the format `project_key/flag_key`.
     """
     __args__ = dict()
     __args__['envKey'] = env_key
@@ -240,7 +240,7 @@ def get_feature_flag_environment_output(env_key: pulumi.Input[Optional[_builtins
     return __ret__.apply(lambda __response__: GetFeatureFlagEnvironmentResult(
         context_targets=pulumi.get(__response__, 'context_targets'),
         env_key=pulumi.get(__response__, 'env_key'),
-        fallthroughs=pulumi.get(__response__, 'fallthroughs'),
+        fallthrough=pulumi.get(__response__, 'fallthrough'),
         flag_id=pulumi.get(__response__, 'flag_id'),
         id=pulumi.get(__response__, 'id'),
         off_variation=pulumi.get(__response__, 'off_variation'),

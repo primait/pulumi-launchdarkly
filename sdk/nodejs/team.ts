@@ -2,9 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -73,33 +70,33 @@ export class Team extends pulumi.CustomResource {
     }
 
     /**
-     * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+     * List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
-    declare public readonly customRoleKeys: pulumi.Output<string[] | undefined>;
+    declare public readonly customRoleKeys: pulumi.Output<string[]>;
     /**
      * The team description.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
-     * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The team key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
      * List of member IDs for users who maintain the team.
      */
-    declare public readonly maintainers: pulumi.Output<string[] | undefined>;
+    declare public readonly maintainers: pulumi.Output<string[]>;
     /**
      * List of member IDs who belong to the team.
      */
-    declare public readonly memberIds: pulumi.Output<string[] | undefined>;
+    declare public readonly memberIds: pulumi.Output<string[]>;
     /**
      * A human-friendly name for the team.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    declare public readonly roleAttributes: pulumi.Output<outputs.TeamRoleAttribute[] | undefined>;
+    declare public readonly roleAttributes: pulumi.Output<{[key: string]: string[]} | undefined>;
 
     /**
      * Create a Team resource with the given unique name, arguments, and options.
@@ -144,7 +141,7 @@ export class Team extends pulumi.CustomResource {
  */
 export interface TeamState {
     /**
-     * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+     * List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
     customRoleKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -152,7 +149,7 @@ export interface TeamState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The team key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -168,9 +165,9 @@ export interface TeamState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[] | undefined>;
+    roleAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
 }
 
 /**
@@ -178,7 +175,7 @@ export interface TeamState {
  */
 export interface TeamArgs {
     /**
-     * List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+     * List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
      */
     customRoleKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -186,7 +183,7 @@ export interface TeamArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The team key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The team key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -202,7 +199,7 @@ export interface TeamArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamRoleAttribute>[] | undefined>;
+    roleAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
 }

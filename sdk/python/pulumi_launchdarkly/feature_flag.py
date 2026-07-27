@@ -24,47 +24,47 @@ class FeatureFlagArgs:
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
                  variation_type: pulumi.Input[_builtins.str],
+                 variations: pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]],
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
-                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
+                 client_side_availability: pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]] = None,
                  defaults: pulumi.Input[Optional['FeatureFlagDefaultsArgs']] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
-                 variations: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None,
                  view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
 
-        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag.
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-        :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input['FeatureFlagClientSideAvailabilityArgs'] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
         pulumi.set(__self__, "variation_type", variation_type)
+        pulumi.set(__self__, "variations", variations)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
-        if client_side_availabilities is not None:
-            pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
+        if client_side_availability is not None:
+            pulumi.set(__self__, "client_side_availability", client_side_availability)
         if custom_properties is not None:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
@@ -73,11 +73,6 @@ class FeatureFlagArgs:
             pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if include_in_snippet is not None:
-            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
-            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-        if include_in_snippet is not None:
-            pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if maintainer_id is not None:
             pulumi.set(__self__, "maintainer_id", maintainer_id)
         if maintainer_team_key is not None:
@@ -88,8 +83,6 @@ class FeatureFlagArgs:
             pulumi.set(__self__, "tags", tags)
         if temporary is not None:
             pulumi.set(__self__, "temporary", temporary)
-        if variations is not None:
-            pulumi.set(__self__, "variations", variations)
         if view_keys is not None:
             pulumi.set(__self__, "view_keys", view_keys)
 
@@ -97,7 +90,7 @@ class FeatureFlagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -109,7 +102,7 @@ class FeatureFlagArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -121,13 +114,25 @@ class FeatureFlagArgs:
     @pulumi.getter(name="variationType")
     def variation_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "variation_type")
 
     @variation_type.setter
     def variation_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "variation_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variations(self) -> pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]:
+        """
+        An array of possible variations for the flag.
+        """
+        return pulumi.get(self, "variations")
+
+    @variations.setter
+    def variations(self, value: pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]):
+        pulumi.set(self, "variations", value)
 
     @_builtins.property
     @pulumi.getter
@@ -142,31 +147,34 @@ class FeatureFlagArgs:
         pulumi.set(self, "archived", value)
 
     @_builtins.property
-    @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
-        return pulumi.get(self, "client_side_availabilities")
+    @pulumi.getter(name="clientSideAvailability")
+    def client_side_availability(self) -> pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']]:
+        """
+        Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        """
+        return pulumi.get(self, "client_side_availability")
 
-    @client_side_availabilities.setter
-    def client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
-        pulumi.set(self, "client_side_availabilities", value)
+    @client_side_availability.setter
+    def client_side_availability(self, value: pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']]):
+        pulumi.set(self, "client_side_availability", value)
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
+    def custom_properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+        The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         """
         return pulumi.get(self, "custom_properties")
 
     @custom_properties.setter
-    def custom_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
+    def custom_properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]]):
         pulumi.set(self, "custom_properties", value)
 
     @_builtins.property
     @pulumi.getter
     def defaults(self) -> pulumi.Input[Optional['FeatureFlagDefaultsArgs']]:
         """
-        A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         """
         return pulumi.get(self, "defaults")
 
@@ -199,23 +207,10 @@ class FeatureFlagArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
-
-    @include_in_snippet.setter
-    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "include_in_snippet", value)
-
-    @_builtins.property
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -272,22 +267,10 @@ class FeatureFlagArgs:
         pulumi.set(self, "temporary", value)
 
     @_builtins.property
-    @pulumi.getter
-    def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
-        """
-        An array of possible variations for the flag
-        """
-        return pulumi.get(self, "variations")
-
-    @variations.setter
-    def variations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]):
-        pulumi.set(self, "variations", value)
-
-    @_builtins.property
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
@@ -300,12 +283,11 @@ class FeatureFlagArgs:
 class _FeatureFlagState:
     def __init__(__self__, *,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
-                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
+                 client_side_availability: pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]] = None,
                  defaults: pulumi.Input[Optional['FeatureFlagDefaultsArgs']] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -320,26 +302,26 @@ class _FeatureFlagState:
         Input properties used for looking up and filtering FeatureFlag resources.
 
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-        :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input['FeatureFlagClientSideAvailabilityArgs'] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
-        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: An array of possible variations for the flag.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
-        if client_side_availabilities is not None:
-            pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
+        if client_side_availability is not None:
+            pulumi.set(__self__, "client_side_availability", client_side_availability)
         if custom_properties is not None:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
@@ -348,11 +330,6 @@ class _FeatureFlagState:
             pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if include_in_snippet is not None:
-            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
-            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-        if include_in_snippet is not None:
-            pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if maintainer_id is not None:
@@ -387,31 +364,34 @@ class _FeatureFlagState:
         pulumi.set(self, "archived", value)
 
     @_builtins.property
-    @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
-        return pulumi.get(self, "client_side_availabilities")
+    @pulumi.getter(name="clientSideAvailability")
+    def client_side_availability(self) -> pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']]:
+        """
+        Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        """
+        return pulumi.get(self, "client_side_availability")
 
-    @client_side_availabilities.setter
-    def client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
-        pulumi.set(self, "client_side_availabilities", value)
+    @client_side_availability.setter
+    def client_side_availability(self, value: pulumi.Input[Optional['FeatureFlagClientSideAvailabilityArgs']]):
+        pulumi.set(self, "client_side_availability", value)
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
+    def custom_properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+        The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         """
         return pulumi.get(self, "custom_properties")
 
     @custom_properties.setter
-    def custom_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]):
+    def custom_properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]]]):
         pulumi.set(self, "custom_properties", value)
 
     @_builtins.property
     @pulumi.getter
     def defaults(self) -> pulumi.Input[Optional['FeatureFlagDefaultsArgs']]:
         """
-        A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         """
         return pulumi.get(self, "defaults")
 
@@ -444,23 +424,10 @@ class _FeatureFlagState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
-
-    @include_in_snippet.setter
-    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "include_in_snippet", value)
-
-    @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -472,7 +439,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -508,7 +475,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -544,7 +511,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="variationType")
     def variation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "variation_type")
 
@@ -556,7 +523,7 @@ class _FeatureFlagState:
     @pulumi.getter
     def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
         """
-        An array of possible variations for the flag
+        An array of possible variations for the flag.
         """
         return pulumi.get(self, "variations")
 
@@ -568,7 +535,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 
@@ -584,12 +551,11 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
                  defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,10 +604,10 @@ class FeatureFlag(pulumi.CustomResource):
                     "description": "The strongest variation",
                 },
             ],
-            client_side_availabilities=[{
+            client_side_availability={
                 "using_environment_id": False,
                 "using_mobile_key": True,
-            }],
+            },
             defaults={
                 "on_variation": 2,
                 "off_variation": 0,
@@ -722,21 +688,21 @@ class FeatureFlag(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
-        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         ...
     @overload
@@ -781,10 +747,10 @@ class FeatureFlag(pulumi.CustomResource):
                     "description": "The strongest variation",
                 },
             ],
-            client_side_availabilities=[{
+            client_side_availability={
                 "using_environment_id": False,
                 "using_mobile_key": True,
-            }],
+            },
             defaults={
                 "on_variation": 2,
                 "off_variation": 0,
@@ -878,12 +844,11 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-                 custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
                  defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -904,12 +869,11 @@ class FeatureFlag(pulumi.CustomResource):
             __props__ = FeatureFlagArgs.__new__(FeatureFlagArgs)
 
             __props__.__dict__["archived"] = archived
-            __props__.__dict__["client_side_availabilities"] = client_side_availabilities
+            __props__.__dict__["client_side_availability"] = client_side_availability
             __props__.__dict__["custom_properties"] = custom_properties
             __props__.__dict__["defaults"] = defaults
             __props__.__dict__["deprecated"] = deprecated
             __props__.__dict__["description"] = description
-            __props__.__dict__["include_in_snippet"] = include_in_snippet
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -924,6 +888,8 @@ class FeatureFlag(pulumi.CustomResource):
             if variation_type is None and not opts.urn:
                 raise TypeError("Missing required property 'variation_type'")
             __props__.__dict__["variation_type"] = variation_type
+            if variations is None and not opts.urn:
+                raise TypeError("Missing required property 'variations'")
             __props__.__dict__["variations"] = variations
             __props__.__dict__["view_keys"] = view_keys
         super(FeatureFlag, __self__).__init__(
@@ -937,12 +903,11 @@ class FeatureFlag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             archived: pulumi.Input[Optional[_builtins.bool]] = None,
-            client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]]]] = None,
-            custom_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]]] = None,
+            client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
+            custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
             defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
             deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
             maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -961,33 +926,32 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagCustomPropertyArgs', 'FeatureFlagCustomPropertyArgsDict']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
-        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
-        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FeatureFlagState.__new__(_FeatureFlagState)
 
         __props__.__dict__["archived"] = archived
-        __props__.__dict__["client_side_availabilities"] = client_side_availabilities
+        __props__.__dict__["client_side_availability"] = client_side_availability
         __props__.__dict__["custom_properties"] = custom_properties
         __props__.__dict__["defaults"] = defaults
         __props__.__dict__["deprecated"] = deprecated
         __props__.__dict__["description"] = description
-        __props__.__dict__["include_in_snippet"] = include_in_snippet
         __props__.__dict__["key"] = key
         __props__.__dict__["maintainer_id"] = maintainer_id
         __props__.__dict__["maintainer_team_key"] = maintainer_team_key
@@ -1002,36 +966,39 @@ class FeatureFlag(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def archived(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
         """
         return pulumi.get(self, "archived")
 
     @_builtins.property
-    @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> pulumi.Output[Sequence['outputs.FeatureFlagClientSideAvailability']]:
-        return pulumi.get(self, "client_side_availabilities")
+    @pulumi.getter(name="clientSideAvailability")
+    def client_side_availability(self) -> pulumi.Output[Optional['outputs.FeatureFlagClientSideAvailability']]:
+        """
+        Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        """
+        return pulumi.get(self, "client_side_availability")
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagCustomProperty']]]:
+    def custom_properties(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.FeatureFlagCustomProperties']]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+        The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         """
         return pulumi.get(self, "custom_properties")
 
     @_builtins.property
     @pulumi.getter
-    def defaults(self) -> pulumi.Output['outputs.FeatureFlagDefaults']:
+    def defaults(self) -> pulumi.Output[Optional['outputs.FeatureFlagDefaults']]:
         """
-        A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         """
         return pulumi.get(self, "defaults")
 
     @_builtins.property
     @pulumi.getter
-    def deprecated(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def deprecated(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         """
@@ -1046,19 +1013,10 @@ class FeatureFlag(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
-
-    @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -1066,7 +1024,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -1090,7 +1048,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -1104,7 +1062,7 @@ class FeatureFlag(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def temporary(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether the flag is a temporary flag.
         """
@@ -1114,7 +1072,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="variationType")
     def variation_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "variation_type")
 
@@ -1122,7 +1080,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter
     def variations(self) -> pulumi.Output[Sequence['outputs.FeatureFlagVariation']]:
         """
-        An array of possible variations for the flag
+        An array of possible variations for the flag.
         """
         return pulumi.get(self, "variations")
 
@@ -1130,7 +1088,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         return pulumi.get(self, "view_keys")
 

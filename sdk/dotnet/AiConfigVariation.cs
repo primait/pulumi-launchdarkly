@@ -61,7 +61,7 @@ namespace Pulumi.Launchdarkly
     public partial class AiConfigVariation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("configKey")]
         public Output<string> ConfigKey { get; private set; } = null!;
@@ -73,19 +73,19 @@ namespace Pulumi.Launchdarkly
         public Output<int> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The variation's description (used in agent mode).
+        /// The variation's description. Used in agent mode.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The variation's instructions (used in agent mode).
+        /// The variation's instructions. Used in agent mode.
         /// </summary>
         [Output("instructions")]
         public Output<string?> Instructions { get; private set; } = null!;
 
         /// <summary>
-        /// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -100,13 +100,13 @@ namespace Pulumi.Launchdarkly
         /// A JSON string representing the inline model configuration for the variation. Conflicts with `ModelConfigKey`.
         /// </summary>
         [Output("model")]
-        public Output<string?> Model { get; private set; } = null!;
+        public Output<string> Model { get; private set; } = null!;
 
         /// <summary>
         /// The key of a model config resource to use for this variation. Conflicts with `Model`.
         /// </summary>
         [Output("modelConfigKey")]
-        public Output<string?> ModelConfigKey { get; private set; } = null!;
+        public Output<string> ModelConfigKey { get; private set; } = null!;
 
         /// <summary>
         /// The variation's human-readable name.
@@ -115,7 +115,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         /// </summary>
         [Output("toolKeys")]
         public Output<ImmutableArray<string>> ToolKeys { get; private set; } = null!;
@@ -192,25 +192,25 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigVariationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("configKey", required: true)]
         public Input<string> ConfigKey { get; set; } = null!;
 
         /// <summary>
-        /// The variation's description (used in agent mode).
+        /// The variation's description. Used in agent mode.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The variation's instructions (used in agent mode).
+        /// The variation's instructions. Used in agent mode.
         /// </summary>
         [Input("instructions")]
         public Input<string>? Instructions { get; set; }
 
         /// <summary>
-        /// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _toolKeys;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         /// </summary>
         public InputList<string> ToolKeys
         {
@@ -278,7 +278,7 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigVariationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("configKey")]
         public Input<string>? ConfigKey { get; set; }
@@ -290,19 +290,19 @@ namespace Pulumi.Launchdarkly
         public Input<int>? CreationDate { get; set; }
 
         /// <summary>
-        /// The variation's description (used in agent mode).
+        /// The variation's description. Used in agent mode.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The variation's instructions (used in agent mode).
+        /// The variation's instructions. Used in agent mode.
         /// </summary>
         [Input("instructions")]
         public Input<string>? Instructions { get; set; }
 
         /// <summary>
-        /// The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _toolKeys;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         /// </summary>
         public InputList<string> ToolKeys
         {

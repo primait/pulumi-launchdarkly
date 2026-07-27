@@ -39,15 +39,11 @@ export interface GetViewArgs {
  */
 export interface GetViewResult {
     /**
-     * Whether the view is archived.
-     */
-    readonly archived: boolean;
-    /**
      * The view's description.
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * View ID.
      */
     readonly id: string;
     /**
@@ -55,19 +51,19 @@ export interface GetViewResult {
      */
     readonly key: string;
     /**
-     * A list of feature flag keys that are linked to this view.
+     * Feature flag keys linked to this view.
      */
     readonly linkedFlags: string[];
     /**
-     * A list of segments that are linked to this view.
+     * Segments linked to this view.
      */
     readonly linkedSegments: outputs.GetViewLinkedSegment[];
     /**
-     * The member ID of the maintainer for this view.
+     * Member ID of the maintainer.
      */
     readonly maintainerId: string;
     /**
-     * The team key of the maintainer team for this view.
+     * Team key of the maintainer team.
      */
     readonly maintainerTeamKey: string;
     /**
@@ -79,7 +75,7 @@ export interface GetViewResult {
      */
     readonly projectKey: string;
     /**
-     * Tags associated with your resource.
+     * Tags.
      */
     readonly tags: string[];
 }

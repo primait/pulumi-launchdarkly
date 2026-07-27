@@ -16,7 +16,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
     /// 
-    /// To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
+    /// To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
     /// 
     /// ## Example Usage
     /// 
@@ -161,13 +161,13 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("envKey")]
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -182,16 +182,16 @@ namespace Pulumi.Launchdarkly
         /// Whether the data export destination is on or not.
         /// </summary>
         [Output("on")]
-        public Output<bool?> On { get; private set; } = null!;
+        public Output<bool> On { get; private set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -256,13 +256,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? On { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -318,13 +318,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey")]
         public Input<string>? EnvKey { get; set; }
 
         /// <summary>
-        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The data export destination type. Available choices are `Kinesis`, `google-pubsub`, `Mparticle`, `azure-event-hubs`, and `Segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? On { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         public InputList<string> Tags
         {

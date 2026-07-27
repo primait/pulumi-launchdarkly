@@ -34,7 +34,7 @@ class WebhookArgs:
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
         :param pulumi.Input[_builtins.str] secret: The secret used to sign the webhook.
-        :param pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]] statements: List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]] statements: List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         pulumi.set(__self__, "url", url)
@@ -101,7 +101,7 @@ class WebhookArgs:
     @pulumi.getter
     def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
         """
-        List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 
@@ -137,7 +137,7 @@ class _WebhookState:
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
         :param pulumi.Input[_builtins.str] secret: The secret used to sign the webhook.
-        :param pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]] statements: List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookStatementArgs']]] statements: List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.str] url: The URL of the remote webhook.
         """
@@ -194,7 +194,7 @@ class _WebhookState:
     @pulumi.getter
     def statements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebhookStatementArgs']]]]:
         """
-        List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 
@@ -284,7 +284,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
         :param pulumi.Input[_builtins.str] secret: The secret used to sign the webhook.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]] statements: List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]] statements: List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.str] url: The URL of the remote webhook.
         """
@@ -399,7 +399,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The webhook's human-readable name.
         :param pulumi.Input[_builtins.bool] on: Specifies whether the webhook is enabled.
         :param pulumi.Input[_builtins.str] secret: The secret used to sign the webhook.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]] statements: List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookStatementArgs', 'WebhookStatementArgsDict']]]] statements: List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.str] url: The URL of the remote webhook.
         """
@@ -425,7 +425,7 @@ class Webhook(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def on(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether the webhook is enabled.
         """
@@ -443,7 +443,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def statements(self) -> pulumi.Output[Optional[Sequence['outputs.WebhookStatement']]]:
         """
-        List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 

@@ -61,19 +61,19 @@ type LookupAuditLogSubscriptionArgs struct {
 
 // A collection of values returned by getAuditLogSubscription.
 type LookupAuditLogSubscriptionResult struct {
-	// The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+	// The set of configuration fields corresponding to the value defined for `integrationKey`.
 	Config map[string]string `pulumi:"config"`
 	// The audit log subscription ID.
 	Id string `pulumi:"id"`
 	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
 	IntegrationKey string `pulumi:"integrationKey"`
-	// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
+	// A human-friendly name for your audit log subscription.
 	Name string `pulumi:"name"`
-	// Whether or not you want your subscription enabled, i.e. to actively send events.
+	// Whether or not the subscription is enabled.
 	On bool `pulumi:"on"`
 	// A block representing the resources to which you wish to subscribe.
 	Statements []GetAuditLogSubscriptionStatement `pulumi:"statements"`
-	// Tags associated with your resource.
+	// Tags associated with the audit log subscription.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -113,7 +113,7 @@ func (o LookupAuditLogSubscriptionResultOutput) ToLookupAuditLogSubscriptionResu
 	return o
 }
 
-// The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+// The set of configuration fields corresponding to the value defined for `integrationKey`.
 func (o LookupAuditLogSubscriptionResultOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
 }
@@ -128,12 +128,12 @@ func (o LookupAuditLogSubscriptionResultOutput) IntegrationKey() pulumi.StringOu
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) string { return v.IntegrationKey }).(pulumi.StringOutput)
 }
 
-// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
+// A human-friendly name for your audit log subscription.
 func (o LookupAuditLogSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Whether or not you want your subscription enabled, i.e. to actively send events.
+// Whether or not the subscription is enabled.
 func (o LookupAuditLogSubscriptionResultOutput) On() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) bool { return v.On }).(pulumi.BoolOutput)
 }
@@ -143,7 +143,7 @@ func (o LookupAuditLogSubscriptionResultOutput) Statements() GetAuditLogSubscrip
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) []GetAuditLogSubscriptionStatement { return v.Statements }).(GetAuditLogSubscriptionStatementArrayOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with the audit log subscription.
 func (o LookupAuditLogSubscriptionResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

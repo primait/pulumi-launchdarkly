@@ -74,7 +74,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
     }
 
     /**
-     * The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly configKey: pulumi.Output<string>;
     /**
@@ -82,15 +82,15 @@ export class AiConfigVariation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationDate: pulumi.Output<number>;
     /**
-     * The variation's description (used in agent mode).
+     * The variation's description. Used in agent mode.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The variation's instructions (used in agent mode).
+     * The variation's instructions. Used in agent mode.
      */
     declare public readonly instructions: pulumi.Output<string | undefined>;
     /**
-     * The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -100,17 +100,17 @@ export class AiConfigVariation extends pulumi.CustomResource {
     /**
      * A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
      */
-    declare public readonly model: pulumi.Output<string | undefined>;
+    declare public readonly model: pulumi.Output<string>;
     /**
      * The key of a model config resource to use for this variation. Conflicts with `model`.
      */
-    declare public readonly modelConfigKey: pulumi.Output<string | undefined>;
+    declare public readonly modelConfigKey: pulumi.Output<string>;
     /**
      * The variation's human-readable name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
@@ -118,9 +118,9 @@ export class AiConfigVariation extends pulumi.CustomResource {
      */
     declare public readonly state: pulumi.Output<string>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
      */
-    declare public readonly toolKeys: pulumi.Output<string[] | undefined>;
+    declare public readonly toolKeys: pulumi.Output<string[]>;
     /**
      * The internal ID of the variation.
      */
@@ -193,7 +193,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
  */
 export interface AiConfigVariationState {
     /**
-     * The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     configKey?: pulumi.Input<string | undefined>;
     /**
@@ -201,15 +201,15 @@ export interface AiConfigVariationState {
      */
     creationDate?: pulumi.Input<number | undefined>;
     /**
-     * The variation's description (used in agent mode).
+     * The variation's description. Used in agent mode.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The variation's instructions (used in agent mode).
+     * The variation's instructions. Used in agent mode.
      */
     instructions?: pulumi.Input<string | undefined>;
     /**
-     * The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -229,7 +229,7 @@ export interface AiConfigVariationState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
@@ -237,7 +237,7 @@ export interface AiConfigVariationState {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
      */
     toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -255,19 +255,19 @@ export interface AiConfigVariationState {
  */
 export interface AiConfigVariationArgs {
     /**
-     * The AI Config key that this variation belongs to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     configKey: pulumi.Input<string>;
     /**
-     * The variation's description (used in agent mode).
+     * The variation's description. Used in agent mode.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The variation's instructions (used in agent mode).
+     * The variation's instructions. Used in agent mode.
      */
     instructions?: pulumi.Input<string | undefined>;
     /**
-     * The variation's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -287,7 +287,7 @@ export interface AiConfigVariationArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
@@ -295,7 +295,7 @@ export interface AiConfigVariationArgs {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
      */
     toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

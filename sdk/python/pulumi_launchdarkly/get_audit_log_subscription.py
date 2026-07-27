@@ -54,7 +54,7 @@ class GetAuditLogSubscriptionResult:
     @pulumi.getter
     def config(self) -> Mapping[str, _builtins.str]:
         """
-        The set of configuration fields corresponding to the value defined for `integration_key`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        The set of configuration fields corresponding to the value defined for `integration_key`.
         """
         return pulumi.get(self, "config")
 
@@ -78,7 +78,7 @@ class GetAuditLogSubscriptionResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
+        A human-friendly name for your audit log subscription.
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +86,7 @@ class GetAuditLogSubscriptionResult:
     @pulumi.getter
     def on(self) -> _builtins.bool:
         """
-        Whether or not you want your subscription enabled, i.e. to actively send events.
+        Whether or not the subscription is enabled.
         """
         return pulumi.get(self, "on")
 
@@ -102,7 +102,7 @@ class GetAuditLogSubscriptionResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags associated with the audit log subscription.
         """
         return pulumi.get(self, "tags")
 

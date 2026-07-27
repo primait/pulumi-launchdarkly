@@ -13,10 +13,25 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetTeamMaintainerResult
     {
+        /// <summary>
+        /// Email of the maintainer.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// First name.
+        /// </summary>
         public readonly string FirstName;
+        /// <summary>
+        /// Member ID.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Last name.
+        /// </summary>
         public readonly string LastName;
+        /// <summary>
+        /// Role.
+        /// </summary>
         public readonly string Role;
 
         [OutputConstructor]

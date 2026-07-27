@@ -13,7 +13,36 @@ import (
 
 // Provides a LaunchDarkly flag templates data source.
 //
-// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Reads the "Custom" flag template settings (default tags, temporary, and boolean
+//			// variation defaults) for a project. Only project_key is required. The rest are computed.
+//			example, err := launchdarkly.GetFlagTemplates(ctx, &launchdarkly.LookupFlagTemplatesArgs{
+//				ProjectKey: "example-project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("defaultFlagTags", example.Tags)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupFlagTemplates(ctx *pulumi.Context, args *LookupFlagTemplatesArgs, opts ...pulumi.InvokeOption) (*LookupFlagTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlagTemplatesResult
@@ -32,13 +61,13 @@ type LookupFlagTemplatesArgs struct {
 
 // A collection of values returned by getFlagTemplates.
 type LookupFlagTemplatesResult struct {
-	// A block describing the default boolean flag variation settings.
-	BooleanDefaults []GetFlagTemplatesBooleanDefault `pulumi:"booleanDefaults"`
-	// The provider-assigned unique ID for this managed resource.
+	// Default boolean flag variation settings.
+	BooleanDefaults GetFlagTemplatesBooleanDefaults `pulumi:"booleanDefaults"`
+	// Project key (the ID).
 	Id string `pulumi:"id"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags applied by default.
 	Tags []string `pulumi:"tags"`
 	// Whether new flags should be temporary by default.
 	Temporary bool `pulumi:"temporary"`
@@ -78,12 +107,12 @@ func (o LookupFlagTemplatesResultOutput) ToLookupFlagTemplatesResultOutputWithCo
 	return o
 }
 
-// A block describing the default boolean flag variation settings.
-func (o LookupFlagTemplatesResultOutput) BooleanDefaults() GetFlagTemplatesBooleanDefaultArrayOutput {
-	return o.ApplyT(func(v LookupFlagTemplatesResult) []GetFlagTemplatesBooleanDefault { return v.BooleanDefaults }).(GetFlagTemplatesBooleanDefaultArrayOutput)
+// Default boolean flag variation settings.
+func (o LookupFlagTemplatesResultOutput) BooleanDefaults() GetFlagTemplatesBooleanDefaultsOutput {
+	return o.ApplyT(func(v LookupFlagTemplatesResult) GetFlagTemplatesBooleanDefaults { return v.BooleanDefaults }).(GetFlagTemplatesBooleanDefaultsOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Project key (the ID).
 func (o LookupFlagTemplatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -93,7 +122,7 @@ func (o LookupFlagTemplatesResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTemplatesResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags applied by default.
 func (o LookupFlagTemplatesResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFlagTemplatesResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -79,13 +79,13 @@ type AiTool struct {
 	CustomParameters pulumi.StringPtrOutput `pulumi:"customParameters"`
 	// The AI tool's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringOutput `pulumi:"maintainerTeamKey"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// A JSON string representing the JSON Schema for the tool's parameters.
 	SchemaJson pulumi.StringOutput `pulumi:"schemaJson"`
@@ -138,13 +138,13 @@ type aiToolState struct {
 	CustomParameters *string `pulumi:"customParameters"`
 	// The AI tool's description.
 	Description *string `pulumi:"description"`
-	// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// A JSON string representing the JSON Schema for the tool's parameters.
 	SchemaJson *string `pulumi:"schemaJson"`
@@ -159,13 +159,13 @@ type AiToolState struct {
 	CustomParameters pulumi.StringPtrInput
 	// The AI tool's description.
 	Description pulumi.StringPtrInput
-	// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
 	// The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// A JSON string representing the JSON Schema for the tool's parameters.
 	SchemaJson pulumi.StringPtrInput
@@ -182,13 +182,13 @@ type aiToolArgs struct {
 	CustomParameters *string `pulumi:"customParameters"`
 	// The AI tool's description.
 	Description *string `pulumi:"description"`
-	// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// A JSON string representing the JSON Schema for the tool's parameters.
 	SchemaJson string `pulumi:"schemaJson"`
@@ -200,13 +200,13 @@ type AiToolArgs struct {
 	CustomParameters pulumi.StringPtrInput
 	// The AI tool's description.
 	Description pulumi.StringPtrInput
-	// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The member ID of the maintainer for this AI tool. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
 	// The team key of the maintainer team for this AI tool. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// A JSON string representing the JSON Schema for the tool's parameters.
 	SchemaJson pulumi.StringInput
@@ -314,7 +314,7 @@ func (o AiToolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiTool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiToolOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTool) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -329,7 +329,7 @@ func (o AiToolOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTool) pulumi.StringOutput { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiToolOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTool) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

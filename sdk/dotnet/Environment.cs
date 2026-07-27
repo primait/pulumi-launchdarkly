@@ -12,10 +12,6 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly environment resource.
     /// 
-    /// This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `launchdarkly.Project` resource to manage your environments.
-    /// 
-    /// &gt; **Note:** Mixing the use of nested `Environments` blocks in the [`launchdarkly.Project`] resource and `launchdarkly.Environment` resources is not recommended.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -49,15 +45,37 @@ namespace Pulumi.Launchdarkly
     ///             "terraform",
     ///             "staging",
     ///         },
-    ///         ApprovalSettings = new[]
+    ///         ApprovalSettings = new Launchdarkly.Inputs.EnvironmentApprovalSettingsArgs
     ///         {
-    ///             new Launchdarkly.Inputs.EnvironmentApprovalSettingArgs
-    ///             {
-    ///                 Required = true,
-    ///                 CanReviewOwnRequest = true,
-    ///                 MinNumApprovals = 2,
-    ///                 CanApplyDeclinedChanges = true,
-    ///             },
+    ///             Required = true,
+    ///             Can_review_own_request = true,
+    ///             Min_num_approvals = 2,
+    ///             Can_apply_declined_changes = true,
+    ///         },
+    ///         ProjectKey = example.Key,
+    ///     });
+    /// 
+    ///     // Segment approvals are configured separately from flag approval_settings,
+    ///     // via LaunchDarkly's beta approvals API. Note: enabling segment approvals
+    ///     // while you manage launchdarkly_segment resources in Terraform will make
+    ///     // every subsequent segment change require manual approval before it can be
+    ///     // applied. See https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370.
+    ///     var segmentApprovalsExample = new Launchdarkly.Environment("segment_approvals_example", new()
+    ///     {
+    ///         Name = "Segment Approvals Example Environment",
+    ///         Key = "segment-approvals-example",
+    ///         Color = "ff00ff",
+    ///         Tags = new[]
+    ///         {
+    ///             "terraform",
+    ///             "staging",
+    ///         },
+    ///         SegmentApprovalSettings = new Launchdarkly.Inputs.EnvironmentSegmentApprovalSettingsArgs
+    ///         {
+    ///             Required = true,
+    ///             Can_review_own_request = true,
+    ///             Min_num_approvals = 2,
+    ///             Can_apply_declined_changes = true,
     ///         },
     ///         ProjectKey = example.Key,
     ///     });
@@ -76,90 +94,71 @@ namespace Pulumi.Launchdarkly
     [LaunchdarklyResourceType("launchdarkly:index/environment:Environment")]
     public partial class Environment : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The environment's SDK key.
-        /// </summary>
         [Output("apiKey")]
         public Output<string> ApiKey { get; private set; } = null!;
 
         [Output("approvalSettings")]
-        public Output<ImmutableArray<Outputs.EnvironmentApprovalSetting>> ApprovalSettings { get; private set; } = null!;
+        public Output<Outputs.EnvironmentApprovalSettings?> ApprovalSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// The environment's client-side ID.
-        /// </summary>
         [Output("clientSideId")]
         public Output<string> ClientSideId { get; private set; } = null!;
 
         /// <summary>
-        /// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        /// RGB hex color (no leading #).
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Output("confirmChanges")]
-        public Output<bool?> ConfirmChanges { get; private set; } = null!;
+        public Output<bool> ConfirmChanges { get; private set; } = null!;
 
-        /// <summary>
-        /// Denotes whether the environment is critical.
-        /// </summary>
         [Output("critical")]
-        public Output<bool?> Critical { get; private set; } = null!;
+        public Output<bool> Critical { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        /// </summary>
         [Output("defaultTrackEvents")]
-        public Output<bool?> DefaultTrackEvents { get; private set; } = null!;
+        public Output<bool> DefaultTrackEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// TTL (0-60 minutes).
         /// </summary>
         [Output("defaultTtl")]
-        public Output<int?> DefaultTtl { get; private set; } = null!;
+        public Output<int> DefaultTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project-unique key for the environment.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
-        /// <summary>
-        /// The environment's mobile key.
-        /// </summary>
         [Output("mobileKey")]
         public Output<string> MobileKey { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the environment.
+        /// Human-readable name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Output("requireComments")]
-        public Output<bool?> RequireComments { get; private set; } = null!;
+        public Output<bool> RequireComments { get; private set; } = null!;
 
-        /// <summary>
-        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
-        /// </summary>
         [Output("secureMode")]
-        public Output<bool?> SecureMode { get; private set; } = null!;
+        public Output<bool> SecureMode { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `ApprovalSettings`.
+        /// 
+        /// &gt; **Warning:** Enabling segment approvals (`required = true`) while you manage `launchdarkly.Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         /// </summary>
+        [Output("segmentApprovalSettings")]
+        public Output<Outputs.EnvironmentSegmentApprovalSettings?> SegmentApprovalSettings { get; private set; } = null!;
+
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -217,79 +216,63 @@ namespace Pulumi.Launchdarkly
     public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("approvalSettings")]
-        private InputList<Inputs.EnvironmentApprovalSettingArgs>? _approvalSettings;
-        public InputList<Inputs.EnvironmentApprovalSettingArgs> ApprovalSettings
-        {
-            get => _approvalSettings ?? (_approvalSettings = new InputList<Inputs.EnvironmentApprovalSettingArgs>());
-            set => _approvalSettings = value;
-        }
+        public Input<Inputs.EnvironmentApprovalSettingsArgs>? ApprovalSettings { get; set; }
 
         /// <summary>
-        /// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        /// RGB hex color (no leading #).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
 
-        /// <summary>
-        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Input("confirmChanges")]
         public Input<bool>? ConfirmChanges { get; set; }
 
-        /// <summary>
-        /// Denotes whether the environment is critical.
-        /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
 
-        /// <summary>
-        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// TTL (0-60 minutes).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project-unique key for the environment.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The name of the environment.
+        /// Human-readable name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
 
-        /// <summary>
-        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Input("requireComments")]
         public Input<bool>? RequireComments { get; set; }
 
-        /// <summary>
-        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
-        /// </summary>
         [Input("secureMode")]
         public Input<bool>? SecureMode { get; set; }
 
+        /// <summary>
+        /// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `ApprovalSettings`.
+        /// 
+        /// &gt; **Warning:** Enabling segment approvals (`required = true`) while you manage `launchdarkly.Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+        /// </summary>
+        [Input("segmentApprovalSettings")]
+        public Input<Inputs.EnvironmentSegmentApprovalSettingsArgs>? SegmentApprovalSettings { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// Tags associated with your resource.
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -306,10 +289,6 @@ namespace Pulumi.Launchdarkly
     {
         [Input("apiKey")]
         private Input<string>? _apiKey;
-
-        /// <summary>
-        /// The environment's SDK key.
-        /// </summary>
         public Input<string>? ApiKey
         {
             get => _apiKey;
@@ -321,19 +300,10 @@ namespace Pulumi.Launchdarkly
         }
 
         [Input("approvalSettings")]
-        private InputList<Inputs.EnvironmentApprovalSettingGetArgs>? _approvalSettings;
-        public InputList<Inputs.EnvironmentApprovalSettingGetArgs> ApprovalSettings
-        {
-            get => _approvalSettings ?? (_approvalSettings = new InputList<Inputs.EnvironmentApprovalSettingGetArgs>());
-            set => _approvalSettings = value;
-        }
+        public Input<Inputs.EnvironmentApprovalSettingsGetArgs>? ApprovalSettings { get; set; }
 
         [Input("clientSideId")]
         private Input<string>? _clientSideId;
-
-        /// <summary>
-        /// The environment's client-side ID.
-        /// </summary>
         public Input<string>? ClientSideId
         {
             get => _clientSideId;
@@ -345,47 +315,34 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+        /// RGB hex color (no leading #).
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
-        /// <summary>
-        /// Set to `True` if this environment requires confirmation for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Input("confirmChanges")]
         public Input<bool>? ConfirmChanges { get; set; }
 
-        /// <summary>
-        /// Denotes whether the environment is critical.
-        /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
 
-        /// <summary>
-        /// Set to `True` to enable data export for every flag created in this environment after you configure this argument. This field will default to `False` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        /// TTL (0-60 minutes).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project-unique key for the environment.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         [Input("mobileKey")]
         private Input<string>? _mobileKey;
-
-        /// <summary>
-        /// The environment's mobile key.
-        /// </summary>
         public Input<string>? MobileKey
         {
             get => _mobileKey;
@@ -397,35 +354,33 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The name of the environment.
+        /// Human-readable name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The LaunchDarkly project key.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
-        /// <summary>
-        /// Set to `True` if this environment requires comments for flag and segment changes. This field will default to `False` when not set.
-        /// </summary>
         [Input("requireComments")]
         public Input<bool>? RequireComments { get; set; }
 
-        /// <summary>
-        /// Set to `True` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `False` when not set.
-        /// </summary>
         [Input("secureMode")]
         public Input<bool>? SecureMode { get; set; }
 
+        /// <summary>
+        /// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `ApprovalSettings`.
+        /// 
+        /// &gt; **Warning:** Enabling segment approvals (`required = true`) while you manage `launchdarkly.Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+        /// </summary>
+        [Input("segmentApprovalSettings")]
+        public Input<Inputs.EnvironmentSegmentApprovalSettingsGetArgs>? SegmentApprovalSettings { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// Tags associated with your resource.
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

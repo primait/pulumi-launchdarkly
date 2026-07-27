@@ -25,15 +25,14 @@ class MetricArgs:
                  kind: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
                  analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 analysis_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_key: pulumi.Input[Optional[_builtins.str]] = None,
                  include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
-                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  selector: pulumi.Input[Optional[_builtins.str]] = None,
                  success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -43,42 +42,38 @@ class MetricArgs:
         """
         The set of arguments for constructing a Metric resource.
 
-        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analysis_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
         :param pulumi.Input[_builtins.str] description: The description of the metric's purpose.
         :param pulumi.Input[_builtins.str] event_key: The event key for your metric (if custom metric)
         :param pulumi.Input[_builtins.bool] include_units_without_events: Include units that did not send any events and set their value to 0.
-        :param pulumi.Input[_builtins.bool] is_active: Ignored. All metrics are considered active.
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
-        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] randomization_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
         :param pulumi.Input[_builtins.str] selector: The CSS selector for your metric (if click metric)
         :param pulumi.Input[_builtins.str] success_criteria: The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]] urls: List of nested `url` blocks describing URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]] urls: List of URLs that you want to associate with the metric.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "project_key", project_key)
         if analysis_type is not None:
             pulumi.set(__self__, "analysis_type", analysis_type)
+        if analysis_units is not None:
+            pulumi.set(__self__, "analysis_units", analysis_units)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_key is not None:
             pulumi.set(__self__, "event_key", event_key)
         if include_units_without_events is not None:
             pulumi.set(__self__, "include_units_without_events", include_units_without_events)
-        if is_active is not None:
-            warnings.warn("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""", DeprecationWarning)
-            pulumi.log.warn("""is_active is deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-        if is_active is not None:
-            pulumi.set(__self__, "is_active", is_active)
         if is_numeric is not None:
             pulumi.set(__self__, "is_numeric", is_numeric)
         if maintainer_id is not None:
@@ -87,8 +82,6 @@ class MetricArgs:
             pulumi.set(__self__, "name", name)
         if percentile_value is not None:
             pulumi.set(__self__, "percentile_value", percentile_value)
-        if randomization_units is not None:
-            pulumi.set(__self__, "randomization_units", randomization_units)
         if selector is not None:
             pulumi.set(__self__, "selector", selector)
         if success_criteria is not None:
@@ -106,7 +99,7 @@ class MetricArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -118,7 +111,7 @@ class MetricArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[_builtins.str]:
         """
-        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -130,7 +123,7 @@ class MetricArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -149,6 +142,18 @@ class MetricArgs:
     @analysis_type.setter
     def analysis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analysis_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="analysisUnits")
+    def analysis_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        """
+        return pulumi.get(self, "analysis_units")
+
+    @analysis_units.setter
+    def analysis_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "analysis_units", value)
 
     @_builtins.property
     @pulumi.getter
@@ -187,19 +192,6 @@ class MetricArgs:
         pulumi.set(self, "include_units_without_events", value)
 
     @_builtins.property
-    @pulumi.getter(name="isActive")
-    @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Ignored. All metrics are considered active.
-        """
-        return pulumi.get(self, "is_active")
-
-    @is_active.setter
-    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_active", value)
-
-    @_builtins.property
     @pulumi.getter(name="isNumeric")
     def is_numeric(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -215,7 +207,7 @@ class MetricArgs:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -248,18 +240,6 @@ class MetricArgs:
         pulumi.set(self, "percentile_value", value)
 
     @_builtins.property
-    @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        """
-        return pulumi.get(self, "randomization_units")
-
-    @randomization_units.setter
-    def randomization_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "randomization_units", value)
-
-    @_builtins.property
     @pulumi.getter
     def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -287,7 +267,7 @@ class MetricArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 
@@ -323,7 +303,7 @@ class MetricArgs:
     @pulumi.getter
     def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]:
         """
-        List of nested `url` blocks describing URLs that you want to associate with the metric.
+        List of URLs that you want to associate with the metric.
         """
         return pulumi.get(self, "urls")
 
@@ -336,10 +316,10 @@ class MetricArgs:
 class _MetricState:
     def __init__(__self__, *,
                  analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 analysis_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_key: pulumi.Input[Optional[_builtins.str]] = None,
                  include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -347,7 +327,6 @@ class _MetricState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  selector: pulumi.Input[Optional[_builtins.str]] = None,
                  success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -359,39 +338,35 @@ class _MetricState:
         Input properties used for looking up and filtering Metric resources.
 
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analysis_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
         :param pulumi.Input[_builtins.str] description: The description of the metric's purpose.
         :param pulumi.Input[_builtins.str] event_key: The event key for your metric (if custom metric)
         :param pulumi.Input[_builtins.bool] include_units_without_events: Include units that did not send any events and set their value to 0.
-        :param pulumi.Input[_builtins.bool] is_active: Ignored. All metrics are considered active.
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
-        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] randomization_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
+        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] selector: The CSS selector for your metric (if click metric)
         :param pulumi.Input[_builtins.str] success_criteria: The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]] urls: List of nested `url` blocks describing URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricUrlArgs']]] urls: List of URLs that you want to associate with the metric.
         :param pulumi.Input[_builtins.int] version: Version of the metric
         """
         if analysis_type is not None:
             pulumi.set(__self__, "analysis_type", analysis_type)
+        if analysis_units is not None:
+            pulumi.set(__self__, "analysis_units", analysis_units)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_key is not None:
             pulumi.set(__self__, "event_key", event_key)
         if include_units_without_events is not None:
             pulumi.set(__self__, "include_units_without_events", include_units_without_events)
-        if is_active is not None:
-            warnings.warn("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""", DeprecationWarning)
-            pulumi.log.warn("""is_active is deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-        if is_active is not None:
-            pulumi.set(__self__, "is_active", is_active)
         if is_numeric is not None:
             pulumi.set(__self__, "is_numeric", is_numeric)
         if key is not None:
@@ -406,8 +381,6 @@ class _MetricState:
             pulumi.set(__self__, "percentile_value", percentile_value)
         if project_key is not None:
             pulumi.set(__self__, "project_key", project_key)
-        if randomization_units is not None:
-            pulumi.set(__self__, "randomization_units", randomization_units)
         if selector is not None:
             pulumi.set(__self__, "selector", selector)
         if success_criteria is not None:
@@ -434,6 +407,18 @@ class _MetricState:
     @analysis_type.setter
     def analysis_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analysis_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="analysisUnits")
+    def analysis_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        """
+        return pulumi.get(self, "analysis_units")
+
+    @analysis_units.setter
+    def analysis_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "analysis_units", value)
 
     @_builtins.property
     @pulumi.getter
@@ -472,19 +457,6 @@ class _MetricState:
         pulumi.set(self, "include_units_without_events", value)
 
     @_builtins.property
-    @pulumi.getter(name="isActive")
-    @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Ignored. All metrics are considered active.
-        """
-        return pulumi.get(self, "is_active")
-
-    @is_active.setter
-    def is_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_active", value)
-
-    @_builtins.property
     @pulumi.getter(name="isNumeric")
     def is_numeric(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -500,7 +472,7 @@ class _MetricState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -512,7 +484,7 @@ class _MetricState:
     @pulumi.getter
     def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -524,7 +496,7 @@ class _MetricState:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -560,25 +532,13 @@ class _MetricState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
     def project_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        """
-        return pulumi.get(self, "randomization_units")
-
-    @randomization_units.setter
-    def randomization_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "randomization_units", value)
 
     @_builtins.property
     @pulumi.getter
@@ -608,7 +568,7 @@ class _MetricState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 
@@ -644,7 +604,7 @@ class _MetricState:
     @pulumi.getter
     def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricUrlArgs']]]]:
         """
-        List of nested `url` blocks describing URLs that you want to associate with the metric.
+        List of URLs that you want to associate with the metric.
         """
         return pulumi.get(self, "urls")
 
@@ -672,10 +632,10 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 analysis_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_key: pulumi.Input[Optional[_builtins.str]] = None,
                  include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -683,7 +643,6 @@ class Metric(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  selector: pulumi.Input[Optional[_builtins.str]] = None,
                  success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -696,7 +655,7 @@ class Metric(pulumi.CustomResource):
 
         This resource allows you to create and manage metrics within your LaunchDarkly organization.
 
-        To learn more about metrics and experimentation, read [Experimentation Documentation](https://docs.launchdarkly.com/home/experimentation).
+        To learn more about metrics and experimentation, read [Experimentation Documentation](https://launchdarkly.com/docs/home/experimentation).
 
         ## Example Usage
 
@@ -729,24 +688,23 @@ class Metric(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analysis_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
         :param pulumi.Input[_builtins.str] description: The description of the metric's purpose.
         :param pulumi.Input[_builtins.str] event_key: The event key for your metric (if custom metric)
         :param pulumi.Input[_builtins.bool] include_units_without_events: Include units that did not send any events and set their value to 0.
-        :param pulumi.Input[_builtins.bool] is_active: Ignored. All metrics are considered active.
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
-        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] randomization_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
+        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] selector: The CSS selector for your metric (if click metric)
         :param pulumi.Input[_builtins.str] success_criteria: The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of nested `url` blocks describing URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of URLs that you want to associate with the metric.
         """
         ...
     @overload
@@ -759,7 +717,7 @@ class Metric(pulumi.CustomResource):
 
         This resource allows you to create and manage metrics within your LaunchDarkly organization.
 
-        To learn more about metrics and experimentation, read [Experimentation Documentation](https://docs.launchdarkly.com/home/experimentation).
+        To learn more about metrics and experimentation, read [Experimentation Documentation](https://launchdarkly.com/docs/home/experimentation).
 
         ## Example Usage
 
@@ -805,10 +763,10 @@ class Metric(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 analysis_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_key: pulumi.Input[Optional[_builtins.str]] = None,
                  include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -816,7 +774,6 @@ class Metric(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  selector: pulumi.Input[Optional[_builtins.str]] = None,
                  success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -833,10 +790,10 @@ class Metric(pulumi.CustomResource):
             __props__ = MetricArgs.__new__(MetricArgs)
 
             __props__.__dict__["analysis_type"] = analysis_type
+            __props__.__dict__["analysis_units"] = analysis_units
             __props__.__dict__["description"] = description
             __props__.__dict__["event_key"] = event_key
             __props__.__dict__["include_units_without_events"] = include_units_without_events
-            __props__.__dict__["is_active"] = is_active
             __props__.__dict__["is_numeric"] = is_numeric
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
@@ -850,7 +807,6 @@ class Metric(pulumi.CustomResource):
             if project_key is None and not opts.urn:
                 raise TypeError("Missing required property 'project_key'")
             __props__.__dict__["project_key"] = project_key
-            __props__.__dict__["randomization_units"] = randomization_units
             __props__.__dict__["selector"] = selector
             __props__.__dict__["success_criteria"] = success_criteria
             __props__.__dict__["tags"] = tags
@@ -869,10 +825,10 @@ class Metric(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             analysis_type: pulumi.Input[Optional[_builtins.str]] = None,
+            analysis_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             event_key: pulumi.Input[Optional[_builtins.str]] = None,
             include_units_without_events: pulumi.Input[Optional[_builtins.bool]] = None,
-            is_active: pulumi.Input[Optional[_builtins.bool]] = None,
             is_numeric: pulumi.Input[Optional[_builtins.bool]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -880,7 +836,6 @@ class Metric(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             percentile_value: pulumi.Input[Optional[_builtins.int]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
-            randomization_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             selector: pulumi.Input[Optional[_builtins.str]] = None,
             success_criteria: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -896,24 +851,23 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] analysis_type: The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] analysis_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
         :param pulumi.Input[_builtins.str] description: The description of the metric's purpose.
         :param pulumi.Input[_builtins.str] event_key: The event key for your metric (if custom metric)
         :param pulumi.Input[_builtins.bool] include_units_without_events: Include units that did not send any events and set their value to 0.
-        :param pulumi.Input[_builtins.bool] is_active: Ignored. All metrics are considered active.
         :param pulumi.Input[_builtins.bool] is_numeric: Whether a `custom` metric is a numeric metric or not.
-        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        :param pulumi.Input[_builtins.str] key: The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] kind: The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric.
         :param pulumi.Input[_builtins.int] percentile_value: The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
-        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] randomization_units: A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
+        :param pulumi.Input[_builtins.str] project_key: The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] selector: The CSS selector for your metric (if click metric)
         :param pulumi.Input[_builtins.str] success_criteria: The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of nested `url` blocks describing URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of URLs that you want to associate with the metric.
         :param pulumi.Input[_builtins.int] version: Version of the metric
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -921,10 +875,10 @@ class Metric(pulumi.CustomResource):
         __props__ = _MetricState.__new__(_MetricState)
 
         __props__.__dict__["analysis_type"] = analysis_type
+        __props__.__dict__["analysis_units"] = analysis_units
         __props__.__dict__["description"] = description
         __props__.__dict__["event_key"] = event_key
         __props__.__dict__["include_units_without_events"] = include_units_without_events
-        __props__.__dict__["is_active"] = is_active
         __props__.__dict__["is_numeric"] = is_numeric
         __props__.__dict__["key"] = key
         __props__.__dict__["kind"] = kind
@@ -932,7 +886,6 @@ class Metric(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["percentile_value"] = percentile_value
         __props__.__dict__["project_key"] = project_key
-        __props__.__dict__["randomization_units"] = randomization_units
         __props__.__dict__["selector"] = selector
         __props__.__dict__["success_criteria"] = success_criteria
         __props__.__dict__["tags"] = tags
@@ -944,15 +897,23 @@ class Metric(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="analysisType")
-    def analysis_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def analysis_type(self) -> pulumi.Output[_builtins.str]:
         """
         The method for analyzing metric events. Available choices are `mean` and `percentile`.
         """
         return pulumi.get(self, "analysis_type")
 
     @_builtins.property
+    @pulumi.getter(name="analysisUnits")
+    def analysis_units(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        """
+        return pulumi.get(self, "analysis_units")
+
+    @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         The description of the metric's purpose.
         """
@@ -960,7 +921,7 @@ class Metric(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
-    def event_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def event_key(self) -> pulumi.Output[_builtins.str]:
         """
         The event key for your metric (if custom metric)
         """
@@ -975,17 +936,8 @@ class Metric(pulumi.CustomResource):
         return pulumi.get(self, "include_units_without_events")
 
     @_builtins.property
-    @pulumi.getter(name="isActive")
-    @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Ignored. All metrics are considered active.
-        """
-        return pulumi.get(self, "is_active")
-
-    @_builtins.property
     @pulumi.getter(name="isNumeric")
-    def is_numeric(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_numeric(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether a `custom` metric is a numeric metric or not.
         """
@@ -995,7 +947,7 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -1003,7 +955,7 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:
         """
-        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metric type. Available choices are `click`, `custom`, and `pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -1011,7 +963,7 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -1025,7 +977,7 @@ class Metric(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="percentileValue")
-    def percentile_value(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def percentile_value(self) -> pulumi.Output[_builtins.int]:
         """
         The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
         """
@@ -1035,21 +987,13 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
-    @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        """
-        return pulumi.get(self, "randomization_units")
-
-    @_builtins.property
     @pulumi.getter
-    def selector(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def selector(self) -> pulumi.Output[_builtins.str]:
         """
         The CSS selector for your metric (if click metric)
         """
@@ -1065,15 +1009,15 @@ class Metric(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Tags associated with your resource.
+        Tags associated with this resource.
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def unit(self) -> pulumi.Output[_builtins.str]:
         """
         (Required for kind `custom`) The unit for numeric `custom` metrics.
         """
@@ -1081,7 +1025,7 @@ class Metric(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="unitAggregationType")
-    def unit_aggregation_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def unit_aggregation_type(self) -> pulumi.Output[_builtins.str]:
         """
         The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
         """
@@ -1091,7 +1035,7 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def urls(self) -> pulumi.Output[Optional[Sequence['outputs.MetricUrl']]]:
         """
-        List of nested `url` blocks describing URLs that you want to associate with the metric.
+        List of URLs that you want to associate with the metric.
         """
         return pulumi.get(self, "urls")
 

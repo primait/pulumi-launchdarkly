@@ -28,10 +28,8 @@ class FlagTemplatesArgs:
         """
         The set of arguments for constructing a FlagTemplates resource.
 
-        :param pulumi.Input['FlagTemplatesBooleanDefaultsArgs'] boolean_defaults: A block describing the default boolean flag variation settings.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] temporary: Whether new flags should be temporary by default.
+        :param pulumi.Input['FlagTemplatesBooleanDefaultsArgs'] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         pulumi.set(__self__, "boolean_defaults", boolean_defaults)
         pulumi.set(__self__, "project_key", project_key)
@@ -44,7 +42,7 @@ class FlagTemplatesArgs:
     @pulumi.getter(name="booleanDefaults")
     def boolean_defaults(self) -> pulumi.Input['FlagTemplatesBooleanDefaultsArgs']:
         """
-        A block describing the default boolean flag variation settings.
+        Default boolean variation settings.
         """
         return pulumi.get(self, "boolean_defaults")
 
@@ -56,7 +54,7 @@ class FlagTemplatesArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key.
         """
         return pulumi.get(self, "project_key")
 
@@ -67,9 +65,6 @@ class FlagTemplatesArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags associated with your resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -79,9 +74,6 @@ class FlagTemplatesArgs:
     @_builtins.property
     @pulumi.getter
     def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether new flags should be temporary by default.
-        """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
@@ -99,10 +91,8 @@ class _FlagTemplatesState:
         """
         Input properties used for looking up and filtering FlagTemplates resources.
 
-        :param pulumi.Input['FlagTemplatesBooleanDefaultsArgs'] boolean_defaults: A block describing the default boolean flag variation settings.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] temporary: Whether new flags should be temporary by default.
+        :param pulumi.Input['FlagTemplatesBooleanDefaultsArgs'] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         if boolean_defaults is not None:
             pulumi.set(__self__, "boolean_defaults", boolean_defaults)
@@ -117,7 +107,7 @@ class _FlagTemplatesState:
     @pulumi.getter(name="booleanDefaults")
     def boolean_defaults(self) -> pulumi.Input[Optional['FlagTemplatesBooleanDefaultsArgs']]:
         """
-        A block describing the default boolean flag variation settings.
+        Default boolean variation settings.
         """
         return pulumi.get(self, "boolean_defaults")
 
@@ -129,7 +119,7 @@ class _FlagTemplatesState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key.
         """
         return pulumi.get(self, "project_key")
 
@@ -140,9 +130,6 @@ class _FlagTemplatesState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags associated with your resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -152,9 +139,6 @@ class _FlagTemplatesState:
     @_builtins.property
     @pulumi.getter
     def temporary(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether new flags should be temporary by default.
-        """
         return pulumi.get(self, "temporary")
 
     @temporary.setter
@@ -174,11 +158,7 @@ class FlagTemplates(pulumi.CustomResource):
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Provides a LaunchDarkly flag templates resource.
-
-        This resource allows you to manage the "Custom" flag template settings applied to new feature flags created within a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This resource manages the Custom template only.
-
-        > **Note:** Flag templates are a singleton per project. Destroying this resource only removes it from Terraform state. The flag templates will continue to exist in LaunchDarkly.
+        Manages the Custom flag-template settings for a LaunchDarkly project.
 
         ## Example Usage
 
@@ -211,10 +191,8 @@ class FlagTemplates(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: A block describing the default boolean flag variation settings.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] temporary: Whether new flags should be temporary by default.
+        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         ...
     @overload
@@ -223,11 +201,7 @@ class FlagTemplates(pulumi.CustomResource):
                  args: FlagTemplatesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a LaunchDarkly flag templates resource.
-
-        This resource allows you to manage the "Custom" flag template settings applied to new feature flags created within a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This resource manages the Custom template only.
-
-        > **Note:** Flag templates are a singleton per project. Destroying this resource only removes it from Terraform state. The flag templates will continue to exist in LaunchDarkly.
+        Manages the Custom flag-template settings for a LaunchDarkly project.
 
         ## Example Usage
 
@@ -315,10 +289,8 @@ class FlagTemplates(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: A block describing the default boolean flag variation settings.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
-        :param pulumi.Input[_builtins.bool] temporary: Whether new flags should be temporary by default.
+        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -334,7 +306,7 @@ class FlagTemplates(pulumi.CustomResource):
     @pulumi.getter(name="booleanDefaults")
     def boolean_defaults(self) -> pulumi.Output['outputs.FlagTemplatesBooleanDefaults']:
         """
-        A block describing the default boolean flag variation settings.
+        Default boolean variation settings.
         """
         return pulumi.get(self, "boolean_defaults")
 
@@ -342,23 +314,17 @@ class FlagTemplates(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Tags associated with your resource.
-        """
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
-    def temporary(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether new flags should be temporary by default.
-        """
+    def temporary(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "temporary")
 

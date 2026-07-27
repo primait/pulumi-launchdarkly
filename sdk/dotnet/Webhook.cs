@@ -86,7 +86,7 @@ namespace Pulumi.Launchdarkly
         /// Specifies whether the webhook is enabled.
         /// </summary>
         [Output("on")]
-        public Output<bool?> On { get; private set; } = null!;
+        public Output<bool> On { get; private set; } = null!;
 
         /// <summary>
         /// The secret used to sign the webhook.
@@ -95,7 +95,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        /// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         /// </summary>
         [Output("statements")]
         public Output<ImmutableArray<Outputs.WebhookStatement>> Statements { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.WebhookStatementArgs>? _statements;
 
         /// <summary>
-        /// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        /// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         /// </summary>
         public InputList<Inputs.WebhookStatementArgs> Statements
         {
@@ -261,7 +261,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.WebhookStatementGetArgs>? _statements;
 
         /// <summary>
-        /// List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        /// List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         /// </summary>
         public InputList<Inputs.WebhookStatementGetArgs> Statements
         {

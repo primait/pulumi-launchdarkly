@@ -167,13 +167,13 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<string> Emails;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// - The 24 character alphanumeric ID of the team member.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// A boolean to determine whether to ignore members that weren't found.
         /// </summary>
-        public readonly bool? IgnoreMissing;
+        public readonly bool IgnoreMissing;
         /// <summary>
         /// The members that were found. The following attributes are available for each member:
         /// </summary>
@@ -185,7 +185,7 @@ namespace Pulumi.Launchdarkly
 
             string id,
 
-            bool? ignoreMissing,
+            bool ignoreMissing,
 
             ImmutableArray<Outputs.GetTeamMembersTeamMemberResult> teamMembers)
         {

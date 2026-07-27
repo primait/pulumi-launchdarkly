@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// This resource allows you to create and manage team members within your LaunchDarkly organization.
     /// 
-    /// &gt; **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
+    /// &gt; **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://launchdarkly.com/docs/home/account/manage-teams).
     /// 
     /// ## Example Usage
     /// 
@@ -55,7 +55,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> CustomRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -79,10 +79,10 @@ namespace Pulumi.Launchdarkly
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
         [Output("roleAttributes")]
-        public Output<ImmutableArray<Outputs.TeamMemberRoleAttribute>> RoleAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>?> RoleAttributes { get; private set; } = null!;
 
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -168,14 +168,14 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Role { get; set; }
 
         [Input("roleAttributes")]
-        private InputList<Inputs.TeamMemberRoleAttributeArgs>? _roleAttributes;
+        private InputMap<ImmutableArray<string>>? _roleAttributes;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
-        public InputList<Inputs.TeamMemberRoleAttributeArgs> RoleAttributes
+        public InputMap<ImmutableArray<string>> RoleAttributes
         {
-            get => _roleAttributes ?? (_roleAttributes = new InputList<Inputs.TeamMemberRoleAttributeArgs>());
+            get => _roleAttributes ?? (_roleAttributes = new InputMap<ImmutableArray<string>>());
             set => _roleAttributes = value;
         }
 
@@ -200,7 +200,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -224,14 +224,14 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Role { get; set; }
 
         [Input("roleAttributes")]
-        private InputList<Inputs.TeamMemberRoleAttributeGetArgs>? _roleAttributes;
+        private InputMap<ImmutableArray<string>>? _roleAttributes;
 
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
-        public InputList<Inputs.TeamMemberRoleAttributeGetArgs> RoleAttributes
+        public InputMap<ImmutableArray<string>> RoleAttributes
         {
-            get => _roleAttributes ?? (_roleAttributes = new InputList<Inputs.TeamMemberRoleAttributeGetArgs>());
+            get => _roleAttributes ?? (_roleAttributes = new InputMap<ImmutableArray<string>>());
             set => _roleAttributes = value;
         }
 

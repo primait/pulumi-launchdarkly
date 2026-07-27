@@ -116,6 +116,27 @@ class IpAllowlistConfig(pulumi.CustomResource):
 
         This resource allows you to manage the IP allowlist configuration for your LaunchDarkly account. There is only one configuration per account, so you should define only a single instance of this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        # IP allowlists are an Enterprise feature and use a beta API. There is one IP
+        # allowlist configuration per account, so define only a single instance of this resource.
+        example = launchdarkly.IpAllowlistConfig("example",
+            session_allowlist_enabled=True,
+            scoped_allowlist_enabled=True)
+        ```
+
+        ## Import
+
+        The LaunchDarkly IP allowlist configuration is an account singleton and is imported using its fixed ID `ip-allowlist-config`
+
+        ```sh
+        $ pulumi import launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig example ip-allowlist-config
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,6 +157,27 @@ class IpAllowlistConfig(pulumi.CustomResource):
         > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to manage the IP allowlist configuration for your LaunchDarkly account. There is only one configuration per account, so you should define only a single instance of this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        # IP allowlists are an Enterprise feature and use a beta API. There is one IP
+        # allowlist configuration per account, so define only a single instance of this resource.
+        example = launchdarkly.IpAllowlistConfig("example",
+            session_allowlist_enabled=True,
+            scoped_allowlist_enabled=True)
+        ```
+
+        ## Import
+
+        The LaunchDarkly IP allowlist configuration is an account singleton and is imported using its fixed ID `ip-allowlist-config`
+
+        ```sh
+        $ pulumi import launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig example ip-allowlist-config
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -198,7 +240,7 @@ class IpAllowlistConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="scopedAllowlistEnabled")
-    def scoped_allowlist_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def scoped_allowlist_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the scoped (API token) IP allowlist is enabled.
         """
@@ -206,7 +248,7 @@ class IpAllowlistConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sessionAllowlistEnabled")
-    def session_allowlist_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def session_allowlist_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the session IP allowlist is enabled.
         """

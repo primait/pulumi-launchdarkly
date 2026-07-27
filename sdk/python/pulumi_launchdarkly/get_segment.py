@@ -84,7 +84,7 @@ class GetSegmentResult:
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> _builtins.int:
         """
-        The segment's creation date represented as a UNIX epoch timestamp.
+        UNIX epoch ms timestamp.
         """
         return pulumi.get(self, "creation_date")
 
@@ -92,7 +92,7 @@ class GetSegmentResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the segment's purpose.
+        Segment description.
         """
         return pulumi.get(self, "description")
 
@@ -108,7 +108,7 @@ class GetSegmentResult:
     @pulumi.getter(name="excludedContexts")
     def excluded_contexts(self) -> Sequence['outputs.GetSegmentExcludedContextResult']:
         """
-        List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        Non-user target objects excluded from the segment.
         """
         return pulumi.get(self, "excluded_contexts")
 
@@ -116,7 +116,7 @@ class GetSegmentResult:
     @pulumi.getter
     def excludeds(self) -> Sequence[_builtins.str]:
         """
-        List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        User keys excluded from the segment.
         """
         return pulumi.get(self, "excludeds")
 
@@ -124,7 +124,7 @@ class GetSegmentResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Composite ID `project_key/env_key/key`.
         """
         return pulumi.get(self, "id")
 
@@ -132,7 +132,7 @@ class GetSegmentResult:
     @pulumi.getter(name="includedContexts")
     def included_contexts(self) -> Sequence['outputs.GetSegmentIncludedContextResult']:
         """
-        List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        Non-user target objects included in the segment.
         """
         return pulumi.get(self, "included_contexts")
 
@@ -140,7 +140,7 @@ class GetSegmentResult:
     @pulumi.getter
     def includeds(self) -> Sequence[_builtins.str]:
         """
-        List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+        User keys included in the segment.
         """
         return pulumi.get(self, "includeds")
 
@@ -156,7 +156,7 @@ class GetSegmentResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The human-friendly name for the segment.
+        Human-friendly name for the segment.
         """
         return pulumi.get(self, "name")
 
@@ -172,7 +172,7 @@ class GetSegmentResult:
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetSegmentRuleResult']:
         """
-        List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        Custom rules applied to the segment.
         """
         return pulumi.get(self, "rules")
 
@@ -180,7 +180,7 @@ class GetSegmentResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags.
         """
         return pulumi.get(self, "tags")
 
@@ -188,7 +188,7 @@ class GetSegmentResult:
     @pulumi.getter
     def unbounded(self) -> _builtins.bool:
         """
-        Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+        Whether this is a big segment.
         """
         return pulumi.get(self, "unbounded")
 
@@ -196,7 +196,7 @@ class GetSegmentResult:
     @pulumi.getter(name="unboundedContextKind")
     def unbounded_context_kind(self) -> _builtins.str:
         """
-        For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
+        Context kind for the big segment.
         """
         return pulumi.get(self, "unbounded_context_kind")
 
@@ -204,7 +204,7 @@ class GetSegmentResult:
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> Sequence[_builtins.str]:
         """
-        A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        View keys linked to this segment.
         """
         return pulumi.get(self, "view_keys")
 
@@ -212,7 +212,7 @@ class GetSegmentResult:
     @pulumi.getter
     def views(self) -> Sequence[_builtins.str]:
         """
-        A list of view keys that this segment is linked to.
+        Legacy view keys list (backwards-compat).
         """
         return pulumi.get(self, "views")
 

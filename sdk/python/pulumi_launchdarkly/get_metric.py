@@ -27,10 +27,13 @@ class GetMetricResult:
     """
     A collection of values returned by getMetric.
     """
-    def __init__(__self__, analysis_type=None, description=None, event_key=None, id=None, include_units_without_events=None, is_active=None, is_numeric=None, key=None, kind=None, maintainer_id=None, name=None, percentile_value=None, project_key=None, randomization_units=None, selector=None, success_criteria=None, tags=None, unit=None, unit_aggregation_type=None, urls=None, version=None):
+    def __init__(__self__, analysis_type=None, analysis_units=None, description=None, event_key=None, id=None, include_units_without_events=None, is_numeric=None, key=None, kind=None, maintainer_id=None, name=None, percentile_value=None, project_key=None, selector=None, success_criteria=None, tags=None, unit=None, unit_aggregation_type=None, urls=None, version=None):
         if analysis_type and not isinstance(analysis_type, str):
             raise TypeError("Expected argument 'analysis_type' to be a str")
         pulumi.set(__self__, "analysis_type", analysis_type)
+        if analysis_units and not isinstance(analysis_units, list):
+            raise TypeError("Expected argument 'analysis_units' to be a list")
+        pulumi.set(__self__, "analysis_units", analysis_units)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -43,9 +46,6 @@ class GetMetricResult:
         if include_units_without_events and not isinstance(include_units_without_events, bool):
             raise TypeError("Expected argument 'include_units_without_events' to be a bool")
         pulumi.set(__self__, "include_units_without_events", include_units_without_events)
-        if is_active and not isinstance(is_active, bool):
-            raise TypeError("Expected argument 'is_active' to be a bool")
-        pulumi.set(__self__, "is_active", is_active)
         if is_numeric and not isinstance(is_numeric, bool):
             raise TypeError("Expected argument 'is_numeric' to be a bool")
         pulumi.set(__self__, "is_numeric", is_numeric)
@@ -67,9 +67,6 @@ class GetMetricResult:
         if project_key and not isinstance(project_key, str):
             raise TypeError("Expected argument 'project_key' to be a str")
         pulumi.set(__self__, "project_key", project_key)
-        if randomization_units and not isinstance(randomization_units, list):
-            raise TypeError("Expected argument 'randomization_units' to be a list")
-        pulumi.set(__self__, "randomization_units", randomization_units)
         if selector and not isinstance(selector, str):
             raise TypeError("Expected argument 'selector' to be a str")
         pulumi.set(__self__, "selector", selector)
@@ -96,9 +93,17 @@ class GetMetricResult:
     @pulumi.getter(name="analysisType")
     def analysis_type(self) -> _builtins.str:
         """
-        The method for analyzing metric events. Available choices are `mean` and `percentile`.
+        The method for analyzing metric events.
         """
         return pulumi.get(self, "analysis_type")
+
+    @_builtins.property
+    @pulumi.getter(name="analysisUnits")
+    def analysis_units(self) -> Sequence[_builtins.str]:
+        """
+        A set of one or more context kinds that this metric can measure events from.
+        """
+        return pulumi.get(self, "analysis_units")
 
     @_builtins.property
     @pulumi.getter
@@ -112,7 +117,7 @@ class GetMetricResult:
     @pulumi.getter(name="eventKey")
     def event_key(self) -> _builtins.str:
         """
-        The event key for your metric (if custom metric)
+        The event key for your metric (if custom metric).
         """
         return pulumi.get(self, "event_key")
 
@@ -120,7 +125,7 @@ class GetMetricResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID in the format `project_key/key`.
         """
         return pulumi.get(self, "id")
 
@@ -131,15 +136,6 @@ class GetMetricResult:
         Include units that did not send any events and set their value to 0.
         """
         return pulumi.get(self, "include_units_without_events")
-
-    @_builtins.property
-    @pulumi.getter(name="isActive")
-    @_utilities.deprecated("""No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.""")
-    def is_active(self) -> _builtins.bool:
-        """
-        Ignored. All metrics are considered active.
-        """
-        return pulumi.get(self, "is_active")
 
     @_builtins.property
     @pulumi.getter(name="isNumeric")
@@ -153,7 +149,7 @@ class GetMetricResult:
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The unique key that references the metric.
         """
         return pulumi.get(self, "key")
 
@@ -161,7 +157,7 @@ class GetMetricResult:
     @pulumi.getter
     def kind(self) -> _builtins.str:
         """
-        The metric type. Available choices are `click`, `custom`, and `pageview`.
+        The metric type.
         """
         return pulumi.get(self, "kind")
 
@@ -169,7 +165,7 @@ class GetMetricResult:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
         """
-        The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        The LaunchDarkly member ID of the maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -185,7 +181,7 @@ class GetMetricResult:
     @pulumi.getter(name="percentileValue")
     def percentile_value(self) -> _builtins.int:
         """
-        The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysis_type is percentile.
+        The percentile for the analysis method.
         """
         return pulumi.get(self, "percentile_value")
 
@@ -193,23 +189,15 @@ class GetMetricResult:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> _builtins.str:
         """
-        The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The metric's project key.
         """
         return pulumi.get(self, "project_key")
-
-    @_builtins.property
-    @pulumi.getter(name="randomizationUnits")
-    def randomization_units(self) -> Sequence[_builtins.str]:
-        """
-        A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        """
-        return pulumi.get(self, "randomization_units")
 
     @_builtins.property
     @pulumi.getter
     def selector(self) -> _builtins.str:
         """
-        The CSS selector for your metric (if click metric)
+        The CSS selector for your metric (if click metric).
         """
         return pulumi.get(self, "selector")
 
@@ -217,7 +205,7 @@ class GetMetricResult:
     @pulumi.getter(name="successCriteria")
     def success_criteria(self) -> _builtins.str:
         """
-        The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
+        The success criteria for your metric (if numeric metric).
         """
         return pulumi.get(self, "success_criteria")
 
@@ -225,7 +213,7 @@ class GetMetricResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags associated with the metric.
         """
         return pulumi.get(self, "tags")
 
@@ -233,7 +221,7 @@ class GetMetricResult:
     @pulumi.getter
     def unit(self) -> _builtins.str:
         """
-        (Required for kind `custom`) The unit for numeric `custom` metrics.
+        The unit for numeric `custom` metrics.
         """
         return pulumi.get(self, "unit")
 
@@ -241,7 +229,7 @@ class GetMetricResult:
     @pulumi.getter(name="unitAggregationType")
     def unit_aggregation_type(self) -> _builtins.str:
         """
-        The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+        The method by which multiple unit event values are aggregated.
         """
         return pulumi.get(self, "unit_aggregation_type")
 
@@ -249,7 +237,7 @@ class GetMetricResult:
     @pulumi.getter
     def urls(self) -> Sequence['outputs.GetMetricUrlResult']:
         """
-        List of nested `url` blocks describing URLs that you want to associate with the metric.
+        URLs associated with the metric.
         """
         return pulumi.get(self, "urls")
 
@@ -257,7 +245,7 @@ class GetMetricResult:
     @pulumi.getter
     def version(self) -> _builtins.int:
         """
-        Version of the metric
+        Version of the metric.
         """
         return pulumi.get(self, "version")
 
@@ -269,11 +257,11 @@ class AwaitableGetMetricResult(GetMetricResult):
             yield self
         return GetMetricResult(
             analysis_type=self.analysis_type,
+            analysis_units=self.analysis_units,
             description=self.description,
             event_key=self.event_key,
             id=self.id,
             include_units_without_events=self.include_units_without_events,
-            is_active=self.is_active,
             is_numeric=self.is_numeric,
             key=self.key,
             kind=self.kind,
@@ -281,7 +269,6 @@ class AwaitableGetMetricResult(GetMetricResult):
             name=self.name,
             percentile_value=self.percentile_value,
             project_key=self.project_key,
-            randomization_units=self.randomization_units,
             selector=self.selector,
             success_criteria=self.success_criteria,
             tags=self.tags,
@@ -291,8 +278,7 @@ class AwaitableGetMetricResult(GetMetricResult):
             version=self.version)
 
 
-def get_metric(is_active: Optional[_builtins.bool] = None,
-               key: Optional[_builtins.str] = None,
+def get_metric(key: Optional[_builtins.str] = None,
                project_key: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetricResult:
     """
@@ -311,12 +297,10 @@ def get_metric(is_active: Optional[_builtins.bool] = None,
     ```
 
 
-    :param _builtins.bool is_active: Ignored. All metrics are considered active.
-    :param _builtins.str key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
-    :param _builtins.str project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+    :param _builtins.str key: The unique key that references the metric.
+    :param _builtins.str project_key: The metric's project key.
     """
     __args__ = dict()
-    __args__['isActive'] = is_active
     __args__['key'] = key
     __args__['projectKey'] = project_key
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -324,11 +308,11 @@ def get_metric(is_active: Optional[_builtins.bool] = None,
 
     return AwaitableGetMetricResult(
         analysis_type=pulumi.get(__ret__, 'analysis_type'),
+        analysis_units=pulumi.get(__ret__, 'analysis_units'),
         description=pulumi.get(__ret__, 'description'),
         event_key=pulumi.get(__ret__, 'event_key'),
         id=pulumi.get(__ret__, 'id'),
         include_units_without_events=pulumi.get(__ret__, 'include_units_without_events'),
-        is_active=pulumi.get(__ret__, 'is_active'),
         is_numeric=pulumi.get(__ret__, 'is_numeric'),
         key=pulumi.get(__ret__, 'key'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -336,7 +320,6 @@ def get_metric(is_active: Optional[_builtins.bool] = None,
         name=pulumi.get(__ret__, 'name'),
         percentile_value=pulumi.get(__ret__, 'percentile_value'),
         project_key=pulumi.get(__ret__, 'project_key'),
-        randomization_units=pulumi.get(__ret__, 'randomization_units'),
         selector=pulumi.get(__ret__, 'selector'),
         success_criteria=pulumi.get(__ret__, 'success_criteria'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -344,8 +327,7 @@ def get_metric(is_active: Optional[_builtins.bool] = None,
         unit_aggregation_type=pulumi.get(__ret__, 'unit_aggregation_type'),
         urls=pulumi.get(__ret__, 'urls'),
         version=pulumi.get(__ret__, 'version'))
-def get_metric_output(is_active: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                      key: pulumi.Input[Optional[_builtins.str]] = None,
+def get_metric_output(key: pulumi.Input[Optional[_builtins.str]] = None,
                       project_key: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetricResult]:
     """
@@ -364,23 +346,21 @@ def get_metric_output(is_active: pulumi.Input[Optional[Optional[_builtins.bool]]
     ```
 
 
-    :param _builtins.bool is_active: Ignored. All metrics are considered active.
-    :param _builtins.str key: The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
-    :param _builtins.str project_key: The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+    :param _builtins.str key: The unique key that references the metric.
+    :param _builtins.str project_key: The metric's project key.
     """
     __args__ = dict()
-    __args__['isActive'] = is_active
     __args__['key'] = key
     __args__['projectKey'] = project_key
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('launchdarkly:index/getMetric:getMetric', __args__, opts=opts, typ=GetMetricResult)
     return __ret__.apply(lambda __response__: GetMetricResult(
         analysis_type=pulumi.get(__response__, 'analysis_type'),
+        analysis_units=pulumi.get(__response__, 'analysis_units'),
         description=pulumi.get(__response__, 'description'),
         event_key=pulumi.get(__response__, 'event_key'),
         id=pulumi.get(__response__, 'id'),
         include_units_without_events=pulumi.get(__response__, 'include_units_without_events'),
-        is_active=pulumi.get(__response__, 'is_active'),
         is_numeric=pulumi.get(__response__, 'is_numeric'),
         key=pulumi.get(__response__, 'key'),
         kind=pulumi.get(__response__, 'kind'),
@@ -388,7 +368,6 @@ def get_metric_output(is_active: pulumi.Input[Optional[Optional[_builtins.bool]]
         name=pulumi.get(__response__, 'name'),
         percentile_value=pulumi.get(__response__, 'percentile_value'),
         project_key=pulumi.get(__response__, 'project_key'),
-        randomization_units=pulumi.get(__response__, 'randomization_units'),
         selector=pulumi.get(__response__, 'selector'),
         success_criteria=pulumi.get(__response__, 'success_criteria'),
         tags=pulumi.get(__response__, 'tags'),

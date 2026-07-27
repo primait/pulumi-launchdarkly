@@ -81,7 +81,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> MaintainerTeamKey { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

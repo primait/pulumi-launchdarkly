@@ -115,6 +115,30 @@ class IpAllowlistEntry(pulumi.CustomResource):
 
         This resource allows you to create and manage IP allowlist entries within your LaunchDarkly account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        # IP allowlist entries are an Enterprise feature and use a beta API.
+        # The ip_address may be a single address or a CIDR block. Changing it forces a new entry.
+        office = launchdarkly.IpAllowlistEntry("office",
+            ip_address="203.0.113.0/24",
+            description="Corporate office network")
+        vpn = launchdarkly.IpAllowlistEntry("vpn",
+            ip_address="198.51.100.42",
+            description="VPN egress IP")
+        ```
+
+        ## Import
+
+        LaunchDarkly IP allowlist entries are imported using the entry's server-assigned ID
+
+        ```sh
+        $ pulumi import launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry office 51f9c4a2-1b3d-4e5f-8a9b-0c1d2e3f4a5b
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -135,6 +159,30 @@ class IpAllowlistEntry(pulumi.CustomResource):
         > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
         This resource allows you to create and manage IP allowlist entries within your LaunchDarkly account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        # IP allowlist entries are an Enterprise feature and use a beta API.
+        # The ip_address may be a single address or a CIDR block. Changing it forces a new entry.
+        office = launchdarkly.IpAllowlistEntry("office",
+            ip_address="203.0.113.0/24",
+            description="Corporate office network")
+        vpn = launchdarkly.IpAllowlistEntry("vpn",
+            ip_address="198.51.100.42",
+            description="VPN egress IP")
+        ```
+
+        ## Import
+
+        LaunchDarkly IP allowlist entries are imported using the entry's server-assigned ID
+
+        ```sh
+        $ pulumi import launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry office 51f9c4a2-1b3d-4e5f-8a9b-0c1d2e3f4a5b
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -199,7 +247,7 @@ class IpAllowlistEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         A human-readable description of the IP allowlist entry.
         """

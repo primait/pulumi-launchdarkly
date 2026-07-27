@@ -14,7 +14,31 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly flag templates data source.
         /// 
-        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Launchdarkly = Pulumi.Launchdarkly;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Reads the "Custom" flag template settings (default tags, temporary, and boolean
+        ///     // variation defaults) for a project. Only project_key is required. The rest are computed.
+        ///     var example = Launchdarkly.GetFlagTemplates.Invoke(new()
+        ///     {
+        ///         ProjectKey = "example-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultFlagTags"] = example.Apply(getFlagTemplatesResult =&gt; getFlagTemplatesResult.Tags),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetFlagTemplatesResult> InvokeAsync(GetFlagTemplatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlagTemplatesResult>("launchdarkly:index/getFlagTemplates:getFlagTemplates", args ?? new GetFlagTemplatesArgs(), options.WithDefaults());
@@ -22,7 +46,31 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly flag templates data source.
         /// 
-        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Launchdarkly = Pulumi.Launchdarkly;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Reads the "Custom" flag template settings (default tags, temporary, and boolean
+        ///     // variation defaults) for a project. Only project_key is required. The rest are computed.
+        ///     var example = Launchdarkly.GetFlagTemplates.Invoke(new()
+        ///     {
+        ///         ProjectKey = "example-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultFlagTags"] = example.Apply(getFlagTemplatesResult =&gt; getFlagTemplatesResult.Tags),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFlagTemplatesResult> Invoke(GetFlagTemplatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlagTemplatesResult>("launchdarkly:index/getFlagTemplates:getFlagTemplates", args ?? new GetFlagTemplatesInvokeArgs(), options.WithDefaults());
@@ -30,7 +78,31 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly flag templates data source.
         /// 
-        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+        /// This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Launchdarkly = Pulumi.Launchdarkly;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Reads the "Custom" flag template settings (default tags, temporary, and boolean
+        ///     // variation defaults) for a project. Only project_key is required. The rest are computed.
+        ///     var example = Launchdarkly.GetFlagTemplates.Invoke(new()
+        ///     {
+        ///         ProjectKey = "example-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["defaultFlagTags"] = example.Apply(getFlagTemplatesResult =&gt; getFlagTemplatesResult.Tags),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetFlagTemplatesResult> Invoke(GetFlagTemplatesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlagTemplatesResult>("launchdarkly:index/getFlagTemplates:getFlagTemplates", args ?? new GetFlagTemplatesInvokeArgs(), options.WithDefaults());
@@ -70,11 +142,11 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFlagTemplatesResult
     {
         /// <summary>
-        /// A block describing the default boolean flag variation settings.
+        /// Default boolean flag variation settings.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFlagTemplatesBooleanDefaultResult> BooleanDefaults;
+        public readonly Outputs.GetFlagTemplatesBooleanDefaultsResult BooleanDefaults;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Project key (the ID).
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -82,7 +154,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags applied by default.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
@@ -92,7 +164,7 @@ namespace Pulumi.Launchdarkly
 
         [OutputConstructor]
         private GetFlagTemplatesResult(
-            ImmutableArray<Outputs.GetFlagTemplatesBooleanDefaultResult> booleanDefaults,
+            Outputs.GetFlagTemplatesBooleanDefaultsResult booleanDefaults,
 
             string id,
 

@@ -66,10 +66,10 @@ type GetTeamMembersArgs struct {
 type GetTeamMembersResult struct {
 	// An array of unique email addresses associated with the team members.
 	Emails []string `pulumi:"emails"`
-	// The provider-assigned unique ID for this managed resource.
+	// - The 24 character alphanumeric ID of the team member.
 	Id string `pulumi:"id"`
 	// A boolean to determine whether to ignore members that weren't found.
-	IgnoreMissing *bool `pulumi:"ignoreMissing"`
+	IgnoreMissing bool `pulumi:"ignoreMissing"`
 	// The members that were found. The following attributes are available for each member:
 	TeamMembers []GetTeamMembersTeamMember `pulumi:"teamMembers"`
 }
@@ -115,14 +115,14 @@ func (o GetTeamMembersResultOutput) Emails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTeamMembersResult) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// - The 24 character alphanumeric ID of the team member.
 func (o GetTeamMembersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMembersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A boolean to determine whether to ignore members that weren't found.
-func (o GetTeamMembersResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetTeamMembersResult) *bool { return v.IgnoreMissing }).(pulumi.BoolPtrOutput)
+func (o GetTeamMembersResultOutput) IgnoreMissing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTeamMembersResult) bool { return v.IgnoreMissing }).(pulumi.BoolOutput)
 }
 
 // The members that were found. The following attributes are available for each member:

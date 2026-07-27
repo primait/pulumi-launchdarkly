@@ -53,61 +53,53 @@ func LookupMetric(ctx *pulumi.Context, args *LookupMetricArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getMetric.
 type LookupMetricArgs struct {
-	// Ignored. All metrics are considered active.
-	//
-	// Deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-	IsActive *bool `pulumi:"isActive"`
-	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key that references the metric.
 	Key string `pulumi:"key"`
-	// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The metric's project key.
 	ProjectKey string `pulumi:"projectKey"`
 }
 
 // A collection of values returned by getMetric.
 type LookupMetricResult struct {
-	// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+	// The method for analyzing metric events.
 	AnalysisType string `pulumi:"analysisType"`
+	// A set of one or more context kinds that this metric can measure events from.
+	AnalysisUnits []string `pulumi:"analysisUnits"`
 	// The description of the metric's purpose.
 	Description string `pulumi:"description"`
-	// The event key for your metric (if custom metric)
+	// The event key for your metric (if custom metric).
 	EventKey string `pulumi:"eventKey"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID in the format `project_key/key`.
 	Id string `pulumi:"id"`
 	// Include units that did not send any events and set their value to 0.
 	IncludeUnitsWithoutEvents bool `pulumi:"includeUnitsWithoutEvents"`
-	// Ignored. All metrics are considered active.
-	//
-	// Deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-	IsActive bool `pulumi:"isActive"`
 	// Whether a `custom` metric is a numeric metric or not.
 	IsNumeric bool `pulumi:"isNumeric"`
-	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key that references the metric.
 	Key string `pulumi:"key"`
-	// The metric type. Available choices are `click`, `custom`, and `pageview`.
+	// The metric type.
 	Kind string `pulumi:"kind"`
-	// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+	// The LaunchDarkly member ID of the maintainer.
 	MaintainerId string `pulumi:"maintainerId"`
 	// The human-friendly name for the metric.
 	Name string `pulumi:"name"`
-	// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
+	// The percentile for the analysis method.
 	PercentileValue int `pulumi:"percentileValue"`
-	// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The metric's project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-	RandomizationUnits []string `pulumi:"randomizationUnits"`
-	// The CSS selector for your metric (if click metric)
+	// The CSS selector for your metric (if click metric).
 	Selector string `pulumi:"selector"`
-	// The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
+	// The success criteria for your metric (if numeric metric).
 	SuccessCriteria string `pulumi:"successCriteria"`
-	// Tags associated with your resource.
+	// Tags associated with the metric.
 	Tags []string `pulumi:"tags"`
-	// (Required for kind `custom`) The unit for numeric `custom` metrics.
+	// The unit for numeric `custom` metrics.
 	Unit string `pulumi:"unit"`
-	// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+	// The method by which multiple unit event values are aggregated.
 	UnitAggregationType string `pulumi:"unitAggregationType"`
-	// List of nested `url` blocks describing URLs that you want to associate with the metric.
+	// URLs associated with the metric.
 	Urls []GetMetricUrl `pulumi:"urls"`
-	// Version of the metric
+	// Version of the metric.
 	Version int `pulumi:"version"`
 }
 
@@ -122,13 +114,9 @@ func LookupMetricOutput(ctx *pulumi.Context, args LookupMetricOutputArgs, opts .
 
 // A collection of arguments for invoking getMetric.
 type LookupMetricOutputArgs struct {
-	// Ignored. All metrics are considered active.
-	//
-	// Deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
-	// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique key that references the metric.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The metric's project key.
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 }
 
@@ -151,9 +139,14 @@ func (o LookupMetricResultOutput) ToLookupMetricResultOutputWithContext(ctx cont
 	return o
 }
 
-// The method for analyzing metric events. Available choices are `mean` and `percentile`.
+// The method for analyzing metric events.
 func (o LookupMetricResultOutput) AnalysisType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.AnalysisType }).(pulumi.StringOutput)
+}
+
+// A set of one or more context kinds that this metric can measure events from.
+func (o LookupMetricResultOutput) AnalysisUnits() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMetricResult) []string { return v.AnalysisUnits }).(pulumi.StringArrayOutput)
 }
 
 // The description of the metric's purpose.
@@ -161,12 +154,12 @@ func (o LookupMetricResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The event key for your metric (if custom metric)
+// The event key for your metric (if custom metric).
 func (o LookupMetricResultOutput) EventKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.EventKey }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID in the format `project_key/key`.
 func (o LookupMetricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -176,29 +169,22 @@ func (o LookupMetricResultOutput) IncludeUnitsWithoutEvents() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupMetricResult) bool { return v.IncludeUnitsWithoutEvents }).(pulumi.BoolOutput)
 }
 
-// Ignored. All metrics are considered active.
-//
-// Deprecated: No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-func (o LookupMetricResultOutput) IsActive() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupMetricResult) bool { return v.IsActive }).(pulumi.BoolOutput)
-}
-
 // Whether a `custom` metric is a numeric metric or not.
 func (o LookupMetricResultOutput) IsNumeric() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMetricResult) bool { return v.IsNumeric }).(pulumi.BoolOutput)
 }
 
-// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique key that references the metric.
 func (o LookupMetricResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The metric type. Available choices are `click`, `custom`, and `pageview`.
+// The metric type.
 func (o LookupMetricResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+// The LaunchDarkly member ID of the maintainer.
 func (o LookupMetricResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }
@@ -208,52 +194,47 @@ func (o LookupMetricResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
+// The percentile for the analysis method.
 func (o LookupMetricResultOutput) PercentileValue() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMetricResult) int { return v.PercentileValue }).(pulumi.IntOutput)
 }
 
-// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The metric's project key.
 func (o LookupMetricResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-func (o LookupMetricResultOutput) RandomizationUnits() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupMetricResult) []string { return v.RandomizationUnits }).(pulumi.StringArrayOutput)
-}
-
-// The CSS selector for your metric (if click metric)
+// The CSS selector for your metric (if click metric).
 func (o LookupMetricResultOutput) Selector() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Selector }).(pulumi.StringOutput)
 }
 
-// The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
+// The success criteria for your metric (if numeric metric).
 func (o LookupMetricResultOutput) SuccessCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.SuccessCriteria }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with the metric.
 func (o LookupMetricResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMetricResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// (Required for kind `custom`) The unit for numeric `custom` metrics.
+// The unit for numeric `custom` metrics.
 func (o LookupMetricResultOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-// The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+// The method by which multiple unit event values are aggregated.
 func (o LookupMetricResultOutput) UnitAggregationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetricResult) string { return v.UnitAggregationType }).(pulumi.StringOutput)
 }
 
-// List of nested `url` blocks describing URLs that you want to associate with the metric.
+// URLs associated with the metric.
 func (o LookupMetricResultOutput) Urls() GetMetricUrlArrayOutput {
 	return o.ApplyT(func(v LookupMetricResult) []GetMetricUrl { return v.Urls }).(GetMetricUrlArrayOutput)
 }
 
-// Version of the metric
+// Version of the metric.
 func (o LookupMetricResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMetricResult) int { return v.Version }).(pulumi.IntOutput)
 }

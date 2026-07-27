@@ -24,8 +24,8 @@ class FeatureFlagEnvironmentArgs:
                  env_key: pulumi.Input[_builtins.str],
                  fallthrough: pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'],
                  flag_id: pulumi.Input[_builtins.str],
-                 off_variation: pulumi.Input[_builtins.int],
                  context_targets: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]] = None,
+                 off_variation: pulumi.Input[Optional[_builtins.int]] = None,
                  on: pulumi.Input[Optional[_builtins.bool]] = None,
                  prerequisites: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]]] = None,
@@ -34,23 +34,24 @@ class FeatureFlagEnvironmentArgs:
         """
         The set of arguments for constructing a FeatureFlagEnvironment resource.
 
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve if targeting is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]] context_targets: Individual targets for non-user context kinds for each variation.
+        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         :param pulumi.Input[_builtins.bool] on: Whether targeting is enabled. Defaults to `false` if not set.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: List of nested blocks describing prerequisite feature flags rules.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: Prerequisite feature flag rules.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]] rules: List of logical targeting rules.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]] targets: Set of nested blocks describing the individual user targets for each variation.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]] targets: Individual user targets for each variation.
         :param pulumi.Input[_builtins.bool] track_events: Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         pulumi.set(__self__, "env_key", env_key)
         pulumi.set(__self__, "fallthrough", fallthrough)
         pulumi.set(__self__, "flag_id", flag_id)
-        pulumi.set(__self__, "off_variation", off_variation)
         if context_targets is not None:
             pulumi.set(__self__, "context_targets", context_targets)
+        if off_variation is not None:
+            pulumi.set(__self__, "off_variation", off_variation)
         if on is not None:
             pulumi.set(__self__, "on", on)
         if prerequisites is not None:
@@ -66,7 +67,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -78,7 +79,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter
     def fallthrough(self) -> pulumi.Input['FeatureFlagEnvironmentFallthroughArgs']:
         """
-        Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
         """
         return pulumi.get(self, "fallthrough")
 
@@ -90,7 +91,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter(name="flagId")
     def flag_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
@@ -99,28 +100,28 @@ class FeatureFlagEnvironmentArgs:
         pulumi.set(self, "flag_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="offVariation")
-    def off_variation(self) -> pulumi.Input[_builtins.int]:
-        """
-        The index of the variation to serve if targeting is disabled.
-        """
-        return pulumi.get(self, "off_variation")
-
-    @off_variation.setter
-    def off_variation(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "off_variation", value)
-
-    @_builtins.property
     @pulumi.getter(name="contextTargets")
     def context_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
         """
-        The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        Individual targets for non-user context kinds for each variation.
         """
         return pulumi.get(self, "context_targets")
 
     @context_targets.setter
     def context_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]):
         pulumi.set(self, "context_targets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="offVariation")
+    def off_variation(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
+        """
+        return pulumi.get(self, "off_variation")
+
+    @off_variation.setter
+    def off_variation(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "off_variation", value)
 
     @_builtins.property
     @pulumi.getter
@@ -138,7 +139,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter
     def prerequisites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
         """
-        List of nested blocks describing prerequisite feature flags rules.
+        Prerequisite feature flag rules.
         """
         return pulumi.get(self, "prerequisites")
 
@@ -162,7 +163,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter
     def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
         """
-        Set of nested blocks describing the individual user targets for each variation.
+        Individual user targets for each variation.
         """
         return pulumi.get(self, "targets")
 
@@ -199,15 +200,15 @@ class _FeatureFlagEnvironmentState:
         """
         Input properties used for looking up and filtering FeatureFlagEnvironment resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve if targeting is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]] context_targets: Individual targets for non-user context kinds for each variation.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         :param pulumi.Input[_builtins.bool] on: Whether targeting is enabled. Defaults to `false` if not set.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: List of nested blocks describing prerequisite feature flags rules.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: Prerequisite feature flag rules.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentRuleArgs']]] rules: List of logical targeting rules.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]] targets: Set of nested blocks describing the individual user targets for each variation.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]] targets: Individual user targets for each variation.
         :param pulumi.Input[_builtins.bool] track_events: Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         if context_targets is not None:
@@ -235,7 +236,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="contextTargets")
     def context_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentContextTargetArgs']]]]:
         """
-        The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        Individual targets for non-user context kinds for each variation.
         """
         return pulumi.get(self, "context_targets")
 
@@ -247,7 +248,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -259,7 +260,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter
     def fallthrough(self) -> pulumi.Input[Optional['FeatureFlagEnvironmentFallthroughArgs']]:
         """
-        Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
         """
         return pulumi.get(self, "fallthrough")
 
@@ -271,7 +272,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="flagId")
     def flag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
@@ -283,7 +284,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The index of the variation to serve if targeting is disabled.
+        The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         """
         return pulumi.get(self, "off_variation")
 
@@ -307,7 +308,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter
     def prerequisites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]]]:
         """
-        List of nested blocks describing prerequisite feature flags rules.
+        Prerequisite feature flag rules.
         """
         return pulumi.get(self, "prerequisites")
 
@@ -331,7 +332,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter
     def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFlagEnvironmentTargetArgs']]]]:
         """
-        Set of nested blocks describing the individual user targets for each variation.
+        Individual user targets for each variation.
         """
         return pulumi.get(self, "targets")
 
@@ -573,15 +574,15 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve if targeting is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]] context_targets: Individual targets for non-user context kinds for each variation.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']] fallthrough: The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         :param pulumi.Input[_builtins.bool] on: Whether targeting is enabled. Defaults to `false` if not set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]] prerequisites: List of nested blocks describing prerequisite feature flags rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]] prerequisites: Prerequisite feature flag rules.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]] rules: List of logical targeting rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]] targets: Set of nested blocks describing the individual user targets for each variation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]] targets: Individual user targets for each variation.
         :param pulumi.Input[_builtins.bool] track_events: Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         ...
@@ -836,8 +837,6 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
             if flag_id is None and not opts.urn:
                 raise TypeError("Missing required property 'flag_id'")
             __props__.__dict__["flag_id"] = flag_id
-            if off_variation is None and not opts.urn:
-                raise TypeError("Missing required property 'off_variation'")
             __props__.__dict__["off_variation"] = off_variation
             __props__.__dict__["on"] = on
             __props__.__dict__["prerequisites"] = prerequisites
@@ -871,15 +870,15 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]] context_targets: The set of nested blocks describing the individual targets for non-user context kinds for each variation.
-        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']] fallthrough: Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
-        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve if targeting is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentContextTargetArgs', 'FeatureFlagEnvironmentContextTargetArgsDict']]]] context_targets: Individual targets for non-user context kinds for each variation.
+        :param pulumi.Input[_builtins.str] env_key: The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Union['FeatureFlagEnvironmentFallthroughArgs', 'FeatureFlagEnvironmentFallthroughArgsDict']] fallthrough: The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        :param pulumi.Input[_builtins.str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.int] off_variation: The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         :param pulumi.Input[_builtins.bool] on: Whether targeting is enabled. Defaults to `false` if not set.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]] prerequisites: List of nested blocks describing prerequisite feature flags rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentPrerequisiteArgs', 'FeatureFlagEnvironmentPrerequisiteArgsDict']]]] prerequisites: Prerequisite feature flag rules.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentRuleArgs', 'FeatureFlagEnvironmentRuleArgsDict']]]] rules: List of logical targeting rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]] targets: Set of nested blocks describing the individual user targets for each variation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentTargetArgs', 'FeatureFlagEnvironmentTargetArgsDict']]]] targets: Individual user targets for each variation.
         :param pulumi.Input[_builtins.bool] track_events: Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -902,7 +901,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="contextTargets")
     def context_targets(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagEnvironmentContextTarget']]]:
         """
-        The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        Individual targets for non-user context kinds for each variation.
         """
         return pulumi.get(self, "context_targets")
 
@@ -910,7 +909,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -918,7 +917,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def fallthrough(self) -> pulumi.Output['outputs.FeatureFlagEnvironmentFallthrough']:
         """
-        Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+        The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
         """
         return pulumi.get(self, "fallthrough")
 
@@ -926,21 +925,21 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="flagId")
     def flag_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
     @_builtins.property
     @pulumi.getter(name="offVariation")
-    def off_variation(self) -> pulumi.Output[_builtins.int]:
+    def off_variation(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The index of the variation to serve if targeting is disabled.
+        The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
         """
         return pulumi.get(self, "off_variation")
 
     @_builtins.property
     @pulumi.getter
-    def on(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def on(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether targeting is enabled. Defaults to `false` if not set.
         """
@@ -950,7 +949,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def prerequisites(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagEnvironmentPrerequisite']]]:
         """
-        List of nested blocks describing prerequisite feature flags rules.
+        Prerequisite feature flag rules.
         """
         return pulumi.get(self, "prerequisites")
 
@@ -966,13 +965,13 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def targets(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagEnvironmentTarget']]]:
         """
-        Set of nested blocks describing the individual user targets for each variation.
+        Individual user targets for each variation.
         """
         return pulumi.get(self, "targets")
 
     @_builtins.property
     @pulumi.getter(name="trackEvents")
-    def track_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def track_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
         """

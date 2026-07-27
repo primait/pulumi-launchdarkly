@@ -18,7 +18,7 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string? BucketBy;
         /// <summary>
-        /// List of nested blocks specifying the logical clauses to evaluate
+        /// List of clauses specifying the logical conditions to evaluate
         /// </summary>
         public readonly ImmutableArray<Outputs.FeatureFlagEnvironmentRuleClause> Clauses;
         /// <summary>

@@ -154,11 +154,11 @@ namespace Pulumi.Launchdarkly
     public sealed class GetSegmentResult
     {
         /// <summary>
-        /// The segment's creation date represented as a UNIX epoch timestamp.
+        /// UNIX epoch ms timestamp.
         /// </summary>
         public readonly int CreationDate;
         /// <summary>
-        /// The description of the segment's purpose.
+        /// Segment description.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -166,23 +166,23 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string EnvKey;
         /// <summary>
-        /// List of non-user target objects excluded from the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// Non-user target objects excluded from the segment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentExcludedContextResult> ExcludedContexts;
         /// <summary>
-        /// List of user keys excluded from the segment. To target on other context kinds, use the ExcludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
+        /// User keys excluded from the segment.
         /// </summary>
         public readonly ImmutableArray<string> Excludeds;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Composite ID `project_key/env_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of non-user target objects included in the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// Non-user target objects included in the segment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentIncludedContextResult> IncludedContexts;
         /// <summary>
-        /// List of user keys included in the segment. To target on other context kinds, use the IncludedContexts block attribute. This attribute is not valid when `Unbounded` is set to `True`.
+        /// User keys included in the segment.
         /// </summary>
         public readonly ImmutableArray<string> Includeds;
         /// <summary>
@@ -190,7 +190,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The human-friendly name for the segment.
+        /// Human-friendly name for the segment.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -198,27 +198,27 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// Custom rules applied to the segment.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentRuleResult> Rules;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+        /// Whether this is a big segment.
         /// </summary>
         public readonly bool Unbounded;
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`.
+        /// Context kind for the big segment.
         /// </summary>
         public readonly string UnboundedContextKind;
         /// <summary>
-        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// View keys linked to this segment.
         /// </summary>
         public readonly ImmutableArray<string> ViewKeys;
         /// <summary>
-        /// A list of view keys that this segment is linked to.
+        /// Legacy view keys list (backwards-compat).
         /// </summary>
         public readonly ImmutableArray<string> Views;
 

@@ -14,11 +14,11 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetAiConfigVariationMessageResult
     {
         /// <summary>
-        /// The content of the message.
+        /// Content of the message.
         /// </summary>
         public readonly string Content;
         /// <summary>
-        /// The role of the message. Must be one of `System`, `User`, `Assistant`, or `Developer`.
+        /// Role of the message.
         /// </summary>
         public readonly string Role;
 

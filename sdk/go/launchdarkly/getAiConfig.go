@@ -67,7 +67,7 @@ type LookupAiConfigResult struct {
 	Description string `pulumi:"description"`
 	// The key of the evaluation metric associated with this AI Config.
 	EvaluationMetricKey string `pulumi:"evaluationMetricKey"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID in the format `project_key/key`.
 	Id string `pulumi:"id"`
 	// Whether the evaluation metric is inverted.
 	IsInverted bool `pulumi:"isInverted"`
@@ -77,7 +77,7 @@ type LookupAiConfigResult struct {
 	MaintainerId string `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`.
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`.
 	Mode string `pulumi:"mode"`
 	// The AI Config's human-readable name.
 	Name string `pulumi:"name"`
@@ -142,7 +142,7 @@ func (o LookupAiConfigResultOutput) EvaluationMetricKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.EvaluationMetricKey }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID in the format `project_key/key`.
 func (o LookupAiConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -167,7 +167,7 @@ func (o LookupAiConfigResultOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`.
+// The AI Config's mode. Must be `completion`, `agent`, or `judge`.
 func (o LookupAiConfigResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Mode }).(pulumi.StringOutput)
 }

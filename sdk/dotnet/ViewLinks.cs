@@ -16,30 +16,11 @@ namespace Pulumi.Launchdarkly
     /// 
     /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
     /// 
-    /// This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
+    /// This resource allows you to efficiently link multiple flags and segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
     /// 
     /// &gt; **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
     /// 
-    /// ## Alternative Approach: ViewKeys on Individual Resources
-    /// 
-    /// For modular Terraform configurations where flags and segments are defined in separate files or modules, you can use the `ViewKeys` field directly on the resource instead of using this centralized `ViewLinks` resource:
-    /// 
-    /// - **Feature Flags**: Use the `ViewKeys` attribute on `launchdarkly.FeatureFlag` resources
-    /// - **Segments**: Use the `ViewKeys` attribute on `launchdarkly.Segment` resources
-    /// 
-    /// **When to use `ViewLinks` (this resource):**
-    /// - Managing many flags/segments for a single view (bulk operations)
-    /// - Centralized view management across your infrastructure
-    /// - Administrative view organization
-    /// 
-    /// **When to use `ViewKeys` on individual resources:**
-    /// - Modular Terraform structures with separate files per flag/segment
-    /// - Each team/module manages their own resources
-    /// - Want view membership defined alongside the resource
-    /// 
-    /// &gt; **Warning:** Do not use both `ViewLinks` and `ViewKeys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
-    /// 
-    /// See the feature flag resource documentation and segment resource documentation for details on the `ViewKeys` attribute.
+    /// &gt; **Warning:** Do not use both `ViewLinks` and `ViewKeys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
     /// 
     /// ## Example Usage
     /// 
@@ -73,13 +54,13 @@ namespace Pulumi.Launchdarkly
     ///         {
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "frontend-beta-users",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "frontend-beta-users",
     ///             },
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "premium-customers",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "premium-customers",
     ///             },
     ///         },
     ///     });
@@ -129,13 +110,13 @@ namespace Pulumi.Launchdarkly
     ///         {
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "high-volume-api-users",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "high-volume-api-users",
     ///             },
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439022",
-    ///                 SegmentKey = "database-migration-pilot",
+    ///                 Environment_id = "507f1f77bcf86cd799439022",
+    ///                 Segment_key = "database-migration-pilot",
     ///             },
     ///         },
     ///     });
@@ -149,23 +130,31 @@ namespace Pulumi.Launchdarkly
     ///         {
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "vip-customers",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "vip-customers",
     ///             },
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "enterprise-customers",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "enterprise-customers",
     ///             },
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs
     ///             {
-    ///                 EnvironmentId = "507f1f77bcf86cd799439011",
-    ///                 SegmentKey = "trial-users",
+    ///                 Environment_id = "507f1f77bcf86cd799439011",
+    ///                 Segment_key = "trial-users",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// LaunchDarkly view links are imported using the resource's ID in the form `project_key/view_key`
+    /// 
+    /// ```sh
+    /// $ pulumi import launchdarkly:index/viewLinks:ViewLinks example example-project/example-view-key
     /// ```
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/viewLinks:ViewLinks")]
@@ -178,7 +167,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> Flags { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -190,7 +179,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<Outputs.ViewLinksSegment>> Segments { get; private set; } = null!;
 
         /// <summary>
-        /// The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("viewKey")]
         public Output<string> ViewKey { get; private set; } = null!;
@@ -255,7 +244,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -273,7 +262,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("viewKey", required: true)]
         public Input<string> ViewKey { get; set; } = null!;
@@ -299,7 +288,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -317,7 +306,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("viewKey")]
         public Input<string>? ViewKey { get; set; }

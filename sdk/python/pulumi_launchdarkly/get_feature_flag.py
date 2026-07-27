@@ -27,18 +27,18 @@ class GetFeatureFlagResult:
     """
     A collection of values returned by getFeatureFlag.
     """
-    def __init__(__self__, archived=None, client_side_availabilities=None, custom_properties=None, defaults=None, deprecated=None, description=None, id=None, include_in_snippet=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None, view_keys=None, views=None):
+    def __init__(__self__, archived=None, client_side_availability=None, custom_properties=None, defaults=None, deprecated=None, description=None, id=None, key=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None, temporary=None, variation_type=None, variations=None, view_keys=None, views=None):
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
-        if client_side_availabilities and not isinstance(client_side_availabilities, list):
-            raise TypeError("Expected argument 'client_side_availabilities' to be a list")
-        pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
-        if custom_properties and not isinstance(custom_properties, list):
-            raise TypeError("Expected argument 'custom_properties' to be a list")
+        if client_side_availability and not isinstance(client_side_availability, dict):
+            raise TypeError("Expected argument 'client_side_availability' to be a dict")
+        pulumi.set(__self__, "client_side_availability", client_side_availability)
+        if custom_properties and not isinstance(custom_properties, dict):
+            raise TypeError("Expected argument 'custom_properties' to be a dict")
         pulumi.set(__self__, "custom_properties", custom_properties)
-        if defaults and not isinstance(defaults, list):
-            raise TypeError("Expected argument 'defaults' to be a list")
+        if defaults and not isinstance(defaults, dict):
+            raise TypeError("Expected argument 'defaults' to be a dict")
         pulumi.set(__self__, "defaults", defaults)
         if deprecated and not isinstance(deprecated, bool):
             raise TypeError("Expected argument 'deprecated' to be a bool")
@@ -49,9 +49,6 @@ class GetFeatureFlagResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if include_in_snippet and not isinstance(include_in_snippet, bool):
-            raise TypeError("Expected argument 'include_in_snippet' to be a bool")
-        pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
@@ -90,28 +87,31 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def archived(self) -> _builtins.bool:
         """
-        Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
+        Whether the flag is archived.
         """
         return pulumi.get(self, "archived")
 
     @_builtins.property
-    @pulumi.getter(name="clientSideAvailabilities")
-    def client_side_availabilities(self) -> Sequence['outputs.GetFeatureFlagClientSideAvailabilityResult']:
-        return pulumi.get(self, "client_side_availabilities")
+    @pulumi.getter(name="clientSideAvailability")
+    def client_side_availability(self) -> 'outputs.GetFeatureFlagClientSideAvailabilityResult':
+        """
+        Client-side availability settings.
+        """
+        return pulumi.get(self, "client_side_availability")
 
     @_builtins.property
     @pulumi.getter(name="customProperties")
-    def custom_properties(self) -> Sequence['outputs.GetFeatureFlagCustomPropertyResult']:
+    def custom_properties(self) -> Mapping[str, 'outputs.GetFeatureFlagCustomPropertiesResult']:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+        Custom properties, keyed by the custom property key.
         """
         return pulumi.get(self, "custom_properties")
 
     @_builtins.property
     @pulumi.getter
-    def defaults(self) -> Sequence['outputs.GetFeatureFlagDefaultResult']:
+    def defaults(self) -> 'outputs.GetFeatureFlagDefaultsResult':
         """
-        A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        Default variation indices for new environments.
         """
         return pulumi.get(self, "defaults")
 
@@ -119,7 +119,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def deprecated(self) -> _builtins.bool:
         """
-        Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        Whether the flag is deprecated.
         """
         return pulumi.get(self, "deprecated")
 
@@ -127,7 +127,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The feature flag's description.
+        Feature flag description.
         """
         return pulumi.get(self, "description")
 
@@ -135,24 +135,15 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Composite ID `project_key/key`.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
-    def include_in_snippet(self) -> _builtins.bool:
-        """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The unique feature flag key that references the flag in your application code.
+        The unique feature flag key.
         """
         return pulumi.get(self, "key")
 
@@ -160,7 +151,7 @@ class GetFeatureFlagResult:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
         """
-        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -176,7 +167,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The feature flag's human-readable name
+        Human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -192,7 +183,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags.
         """
         return pulumi.get(self, "tags")
 
@@ -200,7 +191,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def temporary(self) -> _builtins.bool:
         """
-        Specifies whether the flag is a temporary flag.
+        Whether the flag is temporary.
         """
         return pulumi.get(self, "temporary")
 
@@ -208,7 +199,7 @@ class GetFeatureFlagResult:
     @pulumi.getter(name="variationType")
     def variation_type(self) -> _builtins.str:
         """
-        The uniform type for all variations. Can be either "boolean", "string", "number", or "json".
+        Variation type: "boolean", "string", "number", or "json".
         """
         return pulumi.get(self, "variation_type")
 
@@ -216,7 +207,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def variations(self) -> Sequence['outputs.GetFeatureFlagVariationResult']:
         """
-        An array of possible variations for the flag
+        Possible variations for the flag.
         """
         return pulumi.get(self, "variations")
 
@@ -224,7 +215,7 @@ class GetFeatureFlagResult:
     @pulumi.getter(name="viewKeys")
     def view_keys(self) -> Sequence[_builtins.str]:
         """
-        A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
+        View keys linked to the flag.
         """
         return pulumi.get(self, "view_keys")
 
@@ -232,7 +223,7 @@ class GetFeatureFlagResult:
     @pulumi.getter
     def views(self) -> Sequence[_builtins.str]:
         """
-        A list of view keys that this feature flag is linked to.
+        Legacy view keys list.
         """
         return pulumi.get(self, "views")
 
@@ -244,13 +235,12 @@ class AwaitableGetFeatureFlagResult(GetFeatureFlagResult):
             yield self
         return GetFeatureFlagResult(
             archived=self.archived,
-            client_side_availabilities=self.client_side_availabilities,
+            client_side_availability=self.client_side_availability,
             custom_properties=self.custom_properties,
             defaults=self.defaults,
             deprecated=self.deprecated,
             description=self.description,
             id=self.id,
-            include_in_snippet=self.include_in_snippet,
             key=self.key,
             maintainer_id=self.maintainer_id,
             maintainer_team_key=self.maintainer_team_key,
@@ -275,8 +265,8 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
     This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
 
 
-    :param _builtins.str key: The unique feature flag key that references the flag in your application code.
-    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+    :param _builtins.str key: The unique feature flag key.
+    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
     :param _builtins.str maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
     :param _builtins.str project_key: The feature flag's project key.
     """
@@ -290,13 +280,12 @@ def get_feature_flag(key: Optional[_builtins.str] = None,
 
     return AwaitableGetFeatureFlagResult(
         archived=pulumi.get(__ret__, 'archived'),
-        client_side_availabilities=pulumi.get(__ret__, 'client_side_availabilities'),
+        client_side_availability=pulumi.get(__ret__, 'client_side_availability'),
         custom_properties=pulumi.get(__ret__, 'custom_properties'),
         defaults=pulumi.get(__ret__, 'defaults'),
         deprecated=pulumi.get(__ret__, 'deprecated'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
-        include_in_snippet=pulumi.get(__ret__, 'include_in_snippet'),
         key=pulumi.get(__ret__, 'key'),
         maintainer_id=pulumi.get(__ret__, 'maintainer_id'),
         maintainer_team_key=pulumi.get(__ret__, 'maintainer_team_key'),
@@ -319,8 +308,8 @@ def get_feature_flag_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
 
 
-    :param _builtins.str key: The unique feature flag key that references the flag in your application code.
-    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+    :param _builtins.str key: The unique feature flag key.
+    :param _builtins.str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
     :param _builtins.str maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
     :param _builtins.str project_key: The feature flag's project key.
     """
@@ -333,13 +322,12 @@ def get_feature_flag_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('launchdarkly:index/getFeatureFlag:getFeatureFlag', __args__, opts=opts, typ=GetFeatureFlagResult)
     return __ret__.apply(lambda __response__: GetFeatureFlagResult(
         archived=pulumi.get(__response__, 'archived'),
-        client_side_availabilities=pulumi.get(__response__, 'client_side_availabilities'),
+        client_side_availability=pulumi.get(__response__, 'client_side_availability'),
         custom_properties=pulumi.get(__response__, 'custom_properties'),
         defaults=pulumi.get(__response__, 'defaults'),
         deprecated=pulumi.get(__response__, 'deprecated'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
-        include_in_snippet=pulumi.get(__response__, 'include_in_snippet'),
         key=pulumi.get(__response__, 'key'),
         maintainer_id=pulumi.get(__response__, 'maintainer_id'),
         maintainer_team_key=pulumi.get(__response__, 'maintainer_team_key'),

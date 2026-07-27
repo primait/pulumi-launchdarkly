@@ -67,19 +67,19 @@ type AiConfig struct {
 	EvaluationMetricKey pulumi.StringPtrOutput `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrOutput `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringOutput `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The AI Config's human-readable name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this AI Config.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// A list of variation summaries for this AI Config.
 	Variations AiConfigVariationTypeArrayOutput `pulumi:"variations"`
@@ -131,19 +131,19 @@ type aiConfigState struct {
 	EvaluationMetricKey *string `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted *bool `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode *string `pulumi:"mode"`
 	// The AI Config's human-readable name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this AI Config.
 	Tags []string `pulumi:"tags"`
 	// A list of variation summaries for this AI Config.
 	Variations []AiConfigVariationType `pulumi:"variations"`
@@ -160,19 +160,19 @@ type AiConfigState struct {
 	EvaluationMetricKey pulumi.StringPtrInput
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrInput
-	// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode pulumi.StringPtrInput
 	// The AI Config's human-readable name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
-	// Tags associated with your resource.
+	// Tags associated with this AI Config.
 	Tags pulumi.StringArrayInput
 	// A list of variation summaries for this AI Config.
 	Variations AiConfigVariationTypeArrayInput
@@ -191,19 +191,19 @@ type aiConfigArgs struct {
 	EvaluationMetricKey *string `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted *bool `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode *string `pulumi:"mode"`
 	// The AI Config's human-readable name.
 	Name *string `pulumi:"name"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with this AI Config.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -215,19 +215,19 @@ type AiConfigArgs struct {
 	EvaluationMetricKey pulumi.StringPtrInput
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrInput
-	// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
 	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode pulumi.StringPtrInput
 	// The AI Config's human-readable name.
 	Name pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
-	// Tags associated with your resource.
+	// Tags associated with this AI Config.
 	Tags pulumi.StringArrayInput
 }
 
@@ -338,7 +338,7 @@ func (o AiConfigOutput) IsInverted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.BoolPtrOutput { return v.IsInverted }).(pulumi.BoolPtrOutput)
 }
 
-// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -353,9 +353,9 @@ func (o AiConfigOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o AiConfigOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiConfig) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o AiConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The AI Config's human-readable name.
@@ -363,12 +363,12 @@ func (o AiConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with this AI Config.
 func (o AiConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

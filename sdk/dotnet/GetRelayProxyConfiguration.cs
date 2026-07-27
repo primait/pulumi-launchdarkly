@@ -12,7 +12,7 @@ namespace Pulumi.Launchdarkly
     public static class GetRelayProxyConfiguration
     {
         /// <summary>
-        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
         /// 
         /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRelayProxyConfigurationResult>("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args ?? new GetRelayProxyConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
         /// 
         /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.Invoke<GetRelayProxyConfigurationResult>("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args ?? new GetRelayProxyConfigurationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+        /// Provides a LaunchDarkly Relay Proxy configuration data source for use with the Relay Proxy's [automatic configuration feature](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
         /// 
         /// &gt; **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         /// 
@@ -157,7 +157,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+        /// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRelayProxyConfigurationPolicyResult> Policies;
 

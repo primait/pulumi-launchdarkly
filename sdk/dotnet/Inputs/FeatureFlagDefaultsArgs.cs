@@ -13,13 +13,13 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class FeatureFlagDefaultsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The index of the variation the flag will default to in all new environments when off.
+        /// The index of the variation the flag defaults to in all new environments when off.
         /// </summary>
         [Input("offVariation", required: true)]
         public Input<int> OffVariation { get; set; } = null!;
 
         /// <summary>
-        /// The index of the variation the flag will default to in all new environments when on.
+        /// The index of the variation the flag defaults to in all new environments when on.
         /// </summary>
         [Input("onVariation", required: true)]
         public Input<int> OnVariation { get; set; } = null!;

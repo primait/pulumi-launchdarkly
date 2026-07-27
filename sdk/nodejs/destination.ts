@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
  *
- * To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
+ * To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
  *
  * ## Example Usage
  *
@@ -140,11 +140,11 @@ export class Destination extends pulumi.CustomResource {
      */
     declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly envKey: pulumi.Output<string>;
     /**
-     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly kind: pulumi.Output<string>;
     /**
@@ -154,15 +154,15 @@ export class Destination extends pulumi.CustomResource {
     /**
      * Whether the data export destination is on or not.
      */
-    declare public readonly on: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean>;
     /**
-     * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this resource.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
 
     /**
      * Create a Destination resource with the given unique name, arguments, and options.
@@ -220,11 +220,11 @@ export interface DestinationState {
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     envKey?: pulumi.Input<string | undefined>;
     /**
-     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -236,11 +236,11 @@ export interface DestinationState {
      */
     on?: pulumi.Input<boolean | undefined>;
     /**
-     * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -254,11 +254,11 @@ export interface DestinationArgs {
      */
     config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     envKey: pulumi.Input<string>;
     /**
-     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     kind: pulumi.Input<string>;
     /**
@@ -270,11 +270,11 @@ export interface DestinationArgs {
      */
     on?: pulumi.Input<boolean | undefined>;
     /**
-     * The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The LaunchDarkly project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

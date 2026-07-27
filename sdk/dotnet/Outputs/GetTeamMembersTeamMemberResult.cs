@@ -38,9 +38,9 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTeamMembersTeamMemberRoleAttributeResult> RoleAttributes;
+        public readonly ImmutableDictionary<string, ImmutableArray<string>> RoleAttributes;
 
         [OutputConstructor]
         private GetTeamMembersTeamMemberResult(
@@ -56,7 +56,7 @@ namespace Pulumi.Launchdarkly.Outputs
 
             string role,
 
-            ImmutableArray<Outputs.GetTeamMembersTeamMemberRoleAttributeResult> roleAttributes)
+            ImmutableDictionary<string, ImmutableArray<string>> roleAttributes)
         {
             CustomRoles = customRoles;
             Email = email;

@@ -81,7 +81,7 @@ export class AiTool extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class AiTool extends pulumi.CustomResource {
      */
     declare public readonly maintainerTeamKey: pulumi.Output<string>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
@@ -170,7 +170,7 @@ export interface AiToolState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -182,7 +182,7 @@ export interface AiToolState {
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
@@ -208,7 +208,7 @@ export interface AiToolArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface AiToolArgs {
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**

@@ -86,7 +86,7 @@ class GetAiToolResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID in the format `project_key/key`.
         """
         return pulumi.get(self, "id")
 

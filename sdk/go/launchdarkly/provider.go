@@ -18,7 +18,7 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+	// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 	Access_token pulumi.StringPtrOutput `pulumi:"access_token"`
 	// The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
 	Api_host pulumi.StringPtrOutput `pulumi:"api_host"`
@@ -54,10 +54,12 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+	// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 	Access_token *string `pulumi:"access_token"`
 	// The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
 	Api_host *string `pulumi:"api_host"`
+	// When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
+	ArchiveFlagsOnDestroy *bool `pulumi:"archiveFlagsOnDestroy"`
 	// The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
 	Http_timeout *int `pulumi:"http_timeout"`
 	// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
@@ -68,10 +70,12 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+	// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 	Access_token pulumi.StringPtrInput
 	// The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
 	Api_host pulumi.StringPtrInput
+	// When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
+	ArchiveFlagsOnDestroy pulumi.BoolPtrInput
 	// The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
 	Http_timeout pulumi.IntPtrInput
 	// The maximum number of concurrent API requests the provider makes to LaunchDarkly. Defaults to `1`. Increase this value to speed up plan and refresh operations on large configurations. Higher values make it more likely that requests exceed your account's API rate limit. If a request exceeds the rate limit, LaunchDarkly returns a `429` response and the provider retries the request automatically.
@@ -140,7 +144,7 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 func (o ProviderOutput) Access_token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Access_token }).(pulumi.StringPtrOutput)
 }

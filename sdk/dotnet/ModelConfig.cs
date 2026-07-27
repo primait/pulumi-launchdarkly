@@ -12,9 +12,7 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly model config resource.
     /// 
-    /// This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Since the API does not support updates, any field change will force recreation of the resource.
-    /// 
-    /// &gt; **Important:** If an `launchdarkly.AiConfigVariation` references this model config via `ModelConfigKey`, use a Terraform resource reference (e.g. `launchdarkly_model_config.example.key`) so Terraform can order destruction correctly. A literal string key will cause the delete to fail because the API rejects deleting a model config that is still in use.
+    /// This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Because the API does not support updates, any field change forces recreation of the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -55,22 +53,22 @@ namespace Pulumi.Launchdarkly
     public partial class ModelConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("costPerInputToken")]
-        public Output<double?> CostPerInputToken { get; private set; } = null!;
+        public Output<double> CostPerInputToken { get; private set; } = null!;
 
         /// <summary>
-        /// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("costPerOutputToken")]
-        public Output<double?> CostPerOutputToken { get; private set; } = null!;
+        public Output<double> CostPerOutputToken { get; private set; } = null!;
 
         /// <summary>
-        /// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("customParameters")]
-        public Output<string?> CustomParameters { get; private set; } = null!;
+        public Output<string> CustomParameters { get; private set; } = null!;
 
         /// <summary>
         /// Whether the model config is available globally.
@@ -79,49 +77,49 @@ namespace Pulumi.Launchdarkly
         public Output<bool> Global { get; private set; } = null!;
 
         /// <summary>
-        /// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("icon")]
-        public Output<string?> Icon { get; private set; } = null!;
+        public Output<string> Icon { get; private set; } = null!;
 
         /// <summary>
-        /// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("modelId")]
         public Output<string> ModelId { get; private set; } = null!;
 
         /// <summary>
-        /// The provider name for the model config (e.g. `Openai`, `Anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The provider name for the model config. For example, `Openai` or `Anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("modelProvider")]
-        public Output<string?> ModelProvider { get; private set; } = null!;
+        public Output<string> ModelProvider { get; private set; } = null!;
 
         /// <summary>
-        /// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("params")]
-        public Output<string?> Params { get; private set; } = null!;
+        public Output<string> Params { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -180,61 +178,61 @@ namespace Pulumi.Launchdarkly
     public sealed class ModelConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("costPerInputToken")]
         public Input<double>? CostPerInputToken { get; set; }
 
         /// <summary>
-        /// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("costPerOutputToken")]
         public Input<double>? CostPerOutputToken { get; set; }
 
         /// <summary>
-        /// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("customParameters")]
         public Input<string>? CustomParameters { get; set; }
 
         /// <summary>
-        /// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("icon")]
         public Input<string>? Icon { get; set; }
 
         /// <summary>
-        /// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("modelId", required: true)]
         public Input<string> ModelId { get; set; } = null!;
 
         /// <summary>
-        /// The provider name for the model config (e.g. `Openai`, `Anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The provider name for the model config. For example, `Openai` or `Anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("modelProvider")]
         public Input<string>? ModelProvider { get; set; }
 
         /// <summary>
-        /// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("params")]
         public Input<string>? Params { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -243,7 +241,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         public InputList<string> Tags
         {
@@ -260,19 +258,19 @@ namespace Pulumi.Launchdarkly
     public sealed class ModelConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("costPerInputToken")]
         public Input<double>? CostPerInputToken { get; set; }
 
         /// <summary>
-        /// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("costPerOutputToken")]
         public Input<double>? CostPerOutputToken { get; set; }
 
         /// <summary>
-        /// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("customParameters")]
         public Input<string>? CustomParameters { get; set; }
@@ -284,43 +282,43 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Global { get; set; }
 
         /// <summary>
-        /// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("icon")]
         public Input<string>? Icon { get; set; }
 
         /// <summary>
-        /// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("modelId")]
         public Input<string>? ModelId { get; set; }
 
         /// <summary>
-        /// The provider name for the model config (e.g. `Openai`, `Anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The provider name for the model config. For example, `Openai` or `Anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("modelProvider")]
         public Input<string>? ModelProvider { get; set; }
 
         /// <summary>
-        /// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("params")]
         public Input<string>? Params { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -329,7 +327,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         public InputList<string> Tags
         {

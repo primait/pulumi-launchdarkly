@@ -27,11 +27,11 @@ export function getFeatureFlag(args: GetFeatureFlagArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetFeatureFlagArgs {
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key.
      */
     key: string;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     maintainerId?: string;
     /**
@@ -49,42 +49,39 @@ export interface GetFeatureFlagArgs {
  */
 export interface GetFeatureFlagResult {
     /**
-     * Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
+     * Whether the flag is archived.
      */
     readonly archived: boolean;
-    readonly clientSideAvailabilities: outputs.GetFeatureFlagClientSideAvailability[];
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+     * Client-side availability settings.
      */
-    readonly customProperties: outputs.GetFeatureFlagCustomProperty[];
+    readonly clientSideAvailability: outputs.GetFeatureFlagClientSideAvailability;
     /**
-     * A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+     * Custom properties, keyed by the custom property key.
      */
-    readonly defaults: outputs.GetFeatureFlagDefault[];
+    readonly customProperties: {[key: string]: outputs.GetFeatureFlagCustomProperties};
     /**
-     * Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+     * Default variation indices for new environments.
+     */
+    readonly defaults: outputs.GetFeatureFlagDefaults;
+    /**
+     * Whether the flag is deprecated.
      */
     readonly deprecated: boolean;
     /**
-     * The feature flag's description.
+     * Feature flag description.
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Composite ID `project_key/key`.
      */
     readonly id: string;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-     *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-     */
-    readonly includeInSnippet: boolean;
-    /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key.
      */
     readonly key: string;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     readonly maintainerId: string;
     /**
@@ -92,7 +89,7 @@ export interface GetFeatureFlagResult {
      */
     readonly maintainerTeamKey: string;
     /**
-     * The feature flag's human-readable name
+     * Human-readable name.
      */
     readonly name: string;
     /**
@@ -100,27 +97,27 @@ export interface GetFeatureFlagResult {
      */
     readonly projectKey: string;
     /**
-     * Tags associated with your resource.
+     * Tags.
      */
     readonly tags: string[];
     /**
-     * Specifies whether the flag is a temporary flag.
+     * Whether the flag is temporary.
      */
     readonly temporary: boolean;
     /**
-     * The uniform type for all variations. Can be either "boolean", "string", "number", or "json".
+     * Variation type: "boolean", "string", "number", or "json".
      */
     readonly variationType: string;
     /**
-     * An array of possible variations for the flag
+     * Possible variations for the flag.
      */
     readonly variations: outputs.GetFeatureFlagVariation[];
     /**
-     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * View keys linked to the flag.
      */
     readonly viewKeys: string[];
     /**
-     * A list of view keys that this feature flag is linked to.
+     * Legacy view keys list.
      */
     readonly views: string[];
 }
@@ -144,11 +141,11 @@ export function getFeatureFlagOutput(args: GetFeatureFlagOutputArgs, opts?: pulu
  */
 export interface GetFeatureFlagOutputArgs {
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key.
      */
     key: pulumi.Input<string>;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     maintainerId?: pulumi.Input<string | undefined>;
     /**

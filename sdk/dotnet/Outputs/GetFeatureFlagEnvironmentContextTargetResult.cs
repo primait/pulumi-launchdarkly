@@ -13,17 +13,8 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetFeatureFlagEnvironmentContextTargetResult
     {
-        /// <summary>
-        /// The context kind on which the flag should target in this environment. User (`User`) targets should be specified as `Targets` attribute blocks.
-        /// </summary>
         public readonly string ContextKind;
-        /// <summary>
-        /// List of `User` strings to target.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
-        /// <summary>
-        /// The index of the variation to serve if a user target value is matched.
-        /// </summary>
         public readonly int Variation;
 
         [OutputConstructor]

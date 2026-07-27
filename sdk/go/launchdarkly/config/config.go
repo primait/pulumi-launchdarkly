@@ -11,7 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
 func GetAccess_token(ctx *pulumi.Context) string {
 	return config.Get(ctx, "launchdarkly:access_token")
 }
@@ -19,6 +19,11 @@ func GetAccess_token(ctx *pulumi.Context) string {
 // The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
 func GetApi_host(ctx *pulumi.Context) string {
 	return config.Get(ctx, "launchdarkly:api_host")
+}
+
+// When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
+func GetArchiveFlagsOnDestroy(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "launchdarkly:archiveFlagsOnDestroy")
 }
 
 // The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.

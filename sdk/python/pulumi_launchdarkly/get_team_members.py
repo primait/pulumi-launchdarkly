@@ -53,13 +53,13 @@ class GetTeamMembersResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        - The 24 character alphanumeric ID of the team member.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ignoreMissing")
-    def ignore_missing(self) -> Optional[_builtins.bool]:
+    def ignore_missing(self) -> _builtins.bool:
         """
         A boolean to determine whether to ignore members that weren't found.
         """

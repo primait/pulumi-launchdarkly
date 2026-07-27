@@ -10,11 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
-    /// Provides a LaunchDarkly flag templates resource.
-    /// 
-    /// This resource allows you to manage the "Custom" flag template settings applied to new feature flags created within a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This resource manages the Custom template only.
-    /// 
-    /// &gt; **Note:** Flag templates are a singleton per project. Destroying this resource only removes it from Terraform state. The flag templates will continue to exist in LaunchDarkly.
+    /// Manages the Custom flag-template settings for a LaunchDarkly project.
     /// 
     /// ## Example Usage
     /// 
@@ -36,12 +32,12 @@ namespace Pulumi.Launchdarkly
     ///         Temporary = false,
     ///         BooleanDefaults = new Launchdarkly.Inputs.FlagTemplatesBooleanDefaultsArgs
     ///         {
-    ///             TrueDisplayName = "True",
-    ///             FalseDisplayName = "False",
-    ///             TrueDescription = "",
-    ///             FalseDescription = "",
-    ///             OnVariation = 0,
-    ///             OffVariation = 1,
+    ///             True_display_name = "True",
+    ///             False_display_name = "False",
+    ///             True_description = "",
+    ///             False_description = "",
+    ///             On_variation = 0,
+    ///             Off_variation = 1,
     ///         },
     ///     });
     /// 
@@ -60,28 +56,22 @@ namespace Pulumi.Launchdarkly
     public partial class FlagTemplates : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A block describing the default boolean flag variation settings.
+        /// Default boolean variation settings.
         /// </summary>
         [Output("booleanDefaults")]
         public Output<Outputs.FlagTemplatesBooleanDefaults> BooleanDefaults { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
-        /// <summary>
-        /// Tags associated with your resource.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether new flags should be temporary by default.
-        /// </summary>
         [Output("temporary")]
-        public Output<bool?> Temporary { get; private set; } = null!;
+        public Output<bool> Temporary { get; private set; } = null!;
 
 
         /// <summary>
@@ -131,32 +121,25 @@ namespace Pulumi.Launchdarkly
     public sealed class FlagTemplatesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A block describing the default boolean flag variation settings.
+        /// Default boolean variation settings.
         /// </summary>
         [Input("booleanDefaults", required: true)]
         public Input<Inputs.FlagTemplatesBooleanDefaultsArgs> BooleanDefaults { get; set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
 
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// Tags associated with your resource.
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Whether new flags should be temporary by default.
-        /// </summary>
         [Input("temporary")]
         public Input<bool>? Temporary { get; set; }
 
@@ -169,32 +152,25 @@ namespace Pulumi.Launchdarkly
     public sealed class FlagTemplatesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A block describing the default boolean flag variation settings.
+        /// Default boolean variation settings.
         /// </summary>
         [Input("booleanDefaults")]
         public Input<Inputs.FlagTemplatesBooleanDefaultsGetArgs>? BooleanDefaults { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// Tags associated with your resource.
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Whether new flags should be temporary by default.
-        /// </summary>
         [Input("temporary")]
         public Input<bool>? Temporary { get; set; }
 

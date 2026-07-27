@@ -68,19 +68,19 @@ type LookupAiConfigVariationResult struct {
 	ConfigKey string `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate int `pulumi:"creationDate"`
-	// The variation's description (used in agent mode).
+	// The variation's description. Used in agent mode.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID in the format `project_key/config_key/key`.
 	Id string `pulumi:"id"`
-	// The variation's instructions (used in agent mode).
+	// The variation's instructions. Used in agent mode.
 	Instructions string `pulumi:"instructions"`
 	// The variation's unique key.
 	Key string `pulumi:"key"`
-	// A list of messages for completion mode. Each message has a `role` and `content`.
+	// A list of messages for completion mode.
 	Messages []GetAiConfigVariationMessage `pulumi:"messages"`
-	// A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
+	// A JSON string representing the inline model configuration.
 	Model string `pulumi:"model"`
-	// The key of a model config resource to use for this variation. Conflicts with `model`.
+	// The key of a model config resource used for this variation.
 	ModelConfigKey string `pulumi:"modelConfigKey"`
 	// The variation's human-readable name.
 	Name string `pulumi:"name"`
@@ -88,7 +88,7 @@ type LookupAiConfigVariationResult struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 	ToolKeys []string `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId string `pulumi:"variationId"`
@@ -144,17 +144,17 @@ func (o LookupAiConfigVariationResultOutput) CreationDate() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) int { return v.CreationDate }).(pulumi.IntOutput)
 }
 
-// The variation's description (used in agent mode).
+// The variation's description. Used in agent mode.
 func (o LookupAiConfigVariationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID in the format `project_key/config_key/key`.
 func (o LookupAiConfigVariationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The variation's instructions (used in agent mode).
+// The variation's instructions. Used in agent mode.
 func (o LookupAiConfigVariationResultOutput) Instructions() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Instructions }).(pulumi.StringOutput)
 }
@@ -164,17 +164,17 @@ func (o LookupAiConfigVariationResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// A list of messages for completion mode. Each message has a `role` and `content`.
+// A list of messages for completion mode.
 func (o LookupAiConfigVariationResultOutput) Messages() GetAiConfigVariationMessageArrayOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) []GetAiConfigVariationMessage { return v.Messages }).(GetAiConfigVariationMessageArrayOutput)
 }
 
-// A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
+// A JSON string representing the inline model configuration.
 func (o LookupAiConfigVariationResultOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Model }).(pulumi.StringOutput)
 }
 
-// The key of a model config resource to use for this variation. Conflicts with `model`.
+// The key of a model config resource used for this variation.
 func (o LookupAiConfigVariationResultOutput) ModelConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.ModelConfigKey }).(pulumi.StringOutput)
 }
@@ -194,7 +194,7 @@ func (o LookupAiConfigVariationResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
 func (o LookupAiConfigVariationResultOutput) ToolKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) []string { return v.ToolKeys }).(pulumi.StringArrayOutput)
 }

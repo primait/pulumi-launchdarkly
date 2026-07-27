@@ -14,10 +14,6 @@ import (
 
 // Provides a LaunchDarkly environment resource.
 //
-// This resource allows you to create and manage environments in your LaunchDarkly organization. This resource should _not_ be used if the encapsulated project is also managed via Terraform. In this case, you should _always_ use the nested environments config blocks on your `Project` resource to manage your environments.
-//
-// > **Note:** Mixing the use of nested `environments` blocks in the [`Project`] resource and `Environment` resources is not recommended.
-//
 // ## Example Usage
 //
 // ```go
@@ -53,13 +49,35 @@ import (
 //					pulumi.String("terraform"),
 //					pulumi.String("staging"),
 //				},
-//				ApprovalSettings: launchdarkly.EnvironmentApprovalSettingArray{
-//					&launchdarkly.EnvironmentApprovalSettingArgs{
-//						Required:                pulumi.Bool(true),
-//						CanReviewOwnRequest:     pulumi.Bool(true),
-//						MinNumApprovals:         pulumi.Int(2),
-//						CanApplyDeclinedChanges: pulumi.Bool(true),
-//					},
+//				ApprovalSettings: &launchdarkly.EnvironmentApprovalSettingsArgs{
+//					Required:                   pulumi.Bool(true),
+//					Can_review_own_request:     true,
+//					Min_num_approvals:          2,
+//					Can_apply_declined_changes: true,
+//				},
+//				ProjectKey: pulumi.Any(example.Key),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Segment approvals are configured separately from flag approval_settings,
+//			// via LaunchDarkly's beta approvals API. Note: enabling segment approvals
+//			// while you manage launchdarkly_segment resources in Terraform will make
+//			// every subsequent segment change require manual approval before it can be
+//			// applied. See https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370.
+//			_, err = launchdarkly.NewEnvironment(ctx, "segment_approvals_example", &launchdarkly.EnvironmentArgs{
+//				Name:  pulumi.String("Segment Approvals Example Environment"),
+//				Key:   pulumi.String("segment-approvals-example"),
+//				Color: pulumi.String("ff00ff"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("terraform"),
+//					pulumi.String("staging"),
+//				},
+//				SegmentApprovalSettings: &launchdarkly.EnvironmentSegmentApprovalSettingsArgs{
+//					Required:                   pulumi.Bool(true),
+//					Can_review_own_request:     true,
+//					Min_num_approvals:          2,
+//					Can_apply_declined_changes: true,
 //				},
 //				ProjectKey: pulumi.Any(example.Key),
 //			})
@@ -82,35 +100,30 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
-	// The environment's SDK key.
-	ApiKey           pulumi.StringOutput                   `pulumi:"apiKey"`
-	ApprovalSettings EnvironmentApprovalSettingArrayOutput `pulumi:"approvalSettings"`
-	// The environment's client-side ID.
-	ClientSideId pulumi.StringOutput `pulumi:"clientSideId"`
-	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-	Color pulumi.StringOutput `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-	ConfirmChanges pulumi.BoolPtrOutput `pulumi:"confirmChanges"`
-	// Denotes whether the environment is critical.
-	Critical pulumi.BoolPtrOutput `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-	DefaultTrackEvents pulumi.BoolPtrOutput `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key pulumi.StringOutput `pulumi:"key"`
-	// The environment's mobile key.
+	ApiKey           pulumi.StringOutput                  `pulumi:"apiKey"`
+	ApprovalSettings EnvironmentApprovalSettingsPtrOutput `pulumi:"approvalSettings"`
+	ClientSideId     pulumi.StringOutput                  `pulumi:"clientSideId"`
+	// RGB hex color (no leading #).
+	Color              pulumi.StringOutput `pulumi:"color"`
+	ConfirmChanges     pulumi.BoolOutput   `pulumi:"confirmChanges"`
+	Critical           pulumi.BoolOutput   `pulumi:"critical"`
+	DefaultTrackEvents pulumi.BoolOutput   `pulumi:"defaultTrackEvents"`
+	// TTL (0-60 minutes).
+	DefaultTtl pulumi.IntOutput `pulumi:"defaultTtl"`
+	// The project-unique key for the environment.
+	Key       pulumi.StringOutput `pulumi:"key"`
 	MobileKey pulumi.StringOutput `pulumi:"mobileKey"`
-	// The name of the environment.
+	// Human-readable name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-	RequireComments pulumi.BoolPtrOutput `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-	SecureMode pulumi.BoolPtrOutput `pulumi:"secureMode"`
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The LaunchDarkly project key.
+	ProjectKey      pulumi.StringOutput `pulumi:"projectKey"`
+	RequireComments pulumi.BoolOutput   `pulumi:"requireComments"`
+	SecureMode      pulumi.BoolOutput   `pulumi:"secureMode"`
+	// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+	//
+	// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+	SegmentApprovalSettings EnvironmentSegmentApprovalSettingsPtrOutput `pulumi:"segmentApprovalSettings"`
+	Tags                    pulumi.StringArrayOutput                    `pulumi:"tags"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -158,67 +171,57 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// The environment's SDK key.
 	ApiKey           *string                      `pulumi:"apiKey"`
-	ApprovalSettings []EnvironmentApprovalSetting `pulumi:"approvalSettings"`
-	// The environment's client-side ID.
-	ClientSideId *string `pulumi:"clientSideId"`
-	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-	Color *string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-	ConfirmChanges *bool `pulumi:"confirmChanges"`
-	// Denotes whether the environment is critical.
-	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	ApprovalSettings *EnvironmentApprovalSettings `pulumi:"approvalSettings"`
+	ClientSideId     *string                      `pulumi:"clientSideId"`
+	// RGB hex color (no leading #).
+	Color              *string `pulumi:"color"`
+	ConfirmChanges     *bool   `pulumi:"confirmChanges"`
+	Critical           *bool   `pulumi:"critical"`
+	DefaultTrackEvents *bool   `pulumi:"defaultTrackEvents"`
+	// TTL (0-60 minutes).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key *string `pulumi:"key"`
-	// The environment's mobile key.
+	// The project-unique key for the environment.
+	Key       *string `pulumi:"key"`
 	MobileKey *string `pulumi:"mobileKey"`
-	// The name of the environment.
+	// Human-readable name.
 	Name *string `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey *string `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-	RequireComments *bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-	SecureMode *bool `pulumi:"secureMode"`
-	// Tags associated with your resource.
-	Tags []string `pulumi:"tags"`
+	// The LaunchDarkly project key.
+	ProjectKey      *string `pulumi:"projectKey"`
+	RequireComments *bool   `pulumi:"requireComments"`
+	SecureMode      *bool   `pulumi:"secureMode"`
+	// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+	//
+	// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+	SegmentApprovalSettings *EnvironmentSegmentApprovalSettings `pulumi:"segmentApprovalSettings"`
+	Tags                    []string                            `pulumi:"tags"`
 }
 
 type EnvironmentState struct {
-	// The environment's SDK key.
 	ApiKey           pulumi.StringPtrInput
-	ApprovalSettings EnvironmentApprovalSettingArrayInput
-	// The environment's client-side ID.
-	ClientSideId pulumi.StringPtrInput
-	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-	Color pulumi.StringPtrInput
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-	ConfirmChanges pulumi.BoolPtrInput
-	// Denotes whether the environment is critical.
-	Critical pulumi.BoolPtrInput
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+	ApprovalSettings EnvironmentApprovalSettingsPtrInput
+	ClientSideId     pulumi.StringPtrInput
+	// RGB hex color (no leading #).
+	Color              pulumi.StringPtrInput
+	ConfirmChanges     pulumi.BoolPtrInput
+	Critical           pulumi.BoolPtrInput
 	DefaultTrackEvents pulumi.BoolPtrInput
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// TTL (0-60 minutes).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key pulumi.StringPtrInput
-	// The environment's mobile key.
+	// The project-unique key for the environment.
+	Key       pulumi.StringPtrInput
 	MobileKey pulumi.StringPtrInput
-	// The name of the environment.
+	// Human-readable name.
 	Name pulumi.StringPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey pulumi.StringPtrInput
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+	// The LaunchDarkly project key.
+	ProjectKey      pulumi.StringPtrInput
 	RequireComments pulumi.BoolPtrInput
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-	SecureMode pulumi.BoolPtrInput
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayInput
+	SecureMode      pulumi.BoolPtrInput
+	// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+	//
+	// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+	SegmentApprovalSettings EnvironmentSegmentApprovalSettingsPtrInput
+	Tags                    pulumi.StringArrayInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -226,56 +229,52 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
-	ApprovalSettings []EnvironmentApprovalSetting `pulumi:"approvalSettings"`
-	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-	Color string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-	ConfirmChanges *bool `pulumi:"confirmChanges"`
-	// Denotes whether the environment is critical.
-	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	ApprovalSettings *EnvironmentApprovalSettings `pulumi:"approvalSettings"`
+	// RGB hex color (no leading #).
+	Color              string `pulumi:"color"`
+	ConfirmChanges     *bool  `pulumi:"confirmChanges"`
+	Critical           *bool  `pulumi:"critical"`
+	DefaultTrackEvents *bool  `pulumi:"defaultTrackEvents"`
+	// TTL (0-60 minutes).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project-unique key for the environment.
 	Key string `pulumi:"key"`
-	// The name of the environment.
+	// Human-readable name.
 	Name *string `pulumi:"name"`
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey string `pulumi:"projectKey"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-	RequireComments *bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-	SecureMode *bool `pulumi:"secureMode"`
-	// Tags associated with your resource.
-	Tags []string `pulumi:"tags"`
+	// The LaunchDarkly project key.
+	ProjectKey      string `pulumi:"projectKey"`
+	RequireComments *bool  `pulumi:"requireComments"`
+	SecureMode      *bool  `pulumi:"secureMode"`
+	// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+	//
+	// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+	SegmentApprovalSettings *EnvironmentSegmentApprovalSettings `pulumi:"segmentApprovalSettings"`
+	Tags                    []string                            `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
-	ApprovalSettings EnvironmentApprovalSettingArrayInput
-	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-	Color pulumi.StringInput
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-	ConfirmChanges pulumi.BoolPtrInput
-	// Denotes whether the environment is critical.
-	Critical pulumi.BoolPtrInput
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+	ApprovalSettings EnvironmentApprovalSettingsPtrInput
+	// RGB hex color (no leading #).
+	Color              pulumi.StringInput
+	ConfirmChanges     pulumi.BoolPtrInput
+	Critical           pulumi.BoolPtrInput
 	DefaultTrackEvents pulumi.BoolPtrInput
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// TTL (0-60 minutes).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project-unique key for the environment.
 	Key pulumi.StringInput
-	// The name of the environment.
+	// Human-readable name.
 	Name pulumi.StringPtrInput
-	// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ProjectKey pulumi.StringInput
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+	// The LaunchDarkly project key.
+	ProjectKey      pulumi.StringInput
 	RequireComments pulumi.BoolPtrInput
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-	SecureMode pulumi.BoolPtrInput
-	// Tags associated with your resource.
-	Tags pulumi.StringArrayInput
+	SecureMode      pulumi.BoolPtrInput
+	// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+	//
+	// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+	SegmentApprovalSettings EnvironmentSegmentApprovalSettingsPtrInput
+	Tags                    pulumi.StringArrayInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -365,76 +364,74 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// The environment's SDK key.
 func (o EnvironmentOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
 }
 
-func (o EnvironmentOutput) ApprovalSettings() EnvironmentApprovalSettingArrayOutput {
-	return o.ApplyT(func(v *Environment) EnvironmentApprovalSettingArrayOutput { return v.ApprovalSettings }).(EnvironmentApprovalSettingArrayOutput)
+func (o EnvironmentOutput) ApprovalSettings() EnvironmentApprovalSettingsPtrOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentApprovalSettingsPtrOutput { return v.ApprovalSettings }).(EnvironmentApprovalSettingsPtrOutput)
 }
 
-// The environment's client-side ID.
 func (o EnvironmentOutput) ClientSideId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ClientSideId }).(pulumi.StringOutput)
 }
 
-// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
+// RGB hex color (no leading #).
 func (o EnvironmentOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-func (o EnvironmentOutput) ConfirmChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
+func (o EnvironmentOutput) ConfirmChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.ConfirmChanges }).(pulumi.BoolOutput)
 }
 
-// Denotes whether the environment is critical.
-func (o EnvironmentOutput) Critical() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.Critical }).(pulumi.BoolPtrOutput)
+func (o EnvironmentOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.Critical }).(pulumi.BoolOutput)
 }
 
-// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-func (o EnvironmentOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
+func (o EnvironmentOutput) DefaultTrackEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.DefaultTrackEvents }).(pulumi.BoolOutput)
 }
 
-// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-func (o EnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.IntPtrOutput { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+// TTL (0-60 minutes).
+func (o EnvironmentOutput) DefaultTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v *Environment) pulumi.IntOutput { return v.DefaultTtl }).(pulumi.IntOutput)
 }
 
-// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project-unique key for the environment.
 func (o EnvironmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The environment's mobile key.
 func (o EnvironmentOutput) MobileKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.MobileKey }).(pulumi.StringOutput)
 }
 
-// The name of the environment.
+// Human-readable name.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The LaunchDarkly project key.
 func (o EnvironmentOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-func (o EnvironmentOutput) RequireComments() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.RequireComments }).(pulumi.BoolPtrOutput)
+func (o EnvironmentOutput) RequireComments() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.RequireComments }).(pulumi.BoolOutput)
 }
 
-// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-func (o EnvironmentOutput) SecureMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.SecureMode }).(pulumi.BoolPtrOutput)
+func (o EnvironmentOutput) SecureMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.SecureMode }).(pulumi.BoolOutput)
 }
 
-// Tags associated with your resource.
+// Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approvalSettings`.
+//
+// > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
+func (o EnvironmentOutput) SegmentApprovalSettings() EnvironmentSegmentApprovalSettingsPtrOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentSegmentApprovalSettingsPtrOutput { return v.SegmentApprovalSettings }).(EnvironmentSegmentApprovalSettingsPtrOutput)
+}
+
 func (o EnvironmentOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

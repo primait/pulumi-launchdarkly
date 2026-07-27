@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// This resource allows you to create and manage metrics within your LaunchDarkly organization.
     /// 
-    /// To learn more about metrics and experimentation, read [Experimentation Documentation](https://docs.launchdarkly.com/home/experimentation).
+    /// To learn more about metrics and experimentation, read [Experimentation Documentation](https://launchdarkly.com/docs/home/experimentation).
     /// 
     /// ## Example Usage
     /// 
@@ -65,19 +65,25 @@ namespace Pulumi.Launchdarkly
         /// The method for analyzing metric events. Available choices are `Mean` and `Percentile`.
         /// </summary>
         [Output("analysisType")]
-        public Output<string?> AnalysisType { get; private set; } = null!;
+        public Output<string> AnalysisType { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        /// </summary>
+        [Output("analysisUnits")]
+        public Output<ImmutableArray<string>> AnalysisUnits { get; private set; } = null!;
 
         /// <summary>
         /// The description of the metric's purpose.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The event key for your metric (if custom metric)
         /// </summary>
         [Output("eventKey")]
-        public Output<string?> EventKey { get; private set; } = null!;
+        public Output<string> EventKey { get; private set; } = null!;
 
         /// <summary>
         /// Include units that did not send any events and set their value to 0.
@@ -86,31 +92,25 @@ namespace Pulumi.Launchdarkly
         public Output<bool> IncludeUnitsWithoutEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        [Output("isActive")]
-        public Output<bool> IsActive { get; private set; } = null!;
-
-        /// <summary>
         /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Output("isNumeric")]
-        public Output<bool?> IsNumeric { get; private set; } = null!;
+        public Output<bool> IsNumeric { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
@@ -125,25 +125,19 @@ namespace Pulumi.Launchdarkly
         /// The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when AnalysisType is percentile.
         /// </summary>
         [Output("percentileValue")]
-        public Output<int?> PercentileValue { get; private set; } = null!;
+        public Output<int> PercentileValue { get; private set; } = null!;
 
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        /// </summary>
-        [Output("randomizationUnits")]
-        public Output<ImmutableArray<string>> RandomizationUnits { get; private set; } = null!;
-
-        /// <summary>
         /// The CSS selector for your metric (if click metric)
         /// </summary>
         [Output("selector")]
-        public Output<string?> Selector { get; private set; } = null!;
+        public Output<string> Selector { get; private set; } = null!;
 
         /// <summary>
         /// The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
@@ -152,7 +146,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> SuccessCriteria { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -161,16 +155,16 @@ namespace Pulumi.Launchdarkly
         /// (Required for kind `Custom`) The unit for numeric `Custom` metrics.
         /// </summary>
         [Output("unit")]
-        public Output<string?> Unit { get; private set; } = null!;
+        public Output<string> Unit { get; private set; } = null!;
 
         /// <summary>
         /// The method by which multiple unit event values are aggregated. Available choices are `Average` and `Sum`.
         /// </summary>
         [Output("unitAggregationType")]
-        public Output<string?> UnitAggregationType { get; private set; } = null!;
+        public Output<string> UnitAggregationType { get; private set; } = null!;
 
         /// <summary>
-        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
+        /// List of URLs that you want to associate with the metric.
         /// </summary>
         [Output("urls")]
         public Output<ImmutableArray<Outputs.MetricUrl>> Urls { get; private set; } = null!;
@@ -234,6 +228,18 @@ namespace Pulumi.Launchdarkly
         [Input("analysisType")]
         public Input<string>? AnalysisType { get; set; }
 
+        [Input("analysisUnits")]
+        private InputList<string>? _analysisUnits;
+
+        /// <summary>
+        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        /// </summary>
+        public InputList<string> AnalysisUnits
+        {
+            get => _analysisUnits ?? (_analysisUnits = new InputList<string>());
+            set => _analysisUnits = value;
+        }
+
         /// <summary>
         /// The description of the metric's purpose.
         /// </summary>
@@ -253,31 +259,25 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IncludeUnitsWithoutEvents { get; set; }
 
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        [Input("isActive")]
-        public Input<bool>? IsActive { get; set; }
-
-        /// <summary>
         /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Input("isNumeric")]
         public Input<bool>? IsNumeric { get; set; }
 
         /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
@@ -295,22 +295,10 @@ namespace Pulumi.Launchdarkly
         public Input<int>? PercentileValue { get; set; }
 
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
-
-        [Input("randomizationUnits")]
-        private InputList<string>? _randomizationUnits;
-
-        /// <summary>
-        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        /// </summary>
-        public InputList<string> RandomizationUnits
-        {
-            get => _randomizationUnits ?? (_randomizationUnits = new InputList<string>());
-            set => _randomizationUnits = value;
-        }
 
         /// <summary>
         /// The CSS selector for your metric (if click metric)
@@ -328,7 +316,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -352,7 +340,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.MetricUrlArgs>? _urls;
 
         /// <summary>
-        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
+        /// List of URLs that you want to associate with the metric.
         /// </summary>
         public InputList<Inputs.MetricUrlArgs> Urls
         {
@@ -374,6 +362,18 @@ namespace Pulumi.Launchdarkly
         [Input("analysisType")]
         public Input<string>? AnalysisType { get; set; }
 
+        [Input("analysisUnits")]
+        private InputList<string>? _analysisUnits;
+
+        /// <summary>
+        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://launchdarkly.com/docs/home/experimentation/allocation).
+        /// </summary>
+        public InputList<string> AnalysisUnits
+        {
+            get => _analysisUnits ?? (_analysisUnits = new InputList<string>());
+            set => _analysisUnits = value;
+        }
+
         /// <summary>
         /// The description of the metric's purpose.
         /// </summary>
@@ -393,31 +393,25 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IncludeUnitsWithoutEvents { get; set; }
 
         /// <summary>
-        /// Ignored. All metrics are considered active.
-        /// </summary>
-        [Input("isActive")]
-        public Input<bool>? IsActive { get; set; }
-
-        /// <summary>
         /// Whether a `Custom` metric is a numeric metric or not.
         /// </summary>
         [Input("isNumeric")]
         public Input<bool>? IsNumeric { get; set; }
 
         /// <summary>
-        /// The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the metric. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metric type. Available choices are `Click`, `Custom`, and `Pageview`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+        /// The LaunchDarkly member ID of the member who maintains the metric. If not set, the API automatically applies the member associated with your Terraform API key or the most recently-set maintainer.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
@@ -435,22 +429,10 @@ namespace Pulumi.Launchdarkly
         public Input<int>? PercentileValue { get; set; }
 
         /// <summary>
-        /// The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The metrics's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
-
-        [Input("randomizationUnits")]
-        private InputList<string>? _randomizationUnits;
-
-        /// <summary>
-        /// A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-        /// </summary>
-        public InputList<string> RandomizationUnits
-        {
-            get => _randomizationUnits ?? (_randomizationUnits = new InputList<string>());
-            set => _randomizationUnits = value;
-        }
 
         /// <summary>
         /// The CSS selector for your metric (if click metric)
@@ -468,7 +450,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -492,7 +474,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.MetricUrlGetArgs>? _urls;
 
         /// <summary>
-        /// List of nested `Url` blocks describing URLs that you want to associate with the metric.
+        /// List of URLs that you want to associate with the metric.
         /// </summary>
         public InputList<Inputs.MetricUrlGetArgs> Urls
         {

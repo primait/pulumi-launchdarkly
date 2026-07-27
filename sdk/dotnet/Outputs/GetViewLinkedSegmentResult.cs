@@ -13,13 +13,7 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetViewLinkedSegmentResult
     {
-        /// <summary>
-        /// The environment ID of the segment.
-        /// </summary>
         public readonly string EnvironmentId;
-        /// <summary>
-        /// The key of the segment.
-        /// </summary>
         public readonly string SegmentKey;
 
         [OutputConstructor]

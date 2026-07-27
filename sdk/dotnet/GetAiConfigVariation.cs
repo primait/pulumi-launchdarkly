@@ -162,15 +162,15 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly int CreationDate;
         /// <summary>
-        /// The variation's description (used in agent mode).
+        /// The variation's description. Used in agent mode.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID in the format `project_key/config_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The variation's instructions (used in agent mode).
+        /// The variation's instructions. Used in agent mode.
         /// </summary>
         public readonly string Instructions;
         /// <summary>
@@ -178,15 +178,15 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// A list of messages for completion mode. Each message has a `Role` and `Content`.
+        /// A list of messages for completion mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiConfigVariationMessageResult> Messages;
         /// <summary>
-        /// A JSON string representing the inline model configuration for the variation. Conflicts with `ModelConfigKey`.
+        /// A JSON string representing the inline model configuration.
         /// </summary>
         public readonly string Model;
         /// <summary>
-        /// The key of a model config resource to use for this variation. Conflicts with `Model`.
+        /// The key of a model config resource used for this variation.
         /// </summary>
         public readonly string ModelConfigKey;
         /// <summary>
@@ -202,7 +202,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
         /// </summary>
         public readonly ImmutableArray<string> ToolKeys;
         /// <summary>
