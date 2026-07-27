@@ -2,10 +2,6 @@
 
 name: Upgrade provider
 on:
-  #temp
-  push:
-    branches:
-      - fix-provider-upgrade
   workflow_dispatch:
   schedule:
     # 3 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
