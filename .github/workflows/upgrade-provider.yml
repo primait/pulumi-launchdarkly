@@ -78,6 +78,8 @@ jobs:
           allow-missing-docs: true
       - name: Comment on upgrade issue if automated PR failed
         if: steps.upgrade_provider.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
           issue_number=$(gh issue list --search "pulumiupgradeproviderissue" --repo "${{ github.repository }}" --json=number --jq=".[0].number")
