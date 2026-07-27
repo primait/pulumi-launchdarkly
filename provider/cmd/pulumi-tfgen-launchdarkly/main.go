@@ -21,6 +21,5 @@ import (
 )
 
 func main() {
-	// Modify the path to point to the new provider
-	tfgen.MainWithMuxer("launchdarkly", launchdarkly.Provider())
+	tfgen.Main("launchdarkly", launchdarkly.Provider())
 }
