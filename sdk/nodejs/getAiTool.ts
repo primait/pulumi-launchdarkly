@@ -60,7 +60,7 @@ export interface GetAiToolResult {
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID in the format `project_key/key`.
      */
     readonly id: string;
     /**

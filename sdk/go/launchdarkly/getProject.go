@@ -60,13 +60,9 @@ type LookupProjectArgs struct {
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	// A map describing which client-side SDKs can use new flags by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
-	//
-	// Deprecated: 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
-	ClientSideAvailabilities []GetProjectClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// A block describing which client-side SDKs can use new flags by default.
-	DefaultClientSideAvailabilities []GetProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
-	// The provider-assigned unique ID for this managed resource.
+	// Which client-side SDKs can use new flags by default.
+	DefaultClientSideAvailability GetProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailability"`
+	// The project's ID.
 	Id string `pulumi:"id"`
 	// The project's unique key.
 	Key string `pulumi:"key"`
@@ -76,7 +72,7 @@ type LookupProjectResult struct {
 	RequireViewAssociationForNewFlags bool `pulumi:"requireViewAssociationForNewFlags"`
 	// Whether new segments created in this project must be associated with at least one view.
 	RequireViewAssociationForNewSegments bool `pulumi:"requireViewAssociationForNewSegments"`
-	// Tags associated with your resource.
+	// Tags.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -114,21 +110,14 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
-// A map describing which client-side SDKs can use new flags by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
-//
-// Deprecated: 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
-func (o LookupProjectResultOutput) ClientSideAvailabilities() GetProjectClientSideAvailabilityArrayOutput {
-	return o.ApplyT(func(v LookupProjectResult) []GetProjectClientSideAvailability { return v.ClientSideAvailabilities }).(GetProjectClientSideAvailabilityArrayOutput)
+// Which client-side SDKs can use new flags by default.
+func (o LookupProjectResultOutput) DefaultClientSideAvailability() GetProjectDefaultClientSideAvailabilityOutput {
+	return o.ApplyT(func(v LookupProjectResult) GetProjectDefaultClientSideAvailability {
+		return v.DefaultClientSideAvailability
+	}).(GetProjectDefaultClientSideAvailabilityOutput)
 }
 
-// A block describing which client-side SDKs can use new flags by default.
-func (o LookupProjectResultOutput) DefaultClientSideAvailabilities() GetProjectDefaultClientSideAvailabilityArrayOutput {
-	return o.ApplyT(func(v LookupProjectResult) []GetProjectDefaultClientSideAvailability {
-		return v.DefaultClientSideAvailabilities
-	}).(GetProjectDefaultClientSideAvailabilityArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
+// The project's ID.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -153,7 +142,7 @@ func (o LookupProjectResultOutput) RequireViewAssociationForNewSegments() pulumi
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.RequireViewAssociationForNewSegments }).(pulumi.BoolOutput)
 }
 
-// Tags associated with your resource.
+// Tags.
 func (o LookupProjectResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

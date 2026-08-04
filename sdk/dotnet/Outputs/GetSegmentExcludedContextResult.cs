@@ -13,13 +13,7 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetSegmentExcludedContextResult
     {
-        /// <summary>
-        /// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        /// </summary>
         public readonly string ContextKind;
-        /// <summary>
-        /// List of target object keys included in or excluded from the segment.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

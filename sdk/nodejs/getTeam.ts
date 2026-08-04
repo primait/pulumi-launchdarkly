@@ -29,7 +29,6 @@ export function getTeam(args: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getTeam:getTeam", {
         "key": args.key,
-        "roleAttributes": args.roleAttributes,
     }, opts);
 }
 
@@ -41,10 +40,6 @@ export interface GetTeamArgs {
      * The team key.
      */
     key: string;
-    /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-     */
-    roleAttributes?: inputs.GetTeamRoleAttribute[];
 }
 
 /**
@@ -52,7 +47,7 @@ export interface GetTeamArgs {
  */
 export interface GetTeamResult {
     /**
-     * The list of the keys of the custom roles that you have assigned to the team.
+     * The list of keys of the custom roles assigned to the team.
      */
     readonly customRoleKeys: string[];
     /**
@@ -60,7 +55,7 @@ export interface GetTeamResult {
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The team key.
      */
     readonly id: string;
     /**
@@ -68,7 +63,7 @@ export interface GetTeamResult {
      */
     readonly key: string;
     /**
-     * The list of team maintainers as [team member objects](https://www.terraform.io/providers/launchdarkly/launchdarkly/latest/docs/data-sources/team_member).
+     * Team maintainers.
      */
     readonly maintainers: outputs.GetTeamMaintainer[];
     /**
@@ -80,9 +75,9 @@ export interface GetTeamResult {
      */
     readonly projectKeys: string[];
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    readonly roleAttributes: outputs.GetTeamRoleAttribute[];
+    readonly roleAttributes: {[key: string]: string[]};
 }
 /**
  * Provides a LaunchDarkly team data source.
@@ -106,7 +101,6 @@ export function getTeamOutput(args: GetTeamOutputArgs, opts?: pulumi.InvokeOutpu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("launchdarkly:index/getTeam:getTeam", {
         "key": args.key,
-        "roleAttributes": args.roleAttributes,
     }, opts);
 }
 
@@ -118,8 +112,4 @@ export interface GetTeamOutputArgs {
      * The team key.
      */
     key: pulumi.Input<string>;
-    /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-     */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.GetTeamRoleAttributeArgs>[] | undefined>;
 }

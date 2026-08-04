@@ -27,10 +27,7 @@ class GetViewResult:
     """
     A collection of values returned by getView.
     """
-    def __init__(__self__, archived=None, description=None, id=None, key=None, linked_flags=None, linked_segments=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None):
-        if archived and not isinstance(archived, bool):
-            raise TypeError("Expected argument 'archived' to be a bool")
-        pulumi.set(__self__, "archived", archived)
+    def __init__(__self__, description=None, id=None, key=None, linked_flags=None, linked_segments=None, maintainer_id=None, maintainer_team_key=None, name=None, project_key=None, tags=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -64,14 +61,6 @@ class GetViewResult:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> _builtins.bool:
-        """
-        Whether the view is archived.
-        """
-        return pulumi.get(self, "archived")
-
-    @_builtins.property
-    @pulumi.getter
     def description(self) -> _builtins.str:
         """
         The view's description.
@@ -82,7 +71,7 @@ class GetViewResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        View ID.
         """
         return pulumi.get(self, "id")
 
@@ -98,7 +87,7 @@ class GetViewResult:
     @pulumi.getter(name="linkedFlags")
     def linked_flags(self) -> Sequence[_builtins.str]:
         """
-        A list of feature flag keys that are linked to this view.
+        Feature flag keys linked to this view.
         """
         return pulumi.get(self, "linked_flags")
 
@@ -106,7 +95,7 @@ class GetViewResult:
     @pulumi.getter(name="linkedSegments")
     def linked_segments(self) -> Sequence['outputs.GetViewLinkedSegmentResult']:
         """
-        A list of segments that are linked to this view.
+        Segments linked to this view.
         """
         return pulumi.get(self, "linked_segments")
 
@@ -114,7 +103,7 @@ class GetViewResult:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
         """
-        The member ID of the maintainer for this view.
+        Member ID of the maintainer.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -122,7 +111,7 @@ class GetViewResult:
     @pulumi.getter(name="maintainerTeamKey")
     def maintainer_team_key(self) -> _builtins.str:
         """
-        The team key of the maintainer team for this view.
+        Team key of the maintainer team.
         """
         return pulumi.get(self, "maintainer_team_key")
 
@@ -146,7 +135,7 @@ class GetViewResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags.
         """
         return pulumi.get(self, "tags")
 
@@ -157,7 +146,6 @@ class AwaitableGetViewResult(GetViewResult):
         if False:
             yield self
         return GetViewResult(
-            archived=self.archived,
             description=self.description,
             id=self.id,
             key=self.key,
@@ -189,7 +177,6 @@ def get_view(key: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('launchdarkly:index/getView:getView', __args__, opts=opts, typ=GetViewResult).value
 
     return AwaitableGetViewResult(
-        archived=pulumi.get(__ret__, 'archived'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
@@ -218,7 +205,6 @@ def get_view_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('launchdarkly:index/getView:getView', __args__, opts=opts, typ=GetViewResult)
     return __ret__.apply(lambda __response__: GetViewResult(
-        archived=pulumi.get(__response__, 'archived'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),

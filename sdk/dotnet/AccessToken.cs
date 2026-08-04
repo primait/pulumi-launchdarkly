@@ -14,9 +14,9 @@ namespace Pulumi.Launchdarkly
     /// 
     /// This resource allows you to create and manage access tokens within your LaunchDarkly organization.
     /// 
-    /// &gt; **Note:** This resource will store the full plaintext secret for your access token in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+    /// &gt; **Note:** This resource stores the full plaintext secret for your access token in Terraform state. Be sure your state is configured securely before using this resource. To learn more, read Sensitive data in state.
     /// 
-    /// The resource must contain either a "role", "CustomRole" or an "InlineRoles" (previously "PolicyStatements") block. As of v1.7.0, "PolicyStatements" has been deprecated in favor of "InlineRoles".
+    /// The resource must contain either a "role", "CustomRole" or an "InlineRoles" block.
     /// 
     /// ## Example Usage
     /// 
@@ -79,19 +79,13 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> CustomRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("defaultApiVersion")]
         public Output<int> DefaultApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
-        /// </summary>
-        [Output("expire")]
-        public Output<int?> Expire { get; private set; } = null!;
-
-        /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+        /// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
         /// </summary>
         [Output("inlineRoles")]
         public Output<ImmutableArray<Outputs.AccessTokenInlineRole>> InlineRoles { get; private set; } = null!;
@@ -103,22 +97,16 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
-        /// </summary>
-        [Output("policyStatements")]
-        public Output<ImmutableArray<Outputs.AccessTokenPolicyStatement>> PolicyStatements { get; private set; } = null!;
-
-        /// <summary>
         /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("serviceToken")]
-        public Output<bool?> ServiceToken { get; private set; } = null!;
+        public Output<bool> ServiceToken { get; private set; } = null!;
 
         /// <summary>
         /// The access token used to authorize usage of the LaunchDarkly API.
@@ -190,22 +178,16 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("defaultApiVersion")]
         public Input<int>? DefaultApiVersion { get; set; }
-
-        /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
-        /// </summary>
-        [Input("expire")]
-        public Input<int>? Expire { get; set; }
 
         [Input("inlineRoles")]
         private InputList<Inputs.AccessTokenInlineRoleArgs>? _inlineRoles;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+        /// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
         /// </summary>
         public InputList<Inputs.AccessTokenInlineRoleArgs> InlineRoles
         {
@@ -219,19 +201,6 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policyStatements")]
-        private InputList<Inputs.AccessTokenPolicyStatementArgs>? _policyStatements;
-
-        /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
-        /// </summary>
-        [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
-        public InputList<Inputs.AccessTokenPolicyStatementArgs> PolicyStatements
-        {
-            get => _policyStatements ?? (_policyStatements = new InputList<Inputs.AccessTokenPolicyStatementArgs>());
-            set => _policyStatements = value;
-        }
-
         /// <summary>
         /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
@@ -239,7 +208,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("serviceToken")]
         public Input<bool>? ServiceToken { get; set; }
@@ -265,22 +234,16 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("defaultApiVersion")]
         public Input<int>? DefaultApiVersion { get; set; }
-
-        /// <summary>
-        /// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `Expire` to maintain compatibility with future versions
-        /// </summary>
-        [Input("expire")]
-        public Input<int>? Expire { get; set; }
 
         [Input("inlineRoles")]
         private InputList<Inputs.AccessTokenInlineRoleGetArgs>? _inlineRoles;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://docs.launchdarkly.com/home/members/role-policies). May be specified more than once.
+        /// Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
         /// </summary>
         public InputList<Inputs.AccessTokenInlineRoleGetArgs> InlineRoles
         {
@@ -294,19 +257,6 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policyStatements")]
-        private InputList<Inputs.AccessTokenPolicyStatementGetArgs>? _policyStatements;
-
-        /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `InlineRole` to maintain compatibility with future versions.
-        /// </summary>
-        [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
-        public InputList<Inputs.AccessTokenPolicyStatementGetArgs> PolicyStatements
-        {
-            get => _policyStatements ?? (_policyStatements = new InputList<Inputs.AccessTokenPolicyStatementGetArgs>());
-            set => _policyStatements = value;
-        }
-
         /// <summary>
         /// A built-in LaunchDarkly role. Can be `Reader`, `Writer`, or `Admin`
         /// </summary>
@@ -314,7 +264,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("serviceToken")]
         public Input<bool>? ServiceToken { get; set; }

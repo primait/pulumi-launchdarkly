@@ -14,7 +14,7 @@ import (
 
 // Provides a LaunchDarkly team to custom role mapping resource.
 //
-// This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
+// This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://launchdarkly.com/docs/home/account/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
 //
 // > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 //
@@ -48,6 +48,56 @@ import (
 //
 // ```
 //
+// ### Scoping a shared custom role across teams
+//
+// Use `roleAttributes` to give the same shared custom role different scopes per team. The values resolve into the role's policy via the `${roleAttribute/<key>}` template, so a single role definition can drive per-team access boundaries (see [Role scope](https://launchdarkly.com/docs/home/account/roles/role-scope)).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/primait/pulumi-launchdarkly/sdk/go/launchdarkly"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := launchdarkly.NewTeamRoleMapping(ctx, "team_x", &launchdarkly.TeamRoleMappingArgs{
+//				TeamKey: pulumi.String("team-x"),
+//				CustomRoleKeys: pulumi.StringArray{
+//					pulumi.String("my-shared-role"),
+//				},
+//				RoleAttributes: pulumi.StringArrayMap{
+//					"domain": pulumi.StringArray{
+//						pulumi.String("DomainX"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = launchdarkly.NewTeamRoleMapping(ctx, "team_y", &launchdarkly.TeamRoleMappingArgs{
+//				TeamKey: pulumi.String("team-y"),
+//				CustomRoleKeys: pulumi.StringArray{
+//					pulumi.String("my-shared-role"),
+//				},
+//				RoleAttributes: pulumi.StringArrayMap{
+//					"domain": pulumi.StringArray{
+//						pulumi.String("DomainY"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A LaunchDarkly team/role mapping can be imported using the team key:
@@ -58,8 +108,12 @@ import (
 type TeamRoleMapping struct {
 	pulumi.CustomResourceState
 
-	// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+	// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 	CustomRoleKeys pulumi.StringArrayOutput `pulumi:"customRoleKeys"`
+	// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+	//
+	// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+	RoleAttributes pulumi.StringArrayMapOutput `pulumi:"roleAttributes"`
 	// The team key.
 	TeamKey pulumi.StringOutput `pulumi:"teamKey"`
 }
@@ -100,15 +154,23 @@ func GetTeamRoleMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamRoleMapping resources.
 type teamRoleMappingState struct {
-	// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+	// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 	CustomRoleKeys []string `pulumi:"customRoleKeys"`
+	// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+	//
+	// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 	// The team key.
 	TeamKey *string `pulumi:"teamKey"`
 }
 
 type TeamRoleMappingState struct {
-	// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+	// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 	CustomRoleKeys pulumi.StringArrayInput
+	// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+	//
+	// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+	RoleAttributes pulumi.StringArrayMapInput
 	// The team key.
 	TeamKey pulumi.StringPtrInput
 }
@@ -118,16 +180,24 @@ func (TeamRoleMappingState) ElementType() reflect.Type {
 }
 
 type teamRoleMappingArgs struct {
-	// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+	// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 	CustomRoleKeys []string `pulumi:"customRoleKeys"`
+	// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+	//
+	// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 	// The team key.
 	TeamKey string `pulumi:"teamKey"`
 }
 
 // The set of arguments for constructing a TeamRoleMapping resource.
 type TeamRoleMappingArgs struct {
-	// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+	// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 	CustomRoleKeys pulumi.StringArrayInput
+	// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+	//
+	// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+	RoleAttributes pulumi.StringArrayMapInput
 	// The team key.
 	TeamKey pulumi.StringInput
 }
@@ -219,9 +289,16 @@ func (o TeamRoleMappingOutput) ToTeamRoleMappingOutputWithContext(ctx context.Co
 	return o
 }
 
-// List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+// List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
 func (o TeamRoleMappingOutput) CustomRoleKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamRoleMapping) pulumi.StringArrayOutput { return v.CustomRoleKeys }).(pulumi.StringArrayOutput)
+}
+
+// Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+//
+// > **Note:** `roleAttributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `roleAttributes`. Add `lifecycle { ignoreChanges = [roleAttributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+func (o TeamRoleMappingOutput) RoleAttributes() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *TeamRoleMapping) pulumi.StringArrayMapOutput { return v.RoleAttributes }).(pulumi.StringArrayMapOutput)
 }
 
 // The team key.

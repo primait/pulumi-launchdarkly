@@ -7,9 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly model config resource.
  *
- * This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Since the API does not support updates, any field change will force recreation of the resource.
- *
- * > **Important:** If an `launchdarkly.AiConfigVariation` references this model config via `modelConfigKey`, use a Terraform resource reference (e.g. `launchdarkly_model_config.example.key`) so Terraform can order destruction correctly. A literal string key will cause the delete to fail because the API rejects deleting a model config that is still in use.
+ * This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Because the API does not support updates, any field change forces recreation of the resource.
  *
  * ## Example Usage
  *
@@ -65,53 +63,53 @@ export class ModelConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly costPerInputToken: pulumi.Output<number | undefined>;
+    declare public readonly costPerInputToken: pulumi.Output<number>;
     /**
-     * The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly costPerOutputToken: pulumi.Output<number | undefined>;
+    declare public readonly costPerOutputToken: pulumi.Output<number>;
     /**
-     * A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly customParameters: pulumi.Output<string | undefined>;
+    declare public readonly customParameters: pulumi.Output<string>;
     /**
      * Whether the model config is available globally.
      */
     declare public /*out*/ readonly global: pulumi.Output<boolean>;
     /**
-     * The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly icon: pulumi.Output<string | undefined>;
+    declare public readonly icon: pulumi.Output<string>;
     /**
-     * The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly modelId: pulumi.Output<string>;
     /**
-     * The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly modelProvider: pulumi.Output<string | undefined>;
+    declare public readonly modelProvider: pulumi.Output<string>;
     /**
-     * The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly params: pulumi.Output<string | undefined>;
+    declare public readonly params: pulumi.Output<string>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * The version of the model config.
      */
@@ -178,15 +176,15 @@ export class ModelConfig extends pulumi.CustomResource {
  */
 export interface ModelConfigState {
     /**
-     * The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     costPerInputToken?: pulumi.Input<number | undefined>;
     /**
-     * The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     costPerOutputToken?: pulumi.Input<number | undefined>;
     /**
-     * A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     customParameters?: pulumi.Input<string | undefined>;
     /**
@@ -194,35 +192,35 @@ export interface ModelConfigState {
      */
     global?: pulumi.Input<boolean | undefined>;
     /**
-     * The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     icon?: pulumi.Input<string | undefined>;
     /**
-     * The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     modelId?: pulumi.Input<string | undefined>;
     /**
-     * The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     modelProvider?: pulumi.Input<string | undefined>;
     /**
-     * The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     params?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -236,47 +234,47 @@ export interface ModelConfigState {
  */
 export interface ModelConfigArgs {
     /**
-     * The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     costPerInputToken?: pulumi.Input<number | undefined>;
     /**
-     * The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     costPerOutputToken?: pulumi.Input<number | undefined>;
     /**
-     * A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     customParameters?: pulumi.Input<string | undefined>;
     /**
-     * The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     icon?: pulumi.Input<string | undefined>;
     /**
-     * The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
-     * The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     modelId: pulumi.Input<string>;
     /**
-     * The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     modelProvider?: pulumi.Input<string | undefined>;
     /**
-     * The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     params?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

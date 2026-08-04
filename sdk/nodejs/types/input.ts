@@ -9,7 +9,7 @@ import * as enums from "../types/enums";
 export interface AccessTokenInlineRole {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
      */
     actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -30,43 +30,29 @@ export interface AccessTokenInlineRole {
     resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
-export interface AccessTokenPolicyStatement {
+export interface AiAgentGraphEdges {
     /**
-     * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * A JSON string representing the handoff options from the source AI Config to the target AI Config.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    handoff?: pulumi.Input<string | undefined>;
     /**
-     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-     */
-    effect: pulumi.Input<string>;
-    /**
-     * The list of action specifiers defining the actions to which the statement does not apply.
-     */
-    notActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement does not apply.
-     */
-    notResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement applies.
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-}
-
-export interface AiConfigVariation {
-    /**
-     * The variation's key.
+     * The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * The variation's name.
+     * The AI Config key that is the source of this edge.
      */
-    name?: pulumi.Input<string | undefined>;
+    sourceConfig: pulumi.Input<string>;
     /**
-     * The variation's ID.
+     * The AI Config key that is the target of this edge.
      */
-    variationId?: pulumi.Input<string | undefined>;
+    targetConfig: pulumi.Input<string>;
+}
+
+export interface AiConfigVariation {
+    key: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    variationId: pulumi.Input<string>;
 }
 
 export interface AiConfigVariationMessage {
@@ -83,7 +69,7 @@ export interface AiConfigVariationMessage {
 export interface AuditLogSubscriptionStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
      */
     actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -102,18 +88,12 @@ export interface AuditLogSubscriptionStatement {
      * The list of resource specifiers defining the resources to which the statement applies.
      */
     resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-}
-
-export interface CustomRolePolicy {
-    actions: pulumi.Input<pulumi.Input<string>[]>;
-    effect: pulumi.Input<string>;
-    resources: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CustomRolePolicyStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
      */
     actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -134,7 +114,7 @@ export interface CustomRolePolicyStatement {
     resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
-export interface EnvironmentApprovalSetting {
+export interface EnvironmentApprovalSettings {
     /**
      * Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
      */
@@ -162,12 +142,50 @@ export interface EnvironmentApprovalSetting {
     /**
      * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
      *
-     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
      * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
      */
     serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+     * The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+     */
+    serviceKind?: pulumi.Input<string | undefined>;
+}
+
+export interface EnvironmentSegmentApprovalSettings {
+    /**
+     * Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+     */
+    autoApplyApprovedChanges?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+     */
+    canApplyDeclinedChanges?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+     */
+    canReviewOwnRequest?: pulumi.Input<boolean | undefined>;
+    /**
+     * The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+     */
+    minNumApprovals?: pulumi.Input<number | undefined>;
+    /**
+     * Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+     */
+    required?: pulumi.Input<boolean | undefined>;
+    /**
+     * An array of tags used to specify which segments with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+     */
+    requiredApprovalTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+     *
+     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+     * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+     */
+    serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
      */
     serviceKind?: pulumi.Input<string | undefined>;
 }
@@ -183,11 +201,11 @@ export interface FeatureFlagClientSideAvailability {
     usingMobileKey?: pulumi.Input<boolean | undefined>;
 }
 
-export interface FeatureFlagCustomProperty {
+export interface FeatureFlagCustomProperties {
     /**
-     * The unique custom property key.
+     * The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
      */
-    key: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom property.
      */
@@ -200,18 +218,18 @@ export interface FeatureFlagCustomProperty {
 
 export interface FeatureFlagDefaults {
     /**
-     * The index of the variation the flag will default to in all new environments when off.
+     * The index of the variation the flag defaults to in all new environments when off.
      */
     offVariation: pulumi.Input<number>;
     /**
-     * The index of the variation the flag will default to in all new environments when on.
+     * The index of the variation the flag defaults to in all new environments when on.
      */
     onVariation: pulumi.Input<number>;
 }
 
 export interface FeatureFlagEnvironmentContextTarget {
     /**
-     * The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+     * The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
      */
     contextKind: pulumi.Input<string>;
     /**
@@ -260,9 +278,9 @@ export interface FeatureFlagEnvironmentRule {
      */
     bucketBy?: pulumi.Input<string | undefined>;
     /**
-     * List of nested blocks specifying the logical clauses to evaluate
+     * List of clauses specifying the logical conditions to evaluate
      */
-    clauses?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRuleClause>[] | undefined>;
+    clauses: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRuleClause>[]>;
     /**
      * The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
      */
@@ -295,7 +313,7 @@ export interface FeatureFlagEnvironmentRuleClause {
      */
     negate?: pulumi.Input<boolean | undefined>;
     /**
-     * The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+     * The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
      */
     op: pulumi.Input<string>;
     /**
@@ -329,35 +347,17 @@ export interface FeatureFlagVariation {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+     * The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
      */
     value: pulumi.Input<string>;
 }
 
 export interface FlagTemplatesBooleanDefaults {
-    /**
-     * The description for the false variation.
-     */
     falseDescription: pulumi.Input<string>;
-    /**
-     * The display name for the false variation.
-     */
     falseDisplayName: pulumi.Input<string>;
-    /**
-     * The variation index of the boolean flag variation to serve when the flag's targeting is off.
-     */
     offVariation: pulumi.Input<number>;
-    /**
-     * The variation index of the boolean flag variation to serve when the flag's targeting is on.
-     */
     onVariation: pulumi.Input<number>;
-    /**
-     * The description for the true variation.
-     */
     trueDescription: pulumi.Input<string>;
-    /**
-     * The display name for the true variation.
-     */
     trueDisplayName: pulumi.Input<string>;
 }
 
@@ -368,48 +368,15 @@ export interface FlagTriggerInstructions {
     kind: pulumi.Input<string>;
 }
 
-export interface GetTeamMemberRoleAttribute {
+export interface MetricGroupMetric {
     /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-     */
-    key: string;
-    /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-     */
-    values: string[];
-}
-
-export interface GetTeamMemberRoleAttributeArgs {
-    /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
+     * The key of the metric to include in the group.
      */
     key: pulumi.Input<string>;
     /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
+     * The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
      */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetTeamRoleAttribute {
-    /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-     */
-    key: string;
-    /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-     */
-    values: string[];
-}
-
-export interface GetTeamRoleAttributeArgs {
-    /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    nameInGroup?: pulumi.Input<string | undefined>;
 }
 
 export interface MetricUrl {
@@ -436,12 +403,12 @@ export interface ProjectDefaultClientSideAvailability {
     usingMobileKey: pulumi.Input<boolean>;
 }
 
-export interface ProjectEnvironment {
+export interface ProjectEnvironments {
     /**
      * The environment's SDK key.
      */
     apiKey?: pulumi.Input<string | undefined>;
-    approvalSettings?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironmentApprovalSetting>[] | undefined>;
+    approvalSettings?: pulumi.Input<inputs.ProjectEnvironmentsApprovalSettings | undefined>;
     /**
      * The environment's client-side ID.
      */
@@ -451,7 +418,7 @@ export interface ProjectEnvironment {
      */
     color: pulumi.Input<string>;
     /**
-     * Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+     * Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
      */
     confirmChanges?: pulumi.Input<boolean | undefined>;
     /**
@@ -459,17 +426,17 @@ export interface ProjectEnvironment {
      */
     critical?: pulumi.Input<boolean | undefined>;
     /**
-     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
      */
     defaultTrackEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
      */
     defaultTtl?: pulumi.Input<number | undefined>;
     /**
-     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
      */
-    key: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The environment's mobile key.
      */
@@ -479,11 +446,11 @@ export interface ProjectEnvironment {
      */
     name: pulumi.Input<string>;
     /**
-     * Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+     * Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
      */
     requireComments?: pulumi.Input<boolean | undefined>;
     /**
-     * Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+     * Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
      */
     secureMode?: pulumi.Input<boolean | undefined>;
     /**
@@ -492,7 +459,7 @@ export interface ProjectEnvironment {
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
-export interface ProjectEnvironmentApprovalSetting {
+export interface ProjectEnvironmentsApprovalSettings {
     /**
      * Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
      */
@@ -520,12 +487,12 @@ export interface ProjectEnvironmentApprovalSetting {
     /**
      * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
      *
-     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
      * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
      */
     serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+     * The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
      */
     serviceKind?: pulumi.Input<string | undefined>;
 }
@@ -533,7 +500,7 @@ export interface ProjectEnvironmentApprovalSetting {
 export interface RelayProxyConfigurationPolicy {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
      */
     actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -552,6 +519,77 @@ export interface RelayProxyConfigurationPolicy {
      * The list of resource specifiers defining the resources to which the statement applies.
      */
     resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ReleasePolicyGuardedReleaseConfig {
+    /**
+     * The set of metric group keys to monitor during the guarded release.
+     */
+    metricGroupKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The set of metric keys to monitor during the guarded release.
+     */
+    metricKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The minimum number of samples required before the policy makes a release decision.
+     */
+    minSampleSize?: pulumi.Input<number | undefined>;
+    /**
+     * Whether to automatically roll back the release when a monitored metric regresses.
+     */
+    rollbackOnRegression?: pulumi.Input<boolean | undefined>;
+    /**
+     * The context kind key to use as the randomization unit for the rollout.
+     */
+    rolloutContextKind?: pulumi.Input<string | undefined>;
+    /**
+     * An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+     */
+    stages?: pulumi.Input<pulumi.Input<inputs.ReleasePolicyGuardedReleaseConfigStage>[] | undefined>;
+}
+
+export interface ReleasePolicyGuardedReleaseConfigStage {
+    /**
+     * The percentage of traffic (0-100) allocated to the new variation during this stage.
+     */
+    allocation: pulumi.Input<number>;
+    /**
+     * The duration of this stage, in milliseconds.
+     */
+    durationMillis: pulumi.Input<number>;
+}
+
+export interface ReleasePolicyProgressiveReleaseConfig {
+    /**
+     * The context kind key to use as the randomization unit for the rollout.
+     */
+    rolloutContextKind?: pulumi.Input<string | undefined>;
+    /**
+     * An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+     */
+    stages?: pulumi.Input<pulumi.Input<inputs.ReleasePolicyProgressiveReleaseConfigStage>[] | undefined>;
+}
+
+export interface ReleasePolicyProgressiveReleaseConfigStage {
+    /**
+     * The percentage of traffic (0-100) allocated to the new variation during this stage.
+     */
+    allocation: pulumi.Input<number>;
+    /**
+     * The duration of this stage, in milliseconds.
+     */
+    durationMillis: pulumi.Input<number>;
+}
+
+export interface ReleasePolicyScope {
+    /**
+     * The set of environment keys this policy applies to.
+     */
+    environmentKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The set of flag tags this policy applies to.
+     */
+    flagTagKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SegmentExcludedContext {
@@ -582,9 +620,9 @@ export interface SegmentRule {
      */
     bucketBy?: pulumi.Input<string | undefined>;
     /**
-     * List of nested blocks specifying the logical clauses to evaluate
+     * List of clauses specifying the logical conditions to evaluate
      */
-    clauses?: pulumi.Input<pulumi.Input<inputs.SegmentRuleClause>[] | undefined>;
+    clauses: pulumi.Input<pulumi.Input<inputs.SegmentRuleClause>[]>;
     /**
      * The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
      */
@@ -609,7 +647,7 @@ export interface SegmentRuleClause {
      */
     negate?: pulumi.Input<boolean | undefined>;
     /**
-     * The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+     * The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
      */
     op: pulumi.Input<string>;
     /**
@@ -618,28 +656,6 @@ export interface SegmentRuleClause {
     valueType?: pulumi.Input<string | undefined>;
     /**
      * The list of values associated with the rule clause.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface TeamMemberRoleAttribute {
-    /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface TeamRoleAttribute {
-    /**
-     * The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -658,7 +674,7 @@ export interface ViewLinksSegment {
 export interface WebhookStatement {
     /**
      * The list of action specifiers defining the actions to which the statement applies.
-     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
      */
     actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     envKey: staging.key,
  *     on: true,
  *     prerequisites: [{
- *         flagKey: basic.key,
+ *         flag_key: basic.key,
  *         variation: 0,
  *     }],
  *     targets: [
@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *     contextTargets: [{
  *         values: ["accountX"],
  *         variation: 1,
- *         contextKind: "account",
+ *         context_kind: "account",
  *     }],
  *     rules: [{
  *         description: "example targeting rule with two clauses",
@@ -70,13 +70,13 @@ import * as utilities from "./utilities";
  *         variation: 0,
  *     }],
  *     fallthrough: {
- *         rolloutWeights: [
+ *         rollout_weights: [
  *             60000,
  *             40000,
  *             0,
  *         ],
- *         contextKind: "account",
- *         bucketBy: "accountId",
+ *         context_kind: "account",
+ *         bucket_by: "accountId",
  *     },
  *     offVariation: 2,
  * });
@@ -189,12 +189,12 @@ import * as utilities from "./utilities";
  *                 values: ["test-segment"],
  *             },
  *         ],
- *         rolloutWeights: [
+ *         rollout_weights: [
  *             40000,
  *             60000,
  *         ],
- *         bucketBy: "country",
- *         contextKind: "account",
+ *         bucket_by: "country",
+ *         context_kind: "account",
  *     }],
  *     fallthrough: {
  *         variation: 1,
@@ -240,31 +240,31 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
     }
 
     /**
-     * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+     * Individual targets for non-user context kinds for each variation.
      */
     declare public readonly contextTargets: pulumi.Output<outputs.FeatureFlagEnvironmentContextTarget[] | undefined>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly envKey: pulumi.Output<string>;
     /**
-     * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+     * The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
      */
     declare public readonly fallthrough: pulumi.Output<outputs.FeatureFlagEnvironmentFallthrough>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly flagId: pulumi.Output<string>;
     /**
-     * The index of the variation to serve if targeting is disabled.
+     * The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
      */
-    declare public readonly offVariation: pulumi.Output<number>;
+    declare public readonly offVariation: pulumi.Output<number | undefined>;
     /**
      * Whether targeting is enabled. Defaults to `false` if not set.
      */
-    declare public readonly on: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean>;
     /**
-     * List of nested blocks describing prerequisite feature flags rules.
+     * Prerequisite feature flag rules.
      */
     declare public readonly prerequisites: pulumi.Output<outputs.FeatureFlagEnvironmentPrerequisite[] | undefined>;
     /**
@@ -272,13 +272,13 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
      */
     declare public readonly rules: pulumi.Output<outputs.FeatureFlagEnvironmentRule[] | undefined>;
     /**
-     * Set of nested blocks describing the individual user targets for each variation.
+     * Individual user targets for each variation.
      */
     declare public readonly targets: pulumi.Output<outputs.FeatureFlagEnvironmentTarget[] | undefined>;
     /**
      * Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
      */
-    declare public readonly trackEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly trackEvents: pulumi.Output<boolean>;
 
     /**
      * Create a FeatureFlagEnvironment resource with the given unique name, arguments, and options.
@@ -314,9 +314,6 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
             if (args?.flagId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flagId'");
             }
-            if (args?.offVariation === undefined && !opts.urn) {
-                throw new Error("Missing required property 'offVariation'");
-            }
             resourceInputs["contextTargets"] = args?.contextTargets;
             resourceInputs["envKey"] = args?.envKey;
             resourceInputs["fallthrough"] = args?.fallthrough;
@@ -338,23 +335,23 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
  */
 export interface FeatureFlagEnvironmentState {
     /**
-     * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+     * Individual targets for non-user context kinds for each variation.
      */
     contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[] | undefined>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     envKey?: pulumi.Input<string | undefined>;
     /**
-     * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+     * The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
      */
     fallthrough?: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough | undefined>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     flagId?: pulumi.Input<string | undefined>;
     /**
-     * The index of the variation to serve if targeting is disabled.
+     * The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
      */
     offVariation?: pulumi.Input<number | undefined>;
     /**
@@ -362,7 +359,7 @@ export interface FeatureFlagEnvironmentState {
      */
     on?: pulumi.Input<boolean | undefined>;
     /**
-     * List of nested blocks describing prerequisite feature flags rules.
+     * Prerequisite feature flag rules.
      */
     prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[] | undefined>;
     /**
@@ -370,7 +367,7 @@ export interface FeatureFlagEnvironmentState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[] | undefined>;
     /**
-     * Set of nested blocks describing the individual user targets for each variation.
+     * Individual user targets for each variation.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[] | undefined>;
     /**
@@ -384,31 +381,31 @@ export interface FeatureFlagEnvironmentState {
  */
 export interface FeatureFlagEnvironmentArgs {
     /**
-     * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+     * Individual targets for non-user context kinds for each variation.
      */
     contextTargets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentContextTarget>[] | undefined>;
     /**
-     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     envKey: pulumi.Input<string>;
     /**
-     * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+     * The default variation to serve if no `prerequisites`, `target`, or `rules` apply.
      */
     fallthrough: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     flagId: pulumi.Input<string>;
     /**
-     * The index of the variation to serve if targeting is disabled.
+     * The index of the variation to serve when targeting is off. Omitting this attribute leaves the off variation unset (the UI's "Not set" state), which is distinct from setting it to `0`. When it is unset and targeting is off, LaunchDarkly serves no variation: SDKs return the application-provided default value and the evaluation carries a null variation index, which affects Data Export and Experimentation.
      */
-    offVariation: pulumi.Input<number>;
+    offVariation?: pulumi.Input<number | undefined>;
     /**
      * Whether targeting is enabled. Defaults to `false` if not set.
      */
     on?: pulumi.Input<boolean | undefined>;
     /**
-     * List of nested blocks describing prerequisite feature flags rules.
+     * Prerequisite feature flag rules.
      */
     prerequisites?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentPrerequisite>[] | undefined>;
     /**
@@ -416,7 +413,7 @@ export interface FeatureFlagEnvironmentArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRule>[] | undefined>;
     /**
-     * Set of nested blocks describing the individual user targets for each variation.
+     * Individual user targets for each variation.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentTarget>[] | undefined>;
     /**

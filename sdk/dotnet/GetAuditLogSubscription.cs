@@ -139,7 +139,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAuditLogSubscriptionResult
     {
         /// <summary>
-        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`. Refer to the `formVariables` field in the corresponding `integrations/&lt;integration_key&gt;/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+        /// The set of configuration fields corresponding to the value defined for `IntegrationKey`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
@@ -151,11 +151,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string IntegrationKey;
         /// <summary>
-        /// A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
+        /// A human-friendly name for your audit log subscription.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Whether or not you want your subscription enabled, i.e. to actively send events.
+        /// Whether or not the subscription is enabled.
         /// </summary>
         public readonly bool On;
         /// <summary>
@@ -163,7 +163,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAuditLogSubscriptionStatementResult> Statements;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with the audit log subscription.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 

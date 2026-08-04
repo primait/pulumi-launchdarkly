@@ -159,7 +159,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Icon;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of the model config in the format `project_key/model_config_key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -167,11 +167,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The model identifier (e.g. `gpt-4`, `claude-3`).
+        /// The model identifier. For example, `gpt-4` or `claude-3`.
         /// </summary>
         public readonly string ModelId;
         /// <summary>
-        /// The provider name for the model config (e.g. `Openai`, `Anthropic`).
+        /// The provider name for the model config. For example, `Openai` or `Anthropic`.
         /// </summary>
         public readonly string ModelProvider;
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`).
+        /// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`.
         /// </summary>
         public readonly string Params;
         /// <summary>
@@ -187,7 +187,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with the model config.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

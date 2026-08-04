@@ -99,7 +99,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID in the format `project_key/key`.
         """
         return pulumi.get(self, "id")
 
@@ -139,7 +139,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def mode(self) -> _builtins.str:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`.
+        The AI Config's mode. Must be `completion`, `agent`, or `judge`.
         """
         return pulumi.get(self, "mode")
 

@@ -21,10 +21,9 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 environments: pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]],
+                 environments: pulumi.Input[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]],
                  key: pulumi.Input[_builtins.str],
-                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_client_side_availability: pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_view_association_for_new_segments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -32,12 +31,15 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
-               > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+               > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+               
+               To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+               
+               > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input['ProjectDefaultClientSideAvailabilityArgs'] default_client_side_availability: Which client-side SDKs can use new flags by default.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
@@ -45,13 +47,8 @@ class ProjectArgs:
         """
         pulumi.set(__self__, "environments", environments)
         pulumi.set(__self__, "key", key)
-        if default_client_side_availabilities is not None:
-            pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
-        if include_in_snippet is not None:
-            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""", DeprecationWarning)
-            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-        if include_in_snippet is not None:
-            pulumi.set(__self__, "include_in_snippet", include_in_snippet)
+        if default_client_side_availability is not None:
+            pulumi.set(__self__, "default_client_side_availability", default_client_side_availability)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if require_view_association_for_new_flags is not None:
@@ -63,23 +60,27 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]:
+    def environments(self) -> pulumi.Input[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]]:
         """
-        List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
 
-        > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+
+        To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+
+        > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
         """
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]):
+    def environments(self, value: pulumi.Input[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]]):
         pulumi.set(self, "environments", value)
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -88,29 +89,16 @@ class ProjectArgs:
         pulumi.set(self, "key", value)
 
     @_builtins.property
-    @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+    @pulumi.getter(name="defaultClientSideAvailability")
+    def default_client_side_availability(self) -> pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']]:
         """
-        A block describing which client-side SDKs can use new flags by default.
+        Which client-side SDKs can use new flags by default.
         """
-        return pulumi.get(self, "default_client_side_availabilities")
+        return pulumi.get(self, "default_client_side_availability")
 
-    @default_client_side_availabilities.setter
-    def default_client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
-        pulumi.set(self, "default_client_side_availabilities", value)
-
-    @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
-
-    @include_in_snippet.setter
-    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "include_in_snippet", value)
+    @default_client_side_availability.setter
+    def default_client_side_availability(self, value: pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']]):
+        pulumi.set(self, "default_client_side_availability", value)
 
     @_builtins.property
     @pulumi.getter
@@ -164,9 +152,8 @@ class ProjectArgs:
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
-                 environments: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_client_side_availability: pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']] = None,
+                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -175,26 +162,24 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        :param pulumi.Input['ProjectDefaultClientSideAvailabilityArgs'] default_client_side_availability: Which client-side SDKs can use new flags by default.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
-               > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+               > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+               
+               To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+               
+               > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
-        if default_client_side_availabilities is not None:
-            pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
+        if default_client_side_availability is not None:
+            pulumi.set(__self__, "default_client_side_availability", default_client_side_availability)
         if environments is not None:
             pulumi.set(__self__, "environments", environments)
-        if include_in_snippet is not None:
-            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""", DeprecationWarning)
-            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-        if include_in_snippet is not None:
-            pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if name is not None:
@@ -207,49 +192,40 @@ class _ProjectState:
             pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
-    @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+    @pulumi.getter(name="defaultClientSideAvailability")
+    def default_client_side_availability(self) -> pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']]:
         """
-        A block describing which client-side SDKs can use new flags by default.
+        Which client-side SDKs can use new flags by default.
         """
-        return pulumi.get(self, "default_client_side_availabilities")
+        return pulumi.get(self, "default_client_side_availability")
 
-    @default_client_side_availabilities.setter
-    def default_client_side_availabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
-        pulumi.set(self, "default_client_side_availabilities", value)
+    @default_client_side_availability.setter
+    def default_client_side_availability(self, value: pulumi.Input[Optional['ProjectDefaultClientSideAvailabilityArgs']]):
+        pulumi.set(self, "default_client_side_availability", value)
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]:
+    def environments(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]]]:
         """
-        List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
 
-        > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+
+        To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+
+        > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
         """
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]]):
+    def environments(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['ProjectEnvironmentsArgs']]]]):
         pulumi.set(self, "environments", value)
-
-    @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def include_in_snippet(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
-
-    @include_in_snippet.setter
-    def include_in_snippet(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "include_in_snippet", value)
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -312,9 +288,8 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
+                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -338,26 +313,26 @@ class Project(pulumi.CustomResource):
             tags=["terraform"],
             require_view_association_for_new_flags=False,
             require_view_association_for_new_segments=False,
-            environments=[
-                {
+            environments={
+                "production": {
                     "key": "production",
                     "name": "Production",
                     "color": "EEEEEE",
                     "tags": ["terraform"],
-                    "approval_settings": [{
+                    "approval_settings": {
                         "can_review_own_request": False,
                         "can_apply_declined_changes": False,
                         "min_num_approvals": 3,
                         "required_approval_tags": ["approvals_required"],
-                    }],
+                    },
                 },
-                {
+                "staging": {
                     "key": "staging",
                     "name": "Staging",
                     "color": "000000",
                     "tags": ["terraform"],
                 },
-            ])
+            })
         ```
 
         ## Import
@@ -368,7 +343,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/project:Project example example-project
         ```
 
-        **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
+        **IMPORTANT:** On import, Terraform saves _all_ of the project's environments to state, keyed by their environment `key`. `environments` is authoritative: on a subsequent apply, any environment that is in state but absent from your configuration is **deleted**, along with its SDK keys and all flag targeting. To manage the project in Terraform but leave its environments to the LaunchDarkly UI, or to [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your environments and use Terraform's ignore changes lifecycle meta-argument:
 
         ```python
         import pulumi
@@ -376,22 +351,32 @@ class Project(pulumi.CustomResource):
 
         example = launchdarkly.Project("example",
             name="testProject",
-            key="%s")
+            key="example-project",
+            environments={
+                "production": {
+                    "key": "production",
+                    "name": "Production",
+                    "color": "EEEEEE",
+                },
+            })
         ```
 
-        **Note:** Following an import, the first apply may show a diff in the order of your environments as Terraform realigns its state with the order of configurations in your project configuration. This will not change your environments or their SDK keys.
+        Because `environments` is a map keyed by environment `key`, reordering, adding, or removing one environment never forces changes to the others, and import is order-independent. Changing an environment's key, which is the map key, deletes the old environment and creates a new one.
 
         **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']] default_client_side_availability: Which client-side SDKs can use new flags by default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
-               > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+               > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+               
+               To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+               
+               > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
@@ -420,26 +405,26 @@ class Project(pulumi.CustomResource):
             tags=["terraform"],
             require_view_association_for_new_flags=False,
             require_view_association_for_new_segments=False,
-            environments=[
-                {
+            environments={
+                "production": {
                     "key": "production",
                     "name": "Production",
                     "color": "EEEEEE",
                     "tags": ["terraform"],
-                    "approval_settings": [{
+                    "approval_settings": {
                         "can_review_own_request": False,
                         "can_apply_declined_changes": False,
                         "min_num_approvals": 3,
                         "required_approval_tags": ["approvals_required"],
-                    }],
+                    },
                 },
-                {
+                "staging": {
                     "key": "staging",
                     "name": "Staging",
                     "color": "000000",
                     "tags": ["terraform"],
                 },
-            ])
+            })
         ```
 
         ## Import
@@ -450,7 +435,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import launchdarkly:index/project:Project example example-project
         ```
 
-        **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
+        **IMPORTANT:** On import, Terraform saves _all_ of the project's environments to state, keyed by their environment `key`. `environments` is authoritative: on a subsequent apply, any environment that is in state but absent from your configuration is **deleted**, along with its SDK keys and all flag targeting. To manage the project in Terraform but leave its environments to the LaunchDarkly UI, or to [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your environments and use Terraform's ignore changes lifecycle meta-argument:
 
         ```python
         import pulumi
@@ -458,10 +443,17 @@ class Project(pulumi.CustomResource):
 
         example = launchdarkly.Project("example",
             name="testProject",
-            key="%s")
+            key="example-project",
+            environments={
+                "production": {
+                    "key": "production",
+                    "name": "Production",
+                    "color": "EEEEEE",
+                },
+            })
         ```
 
-        **Note:** Following an import, the first apply may show a diff in the order of your environments as Terraform realigns its state with the order of configurations in your project configuration. This will not change your environments or their SDK keys.
+        Because `environments` is a map keyed by environment `key`, reordering, adding, or removing one environment never forces changes to the others, and import is order-independent. Changing an environment's key, which is the map key, deletes the old environment and creates a new one.
 
         **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
@@ -481,9 +473,8 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-                 include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
+                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -498,11 +489,10 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
-            __props__.__dict__["default_client_side_availabilities"] = default_client_side_availabilities
+            __props__.__dict__["default_client_side_availability"] = default_client_side_availability
             if environments is None and not opts.urn:
                 raise TypeError("Missing required property 'environments'")
             __props__.__dict__["environments"] = environments
-            __props__.__dict__["include_in_snippet"] = include_in_snippet
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -520,9 +510,8 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_client_side_availabilities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]]] = None,
-            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]]] = None,
-            include_in_snippet: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
+            environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -535,12 +524,15 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectEnvironmentArgs', 'ProjectEnvironmentArgsDict']]]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']] default_client_side_availability: Which client-side SDKs can use new flags by default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
-               > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-        :param pulumi.Input[_builtins.bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+               > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+               
+               To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+               
+               > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
+        :param pulumi.Input[_builtins.str] key: The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The project's name.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_flags: Whether new flags created in this project must be associated with at least one view.
         :param pulumi.Input[_builtins.bool] require_view_association_for_new_segments: Whether new segments created in this project must be associated with at least one view.
@@ -550,9 +542,8 @@ class Project(pulumi.CustomResource):
 
         __props__ = _ProjectState.__new__(_ProjectState)
 
-        __props__.__dict__["default_client_side_availabilities"] = default_client_side_availabilities
+        __props__.__dict__["default_client_side_availability"] = default_client_side_availability
         __props__.__dict__["environments"] = environments
-        __props__.__dict__["include_in_snippet"] = include_in_snippet
         __props__.__dict__["key"] = key
         __props__.__dict__["name"] = name
         __props__.__dict__["require_view_association_for_new_flags"] = require_view_association_for_new_flags
@@ -561,37 +552,32 @@ class Project(pulumi.CustomResource):
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
-    @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> pulumi.Output[Sequence['outputs.ProjectDefaultClientSideAvailability']]:
+    @pulumi.getter(name="defaultClientSideAvailability")
+    def default_client_side_availability(self) -> pulumi.Output[Optional['outputs.ProjectDefaultClientSideAvailability']]:
         """
-        A block describing which client-side SDKs can use new flags by default.
+        Which client-side SDKs can use new flags by default.
         """
-        return pulumi.get(self, "default_client_side_availabilities")
+        return pulumi.get(self, "default_client_side_availability")
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> pulumi.Output[Sequence['outputs.ProjectEnvironment']]:
+    def environments(self) -> pulumi.Output[Mapping[str, 'outputs.ProjectEnvironments']]:
         """
-        List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+        Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
 
-        > **Note:** Mixing the use of nested `environments` blocks and [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `Environment` resources should only be used when the encapsulating project is not managed in Terraform.
+        > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
+
+        To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignore_changes = [environments] }`.
+
+        > **Note:** Mixing the use of nested `environments` and `Environment` resources for the same project is not recommended. `Environment` resources should be used together with `ignore_changes` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
         """
         return pulumi.get(self, "environments")
-
-    @_builtins.property
-    @pulumi.getter(name="includeInSnippet")
-    @_utilities.deprecated("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def include_in_snippet(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
-        """
-        return pulumi.get(self, "include_in_snippet")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -605,7 +591,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewFlags")
-    def require_view_association_for_new_flags(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def require_view_association_for_new_flags(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether new flags created in this project must be associated with at least one view.
         """
@@ -613,7 +599,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="requireViewAssociationForNewSegments")
-    def require_view_association_for_new_segments(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def require_view_association_for_new_segments(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether new segments created in this project must be associated with at least one view.
         """

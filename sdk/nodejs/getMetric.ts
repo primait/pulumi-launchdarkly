@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
 export function getMetric(args: GetMetricArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getMetric:getMetric", {
-        "isActive": args.isActive,
         "key": args.key,
         "projectKey": args.projectKey,
     }, opts);
@@ -38,17 +37,11 @@ export function getMetric(args: GetMetricArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetMetricArgs {
     /**
-     * Ignored. All metrics are considered active.
-     *
-     * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-     */
-    isActive?: boolean;
-    /**
-     * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique key that references the metric.
      */
     key: string;
     /**
-     * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The metric's project key.
      */
     projectKey: string;
 }
@@ -58,19 +51,23 @@ export interface GetMetricArgs {
  */
 export interface GetMetricResult {
     /**
-     * The method for analyzing metric events. Available choices are `mean` and `percentile`.
+     * The method for analyzing metric events.
      */
     readonly analysisType: string;
+    /**
+     * A set of one or more context kinds that this metric can measure events from.
+     */
+    readonly analysisUnits: string[];
     /**
      * The description of the metric's purpose.
      */
     readonly description: string;
     /**
-     * The event key for your metric (if custom metric)
+     * The event key for your metric (if custom metric).
      */
     readonly eventKey: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID in the format `project_key/key`.
      */
     readonly id: string;
     /**
@@ -78,25 +75,19 @@ export interface GetMetricResult {
      */
     readonly includeUnitsWithoutEvents: boolean;
     /**
-     * Ignored. All metrics are considered active.
-     *
-     * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-     */
-    readonly isActive: boolean;
-    /**
      * Whether a `custom` metric is a numeric metric or not.
      */
     readonly isNumeric: boolean;
     /**
-     * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique key that references the metric.
      */
     readonly key: string;
     /**
-     * The metric type. Available choices are `click`, `custom`, and `pageview`.
+     * The metric type.
      */
     readonly kind: string;
     /**
-     * The LaunchDarkly member ID of the member who will maintain the metric. If not set, the API will automatically apply the member associated with your Terraform API key or the most recently-set maintainer
+     * The LaunchDarkly member ID of the maintainer.
      */
     readonly maintainerId: string;
     /**
@@ -104,43 +95,39 @@ export interface GetMetricResult {
      */
     readonly name: string;
     /**
-     * The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when analysisType is percentile.
+     * The percentile for the analysis method.
      */
     readonly percentileValue: number;
     /**
-     * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The metric's project key.
      */
     readonly projectKey: string;
     /**
-     * A set of one or more context kinds that this metric can measure events from. Metrics can only use context kinds marked as "Available for experiments." For more information, read [Allocating experiment audiences](https://docs.launchdarkly.com/home/creating-experiments/allocation).
-     */
-    readonly randomizationUnits: string[];
-    /**
-     * The CSS selector for your metric (if click metric)
+     * The CSS selector for your metric (if click metric).
      */
     readonly selector: string;
     /**
-     * The success criteria for your metric (if numeric metric). Available choices are `HigherThanBaseline` and `LowerThanBaseline`.
+     * The success criteria for your metric (if numeric metric).
      */
     readonly successCriteria: string;
     /**
-     * Tags associated with your resource.
+     * Tags associated with the metric.
      */
     readonly tags: string[];
     /**
-     * (Required for kind `custom`) The unit for numeric `custom` metrics.
+     * The unit for numeric `custom` metrics.
      */
     readonly unit: string;
     /**
-     * The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
+     * The method by which multiple unit event values are aggregated.
      */
     readonly unitAggregationType: string;
     /**
-     * List of nested `url` blocks describing URLs that you want to associate with the metric.
+     * URLs associated with the metric.
      */
     readonly urls: outputs.GetMetricUrl[];
     /**
-     * Version of the metric
+     * Version of the metric.
      */
     readonly version: number;
 }
@@ -164,7 +151,6 @@ export interface GetMetricResult {
 export function getMetricOutput(args: GetMetricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("launchdarkly:index/getMetric:getMetric", {
-        "isActive": args.isActive,
         "key": args.key,
         "projectKey": args.projectKey,
     }, opts);
@@ -175,17 +161,11 @@ export function getMetricOutput(args: GetMetricOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetMetricOutputArgs {
     /**
-     * Ignored. All metrics are considered active.
-     *
-     * @deprecated No longer in use. This field will be removed in a future major release of the LaunchDarkly provider.
-     */
-    isActive?: pulumi.Input<boolean | undefined>;
-    /**
-     * The unique key that references the metric. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique key that references the metric.
      */
     key: pulumi.Input<string>;
     /**
-     * The metrics's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The metric's project key.
      */
     projectKey: pulumi.Input<string>;
 }

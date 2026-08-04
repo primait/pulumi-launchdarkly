@@ -10,6 +10,11 @@ export type AccessToken = import("./accessToken").AccessToken;
 export const AccessToken: typeof import("./accessToken").AccessToken = null as any;
 utilities.lazyLoad(exports, ["AccessToken"], () => require("./accessToken"));
 
+export { AiAgentGraphArgs, AiAgentGraphState } from "./aiAgentGraph";
+export type AiAgentGraph = import("./aiAgentGraph").AiAgentGraph;
+export const AiAgentGraph: typeof import("./aiAgentGraph").AiAgentGraph = null as any;
+utilities.lazyLoad(exports, ["AiAgentGraph"], () => require("./aiAgentGraph"));
+
 export { AiConfigArgs, AiConfigState } from "./aiConfig";
 export type AiConfig = import("./aiConfig").AiConfig;
 export const AiConfig: typeof import("./aiConfig").AiConfig = null as any;
@@ -25,10 +30,25 @@ export type AiTool = import("./aiTool").AiTool;
 export const AiTool: typeof import("./aiTool").AiTool = null as any;
 utilities.lazyLoad(exports, ["AiTool"], () => require("./aiTool"));
 
+export { AnnouncementArgs, AnnouncementState } from "./announcement";
+export type Announcement = import("./announcement").Announcement;
+export const Announcement: typeof import("./announcement").Announcement = null as any;
+utilities.lazyLoad(exports, ["Announcement"], () => require("./announcement"));
+
 export { AuditLogSubscriptionArgs, AuditLogSubscriptionState } from "./auditLogSubscription";
 export type AuditLogSubscription = import("./auditLogSubscription").AuditLogSubscription;
 export const AuditLogSubscription: typeof import("./auditLogSubscription").AuditLogSubscription = null as any;
 utilities.lazyLoad(exports, ["AuditLogSubscription"], () => require("./auditLogSubscription"));
+
+export { BigSegmentStoreIntegrationArgs, BigSegmentStoreIntegrationState } from "./bigSegmentStoreIntegration";
+export type BigSegmentStoreIntegration = import("./bigSegmentStoreIntegration").BigSegmentStoreIntegration;
+export const BigSegmentStoreIntegration: typeof import("./bigSegmentStoreIntegration").BigSegmentStoreIntegration = null as any;
+utilities.lazyLoad(exports, ["BigSegmentStoreIntegration"], () => require("./bigSegmentStoreIntegration"));
+
+export { ContextKindArgs, ContextKindState } from "./contextKind";
+export type ContextKind = import("./contextKind").ContextKind;
+export const ContextKind: typeof import("./contextKind").ContextKind = null as any;
+utilities.lazyLoad(exports, ["ContextKind"], () => require("./contextKind"));
 
 export { CustomRoleArgs, CustomRoleState } from "./customRole";
 export type CustomRole = import("./customRole").CustomRole;
@@ -55,6 +75,11 @@ export type FeatureFlagEnvironment = import("./featureFlagEnvironment").FeatureF
 export const FeatureFlagEnvironment: typeof import("./featureFlagEnvironment").FeatureFlagEnvironment = null as any;
 utilities.lazyLoad(exports, ["FeatureFlagEnvironment"], () => require("./featureFlagEnvironment"));
 
+export { FlagImportConfigurationArgs, FlagImportConfigurationState } from "./flagImportConfiguration";
+export type FlagImportConfiguration = import("./flagImportConfiguration").FlagImportConfiguration;
+export const FlagImportConfiguration: typeof import("./flagImportConfiguration").FlagImportConfiguration = null as any;
+utilities.lazyLoad(exports, ["FlagImportConfiguration"], () => require("./flagImportConfiguration"));
+
 export { FlagTemplatesArgs, FlagTemplatesState } from "./flagTemplates";
 export type FlagTemplates = import("./flagTemplates").FlagTemplates;
 export const FlagTemplates: typeof import("./flagTemplates").FlagTemplates = null as any;
@@ -64,6 +89,11 @@ export { FlagTriggerArgs, FlagTriggerState } from "./flagTrigger";
 export type FlagTrigger = import("./flagTrigger").FlagTrigger;
 export const FlagTrigger: typeof import("./flagTrigger").FlagTrigger = null as any;
 utilities.lazyLoad(exports, ["FlagTrigger"], () => require("./flagTrigger"));
+
+export { GetAiAgentGraphArgs, GetAiAgentGraphResult, GetAiAgentGraphOutputArgs } from "./getAiAgentGraph";
+export const getAiAgentGraph: typeof import("./getAiAgentGraph").getAiAgentGraph = null as any;
+export const getAiAgentGraphOutput: typeof import("./getAiAgentGraph").getAiAgentGraphOutput = null as any;
+utilities.lazyLoad(exports, ["getAiAgentGraph","getAiAgentGraphOutput"], () => require("./getAiAgentGraph"));
 
 export { GetAiConfigArgs, GetAiConfigResult, GetAiConfigOutputArgs } from "./getAiConfig";
 export const getAiConfig: typeof import("./getAiConfig").getAiConfig = null as any;
@@ -85,6 +115,16 @@ export const getAuditLogSubscription: typeof import("./getAuditLogSubscription")
 export const getAuditLogSubscriptionOutput: typeof import("./getAuditLogSubscription").getAuditLogSubscriptionOutput = null as any;
 utilities.lazyLoad(exports, ["getAuditLogSubscription","getAuditLogSubscriptionOutput"], () => require("./getAuditLogSubscription"));
 
+export { GetBigSegmentStoreIntegrationArgs, GetBigSegmentStoreIntegrationResult, GetBigSegmentStoreIntegrationOutputArgs } from "./getBigSegmentStoreIntegration";
+export const getBigSegmentStoreIntegration: typeof import("./getBigSegmentStoreIntegration").getBigSegmentStoreIntegration = null as any;
+export const getBigSegmentStoreIntegrationOutput: typeof import("./getBigSegmentStoreIntegration").getBigSegmentStoreIntegrationOutput = null as any;
+utilities.lazyLoad(exports, ["getBigSegmentStoreIntegration","getBigSegmentStoreIntegrationOutput"], () => require("./getBigSegmentStoreIntegration"));
+
+export { GetContextKindArgs, GetContextKindResult, GetContextKindOutputArgs } from "./getContextKind";
+export const getContextKind: typeof import("./getContextKind").getContextKind = null as any;
+export const getContextKindOutput: typeof import("./getContextKind").getContextKindOutput = null as any;
+utilities.lazyLoad(exports, ["getContextKind","getContextKindOutput"], () => require("./getContextKind"));
+
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
@@ -100,6 +140,11 @@ export const getFeatureFlagEnvironment: typeof import("./getFeatureFlagEnvironme
 export const getFeatureFlagEnvironmentOutput: typeof import("./getFeatureFlagEnvironment").getFeatureFlagEnvironmentOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureFlagEnvironment","getFeatureFlagEnvironmentOutput"], () => require("./getFeatureFlagEnvironment"));
 
+export { GetFlagImportConfigurationArgs, GetFlagImportConfigurationResult, GetFlagImportConfigurationOutputArgs } from "./getFlagImportConfiguration";
+export const getFlagImportConfiguration: typeof import("./getFlagImportConfiguration").getFlagImportConfiguration = null as any;
+export const getFlagImportConfigurationOutput: typeof import("./getFlagImportConfiguration").getFlagImportConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getFlagImportConfiguration","getFlagImportConfigurationOutput"], () => require("./getFlagImportConfiguration"));
+
 export { GetFlagTemplatesArgs, GetFlagTemplatesResult, GetFlagTemplatesOutputArgs } from "./getFlagTemplates";
 export const getFlagTemplates: typeof import("./getFlagTemplates").getFlagTemplates = null as any;
 export const getFlagTemplatesOutput: typeof import("./getFlagTemplates").getFlagTemplatesOutput = null as any;
@@ -110,15 +155,30 @@ export const getFlagTrigger: typeof import("./getFlagTrigger").getFlagTrigger = 
 export const getFlagTriggerOutput: typeof import("./getFlagTrigger").getFlagTriggerOutput = null as any;
 utilities.lazyLoad(exports, ["getFlagTrigger","getFlagTriggerOutput"], () => require("./getFlagTrigger"));
 
+export { GetIntegrationDeliveryConfigurationArgs, GetIntegrationDeliveryConfigurationResult, GetIntegrationDeliveryConfigurationOutputArgs } from "./getIntegrationDeliveryConfiguration";
+export const getIntegrationDeliveryConfiguration: typeof import("./getIntegrationDeliveryConfiguration").getIntegrationDeliveryConfiguration = null as any;
+export const getIntegrationDeliveryConfigurationOutput: typeof import("./getIntegrationDeliveryConfiguration").getIntegrationDeliveryConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegrationDeliveryConfiguration","getIntegrationDeliveryConfigurationOutput"], () => require("./getIntegrationDeliveryConfiguration"));
+
 export { GetMetricArgs, GetMetricResult, GetMetricOutputArgs } from "./getMetric";
 export const getMetric: typeof import("./getMetric").getMetric = null as any;
 export const getMetricOutput: typeof import("./getMetric").getMetricOutput = null as any;
 utilities.lazyLoad(exports, ["getMetric","getMetricOutput"], () => require("./getMetric"));
 
+export { GetMetricGroupArgs, GetMetricGroupResult, GetMetricGroupOutputArgs } from "./getMetricGroup";
+export const getMetricGroup: typeof import("./getMetricGroup").getMetricGroup = null as any;
+export const getMetricGroupOutput: typeof import("./getMetricGroup").getMetricGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getMetricGroup","getMetricGroupOutput"], () => require("./getMetricGroup"));
+
 export { GetModelConfigArgs, GetModelConfigResult, GetModelConfigOutputArgs } from "./getModelConfig";
 export const getModelConfig: typeof import("./getModelConfig").getModelConfig = null as any;
 export const getModelConfigOutput: typeof import("./getModelConfig").getModelConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getModelConfig","getModelConfigOutput"], () => require("./getModelConfig"));
+
+export { GetOauthClientArgs, GetOauthClientResult, GetOauthClientOutputArgs } from "./getOauthClient";
+export const getOauthClient: typeof import("./getOauthClient").getOauthClient = null as any;
+export const getOauthClientOutput: typeof import("./getOauthClient").getOauthClientOutput = null as any;
+utilities.lazyLoad(exports, ["getOauthClient","getOauthClientOutput"], () => require("./getOauthClient"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
@@ -129,6 +189,16 @@ export { GetRelayProxyConfigurationArgs, GetRelayProxyConfigurationResult, GetRe
 export const getRelayProxyConfiguration: typeof import("./getRelayProxyConfiguration").getRelayProxyConfiguration = null as any;
 export const getRelayProxyConfigurationOutput: typeof import("./getRelayProxyConfiguration").getRelayProxyConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getRelayProxyConfiguration","getRelayProxyConfigurationOutput"], () => require("./getRelayProxyConfiguration"));
+
+export { GetReleasePolicyArgs, GetReleasePolicyResult, GetReleasePolicyOutputArgs } from "./getReleasePolicy";
+export const getReleasePolicy: typeof import("./getReleasePolicy").getReleasePolicy = null as any;
+export const getReleasePolicyOutput: typeof import("./getReleasePolicy").getReleasePolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getReleasePolicy","getReleasePolicyOutput"], () => require("./getReleasePolicy"));
+
+export { GetSdkKeyArgs, GetSdkKeyResult, GetSdkKeyOutputArgs } from "./getSdkKey";
+export const getSdkKey: typeof import("./getSdkKey").getSdkKey = null as any;
+export const getSdkKeyOutput: typeof import("./getSdkKey").getSdkKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getSdkKey","getSdkKeyOutput"], () => require("./getSdkKey"));
 
 export { GetSegmentArgs, GetSegmentResult, GetSegmentOutputArgs } from "./getSegment";
 export const getSegment: typeof import("./getSegment").getSegment = null as any;
@@ -160,6 +230,11 @@ export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 
+export { IntegrationDeliveryConfigurationArgs, IntegrationDeliveryConfigurationState } from "./integrationDeliveryConfiguration";
+export type IntegrationDeliveryConfiguration = import("./integrationDeliveryConfiguration").IntegrationDeliveryConfiguration;
+export const IntegrationDeliveryConfiguration: typeof import("./integrationDeliveryConfiguration").IntegrationDeliveryConfiguration = null as any;
+utilities.lazyLoad(exports, ["IntegrationDeliveryConfiguration"], () => require("./integrationDeliveryConfiguration"));
+
 export { IpAllowlistConfigArgs, IpAllowlistConfigState } from "./ipAllowlistConfig";
 export type IpAllowlistConfig = import("./ipAllowlistConfig").IpAllowlistConfig;
 export const IpAllowlistConfig: typeof import("./ipAllowlistConfig").IpAllowlistConfig = null as any;
@@ -175,10 +250,20 @@ export type Metric = import("./metric").Metric;
 export const Metric: typeof import("./metric").Metric = null as any;
 utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
 
+export { MetricGroupArgs, MetricGroupState } from "./metricGroup";
+export type MetricGroup = import("./metricGroup").MetricGroup;
+export const MetricGroup: typeof import("./metricGroup").MetricGroup = null as any;
+utilities.lazyLoad(exports, ["MetricGroup"], () => require("./metricGroup"));
+
 export { ModelConfigArgs, ModelConfigState } from "./modelConfig";
 export type ModelConfig = import("./modelConfig").ModelConfig;
 export const ModelConfig: typeof import("./modelConfig").ModelConfig = null as any;
 utilities.lazyLoad(exports, ["ModelConfig"], () => require("./modelConfig"));
+
+export { OauthClientArgs, OauthClientState } from "./oauthClient";
+export type OauthClient = import("./oauthClient").OauthClient;
+export const OauthClient: typeof import("./oauthClient").OauthClient = null as any;
+utilities.lazyLoad(exports, ["OauthClient"], () => require("./oauthClient"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -192,6 +277,16 @@ export { RelayProxyConfigurationArgs, RelayProxyConfigurationState } from "./rel
 export type RelayProxyConfiguration = import("./relayProxyConfiguration").RelayProxyConfiguration;
 export const RelayProxyConfiguration: typeof import("./relayProxyConfiguration").RelayProxyConfiguration = null as any;
 utilities.lazyLoad(exports, ["RelayProxyConfiguration"], () => require("./relayProxyConfiguration"));
+
+export { ReleasePolicyArgs, ReleasePolicyState } from "./releasePolicy";
+export type ReleasePolicy = import("./releasePolicy").ReleasePolicy;
+export const ReleasePolicy: typeof import("./releasePolicy").ReleasePolicy = null as any;
+utilities.lazyLoad(exports, ["ReleasePolicy"], () => require("./releasePolicy"));
+
+export { SdkKeyArgs, SdkKeyState } from "./sdkKey";
+export type SdkKey = import("./sdkKey").SdkKey;
+export const SdkKey: typeof import("./sdkKey").SdkKey = null as any;
+utilities.lazyLoad(exports, ["SdkKey"], () => require("./sdkKey"));
 
 export { SegmentArgs, SegmentState } from "./segment";
 export type Segment = import("./segment").Segment;
@@ -251,14 +346,22 @@ const _module = {
         switch (type) {
             case "launchdarkly:index/accessToken:AccessToken":
                 return new AccessToken(name, <any>undefined, { urn })
+            case "launchdarkly:index/aiAgentGraph:AiAgentGraph":
+                return new AiAgentGraph(name, <any>undefined, { urn })
             case "launchdarkly:index/aiConfig:AiConfig":
                 return new AiConfig(name, <any>undefined, { urn })
             case "launchdarkly:index/aiConfigVariation:AiConfigVariation":
                 return new AiConfigVariation(name, <any>undefined, { urn })
             case "launchdarkly:index/aiTool:AiTool":
                 return new AiTool(name, <any>undefined, { urn })
+            case "launchdarkly:index/announcement:Announcement":
+                return new Announcement(name, <any>undefined, { urn })
             case "launchdarkly:index/auditLogSubscription:AuditLogSubscription":
                 return new AuditLogSubscription(name, <any>undefined, { urn })
+            case "launchdarkly:index/bigSegmentStoreIntegration:BigSegmentStoreIntegration":
+                return new BigSegmentStoreIntegration(name, <any>undefined, { urn })
+            case "launchdarkly:index/contextKind:ContextKind":
+                return new ContextKind(name, <any>undefined, { urn })
             case "launchdarkly:index/customRole:CustomRole":
                 return new CustomRole(name, <any>undefined, { urn })
             case "launchdarkly:index/destination:Destination":
@@ -269,22 +372,34 @@ const _module = {
                 return new FeatureFlag(name, <any>undefined, { urn })
             case "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment":
                 return new FeatureFlagEnvironment(name, <any>undefined, { urn })
+            case "launchdarkly:index/flagImportConfiguration:FlagImportConfiguration":
+                return new FlagImportConfiguration(name, <any>undefined, { urn })
             case "launchdarkly:index/flagTemplates:FlagTemplates":
                 return new FlagTemplates(name, <any>undefined, { urn })
             case "launchdarkly:index/flagTrigger:FlagTrigger":
                 return new FlagTrigger(name, <any>undefined, { urn })
+            case "launchdarkly:index/integrationDeliveryConfiguration:IntegrationDeliveryConfiguration":
+                return new IntegrationDeliveryConfiguration(name, <any>undefined, { urn })
             case "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig":
                 return new IpAllowlistConfig(name, <any>undefined, { urn })
             case "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry":
                 return new IpAllowlistEntry(name, <any>undefined, { urn })
             case "launchdarkly:index/metric:Metric":
                 return new Metric(name, <any>undefined, { urn })
+            case "launchdarkly:index/metricGroup:MetricGroup":
+                return new MetricGroup(name, <any>undefined, { urn })
             case "launchdarkly:index/modelConfig:ModelConfig":
                 return new ModelConfig(name, <any>undefined, { urn })
+            case "launchdarkly:index/oauthClient:OauthClient":
+                return new OauthClient(name, <any>undefined, { urn })
             case "launchdarkly:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration":
                 return new RelayProxyConfiguration(name, <any>undefined, { urn })
+            case "launchdarkly:index/releasePolicy:ReleasePolicy":
+                return new ReleasePolicy(name, <any>undefined, { urn })
+            case "launchdarkly:index/sdkKey:SdkKey":
+                return new SdkKey(name, <any>undefined, { urn })
             case "launchdarkly:index/segment:Segment":
                 return new Segment(name, <any>undefined, { urn })
             case "launchdarkly:index/team:Team":
@@ -307,23 +422,33 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("launchdarkly", "index/accessToken", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/aiAgentGraph", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/aiConfig", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/aiConfigVariation", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/aiTool", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/announcement", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/auditLogSubscription", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/bigSegmentStoreIntegration", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/contextKind", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/customRole", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/destination", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/environment", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/featureFlag", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/featureFlagEnvironment", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/flagImportConfiguration", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/flagTemplates", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/flagTrigger", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/integrationDeliveryConfiguration", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/ipAllowlistConfig", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/ipAllowlistEntry", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/metric", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/metricGroup", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/modelConfig", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/oauthClient", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/project", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/relayProxyConfiguration", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/releasePolicy", _module)
+pulumi.runtime.registerResourceModule("launchdarkly", "index/sdkKey", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/segment", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/team", _module)
 pulumi.runtime.registerResourceModule("launchdarkly", "index/teamMember", _module)

@@ -76,7 +76,7 @@ namespace Pulumi.Launchdarkly
         /// The base permission level - either `Reader` or `NoAccess`. While newer API versions default to `NoAccess`, this field defaults to `Reader` in keeping with previous API versions.
         /// </summary>
         [Output("basePermissions")]
-        public Output<string?> BasePermissions { get; private set; } = null!;
+        public Output<string> BasePermissions { get; private set; } = null!;
 
         /// <summary>
         /// Description of the custom role.
@@ -85,7 +85,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -96,14 +96,17 @@ namespace Pulumi.Launchdarkly
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        [Output("policies")]
-        public Output<ImmutableArray<Outputs.CustomRolePolicy>> Policies { get; private set; } = null!;
-
         /// <summary>
-        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
+        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
         /// </summary>
         [Output("policyStatements")]
         public Output<ImmutableArray<Outputs.CustomRolePolicyStatement>> PolicyStatements { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `PolicyStatements` attribute (`Resources`, `NotResources`, `Actions`, `NotActions`, `Effect`). Mutually exclusive with `PolicyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` inside HCL strings.
+        /// </summary>
+        [Output("policyStatementsJson")]
+        public Output<string?> PolicyStatementsJson { get; private set; } = null!;
 
 
         /// <summary>
@@ -165,7 +168,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -176,26 +179,23 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policies")]
-        private InputList<Inputs.CustomRolePolicyArgs>? _policies;
-        [Obsolete(@"'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.")]
-        public InputList<Inputs.CustomRolePolicyArgs> Policies
-        {
-            get => _policies ?? (_policies = new InputList<Inputs.CustomRolePolicyArgs>());
-            set => _policies = value;
-        }
-
         [Input("policyStatements")]
         private InputList<Inputs.CustomRolePolicyStatementArgs>? _policyStatements;
 
         /// <summary>
-        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
+        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
         /// </summary>
         public InputList<Inputs.CustomRolePolicyStatementArgs> PolicyStatements
         {
             get => _policyStatements ?? (_policyStatements = new InputList<Inputs.CustomRolePolicyStatementArgs>());
             set => _policyStatements = value;
         }
+
+        /// <summary>
+        /// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `PolicyStatements` attribute (`Resources`, `NotResources`, `Actions`, `NotActions`, `Effect`). Mutually exclusive with `PolicyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` inside HCL strings.
+        /// </summary>
+        [Input("policyStatementsJson")]
+        public Input<string>? PolicyStatementsJson { get; set; }
 
         public CustomRoleArgs()
         {
@@ -218,7 +218,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A unique key that will be used to reference the custom role in your code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// A unique key that references the custom role in your code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -229,26 +229,23 @@ namespace Pulumi.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policies")]
-        private InputList<Inputs.CustomRolePolicyGetArgs>? _policies;
-        [Obsolete(@"'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.")]
-        public InputList<Inputs.CustomRolePolicyGetArgs> Policies
-        {
-            get => _policies ?? (_policies = new InputList<Inputs.CustomRolePolicyGetArgs>());
-            set => _policies = value;
-        }
-
         [Input("policyStatements")]
         private InputList<Inputs.CustomRolePolicyStatementGetArgs>? _policyStatements;
 
         /// <summary>
-        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://docs.launchdarkly.com/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
+        /// An array of the policy statements that define the permissions for the custom role. This field accepts [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute). To use role attributes, use the syntax `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` in lieu of your usual resource keys.
         /// </summary>
         public InputList<Inputs.CustomRolePolicyStatementGetArgs> PolicyStatements
         {
             get => _policyStatements ?? (_policyStatements = new InputList<Inputs.CustomRolePolicyStatementGetArgs>());
             set => _policyStatements = value;
         }
+
+        /// <summary>
+        /// Policy statements expressed as a single JSON document, an array of statement objects with the same keys as the `PolicyStatements` attribute (`Resources`, `NotResources`, `Actions`, `NotActions`, `Effect`). Mutually exclusive with `PolicyStatements`. Use this form when reading the policy from a file or templating it dynamically, for example with `jsonencode(...)` or `file("policy.json")`. To use [role attributes](https://launchdarkly.com/docs/home/getting-started/vocabulary#role-attribute), escape the `$` as `$${roleAttribute/&lt;YOUR_ROLE_ATTRIBUTE&gt;}` inside HCL strings.
+        /// </summary>
+        [Input("policyStatementsJson")]
+        public Input<string>? PolicyStatementsJson { get; set; }
 
         public CustomRoleState()
         {

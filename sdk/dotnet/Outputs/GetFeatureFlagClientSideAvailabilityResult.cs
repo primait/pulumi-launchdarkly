@@ -13,13 +13,7 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetFeatureFlagClientSideAvailabilityResult
     {
-        /// <summary>
-        /// Whether this flag is available to SDKs using the client-side ID.
-        /// </summary>
         public readonly bool UsingEnvironmentId;
-        /// <summary>
-        /// Whether this flag is available to SDKs using a mobile key.
-        /// </summary>
         public readonly bool UsingMobileKey;
 
         [OutputConstructor]

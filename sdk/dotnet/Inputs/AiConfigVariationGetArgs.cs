@@ -12,23 +12,14 @@ namespace Pulumi.Launchdarkly.Inputs
 
     public sealed class AiConfigVariationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The variation's key.
-        /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The variation's name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The variation's ID.
-        /// </summary>
-        [Input("variationId")]
-        public Input<string>? VariationId { get; set; }
+        [Input("variationId", required: true)]
+        public Input<string> VariationId { get; set; } = null!;
 
         public AiConfigVariationGetArgs()
         {

@@ -8,11 +8,7 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly flag templates resource.
- *
- * This resource allows you to manage the "Custom" flag template settings applied to new feature flags created within a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This resource manages the Custom template only.
- *
- * > **Note:** Flag templates are a singleton per project. Destroying this resource only removes it from Terraform state. The flag templates will continue to exist in LaunchDarkly.
+ * Manages the Custom flag-template settings for a LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -25,12 +21,12 @@ import * as utilities from "./utilities";
  *     tags: ["terraform"],
  *     temporary: false,
  *     booleanDefaults: {
- *         trueDisplayName: "True",
- *         falseDisplayName: "False",
- *         trueDescription: "",
- *         falseDescription: "",
- *         onVariation: 0,
- *         offVariation: 1,
+ *         true_display_name: "True",
+ *         false_display_name: "False",
+ *         true_description: "",
+ *         false_description: "",
+ *         on_variation: 0,
+ *         off_variation: 1,
  *     },
  * });
  * ```
@@ -72,21 +68,15 @@ export class FlagTemplates extends pulumi.CustomResource {
     }
 
     /**
-     * A block describing the default boolean flag variation settings.
+     * Default boolean variation settings.
      */
     declare public readonly booleanDefaults: pulumi.Output<outputs.FlagTemplatesBooleanDefaults>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key.
      */
     declare public readonly projectKey: pulumi.Output<string>;
-    /**
-     * Tags associated with your resource.
-     */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
-    /**
-     * Whether new flags should be temporary by default.
-     */
-    declare public readonly temporary: pulumi.Output<boolean | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
+    declare public readonly temporary: pulumi.Output<boolean>;
 
     /**
      * Create a FlagTemplates resource with the given unique name, arguments, and options.
@@ -128,20 +118,14 @@ export class FlagTemplates extends pulumi.CustomResource {
  */
 export interface FlagTemplatesState {
     /**
-     * A block describing the default boolean flag variation settings.
+     * Default boolean variation settings.
      */
     booleanDefaults?: pulumi.Input<inputs.FlagTemplatesBooleanDefaults | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key.
      */
     projectKey?: pulumi.Input<string | undefined>;
-    /**
-     * Tags associated with your resource.
-     */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Whether new flags should be temporary by default.
-     */
     temporary?: pulumi.Input<boolean | undefined>;
 }
 
@@ -150,19 +134,13 @@ export interface FlagTemplatesState {
  */
 export interface FlagTemplatesArgs {
     /**
-     * A block describing the default boolean flag variation settings.
+     * Default boolean variation settings.
      */
     booleanDefaults: pulumi.Input<inputs.FlagTemplatesBooleanDefaults>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key.
      */
     projectKey: pulumi.Input<string>;
-    /**
-     * Tags associated with your resource.
-     */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Whether new flags should be temporary by default.
-     */
     temporary?: pulumi.Input<boolean | undefined>;
 }

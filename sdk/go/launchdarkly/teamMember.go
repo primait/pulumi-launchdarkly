@@ -16,7 +16,7 @@ import (
 //
 // This resource allows you to create and manage team members within your LaunchDarkly organization.
 //
-// > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
+// > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://launchdarkly.com/docs/home/account/manage-teams).
 //
 // ## Example Usage
 //
@@ -59,7 +59,7 @@ type TeamMember struct {
 
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles pulumi.StringArrayOutput `pulumi:"customRoles"`
-	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The team member's given name. Once created, this cannot be updated except by the team member.
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
@@ -67,8 +67,8 @@ type TeamMember struct {
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
 	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes TeamMemberRoleAttributeArrayOutput `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes pulumi.StringArrayMapOutput `pulumi:"roleAttributes"`
 }
 
 // NewTeamMember registers a new resource with the given unique name, arguments, and options.
@@ -106,7 +106,7 @@ func GetTeamMember(ctx *pulumi.Context,
 type teamMemberState struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles []string `pulumi:"customRoles"`
-	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Email *string `pulumi:"email"`
 	// The team member's given name. Once created, this cannot be updated except by the team member.
 	FirstName *string `pulumi:"firstName"`
@@ -114,14 +114,14 @@ type teamMemberState struct {
 	LastName *string `pulumi:"lastName"`
 	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []TeamMemberRoleAttribute `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 }
 
 type TeamMemberState struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles pulumi.StringArrayInput
-	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringPtrInput
 	// The team member's given name. Once created, this cannot be updated except by the team member.
 	FirstName pulumi.StringPtrInput
@@ -129,8 +129,8 @@ type TeamMemberState struct {
 	LastName pulumi.StringPtrInput
 	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes TeamMemberRoleAttributeArrayInput
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes pulumi.StringArrayMapInput
 }
 
 func (TeamMemberState) ElementType() reflect.Type {
@@ -140,7 +140,7 @@ func (TeamMemberState) ElementType() reflect.Type {
 type teamMemberArgs struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles []string `pulumi:"customRoles"`
-	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Email string `pulumi:"email"`
 	// The team member's given name. Once created, this cannot be updated except by the team member.
 	FirstName *string `pulumi:"firstName"`
@@ -148,15 +148,15 @@ type teamMemberArgs struct {
 	LastName *string `pulumi:"lastName"`
 	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []TeamMemberRoleAttribute `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 }
 
 // The set of arguments for constructing a TeamMember resource.
 type TeamMemberArgs struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles pulumi.StringArrayInput
-	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringInput
 	// The team member's given name. Once created, this cannot be updated except by the team member.
 	FirstName pulumi.StringPtrInput
@@ -164,8 +164,8 @@ type TeamMemberArgs struct {
 	LastName pulumi.StringPtrInput
 	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes TeamMemberRoleAttributeArrayInput
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes pulumi.StringArrayMapInput
 }
 
 func (TeamMemberArgs) ElementType() reflect.Type {
@@ -260,7 +260,7 @@ func (o TeamMemberOutput) CustomRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringArrayOutput { return v.CustomRoles }).(pulumi.StringArrayOutput)
 }
 
-// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o TeamMemberOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
@@ -280,9 +280,9 @@ func (o TeamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-func (o TeamMemberOutput) RoleAttributes() TeamMemberRoleAttributeArrayOutput {
-	return o.ApplyT(func(v *TeamMember) TeamMemberRoleAttributeArrayOutput { return v.RoleAttributes }).(TeamMemberRoleAttributeArrayOutput)
+// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+func (o TeamMemberOutput) RoleAttributes() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *TeamMember) pulumi.StringArrayMapOutput { return v.RoleAttributes }).(pulumi.StringArrayMapOutput)
 }
 
 type TeamMemberArrayOutput struct{ *pulumi.OutputState }

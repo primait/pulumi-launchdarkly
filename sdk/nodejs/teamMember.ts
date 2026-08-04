@@ -2,9 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
-import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -12,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to create and manage team members within your LaunchDarkly organization.
  *
- * > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
+ * > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://launchdarkly.com/docs/home/account/manage-teams).
  *
  * ## Example Usage
  *
@@ -69,7 +66,7 @@ export class TeamMember extends pulumi.CustomResource {
      */
     declare public readonly customRoles: pulumi.Output<string[] | undefined>;
     /**
-     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly email: pulumi.Output<string>;
     /**
@@ -85,9 +82,9 @@ export class TeamMember extends pulumi.CustomResource {
      */
     declare public readonly role: pulumi.Output<string>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    declare public readonly roleAttributes: pulumi.Output<outputs.TeamMemberRoleAttribute[] | undefined>;
+    declare public readonly roleAttributes: pulumi.Output<{[key: string]: string[]} | undefined>;
 
     /**
      * Create a TeamMember resource with the given unique name, arguments, and options.
@@ -134,7 +131,7 @@ export interface TeamMemberState {
      */
     customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     email?: pulumi.Input<string | undefined>;
     /**
@@ -150,9 +147,9 @@ export interface TeamMemberState {
      */
     role?: pulumi.Input<string | undefined>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[] | undefined>;
+    roleAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
 }
 
 /**
@@ -164,7 +161,7 @@ export interface TeamMemberArgs {
      */
     customRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique email address associated with the team member. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     email: pulumi.Input<string>;
     /**
@@ -180,7 +177,7 @@ export interface TeamMemberArgs {
      */
     role?: pulumi.Input<string | undefined>;
     /**
-     * A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+     * A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
      */
-    roleAttributes?: pulumi.Input<pulumi.Input<inputs.TeamMemberRoleAttribute>[] | undefined>;
+    roleAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
 }

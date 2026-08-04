@@ -40,13 +40,13 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFeatureFlagArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         /// </summary>
         [Input("maintainerId")]
         public string? MaintainerId { get; set; }
@@ -72,13 +72,13 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFeatureFlagInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
@@ -106,40 +106,39 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFeatureFlagResult
     {
         /// <summary>
-        /// Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
+        /// Whether the flag is archived.
         /// </summary>
         public readonly bool Archived;
-        public readonly ImmutableArray<Outputs.GetFeatureFlagClientSideAvailabilityResult> ClientSideAvailabilities;
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+        /// Client-side availability settings.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFeatureFlagCustomPropertyResult> CustomProperties;
+        public readonly Outputs.GetFeatureFlagClientSideAvailabilityResult ClientSideAvailability;
         /// <summary>
-        /// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+        /// Custom properties, keyed by the custom property key.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFeatureFlagDefaultResult> Defaults;
+        public readonly ImmutableDictionary<string, Outputs.GetFeatureFlagCustomPropertiesResult> CustomProperties;
         /// <summary>
-        /// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
+        /// Default variation indices for new environments.
+        /// </summary>
+        public readonly Outputs.GetFeatureFlagDefaultsResult Defaults;
+        /// <summary>
+        /// Whether the flag is deprecated.
         /// </summary>
         public readonly bool Deprecated;
         /// <summary>
-        /// The feature flag's description.
+        /// Feature flag description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Composite ID `project_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `IncludeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-        /// </summary>
-        public readonly bool IncludeInSnippet;
-        /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+        /// The feature flag maintainer's 24 character alphanumeric team member ID. `MaintainerTeamKey` cannot be set if `MaintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         /// </summary>
         public readonly string MaintainerId;
         /// <summary>
@@ -147,7 +146,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string MaintainerTeamKey;
         /// <summary>
-        /// The feature flag's human-readable name
+        /// Human-readable name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -155,27 +154,27 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Specifies whether the flag is a temporary flag.
+        /// Whether the flag is temporary.
         /// </summary>
         public readonly bool Temporary;
         /// <summary>
-        /// The uniform type for all variations. Can be either "boolean", "string", "number", or "json".
+        /// Variation type: "boolean", "string", "number", or "json".
         /// </summary>
         public readonly string VariationType;
         /// <summary>
-        /// An array of possible variations for the flag
+        /// Possible variations for the flag.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagVariationResult> Variations;
         /// <summary>
-        /// A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// View keys linked to the flag.
         /// </summary>
         public readonly ImmutableArray<string> ViewKeys;
         /// <summary>
-        /// A list of view keys that this feature flag is linked to.
+        /// Legacy view keys list.
         /// </summary>
         public readonly ImmutableArray<string> Views;
 
@@ -183,19 +182,17 @@ namespace Pulumi.Launchdarkly
         private GetFeatureFlagResult(
             bool archived,
 
-            ImmutableArray<Outputs.GetFeatureFlagClientSideAvailabilityResult> clientSideAvailabilities,
+            Outputs.GetFeatureFlagClientSideAvailabilityResult clientSideAvailability,
 
-            ImmutableArray<Outputs.GetFeatureFlagCustomPropertyResult> customProperties,
+            ImmutableDictionary<string, Outputs.GetFeatureFlagCustomPropertiesResult> customProperties,
 
-            ImmutableArray<Outputs.GetFeatureFlagDefaultResult> defaults,
+            Outputs.GetFeatureFlagDefaultsResult defaults,
 
             bool deprecated,
 
             string description,
 
             string id,
-
-            bool includeInSnippet,
 
             string key,
 
@@ -220,13 +217,12 @@ namespace Pulumi.Launchdarkly
             ImmutableArray<string> views)
         {
             Archived = archived;
-            ClientSideAvailabilities = clientSideAvailabilities;
+            ClientSideAvailability = clientSideAvailability;
             CustomProperties = customProperties;
             Defaults = defaults;
             Deprecated = deprecated;
             Description = description;
             Id = id;
-            IncludeInSnippet = includeInSnippet;
             Key = key;
             MaintainerId = maintainerId;
             MaintainerTeamKey = maintainerTeamKey;

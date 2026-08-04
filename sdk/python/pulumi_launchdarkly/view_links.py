@@ -28,8 +28,8 @@ class ViewLinksArgs:
         """
         The set of arguments for constructing a ViewLinks resource.
 
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
         :param pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
         """
@@ -44,7 +44,7 @@ class ViewLinksArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -56,7 +56,7 @@ class ViewLinksArgs:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -100,9 +100,9 @@ class _ViewLinksState:
         Input properties used for looking up and filtering ViewLinks resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
@@ -129,7 +129,7 @@ class _ViewLinksState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -153,7 +153,7 @@ class _ViewLinksState:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -180,30 +180,11 @@ class ViewLinks(pulumi.CustomResource):
 
         > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
-        This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
+        This resource allows you to efficiently link multiple flags and segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
 
         > **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
 
-        ## Alternative Approach: view_keys on Individual Resources
-
-        For modular Terraform configurations where flags and segments are defined in separate files or modules, you can use the `view_keys` field directly on the resource instead of using this centralized `view_links` resource:
-
-        - **Feature Flags**: Use the `view_keys` attribute on `FeatureFlag` resources
-        - **Segments**: Use the `view_keys` attribute on `Segment` resources
-
-        **When to use `view_links` (this resource):**
-        - Managing many flags/segments for a single view (bulk operations)
-        - Centralized view management across your infrastructure
-        - Administrative view organization
-
-        **When to use `view_keys` on individual resources:**
-        - Modular Terraform structures with separate files per flag/segment
-        - Each team/module manages their own resources
-        - Want view membership defined alongside the resource
-
-        > **Warning:** Do not use both `view_links` and `view_keys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
-
-        See the feature flag resource documentation and segment resource documentation for details on the `view_keys` attribute.
+        > **Warning:** Do not use both `view_links` and `view_keys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
 
         ## Example Usage
 
@@ -298,13 +279,21 @@ class ViewLinks(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        LaunchDarkly view links are imported using the resource's ID in the form `project_key/view_key`
+
+        ```sh
+        $ pulumi import launchdarkly:index/viewLinks:ViewLinks example example-project/example-view-key
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         ...
     @overload
@@ -319,30 +308,11 @@ class ViewLinks(pulumi.CustomResource):
 
         > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
 
-        This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
+        This resource allows you to efficiently link multiple flags and segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
 
         > **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
 
-        ## Alternative Approach: view_keys on Individual Resources
-
-        For modular Terraform configurations where flags and segments are defined in separate files or modules, you can use the `view_keys` field directly on the resource instead of using this centralized `view_links` resource:
-
-        - **Feature Flags**: Use the `view_keys` attribute on `FeatureFlag` resources
-        - **Segments**: Use the `view_keys` attribute on `Segment` resources
-
-        **When to use `view_links` (this resource):**
-        - Managing many flags/segments for a single view (bulk operations)
-        - Centralized view management across your infrastructure
-        - Administrative view organization
-
-        **When to use `view_keys` on individual resources:**
-        - Modular Terraform structures with separate files per flag/segment
-        - Each team/module manages their own resources
-        - Want view membership defined alongside the resource
-
-        > **Warning:** Do not use both `view_links` and `view_keys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
-
-        See the feature flag resource documentation and segment resource documentation for details on the `view_keys` attribute.
+        > **Warning:** Do not use both `view_links` and `view_keys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
 
         ## Example Usage
 
@@ -435,6 +405,14 @@ class ViewLinks(pulumi.CustomResource):
                     "segment_key": "trial-users",
                 },
             ])
+        ```
+
+        ## Import
+
+        LaunchDarkly view links are imported using the resource's ID in the form `project_key/view_key`
+
+        ```sh
+        $ pulumi import launchdarkly:index/viewLinks:ViewLinks example example-project/example-view-key
         ```
 
 
@@ -496,9 +474,9 @@ class ViewLinks(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -512,7 +490,7 @@ class ViewLinks(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def flags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         A set of feature flag keys to link to the view.
         """
@@ -522,13 +500,13 @@ class ViewLinks(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter
-    def segments(self) -> pulumi.Output[Optional[Sequence['outputs.ViewLinksSegment']]]:
+    def segments(self) -> pulumi.Output[Sequence['outputs.ViewLinksSegment']]:
         """
         A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
         """
@@ -538,7 +516,7 @@ class ViewLinks(pulumi.CustomResource):
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 

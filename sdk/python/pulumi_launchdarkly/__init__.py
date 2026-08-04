@@ -7,43 +7,62 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_token import *
+from .ai_agent_graph import *
 from .ai_config import *
 from .ai_config_variation import *
 from .ai_tool import *
+from .announcement import *
 from .audit_log_subscription import *
+from .big_segment_store_integration import *
+from .context_kind import *
 from .custom_role import *
 from .destination import *
 from .environment import *
 from .feature_flag import *
 from .feature_flag_environment import *
+from .flag_import_configuration import *
 from .flag_templates import *
 from .flag_trigger import *
+from .get_ai_agent_graph import *
 from .get_ai_config import *
 from .get_ai_config_variation import *
 from .get_ai_tool import *
 from .get_audit_log_subscription import *
+from .get_big_segment_store_integration import *
+from .get_context_kind import *
 from .get_environment import *
 from .get_feature_flag import *
 from .get_feature_flag_environment import *
+from .get_flag_import_configuration import *
 from .get_flag_templates import *
 from .get_flag_trigger import *
+from .get_integration_delivery_configuration import *
 from .get_metric import *
+from .get_metric_group import *
 from .get_model_config import *
+from .get_oauth_client import *
 from .get_project import *
 from .get_relay_proxy_configuration import *
+from .get_release_policy import *
+from .get_sdk_key import *
 from .get_segment import *
 from .get_team import *
 from .get_team_member import *
 from .get_team_members import *
 from .get_view import *
 from .get_webhook import *
+from .integration_delivery_configuration import *
 from .ip_allowlist_config import *
 from .ip_allowlist_entry import *
 from .metric import *
+from .metric_group import *
 from .model_config import *
+from .oauth_client import *
 from .project import *
 from .provider import *
 from .relay_proxy_configuration import *
+from .release_policy import *
+from .sdk_key import *
 from .segment import *
 from .team import *
 from .team_member import *
@@ -78,6 +97,14 @@ _utilities.register(
  },
  {
   "pkg": "launchdarkly",
+  "mod": "index/aiAgentGraph",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/aiAgentGraph:AiAgentGraph": "AiAgentGraph"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
   "mod": "index/aiConfig",
   "fqn": "pulumi_launchdarkly",
   "classes": {
@@ -102,10 +129,34 @@ _utilities.register(
  },
  {
   "pkg": "launchdarkly",
+  "mod": "index/announcement",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/announcement:Announcement": "Announcement"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
   "mod": "index/auditLogSubscription",
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/auditLogSubscription:AuditLogSubscription": "AuditLogSubscription"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/bigSegmentStoreIntegration",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/bigSegmentStoreIntegration:BigSegmentStoreIntegration": "BigSegmentStoreIntegration"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/contextKind",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/contextKind:ContextKind": "ContextKind"
   }
  },
  {
@@ -150,6 +201,14 @@ _utilities.register(
  },
  {
   "pkg": "launchdarkly",
+  "mod": "index/flagImportConfiguration",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/flagImportConfiguration:FlagImportConfiguration": "FlagImportConfiguration"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
   "mod": "index/flagTemplates",
   "fqn": "pulumi_launchdarkly",
   "classes": {
@@ -162,6 +221,14 @@ _utilities.register(
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/flagTrigger:FlagTrigger": "FlagTrigger"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/integrationDeliveryConfiguration",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/integrationDeliveryConfiguration:IntegrationDeliveryConfiguration": "IntegrationDeliveryConfiguration"
   }
  },
  {
@@ -190,10 +257,26 @@ _utilities.register(
  },
  {
   "pkg": "launchdarkly",
+  "mod": "index/metricGroup",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/metricGroup:MetricGroup": "MetricGroup"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
   "mod": "index/modelConfig",
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/modelConfig:ModelConfig": "ModelConfig"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/oauthClient",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/oauthClient:OauthClient": "OauthClient"
   }
  },
  {
@@ -210,6 +293,22 @@ _utilities.register(
   "fqn": "pulumi_launchdarkly",
   "classes": {
    "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration": "RelayProxyConfiguration"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/releasePolicy",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/releasePolicy:ReleasePolicy": "ReleasePolicy"
+  }
+ },
+ {
+  "pkg": "launchdarkly",
+  "mod": "index/sdkKey",
+  "fqn": "pulumi_launchdarkly",
+  "classes": {
+   "launchdarkly:index/sdkKey:SdkKey": "SdkKey"
   }
  },
  {

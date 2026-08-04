@@ -65,15 +65,15 @@ export interface GetAiConfigVariationResult {
      */
     readonly creationDate: number;
     /**
-     * The variation's description (used in agent mode).
+     * The variation's description. Used in agent mode.
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID in the format `project_key/config_key/key`.
      */
     readonly id: string;
     /**
-     * The variation's instructions (used in agent mode).
+     * The variation's instructions. Used in agent mode.
      */
     readonly instructions: string;
     /**
@@ -81,15 +81,15 @@ export interface GetAiConfigVariationResult {
      */
     readonly key: string;
     /**
-     * A list of messages for completion mode. Each message has a `role` and `content`.
+     * A list of messages for completion mode.
      */
     readonly messages: outputs.GetAiConfigVariationMessage[];
     /**
-     * A JSON string representing the inline model configuration for the variation. Conflicts with `modelConfigKey`.
+     * A JSON string representing the inline model configuration.
      */
     readonly model: string;
     /**
-     * The key of a model config resource to use for this variation. Conflicts with `model`.
+     * The key of a model config resource used for this variation.
      */
     readonly modelConfigKey: string;
     /**
@@ -105,7 +105,7 @@ export interface GetAiConfigVariationResult {
      */
     readonly state: string;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform will not be reflected in state.
+     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
      */
     readonly toolKeys: string[];
     /**

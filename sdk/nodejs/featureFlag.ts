@@ -43,13 +43,13 @@ import * as utilities from "./utilities";
  *             description: "The strongest variation",
  *         },
  *     ],
- *     clientSideAvailabilities: [{
- *         usingEnvironmentId: false,
- *         usingMobileKey: true,
- *     }],
+ *     clientSideAvailability: {
+ *         using_environment_id: false,
+ *         using_mobile_key: true,
+ *     },
  *     defaults: {
- *         onVariation: 2,
- *         offVariation: 0,
+ *         on_variation: 2,
+ *         off_variation: 0,
  *     },
  *     tags: [
  *         "example",
@@ -81,8 +81,8 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     defaults: {
- *         onVariation: 1,
- *         offVariation: 0,
+ *         on_variation: 1,
+ *         off_variation: 0,
  *     },
  * });
  * // Example: Feature flag with view associations
@@ -158,36 +158,33 @@ export class FeatureFlag extends pulumi.CustomResource {
     /**
      * Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
      */
-    declare public readonly archived: pulumi.Output<boolean | undefined>;
-    declare public readonly clientSideAvailabilities: pulumi.Output<outputs.FeatureFlagClientSideAvailability[]>;
+    declare public readonly archived: pulumi.Output<boolean>;
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+     * Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
      */
-    declare public readonly customProperties: pulumi.Output<outputs.FeatureFlagCustomProperty[] | undefined>;
+    declare public readonly clientSideAvailability: pulumi.Output<outputs.FeatureFlagClientSideAvailability | undefined>;
     /**
-     * A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+     * The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
      */
-    declare public readonly defaults: pulumi.Output<outputs.FeatureFlagDefaults>;
+    declare public readonly customProperties: pulumi.Output<{[key: string]: outputs.FeatureFlagCustomProperties} | undefined>;
+    /**
+     * The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
+     */
+    declare public readonly defaults: pulumi.Output<outputs.FeatureFlagDefaults | undefined>;
     /**
      * Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
      */
-    declare public readonly deprecated: pulumi.Output<boolean | undefined>;
+    declare public readonly deprecated: pulumi.Output<boolean>;
     /**
      * The feature flag's description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-     *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-     */
-    declare public readonly includeInSnippet: pulumi.Output<boolean>;
-    /**
-     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     declare public readonly maintainerId: pulumi.Output<string>;
     /**
@@ -199,7 +196,7 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
@@ -209,17 +206,17 @@ export class FeatureFlag extends pulumi.CustomResource {
     /**
      * Specifies whether the flag is a temporary flag.
      */
-    declare public readonly temporary: pulumi.Output<boolean | undefined>;
+    declare public readonly temporary: pulumi.Output<boolean>;
     /**
-     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly variationType: pulumi.Output<string>;
     /**
-     * An array of possible variations for the flag
+     * An array of possible variations for the flag.
      */
     declare public readonly variations: pulumi.Output<outputs.FeatureFlagVariation[]>;
     /**
-     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     declare public readonly viewKeys: pulumi.Output<string[]>;
 
@@ -237,12 +234,11 @@ export class FeatureFlag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["archived"] = state?.archived;
-            resourceInputs["clientSideAvailabilities"] = state?.clientSideAvailabilities;
+            resourceInputs["clientSideAvailability"] = state?.clientSideAvailability;
             resourceInputs["customProperties"] = state?.customProperties;
             resourceInputs["defaults"] = state?.defaults;
             resourceInputs["deprecated"] = state?.deprecated;
             resourceInputs["description"] = state?.description;
-            resourceInputs["includeInSnippet"] = state?.includeInSnippet;
             resourceInputs["key"] = state?.key;
             resourceInputs["maintainerId"] = state?.maintainerId;
             resourceInputs["maintainerTeamKey"] = state?.maintainerTeamKey;
@@ -264,13 +260,15 @@ export class FeatureFlag extends pulumi.CustomResource {
             if (args?.variationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'variationType'");
             }
+            if (args?.variations === undefined && !opts.urn) {
+                throw new Error("Missing required property 'variations'");
+            }
             resourceInputs["archived"] = args?.archived;
-            resourceInputs["clientSideAvailabilities"] = args?.clientSideAvailabilities;
+            resourceInputs["clientSideAvailability"] = args?.clientSideAvailability;
             resourceInputs["customProperties"] = args?.customProperties;
             resourceInputs["defaults"] = args?.defaults;
             resourceInputs["deprecated"] = args?.deprecated;
             resourceInputs["description"] = args?.description;
-            resourceInputs["includeInSnippet"] = args?.includeInSnippet;
             resourceInputs["key"] = args?.key;
             resourceInputs["maintainerId"] = args?.maintainerId;
             resourceInputs["maintainerTeamKey"] = args?.maintainerTeamKey;
@@ -295,13 +293,16 @@ export interface FeatureFlagState {
      * Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
      */
     archived?: pulumi.Input<boolean | undefined>;
-    clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.FeatureFlagClientSideAvailability>[] | undefined>;
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+     * Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
      */
-    customProperties?: pulumi.Input<pulumi.Input<inputs.FeatureFlagCustomProperty>[] | undefined>;
+    clientSideAvailability?: pulumi.Input<inputs.FeatureFlagClientSideAvailability | undefined>;
     /**
-     * A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+     * The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+     */
+    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.FeatureFlagCustomProperties>} | undefined>;
+    /**
+     * The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
      */
     defaults?: pulumi.Input<inputs.FeatureFlagDefaults | undefined>;
     /**
@@ -313,17 +314,11 @@ export interface FeatureFlagState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-     *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-     */
-    includeInSnippet?: pulumi.Input<boolean | undefined>;
-    /**
-     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     maintainerId?: pulumi.Input<string | undefined>;
     /**
@@ -335,7 +330,7 @@ export interface FeatureFlagState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
@@ -347,15 +342,15 @@ export interface FeatureFlagState {
      */
     temporary?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     variationType?: pulumi.Input<string | undefined>;
     /**
-     * An array of possible variations for the flag
+     * An array of possible variations for the flag.
      */
     variations?: pulumi.Input<pulumi.Input<inputs.FeatureFlagVariation>[] | undefined>;
     /**
-     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -368,13 +363,16 @@ export interface FeatureFlagArgs {
      * Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
      */
     archived?: pulumi.Input<boolean | undefined>;
-    clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.FeatureFlagClientSideAvailability>[] | undefined>;
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties)
+     * Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
      */
-    customProperties?: pulumi.Input<pulumi.Input<inputs.FeatureFlagCustomProperty>[] | undefined>;
+    clientSideAvailability?: pulumi.Input<inputs.FeatureFlagClientSideAvailability | undefined>;
     /**
-     * A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed.
+     * The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+     */
+    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.FeatureFlagCustomProperties>} | undefined>;
+    /**
+     * The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
      */
     defaults?: pulumi.Input<inputs.FeatureFlagDefaults | undefined>;
     /**
@@ -386,17 +384,11 @@ export interface FeatureFlagArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatibility.
-     *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
-     */
-    includeInSnippet?: pulumi.Input<boolean | undefined>;
-    /**
-     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
-     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it will automatically be or stay set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
+     * The feature flag maintainer's 24 character alphanumeric team member ID. `maintainerTeamKey` cannot be set if `maintainerId` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
      */
     maintainerId?: pulumi.Input<string | undefined>;
     /**
@@ -408,7 +400,7 @@ export interface FeatureFlagArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
@@ -420,15 +412,15 @@ export interface FeatureFlagArgs {
      */
     temporary?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     variationType: pulumi.Input<string>;
     /**
-     * An array of possible variations for the flag
+     * An array of possible variations for the flag.
      */
-    variations?: pulumi.Input<pulumi.Input<inputs.FeatureFlagVariation>[] | undefined>;
+    variations: pulumi.Input<pulumi.Input<inputs.FeatureFlagVariation>[]>;
     /**
-     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this flag to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

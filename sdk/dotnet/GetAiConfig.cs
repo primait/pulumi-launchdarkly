@@ -151,7 +151,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string EvaluationMetricKey;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID in the format `project_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -171,7 +171,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string MaintainerTeamKey;
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`.
+        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`.
         /// </summary>
         public readonly string Mode;
         /// <summary>

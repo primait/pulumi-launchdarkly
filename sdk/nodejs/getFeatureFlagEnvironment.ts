@@ -41,7 +41,7 @@ export interface GetFeatureFlagEnvironmentArgs {
      */
     envKey: string;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * Flag ID in the format `project_key/flag_key`.
      */
     flagId: string;
 }
@@ -51,7 +51,7 @@ export interface GetFeatureFlagEnvironmentArgs {
  */
 export interface GetFeatureFlagEnvironmentResult {
     /**
-     * The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+     * Individual context-kind targets per variation.
      */
     readonly contextTargets: outputs.GetFeatureFlagEnvironmentContextTarget[];
     /**
@@ -59,39 +59,39 @@ export interface GetFeatureFlagEnvironmentResult {
      */
     readonly envKey: string;
     /**
-     * Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.
+     * Default variation served when no other targeting applies.
      */
-    readonly fallthroughs: outputs.GetFeatureFlagEnvironmentFallthrough[];
+    readonly fallthrough: outputs.GetFeatureFlagEnvironmentFallthrough;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * Flag ID in the format `project_key/flag_key`.
      */
     readonly flagId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Composite ID `project_key/env_key/flag_key`.
      */
     readonly id: string;
     /**
-     * The index of the variation to serve if targeting is disabled.
+     * The index of the variation to serve when targeting is off. This is null when the environment has no off variation set (the UI's "Not set" state), which is distinct from a value of `0`.
      */
     readonly offVariation: number;
     /**
-     * Whether targeting is enabled. Defaults to `false` if not set.
+     * Whether targeting is enabled.
      */
     readonly on: boolean;
     /**
-     * List of nested blocks describing prerequisite feature flags rules.
+     * Prerequisite flag rules.
      */
     readonly prerequisites: outputs.GetFeatureFlagEnvironmentPrerequisite[];
     /**
-     * List of logical targeting rules.
+     * Logical targeting rules.
      */
     readonly rules: outputs.GetFeatureFlagEnvironmentRule[];
     /**
-     * Set of nested blocks describing the individual user targets for each variation.
+     * Individual user targets per variation.
      */
     readonly targets: outputs.GetFeatureFlagEnvironmentTarget[];
     /**
-     * Whether to send event data back to LaunchDarkly. Defaults to `false` if not set.
+     * Whether to send event data back to LaunchDarkly.
      */
     readonly trackEvents: boolean;
 }
@@ -129,7 +129,7 @@ export interface GetFeatureFlagEnvironmentOutputArgs {
      */
     envKey: pulumi.Input<string>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * Flag ID in the format `project_key/flag_key`.
      */
     flagId: pulumi.Input<string>;
 }

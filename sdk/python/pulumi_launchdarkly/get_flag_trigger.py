@@ -40,8 +40,8 @@ class GetFlagTriggerResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if instructions and not isinstance(instructions, list):
-            raise TypeError("Expected argument 'instructions' to be a list")
+        if instructions and not isinstance(instructions, dict):
+            raise TypeError("Expected argument 'instructions' to be a dict")
         pulumi.set(__self__, "instructions", instructions)
         if integration_key and not isinstance(integration_key, str):
             raise TypeError("Expected argument 'integration_key' to be a str")
@@ -65,7 +65,7 @@ class GetFlagTriggerResult:
     @pulumi.getter(name="envKey")
     def env_key(self) -> _builtins.str:
         """
-        The unique key of the environment the flag trigger will work in.
+        The unique key of the environment the flag trigger runs in.
         """
         return pulumi.get(self, "env_key")
 
@@ -90,7 +90,7 @@ class GetFlagTriggerResult:
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Sequence['outputs.GetFlagTriggerInstructionResult']:
+    def instructions(self) -> 'outputs.GetFlagTriggerInstructionsResult':
         return pulumi.get(self, "instructions")
 
     @_builtins.property
@@ -156,7 +156,7 @@ def get_flag_trigger(env_key: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str env_key: The unique key of the environment the flag trigger will work in.
+    :param _builtins.str env_key: The unique key of the environment the flag trigger runs in.
     :param _builtins.str flag_key: The unique key of the associated flag.
     :param _builtins.str id: The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
            `
@@ -206,7 +206,7 @@ def get_flag_trigger_output(env_key: pulumi.Input[Optional[_builtins.str]] = Non
     ```
 
 
-    :param _builtins.str env_key: The unique key of the environment the flag trigger will work in.
+    :param _builtins.str env_key: The unique key of the environment the flag trigger runs in.
     :param _builtins.str flag_key: The unique key of the associated flag.
     :param _builtins.str id: The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
            `

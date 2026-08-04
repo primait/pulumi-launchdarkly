@@ -103,7 +103,7 @@ namespace Pulumi.Launchdarkly
         public string EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
+        /// Flag ID in the format `project_key/flag_key`.
         /// </summary>
         [Input("flagId", required: true)]
         public string FlagId { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
+        /// Flag ID in the format `project_key/flag_key`.
         /// </summary>
         [Input("flagId", required: true)]
         public Input<string> FlagId { get; set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFeatureFlagEnvironmentResult
     {
         /// <summary>
-        /// The set of nested blocks describing the individual targets for non-user context kinds for each variation.
+        /// Individual context-kind targets per variation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentContextTargetResult> ContextTargets;
         /// <summary>
@@ -147,39 +147,39 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string EnvKey;
         /// <summary>
-        /// Nested block describing the default variation to serve if no `Prerequisites`, `Target`, or `Rules` apply.
+        /// Default variation served when no other targeting applies.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentFallthroughResult> Fallthroughs;
+        public readonly Outputs.GetFeatureFlagEnvironmentFallthroughResult Fallthrough;
         /// <summary>
-        /// The feature flag's unique `Id` in the format `project_key/flag_key`.
+        /// Flag ID in the format `project_key/flag_key`.
         /// </summary>
         public readonly string FlagId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Composite ID `project_key/env_key/flag_key`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The index of the variation to serve if targeting is disabled.
+        /// The index of the variation to serve when targeting is off. This is null when the environment has no off variation set (the UI's "Not set" state), which is distinct from a value of `0`.
         /// </summary>
         public readonly int OffVariation;
         /// <summary>
-        /// Whether targeting is enabled. Defaults to `False` if not set.
+        /// Whether targeting is enabled.
         /// </summary>
         public readonly bool On;
         /// <summary>
-        /// List of nested blocks describing prerequisite feature flags rules.
+        /// Prerequisite flag rules.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentPrerequisiteResult> Prerequisites;
         /// <summary>
-        /// List of logical targeting rules.
+        /// Logical targeting rules.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentRuleResult> Rules;
         /// <summary>
-        /// Set of nested blocks describing the individual user targets for each variation.
+        /// Individual user targets per variation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagEnvironmentTargetResult> Targets;
         /// <summary>
-        /// Whether to send event data back to LaunchDarkly. Defaults to `False` if not set.
+        /// Whether to send event data back to LaunchDarkly.
         /// </summary>
         public readonly bool TrackEvents;
 
@@ -189,7 +189,7 @@ namespace Pulumi.Launchdarkly
 
             string envKey,
 
-            ImmutableArray<Outputs.GetFeatureFlagEnvironmentFallthroughResult> fallthroughs,
+            Outputs.GetFeatureFlagEnvironmentFallthroughResult fallthrough,
 
             string flagId,
 
@@ -209,7 +209,7 @@ namespace Pulumi.Launchdarkly
         {
             ContextTargets = contextTargets;
             EnvKey = envKey;
-            Fallthroughs = fallthroughs;
+            Fallthrough = fallthrough;
             FlagId = flagId;
             Id = id;
             OffVariation = offVariation;

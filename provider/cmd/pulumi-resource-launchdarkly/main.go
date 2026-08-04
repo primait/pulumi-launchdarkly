@@ -28,6 +28,6 @@ import (
 var pulumiSchema []byte
 
 func main() {
-	// Modify the path to point to the new provider
-	tfbridge.MainWithMuxer(context.Background(), "launchdarkly", launchdarkly.Provider(), pulumiSchema)
+	tfbridge.Main(context.Background(), "launchdarkly", launchdarkly.Provider(),
+		tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }

@@ -130,15 +130,11 @@ namespace Pulumi.Launchdarkly
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// A map describing which client-side SDKs can use new flags by default. Please migrate to `DefaultClientSideAvailability` to maintain future compatibility.
+        /// Which client-side SDKs can use new flags by default.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectClientSideAvailabilityResult> ClientSideAvailabilities;
+        public readonly Outputs.GetProjectDefaultClientSideAvailabilityResult DefaultClientSideAvailability;
         /// <summary>
-        /// A block describing which client-side SDKs can use new flags by default.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectDefaultClientSideAvailabilityResult> DefaultClientSideAvailabilities;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The project's ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -158,15 +154,13 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly bool RequireViewAssociationForNewSegments;
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private GetProjectResult(
-            ImmutableArray<Outputs.GetProjectClientSideAvailabilityResult> clientSideAvailabilities,
-
-            ImmutableArray<Outputs.GetProjectDefaultClientSideAvailabilityResult> defaultClientSideAvailabilities,
+            Outputs.GetProjectDefaultClientSideAvailabilityResult defaultClientSideAvailability,
 
             string id,
 
@@ -180,8 +174,7 @@ namespace Pulumi.Launchdarkly
 
             ImmutableArray<string> tags)
         {
-            ClientSideAvailabilities = clientSideAvailabilities;
-            DefaultClientSideAvailabilities = defaultClientSideAvailabilities;
+            DefaultClientSideAvailability = defaultClientSideAvailability;
             Id = id;
             Key = key;
             Name = name;

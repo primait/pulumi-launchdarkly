@@ -16,7 +16,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// This resource allows you to create and manage flag triggers within your LaunchDarkly organization.
     /// 
-    /// &gt; **Note:** This resource will store sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+    /// &gt; **Note:** This resource stores the sensitive unique trigger URL value in plaintext in your Terraform state. Be sure your state is configured securely before using this resource. To learn more, read Sensitive data in state.
     /// 
     /// ## Example Usage
     /// 
@@ -58,7 +58,7 @@ namespace Pulumi.Launchdarkly
     /// https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
     /// ```
     /// 
-    /// Please note that if you did not save this upon creation of the resource, you will have to reset it to get a new value, which can cause breaking changes.
+    /// If you did not save this when you created the resource, you must reset it to get a new value, which can cause breaking changes.
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/flagTrigger:FlagTrigger")]
     public partial class FlagTrigger : global::Pulumi.CustomResource
@@ -70,37 +70,37 @@ namespace Pulumi.Launchdarkly
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("envKey")]
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("flagKey")]
         public Output<string> FlagKey { get; private set; } = null!;
 
         /// <summary>
-        /// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
+        /// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
         /// </summary>
         [Output("instructions")]
         public Output<Outputs.FlagTriggerInstructions> Instructions { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("integrationKey")]
         public Output<string> IntegrationKey { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
         /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -169,31 +169,31 @@ namespace Pulumi.Launchdarkly
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagKey", required: true)]
         public Input<string> FlagKey { get; set; } = null!;
 
         /// <summary>
-        /// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
+        /// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
         /// </summary>
         [Input("instructions", required: true)]
         public Input<Inputs.FlagTriggerInstructionsArgs> Instructions { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
 
         /// <summary>
-        /// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -213,37 +213,37 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the environment the flag trigger runs in. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey")]
         public Input<string>? EnvKey { get; set; }
 
         /// <summary>
-        /// The unique key of the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagKey")]
         public Input<string>? FlagKey { get; set; }
 
         /// <summary>
-        /// Instructions containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
+        /// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "&lt;flag_action&gt;" }`.
         /// </summary>
         [Input("instructions")]
         public Input<Inputs.FlagTriggerInstructionsGetArgs>? Instructions { get; set; }
 
         /// <summary>
-        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `Datadog`, `Dynatrace`, `dynatrace-cloud-automation`, `Honeycomb`, `new-relic-apm`, and `Signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("integrationKey")]
         public Input<string>? IntegrationKey { get; set; }
 
         /// <summary>
-        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value will be the ID of the member associated with the API key used for your provider configuration.
+        /// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The unique key of the project encompassing the associated flag. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

@@ -114,7 +114,7 @@ class GetModelConfigResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the model config in the format `project_key/model_config_key`.
         """
         return pulumi.get(self, "id")
 
@@ -130,7 +130,7 @@ class GetModelConfigResult:
     @pulumi.getter(name="modelId")
     def model_id(self) -> _builtins.str:
         """
-        The model identifier (e.g. `gpt-4`, `claude-3`).
+        The model identifier. For example, `gpt-4` or `claude-3`.
         """
         return pulumi.get(self, "model_id")
 
@@ -138,7 +138,7 @@ class GetModelConfigResult:
     @pulumi.getter(name="modelProvider")
     def model_provider(self) -> _builtins.str:
         """
-        The provider name for the model config (e.g. `openai`, `anthropic`).
+        The provider name for the model config. For example, `openai` or `anthropic`.
         """
         return pulumi.get(self, "model_provider")
 
@@ -154,7 +154,7 @@ class GetModelConfigResult:
     @pulumi.getter
     def params(self) -> _builtins.str:
         """
-        A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`).
+        A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`.
         """
         return pulumi.get(self, "params")
 
@@ -170,7 +170,7 @@ class GetModelConfigResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags associated with the model config.
         """
         return pulumi.get(self, "tags")
 

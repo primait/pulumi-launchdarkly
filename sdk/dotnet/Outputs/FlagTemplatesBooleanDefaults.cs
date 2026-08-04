@@ -13,29 +13,11 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class FlagTemplatesBooleanDefaults
     {
-        /// <summary>
-        /// The description for the false variation.
-        /// </summary>
         public readonly string FalseDescription;
-        /// <summary>
-        /// The display name for the false variation.
-        /// </summary>
         public readonly string FalseDisplayName;
-        /// <summary>
-        /// The variation index of the boolean flag variation to serve when the flag's targeting is off.
-        /// </summary>
         public readonly int OffVariation;
-        /// <summary>
-        /// The variation index of the boolean flag variation to serve when the flag's targeting is on.
-        /// </summary>
         public readonly int OnVariation;
-        /// <summary>
-        /// The description for the true variation.
-        /// </summary>
         public readonly string TrueDescription;
-        /// <summary>
-        /// The display name for the true variation.
-        /// </summary>
         public readonly string TrueDisplayName;
 
         [OutputConstructor]

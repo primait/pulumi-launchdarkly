@@ -151,7 +151,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID in the format `project_key/key`.
         /// </summary>
         public readonly string Id;
         /// <summary>

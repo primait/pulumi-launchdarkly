@@ -13,8 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetTeamMemberResult',
@@ -47,8 +45,8 @@ class GetTeamMemberResult:
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
-        if role_attributes and not isinstance(role_attributes, list):
-            raise TypeError("Expected argument 'role_attributes' to be a list")
+        if role_attributes and not isinstance(role_attributes, dict):
+            raise TypeError("Expected argument 'role_attributes' to be a dict")
         pulumi.set(__self__, "role_attributes", role_attributes)
 
     @_builtins.property
@@ -71,7 +69,7 @@ class GetTeamMemberResult:
     @pulumi.getter(name="firstName")
     def first_name(self) -> _builtins.str:
         """
-        The team member's given name.
+        First name.
         """
         return pulumi.get(self, "first_name")
 
@@ -79,7 +77,7 @@ class GetTeamMemberResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The 24 character alphanumeric ID of the team member.
+        The 24-character member ID.
         """
         return pulumi.get(self, "id")
 
@@ -87,7 +85,7 @@ class GetTeamMemberResult:
     @pulumi.getter(name="lastName")
     def last_name(self) -> _builtins.str:
         """
-        The team member's family name.
+        Last name.
         """
         return pulumi.get(self, "last_name")
 
@@ -95,15 +93,15 @@ class GetTeamMemberResult:
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+        The role associated with the team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
         """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> Sequence['outputs.GetTeamMemberRoleAttributeResult']:
+    def role_attributes(self) -> Mapping[str, Sequence[_builtins.str]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "role_attributes")
 
@@ -124,7 +122,6 @@ class AwaitableGetTeamMemberResult(GetTeamMemberResult):
 
 
 def get_team_member(email: Optional[_builtins.str] = None,
-                    role_attributes: Optional[Sequence[Union['GetTeamMemberRoleAttributeArgs', 'GetTeamMemberRoleAttributeArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamMemberResult:
     """
     Provides a LaunchDarkly team member data source.
@@ -142,11 +139,9 @@ def get_team_member(email: Optional[_builtins.str] = None,
 
 
     :param _builtins.str email: The unique email address associated with the team member.
-    :param Sequence[Union['GetTeamMemberRoleAttributeArgs', 'GetTeamMemberRoleAttributeArgsDict']] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
     """
     __args__ = dict()
     __args__['email'] = email
-    __args__['roleAttributes'] = role_attributes
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('launchdarkly:index/getTeamMember:getTeamMember', __args__, opts=opts, typ=GetTeamMemberResult).value
 
@@ -159,7 +154,6 @@ def get_team_member(email: Optional[_builtins.str] = None,
         role=pulumi.get(__ret__, 'role'),
         role_attributes=pulumi.get(__ret__, 'role_attributes'))
 def get_team_member_output(email: pulumi.Input[Optional[_builtins.str]] = None,
-                           role_attributes: pulumi.Input[Optional[Optional[Sequence[Union['GetTeamMemberRoleAttributeArgs', 'GetTeamMemberRoleAttributeArgsDict']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamMemberResult]:
     """
     Provides a LaunchDarkly team member data source.
@@ -177,11 +171,9 @@ def get_team_member_output(email: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str email: The unique email address associated with the team member.
-    :param Sequence[Union['GetTeamMemberRoleAttributeArgs', 'GetTeamMemberRoleAttributeArgsDict']] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
     """
     __args__ = dict()
     __args__['email'] = email
-    __args__['roleAttributes'] = role_attributes
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('launchdarkly:index/getTeamMember:getTeamMember', __args__, opts=opts, typ=GetTeamMemberResult)
     return __ret__.apply(lambda __response__: GetTeamMemberResult(

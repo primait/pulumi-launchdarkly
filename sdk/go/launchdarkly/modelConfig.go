@@ -14,9 +14,7 @@ import (
 
 // Provides a LaunchDarkly model config resource.
 //
-// This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Since the API does not support updates, any field change will force recreation of the resource.
-//
-// > **Important:** If an `AiConfigVariation` references this model config via `modelConfigKey`, use a Terraform resource reference (e.g. `launchdarkly_model_config.example.key`) so Terraform can order destruction correctly. A literal string key will cause the delete to fail because the API rejects deleting a model config that is still in use.
+// This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Because the API does not support updates, any field change forces recreation of the resource.
 //
 // ## Example Usage
 //
@@ -62,29 +60,29 @@ import (
 type ModelConfig struct {
 	pulumi.CustomResourceState
 
-	// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	CostPerInputToken pulumi.Float64PtrOutput `pulumi:"costPerInputToken"`
-	// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	CostPerOutputToken pulumi.Float64PtrOutput `pulumi:"costPerOutputToken"`
-	// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	CustomParameters pulumi.StringPtrOutput `pulumi:"customParameters"`
+	// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	CostPerInputToken pulumi.Float64Output `pulumi:"costPerInputToken"`
+	// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	CostPerOutputToken pulumi.Float64Output `pulumi:"costPerOutputToken"`
+	// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	CustomParameters pulumi.StringOutput `pulumi:"customParameters"`
 	// Whether the model config is available globally.
 	Global pulumi.BoolOutput `pulumi:"global"`
-	// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Icon pulumi.StringPtrOutput `pulumi:"icon"`
-	// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	Icon pulumi.StringOutput `pulumi:"icon"`
+	// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelId pulumi.StringOutput `pulumi:"modelId"`
-	// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-	ModelProvider pulumi.StringPtrOutput `pulumi:"modelProvider"`
-	// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	ModelProvider pulumi.StringOutput `pulumi:"modelProvider"`
+	// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Params pulumi.StringPtrOutput `pulumi:"params"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	Params pulumi.StringOutput `pulumi:"params"`
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The version of the model config.
 	Version pulumi.IntOutput `pulumi:"version"`
@@ -129,58 +127,58 @@ func GetModelConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ModelConfig resources.
 type modelConfigState struct {
-	// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerInputToken *float64 `pulumi:"costPerInputToken"`
-	// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerOutputToken *float64 `pulumi:"costPerOutputToken"`
-	// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CustomParameters *string `pulumi:"customParameters"`
 	// Whether the model config is available globally.
 	Global *bool `pulumi:"global"`
-	// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Icon *string `pulumi:"icon"`
-	// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
-	// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelId *string `pulumi:"modelId"`
-	// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelProvider *string `pulumi:"modelProvider"`
-	// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Name *string `pulumi:"name"`
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Params *string `pulumi:"params"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Tags []string `pulumi:"tags"`
 	// The version of the model config.
 	Version *int `pulumi:"version"`
 }
 
 type ModelConfigState struct {
-	// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerInputToken pulumi.Float64PtrInput
-	// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerOutputToken pulumi.Float64PtrInput
-	// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CustomParameters pulumi.StringPtrInput
 	// Whether the model config is available globally.
 	Global pulumi.BoolPtrInput
-	// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Icon pulumi.StringPtrInput
-	// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
-	// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelId pulumi.StringPtrInput
-	// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelProvider pulumi.StringPtrInput
-	// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Name pulumi.StringPtrInput
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Params pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
-	// Tags associated with your resource.
+	// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Tags pulumi.StringArrayInput
 	// The version of the model config.
 	Version pulumi.IntPtrInput
@@ -191,53 +189,53 @@ func (ModelConfigState) ElementType() reflect.Type {
 }
 
 type modelConfigArgs struct {
-	// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerInputToken *float64 `pulumi:"costPerInputToken"`
-	// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerOutputToken *float64 `pulumi:"costPerOutputToken"`
-	// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CustomParameters *string `pulumi:"customParameters"`
-	// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Icon *string `pulumi:"icon"`
-	// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
-	// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelId string `pulumi:"modelId"`
-	// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelProvider *string `pulumi:"modelProvider"`
-	// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Name *string `pulumi:"name"`
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Params *string `pulumi:"params"`
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with your resource.
+	// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ModelConfig resource.
 type ModelConfigArgs struct {
-	// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerInputToken pulumi.Float64PtrInput
-	// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CostPerOutputToken pulumi.Float64PtrInput
-	// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	CustomParameters pulumi.StringPtrInput
-	// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Icon pulumi.StringPtrInput
-	// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
-	// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelId pulumi.StringInput
-	// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ModelProvider pulumi.StringPtrInput
-	// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Name pulumi.StringPtrInput
-	// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Params pulumi.StringPtrInput
-	// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
-	// Tags associated with your resource.
+	// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Tags pulumi.StringArrayInput
 }
 
@@ -328,19 +326,19 @@ func (o ModelConfigOutput) ToModelConfigOutputWithContext(ctx context.Context) M
 	return o
 }
 
-// The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) CostPerInputToken() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.Float64PtrOutput { return v.CostPerInputToken }).(pulumi.Float64PtrOutput)
+// The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) CostPerInputToken() pulumi.Float64Output {
+	return o.ApplyT(func(v *ModelConfig) pulumi.Float64Output { return v.CostPerInputToken }).(pulumi.Float64Output)
 }
 
-// The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) CostPerOutputToken() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.Float64PtrOutput { return v.CostPerOutputToken }).(pulumi.Float64PtrOutput)
+// The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) CostPerOutputToken() pulumi.Float64Output {
+	return o.ApplyT(func(v *ModelConfig) pulumi.Float64Output { return v.CostPerOutputToken }).(pulumi.Float64Output)
 }
 
-// A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) CustomParameters() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.StringPtrOutput { return v.CustomParameters }).(pulumi.StringPtrOutput)
+// A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) CustomParameters() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.CustomParameters }).(pulumi.StringOutput)
 }
 
 // Whether the model config is available globally.
@@ -348,42 +346,42 @@ func (o ModelConfigOutput) Global() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.BoolOutput { return v.Global }).(pulumi.BoolOutput)
 }
 
-// The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
+// The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) Icon() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.Icon }).(pulumi.StringOutput)
 }
 
-// The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ModelConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ModelConfigOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.ModelId }).(pulumi.StringOutput)
 }
 
-// The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) ModelProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.StringPtrOutput { return v.ModelProvider }).(pulumi.StringPtrOutput)
+// The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) ModelProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.ModelProvider }).(pulumi.StringOutput)
 }
 
-// The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ModelConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ModelConfigOutput) Params() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ModelConfig) pulumi.StringPtrOutput { return v.Params }).(pulumi.StringPtrOutput)
+// A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+func (o ModelConfigOutput) Params() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.Params }).(pulumi.StringOutput)
 }
 
-// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ModelConfigOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with your resource.
+// Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ModelConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ModelConfig) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

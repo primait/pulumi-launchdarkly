@@ -14,25 +14,23 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagVariationResult
     {
         /// <summary>
-        /// The variation's description.
+        /// Variation description.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
-        /// The name of the variation.
+        /// Variation name.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
-        /// The variation value. The value's type must correspond to the `VariationType` argument. For example: `VariationType = "boolean"` accepts only `True` or `False`. The `Number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-        /// 
-        /// If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+        /// Variation value (stringified per variation_type).
         /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
         private GetFeatureFlagVariationResult(
-            string? description,
+            string description,
 
-            string? name,
+            string name,
 
             string value)
         {

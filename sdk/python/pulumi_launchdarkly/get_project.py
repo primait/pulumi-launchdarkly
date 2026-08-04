@@ -27,13 +27,10 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, client_side_availabilities=None, default_client_side_availabilities=None, id=None, key=None, name=None, require_view_association_for_new_flags=None, require_view_association_for_new_segments=None, tags=None):
-        if client_side_availabilities and not isinstance(client_side_availabilities, list):
-            raise TypeError("Expected argument 'client_side_availabilities' to be a list")
-        pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
-        if default_client_side_availabilities and not isinstance(default_client_side_availabilities, list):
-            raise TypeError("Expected argument 'default_client_side_availabilities' to be a list")
-        pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
+    def __init__(__self__, default_client_side_availability=None, id=None, key=None, name=None, require_view_association_for_new_flags=None, require_view_association_for_new_segments=None, tags=None):
+        if default_client_side_availability and not isinstance(default_client_side_availability, dict):
+            raise TypeError("Expected argument 'default_client_side_availability' to be a dict")
+        pulumi.set(__self__, "default_client_side_availability", default_client_side_availability)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,27 +51,18 @@ class GetProjectResult:
         pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
-    @pulumi.getter(name="clientSideAvailabilities")
-    @_utilities.deprecated("""'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.""")
-    def client_side_availabilities(self) -> Sequence['outputs.GetProjectClientSideAvailabilityResult']:
+    @pulumi.getter(name="defaultClientSideAvailability")
+    def default_client_side_availability(self) -> 'outputs.GetProjectDefaultClientSideAvailabilityResult':
         """
-        A map describing which client-side SDKs can use new flags by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        Which client-side SDKs can use new flags by default.
         """
-        return pulumi.get(self, "client_side_availabilities")
-
-    @_builtins.property
-    @pulumi.getter(name="defaultClientSideAvailabilities")
-    def default_client_side_availabilities(self) -> Sequence['outputs.GetProjectDefaultClientSideAvailabilityResult']:
-        """
-        A block describing which client-side SDKs can use new flags by default.
-        """
-        return pulumi.get(self, "default_client_side_availabilities")
+        return pulumi.get(self, "default_client_side_availability")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The project's ID.
         """
         return pulumi.get(self, "id")
 
@@ -114,7 +102,7 @@ class GetProjectResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags.
         """
         return pulumi.get(self, "tags")
 
@@ -125,8 +113,7 @@ class AwaitableGetProjectResult(GetProjectResult):
         if False:
             yield self
         return GetProjectResult(
-            client_side_availabilities=self.client_side_availabilities,
-            default_client_side_availabilities=self.default_client_side_availabilities,
+            default_client_side_availability=self.default_client_side_availability,
             id=self.id,
             key=self.key,
             name=self.name,
@@ -162,8 +149,7 @@ def get_project(key: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('launchdarkly:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        client_side_availabilities=pulumi.get(__ret__, 'client_side_availabilities'),
-        default_client_side_availabilities=pulumi.get(__ret__, 'default_client_side_availabilities'),
+        default_client_side_availability=pulumi.get(__ret__, 'default_client_side_availability'),
         id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         name=pulumi.get(__ret__, 'name'),
@@ -196,8 +182,7 @@ def get_project_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('launchdarkly:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
     return __ret__.apply(lambda __response__: GetProjectResult(
-        client_side_availabilities=pulumi.get(__response__, 'client_side_availabilities'),
-        default_client_side_availabilities=pulumi.get(__response__, 'default_client_side_availabilities'),
+        default_client_side_availability=pulumi.get(__response__, 'default_client_side_availability'),
         id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         name=pulumi.get(__response__, 'name'),

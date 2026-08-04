@@ -14,6 +14,8 @@ namespace Pulumi.Launchdarkly
     /// 
     /// This resource allows you to create and manage segments within your LaunchDarkly organization.
     /// 
+    /// &gt; **Note:** When [segment approvals](https://launchdarkly.com/docs/home/releases/approvals) are enabled for an environment, segment **targeting** changes (`Included`, `Excluded`, `Rules`, `IncludedContexts`, `ExcludedContexts`) require approval. To let pulumi up these changes non-interactively, grant its access token a custom role (`launchdarkly.CustomRole`) that includes the `bypassRequiredSegmentApproval` action. Without that permission, `pulumi up` fails with an "approval is required" error. In that case, manage targeting through the approval workflow, for example with `lifecycle { IgnoreChanges = [included, excluded, rules] }`, disable segment approvals for the environment, or switch to a token that has the bypass permission. A segment with no targeting can be created and managed regardless.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -56,7 +58,7 @@ namespace Pulumi.Launchdarkly
     ///                     "account1",
     ///                     "account2",
     ///                 },
-    ///                 ContextKind = "account",
+    ///                 Context_kind = "account",
     ///             },
     ///         },
     ///         Rules = new[]
@@ -352,7 +354,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("envKey")]
         public Output<string> EnvKey { get; private set; } = null!;
@@ -382,7 +384,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> Includeds { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -394,13 +396,13 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// List of custom rules to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SegmentRule>> Rules { get; private set; } = null!;
@@ -412,19 +414,19 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether to create a standard segment (`False`) or a big segment (`True`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("unbounded")]
-        public Output<bool?> Unbounded { get; private set; } = null!;
+        public Output<bool> Unbounded { get; private set; } = null!;
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For big segments, the targeted context kind. If this attribute is not specified it defaults to `User`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("unboundedContextKind")]
         public Output<string> UnboundedContextKind { get; private set; } = null!;
 
         /// <summary>
-        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
         /// </summary>
         [Output("viewKeys")]
         public Output<ImmutableArray<string>> ViewKeys { get; private set; } = null!;
@@ -483,7 +485,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
@@ -537,7 +539,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -549,7 +551,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -558,7 +560,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentRuleArgs>? _rules;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// List of custom rules to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentRuleArgs> Rules
         {
@@ -579,13 +581,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether to create a standard segment (`False`) or a big segment (`True`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unbounded")]
         public Input<bool>? Unbounded { get; set; }
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For big segments, the targeted context kind. If this attribute is not specified it defaults to `User`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }
@@ -594,7 +596,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _viewKeys;
 
         /// <summary>
-        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
         /// </summary>
         public InputList<string> ViewKeys
         {
@@ -623,7 +625,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey")]
         public Input<string>? EnvKey { get; set; }
@@ -677,7 +679,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -689,7 +691,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -698,7 +700,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.SegmentRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
+        /// List of custom rules to apply to the segment. This attribute is not valid when `Unbounded` is set to `True`.
         /// </summary>
         public InputList<Inputs.SegmentRuleGetArgs> Rules
         {
@@ -719,13 +721,13 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// Whether to create a standard segment (`False`) or a Big Segment (`True`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// Whether to create a standard segment (`False`) or a big segment (`True`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unbounded")]
         public Input<bool>? Unbounded { get; set; }
 
         /// <summary>
-        /// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `User`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// For big segments, the targeted context kind. If this attribute is not specified it defaults to `User`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("unboundedContextKind")]
         public Input<string>? UnboundedContextKind { get; set; }
@@ -734,7 +736,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _viewKeys;
 
         /// <summary>
-        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
+        /// A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `ViewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `ViewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `ViewKeys`. Choose one approach per resource.
         /// </summary>
         public InputList<string> ViewKeys
         {

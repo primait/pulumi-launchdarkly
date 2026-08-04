@@ -10,7 +10,21 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly flag templates data source.
  *
- * This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+ * This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * // Reads the "Custom" flag template settings (default tags, temporary, and boolean
+ * // variation defaults) for a project. Only project_key is required. The rest are computed.
+ * const example = launchdarkly.getFlagTemplates({
+ *     projectKey: "example-project",
+ * });
+ * export const defaultFlagTags = example.then(example => example.tags);
+ * ```
  */
 export function getFlagTemplates(args: GetFlagTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetFlagTemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,11 +48,11 @@ export interface GetFlagTemplatesArgs {
  */
 export interface GetFlagTemplatesResult {
     /**
-     * A block describing the default boolean flag variation settings.
+     * Default boolean flag variation settings.
      */
-    readonly booleanDefaults: outputs.GetFlagTemplatesBooleanDefault[];
+    readonly booleanDefaults: outputs.GetFlagTemplatesBooleanDefaults;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Project key (the ID).
      */
     readonly id: string;
     /**
@@ -46,7 +60,7 @@ export interface GetFlagTemplatesResult {
      */
     readonly projectKey: string;
     /**
-     * Tags associated with your resource.
+     * Tags applied by default.
      */
     readonly tags: string[];
     /**
@@ -57,7 +71,21 @@ export interface GetFlagTemplatesResult {
 /**
  * Provides a LaunchDarkly flag templates data source.
  *
- * This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project. LaunchDarkly projects include several built-in flag templates (Release, Kill switch, Experiment, Custom, Migration). This data source reads the Custom template only.
+ * This data source allows you to retrieve the "Custom" flag template settings for a LaunchDarkly project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * // Reads the "Custom" flag template settings (default tags, temporary, and boolean
+ * // variation defaults) for a project. Only project_key is required. The rest are computed.
+ * const example = launchdarkly.getFlagTemplates({
+ *     projectKey: "example-project",
+ * });
+ * export const defaultFlagTags = example.then(example => example.tags);
+ * ```
  */
 export function getFlagTemplatesOutput(args: GetFlagTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlagTemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

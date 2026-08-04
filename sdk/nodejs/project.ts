@@ -24,26 +24,26 @@ import * as utilities from "./utilities";
  *     tags: ["terraform"],
  *     requireViewAssociationForNewFlags: false,
  *     requireViewAssociationForNewSegments: false,
- *     environments: [
- *         {
+ *     environments: {
+ *         production: {
  *             key: "production",
  *             name: "Production",
  *             color: "EEEEEE",
  *             tags: ["terraform"],
- *             approvalSettings: [{
+ *             approvalSettings: {
  *                 canReviewOwnRequest: false,
  *                 canApplyDeclinedChanges: false,
  *                 minNumApprovals: 3,
  *                 requiredApprovalTags: ["approvals_required"],
- *             }],
+ *             },
  *         },
- *         {
+ *         staging: {
  *             key: "staging",
  *             name: "Staging",
  *             color: "000000",
  *             tags: ["terraform"],
  *         },
- *     ],
+ *     },
  * });
  * ```
  *
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  * $ pulumi import launchdarkly:index/project:Project example example-project
  * ```
  *
- * **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's ignore changes lifecycle meta-argument; see below for example.
+ * **IMPORTANT:** On import, Terraform saves _all_ of the project's environments to state, keyed by their environment `key`. `environments` is authoritative: on a subsequent apply, any environment that is in state but absent from your configuration is **deleted**, along with its SDK keys and all flag targeting. To manage the project in Terraform but leave its environments to the LaunchDarkly UI, or to [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your environments and use Terraform's ignore changes lifecycle meta-argument:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,11 +63,18 @@ import * as utilities from "./utilities";
  *
  * const example = new launchdarkly.Project("example", {
  *     name: "testProject",
- *     key: "%s",
+ *     key: "example-project",
+ *     environments: {
+ *         production: {
+ *             key: "production",
+ *             name: "Production",
+ *             color: "EEEEEE",
+ *         },
+ *     },
  * });
  * ```
  *
- * **Note:** Following an import, the first apply may show a diff in the order of your environments as Terraform realigns its state with the order of configurations in your project configuration. This will not change your environments or their SDK keys.
+ * Because `environments` is a map keyed by environment `key`, reordering, adding, or removing one environment never forces changes to the others, and import is order-independent. Changing an environment's key, which is the map key, deletes the old environment and creates a new one.
  *
  * **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
  */
@@ -100,23 +107,21 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * A block describing which client-side SDKs can use new flags by default.
+     * Which client-side SDKs can use new flags by default.
      */
-    declare public readonly defaultClientSideAvailabilities: pulumi.Output<outputs.ProjectDefaultClientSideAvailability[]>;
+    declare public readonly defaultClientSideAvailability: pulumi.Output<outputs.ProjectDefaultClientSideAvailability | undefined>;
     /**
-     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     * Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
      *
-     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-     */
-    declare public readonly environments: pulumi.Output<outputs.ProjectEnvironment[]>;
-    /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     * > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
      *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
+     * To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignoreChanges = [environments] }`.
+     *
+     * > **Note:** Mixing the use of nested `environments` and `launchdarkly.Environment` resources for the same project is not recommended. `launchdarkly.Environment` resources should be used together with `ignoreChanges` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
      */
-    declare public readonly includeInSnippet: pulumi.Output<boolean>;
+    declare public readonly environments: pulumi.Output<{[key: string]: outputs.ProjectEnvironments}>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -126,11 +131,11 @@ export class Project extends pulumi.CustomResource {
     /**
      * Whether new flags created in this project must be associated with at least one view.
      */
-    declare public readonly requireViewAssociationForNewFlags: pulumi.Output<boolean | undefined>;
+    declare public readonly requireViewAssociationForNewFlags: pulumi.Output<boolean>;
     /**
      * Whether new segments created in this project must be associated with at least one view.
      */
-    declare public readonly requireViewAssociationForNewSegments: pulumi.Output<boolean | undefined>;
+    declare public readonly requireViewAssociationForNewSegments: pulumi.Output<boolean>;
     /**
      * Tags associated with your resource.
      */
@@ -149,9 +154,8 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["defaultClientSideAvailabilities"] = state?.defaultClientSideAvailabilities;
+            resourceInputs["defaultClientSideAvailability"] = state?.defaultClientSideAvailability;
             resourceInputs["environments"] = state?.environments;
-            resourceInputs["includeInSnippet"] = state?.includeInSnippet;
             resourceInputs["key"] = state?.key;
             resourceInputs["name"] = state?.name;
             resourceInputs["requireViewAssociationForNewFlags"] = state?.requireViewAssociationForNewFlags;
@@ -165,9 +169,8 @@ export class Project extends pulumi.CustomResource {
             if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["defaultClientSideAvailabilities"] = args?.defaultClientSideAvailabilities;
+            resourceInputs["defaultClientSideAvailability"] = args?.defaultClientSideAvailability;
             resourceInputs["environments"] = args?.environments;
-            resourceInputs["includeInSnippet"] = args?.includeInSnippet;
             resourceInputs["key"] = args?.key;
             resourceInputs["name"] = args?.name;
             resourceInputs["requireViewAssociationForNewFlags"] = args?.requireViewAssociationForNewFlags;
@@ -184,23 +187,21 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * A block describing which client-side SDKs can use new flags by default.
+     * Which client-side SDKs can use new flags by default.
      */
-    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[] | undefined>;
+    defaultClientSideAvailability?: pulumi.Input<inputs.ProjectDefaultClientSideAvailability | undefined>;
     /**
-     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     * Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
      *
-     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-     */
-    environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[] | undefined>;
-    /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     * > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
      *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
+     * To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignoreChanges = [environments] }`.
+     *
+     * > **Note:** Mixing the use of nested `environments` and `launchdarkly.Environment` resources for the same project is not recommended. `launchdarkly.Environment` resources should be used together with `ignoreChanges` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
      */
-    includeInSnippet?: pulumi.Input<boolean | undefined>;
+    environments?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ProjectEnvironments>} | undefined>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -226,23 +227,21 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * A block describing which client-side SDKs can use new flags by default.
+     * Which client-side SDKs can use new flags by default.
      */
-    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[] | undefined>;
+    defaultClientSideAvailability?: pulumi.Input<inputs.ProjectDefaultClientSideAvailability | undefined>;
     /**
-     * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project. When managing LaunchDarkly projects in Terraform, you should always manage your environments as nested project resources.
+     * Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
      *
-     * > **Note:** Mixing the use of nested `environments` blocks and [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources is not recommended. `launchdarkly.Environment` resources should only be used when the encapsulating project is not managed in Terraform.
-     */
-    environments: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
-    /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     * > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
      *
-     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
+     * To manage the project in Terraform but manage its environments elsewhere, such as in the LaunchDarkly UI or with [`launchdarkly.Environment`](https://www.terraform.io/docs/providers/launchdarkly/r/environment.html) resources, declare your initial environments and add `lifecycle { ignoreChanges = [environments] }`.
+     *
+     * > **Note:** Mixing the use of nested `environments` and `launchdarkly.Environment` resources for the same project is not recommended. `launchdarkly.Environment` resources should be used together with `ignoreChanges` on the project's `environments`, or when the encapsulating project is not managed in Terraform.
      */
-    includeInSnippet?: pulumi.Input<boolean | undefined>;
+    environments: pulumi.Input<{[key: string]: pulumi.Input<inputs.ProjectEnvironments>}>;
     /**
-     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**

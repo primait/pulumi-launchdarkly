@@ -81,7 +81,7 @@ export class AiConfig extends pulumi.CustomResource {
      */
     declare public readonly isInverted: pulumi.Output<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -93,21 +93,21 @@ export class AiConfig extends pulumi.CustomResource {
      */
     declare public readonly maintainerTeamKey: pulumi.Output<string>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
-    declare public readonly mode: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The AI Config's human-readable name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this AI Config.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * A list of variation summaries for this AI Config.
      */
@@ -191,7 +191,7 @@ export interface AiConfigState {
      */
     isInverted?: pulumi.Input<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -203,7 +203,7 @@ export interface AiConfigState {
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     mode?: pulumi.Input<string | undefined>;
     /**
@@ -211,11 +211,11 @@ export interface AiConfigState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this AI Config.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -245,7 +245,7 @@ export interface AiConfigArgs {
      */
     isInverted?: pulumi.Input<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -257,7 +257,7 @@ export interface AiConfigArgs {
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     mode?: pulumi.Input<string | undefined>;
     /**
@@ -265,11 +265,11 @@ export interface AiConfigArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
-     * Tags associated with your resource.
+     * Tags associated with this AI Config.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

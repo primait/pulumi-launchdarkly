@@ -59,16 +59,18 @@ namespace Pulumi.Launchdarkly
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// LaunchDarkly views are imported using the resource's ID in the form `project_key/view_key`
+    /// 
+    /// ```sh
+    /// $ pulumi import launchdarkly:index/view:View example example-project/example-view-key
+    /// ```
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/view:View")]
     public partial class View : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether the view is archived.
-        /// </summary>
-        [Output("archived")]
-        public Output<bool?> Archived { get; private set; } = null!;
-
         /// <summary>
         /// The view's description.
         /// </summary>
@@ -76,7 +78,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -100,7 +102,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -159,19 +161,13 @@ namespace Pulumi.Launchdarkly
     public sealed class ViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the view is archived.
-        /// </summary>
-        [Input("archived")]
-        public Input<bool>? Archived { get; set; }
-
-        /// <summary>
         /// The view's description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -195,7 +191,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -221,19 +217,13 @@ namespace Pulumi.Launchdarkly
     public sealed class ViewState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the view is archived.
-        /// </summary>
-        [Input("archived")]
-        public Input<bool>? Archived { get; set; }
-
-        /// <summary>
         /// The view's description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -257,7 +247,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

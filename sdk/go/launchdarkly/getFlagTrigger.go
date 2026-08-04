@@ -57,7 +57,7 @@ func LookupFlagTrigger(ctx *pulumi.Context, args *LookupFlagTriggerArgs, opts ..
 
 // A collection of arguments for invoking getFlagTrigger.
 type LookupFlagTriggerArgs struct {
-	// The unique key of the environment the flag trigger will work in.
+	// The unique key of the environment the flag trigger runs in.
 	EnvKey string `pulumi:"envKey"`
 	// The unique key of the associated flag.
 	FlagKey string `pulumi:"flagKey"`
@@ -71,19 +71,19 @@ type LookupFlagTriggerArgs struct {
 // A collection of values returned by getFlagTrigger.
 type LookupFlagTriggerResult struct {
 	Enabled bool `pulumi:"enabled"`
-	// The unique key of the environment the flag trigger will work in.
+	// The unique key of the environment the flag trigger runs in.
 	EnvKey string `pulumi:"envKey"`
 	// The unique key of the associated flag.
 	FlagKey string `pulumi:"flagKey"`
 	// The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
 	// `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
 	// `
-	Id             string                      `pulumi:"id"`
-	Instructions   []GetFlagTriggerInstruction `pulumi:"instructions"`
-	IntegrationKey string                      `pulumi:"integrationKey"`
-	MaintainerId   string                      `pulumi:"maintainerId"`
-	ProjectKey     string                      `pulumi:"projectKey"`
-	TriggerUrl     string                      `pulumi:"triggerUrl"`
+	Id             string                     `pulumi:"id"`
+	Instructions   GetFlagTriggerInstructions `pulumi:"instructions"`
+	IntegrationKey string                     `pulumi:"integrationKey"`
+	MaintainerId   string                     `pulumi:"maintainerId"`
+	ProjectKey     string                     `pulumi:"projectKey"`
+	TriggerUrl     string                     `pulumi:"triggerUrl"`
 }
 
 func LookupFlagTriggerOutput(ctx *pulumi.Context, args LookupFlagTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupFlagTriggerResultOutput {
@@ -97,7 +97,7 @@ func LookupFlagTriggerOutput(ctx *pulumi.Context, args LookupFlagTriggerOutputAr
 
 // A collection of arguments for invoking getFlagTrigger.
 type LookupFlagTriggerOutputArgs struct {
-	// The unique key of the environment the flag trigger will work in.
+	// The unique key of the environment the flag trigger runs in.
 	EnvKey pulumi.StringInput `pulumi:"envKey"`
 	// The unique key of the associated flag.
 	FlagKey pulumi.StringInput `pulumi:"flagKey"`
@@ -131,7 +131,7 @@ func (o LookupFlagTriggerResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFlagTriggerResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique key of the environment the flag trigger will work in.
+// The unique key of the environment the flag trigger runs in.
 func (o LookupFlagTriggerResultOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTriggerResult) string { return v.EnvKey }).(pulumi.StringOutput)
 }
@@ -148,8 +148,8 @@ func (o LookupFlagTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupFlagTriggerResultOutput) Instructions() GetFlagTriggerInstructionArrayOutput {
-	return o.ApplyT(func(v LookupFlagTriggerResult) []GetFlagTriggerInstruction { return v.Instructions }).(GetFlagTriggerInstructionArrayOutput)
+func (o LookupFlagTriggerResultOutput) Instructions() GetFlagTriggerInstructionsOutput {
+	return o.ApplyT(func(v LookupFlagTriggerResult) GetFlagTriggerInstructions { return v.Instructions }).(GetFlagTriggerInstructionsOutput)
 }
 
 func (o LookupFlagTriggerResultOutput) IntegrationKey() pulumi.StringOutput {

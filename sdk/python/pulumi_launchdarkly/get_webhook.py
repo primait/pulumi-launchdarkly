@@ -86,7 +86,7 @@ class GetWebhookResult:
     @pulumi.getter
     def statements(self) -> Sequence['outputs.GetWebhookStatementResult']:
         """
-        List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+        List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
         """
         return pulumi.get(self, "statements")
 
@@ -94,7 +94,7 @@ class GetWebhookResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags associated with the webhook.
         """
         return pulumi.get(self, "tags")
 

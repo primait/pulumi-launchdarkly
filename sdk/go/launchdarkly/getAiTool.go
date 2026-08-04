@@ -67,7 +67,7 @@ type LookupAiToolResult struct {
 	CustomParameters string `pulumi:"customParameters"`
 	// The AI tool's description.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID in the format `project_key/key`.
 	Id string `pulumi:"id"`
 	// The AI tool's unique key.
 	Key string `pulumi:"key"`
@@ -134,7 +134,7 @@ func (o LookupAiToolResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiToolResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID in the format `project_key/key`.
 func (o LookupAiToolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiToolResult) string { return v.Id }).(pulumi.StringOutput)
 }

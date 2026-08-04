@@ -29,8 +29,8 @@ class AiToolArgs:
         """
         The set of arguments for constructing a AiTool resource.
 
-        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] schema_json: A JSON string representing the JSON Schema for the tool's parameters.
         :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom application-level metadata for the AI tool.
         :param pulumi.Input[_builtins.str] description: The AI tool's description.
@@ -53,7 +53,7 @@ class AiToolArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -65,7 +65,7 @@ class AiToolArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -152,10 +152,10 @@ class _AiToolState:
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the AI tool.
         :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom application-level metadata for the AI tool.
         :param pulumi.Input[_builtins.str] description: The AI tool's description.
-        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI tool. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI tool. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] schema_json: A JSON string representing the JSON Schema for the tool's parameters.
         :param pulumi.Input[_builtins.int] version: The version of the AI tool.
         """
@@ -218,7 +218,7 @@ class _AiToolState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -254,7 +254,7 @@ class _AiToolState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -342,10 +342,10 @@ class AiTool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom application-level metadata for the AI tool.
         :param pulumi.Input[_builtins.str] description: The AI tool's description.
-        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI tool. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI tool. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] schema_json: A JSON string representing the JSON Schema for the tool's parameters.
         """
         ...
@@ -466,10 +466,10 @@ class AiTool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the AI tool.
         :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom application-level metadata for the AI tool.
         :param pulumi.Input[_builtins.str] description: The AI tool's description.
-        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI tool. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI tool. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] schema_json: A JSON string representing the JSON Schema for the tool's parameters.
         :param pulumi.Input[_builtins.int] version: The version of the AI tool.
         """
@@ -516,7 +516,7 @@ class AiTool(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI tool's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI tool's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -540,7 +540,7 @@ class AiTool(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 

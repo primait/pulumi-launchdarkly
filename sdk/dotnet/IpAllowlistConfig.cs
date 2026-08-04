@@ -17,6 +17,35 @@ namespace Pulumi.Launchdarkly
     /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
     /// 
     /// This resource allows you to manage the IP allowlist configuration for your LaunchDarkly account. There is only one configuration per account, so you should define only a single instance of this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Launchdarkly = Pulumi.Launchdarkly;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // IP allowlists are an Enterprise feature and use a beta API. There is one IP
+    ///     // allowlist configuration per account, so define only a single instance of this resource.
+    ///     var example = new Launchdarkly.IpAllowlistConfig("example", new()
+    ///     {
+    ///         SessionAllowlistEnabled = true,
+    ///         ScopedAllowlistEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The LaunchDarkly IP allowlist configuration is an account singleton and is imported using its fixed ID `ip-allowlist-config`
+    /// 
+    /// ```sh
+    /// $ pulumi import launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig example ip-allowlist-config
+    /// ```
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig")]
     public partial class IpAllowlistConfig : global::Pulumi.CustomResource
@@ -25,13 +54,13 @@ namespace Pulumi.Launchdarkly
         /// Whether the scoped (API token) IP allowlist is enabled.
         /// </summary>
         [Output("scopedAllowlistEnabled")]
-        public Output<bool?> ScopedAllowlistEnabled { get; private set; } = null!;
+        public Output<bool> ScopedAllowlistEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether the session IP allowlist is enabled.
         /// </summary>
         [Output("sessionAllowlistEnabled")]
-        public Output<bool?> SessionAllowlistEnabled { get; private set; } = null!;
+        public Output<bool> SessionAllowlistEnabled { get; private set; } = null!;
 
 
         /// <summary>

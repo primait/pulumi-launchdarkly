@@ -18,11 +18,11 @@ namespace Pulumi.Launchdarkly.Inputs
         [Input("bucketBy")]
         public Input<string>? BucketBy { get; set; }
 
-        [Input("clauses")]
+        [Input("clauses", required: true)]
         private InputList<Inputs.SegmentRuleClauseGetArgs>? _clauses;
 
         /// <summary>
-        /// List of nested blocks specifying the logical clauses to evaluate
+        /// List of clauses specifying the logical conditions to evaluate
         /// </summary>
         public InputList<Inputs.SegmentRuleClauseGetArgs> Clauses
         {

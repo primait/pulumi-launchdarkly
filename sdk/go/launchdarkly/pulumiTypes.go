@@ -15,7 +15,7 @@ var _ = internal.GetEnvOrDefault
 
 type AccessTokenInlineRole struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -40,7 +40,7 @@ type AccessTokenInlineRoleInput interface {
 
 type AccessTokenInlineRoleArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -104,7 +104,7 @@ func (o AccessTokenInlineRoleOutput) ToAccessTokenInlineRoleOutputWithContext(ct
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 func (o AccessTokenInlineRoleOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessTokenInlineRole) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -149,149 +149,134 @@ func (o AccessTokenInlineRoleArrayOutput) Index(i pulumi.IntInput) AccessTokenIn
 	}).(AccessTokenInlineRoleOutput)
 }
 
-type AccessTokenPolicyStatement struct {
-	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-	Actions []string `pulumi:"actions"`
-	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-	Effect string `pulumi:"effect"`
-	// The list of action specifiers defining the actions to which the statement does not apply.
-	NotActions []string `pulumi:"notActions"`
-	// The list of resource specifiers defining the resources to which the statement does not apply.
-	NotResources []string `pulumi:"notResources"`
-	// The list of resource specifiers defining the resources to which the statement applies.
-	Resources []string `pulumi:"resources"`
+type AiAgentGraphEdges struct {
+	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	Handoff *string `pulumi:"handoff"`
+	// The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
+	Key *string `pulumi:"key"`
+	// The AI Config key that is the source of this edge.
+	SourceConfig string `pulumi:"sourceConfig"`
+	// The AI Config key that is the target of this edge.
+	TargetConfig string `pulumi:"targetConfig"`
 }
 
-// AccessTokenPolicyStatementInput is an input type that accepts AccessTokenPolicyStatementArgs and AccessTokenPolicyStatementOutput values.
-// You can construct a concrete instance of `AccessTokenPolicyStatementInput` via:
+// AiAgentGraphEdgesInput is an input type that accepts AiAgentGraphEdgesArgs and AiAgentGraphEdgesOutput values.
+// You can construct a concrete instance of `AiAgentGraphEdgesInput` via:
 //
-//	AccessTokenPolicyStatementArgs{...}
-type AccessTokenPolicyStatementInput interface {
+//	AiAgentGraphEdgesArgs{...}
+type AiAgentGraphEdgesInput interface {
 	pulumi.Input
 
-	ToAccessTokenPolicyStatementOutput() AccessTokenPolicyStatementOutput
-	ToAccessTokenPolicyStatementOutputWithContext(context.Context) AccessTokenPolicyStatementOutput
+	ToAiAgentGraphEdgesOutput() AiAgentGraphEdgesOutput
+	ToAiAgentGraphEdgesOutputWithContext(context.Context) AiAgentGraphEdgesOutput
 }
 
-type AccessTokenPolicyStatementArgs struct {
-	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// The list of action specifiers defining the actions to which the statement does not apply.
-	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
-	// The list of resource specifiers defining the resources to which the statement does not apply.
-	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
-	// The list of resource specifiers defining the resources to which the statement applies.
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
+type AiAgentGraphEdgesArgs struct {
+	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	Handoff pulumi.StringPtrInput `pulumi:"handoff"`
+	// The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The AI Config key that is the source of this edge.
+	SourceConfig pulumi.StringInput `pulumi:"sourceConfig"`
+	// The AI Config key that is the target of this edge.
+	TargetConfig pulumi.StringInput `pulumi:"targetConfig"`
 }
 
-func (AccessTokenPolicyStatementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessTokenPolicyStatement)(nil)).Elem()
+func (AiAgentGraphEdgesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiAgentGraphEdges)(nil)).Elem()
 }
 
-func (i AccessTokenPolicyStatementArgs) ToAccessTokenPolicyStatementOutput() AccessTokenPolicyStatementOutput {
-	return i.ToAccessTokenPolicyStatementOutputWithContext(context.Background())
+func (i AiAgentGraphEdgesArgs) ToAiAgentGraphEdgesOutput() AiAgentGraphEdgesOutput {
+	return i.ToAiAgentGraphEdgesOutputWithContext(context.Background())
 }
 
-func (i AccessTokenPolicyStatementArgs) ToAccessTokenPolicyStatementOutputWithContext(ctx context.Context) AccessTokenPolicyStatementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessTokenPolicyStatementOutput)
+func (i AiAgentGraphEdgesArgs) ToAiAgentGraphEdgesOutputWithContext(ctx context.Context) AiAgentGraphEdgesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiAgentGraphEdgesOutput)
 }
 
-// AccessTokenPolicyStatementArrayInput is an input type that accepts AccessTokenPolicyStatementArray and AccessTokenPolicyStatementArrayOutput values.
-// You can construct a concrete instance of `AccessTokenPolicyStatementArrayInput` via:
+// AiAgentGraphEdgesMapInput is an input type that accepts AiAgentGraphEdgesMap and AiAgentGraphEdgesMapOutput values.
+// You can construct a concrete instance of `AiAgentGraphEdgesMapInput` via:
 //
-//	AccessTokenPolicyStatementArray{ AccessTokenPolicyStatementArgs{...} }
-type AccessTokenPolicyStatementArrayInput interface {
+//	AiAgentGraphEdgesMap{ "key": AiAgentGraphEdgesArgs{...} }
+type AiAgentGraphEdgesMapInput interface {
 	pulumi.Input
 
-	ToAccessTokenPolicyStatementArrayOutput() AccessTokenPolicyStatementArrayOutput
-	ToAccessTokenPolicyStatementArrayOutputWithContext(context.Context) AccessTokenPolicyStatementArrayOutput
+	ToAiAgentGraphEdgesMapOutput() AiAgentGraphEdgesMapOutput
+	ToAiAgentGraphEdgesMapOutputWithContext(context.Context) AiAgentGraphEdgesMapOutput
 }
 
-type AccessTokenPolicyStatementArray []AccessTokenPolicyStatementInput
+type AiAgentGraphEdgesMap map[string]AiAgentGraphEdgesInput
 
-func (AccessTokenPolicyStatementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessTokenPolicyStatement)(nil)).Elem()
+func (AiAgentGraphEdgesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AiAgentGraphEdges)(nil)).Elem()
 }
 
-func (i AccessTokenPolicyStatementArray) ToAccessTokenPolicyStatementArrayOutput() AccessTokenPolicyStatementArrayOutput {
-	return i.ToAccessTokenPolicyStatementArrayOutputWithContext(context.Background())
+func (i AiAgentGraphEdgesMap) ToAiAgentGraphEdgesMapOutput() AiAgentGraphEdgesMapOutput {
+	return i.ToAiAgentGraphEdgesMapOutputWithContext(context.Background())
 }
 
-func (i AccessTokenPolicyStatementArray) ToAccessTokenPolicyStatementArrayOutputWithContext(ctx context.Context) AccessTokenPolicyStatementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessTokenPolicyStatementArrayOutput)
+func (i AiAgentGraphEdgesMap) ToAiAgentGraphEdgesMapOutputWithContext(ctx context.Context) AiAgentGraphEdgesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiAgentGraphEdgesMapOutput)
 }
 
-type AccessTokenPolicyStatementOutput struct{ *pulumi.OutputState }
+type AiAgentGraphEdgesOutput struct{ *pulumi.OutputState }
 
-func (AccessTokenPolicyStatementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessTokenPolicyStatement)(nil)).Elem()
+func (AiAgentGraphEdgesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiAgentGraphEdges)(nil)).Elem()
 }
 
-func (o AccessTokenPolicyStatementOutput) ToAccessTokenPolicyStatementOutput() AccessTokenPolicyStatementOutput {
+func (o AiAgentGraphEdgesOutput) ToAiAgentGraphEdgesOutput() AiAgentGraphEdgesOutput {
 	return o
 }
 
-func (o AccessTokenPolicyStatementOutput) ToAccessTokenPolicyStatementOutputWithContext(ctx context.Context) AccessTokenPolicyStatementOutput {
+func (o AiAgentGraphEdgesOutput) ToAiAgentGraphEdgesOutputWithContext(ctx context.Context) AiAgentGraphEdgesOutput {
 	return o
 }
 
-// The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-func (o AccessTokenPolicyStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessTokenPolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+func (o AiAgentGraphEdgesOutput) Handoff() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiAgentGraphEdges) *string { return v.Handoff }).(pulumi.StringPtrOutput)
 }
 
-// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-func (o AccessTokenPolicyStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessTokenPolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
+// The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
+func (o AiAgentGraphEdgesOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiAgentGraphEdges) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The list of action specifiers defining the actions to which the statement does not apply.
-func (o AccessTokenPolicyStatementOutput) NotActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessTokenPolicyStatement) []string { return v.NotActions }).(pulumi.StringArrayOutput)
+// The AI Config key that is the source of this edge.
+func (o AiAgentGraphEdgesOutput) SourceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v AiAgentGraphEdges) string { return v.SourceConfig }).(pulumi.StringOutput)
 }
 
-// The list of resource specifiers defining the resources to which the statement does not apply.
-func (o AccessTokenPolicyStatementOutput) NotResources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessTokenPolicyStatement) []string { return v.NotResources }).(pulumi.StringArrayOutput)
+// The AI Config key that is the target of this edge.
+func (o AiAgentGraphEdgesOutput) TargetConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v AiAgentGraphEdges) string { return v.TargetConfig }).(pulumi.StringOutput)
 }
 
-// The list of resource specifiers defining the resources to which the statement applies.
-func (o AccessTokenPolicyStatementOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessTokenPolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
+type AiAgentGraphEdgesMapOutput struct{ *pulumi.OutputState }
+
+func (AiAgentGraphEdgesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AiAgentGraphEdges)(nil)).Elem()
 }
 
-type AccessTokenPolicyStatementArrayOutput struct{ *pulumi.OutputState }
-
-func (AccessTokenPolicyStatementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessTokenPolicyStatement)(nil)).Elem()
-}
-
-func (o AccessTokenPolicyStatementArrayOutput) ToAccessTokenPolicyStatementArrayOutput() AccessTokenPolicyStatementArrayOutput {
+func (o AiAgentGraphEdgesMapOutput) ToAiAgentGraphEdgesMapOutput() AiAgentGraphEdgesMapOutput {
 	return o
 }
 
-func (o AccessTokenPolicyStatementArrayOutput) ToAccessTokenPolicyStatementArrayOutputWithContext(ctx context.Context) AccessTokenPolicyStatementArrayOutput {
+func (o AiAgentGraphEdgesMapOutput) ToAiAgentGraphEdgesMapOutputWithContext(ctx context.Context) AiAgentGraphEdgesMapOutput {
 	return o
 }
 
-func (o AccessTokenPolicyStatementArrayOutput) Index(i pulumi.IntInput) AccessTokenPolicyStatementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessTokenPolicyStatement {
-		return vs[0].([]AccessTokenPolicyStatement)[vs[1].(int)]
-	}).(AccessTokenPolicyStatementOutput)
+func (o AiAgentGraphEdgesMapOutput) MapIndex(k pulumi.StringInput) AiAgentGraphEdgesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AiAgentGraphEdges {
+		return vs[0].(map[string]AiAgentGraphEdges)[vs[1].(string)]
+	}).(AiAgentGraphEdgesOutput)
 }
 
 type AiConfigVariationType struct {
-	// The variation's key.
-	Key *string `pulumi:"key"`
-	// The variation's name.
-	Name *string `pulumi:"name"`
-	// The variation's ID.
-	VariationId *string `pulumi:"variationId"`
+	Key         string `pulumi:"key"`
+	Name        string `pulumi:"name"`
+	VariationId string `pulumi:"variationId"`
 }
 
 // AiConfigVariationTypeInput is an input type that accepts AiConfigVariationTypeArgs and AiConfigVariationTypeOutput values.
@@ -306,12 +291,9 @@ type AiConfigVariationTypeInput interface {
 }
 
 type AiConfigVariationTypeArgs struct {
-	// The variation's key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The variation's name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The variation's ID.
-	VariationId pulumi.StringPtrInput `pulumi:"variationId"`
+	Key         pulumi.StringInput `pulumi:"key"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	VariationId pulumi.StringInput `pulumi:"variationId"`
 }
 
 func (AiConfigVariationTypeArgs) ElementType() reflect.Type {
@@ -365,19 +347,16 @@ func (o AiConfigVariationTypeOutput) ToAiConfigVariationTypeOutputWithContext(ct
 	return o
 }
 
-// The variation's key.
-func (o AiConfigVariationTypeOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiConfigVariationType) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o AiConfigVariationTypeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AiConfigVariationType) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The variation's name.
-func (o AiConfigVariationTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiConfigVariationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AiConfigVariationTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AiConfigVariationType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The variation's ID.
-func (o AiConfigVariationTypeOutput) VariationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiConfigVariationType) *string { return v.VariationId }).(pulumi.StringPtrOutput)
+func (o AiConfigVariationTypeOutput) VariationId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiConfigVariationType) string { return v.VariationId }).(pulumi.StringOutput)
 }
 
 type AiConfigVariationTypeArrayOutput struct{ *pulumi.OutputState }
@@ -508,7 +487,7 @@ func (o AiConfigVariationMessageArrayOutput) Index(i pulumi.IntInput) AiConfigVa
 
 type AuditLogSubscriptionStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -533,7 +512,7 @@ type AuditLogSubscriptionStatementInput interface {
 
 type AuditLogSubscriptionStatementArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -597,7 +576,7 @@ func (o AuditLogSubscriptionStatementOutput) ToAuditLogSubscriptionStatementOutp
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 func (o AuditLogSubscriptionStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuditLogSubscriptionStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -642,115 +621,9 @@ func (o AuditLogSubscriptionStatementArrayOutput) Index(i pulumi.IntInput) Audit
 	}).(AuditLogSubscriptionStatementOutput)
 }
 
-type CustomRolePolicy struct {
-	Actions   []string `pulumi:"actions"`
-	Effect    string   `pulumi:"effect"`
-	Resources []string `pulumi:"resources"`
-}
-
-// CustomRolePolicyInput is an input type that accepts CustomRolePolicyArgs and CustomRolePolicyOutput values.
-// You can construct a concrete instance of `CustomRolePolicyInput` via:
-//
-//	CustomRolePolicyArgs{...}
-type CustomRolePolicyInput interface {
-	pulumi.Input
-
-	ToCustomRolePolicyOutput() CustomRolePolicyOutput
-	ToCustomRolePolicyOutputWithContext(context.Context) CustomRolePolicyOutput
-}
-
-type CustomRolePolicyArgs struct {
-	Actions   pulumi.StringArrayInput `pulumi:"actions"`
-	Effect    pulumi.StringInput      `pulumi:"effect"`
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-}
-
-func (CustomRolePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomRolePolicy)(nil)).Elem()
-}
-
-func (i CustomRolePolicyArgs) ToCustomRolePolicyOutput() CustomRolePolicyOutput {
-	return i.ToCustomRolePolicyOutputWithContext(context.Background())
-}
-
-func (i CustomRolePolicyArgs) ToCustomRolePolicyOutputWithContext(ctx context.Context) CustomRolePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomRolePolicyOutput)
-}
-
-// CustomRolePolicyArrayInput is an input type that accepts CustomRolePolicyArray and CustomRolePolicyArrayOutput values.
-// You can construct a concrete instance of `CustomRolePolicyArrayInput` via:
-//
-//	CustomRolePolicyArray{ CustomRolePolicyArgs{...} }
-type CustomRolePolicyArrayInput interface {
-	pulumi.Input
-
-	ToCustomRolePolicyArrayOutput() CustomRolePolicyArrayOutput
-	ToCustomRolePolicyArrayOutputWithContext(context.Context) CustomRolePolicyArrayOutput
-}
-
-type CustomRolePolicyArray []CustomRolePolicyInput
-
-func (CustomRolePolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomRolePolicy)(nil)).Elem()
-}
-
-func (i CustomRolePolicyArray) ToCustomRolePolicyArrayOutput() CustomRolePolicyArrayOutput {
-	return i.ToCustomRolePolicyArrayOutputWithContext(context.Background())
-}
-
-func (i CustomRolePolicyArray) ToCustomRolePolicyArrayOutputWithContext(ctx context.Context) CustomRolePolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomRolePolicyArrayOutput)
-}
-
-type CustomRolePolicyOutput struct{ *pulumi.OutputState }
-
-func (CustomRolePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomRolePolicy)(nil)).Elem()
-}
-
-func (o CustomRolePolicyOutput) ToCustomRolePolicyOutput() CustomRolePolicyOutput {
-	return o
-}
-
-func (o CustomRolePolicyOutput) ToCustomRolePolicyOutputWithContext(ctx context.Context) CustomRolePolicyOutput {
-	return o
-}
-
-func (o CustomRolePolicyOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CustomRolePolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-func (o CustomRolePolicyOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomRolePolicy) string { return v.Effect }).(pulumi.StringOutput)
-}
-
-func (o CustomRolePolicyOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CustomRolePolicy) []string { return v.Resources }).(pulumi.StringArrayOutput)
-}
-
-type CustomRolePolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (CustomRolePolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomRolePolicy)(nil)).Elem()
-}
-
-func (o CustomRolePolicyArrayOutput) ToCustomRolePolicyArrayOutput() CustomRolePolicyArrayOutput {
-	return o
-}
-
-func (o CustomRolePolicyArrayOutput) ToCustomRolePolicyArrayOutputWithContext(ctx context.Context) CustomRolePolicyArrayOutput {
-	return o
-}
-
-func (o CustomRolePolicyArrayOutput) Index(i pulumi.IntInput) CustomRolePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomRolePolicy {
-		return vs[0].([]CustomRolePolicy)[vs[1].(int)]
-	}).(CustomRolePolicyOutput)
-}
-
 type CustomRolePolicyStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -775,7 +648,7 @@ type CustomRolePolicyStatementInput interface {
 
 type CustomRolePolicyStatementArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -839,7 +712,7 @@ func (o CustomRolePolicyStatementOutput) ToCustomRolePolicyStatementOutputWithCo
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 func (o CustomRolePolicyStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -884,7 +757,7 @@ func (o CustomRolePolicyStatementArrayOutput) Index(i pulumi.IntInput) CustomRol
 	}).(CustomRolePolicyStatementOutput)
 }
 
-type EnvironmentApprovalSetting struct {
+type EnvironmentApprovalSettings struct {
 	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
 	AutoApplyApprovedChanges *bool `pulumi:"autoApplyApprovedChanges"`
 	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -899,25 +772,25 @@ type EnvironmentApprovalSetting struct {
 	RequiredApprovalTags []string `pulumi:"requiredApprovalTags"`
 	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
 	ServiceConfig map[string]string `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
 	ServiceKind *string `pulumi:"serviceKind"`
 }
 
-// EnvironmentApprovalSettingInput is an input type that accepts EnvironmentApprovalSettingArgs and EnvironmentApprovalSettingOutput values.
-// You can construct a concrete instance of `EnvironmentApprovalSettingInput` via:
+// EnvironmentApprovalSettingsInput is an input type that accepts EnvironmentApprovalSettingsArgs and EnvironmentApprovalSettingsOutput values.
+// You can construct a concrete instance of `EnvironmentApprovalSettingsInput` via:
 //
-//	EnvironmentApprovalSettingArgs{...}
-type EnvironmentApprovalSettingInput interface {
+//	EnvironmentApprovalSettingsArgs{...}
+type EnvironmentApprovalSettingsInput interface {
 	pulumi.Input
 
-	ToEnvironmentApprovalSettingOutput() EnvironmentApprovalSettingOutput
-	ToEnvironmentApprovalSettingOutputWithContext(context.Context) EnvironmentApprovalSettingOutput
+	ToEnvironmentApprovalSettingsOutput() EnvironmentApprovalSettingsOutput
+	ToEnvironmentApprovalSettingsOutputWithContext(context.Context) EnvironmentApprovalSettingsOutput
 }
 
-type EnvironmentApprovalSettingArgs struct {
+type EnvironmentApprovalSettingsArgs struct {
 	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
 	AutoApplyApprovedChanges pulumi.BoolPtrInput `pulumi:"autoApplyApprovedChanges"`
 	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -932,125 +805,520 @@ type EnvironmentApprovalSettingArgs struct {
 	RequiredApprovalTags pulumi.StringArrayInput `pulumi:"requiredApprovalTags"`
 	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
 	ServiceConfig pulumi.StringMapInput `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
 	ServiceKind pulumi.StringPtrInput `pulumi:"serviceKind"`
 }
 
-func (EnvironmentApprovalSettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentApprovalSetting)(nil)).Elem()
+func (EnvironmentApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentApprovalSettings)(nil)).Elem()
 }
 
-func (i EnvironmentApprovalSettingArgs) ToEnvironmentApprovalSettingOutput() EnvironmentApprovalSettingOutput {
-	return i.ToEnvironmentApprovalSettingOutputWithContext(context.Background())
+func (i EnvironmentApprovalSettingsArgs) ToEnvironmentApprovalSettingsOutput() EnvironmentApprovalSettingsOutput {
+	return i.ToEnvironmentApprovalSettingsOutputWithContext(context.Background())
 }
 
-func (i EnvironmentApprovalSettingArgs) ToEnvironmentApprovalSettingOutputWithContext(ctx context.Context) EnvironmentApprovalSettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentApprovalSettingOutput)
+func (i EnvironmentApprovalSettingsArgs) ToEnvironmentApprovalSettingsOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentApprovalSettingsOutput)
 }
 
-// EnvironmentApprovalSettingArrayInput is an input type that accepts EnvironmentApprovalSettingArray and EnvironmentApprovalSettingArrayOutput values.
-// You can construct a concrete instance of `EnvironmentApprovalSettingArrayInput` via:
+func (i EnvironmentApprovalSettingsArgs) ToEnvironmentApprovalSettingsPtrOutput() EnvironmentApprovalSettingsPtrOutput {
+	return i.ToEnvironmentApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentApprovalSettingsArgs) ToEnvironmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentApprovalSettingsOutput).ToEnvironmentApprovalSettingsPtrOutputWithContext(ctx)
+}
+
+// EnvironmentApprovalSettingsPtrInput is an input type that accepts EnvironmentApprovalSettingsArgs, EnvironmentApprovalSettingsPtr and EnvironmentApprovalSettingsPtrOutput values.
+// You can construct a concrete instance of `EnvironmentApprovalSettingsPtrInput` via:
 //
-//	EnvironmentApprovalSettingArray{ EnvironmentApprovalSettingArgs{...} }
-type EnvironmentApprovalSettingArrayInput interface {
+//	        EnvironmentApprovalSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentApprovalSettingsPtrInput interface {
 	pulumi.Input
 
-	ToEnvironmentApprovalSettingArrayOutput() EnvironmentApprovalSettingArrayOutput
-	ToEnvironmentApprovalSettingArrayOutputWithContext(context.Context) EnvironmentApprovalSettingArrayOutput
+	ToEnvironmentApprovalSettingsPtrOutput() EnvironmentApprovalSettingsPtrOutput
+	ToEnvironmentApprovalSettingsPtrOutputWithContext(context.Context) EnvironmentApprovalSettingsPtrOutput
 }
 
-type EnvironmentApprovalSettingArray []EnvironmentApprovalSettingInput
+type environmentApprovalSettingsPtrType EnvironmentApprovalSettingsArgs
 
-func (EnvironmentApprovalSettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvironmentApprovalSetting)(nil)).Elem()
+func EnvironmentApprovalSettingsPtr(v *EnvironmentApprovalSettingsArgs) EnvironmentApprovalSettingsPtrInput {
+	return (*environmentApprovalSettingsPtrType)(v)
 }
 
-func (i EnvironmentApprovalSettingArray) ToEnvironmentApprovalSettingArrayOutput() EnvironmentApprovalSettingArrayOutput {
-	return i.ToEnvironmentApprovalSettingArrayOutputWithContext(context.Background())
+func (*environmentApprovalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentApprovalSettings)(nil)).Elem()
 }
 
-func (i EnvironmentApprovalSettingArray) ToEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) EnvironmentApprovalSettingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentApprovalSettingArrayOutput)
+func (i *environmentApprovalSettingsPtrType) ToEnvironmentApprovalSettingsPtrOutput() EnvironmentApprovalSettingsPtrOutput {
+	return i.ToEnvironmentApprovalSettingsPtrOutputWithContext(context.Background())
 }
 
-type EnvironmentApprovalSettingOutput struct{ *pulumi.OutputState }
-
-func (EnvironmentApprovalSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnvironmentApprovalSetting)(nil)).Elem()
+func (i *environmentApprovalSettingsPtrType) ToEnvironmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentApprovalSettingsPtrOutput)
 }
 
-func (o EnvironmentApprovalSettingOutput) ToEnvironmentApprovalSettingOutput() EnvironmentApprovalSettingOutput {
+type EnvironmentApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentApprovalSettings)(nil)).Elem()
+}
+
+func (o EnvironmentApprovalSettingsOutput) ToEnvironmentApprovalSettingsOutput() EnvironmentApprovalSettingsOutput {
 	return o
 }
 
-func (o EnvironmentApprovalSettingOutput) ToEnvironmentApprovalSettingOutputWithContext(ctx context.Context) EnvironmentApprovalSettingOutput {
+func (o EnvironmentApprovalSettingsOutput) ToEnvironmentApprovalSettingsOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsOutput {
 	return o
+}
+
+func (o EnvironmentApprovalSettingsOutput) ToEnvironmentApprovalSettingsPtrOutput() EnvironmentApprovalSettingsPtrOutput {
+	return o.ToEnvironmentApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentApprovalSettingsOutput) ToEnvironmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentApprovalSettings) *EnvironmentApprovalSettings {
+		return &v
+	}).(EnvironmentApprovalSettingsPtrOutput)
 }
 
 // Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-func (o EnvironmentApprovalSettingOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
+func (o EnvironmentApprovalSettingsOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-func (o EnvironmentApprovalSettingOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolPtrOutput)
+func (o EnvironmentApprovalSettingsOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-func (o EnvironmentApprovalSettingOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *bool { return v.CanReviewOwnRequest }).(pulumi.BoolPtrOutput)
+func (o EnvironmentApprovalSettingsOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *bool { return v.CanReviewOwnRequest }).(pulumi.BoolPtrOutput)
 }
 
 // The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-func (o EnvironmentApprovalSettingOutput) MinNumApprovals() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *int { return v.MinNumApprovals }).(pulumi.IntPtrOutput)
+func (o EnvironmentApprovalSettingsOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *int { return v.MinNumApprovals }).(pulumi.IntPtrOutput)
 }
 
 // Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
-func (o EnvironmentApprovalSettingOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o EnvironmentApprovalSettingsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
-func (o EnvironmentApprovalSettingOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
+func (o EnvironmentApprovalSettingsOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
 }
 
 // The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 //
-//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 //   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-func (o EnvironmentApprovalSettingOutput) ServiceConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
+func (o EnvironmentApprovalSettingsOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
 }
 
-// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-func (o EnvironmentApprovalSettingOutput) ServiceKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentApprovalSetting) *string { return v.ServiceKind }).(pulumi.StringPtrOutput)
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o EnvironmentApprovalSettingsOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentApprovalSettings) *string { return v.ServiceKind }).(pulumi.StringPtrOutput)
 }
 
-type EnvironmentApprovalSettingArrayOutput struct{ *pulumi.OutputState }
+type EnvironmentApprovalSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (EnvironmentApprovalSettingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnvironmentApprovalSetting)(nil)).Elem()
+func (EnvironmentApprovalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentApprovalSettings)(nil)).Elem()
 }
 
-func (o EnvironmentApprovalSettingArrayOutput) ToEnvironmentApprovalSettingArrayOutput() EnvironmentApprovalSettingArrayOutput {
+func (o EnvironmentApprovalSettingsPtrOutput) ToEnvironmentApprovalSettingsPtrOutput() EnvironmentApprovalSettingsPtrOutput {
 	return o
 }
 
-func (o EnvironmentApprovalSettingArrayOutput) ToEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) EnvironmentApprovalSettingArrayOutput {
+func (o EnvironmentApprovalSettingsPtrOutput) ToEnvironmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentApprovalSettingsPtrOutput {
 	return o
 }
 
-func (o EnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) EnvironmentApprovalSettingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentApprovalSetting {
-		return vs[0].([]EnvironmentApprovalSetting)[vs[1].(int)]
-	}).(EnvironmentApprovalSettingOutput)
+func (o EnvironmentApprovalSettingsPtrOutput) Elem() EnvironmentApprovalSettingsOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) EnvironmentApprovalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentApprovalSettings
+		return ret
+	}).(EnvironmentApprovalSettingsOutput)
+}
+
+// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+func (o EnvironmentApprovalSettingsPtrOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyApprovedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+func (o EnvironmentApprovalSettingsPtrOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanApplyDeclinedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+func (o EnvironmentApprovalSettingsPtrOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanReviewOwnRequest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+func (o EnvironmentApprovalSettingsPtrOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNumApprovals
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+func (o EnvironmentApprovalSettingsPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+func (o EnvironmentApprovalSettingsPtrOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredApprovalTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+//
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+//   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+func (o EnvironmentApprovalSettingsPtrOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConfig
+	}).(pulumi.StringMapOutput)
+}
+
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o EnvironmentApprovalSettingsPtrOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentApprovalSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentSegmentApprovalSettings struct {
+	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+	AutoApplyApprovedChanges *bool `pulumi:"autoApplyApprovedChanges"`
+	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+	CanApplyDeclinedChanges *bool `pulumi:"canApplyDeclinedChanges"`
+	// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+	CanReviewOwnRequest *bool `pulumi:"canReviewOwnRequest"`
+	// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+	MinNumApprovals *int `pulumi:"minNumApprovals"`
+	// Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+	Required *bool `pulumi:"required"`
+	// An array of tags used to specify which segments with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+	RequiredApprovalTags []string `pulumi:"requiredApprovalTags"`
+	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+	//
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+	ServiceConfig map[string]string `pulumi:"serviceConfig"`
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	ServiceKind *string `pulumi:"serviceKind"`
+}
+
+// EnvironmentSegmentApprovalSettingsInput is an input type that accepts EnvironmentSegmentApprovalSettingsArgs and EnvironmentSegmentApprovalSettingsOutput values.
+// You can construct a concrete instance of `EnvironmentSegmentApprovalSettingsInput` via:
+//
+//	EnvironmentSegmentApprovalSettingsArgs{...}
+type EnvironmentSegmentApprovalSettingsInput interface {
+	pulumi.Input
+
+	ToEnvironmentSegmentApprovalSettingsOutput() EnvironmentSegmentApprovalSettingsOutput
+	ToEnvironmentSegmentApprovalSettingsOutputWithContext(context.Context) EnvironmentSegmentApprovalSettingsOutput
+}
+
+type EnvironmentSegmentApprovalSettingsArgs struct {
+	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+	AutoApplyApprovedChanges pulumi.BoolPtrInput `pulumi:"autoApplyApprovedChanges"`
+	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+	CanApplyDeclinedChanges pulumi.BoolPtrInput `pulumi:"canApplyDeclinedChanges"`
+	// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+	CanReviewOwnRequest pulumi.BoolPtrInput `pulumi:"canReviewOwnRequest"`
+	// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+	MinNumApprovals pulumi.IntPtrInput `pulumi:"minNumApprovals"`
+	// Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// An array of tags used to specify which segments with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+	RequiredApprovalTags pulumi.StringArrayInput `pulumi:"requiredApprovalTags"`
+	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+	//
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+	ServiceConfig pulumi.StringMapInput `pulumi:"serviceConfig"`
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	ServiceKind pulumi.StringPtrInput `pulumi:"serviceKind"`
+}
+
+func (EnvironmentSegmentApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSegmentApprovalSettings)(nil)).Elem()
+}
+
+func (i EnvironmentSegmentApprovalSettingsArgs) ToEnvironmentSegmentApprovalSettingsOutput() EnvironmentSegmentApprovalSettingsOutput {
+	return i.ToEnvironmentSegmentApprovalSettingsOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSegmentApprovalSettingsArgs) ToEnvironmentSegmentApprovalSettingsOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSegmentApprovalSettingsOutput)
+}
+
+func (i EnvironmentSegmentApprovalSettingsArgs) ToEnvironmentSegmentApprovalSettingsPtrOutput() EnvironmentSegmentApprovalSettingsPtrOutput {
+	return i.ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSegmentApprovalSettingsArgs) ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSegmentApprovalSettingsOutput).ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(ctx)
+}
+
+// EnvironmentSegmentApprovalSettingsPtrInput is an input type that accepts EnvironmentSegmentApprovalSettingsArgs, EnvironmentSegmentApprovalSettingsPtr and EnvironmentSegmentApprovalSettingsPtrOutput values.
+// You can construct a concrete instance of `EnvironmentSegmentApprovalSettingsPtrInput` via:
+//
+//	        EnvironmentSegmentApprovalSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentSegmentApprovalSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentSegmentApprovalSettingsPtrOutput() EnvironmentSegmentApprovalSettingsPtrOutput
+	ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(context.Context) EnvironmentSegmentApprovalSettingsPtrOutput
+}
+
+type environmentSegmentApprovalSettingsPtrType EnvironmentSegmentApprovalSettingsArgs
+
+func EnvironmentSegmentApprovalSettingsPtr(v *EnvironmentSegmentApprovalSettingsArgs) EnvironmentSegmentApprovalSettingsPtrInput {
+	return (*environmentSegmentApprovalSettingsPtrType)(v)
+}
+
+func (*environmentSegmentApprovalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentSegmentApprovalSettings)(nil)).Elem()
+}
+
+func (i *environmentSegmentApprovalSettingsPtrType) ToEnvironmentSegmentApprovalSettingsPtrOutput() EnvironmentSegmentApprovalSettingsPtrOutput {
+	return i.ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentSegmentApprovalSettingsPtrType) ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSegmentApprovalSettingsPtrOutput)
+}
+
+type EnvironmentSegmentApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSegmentApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSegmentApprovalSettings)(nil)).Elem()
+}
+
+func (o EnvironmentSegmentApprovalSettingsOutput) ToEnvironmentSegmentApprovalSettingsOutput() EnvironmentSegmentApprovalSettingsOutput {
+	return o
+}
+
+func (o EnvironmentSegmentApprovalSettingsOutput) ToEnvironmentSegmentApprovalSettingsOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsOutput {
+	return o
+}
+
+func (o EnvironmentSegmentApprovalSettingsOutput) ToEnvironmentSegmentApprovalSettingsPtrOutput() EnvironmentSegmentApprovalSettingsPtrOutput {
+	return o.ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentSegmentApprovalSettingsOutput) ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentSegmentApprovalSettings) *EnvironmentSegmentApprovalSettings {
+		return &v
+	}).(EnvironmentSegmentApprovalSettingsPtrOutput)
+}
+
+// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+func (o EnvironmentSegmentApprovalSettingsOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+func (o EnvironmentSegmentApprovalSettingsOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+func (o EnvironmentSegmentApprovalSettingsOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *bool { return v.CanReviewOwnRequest }).(pulumi.BoolPtrOutput)
+}
+
+// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+func (o EnvironmentSegmentApprovalSettingsOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *int { return v.MinNumApprovals }).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+func (o EnvironmentSegmentApprovalSettingsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// An array of tags used to specify which segments with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+func (o EnvironmentSegmentApprovalSettingsOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
+}
+
+// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+//
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+//   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+func (o EnvironmentSegmentApprovalSettingsOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
+}
+
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o EnvironmentSegmentApprovalSettingsOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentSegmentApprovalSettings) *string { return v.ServiceKind }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentSegmentApprovalSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSegmentApprovalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentSegmentApprovalSettings)(nil)).Elem()
+}
+
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) ToEnvironmentSegmentApprovalSettingsPtrOutput() EnvironmentSegmentApprovalSettingsPtrOutput {
+	return o
+}
+
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) ToEnvironmentSegmentApprovalSettingsPtrOutputWithContext(ctx context.Context) EnvironmentSegmentApprovalSettingsPtrOutput {
+	return o
+}
+
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) Elem() EnvironmentSegmentApprovalSettingsOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) EnvironmentSegmentApprovalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentSegmentApprovalSettings
+		return ret
+	}).(EnvironmentSegmentApprovalSettingsOutput)
+}
+
+// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyApprovedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanApplyDeclinedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanReviewOwnRequest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNumApprovals
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of tags used to specify which segments with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredApprovalTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+//
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+//   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConfig
+	}).(pulumi.StringMapOutput)
+}
+
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o EnvironmentSegmentApprovalSettingsPtrOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentSegmentApprovalSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKind
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureFlagClientSideAvailability struct {
@@ -1090,29 +1358,45 @@ func (i FeatureFlagClientSideAvailabilityArgs) ToFeatureFlagClientSideAvailabili
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityOutput)
 }
 
-// FeatureFlagClientSideAvailabilityArrayInput is an input type that accepts FeatureFlagClientSideAvailabilityArray and FeatureFlagClientSideAvailabilityArrayOutput values.
-// You can construct a concrete instance of `FeatureFlagClientSideAvailabilityArrayInput` via:
+func (i FeatureFlagClientSideAvailabilityArgs) ToFeatureFlagClientSideAvailabilityPtrOutput() FeatureFlagClientSideAvailabilityPtrOutput {
+	return i.ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFlagClientSideAvailabilityArgs) ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityOutput).ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(ctx)
+}
+
+// FeatureFlagClientSideAvailabilityPtrInput is an input type that accepts FeatureFlagClientSideAvailabilityArgs, FeatureFlagClientSideAvailabilityPtr and FeatureFlagClientSideAvailabilityPtrOutput values.
+// You can construct a concrete instance of `FeatureFlagClientSideAvailabilityPtrInput` via:
 //
-//	FeatureFlagClientSideAvailabilityArray{ FeatureFlagClientSideAvailabilityArgs{...} }
-type FeatureFlagClientSideAvailabilityArrayInput interface {
+//	        FeatureFlagClientSideAvailabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFlagClientSideAvailabilityPtrInput interface {
 	pulumi.Input
 
-	ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput
-	ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Context) FeatureFlagClientSideAvailabilityArrayOutput
+	ToFeatureFlagClientSideAvailabilityPtrOutput() FeatureFlagClientSideAvailabilityPtrOutput
+	ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(context.Context) FeatureFlagClientSideAvailabilityPtrOutput
 }
 
-type FeatureFlagClientSideAvailabilityArray []FeatureFlagClientSideAvailabilityInput
+type featureFlagClientSideAvailabilityPtrType FeatureFlagClientSideAvailabilityArgs
 
-func (FeatureFlagClientSideAvailabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FeatureFlagClientSideAvailability)(nil)).Elem()
+func FeatureFlagClientSideAvailabilityPtr(v *FeatureFlagClientSideAvailabilityArgs) FeatureFlagClientSideAvailabilityPtrInput {
+	return (*featureFlagClientSideAvailabilityPtrType)(v)
 }
 
-func (i FeatureFlagClientSideAvailabilityArray) ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput {
-	return i.ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Background())
+func (*featureFlagClientSideAvailabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFlagClientSideAvailability)(nil)).Elem()
 }
 
-func (i FeatureFlagClientSideAvailabilityArray) ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityArrayOutput)
+func (i *featureFlagClientSideAvailabilityPtrType) ToFeatureFlagClientSideAvailabilityPtrOutput() FeatureFlagClientSideAvailabilityPtrOutput {
+	return i.ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFlagClientSideAvailabilityPtrType) ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityPtrOutput)
 }
 
 type FeatureFlagClientSideAvailabilityOutput struct{ *pulumi.OutputState }
@@ -1129,6 +1413,16 @@ func (o FeatureFlagClientSideAvailabilityOutput) ToFeatureFlagClientSideAvailabi
 	return o
 }
 
+func (o FeatureFlagClientSideAvailabilityOutput) ToFeatureFlagClientSideAvailabilityPtrOutput() FeatureFlagClientSideAvailabilityPtrOutput {
+	return o.ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFlagClientSideAvailabilityOutput) ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFlagClientSideAvailability) *FeatureFlagClientSideAvailability {
+		return &v
+	}).(FeatureFlagClientSideAvailabilityPtrOutput)
+}
+
 // Whether this flag is available to SDKs using the client-side ID.
 func (o FeatureFlagClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureFlagClientSideAvailability) *bool { return v.UsingEnvironmentId }).(pulumi.BoolPtrOutput)
@@ -1139,145 +1433,169 @@ func (o FeatureFlagClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolPtr
 	return o.ApplyT(func(v FeatureFlagClientSideAvailability) *bool { return v.UsingMobileKey }).(pulumi.BoolPtrOutput)
 }
 
-type FeatureFlagClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
+type FeatureFlagClientSideAvailabilityPtrOutput struct{ *pulumi.OutputState }
 
-func (FeatureFlagClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FeatureFlagClientSideAvailability)(nil)).Elem()
+func (FeatureFlagClientSideAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFlagClientSideAvailability)(nil)).Elem()
 }
 
-func (o FeatureFlagClientSideAvailabilityArrayOutput) ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput {
+func (o FeatureFlagClientSideAvailabilityPtrOutput) ToFeatureFlagClientSideAvailabilityPtrOutput() FeatureFlagClientSideAvailabilityPtrOutput {
 	return o
 }
 
-func (o FeatureFlagClientSideAvailabilityArrayOutput) ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityArrayOutput {
+func (o FeatureFlagClientSideAvailabilityPtrOutput) ToFeatureFlagClientSideAvailabilityPtrOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityPtrOutput {
 	return o
 }
 
-func (o FeatureFlagClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) FeatureFlagClientSideAvailabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFlagClientSideAvailability {
-		return vs[0].([]FeatureFlagClientSideAvailability)[vs[1].(int)]
+func (o FeatureFlagClientSideAvailabilityPtrOutput) Elem() FeatureFlagClientSideAvailabilityOutput {
+	return o.ApplyT(func(v *FeatureFlagClientSideAvailability) FeatureFlagClientSideAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFlagClientSideAvailability
+		return ret
 	}).(FeatureFlagClientSideAvailabilityOutput)
 }
 
-type FeatureFlagCustomProperty struct {
-	// The unique custom property key.
-	Key string `pulumi:"key"`
+// Whether this flag is available to SDKs using the client-side ID.
+func (o FeatureFlagClientSideAvailabilityPtrOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFlagClientSideAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UsingEnvironmentId
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether this flag is available to SDKs using a mobile key.
+func (o FeatureFlagClientSideAvailabilityPtrOutput) UsingMobileKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFlagClientSideAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UsingMobileKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureFlagCustomProperties struct {
+	// The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
+	Key *string `pulumi:"key"`
 	// The name of the custom property.
 	Name string `pulumi:"name"`
 	// The list of custom property value strings.
 	Values []string `pulumi:"values"`
 }
 
-// FeatureFlagCustomPropertyInput is an input type that accepts FeatureFlagCustomPropertyArgs and FeatureFlagCustomPropertyOutput values.
-// You can construct a concrete instance of `FeatureFlagCustomPropertyInput` via:
+// FeatureFlagCustomPropertiesInput is an input type that accepts FeatureFlagCustomPropertiesArgs and FeatureFlagCustomPropertiesOutput values.
+// You can construct a concrete instance of `FeatureFlagCustomPropertiesInput` via:
 //
-//	FeatureFlagCustomPropertyArgs{...}
-type FeatureFlagCustomPropertyInput interface {
+//	FeatureFlagCustomPropertiesArgs{...}
+type FeatureFlagCustomPropertiesInput interface {
 	pulumi.Input
 
-	ToFeatureFlagCustomPropertyOutput() FeatureFlagCustomPropertyOutput
-	ToFeatureFlagCustomPropertyOutputWithContext(context.Context) FeatureFlagCustomPropertyOutput
+	ToFeatureFlagCustomPropertiesOutput() FeatureFlagCustomPropertiesOutput
+	ToFeatureFlagCustomPropertiesOutputWithContext(context.Context) FeatureFlagCustomPropertiesOutput
 }
 
-type FeatureFlagCustomPropertyArgs struct {
-	// The unique custom property key.
-	Key pulumi.StringInput `pulumi:"key"`
+type FeatureFlagCustomPropertiesArgs struct {
+	// The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The name of the custom property.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The list of custom property value strings.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (FeatureFlagCustomPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureFlagCustomProperty)(nil)).Elem()
+func (FeatureFlagCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (i FeatureFlagCustomPropertyArgs) ToFeatureFlagCustomPropertyOutput() FeatureFlagCustomPropertyOutput {
-	return i.ToFeatureFlagCustomPropertyOutputWithContext(context.Background())
+func (i FeatureFlagCustomPropertiesArgs) ToFeatureFlagCustomPropertiesOutput() FeatureFlagCustomPropertiesOutput {
+	return i.ToFeatureFlagCustomPropertiesOutputWithContext(context.Background())
 }
 
-func (i FeatureFlagCustomPropertyArgs) ToFeatureFlagCustomPropertyOutputWithContext(ctx context.Context) FeatureFlagCustomPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagCustomPropertyOutput)
+func (i FeatureFlagCustomPropertiesArgs) ToFeatureFlagCustomPropertiesOutputWithContext(ctx context.Context) FeatureFlagCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagCustomPropertiesOutput)
 }
 
-// FeatureFlagCustomPropertyArrayInput is an input type that accepts FeatureFlagCustomPropertyArray and FeatureFlagCustomPropertyArrayOutput values.
-// You can construct a concrete instance of `FeatureFlagCustomPropertyArrayInput` via:
+// FeatureFlagCustomPropertiesMapInput is an input type that accepts FeatureFlagCustomPropertiesMap and FeatureFlagCustomPropertiesMapOutput values.
+// You can construct a concrete instance of `FeatureFlagCustomPropertiesMapInput` via:
 //
-//	FeatureFlagCustomPropertyArray{ FeatureFlagCustomPropertyArgs{...} }
-type FeatureFlagCustomPropertyArrayInput interface {
+//	FeatureFlagCustomPropertiesMap{ "key": FeatureFlagCustomPropertiesArgs{...} }
+type FeatureFlagCustomPropertiesMapInput interface {
 	pulumi.Input
 
-	ToFeatureFlagCustomPropertyArrayOutput() FeatureFlagCustomPropertyArrayOutput
-	ToFeatureFlagCustomPropertyArrayOutputWithContext(context.Context) FeatureFlagCustomPropertyArrayOutput
+	ToFeatureFlagCustomPropertiesMapOutput() FeatureFlagCustomPropertiesMapOutput
+	ToFeatureFlagCustomPropertiesMapOutputWithContext(context.Context) FeatureFlagCustomPropertiesMapOutput
 }
 
-type FeatureFlagCustomPropertyArray []FeatureFlagCustomPropertyInput
+type FeatureFlagCustomPropertiesMap map[string]FeatureFlagCustomPropertiesInput
 
-func (FeatureFlagCustomPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FeatureFlagCustomProperty)(nil)).Elem()
+func (FeatureFlagCustomPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (i FeatureFlagCustomPropertyArray) ToFeatureFlagCustomPropertyArrayOutput() FeatureFlagCustomPropertyArrayOutput {
-	return i.ToFeatureFlagCustomPropertyArrayOutputWithContext(context.Background())
+func (i FeatureFlagCustomPropertiesMap) ToFeatureFlagCustomPropertiesMapOutput() FeatureFlagCustomPropertiesMapOutput {
+	return i.ToFeatureFlagCustomPropertiesMapOutputWithContext(context.Background())
 }
 
-func (i FeatureFlagCustomPropertyArray) ToFeatureFlagCustomPropertyArrayOutputWithContext(ctx context.Context) FeatureFlagCustomPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagCustomPropertyArrayOutput)
+func (i FeatureFlagCustomPropertiesMap) ToFeatureFlagCustomPropertiesMapOutputWithContext(ctx context.Context) FeatureFlagCustomPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagCustomPropertiesMapOutput)
 }
 
-type FeatureFlagCustomPropertyOutput struct{ *pulumi.OutputState }
+type FeatureFlagCustomPropertiesOutput struct{ *pulumi.OutputState }
 
-func (FeatureFlagCustomPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureFlagCustomProperty)(nil)).Elem()
+func (FeatureFlagCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (o FeatureFlagCustomPropertyOutput) ToFeatureFlagCustomPropertyOutput() FeatureFlagCustomPropertyOutput {
+func (o FeatureFlagCustomPropertiesOutput) ToFeatureFlagCustomPropertiesOutput() FeatureFlagCustomPropertiesOutput {
 	return o
 }
 
-func (o FeatureFlagCustomPropertyOutput) ToFeatureFlagCustomPropertyOutputWithContext(ctx context.Context) FeatureFlagCustomPropertyOutput {
+func (o FeatureFlagCustomPropertiesOutput) ToFeatureFlagCustomPropertiesOutputWithContext(ctx context.Context) FeatureFlagCustomPropertiesOutput {
 	return o
 }
 
-// The unique custom property key.
-func (o FeatureFlagCustomPropertyOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v FeatureFlagCustomProperty) string { return v.Key }).(pulumi.StringOutput)
+// The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
+func (o FeatureFlagCustomPropertiesOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFlagCustomProperties) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The name of the custom property.
-func (o FeatureFlagCustomPropertyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FeatureFlagCustomProperty) string { return v.Name }).(pulumi.StringOutput)
+func (o FeatureFlagCustomPropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFlagCustomProperties) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The list of custom property value strings.
-func (o FeatureFlagCustomPropertyOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FeatureFlagCustomProperty) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o FeatureFlagCustomPropertiesOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureFlagCustomProperties) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type FeatureFlagCustomPropertyArrayOutput struct{ *pulumi.OutputState }
+type FeatureFlagCustomPropertiesMapOutput struct{ *pulumi.OutputState }
 
-func (FeatureFlagCustomPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FeatureFlagCustomProperty)(nil)).Elem()
+func (FeatureFlagCustomPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (o FeatureFlagCustomPropertyArrayOutput) ToFeatureFlagCustomPropertyArrayOutput() FeatureFlagCustomPropertyArrayOutput {
+func (o FeatureFlagCustomPropertiesMapOutput) ToFeatureFlagCustomPropertiesMapOutput() FeatureFlagCustomPropertiesMapOutput {
 	return o
 }
 
-func (o FeatureFlagCustomPropertyArrayOutput) ToFeatureFlagCustomPropertyArrayOutputWithContext(ctx context.Context) FeatureFlagCustomPropertyArrayOutput {
+func (o FeatureFlagCustomPropertiesMapOutput) ToFeatureFlagCustomPropertiesMapOutputWithContext(ctx context.Context) FeatureFlagCustomPropertiesMapOutput {
 	return o
 }
 
-func (o FeatureFlagCustomPropertyArrayOutput) Index(i pulumi.IntInput) FeatureFlagCustomPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFlagCustomProperty {
-		return vs[0].([]FeatureFlagCustomProperty)[vs[1].(int)]
-	}).(FeatureFlagCustomPropertyOutput)
+func (o FeatureFlagCustomPropertiesMapOutput) MapIndex(k pulumi.StringInput) FeatureFlagCustomPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FeatureFlagCustomProperties {
+		return vs[0].(map[string]FeatureFlagCustomProperties)[vs[1].(string)]
+	}).(FeatureFlagCustomPropertiesOutput)
 }
 
 type FeatureFlagDefaults struct {
-	// The index of the variation the flag will default to in all new environments when off.
+	// The index of the variation the flag defaults to in all new environments when off.
 	OffVariation int `pulumi:"offVariation"`
-	// The index of the variation the flag will default to in all new environments when on.
+	// The index of the variation the flag defaults to in all new environments when on.
 	OnVariation int `pulumi:"onVariation"`
 }
 
@@ -1293,9 +1611,9 @@ type FeatureFlagDefaultsInput interface {
 }
 
 type FeatureFlagDefaultsArgs struct {
-	// The index of the variation the flag will default to in all new environments when off.
+	// The index of the variation the flag defaults to in all new environments when off.
 	OffVariation pulumi.IntInput `pulumi:"offVariation"`
-	// The index of the variation the flag will default to in all new environments when on.
+	// The index of the variation the flag defaults to in all new environments when on.
 	OnVariation pulumi.IntInput `pulumi:"onVariation"`
 }
 
@@ -1376,12 +1694,12 @@ func (o FeatureFlagDefaultsOutput) ToFeatureFlagDefaultsPtrOutputWithContext(ctx
 	}).(FeatureFlagDefaultsPtrOutput)
 }
 
-// The index of the variation the flag will default to in all new environments when off.
+// The index of the variation the flag defaults to in all new environments when off.
 func (o FeatureFlagDefaultsOutput) OffVariation() pulumi.IntOutput {
 	return o.ApplyT(func(v FeatureFlagDefaults) int { return v.OffVariation }).(pulumi.IntOutput)
 }
 
-// The index of the variation the flag will default to in all new environments when on.
+// The index of the variation the flag defaults to in all new environments when on.
 func (o FeatureFlagDefaultsOutput) OnVariation() pulumi.IntOutput {
 	return o.ApplyT(func(v FeatureFlagDefaults) int { return v.OnVariation }).(pulumi.IntOutput)
 }
@@ -1410,7 +1728,7 @@ func (o FeatureFlagDefaultsPtrOutput) Elem() FeatureFlagDefaultsOutput {
 	}).(FeatureFlagDefaultsOutput)
 }
 
-// The index of the variation the flag will default to in all new environments when off.
+// The index of the variation the flag defaults to in all new environments when off.
 func (o FeatureFlagDefaultsPtrOutput) OffVariation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FeatureFlagDefaults) *int {
 		if v == nil {
@@ -1420,7 +1738,7 @@ func (o FeatureFlagDefaultsPtrOutput) OffVariation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The index of the variation the flag will default to in all new environments when on.
+// The index of the variation the flag defaults to in all new environments when on.
 func (o FeatureFlagDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FeatureFlagDefaults) *int {
 		if v == nil {
@@ -1431,7 +1749,7 @@ func (o FeatureFlagDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput {
 }
 
 type FeatureFlagEnvironmentContextTarget struct {
-	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
 	ContextKind string `pulumi:"contextKind"`
 	// List of `user` strings to target.
 	Values []string `pulumi:"values"`
@@ -1451,7 +1769,7 @@ type FeatureFlagEnvironmentContextTargetInput interface {
 }
 
 type FeatureFlagEnvironmentContextTargetArgs struct {
-	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
 	ContextKind pulumi.StringInput `pulumi:"contextKind"`
 	// List of `user` strings to target.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -1510,7 +1828,7 @@ func (o FeatureFlagEnvironmentContextTargetOutput) ToFeatureFlagEnvironmentConte
 	return o
 }
 
-// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
 func (o FeatureFlagEnvironmentContextTargetOutput) ContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentContextTarget) string { return v.ContextKind }).(pulumi.StringOutput)
 }
@@ -1848,7 +2166,7 @@ func (o FeatureFlagEnvironmentPrerequisiteArrayOutput) Index(i pulumi.IntInput) 
 type FeatureFlagEnvironmentRule struct {
 	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
 	BucketBy *string `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// List of clauses specifying the logical conditions to evaluate
 	Clauses []FeatureFlagEnvironmentRuleClause `pulumi:"clauses"`
 	// The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
 	ContextKind *string `pulumi:"contextKind"`
@@ -1874,7 +2192,7 @@ type FeatureFlagEnvironmentRuleInput interface {
 type FeatureFlagEnvironmentRuleArgs struct {
 	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
 	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// List of clauses specifying the logical conditions to evaluate
 	Clauses FeatureFlagEnvironmentRuleClauseArrayInput `pulumi:"clauses"`
 	// The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
 	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
@@ -1942,7 +2260,7 @@ func (o FeatureFlagEnvironmentRuleOutput) BucketBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentRule) *string { return v.BucketBy }).(pulumi.StringPtrOutput)
 }
 
-// List of nested blocks specifying the logical clauses to evaluate
+// List of clauses specifying the logical conditions to evaluate
 func (o FeatureFlagEnvironmentRuleOutput) Clauses() FeatureFlagEnvironmentRuleClauseArrayOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentRule) []FeatureFlagEnvironmentRuleClause { return v.Clauses }).(FeatureFlagEnvironmentRuleClauseArrayOutput)
 }
@@ -1994,7 +2312,7 @@ type FeatureFlagEnvironmentRuleClause struct {
 	ContextKind *string `pulumi:"contextKind"`
 	// Whether to negate the rule clause.
 	Negate *bool `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 	Op string `pulumi:"op"`
 	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
 	ValueType *string `pulumi:"valueType"`
@@ -2020,7 +2338,7 @@ type FeatureFlagEnvironmentRuleClauseArgs struct {
 	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
 	// Whether to negate the rule clause.
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 	Op pulumi.StringInput `pulumi:"op"`
 	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
@@ -2094,7 +2412,7 @@ func (o FeatureFlagEnvironmentRuleClauseOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentRuleClause) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
-// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 func (o FeatureFlagEnvironmentRuleClauseOutput) Op() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentRuleClause) string { return v.Op }).(pulumi.StringOutput)
 }
@@ -2240,7 +2558,7 @@ type FeatureFlagVariation struct {
 	Description *string `pulumi:"description"`
 	// The human-readable name of the feature flag.
 	Name *string `pulumi:"name"`
-	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
 	Value string `pulumi:"value"`
 }
 
@@ -2260,7 +2578,7 @@ type FeatureFlagVariationArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The human-readable name of the feature flag.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2325,7 +2643,7 @@ func (o FeatureFlagVariationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFlagVariation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
 func (o FeatureFlagVariationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureFlagVariation) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2351,18 +2669,12 @@ func (o FeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) FeatureFlagVar
 }
 
 type FlagTemplatesBooleanDefaults struct {
-	// The description for the false variation.
 	FalseDescription string `pulumi:"falseDescription"`
-	// The display name for the false variation.
 	FalseDisplayName string `pulumi:"falseDisplayName"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
-	OffVariation int `pulumi:"offVariation"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
-	OnVariation int `pulumi:"onVariation"`
-	// The description for the true variation.
-	TrueDescription string `pulumi:"trueDescription"`
-	// The display name for the true variation.
-	TrueDisplayName string `pulumi:"trueDisplayName"`
+	OffVariation     int    `pulumi:"offVariation"`
+	OnVariation      int    `pulumi:"onVariation"`
+	TrueDescription  string `pulumi:"trueDescription"`
+	TrueDisplayName  string `pulumi:"trueDisplayName"`
 }
 
 // FlagTemplatesBooleanDefaultsInput is an input type that accepts FlagTemplatesBooleanDefaultsArgs and FlagTemplatesBooleanDefaultsOutput values.
@@ -2377,18 +2689,12 @@ type FlagTemplatesBooleanDefaultsInput interface {
 }
 
 type FlagTemplatesBooleanDefaultsArgs struct {
-	// The description for the false variation.
 	FalseDescription pulumi.StringInput `pulumi:"falseDescription"`
-	// The display name for the false variation.
 	FalseDisplayName pulumi.StringInput `pulumi:"falseDisplayName"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
-	OffVariation pulumi.IntInput `pulumi:"offVariation"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
-	OnVariation pulumi.IntInput `pulumi:"onVariation"`
-	// The description for the true variation.
-	TrueDescription pulumi.StringInput `pulumi:"trueDescription"`
-	// The display name for the true variation.
-	TrueDisplayName pulumi.StringInput `pulumi:"trueDisplayName"`
+	OffVariation     pulumi.IntInput    `pulumi:"offVariation"`
+	OnVariation      pulumi.IntInput    `pulumi:"onVariation"`
+	TrueDescription  pulumi.StringInput `pulumi:"trueDescription"`
+	TrueDisplayName  pulumi.StringInput `pulumi:"trueDisplayName"`
 }
 
 func (FlagTemplatesBooleanDefaultsArgs) ElementType() reflect.Type {
@@ -2468,32 +2774,26 @@ func (o FlagTemplatesBooleanDefaultsOutput) ToFlagTemplatesBooleanDefaultsPtrOut
 	}).(FlagTemplatesBooleanDefaultsPtrOutput)
 }
 
-// The description for the false variation.
 func (o FlagTemplatesBooleanDefaultsOutput) FalseDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.FalseDescription }).(pulumi.StringOutput)
 }
 
-// The display name for the false variation.
 func (o FlagTemplatesBooleanDefaultsOutput) FalseDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.FalseDisplayName }).(pulumi.StringOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is off.
 func (o FlagTemplatesBooleanDefaultsOutput) OffVariation() pulumi.IntOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) int { return v.OffVariation }).(pulumi.IntOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is on.
 func (o FlagTemplatesBooleanDefaultsOutput) OnVariation() pulumi.IntOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) int { return v.OnVariation }).(pulumi.IntOutput)
 }
 
-// The description for the true variation.
 func (o FlagTemplatesBooleanDefaultsOutput) TrueDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.TrueDescription }).(pulumi.StringOutput)
 }
 
-// The display name for the true variation.
 func (o FlagTemplatesBooleanDefaultsOutput) TrueDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v FlagTemplatesBooleanDefaults) string { return v.TrueDisplayName }).(pulumi.StringOutput)
 }
@@ -2522,7 +2822,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) Elem() FlagTemplatesBooleanDefaul
 	}).(FlagTemplatesBooleanDefaultsOutput)
 }
 
-// The description for the false variation.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
 		if v == nil {
@@ -2532,7 +2831,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDescription() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The display name for the false variation.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
 		if v == nil {
@@ -2542,7 +2840,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) FalseDisplayName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is off.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) OffVariation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *int {
 		if v == nil {
@@ -2552,7 +2849,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) OffVariation() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is on.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *int {
 		if v == nil {
@@ -2562,7 +2858,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The description for the true variation.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) TrueDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
 		if v == nil {
@@ -2572,7 +2867,6 @@ func (o FlagTemplatesBooleanDefaultsPtrOutput) TrueDescription() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The display name for the true variation.
 func (o FlagTemplatesBooleanDefaultsPtrOutput) TrueDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlagTemplatesBooleanDefaults) *string {
 		if v == nil {
@@ -2717,6 +3011,112 @@ func (o FlagTriggerInstructionsPtrOutput) Kind() pulumi.StringPtrOutput {
 		}
 		return &v.Kind
 	}).(pulumi.StringPtrOutput)
+}
+
+type MetricGroupMetric struct {
+	// The key of the metric to include in the group.
+	Key string `pulumi:"key"`
+	// The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
+	NameInGroup *string `pulumi:"nameInGroup"`
+}
+
+// MetricGroupMetricInput is an input type that accepts MetricGroupMetricArgs and MetricGroupMetricOutput values.
+// You can construct a concrete instance of `MetricGroupMetricInput` via:
+//
+//	MetricGroupMetricArgs{...}
+type MetricGroupMetricInput interface {
+	pulumi.Input
+
+	ToMetricGroupMetricOutput() MetricGroupMetricOutput
+	ToMetricGroupMetricOutputWithContext(context.Context) MetricGroupMetricOutput
+}
+
+type MetricGroupMetricArgs struct {
+	// The key of the metric to include in the group.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
+	NameInGroup pulumi.StringPtrInput `pulumi:"nameInGroup"`
+}
+
+func (MetricGroupMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricGroupMetric)(nil)).Elem()
+}
+
+func (i MetricGroupMetricArgs) ToMetricGroupMetricOutput() MetricGroupMetricOutput {
+	return i.ToMetricGroupMetricOutputWithContext(context.Background())
+}
+
+func (i MetricGroupMetricArgs) ToMetricGroupMetricOutputWithContext(ctx context.Context) MetricGroupMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricGroupMetricOutput)
+}
+
+// MetricGroupMetricArrayInput is an input type that accepts MetricGroupMetricArray and MetricGroupMetricArrayOutput values.
+// You can construct a concrete instance of `MetricGroupMetricArrayInput` via:
+//
+//	MetricGroupMetricArray{ MetricGroupMetricArgs{...} }
+type MetricGroupMetricArrayInput interface {
+	pulumi.Input
+
+	ToMetricGroupMetricArrayOutput() MetricGroupMetricArrayOutput
+	ToMetricGroupMetricArrayOutputWithContext(context.Context) MetricGroupMetricArrayOutput
+}
+
+type MetricGroupMetricArray []MetricGroupMetricInput
+
+func (MetricGroupMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricGroupMetric)(nil)).Elem()
+}
+
+func (i MetricGroupMetricArray) ToMetricGroupMetricArrayOutput() MetricGroupMetricArrayOutput {
+	return i.ToMetricGroupMetricArrayOutputWithContext(context.Background())
+}
+
+func (i MetricGroupMetricArray) ToMetricGroupMetricArrayOutputWithContext(ctx context.Context) MetricGroupMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricGroupMetricArrayOutput)
+}
+
+type MetricGroupMetricOutput struct{ *pulumi.OutputState }
+
+func (MetricGroupMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricGroupMetric)(nil)).Elem()
+}
+
+func (o MetricGroupMetricOutput) ToMetricGroupMetricOutput() MetricGroupMetricOutput {
+	return o
+}
+
+func (o MetricGroupMetricOutput) ToMetricGroupMetricOutputWithContext(ctx context.Context) MetricGroupMetricOutput {
+	return o
+}
+
+// The key of the metric to include in the group.
+func (o MetricGroupMetricOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricGroupMetric) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
+func (o MetricGroupMetricOutput) NameInGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricGroupMetric) *string { return v.NameInGroup }).(pulumi.StringPtrOutput)
+}
+
+type MetricGroupMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricGroupMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricGroupMetric)(nil)).Elem()
+}
+
+func (o MetricGroupMetricArrayOutput) ToMetricGroupMetricArrayOutput() MetricGroupMetricArrayOutput {
+	return o
+}
+
+func (o MetricGroupMetricArrayOutput) ToMetricGroupMetricArrayOutputWithContext(ctx context.Context) MetricGroupMetricArrayOutput {
+	return o
+}
+
+func (o MetricGroupMetricArrayOutput) Index(i pulumi.IntInput) MetricGroupMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricGroupMetric {
+		return vs[0].([]MetricGroupMetric)[vs[1].(int)]
+	}).(MetricGroupMetricOutput)
 }
 
 type MetricUrl struct {
@@ -2876,29 +3276,45 @@ func (i ProjectDefaultClientSideAvailabilityArgs) ToProjectDefaultClientSideAvai
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityOutput)
 }
 
-// ProjectDefaultClientSideAvailabilityArrayInput is an input type that accepts ProjectDefaultClientSideAvailabilityArray and ProjectDefaultClientSideAvailabilityArrayOutput values.
-// You can construct a concrete instance of `ProjectDefaultClientSideAvailabilityArrayInput` via:
+func (i ProjectDefaultClientSideAvailabilityArgs) ToProjectDefaultClientSideAvailabilityPtrOutput() ProjectDefaultClientSideAvailabilityPtrOutput {
+	return i.ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultClientSideAvailabilityArgs) ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityOutput).ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(ctx)
+}
+
+// ProjectDefaultClientSideAvailabilityPtrInput is an input type that accepts ProjectDefaultClientSideAvailabilityArgs, ProjectDefaultClientSideAvailabilityPtr and ProjectDefaultClientSideAvailabilityPtrOutput values.
+// You can construct a concrete instance of `ProjectDefaultClientSideAvailabilityPtrInput` via:
 //
-//	ProjectDefaultClientSideAvailabilityArray{ ProjectDefaultClientSideAvailabilityArgs{...} }
-type ProjectDefaultClientSideAvailabilityArrayInput interface {
+//	        ProjectDefaultClientSideAvailabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectDefaultClientSideAvailabilityPtrInput interface {
 	pulumi.Input
 
-	ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput
-	ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Context) ProjectDefaultClientSideAvailabilityArrayOutput
+	ToProjectDefaultClientSideAvailabilityPtrOutput() ProjectDefaultClientSideAvailabilityPtrOutput
+	ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(context.Context) ProjectDefaultClientSideAvailabilityPtrOutput
 }
 
-type ProjectDefaultClientSideAvailabilityArray []ProjectDefaultClientSideAvailabilityInput
+type projectDefaultClientSideAvailabilityPtrType ProjectDefaultClientSideAvailabilityArgs
 
-func (ProjectDefaultClientSideAvailabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectDefaultClientSideAvailability)(nil)).Elem()
+func ProjectDefaultClientSideAvailabilityPtr(v *ProjectDefaultClientSideAvailabilityArgs) ProjectDefaultClientSideAvailabilityPtrInput {
+	return (*projectDefaultClientSideAvailabilityPtrType)(v)
 }
 
-func (i ProjectDefaultClientSideAvailabilityArray) ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput {
-	return i.ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Background())
+func (*projectDefaultClientSideAvailabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultClientSideAvailability)(nil)).Elem()
 }
 
-func (i ProjectDefaultClientSideAvailabilityArray) ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityArrayOutput)
+func (i *projectDefaultClientSideAvailabilityPtrType) ToProjectDefaultClientSideAvailabilityPtrOutput() ProjectDefaultClientSideAvailabilityPtrOutput {
+	return i.ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultClientSideAvailabilityPtrType) ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityPtrOutput)
 }
 
 type ProjectDefaultClientSideAvailabilityOutput struct{ *pulumi.OutputState }
@@ -2915,6 +3331,16 @@ func (o ProjectDefaultClientSideAvailabilityOutput) ToProjectDefaultClientSideAv
 	return o
 }
 
+func (o ProjectDefaultClientSideAvailabilityOutput) ToProjectDefaultClientSideAvailabilityPtrOutput() ProjectDefaultClientSideAvailabilityPtrOutput {
+	return o.ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultClientSideAvailabilityOutput) ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultClientSideAvailability) *ProjectDefaultClientSideAvailability {
+		return &v
+	}).(ProjectDefaultClientSideAvailabilityPtrOutput)
+}
+
 func (o ProjectDefaultClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolOutput {
 	return o.ApplyT(func(v ProjectDefaultClientSideAvailability) bool { return v.UsingEnvironmentId }).(pulumi.BoolOutput)
 }
@@ -2923,238 +3349,260 @@ func (o ProjectDefaultClientSideAvailabilityOutput) UsingMobileKey() pulumi.Bool
 	return o.ApplyT(func(v ProjectDefaultClientSideAvailability) bool { return v.UsingMobileKey }).(pulumi.BoolOutput)
 }
 
-type ProjectDefaultClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
+type ProjectDefaultClientSideAvailabilityPtrOutput struct{ *pulumi.OutputState }
 
-func (ProjectDefaultClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectDefaultClientSideAvailability)(nil)).Elem()
+func (ProjectDefaultClientSideAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultClientSideAvailability)(nil)).Elem()
 }
 
-func (o ProjectDefaultClientSideAvailabilityArrayOutput) ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput {
+func (o ProjectDefaultClientSideAvailabilityPtrOutput) ToProjectDefaultClientSideAvailabilityPtrOutput() ProjectDefaultClientSideAvailabilityPtrOutput {
 	return o
 }
 
-func (o ProjectDefaultClientSideAvailabilityArrayOutput) ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityArrayOutput {
+func (o ProjectDefaultClientSideAvailabilityPtrOutput) ToProjectDefaultClientSideAvailabilityPtrOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityPtrOutput {
 	return o
 }
 
-func (o ProjectDefaultClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) ProjectDefaultClientSideAvailabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectDefaultClientSideAvailability {
-		return vs[0].([]ProjectDefaultClientSideAvailability)[vs[1].(int)]
+func (o ProjectDefaultClientSideAvailabilityPtrOutput) Elem() ProjectDefaultClientSideAvailabilityOutput {
+	return o.ApplyT(func(v *ProjectDefaultClientSideAvailability) ProjectDefaultClientSideAvailability {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultClientSideAvailability
+		return ret
 	}).(ProjectDefaultClientSideAvailabilityOutput)
 }
 
-type ProjectEnvironment struct {
+func (o ProjectDefaultClientSideAvailabilityPtrOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultClientSideAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsingEnvironmentId
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ProjectDefaultClientSideAvailabilityPtrOutput) UsingMobileKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultClientSideAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsingMobileKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ProjectEnvironments struct {
 	// The environment's SDK key.
-	ApiKey           *string                             `pulumi:"apiKey"`
-	ApprovalSettings []ProjectEnvironmentApprovalSetting `pulumi:"approvalSettings"`
+	ApiKey           *string                              `pulumi:"apiKey"`
+	ApprovalSettings *ProjectEnvironmentsApprovalSettings `pulumi:"approvalSettings"`
 	// The environment's client-side ID.
 	ClientSideId *string `pulumi:"clientSideId"`
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color string `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
 	Critical *bool `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key string `pulumi:"key"`
+	// The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
+	Key *string `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey *string `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name string `pulumi:"name"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
 	RequireComments *bool `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
 	SecureMode *bool `pulumi:"secureMode"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
 }
 
-// ProjectEnvironmentInput is an input type that accepts ProjectEnvironmentArgs and ProjectEnvironmentOutput values.
-// You can construct a concrete instance of `ProjectEnvironmentInput` via:
+// ProjectEnvironmentsInput is an input type that accepts ProjectEnvironmentsArgs and ProjectEnvironmentsOutput values.
+// You can construct a concrete instance of `ProjectEnvironmentsInput` via:
 //
-//	ProjectEnvironmentArgs{...}
-type ProjectEnvironmentInput interface {
+//	ProjectEnvironmentsArgs{...}
+type ProjectEnvironmentsInput interface {
 	pulumi.Input
 
-	ToProjectEnvironmentOutput() ProjectEnvironmentOutput
-	ToProjectEnvironmentOutputWithContext(context.Context) ProjectEnvironmentOutput
+	ToProjectEnvironmentsOutput() ProjectEnvironmentsOutput
+	ToProjectEnvironmentsOutputWithContext(context.Context) ProjectEnvironmentsOutput
 }
 
-type ProjectEnvironmentArgs struct {
+type ProjectEnvironmentsArgs struct {
 	// The environment's SDK key.
 	ApiKey           pulumi.StringPtrInput                       `pulumi:"apiKey"`
-	ApprovalSettings ProjectEnvironmentApprovalSettingArrayInput `pulumi:"approvalSettings"`
+	ApprovalSettings ProjectEnvironmentsApprovalSettingsPtrInput `pulumi:"approvalSettings"`
 	// The environment's client-side ID.
 	ClientSideId pulumi.StringPtrInput `pulumi:"clientSideId"`
 	// The color swatch as an RGB hex value with no leading `#`. For example: `000000`
 	Color pulumi.StringInput `pulumi:"color"`
-	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+	// Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
 	ConfirmChanges pulumi.BoolPtrInput `pulumi:"confirmChanges"`
 	// Denotes whether the environment is critical.
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
 	DefaultTrackEvents pulumi.BoolPtrInput `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
-	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-	Key pulumi.StringInput `pulumi:"key"`
+	// The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey pulumi.StringPtrInput `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+	// Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
 	RequireComments pulumi.BoolPtrInput `pulumi:"requireComments"`
-	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+	// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
 	SecureMode pulumi.BoolPtrInput `pulumi:"secureMode"`
 	// Tags associated with your resource.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
-func (ProjectEnvironmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectEnvironment)(nil)).Elem()
+func (ProjectEnvironmentsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEnvironments)(nil)).Elem()
 }
 
-func (i ProjectEnvironmentArgs) ToProjectEnvironmentOutput() ProjectEnvironmentOutput {
-	return i.ToProjectEnvironmentOutputWithContext(context.Background())
+func (i ProjectEnvironmentsArgs) ToProjectEnvironmentsOutput() ProjectEnvironmentsOutput {
+	return i.ToProjectEnvironmentsOutputWithContext(context.Background())
 }
 
-func (i ProjectEnvironmentArgs) ToProjectEnvironmentOutputWithContext(ctx context.Context) ProjectEnvironmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentOutput)
+func (i ProjectEnvironmentsArgs) ToProjectEnvironmentsOutputWithContext(ctx context.Context) ProjectEnvironmentsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentsOutput)
 }
 
-// ProjectEnvironmentArrayInput is an input type that accepts ProjectEnvironmentArray and ProjectEnvironmentArrayOutput values.
-// You can construct a concrete instance of `ProjectEnvironmentArrayInput` via:
+// ProjectEnvironmentsMapInput is an input type that accepts ProjectEnvironmentsMap and ProjectEnvironmentsMapOutput values.
+// You can construct a concrete instance of `ProjectEnvironmentsMapInput` via:
 //
-//	ProjectEnvironmentArray{ ProjectEnvironmentArgs{...} }
-type ProjectEnvironmentArrayInput interface {
+//	ProjectEnvironmentsMap{ "key": ProjectEnvironmentsArgs{...} }
+type ProjectEnvironmentsMapInput interface {
 	pulumi.Input
 
-	ToProjectEnvironmentArrayOutput() ProjectEnvironmentArrayOutput
-	ToProjectEnvironmentArrayOutputWithContext(context.Context) ProjectEnvironmentArrayOutput
+	ToProjectEnvironmentsMapOutput() ProjectEnvironmentsMapOutput
+	ToProjectEnvironmentsMapOutputWithContext(context.Context) ProjectEnvironmentsMapOutput
 }
 
-type ProjectEnvironmentArray []ProjectEnvironmentInput
+type ProjectEnvironmentsMap map[string]ProjectEnvironmentsInput
 
-func (ProjectEnvironmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectEnvironment)(nil)).Elem()
+func (ProjectEnvironmentsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectEnvironments)(nil)).Elem()
 }
 
-func (i ProjectEnvironmentArray) ToProjectEnvironmentArrayOutput() ProjectEnvironmentArrayOutput {
-	return i.ToProjectEnvironmentArrayOutputWithContext(context.Background())
+func (i ProjectEnvironmentsMap) ToProjectEnvironmentsMapOutput() ProjectEnvironmentsMapOutput {
+	return i.ToProjectEnvironmentsMapOutputWithContext(context.Background())
 }
 
-func (i ProjectEnvironmentArray) ToProjectEnvironmentArrayOutputWithContext(ctx context.Context) ProjectEnvironmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentArrayOutput)
+func (i ProjectEnvironmentsMap) ToProjectEnvironmentsMapOutputWithContext(ctx context.Context) ProjectEnvironmentsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentsMapOutput)
 }
 
-type ProjectEnvironmentOutput struct{ *pulumi.OutputState }
+type ProjectEnvironmentsOutput struct{ *pulumi.OutputState }
 
-func (ProjectEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectEnvironment)(nil)).Elem()
+func (ProjectEnvironmentsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEnvironments)(nil)).Elem()
 }
 
-func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutput() ProjectEnvironmentOutput {
+func (o ProjectEnvironmentsOutput) ToProjectEnvironmentsOutput() ProjectEnvironmentsOutput {
 	return o
 }
 
-func (o ProjectEnvironmentOutput) ToProjectEnvironmentOutputWithContext(ctx context.Context) ProjectEnvironmentOutput {
+func (o ProjectEnvironmentsOutput) ToProjectEnvironmentsOutputWithContext(ctx context.Context) ProjectEnvironmentsOutput {
 	return o
 }
 
 // The environment's SDK key.
-func (o ProjectEnvironmentOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentsOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ProjectEnvironmentOutput) ApprovalSettings() ProjectEnvironmentApprovalSettingArrayOutput {
-	return o.ApplyT(func(v ProjectEnvironment) []ProjectEnvironmentApprovalSetting { return v.ApprovalSettings }).(ProjectEnvironmentApprovalSettingArrayOutput)
+func (o ProjectEnvironmentsOutput) ApprovalSettings() ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *ProjectEnvironmentsApprovalSettings { return v.ApprovalSettings }).(ProjectEnvironmentsApprovalSettingsPtrOutput)
 }
 
 // The environment's client-side ID.
-func (o ProjectEnvironmentOutput) ClientSideId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *string { return v.ClientSideId }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentsOutput) ClientSideId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *string { return v.ClientSideId }).(pulumi.StringPtrOutput)
 }
 
 // The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-func (o ProjectEnvironmentOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectEnvironment) string { return v.Color }).(pulumi.StringOutput)
+func (o ProjectEnvironmentsOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectEnvironments) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-func (o ProjectEnvironmentOutput) ConfirmChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
+// Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
+func (o ProjectEnvironmentsOutput) ConfirmChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *bool { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
 }
 
 // Denotes whether the environment is critical.
-func (o ProjectEnvironmentOutput) Critical() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentsOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-func (o ProjectEnvironmentOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
+// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
+func (o ProjectEnvironmentsOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *bool { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
 }
 
-// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
-func (o ProjectEnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
+func (o ProjectEnvironmentsOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
-// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-func (o ProjectEnvironmentOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectEnvironment) string { return v.Key }).(pulumi.StringOutput)
+// The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
+func (o ProjectEnvironmentsOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The environment's mobile key.
-func (o ProjectEnvironmentOutput) MobileKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *string { return v.MobileKey }).(pulumi.StringPtrOutput)
+func (o ProjectEnvironmentsOutput) MobileKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *string { return v.MobileKey }).(pulumi.StringPtrOutput)
 }
 
 // The name of the environment.
-func (o ProjectEnvironmentOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ProjectEnvironment) string { return v.Name }).(pulumi.StringOutput)
+func (o ProjectEnvironmentsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectEnvironments) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-func (o ProjectEnvironmentOutput) RequireComments() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.RequireComments }).(pulumi.BoolPtrOutput)
+// Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
+func (o ProjectEnvironmentsOutput) RequireComments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *bool { return v.RequireComments }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
-func (o ProjectEnvironmentOutput) SecureMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.SecureMode }).(pulumi.BoolPtrOutput)
+// Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
+func (o ProjectEnvironmentsOutput) SecureMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironments) *bool { return v.SecureMode }).(pulumi.BoolPtrOutput)
 }
 
 // Tags associated with your resource.
-func (o ProjectEnvironmentOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ProjectEnvironment) []string { return v.Tags }).(pulumi.StringArrayOutput)
+func (o ProjectEnvironmentsOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectEnvironments) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type ProjectEnvironmentArrayOutput struct{ *pulumi.OutputState }
+type ProjectEnvironmentsMapOutput struct{ *pulumi.OutputState }
 
-func (ProjectEnvironmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectEnvironment)(nil)).Elem()
+func (ProjectEnvironmentsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectEnvironments)(nil)).Elem()
 }
 
-func (o ProjectEnvironmentArrayOutput) ToProjectEnvironmentArrayOutput() ProjectEnvironmentArrayOutput {
+func (o ProjectEnvironmentsMapOutput) ToProjectEnvironmentsMapOutput() ProjectEnvironmentsMapOutput {
 	return o
 }
 
-func (o ProjectEnvironmentArrayOutput) ToProjectEnvironmentArrayOutputWithContext(ctx context.Context) ProjectEnvironmentArrayOutput {
+func (o ProjectEnvironmentsMapOutput) ToProjectEnvironmentsMapOutputWithContext(ctx context.Context) ProjectEnvironmentsMapOutput {
 	return o
 }
 
-func (o ProjectEnvironmentArrayOutput) Index(i pulumi.IntInput) ProjectEnvironmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectEnvironment {
-		return vs[0].([]ProjectEnvironment)[vs[1].(int)]
-	}).(ProjectEnvironmentOutput)
+func (o ProjectEnvironmentsMapOutput) MapIndex(k pulumi.StringInput) ProjectEnvironmentsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectEnvironments {
+		return vs[0].(map[string]ProjectEnvironments)[vs[1].(string)]
+	}).(ProjectEnvironmentsOutput)
 }
 
-type ProjectEnvironmentApprovalSetting struct {
+type ProjectEnvironmentsApprovalSettings struct {
 	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
 	AutoApplyApprovedChanges *bool `pulumi:"autoApplyApprovedChanges"`
 	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -3169,25 +3617,25 @@ type ProjectEnvironmentApprovalSetting struct {
 	RequiredApprovalTags []string `pulumi:"requiredApprovalTags"`
 	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
 	ServiceConfig map[string]string `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
 	ServiceKind *string `pulumi:"serviceKind"`
 }
 
-// ProjectEnvironmentApprovalSettingInput is an input type that accepts ProjectEnvironmentApprovalSettingArgs and ProjectEnvironmentApprovalSettingOutput values.
-// You can construct a concrete instance of `ProjectEnvironmentApprovalSettingInput` via:
+// ProjectEnvironmentsApprovalSettingsInput is an input type that accepts ProjectEnvironmentsApprovalSettingsArgs and ProjectEnvironmentsApprovalSettingsOutput values.
+// You can construct a concrete instance of `ProjectEnvironmentsApprovalSettingsInput` via:
 //
-//	ProjectEnvironmentApprovalSettingArgs{...}
-type ProjectEnvironmentApprovalSettingInput interface {
+//	ProjectEnvironmentsApprovalSettingsArgs{...}
+type ProjectEnvironmentsApprovalSettingsInput interface {
 	pulumi.Input
 
-	ToProjectEnvironmentApprovalSettingOutput() ProjectEnvironmentApprovalSettingOutput
-	ToProjectEnvironmentApprovalSettingOutputWithContext(context.Context) ProjectEnvironmentApprovalSettingOutput
+	ToProjectEnvironmentsApprovalSettingsOutput() ProjectEnvironmentsApprovalSettingsOutput
+	ToProjectEnvironmentsApprovalSettingsOutputWithContext(context.Context) ProjectEnvironmentsApprovalSettingsOutput
 }
 
-type ProjectEnvironmentApprovalSettingArgs struct {
+type ProjectEnvironmentsApprovalSettingsArgs struct {
 	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
 	AutoApplyApprovedChanges pulumi.BoolPtrInput `pulumi:"autoApplyApprovedChanges"`
 	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
@@ -3202,130 +3650,243 @@ type ProjectEnvironmentApprovalSettingArgs struct {
 	RequiredApprovalTags pulumi.StringArrayInput `pulumi:"requiredApprovalTags"`
 	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
 	ServiceConfig pulumi.StringMapInput `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
 	ServiceKind pulumi.StringPtrInput `pulumi:"serviceKind"`
 }
 
-func (ProjectEnvironmentApprovalSettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectEnvironmentApprovalSetting)(nil)).Elem()
+func (ProjectEnvironmentsApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEnvironmentsApprovalSettings)(nil)).Elem()
 }
 
-func (i ProjectEnvironmentApprovalSettingArgs) ToProjectEnvironmentApprovalSettingOutput() ProjectEnvironmentApprovalSettingOutput {
-	return i.ToProjectEnvironmentApprovalSettingOutputWithContext(context.Background())
+func (i ProjectEnvironmentsApprovalSettingsArgs) ToProjectEnvironmentsApprovalSettingsOutput() ProjectEnvironmentsApprovalSettingsOutput {
+	return i.ToProjectEnvironmentsApprovalSettingsOutputWithContext(context.Background())
 }
 
-func (i ProjectEnvironmentApprovalSettingArgs) ToProjectEnvironmentApprovalSettingOutputWithContext(ctx context.Context) ProjectEnvironmentApprovalSettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentApprovalSettingOutput)
+func (i ProjectEnvironmentsApprovalSettingsArgs) ToProjectEnvironmentsApprovalSettingsOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentsApprovalSettingsOutput)
 }
 
-// ProjectEnvironmentApprovalSettingArrayInput is an input type that accepts ProjectEnvironmentApprovalSettingArray and ProjectEnvironmentApprovalSettingArrayOutput values.
-// You can construct a concrete instance of `ProjectEnvironmentApprovalSettingArrayInput` via:
+func (i ProjectEnvironmentsApprovalSettingsArgs) ToProjectEnvironmentsApprovalSettingsPtrOutput() ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return i.ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectEnvironmentsApprovalSettingsArgs) ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentsApprovalSettingsOutput).ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(ctx)
+}
+
+// ProjectEnvironmentsApprovalSettingsPtrInput is an input type that accepts ProjectEnvironmentsApprovalSettingsArgs, ProjectEnvironmentsApprovalSettingsPtr and ProjectEnvironmentsApprovalSettingsPtrOutput values.
+// You can construct a concrete instance of `ProjectEnvironmentsApprovalSettingsPtrInput` via:
 //
-//	ProjectEnvironmentApprovalSettingArray{ ProjectEnvironmentApprovalSettingArgs{...} }
-type ProjectEnvironmentApprovalSettingArrayInput interface {
+//	        ProjectEnvironmentsApprovalSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectEnvironmentsApprovalSettingsPtrInput interface {
 	pulumi.Input
 
-	ToProjectEnvironmentApprovalSettingArrayOutput() ProjectEnvironmentApprovalSettingArrayOutput
-	ToProjectEnvironmentApprovalSettingArrayOutputWithContext(context.Context) ProjectEnvironmentApprovalSettingArrayOutput
+	ToProjectEnvironmentsApprovalSettingsPtrOutput() ProjectEnvironmentsApprovalSettingsPtrOutput
+	ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(context.Context) ProjectEnvironmentsApprovalSettingsPtrOutput
 }
 
-type ProjectEnvironmentApprovalSettingArray []ProjectEnvironmentApprovalSettingInput
+type projectEnvironmentsApprovalSettingsPtrType ProjectEnvironmentsApprovalSettingsArgs
 
-func (ProjectEnvironmentApprovalSettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectEnvironmentApprovalSetting)(nil)).Elem()
+func ProjectEnvironmentsApprovalSettingsPtr(v *ProjectEnvironmentsApprovalSettingsArgs) ProjectEnvironmentsApprovalSettingsPtrInput {
+	return (*projectEnvironmentsApprovalSettingsPtrType)(v)
 }
 
-func (i ProjectEnvironmentApprovalSettingArray) ToProjectEnvironmentApprovalSettingArrayOutput() ProjectEnvironmentApprovalSettingArrayOutput {
-	return i.ToProjectEnvironmentApprovalSettingArrayOutputWithContext(context.Background())
+func (*projectEnvironmentsApprovalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectEnvironmentsApprovalSettings)(nil)).Elem()
 }
 
-func (i ProjectEnvironmentApprovalSettingArray) ToProjectEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) ProjectEnvironmentApprovalSettingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentApprovalSettingArrayOutput)
+func (i *projectEnvironmentsApprovalSettingsPtrType) ToProjectEnvironmentsApprovalSettingsPtrOutput() ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return i.ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(context.Background())
 }
 
-type ProjectEnvironmentApprovalSettingOutput struct{ *pulumi.OutputState }
-
-func (ProjectEnvironmentApprovalSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectEnvironmentApprovalSetting)(nil)).Elem()
+func (i *projectEnvironmentsApprovalSettingsPtrType) ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentsApprovalSettingsPtrOutput)
 }
 
-func (o ProjectEnvironmentApprovalSettingOutput) ToProjectEnvironmentApprovalSettingOutput() ProjectEnvironmentApprovalSettingOutput {
+type ProjectEnvironmentsApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (ProjectEnvironmentsApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEnvironmentsApprovalSettings)(nil)).Elem()
+}
+
+func (o ProjectEnvironmentsApprovalSettingsOutput) ToProjectEnvironmentsApprovalSettingsOutput() ProjectEnvironmentsApprovalSettingsOutput {
 	return o
 }
 
-func (o ProjectEnvironmentApprovalSettingOutput) ToProjectEnvironmentApprovalSettingOutputWithContext(ctx context.Context) ProjectEnvironmentApprovalSettingOutput {
+func (o ProjectEnvironmentsApprovalSettingsOutput) ToProjectEnvironmentsApprovalSettingsOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsOutput {
 	return o
+}
+
+func (o ProjectEnvironmentsApprovalSettingsOutput) ToProjectEnvironmentsApprovalSettingsPtrOutput() ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return o.ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectEnvironmentsApprovalSettingsOutput) ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectEnvironmentsApprovalSettings) *ProjectEnvironmentsApprovalSettings {
+		return &v
+	}).(ProjectEnvironmentsApprovalSettingsPtrOutput)
 }
 
 // Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-func (o ProjectEnvironmentApprovalSettingOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-func (o ProjectEnvironmentApprovalSettingOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-func (o ProjectEnvironmentApprovalSettingOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *bool { return v.CanReviewOwnRequest }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *bool { return v.CanReviewOwnRequest }).(pulumi.BoolPtrOutput)
 }
 
 // The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-func (o ProjectEnvironmentApprovalSettingOutput) MinNumApprovals() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *int { return v.MinNumApprovals }).(pulumi.IntPtrOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *int { return v.MinNumApprovals }).(pulumi.IntPtrOutput)
 }
 
 // Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
-func (o ProjectEnvironmentApprovalSettingOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
-func (o ProjectEnvironmentApprovalSettingOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
 }
 
 // The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
 //
-//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
 //   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-func (o ProjectEnvironmentApprovalSettingOutput) ServiceConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
+func (o ProjectEnvironmentsApprovalSettingsOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
 }
 
-// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-func (o ProjectEnvironmentApprovalSettingOutput) ServiceKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProjectEnvironmentApprovalSetting) *string { return v.ServiceKind }).(pulumi.StringPtrOutput)
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o ProjectEnvironmentsApprovalSettingsOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectEnvironmentsApprovalSettings) *string { return v.ServiceKind }).(pulumi.StringPtrOutput)
 }
 
-type ProjectEnvironmentApprovalSettingArrayOutput struct{ *pulumi.OutputState }
+type ProjectEnvironmentsApprovalSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (ProjectEnvironmentApprovalSettingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProjectEnvironmentApprovalSetting)(nil)).Elem()
+func (ProjectEnvironmentsApprovalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectEnvironmentsApprovalSettings)(nil)).Elem()
 }
 
-func (o ProjectEnvironmentApprovalSettingArrayOutput) ToProjectEnvironmentApprovalSettingArrayOutput() ProjectEnvironmentApprovalSettingArrayOutput {
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) ToProjectEnvironmentsApprovalSettingsPtrOutput() ProjectEnvironmentsApprovalSettingsPtrOutput {
 	return o
 }
 
-func (o ProjectEnvironmentApprovalSettingArrayOutput) ToProjectEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) ProjectEnvironmentApprovalSettingArrayOutput {
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) ToProjectEnvironmentsApprovalSettingsPtrOutputWithContext(ctx context.Context) ProjectEnvironmentsApprovalSettingsPtrOutput {
 	return o
 }
 
-func (o ProjectEnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) ProjectEnvironmentApprovalSettingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectEnvironmentApprovalSetting {
-		return vs[0].([]ProjectEnvironmentApprovalSetting)[vs[1].(int)]
-	}).(ProjectEnvironmentApprovalSettingOutput)
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) Elem() ProjectEnvironmentsApprovalSettingsOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) ProjectEnvironmentsApprovalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectEnvironmentsApprovalSettings
+		return ret
+	}).(ProjectEnvironmentsApprovalSettingsOutput)
+}
+
+// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyApprovedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) CanApplyDeclinedChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanApplyDeclinedChanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) CanReviewOwnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanReviewOwnRequest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) MinNumApprovals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNumApprovals
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredApprovalTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
+//
+//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+//   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceConfig
+	}).(pulumi.StringMapOutput)
+}
+
+// The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+func (o ProjectEnvironmentsApprovalSettingsPtrOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentsApprovalSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKind
+	}).(pulumi.StringPtrOutput)
 }
 
 type RelayProxyConfigurationPolicy struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -3350,7 +3911,7 @@ type RelayProxyConfigurationPolicyInput interface {
 
 type RelayProxyConfigurationPolicyArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -3414,7 +3975,7 @@ func (o RelayProxyConfigurationPolicyOutput) ToRelayProxyConfigurationPolicyOutp
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 func (o RelayProxyConfigurationPolicyOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RelayProxyConfigurationPolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -3457,6 +4018,764 @@ func (o RelayProxyConfigurationPolicyArrayOutput) Index(i pulumi.IntInput) Relay
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelayProxyConfigurationPolicy {
 		return vs[0].([]RelayProxyConfigurationPolicy)[vs[1].(int)]
 	}).(RelayProxyConfigurationPolicyOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfig struct {
+	// The set of metric group keys to monitor during the guarded release.
+	MetricGroupKeys []string `pulumi:"metricGroupKeys"`
+	// The set of metric keys to monitor during the guarded release.
+	MetricKeys []string `pulumi:"metricKeys"`
+	// The minimum number of samples required before the policy makes a release decision.
+	MinSampleSize *int `pulumi:"minSampleSize"`
+	// Whether to automatically roll back the release when a monitored metric regresses.
+	RollbackOnRegression *bool `pulumi:"rollbackOnRegression"`
+	// The context kind key to use as the randomization unit for the rollout.
+	RolloutContextKind *string `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+	Stages []ReleasePolicyGuardedReleaseConfigStage `pulumi:"stages"`
+}
+
+// ReleasePolicyGuardedReleaseConfigInput is an input type that accepts ReleasePolicyGuardedReleaseConfigArgs and ReleasePolicyGuardedReleaseConfigOutput values.
+// You can construct a concrete instance of `ReleasePolicyGuardedReleaseConfigInput` via:
+//
+//	ReleasePolicyGuardedReleaseConfigArgs{...}
+type ReleasePolicyGuardedReleaseConfigInput interface {
+	pulumi.Input
+
+	ToReleasePolicyGuardedReleaseConfigOutput() ReleasePolicyGuardedReleaseConfigOutput
+	ToReleasePolicyGuardedReleaseConfigOutputWithContext(context.Context) ReleasePolicyGuardedReleaseConfigOutput
+}
+
+type ReleasePolicyGuardedReleaseConfigArgs struct {
+	// The set of metric group keys to monitor during the guarded release.
+	MetricGroupKeys pulumi.StringArrayInput `pulumi:"metricGroupKeys"`
+	// The set of metric keys to monitor during the guarded release.
+	MetricKeys pulumi.StringArrayInput `pulumi:"metricKeys"`
+	// The minimum number of samples required before the policy makes a release decision.
+	MinSampleSize pulumi.IntPtrInput `pulumi:"minSampleSize"`
+	// Whether to automatically roll back the release when a monitored metric regresses.
+	RollbackOnRegression pulumi.BoolPtrInput `pulumi:"rollbackOnRegression"`
+	// The context kind key to use as the randomization unit for the rollout.
+	RolloutContextKind pulumi.StringPtrInput `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+	Stages ReleasePolicyGuardedReleaseConfigStageArrayInput `pulumi:"stages"`
+}
+
+func (ReleasePolicyGuardedReleaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (i ReleasePolicyGuardedReleaseConfigArgs) ToReleasePolicyGuardedReleaseConfigOutput() ReleasePolicyGuardedReleaseConfigOutput {
+	return i.ToReleasePolicyGuardedReleaseConfigOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyGuardedReleaseConfigArgs) ToReleasePolicyGuardedReleaseConfigOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyGuardedReleaseConfigOutput)
+}
+
+func (i ReleasePolicyGuardedReleaseConfigArgs) ToReleasePolicyGuardedReleaseConfigPtrOutput() ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return i.ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyGuardedReleaseConfigArgs) ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyGuardedReleaseConfigOutput).ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(ctx)
+}
+
+// ReleasePolicyGuardedReleaseConfigPtrInput is an input type that accepts ReleasePolicyGuardedReleaseConfigArgs, ReleasePolicyGuardedReleaseConfigPtr and ReleasePolicyGuardedReleaseConfigPtrOutput values.
+// You can construct a concrete instance of `ReleasePolicyGuardedReleaseConfigPtrInput` via:
+//
+//	        ReleasePolicyGuardedReleaseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleasePolicyGuardedReleaseConfigPtrInput interface {
+	pulumi.Input
+
+	ToReleasePolicyGuardedReleaseConfigPtrOutput() ReleasePolicyGuardedReleaseConfigPtrOutput
+	ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(context.Context) ReleasePolicyGuardedReleaseConfigPtrOutput
+}
+
+type releasePolicyGuardedReleaseConfigPtrType ReleasePolicyGuardedReleaseConfigArgs
+
+func ReleasePolicyGuardedReleaseConfigPtr(v *ReleasePolicyGuardedReleaseConfigArgs) ReleasePolicyGuardedReleaseConfigPtrInput {
+	return (*releasePolicyGuardedReleaseConfigPtrType)(v)
+}
+
+func (*releasePolicyGuardedReleaseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (i *releasePolicyGuardedReleaseConfigPtrType) ToReleasePolicyGuardedReleaseConfigPtrOutput() ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return i.ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *releasePolicyGuardedReleaseConfigPtrType) ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyGuardedReleaseConfigPtrOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfigOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyGuardedReleaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (o ReleasePolicyGuardedReleaseConfigOutput) ToReleasePolicyGuardedReleaseConfigOutput() ReleasePolicyGuardedReleaseConfigOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigOutput) ToReleasePolicyGuardedReleaseConfigOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigOutput) ToReleasePolicyGuardedReleaseConfigPtrOutput() ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return o.ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ReleasePolicyGuardedReleaseConfigOutput) ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleasePolicyGuardedReleaseConfig) *ReleasePolicyGuardedReleaseConfig {
+		return &v
+	}).(ReleasePolicyGuardedReleaseConfigPtrOutput)
+}
+
+// The set of metric group keys to monitor during the guarded release.
+func (o ReleasePolicyGuardedReleaseConfigOutput) MetricGroupKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) []string { return v.MetricGroupKeys }).(pulumi.StringArrayOutput)
+}
+
+// The set of metric keys to monitor during the guarded release.
+func (o ReleasePolicyGuardedReleaseConfigOutput) MetricKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) []string { return v.MetricKeys }).(pulumi.StringArrayOutput)
+}
+
+// The minimum number of samples required before the policy makes a release decision.
+func (o ReleasePolicyGuardedReleaseConfigOutput) MinSampleSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) *int { return v.MinSampleSize }).(pulumi.IntPtrOutput)
+}
+
+// Whether to automatically roll back the release when a monitored metric regresses.
+func (o ReleasePolicyGuardedReleaseConfigOutput) RollbackOnRegression() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) *bool { return v.RollbackOnRegression }).(pulumi.BoolPtrOutput)
+}
+
+// The context kind key to use as the randomization unit for the rollout.
+func (o ReleasePolicyGuardedReleaseConfigOutput) RolloutContextKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) *string { return v.RolloutContextKind }).(pulumi.StringPtrOutput)
+}
+
+// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+func (o ReleasePolicyGuardedReleaseConfigOutput) Stages() ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfig) []ReleasePolicyGuardedReleaseConfigStage { return v.Stages }).(ReleasePolicyGuardedReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyGuardedReleaseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) ToReleasePolicyGuardedReleaseConfigPtrOutput() ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) ToReleasePolicyGuardedReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigPtrOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) Elem() ReleasePolicyGuardedReleaseConfigOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) ReleasePolicyGuardedReleaseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ReleasePolicyGuardedReleaseConfig
+		return ret
+	}).(ReleasePolicyGuardedReleaseConfigOutput)
+}
+
+// The set of metric group keys to monitor during the guarded release.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) MetricGroupKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricGroupKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of metric keys to monitor during the guarded release.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) MetricKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The minimum number of samples required before the policy makes a release decision.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) MinSampleSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinSampleSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to automatically roll back the release when a monitored metric regresses.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) RollbackOnRegression() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RollbackOnRegression
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The context kind key to use as the randomization unit for the rollout.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) RolloutContextKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutContextKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+func (o ReleasePolicyGuardedReleaseConfigPtrOutput) Stages() ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyGuardedReleaseConfig) []ReleasePolicyGuardedReleaseConfigStage {
+		if v == nil {
+			return nil
+		}
+		return v.Stages
+	}).(ReleasePolicyGuardedReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfigStage struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation int `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis int `pulumi:"durationMillis"`
+}
+
+// ReleasePolicyGuardedReleaseConfigStageInput is an input type that accepts ReleasePolicyGuardedReleaseConfigStageArgs and ReleasePolicyGuardedReleaseConfigStageOutput values.
+// You can construct a concrete instance of `ReleasePolicyGuardedReleaseConfigStageInput` via:
+//
+//	ReleasePolicyGuardedReleaseConfigStageArgs{...}
+type ReleasePolicyGuardedReleaseConfigStageInput interface {
+	pulumi.Input
+
+	ToReleasePolicyGuardedReleaseConfigStageOutput() ReleasePolicyGuardedReleaseConfigStageOutput
+	ToReleasePolicyGuardedReleaseConfigStageOutputWithContext(context.Context) ReleasePolicyGuardedReleaseConfigStageOutput
+}
+
+type ReleasePolicyGuardedReleaseConfigStageArgs struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation pulumi.IntInput `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis pulumi.IntInput `pulumi:"durationMillis"`
+}
+
+func (ReleasePolicyGuardedReleaseConfigStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (i ReleasePolicyGuardedReleaseConfigStageArgs) ToReleasePolicyGuardedReleaseConfigStageOutput() ReleasePolicyGuardedReleaseConfigStageOutput {
+	return i.ToReleasePolicyGuardedReleaseConfigStageOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyGuardedReleaseConfigStageArgs) ToReleasePolicyGuardedReleaseConfigStageOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyGuardedReleaseConfigStageOutput)
+}
+
+// ReleasePolicyGuardedReleaseConfigStageArrayInput is an input type that accepts ReleasePolicyGuardedReleaseConfigStageArray and ReleasePolicyGuardedReleaseConfigStageArrayOutput values.
+// You can construct a concrete instance of `ReleasePolicyGuardedReleaseConfigStageArrayInput` via:
+//
+//	ReleasePolicyGuardedReleaseConfigStageArray{ ReleasePolicyGuardedReleaseConfigStageArgs{...} }
+type ReleasePolicyGuardedReleaseConfigStageArrayInput interface {
+	pulumi.Input
+
+	ToReleasePolicyGuardedReleaseConfigStageArrayOutput() ReleasePolicyGuardedReleaseConfigStageArrayOutput
+	ToReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(context.Context) ReleasePolicyGuardedReleaseConfigStageArrayOutput
+}
+
+type ReleasePolicyGuardedReleaseConfigStageArray []ReleasePolicyGuardedReleaseConfigStageInput
+
+func (ReleasePolicyGuardedReleaseConfigStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (i ReleasePolicyGuardedReleaseConfigStageArray) ToReleasePolicyGuardedReleaseConfigStageArrayOutput() ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return i.ToReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyGuardedReleaseConfigStageArray) ToReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyGuardedReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfigStageOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyGuardedReleaseConfigStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (o ReleasePolicyGuardedReleaseConfigStageOutput) ToReleasePolicyGuardedReleaseConfigStageOutput() ReleasePolicyGuardedReleaseConfigStageOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigStageOutput) ToReleasePolicyGuardedReleaseConfigStageOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigStageOutput {
+	return o
+}
+
+// The percentage of traffic (0-100) allocated to the new variation during this stage.
+func (o ReleasePolicyGuardedReleaseConfigStageOutput) Allocation() pulumi.IntOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfigStage) int { return v.Allocation }).(pulumi.IntOutput)
+}
+
+// The duration of this stage, in milliseconds.
+func (o ReleasePolicyGuardedReleaseConfigStageOutput) DurationMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v ReleasePolicyGuardedReleaseConfigStage) int { return v.DurationMillis }).(pulumi.IntOutput)
+}
+
+type ReleasePolicyGuardedReleaseConfigStageArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyGuardedReleaseConfigStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (o ReleasePolicyGuardedReleaseConfigStageArrayOutput) ToReleasePolicyGuardedReleaseConfigStageArrayOutput() ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigStageArrayOutput) ToReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(ctx context.Context) ReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o ReleasePolicyGuardedReleaseConfigStageArrayOutput) Index(i pulumi.IntInput) ReleasePolicyGuardedReleaseConfigStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleasePolicyGuardedReleaseConfigStage {
+		return vs[0].([]ReleasePolicyGuardedReleaseConfigStage)[vs[1].(int)]
+	}).(ReleasePolicyGuardedReleaseConfigStageOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfig struct {
+	// The context kind key to use as the randomization unit for the rollout.
+	RolloutContextKind *string `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+	Stages []ReleasePolicyProgressiveReleaseConfigStage `pulumi:"stages"`
+}
+
+// ReleasePolicyProgressiveReleaseConfigInput is an input type that accepts ReleasePolicyProgressiveReleaseConfigArgs and ReleasePolicyProgressiveReleaseConfigOutput values.
+// You can construct a concrete instance of `ReleasePolicyProgressiveReleaseConfigInput` via:
+//
+//	ReleasePolicyProgressiveReleaseConfigArgs{...}
+type ReleasePolicyProgressiveReleaseConfigInput interface {
+	pulumi.Input
+
+	ToReleasePolicyProgressiveReleaseConfigOutput() ReleasePolicyProgressiveReleaseConfigOutput
+	ToReleasePolicyProgressiveReleaseConfigOutputWithContext(context.Context) ReleasePolicyProgressiveReleaseConfigOutput
+}
+
+type ReleasePolicyProgressiveReleaseConfigArgs struct {
+	// The context kind key to use as the randomization unit for the rollout.
+	RolloutContextKind pulumi.StringPtrInput `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+	Stages ReleasePolicyProgressiveReleaseConfigStageArrayInput `pulumi:"stages"`
+}
+
+func (ReleasePolicyProgressiveReleaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigArgs) ToReleasePolicyProgressiveReleaseConfigOutput() ReleasePolicyProgressiveReleaseConfigOutput {
+	return i.ToReleasePolicyProgressiveReleaseConfigOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigArgs) ToReleasePolicyProgressiveReleaseConfigOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyProgressiveReleaseConfigOutput)
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigArgs) ToReleasePolicyProgressiveReleaseConfigPtrOutput() ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return i.ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigArgs) ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyProgressiveReleaseConfigOutput).ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(ctx)
+}
+
+// ReleasePolicyProgressiveReleaseConfigPtrInput is an input type that accepts ReleasePolicyProgressiveReleaseConfigArgs, ReleasePolicyProgressiveReleaseConfigPtr and ReleasePolicyProgressiveReleaseConfigPtrOutput values.
+// You can construct a concrete instance of `ReleasePolicyProgressiveReleaseConfigPtrInput` via:
+//
+//	        ReleasePolicyProgressiveReleaseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleasePolicyProgressiveReleaseConfigPtrInput interface {
+	pulumi.Input
+
+	ToReleasePolicyProgressiveReleaseConfigPtrOutput() ReleasePolicyProgressiveReleaseConfigPtrOutput
+	ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(context.Context) ReleasePolicyProgressiveReleaseConfigPtrOutput
+}
+
+type releasePolicyProgressiveReleaseConfigPtrType ReleasePolicyProgressiveReleaseConfigArgs
+
+func ReleasePolicyProgressiveReleaseConfigPtr(v *ReleasePolicyProgressiveReleaseConfigArgs) ReleasePolicyProgressiveReleaseConfigPtrInput {
+	return (*releasePolicyProgressiveReleaseConfigPtrType)(v)
+}
+
+func (*releasePolicyProgressiveReleaseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (i *releasePolicyProgressiveReleaseConfigPtrType) ToReleasePolicyProgressiveReleaseConfigPtrOutput() ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return i.ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *releasePolicyProgressiveReleaseConfigPtrType) ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyProgressiveReleaseConfigPtrOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfigOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyProgressiveReleaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigOutput) ToReleasePolicyProgressiveReleaseConfigOutput() ReleasePolicyProgressiveReleaseConfigOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigOutput) ToReleasePolicyProgressiveReleaseConfigOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigOutput) ToReleasePolicyProgressiveReleaseConfigPtrOutput() ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return o.ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigOutput) ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleasePolicyProgressiveReleaseConfig) *ReleasePolicyProgressiveReleaseConfig {
+		return &v
+	}).(ReleasePolicyProgressiveReleaseConfigPtrOutput)
+}
+
+// The context kind key to use as the randomization unit for the rollout.
+func (o ReleasePolicyProgressiveReleaseConfigOutput) RolloutContextKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePolicyProgressiveReleaseConfig) *string { return v.RolloutContextKind }).(pulumi.StringPtrOutput)
+}
+
+// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+func (o ReleasePolicyProgressiveReleaseConfigOutput) Stages() ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyProgressiveReleaseConfig) []ReleasePolicyProgressiveReleaseConfigStage {
+		return v.Stages
+	}).(ReleasePolicyProgressiveReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyProgressiveReleaseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigPtrOutput) ToReleasePolicyProgressiveReleaseConfigPtrOutput() ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigPtrOutput) ToReleasePolicyProgressiveReleaseConfigPtrOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigPtrOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigPtrOutput) Elem() ReleasePolicyProgressiveReleaseConfigOutput {
+	return o.ApplyT(func(v *ReleasePolicyProgressiveReleaseConfig) ReleasePolicyProgressiveReleaseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ReleasePolicyProgressiveReleaseConfig
+		return ret
+	}).(ReleasePolicyProgressiveReleaseConfigOutput)
+}
+
+// The context kind key to use as the randomization unit for the rollout.
+func (o ReleasePolicyProgressiveReleaseConfigPtrOutput) RolloutContextKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePolicyProgressiveReleaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutContextKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+func (o ReleasePolicyProgressiveReleaseConfigPtrOutput) Stages() ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyProgressiveReleaseConfig) []ReleasePolicyProgressiveReleaseConfigStage {
+		if v == nil {
+			return nil
+		}
+		return v.Stages
+	}).(ReleasePolicyProgressiveReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfigStage struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation int `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis int `pulumi:"durationMillis"`
+}
+
+// ReleasePolicyProgressiveReleaseConfigStageInput is an input type that accepts ReleasePolicyProgressiveReleaseConfigStageArgs and ReleasePolicyProgressiveReleaseConfigStageOutput values.
+// You can construct a concrete instance of `ReleasePolicyProgressiveReleaseConfigStageInput` via:
+//
+//	ReleasePolicyProgressiveReleaseConfigStageArgs{...}
+type ReleasePolicyProgressiveReleaseConfigStageInput interface {
+	pulumi.Input
+
+	ToReleasePolicyProgressiveReleaseConfigStageOutput() ReleasePolicyProgressiveReleaseConfigStageOutput
+	ToReleasePolicyProgressiveReleaseConfigStageOutputWithContext(context.Context) ReleasePolicyProgressiveReleaseConfigStageOutput
+}
+
+type ReleasePolicyProgressiveReleaseConfigStageArgs struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation pulumi.IntInput `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis pulumi.IntInput `pulumi:"durationMillis"`
+}
+
+func (ReleasePolicyProgressiveReleaseConfigStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigStageArgs) ToReleasePolicyProgressiveReleaseConfigStageOutput() ReleasePolicyProgressiveReleaseConfigStageOutput {
+	return i.ToReleasePolicyProgressiveReleaseConfigStageOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigStageArgs) ToReleasePolicyProgressiveReleaseConfigStageOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyProgressiveReleaseConfigStageOutput)
+}
+
+// ReleasePolicyProgressiveReleaseConfigStageArrayInput is an input type that accepts ReleasePolicyProgressiveReleaseConfigStageArray and ReleasePolicyProgressiveReleaseConfigStageArrayOutput values.
+// You can construct a concrete instance of `ReleasePolicyProgressiveReleaseConfigStageArrayInput` via:
+//
+//	ReleasePolicyProgressiveReleaseConfigStageArray{ ReleasePolicyProgressiveReleaseConfigStageArgs{...} }
+type ReleasePolicyProgressiveReleaseConfigStageArrayInput interface {
+	pulumi.Input
+
+	ToReleasePolicyProgressiveReleaseConfigStageArrayOutput() ReleasePolicyProgressiveReleaseConfigStageArrayOutput
+	ToReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(context.Context) ReleasePolicyProgressiveReleaseConfigStageArrayOutput
+}
+
+type ReleasePolicyProgressiveReleaseConfigStageArray []ReleasePolicyProgressiveReleaseConfigStageInput
+
+func (ReleasePolicyProgressiveReleaseConfigStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigStageArray) ToReleasePolicyProgressiveReleaseConfigStageArrayOutput() ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return i.ToReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyProgressiveReleaseConfigStageArray) ToReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyProgressiveReleaseConfigStageArrayOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfigStageOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyProgressiveReleaseConfigStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigStageOutput) ToReleasePolicyProgressiveReleaseConfigStageOutput() ReleasePolicyProgressiveReleaseConfigStageOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigStageOutput) ToReleasePolicyProgressiveReleaseConfigStageOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigStageOutput {
+	return o
+}
+
+// The percentage of traffic (0-100) allocated to the new variation during this stage.
+func (o ReleasePolicyProgressiveReleaseConfigStageOutput) Allocation() pulumi.IntOutput {
+	return o.ApplyT(func(v ReleasePolicyProgressiveReleaseConfigStage) int { return v.Allocation }).(pulumi.IntOutput)
+}
+
+// The duration of this stage, in milliseconds.
+func (o ReleasePolicyProgressiveReleaseConfigStageOutput) DurationMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v ReleasePolicyProgressiveReleaseConfigStage) int { return v.DurationMillis }).(pulumi.IntOutput)
+}
+
+type ReleasePolicyProgressiveReleaseConfigStageArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyProgressiveReleaseConfigStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigStageArrayOutput) ToReleasePolicyProgressiveReleaseConfigStageArrayOutput() ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigStageArrayOutput) ToReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(ctx context.Context) ReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o ReleasePolicyProgressiveReleaseConfigStageArrayOutput) Index(i pulumi.IntInput) ReleasePolicyProgressiveReleaseConfigStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleasePolicyProgressiveReleaseConfigStage {
+		return vs[0].([]ReleasePolicyProgressiveReleaseConfigStage)[vs[1].(int)]
+	}).(ReleasePolicyProgressiveReleaseConfigStageOutput)
+}
+
+type ReleasePolicyScope struct {
+	// The set of environment keys this policy applies to.
+	EnvironmentKeys []string `pulumi:"environmentKeys"`
+	// The set of flag tags this policy applies to.
+	FlagTagKeys []string `pulumi:"flagTagKeys"`
+}
+
+// ReleasePolicyScopeInput is an input type that accepts ReleasePolicyScopeArgs and ReleasePolicyScopeOutput values.
+// You can construct a concrete instance of `ReleasePolicyScopeInput` via:
+//
+//	ReleasePolicyScopeArgs{...}
+type ReleasePolicyScopeInput interface {
+	pulumi.Input
+
+	ToReleasePolicyScopeOutput() ReleasePolicyScopeOutput
+	ToReleasePolicyScopeOutputWithContext(context.Context) ReleasePolicyScopeOutput
+}
+
+type ReleasePolicyScopeArgs struct {
+	// The set of environment keys this policy applies to.
+	EnvironmentKeys pulumi.StringArrayInput `pulumi:"environmentKeys"`
+	// The set of flag tags this policy applies to.
+	FlagTagKeys pulumi.StringArrayInput `pulumi:"flagTagKeys"`
+}
+
+func (ReleasePolicyScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyScope)(nil)).Elem()
+}
+
+func (i ReleasePolicyScopeArgs) ToReleasePolicyScopeOutput() ReleasePolicyScopeOutput {
+	return i.ToReleasePolicyScopeOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyScopeArgs) ToReleasePolicyScopeOutputWithContext(ctx context.Context) ReleasePolicyScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyScopeOutput)
+}
+
+func (i ReleasePolicyScopeArgs) ToReleasePolicyScopePtrOutput() ReleasePolicyScopePtrOutput {
+	return i.ToReleasePolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (i ReleasePolicyScopeArgs) ToReleasePolicyScopePtrOutputWithContext(ctx context.Context) ReleasePolicyScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyScopeOutput).ToReleasePolicyScopePtrOutputWithContext(ctx)
+}
+
+// ReleasePolicyScopePtrInput is an input type that accepts ReleasePolicyScopeArgs, ReleasePolicyScopePtr and ReleasePolicyScopePtrOutput values.
+// You can construct a concrete instance of `ReleasePolicyScopePtrInput` via:
+//
+//	        ReleasePolicyScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleasePolicyScopePtrInput interface {
+	pulumi.Input
+
+	ToReleasePolicyScopePtrOutput() ReleasePolicyScopePtrOutput
+	ToReleasePolicyScopePtrOutputWithContext(context.Context) ReleasePolicyScopePtrOutput
+}
+
+type releasePolicyScopePtrType ReleasePolicyScopeArgs
+
+func ReleasePolicyScopePtr(v *ReleasePolicyScopeArgs) ReleasePolicyScopePtrInput {
+	return (*releasePolicyScopePtrType)(v)
+}
+
+func (*releasePolicyScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyScope)(nil)).Elem()
+}
+
+func (i *releasePolicyScopePtrType) ToReleasePolicyScopePtrOutput() ReleasePolicyScopePtrOutput {
+	return i.ToReleasePolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (i *releasePolicyScopePtrType) ToReleasePolicyScopePtrOutputWithContext(ctx context.Context) ReleasePolicyScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePolicyScopePtrOutput)
+}
+
+type ReleasePolicyScopeOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePolicyScope)(nil)).Elem()
+}
+
+func (o ReleasePolicyScopeOutput) ToReleasePolicyScopeOutput() ReleasePolicyScopeOutput {
+	return o
+}
+
+func (o ReleasePolicyScopeOutput) ToReleasePolicyScopeOutputWithContext(ctx context.Context) ReleasePolicyScopeOutput {
+	return o
+}
+
+func (o ReleasePolicyScopeOutput) ToReleasePolicyScopePtrOutput() ReleasePolicyScopePtrOutput {
+	return o.ToReleasePolicyScopePtrOutputWithContext(context.Background())
+}
+
+func (o ReleasePolicyScopeOutput) ToReleasePolicyScopePtrOutputWithContext(ctx context.Context) ReleasePolicyScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleasePolicyScope) *ReleasePolicyScope {
+		return &v
+	}).(ReleasePolicyScopePtrOutput)
+}
+
+// The set of environment keys this policy applies to.
+func (o ReleasePolicyScopeOutput) EnvironmentKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyScope) []string { return v.EnvironmentKeys }).(pulumi.StringArrayOutput)
+}
+
+// The set of flag tags this policy applies to.
+func (o ReleasePolicyScopeOutput) FlagTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleasePolicyScope) []string { return v.FlagTagKeys }).(pulumi.StringArrayOutput)
+}
+
+type ReleasePolicyScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ReleasePolicyScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePolicyScope)(nil)).Elem()
+}
+
+func (o ReleasePolicyScopePtrOutput) ToReleasePolicyScopePtrOutput() ReleasePolicyScopePtrOutput {
+	return o
+}
+
+func (o ReleasePolicyScopePtrOutput) ToReleasePolicyScopePtrOutputWithContext(ctx context.Context) ReleasePolicyScopePtrOutput {
+	return o
+}
+
+func (o ReleasePolicyScopePtrOutput) Elem() ReleasePolicyScopeOutput {
+	return o.ApplyT(func(v *ReleasePolicyScope) ReleasePolicyScope {
+		if v != nil {
+			return *v
+		}
+		var ret ReleasePolicyScope
+		return ret
+	}).(ReleasePolicyScopeOutput)
+}
+
+// The set of environment keys this policy applies to.
+func (o ReleasePolicyScopePtrOutput) EnvironmentKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of flag tags this policy applies to.
+func (o ReleasePolicyScopePtrOutput) FlagTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReleasePolicyScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FlagTagKeys
+	}).(pulumi.StringArrayOutput)
 }
 
 type SegmentExcludedContext struct {
@@ -3674,7 +4993,7 @@ func (o SegmentIncludedContextArrayOutput) Index(i pulumi.IntInput) SegmentInclu
 type SegmentRule struct {
 	// The attribute by which to group contexts together.
 	BucketBy *string `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// List of clauses specifying the logical conditions to evaluate
 	Clauses []SegmentRuleClause `pulumi:"clauses"`
 	// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
 	RolloutContextKind *string `pulumi:"rolloutContextKind"`
@@ -3696,7 +5015,7 @@ type SegmentRuleInput interface {
 type SegmentRuleArgs struct {
 	// The attribute by which to group contexts together.
 	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// List of clauses specifying the logical conditions to evaluate
 	Clauses SegmentRuleClauseArrayInput `pulumi:"clauses"`
 	// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
 	RolloutContextKind pulumi.StringPtrInput `pulumi:"rolloutContextKind"`
@@ -3760,7 +5079,7 @@ func (o SegmentRuleOutput) BucketBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SegmentRule) *string { return v.BucketBy }).(pulumi.StringPtrOutput)
 }
 
-// List of nested blocks specifying the logical clauses to evaluate
+// List of clauses specifying the logical conditions to evaluate
 func (o SegmentRuleOutput) Clauses() SegmentRuleClauseArrayOutput {
 	return o.ApplyT(func(v SegmentRule) []SegmentRuleClause { return v.Clauses }).(SegmentRuleClauseArrayOutput)
 }
@@ -3802,7 +5121,7 @@ type SegmentRuleClause struct {
 	ContextKind *string `pulumi:"contextKind"`
 	// Whether to negate the rule clause.
 	Negate *bool `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 	Op string `pulumi:"op"`
 	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
 	ValueType *string `pulumi:"valueType"`
@@ -3828,7 +5147,7 @@ type SegmentRuleClauseArgs struct {
 	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
 	// Whether to negate the rule clause.
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 	Op pulumi.StringInput `pulumi:"op"`
 	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
@@ -3902,7 +5221,7 @@ func (o SegmentRuleClauseOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SegmentRuleClause) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
-// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
 func (o SegmentRuleClauseOutput) Op() pulumi.StringOutput {
 	return o.ApplyT(func(v SegmentRuleClause) string { return v.Op }).(pulumi.StringOutput)
 }
@@ -3935,218 +5254,6 @@ func (o SegmentRuleClauseArrayOutput) Index(i pulumi.IntInput) SegmentRuleClause
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SegmentRuleClause {
 		return vs[0].([]SegmentRuleClause)[vs[1].(int)]
 	}).(SegmentRuleClauseOutput)
-}
-
-type TeamMemberRoleAttribute struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key string `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values []string `pulumi:"values"`
-}
-
-// TeamMemberRoleAttributeInput is an input type that accepts TeamMemberRoleAttributeArgs and TeamMemberRoleAttributeOutput values.
-// You can construct a concrete instance of `TeamMemberRoleAttributeInput` via:
-//
-//	TeamMemberRoleAttributeArgs{...}
-type TeamMemberRoleAttributeInput interface {
-	pulumi.Input
-
-	ToTeamMemberRoleAttributeOutput() TeamMemberRoleAttributeOutput
-	ToTeamMemberRoleAttributeOutputWithContext(context.Context) TeamMemberRoleAttributeOutput
-}
-
-type TeamMemberRoleAttributeArgs struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (TeamMemberRoleAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i TeamMemberRoleAttributeArgs) ToTeamMemberRoleAttributeOutput() TeamMemberRoleAttributeOutput {
-	return i.ToTeamMemberRoleAttributeOutputWithContext(context.Background())
-}
-
-func (i TeamMemberRoleAttributeArgs) ToTeamMemberRoleAttributeOutputWithContext(ctx context.Context) TeamMemberRoleAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TeamMemberRoleAttributeOutput)
-}
-
-// TeamMemberRoleAttributeArrayInput is an input type that accepts TeamMemberRoleAttributeArray and TeamMemberRoleAttributeArrayOutput values.
-// You can construct a concrete instance of `TeamMemberRoleAttributeArrayInput` via:
-//
-//	TeamMemberRoleAttributeArray{ TeamMemberRoleAttributeArgs{...} }
-type TeamMemberRoleAttributeArrayInput interface {
-	pulumi.Input
-
-	ToTeamMemberRoleAttributeArrayOutput() TeamMemberRoleAttributeArrayOutput
-	ToTeamMemberRoleAttributeArrayOutputWithContext(context.Context) TeamMemberRoleAttributeArrayOutput
-}
-
-type TeamMemberRoleAttributeArray []TeamMemberRoleAttributeInput
-
-func (TeamMemberRoleAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i TeamMemberRoleAttributeArray) ToTeamMemberRoleAttributeArrayOutput() TeamMemberRoleAttributeArrayOutput {
-	return i.ToTeamMemberRoleAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i TeamMemberRoleAttributeArray) ToTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) TeamMemberRoleAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TeamMemberRoleAttributeArrayOutput)
-}
-
-type TeamMemberRoleAttributeOutput struct{ *pulumi.OutputState }
-
-func (TeamMemberRoleAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o TeamMemberRoleAttributeOutput) ToTeamMemberRoleAttributeOutput() TeamMemberRoleAttributeOutput {
-	return o
-}
-
-func (o TeamMemberRoleAttributeOutput) ToTeamMemberRoleAttributeOutputWithContext(ctx context.Context) TeamMemberRoleAttributeOutput {
-	return o
-}
-
-// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-func (o TeamMemberRoleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v TeamMemberRoleAttribute) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-func (o TeamMemberRoleAttributeOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TeamMemberRoleAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type TeamMemberRoleAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (TeamMemberRoleAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o TeamMemberRoleAttributeArrayOutput) ToTeamMemberRoleAttributeArrayOutput() TeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o TeamMemberRoleAttributeArrayOutput) ToTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) TeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o TeamMemberRoleAttributeArrayOutput) Index(i pulumi.IntInput) TeamMemberRoleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamMemberRoleAttribute {
-		return vs[0].([]TeamMemberRoleAttribute)[vs[1].(int)]
-	}).(TeamMemberRoleAttributeOutput)
-}
-
-type TeamRoleAttribute struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key string `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values []string `pulumi:"values"`
-}
-
-// TeamRoleAttributeInput is an input type that accepts TeamRoleAttributeArgs and TeamRoleAttributeOutput values.
-// You can construct a concrete instance of `TeamRoleAttributeInput` via:
-//
-//	TeamRoleAttributeArgs{...}
-type TeamRoleAttributeInput interface {
-	pulumi.Input
-
-	ToTeamRoleAttributeOutput() TeamRoleAttributeOutput
-	ToTeamRoleAttributeOutputWithContext(context.Context) TeamRoleAttributeOutput
-}
-
-type TeamRoleAttributeArgs struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (TeamRoleAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TeamRoleAttribute)(nil)).Elem()
-}
-
-func (i TeamRoleAttributeArgs) ToTeamRoleAttributeOutput() TeamRoleAttributeOutput {
-	return i.ToTeamRoleAttributeOutputWithContext(context.Background())
-}
-
-func (i TeamRoleAttributeArgs) ToTeamRoleAttributeOutputWithContext(ctx context.Context) TeamRoleAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TeamRoleAttributeOutput)
-}
-
-// TeamRoleAttributeArrayInput is an input type that accepts TeamRoleAttributeArray and TeamRoleAttributeArrayOutput values.
-// You can construct a concrete instance of `TeamRoleAttributeArrayInput` via:
-//
-//	TeamRoleAttributeArray{ TeamRoleAttributeArgs{...} }
-type TeamRoleAttributeArrayInput interface {
-	pulumi.Input
-
-	ToTeamRoleAttributeArrayOutput() TeamRoleAttributeArrayOutput
-	ToTeamRoleAttributeArrayOutputWithContext(context.Context) TeamRoleAttributeArrayOutput
-}
-
-type TeamRoleAttributeArray []TeamRoleAttributeInput
-
-func (TeamRoleAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TeamRoleAttribute)(nil)).Elem()
-}
-
-func (i TeamRoleAttributeArray) ToTeamRoleAttributeArrayOutput() TeamRoleAttributeArrayOutput {
-	return i.ToTeamRoleAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i TeamRoleAttributeArray) ToTeamRoleAttributeArrayOutputWithContext(ctx context.Context) TeamRoleAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TeamRoleAttributeArrayOutput)
-}
-
-type TeamRoleAttributeOutput struct{ *pulumi.OutputState }
-
-func (TeamRoleAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TeamRoleAttribute)(nil)).Elem()
-}
-
-func (o TeamRoleAttributeOutput) ToTeamRoleAttributeOutput() TeamRoleAttributeOutput {
-	return o
-}
-
-func (o TeamRoleAttributeOutput) ToTeamRoleAttributeOutputWithContext(ctx context.Context) TeamRoleAttributeOutput {
-	return o
-}
-
-// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-func (o TeamRoleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v TeamRoleAttribute) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-func (o TeamRoleAttributeOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TeamRoleAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type TeamRoleAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (TeamRoleAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TeamRoleAttribute)(nil)).Elem()
-}
-
-func (o TeamRoleAttributeArrayOutput) ToTeamRoleAttributeArrayOutput() TeamRoleAttributeArrayOutput {
-	return o
-}
-
-func (o TeamRoleAttributeArrayOutput) ToTeamRoleAttributeArrayOutputWithContext(ctx context.Context) TeamRoleAttributeArrayOutput {
-	return o
-}
-
-func (o TeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) TeamRoleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamRoleAttribute {
-		return vs[0].([]TeamRoleAttribute)[vs[1].(int)]
-	}).(TeamRoleAttributeOutput)
 }
 
 type ViewLinksSegment struct {
@@ -4257,7 +5364,7 @@ func (o ViewLinksSegmentArrayOutput) Index(i pulumi.IntInput) ViewLinksSegmentOu
 
 type WebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -4282,7 +5389,7 @@ type WebhookStatementInput interface {
 
 type WebhookStatementArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -4346,7 +5453,7 @@ func (o WebhookStatementOutput) ToWebhookStatementOutputWithContext(ctx context.
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
 func (o WebhookStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WebhookStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -4389,6 +5496,130 @@ func (o WebhookStatementArrayOutput) Index(i pulumi.IntInput) WebhookStatementOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookStatement {
 		return vs[0].([]WebhookStatement)[vs[1].(int)]
 	}).(WebhookStatementOutput)
+}
+
+type GetAiAgentGraphEdges struct {
+	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	Handoff string `pulumi:"handoff"`
+	// The unique key for this edge within the graph. Always equals the map key.
+	Key string `pulumi:"key"`
+	// The AI Config key that is the source of this edge.
+	SourceConfig string `pulumi:"sourceConfig"`
+	// The AI Config key that is the target of this edge.
+	TargetConfig string `pulumi:"targetConfig"`
+}
+
+// GetAiAgentGraphEdgesInput is an input type that accepts GetAiAgentGraphEdgesArgs and GetAiAgentGraphEdgesOutput values.
+// You can construct a concrete instance of `GetAiAgentGraphEdgesInput` via:
+//
+//	GetAiAgentGraphEdgesArgs{...}
+type GetAiAgentGraphEdgesInput interface {
+	pulumi.Input
+
+	ToGetAiAgentGraphEdgesOutput() GetAiAgentGraphEdgesOutput
+	ToGetAiAgentGraphEdgesOutputWithContext(context.Context) GetAiAgentGraphEdgesOutput
+}
+
+type GetAiAgentGraphEdgesArgs struct {
+	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	Handoff pulumi.StringInput `pulumi:"handoff"`
+	// The unique key for this edge within the graph. Always equals the map key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The AI Config key that is the source of this edge.
+	SourceConfig pulumi.StringInput `pulumi:"sourceConfig"`
+	// The AI Config key that is the target of this edge.
+	TargetConfig pulumi.StringInput `pulumi:"targetConfig"`
+}
+
+func (GetAiAgentGraphEdgesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiAgentGraphEdges)(nil)).Elem()
+}
+
+func (i GetAiAgentGraphEdgesArgs) ToGetAiAgentGraphEdgesOutput() GetAiAgentGraphEdgesOutput {
+	return i.ToGetAiAgentGraphEdgesOutputWithContext(context.Background())
+}
+
+func (i GetAiAgentGraphEdgesArgs) ToGetAiAgentGraphEdgesOutputWithContext(ctx context.Context) GetAiAgentGraphEdgesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiAgentGraphEdgesOutput)
+}
+
+// GetAiAgentGraphEdgesMapInput is an input type that accepts GetAiAgentGraphEdgesMap and GetAiAgentGraphEdgesMapOutput values.
+// You can construct a concrete instance of `GetAiAgentGraphEdgesMapInput` via:
+//
+//	GetAiAgentGraphEdgesMap{ "key": GetAiAgentGraphEdgesArgs{...} }
+type GetAiAgentGraphEdgesMapInput interface {
+	pulumi.Input
+
+	ToGetAiAgentGraphEdgesMapOutput() GetAiAgentGraphEdgesMapOutput
+	ToGetAiAgentGraphEdgesMapOutputWithContext(context.Context) GetAiAgentGraphEdgesMapOutput
+}
+
+type GetAiAgentGraphEdgesMap map[string]GetAiAgentGraphEdgesInput
+
+func (GetAiAgentGraphEdgesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiAgentGraphEdges)(nil)).Elem()
+}
+
+func (i GetAiAgentGraphEdgesMap) ToGetAiAgentGraphEdgesMapOutput() GetAiAgentGraphEdgesMapOutput {
+	return i.ToGetAiAgentGraphEdgesMapOutputWithContext(context.Background())
+}
+
+func (i GetAiAgentGraphEdgesMap) ToGetAiAgentGraphEdgesMapOutputWithContext(ctx context.Context) GetAiAgentGraphEdgesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiAgentGraphEdgesMapOutput)
+}
+
+type GetAiAgentGraphEdgesOutput struct{ *pulumi.OutputState }
+
+func (GetAiAgentGraphEdgesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiAgentGraphEdges)(nil)).Elem()
+}
+
+func (o GetAiAgentGraphEdgesOutput) ToGetAiAgentGraphEdgesOutput() GetAiAgentGraphEdgesOutput {
+	return o
+}
+
+func (o GetAiAgentGraphEdgesOutput) ToGetAiAgentGraphEdgesOutputWithContext(ctx context.Context) GetAiAgentGraphEdgesOutput {
+	return o
+}
+
+// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+func (o GetAiAgentGraphEdgesOutput) Handoff() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.Handoff }).(pulumi.StringOutput)
+}
+
+// The unique key for this edge within the graph. Always equals the map key.
+func (o GetAiAgentGraphEdgesOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The AI Config key that is the source of this edge.
+func (o GetAiAgentGraphEdgesOutput) SourceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.SourceConfig }).(pulumi.StringOutput)
+}
+
+// The AI Config key that is the target of this edge.
+func (o GetAiAgentGraphEdgesOutput) TargetConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.TargetConfig }).(pulumi.StringOutput)
+}
+
+type GetAiAgentGraphEdgesMapOutput struct{ *pulumi.OutputState }
+
+func (GetAiAgentGraphEdgesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiAgentGraphEdges)(nil)).Elem()
+}
+
+func (o GetAiAgentGraphEdgesMapOutput) ToGetAiAgentGraphEdgesMapOutput() GetAiAgentGraphEdgesMapOutput {
+	return o
+}
+
+func (o GetAiAgentGraphEdgesMapOutput) ToGetAiAgentGraphEdgesMapOutputWithContext(ctx context.Context) GetAiAgentGraphEdgesMapOutput {
+	return o
+}
+
+func (o GetAiAgentGraphEdgesMapOutput) MapIndex(k pulumi.StringInput) GetAiAgentGraphEdgesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAiAgentGraphEdges {
+		return vs[0].(map[string]GetAiAgentGraphEdges)[vs[1].(string)]
+	}).(GetAiAgentGraphEdgesOutput)
 }
 
 type GetAiConfigVariationType struct {
@@ -4507,9 +5738,9 @@ func (o GetAiConfigVariationTypeArrayOutput) Index(i pulumi.IntInput) GetAiConfi
 }
 
 type GetAiConfigVariationMessage struct {
-	// The content of the message.
+	// Content of the message.
 	Content string `pulumi:"content"`
-	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	// Role of the message.
 	Role string `pulumi:"role"`
 }
 
@@ -4525,9 +5756,9 @@ type GetAiConfigVariationMessageInput interface {
 }
 
 type GetAiConfigVariationMessageArgs struct {
-	// The content of the message.
+	// Content of the message.
 	Content pulumi.StringInput `pulumi:"content"`
-	// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+	// Role of the message.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -4582,12 +5813,12 @@ func (o GetAiConfigVariationMessageOutput) ToGetAiConfigVariationMessageOutputWi
 	return o
 }
 
-// The content of the message.
+// Content of the message.
 func (o GetAiConfigVariationMessageOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiConfigVariationMessage) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+// Role of the message.
 func (o GetAiConfigVariationMessageOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiConfigVariationMessage) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -4614,7 +5845,6 @@ func (o GetAiConfigVariationMessageArrayOutput) Index(i pulumi.IntInput) GetAiCo
 
 type GetAuditLogSubscriptionStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -4639,7 +5869,6 @@ type GetAuditLogSubscriptionStatementInput interface {
 
 type GetAuditLogSubscriptionStatementArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -4703,7 +5932,6 @@ func (o GetAuditLogSubscriptionStatementOutput) ToGetAuditLogSubscriptionStateme
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 func (o GetAuditLogSubscriptionStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -4748,180 +5976,239 @@ func (o GetAuditLogSubscriptionStatementArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetAuditLogSubscriptionStatementOutput)
 }
 
-type GetEnvironmentApprovalSetting struct {
-	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-	AutoApplyApprovedChanges *bool `pulumi:"autoApplyApprovedChanges"`
-	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+type GetEnvironmentApprovalSettings struct {
+	// Whether to auto-apply changes once all approvers have approved.
+	AutoApplyApprovedChanges bool `pulumi:"autoApplyApprovedChanges"`
+	// Whether changes can be applied with the minimum number of approvals despite declines.
 	CanApplyDeclinedChanges bool `pulumi:"canApplyDeclinedChanges"`
-	// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+	// Whether requesters can approve their own requests.
 	CanReviewOwnRequest bool `pulumi:"canReviewOwnRequest"`
-	// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+	// Minimum approvers required (1-5).
 	MinNumApprovals int `pulumi:"minNumApprovals"`
-	// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+	// Whether changes require approval.
 	Required bool `pulumi:"required"`
-	// An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+	// Flag tags requiring approval (only one of required / required*approval*tags is set).
 	RequiredApprovalTags []string `pulumi:"requiredApprovalTags"`
-	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
-	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+	// Service-specific approval config.
 	ServiceConfig map[string]string `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// Approval service. Valid values are `servicenow` and `launchdarkly`.
 	ServiceKind string `pulumi:"serviceKind"`
 }
 
-// GetEnvironmentApprovalSettingInput is an input type that accepts GetEnvironmentApprovalSettingArgs and GetEnvironmentApprovalSettingOutput values.
-// You can construct a concrete instance of `GetEnvironmentApprovalSettingInput` via:
+// GetEnvironmentApprovalSettingsInput is an input type that accepts GetEnvironmentApprovalSettingsArgs and GetEnvironmentApprovalSettingsOutput values.
+// You can construct a concrete instance of `GetEnvironmentApprovalSettingsInput` via:
 //
-//	GetEnvironmentApprovalSettingArgs{...}
-type GetEnvironmentApprovalSettingInput interface {
+//	GetEnvironmentApprovalSettingsArgs{...}
+type GetEnvironmentApprovalSettingsInput interface {
 	pulumi.Input
 
-	ToGetEnvironmentApprovalSettingOutput() GetEnvironmentApprovalSettingOutput
-	ToGetEnvironmentApprovalSettingOutputWithContext(context.Context) GetEnvironmentApprovalSettingOutput
+	ToGetEnvironmentApprovalSettingsOutput() GetEnvironmentApprovalSettingsOutput
+	ToGetEnvironmentApprovalSettingsOutputWithContext(context.Context) GetEnvironmentApprovalSettingsOutput
 }
 
-type GetEnvironmentApprovalSettingArgs struct {
-	// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-	AutoApplyApprovedChanges pulumi.BoolPtrInput `pulumi:"autoApplyApprovedChanges"`
-	// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+type GetEnvironmentApprovalSettingsArgs struct {
+	// Whether to auto-apply changes once all approvers have approved.
+	AutoApplyApprovedChanges pulumi.BoolInput `pulumi:"autoApplyApprovedChanges"`
+	// Whether changes can be applied with the minimum number of approvals despite declines.
 	CanApplyDeclinedChanges pulumi.BoolInput `pulumi:"canApplyDeclinedChanges"`
-	// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+	// Whether requesters can approve their own requests.
 	CanReviewOwnRequest pulumi.BoolInput `pulumi:"canReviewOwnRequest"`
-	// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+	// Minimum approvers required (1-5).
 	MinNumApprovals pulumi.IntInput `pulumi:"minNumApprovals"`
-	// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
+	// Whether changes require approval.
 	Required pulumi.BoolInput `pulumi:"required"`
-	// An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
+	// Flag tags requiring approval (only one of required / required*approval*tags is set).
 	RequiredApprovalTags pulumi.StringArrayInput `pulumi:"requiredApprovalTags"`
-	// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
-	//
-	//      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-	//      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+	// Service-specific approval config.
 	ServiceConfig pulumi.StringMapInput `pulumi:"serviceConfig"`
-	// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+	// Approval service. Valid values are `servicenow` and `launchdarkly`.
 	ServiceKind pulumi.StringInput `pulumi:"serviceKind"`
 }
 
-func (GetEnvironmentApprovalSettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEnvironmentApprovalSetting)(nil)).Elem()
+func (GetEnvironmentApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentApprovalSettings)(nil)).Elem()
 }
 
-func (i GetEnvironmentApprovalSettingArgs) ToGetEnvironmentApprovalSettingOutput() GetEnvironmentApprovalSettingOutput {
-	return i.ToGetEnvironmentApprovalSettingOutputWithContext(context.Background())
+func (i GetEnvironmentApprovalSettingsArgs) ToGetEnvironmentApprovalSettingsOutput() GetEnvironmentApprovalSettingsOutput {
+	return i.ToGetEnvironmentApprovalSettingsOutputWithContext(context.Background())
 }
 
-func (i GetEnvironmentApprovalSettingArgs) ToGetEnvironmentApprovalSettingOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentApprovalSettingOutput)
+func (i GetEnvironmentApprovalSettingsArgs) ToGetEnvironmentApprovalSettingsOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentApprovalSettingsOutput)
 }
 
-// GetEnvironmentApprovalSettingArrayInput is an input type that accepts GetEnvironmentApprovalSettingArray and GetEnvironmentApprovalSettingArrayOutput values.
-// You can construct a concrete instance of `GetEnvironmentApprovalSettingArrayInput` via:
+type GetEnvironmentApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentApprovalSettings)(nil)).Elem()
+}
+
+func (o GetEnvironmentApprovalSettingsOutput) ToGetEnvironmentApprovalSettingsOutput() GetEnvironmentApprovalSettingsOutput {
+	return o
+}
+
+func (o GetEnvironmentApprovalSettingsOutput) ToGetEnvironmentApprovalSettingsOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingsOutput {
+	return o
+}
+
+// Whether to auto-apply changes once all approvers have approved.
+func (o GetEnvironmentApprovalSettingsOutput) AutoApplyApprovedChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolOutput)
+}
+
+// Whether changes can be applied with the minimum number of approvals despite declines.
+func (o GetEnvironmentApprovalSettingsOutput) CanApplyDeclinedChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolOutput)
+}
+
+// Whether requesters can approve their own requests.
+func (o GetEnvironmentApprovalSettingsOutput) CanReviewOwnRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) bool { return v.CanReviewOwnRequest }).(pulumi.BoolOutput)
+}
+
+// Minimum approvers required (1-5).
+func (o GetEnvironmentApprovalSettingsOutput) MinNumApprovals() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) int { return v.MinNumApprovals }).(pulumi.IntOutput)
+}
+
+// Whether changes require approval.
+func (o GetEnvironmentApprovalSettingsOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Flag tags requiring approval (only one of required / required*approval*tags is set).
+func (o GetEnvironmentApprovalSettingsOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
+}
+
+// Service-specific approval config.
+func (o GetEnvironmentApprovalSettingsOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
+}
+
+// Approval service. Valid values are `servicenow` and `launchdarkly`.
+func (o GetEnvironmentApprovalSettingsOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentApprovalSettings) string { return v.ServiceKind }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentSegmentApprovalSettings struct {
+	// Whether to auto-apply changes once all approvers have approved.
+	AutoApplyApprovedChanges bool `pulumi:"autoApplyApprovedChanges"`
+	// Whether changes can be applied with the minimum number of approvals despite declines.
+	CanApplyDeclinedChanges bool `pulumi:"canApplyDeclinedChanges"`
+	// Whether requesters can approve their own requests.
+	CanReviewOwnRequest bool `pulumi:"canReviewOwnRequest"`
+	// Minimum approvers required (1-5).
+	MinNumApprovals int `pulumi:"minNumApprovals"`
+	// Whether segment changes require approval.
+	Required bool `pulumi:"required"`
+	// Segment tags requiring approval (only one of required / required*approval*tags is set).
+	RequiredApprovalTags []string `pulumi:"requiredApprovalTags"`
+	// Service-specific approval config.
+	ServiceConfig map[string]string `pulumi:"serviceConfig"`
+	// Approval service. Valid values are `servicenow` and `launchdarkly`.
+	ServiceKind string `pulumi:"serviceKind"`
+}
+
+// GetEnvironmentSegmentApprovalSettingsInput is an input type that accepts GetEnvironmentSegmentApprovalSettingsArgs and GetEnvironmentSegmentApprovalSettingsOutput values.
+// You can construct a concrete instance of `GetEnvironmentSegmentApprovalSettingsInput` via:
 //
-//	GetEnvironmentApprovalSettingArray{ GetEnvironmentApprovalSettingArgs{...} }
-type GetEnvironmentApprovalSettingArrayInput interface {
+//	GetEnvironmentSegmentApprovalSettingsArgs{...}
+type GetEnvironmentSegmentApprovalSettingsInput interface {
 	pulumi.Input
 
-	ToGetEnvironmentApprovalSettingArrayOutput() GetEnvironmentApprovalSettingArrayOutput
-	ToGetEnvironmentApprovalSettingArrayOutputWithContext(context.Context) GetEnvironmentApprovalSettingArrayOutput
+	ToGetEnvironmentSegmentApprovalSettingsOutput() GetEnvironmentSegmentApprovalSettingsOutput
+	ToGetEnvironmentSegmentApprovalSettingsOutputWithContext(context.Context) GetEnvironmentSegmentApprovalSettingsOutput
 }
 
-type GetEnvironmentApprovalSettingArray []GetEnvironmentApprovalSettingInput
-
-func (GetEnvironmentApprovalSettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEnvironmentApprovalSetting)(nil)).Elem()
+type GetEnvironmentSegmentApprovalSettingsArgs struct {
+	// Whether to auto-apply changes once all approvers have approved.
+	AutoApplyApprovedChanges pulumi.BoolInput `pulumi:"autoApplyApprovedChanges"`
+	// Whether changes can be applied with the minimum number of approvals despite declines.
+	CanApplyDeclinedChanges pulumi.BoolInput `pulumi:"canApplyDeclinedChanges"`
+	// Whether requesters can approve their own requests.
+	CanReviewOwnRequest pulumi.BoolInput `pulumi:"canReviewOwnRequest"`
+	// Minimum approvers required (1-5).
+	MinNumApprovals pulumi.IntInput `pulumi:"minNumApprovals"`
+	// Whether segment changes require approval.
+	Required pulumi.BoolInput `pulumi:"required"`
+	// Segment tags requiring approval (only one of required / required*approval*tags is set).
+	RequiredApprovalTags pulumi.StringArrayInput `pulumi:"requiredApprovalTags"`
+	// Service-specific approval config.
+	ServiceConfig pulumi.StringMapInput `pulumi:"serviceConfig"`
+	// Approval service. Valid values are `servicenow` and `launchdarkly`.
+	ServiceKind pulumi.StringInput `pulumi:"serviceKind"`
 }
 
-func (i GetEnvironmentApprovalSettingArray) ToGetEnvironmentApprovalSettingArrayOutput() GetEnvironmentApprovalSettingArrayOutput {
-	return i.ToGetEnvironmentApprovalSettingArrayOutputWithContext(context.Background())
+func (GetEnvironmentSegmentApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentSegmentApprovalSettings)(nil)).Elem()
 }
 
-func (i GetEnvironmentApprovalSettingArray) ToGetEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentApprovalSettingArrayOutput)
+func (i GetEnvironmentSegmentApprovalSettingsArgs) ToGetEnvironmentSegmentApprovalSettingsOutput() GetEnvironmentSegmentApprovalSettingsOutput {
+	return i.ToGetEnvironmentSegmentApprovalSettingsOutputWithContext(context.Background())
 }
 
-type GetEnvironmentApprovalSettingOutput struct{ *pulumi.OutputState }
-
-func (GetEnvironmentApprovalSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEnvironmentApprovalSetting)(nil)).Elem()
+func (i GetEnvironmentSegmentApprovalSettingsArgs) ToGetEnvironmentSegmentApprovalSettingsOutputWithContext(ctx context.Context) GetEnvironmentSegmentApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentSegmentApprovalSettingsOutput)
 }
 
-func (o GetEnvironmentApprovalSettingOutput) ToGetEnvironmentApprovalSettingOutput() GetEnvironmentApprovalSettingOutput {
+type GetEnvironmentSegmentApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentSegmentApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentSegmentApprovalSettings)(nil)).Elem()
+}
+
+func (o GetEnvironmentSegmentApprovalSettingsOutput) ToGetEnvironmentSegmentApprovalSettingsOutput() GetEnvironmentSegmentApprovalSettingsOutput {
 	return o
 }
 
-func (o GetEnvironmentApprovalSettingOutput) ToGetEnvironmentApprovalSettingOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingOutput {
+func (o GetEnvironmentSegmentApprovalSettingsOutput) ToGetEnvironmentSegmentApprovalSettingsOutputWithContext(ctx context.Context) GetEnvironmentSegmentApprovalSettingsOutput {
 	return o
 }
 
-// Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
-func (o GetEnvironmentApprovalSettingOutput) AutoApplyApprovedChanges() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) *bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolPtrOutput)
+// Whether to auto-apply changes once all approvers have approved.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) AutoApplyApprovedChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) bool { return v.AutoApplyApprovedChanges }).(pulumi.BoolOutput)
 }
 
-// Set to `true` if changes can be applied as long as the `minNumApprovals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-func (o GetEnvironmentApprovalSettingOutput) CanApplyDeclinedChanges() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolOutput)
+// Whether changes can be applied with the minimum number of approvals despite declines.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) CanApplyDeclinedChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) bool { return v.CanApplyDeclinedChanges }).(pulumi.BoolOutput)
 }
 
-// Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-func (o GetEnvironmentApprovalSettingOutput) CanReviewOwnRequest() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) bool { return v.CanReviewOwnRequest }).(pulumi.BoolOutput)
+// Whether requesters can approve their own requests.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) CanReviewOwnRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) bool { return v.CanReviewOwnRequest }).(pulumi.BoolOutput)
 }
 
-// The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-func (o GetEnvironmentApprovalSettingOutput) MinNumApprovals() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) int { return v.MinNumApprovals }).(pulumi.IntOutput)
+// Minimum approvers required (1-5).
+func (o GetEnvironmentSegmentApprovalSettingsOutput) MinNumApprovals() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) int { return v.MinNumApprovals }).(pulumi.IntOutput)
 }
 
-// Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `requiredApprovalTags` is not set and vice versa. Defaults to `false`.
-func (o GetEnvironmentApprovalSettingOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) bool { return v.Required }).(pulumi.BoolOutput)
+// Whether segment changes require approval.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) bool { return v.Required }).(pulumi.BoolOutput)
 }
 
-// An array of tags used to specify which flags with those tags require approval. You may only set `requiredApprovalTags` if `required` is set to `false` and vice versa.
-func (o GetEnvironmentApprovalSettingOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
+// Segment tags requiring approval (only one of required / required*approval*tags is set).
+func (o GetEnvironmentSegmentApprovalSettingsOutput) RequiredApprovalTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) []string { return v.RequiredApprovalTags }).(pulumi.StringArrayOutput)
 }
 
-// The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
-//
-//   - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-//   - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-func (o GetEnvironmentApprovalSettingOutput) ServiceConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
+// Service-specific approval config.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) ServiceConfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) map[string]string { return v.ServiceConfig }).(pulumi.StringMapOutput)
 }
 
-// The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-func (o GetEnvironmentApprovalSettingOutput) ServiceKind() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEnvironmentApprovalSetting) string { return v.ServiceKind }).(pulumi.StringOutput)
-}
-
-type GetEnvironmentApprovalSettingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEnvironmentApprovalSettingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEnvironmentApprovalSetting)(nil)).Elem()
-}
-
-func (o GetEnvironmentApprovalSettingArrayOutput) ToGetEnvironmentApprovalSettingArrayOutput() GetEnvironmentApprovalSettingArrayOutput {
-	return o
-}
-
-func (o GetEnvironmentApprovalSettingArrayOutput) ToGetEnvironmentApprovalSettingArrayOutputWithContext(ctx context.Context) GetEnvironmentApprovalSettingArrayOutput {
-	return o
-}
-
-func (o GetEnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) GetEnvironmentApprovalSettingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentApprovalSetting {
-		return vs[0].([]GetEnvironmentApprovalSetting)[vs[1].(int)]
-	}).(GetEnvironmentApprovalSettingOutput)
+// Approval service. Valid values are `servicenow` and `launchdarkly`.
+func (o GetEnvironmentSegmentApprovalSettingsOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentSegmentApprovalSettings) string { return v.ServiceKind }).(pulumi.StringOutput)
 }
 
 type GetFeatureFlagClientSideAvailability struct {
-	// Whether this flag is available to SDKs using the client-side ID.
 	UsingEnvironmentId bool `pulumi:"usingEnvironmentId"`
-	// Whether this flag is available to SDKs using a mobile key.
-	UsingMobileKey bool `pulumi:"usingMobileKey"`
+	UsingMobileKey     bool `pulumi:"usingMobileKey"`
 }
 
 // GetFeatureFlagClientSideAvailabilityInput is an input type that accepts GetFeatureFlagClientSideAvailabilityArgs and GetFeatureFlagClientSideAvailabilityOutput values.
@@ -4936,10 +6223,8 @@ type GetFeatureFlagClientSideAvailabilityInput interface {
 }
 
 type GetFeatureFlagClientSideAvailabilityArgs struct {
-	// Whether this flag is available to SDKs using the client-side ID.
 	UsingEnvironmentId pulumi.BoolInput `pulumi:"usingEnvironmentId"`
-	// Whether this flag is available to SDKs using a mobile key.
-	UsingMobileKey pulumi.BoolInput `pulumi:"usingMobileKey"`
+	UsingMobileKey     pulumi.BoolInput `pulumi:"usingMobileKey"`
 }
 
 func (GetFeatureFlagClientSideAvailabilityArgs) ElementType() reflect.Type {
@@ -4952,31 +6237,6 @@ func (i GetFeatureFlagClientSideAvailabilityArgs) ToGetFeatureFlagClientSideAvai
 
 func (i GetFeatureFlagClientSideAvailabilityArgs) ToGetFeatureFlagClientSideAvailabilityOutputWithContext(ctx context.Context) GetFeatureFlagClientSideAvailabilityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagClientSideAvailabilityOutput)
-}
-
-// GetFeatureFlagClientSideAvailabilityArrayInput is an input type that accepts GetFeatureFlagClientSideAvailabilityArray and GetFeatureFlagClientSideAvailabilityArrayOutput values.
-// You can construct a concrete instance of `GetFeatureFlagClientSideAvailabilityArrayInput` via:
-//
-//	GetFeatureFlagClientSideAvailabilityArray{ GetFeatureFlagClientSideAvailabilityArgs{...} }
-type GetFeatureFlagClientSideAvailabilityArrayInput interface {
-	pulumi.Input
-
-	ToGetFeatureFlagClientSideAvailabilityArrayOutput() GetFeatureFlagClientSideAvailabilityArrayOutput
-	ToGetFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Context) GetFeatureFlagClientSideAvailabilityArrayOutput
-}
-
-type GetFeatureFlagClientSideAvailabilityArray []GetFeatureFlagClientSideAvailabilityInput
-
-func (GetFeatureFlagClientSideAvailabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagClientSideAvailability)(nil)).Elem()
-}
-
-func (i GetFeatureFlagClientSideAvailabilityArray) ToGetFeatureFlagClientSideAvailabilityArrayOutput() GetFeatureFlagClientSideAvailabilityArrayOutput {
-	return i.ToGetFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Background())
-}
-
-func (i GetFeatureFlagClientSideAvailabilityArray) ToGetFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetFeatureFlagClientSideAvailabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagClientSideAvailabilityArrayOutput)
 }
 
 type GetFeatureFlagClientSideAvailabilityOutput struct{ *pulumi.OutputState }
@@ -4993,264 +6253,179 @@ func (o GetFeatureFlagClientSideAvailabilityOutput) ToGetFeatureFlagClientSideAv
 	return o
 }
 
-// Whether this flag is available to SDKs using the client-side ID.
 func (o GetFeatureFlagClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFeatureFlagClientSideAvailability) bool { return v.UsingEnvironmentId }).(pulumi.BoolOutput)
 }
 
-// Whether this flag is available to SDKs using a mobile key.
 func (o GetFeatureFlagClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFeatureFlagClientSideAvailability) bool { return v.UsingMobileKey }).(pulumi.BoolOutput)
 }
 
-type GetFeatureFlagClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetFeatureFlagClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagClientSideAvailability)(nil)).Elem()
-}
-
-func (o GetFeatureFlagClientSideAvailabilityArrayOutput) ToGetFeatureFlagClientSideAvailabilityArrayOutput() GetFeatureFlagClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagClientSideAvailabilityArrayOutput) ToGetFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetFeatureFlagClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) GetFeatureFlagClientSideAvailabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFlagClientSideAvailability {
-		return vs[0].([]GetFeatureFlagClientSideAvailability)[vs[1].(int)]
-	}).(GetFeatureFlagClientSideAvailabilityOutput)
-}
-
-type GetFeatureFlagCustomProperty struct {
-	// The unique custom property key.
-	Key string `pulumi:"key"`
-	// The name of the custom property.
-	Name string `pulumi:"name"`
-	// The list of custom property value strings.
+type GetFeatureFlagCustomProperties struct {
+	Key    string   `pulumi:"key"`
+	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
-// GetFeatureFlagCustomPropertyInput is an input type that accepts GetFeatureFlagCustomPropertyArgs and GetFeatureFlagCustomPropertyOutput values.
-// You can construct a concrete instance of `GetFeatureFlagCustomPropertyInput` via:
+// GetFeatureFlagCustomPropertiesInput is an input type that accepts GetFeatureFlagCustomPropertiesArgs and GetFeatureFlagCustomPropertiesOutput values.
+// You can construct a concrete instance of `GetFeatureFlagCustomPropertiesInput` via:
 //
-//	GetFeatureFlagCustomPropertyArgs{...}
-type GetFeatureFlagCustomPropertyInput interface {
+//	GetFeatureFlagCustomPropertiesArgs{...}
+type GetFeatureFlagCustomPropertiesInput interface {
 	pulumi.Input
 
-	ToGetFeatureFlagCustomPropertyOutput() GetFeatureFlagCustomPropertyOutput
-	ToGetFeatureFlagCustomPropertyOutputWithContext(context.Context) GetFeatureFlagCustomPropertyOutput
+	ToGetFeatureFlagCustomPropertiesOutput() GetFeatureFlagCustomPropertiesOutput
+	ToGetFeatureFlagCustomPropertiesOutputWithContext(context.Context) GetFeatureFlagCustomPropertiesOutput
 }
 
-type GetFeatureFlagCustomPropertyArgs struct {
-	// The unique custom property key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The name of the custom property.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The list of custom property value strings.
+type GetFeatureFlagCustomPropertiesArgs struct {
+	Key    pulumi.StringInput      `pulumi:"key"`
+	Name   pulumi.StringInput      `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
-func (GetFeatureFlagCustomPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFeatureFlagCustomProperty)(nil)).Elem()
+func (GetFeatureFlagCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (i GetFeatureFlagCustomPropertyArgs) ToGetFeatureFlagCustomPropertyOutput() GetFeatureFlagCustomPropertyOutput {
-	return i.ToGetFeatureFlagCustomPropertyOutputWithContext(context.Background())
+func (i GetFeatureFlagCustomPropertiesArgs) ToGetFeatureFlagCustomPropertiesOutput() GetFeatureFlagCustomPropertiesOutput {
+	return i.ToGetFeatureFlagCustomPropertiesOutputWithContext(context.Background())
 }
 
-func (i GetFeatureFlagCustomPropertyArgs) ToGetFeatureFlagCustomPropertyOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagCustomPropertyOutput)
+func (i GetFeatureFlagCustomPropertiesArgs) ToGetFeatureFlagCustomPropertiesOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagCustomPropertiesOutput)
 }
 
-// GetFeatureFlagCustomPropertyArrayInput is an input type that accepts GetFeatureFlagCustomPropertyArray and GetFeatureFlagCustomPropertyArrayOutput values.
-// You can construct a concrete instance of `GetFeatureFlagCustomPropertyArrayInput` via:
+// GetFeatureFlagCustomPropertiesMapInput is an input type that accepts GetFeatureFlagCustomPropertiesMap and GetFeatureFlagCustomPropertiesMapOutput values.
+// You can construct a concrete instance of `GetFeatureFlagCustomPropertiesMapInput` via:
 //
-//	GetFeatureFlagCustomPropertyArray{ GetFeatureFlagCustomPropertyArgs{...} }
-type GetFeatureFlagCustomPropertyArrayInput interface {
+//	GetFeatureFlagCustomPropertiesMap{ "key": GetFeatureFlagCustomPropertiesArgs{...} }
+type GetFeatureFlagCustomPropertiesMapInput interface {
 	pulumi.Input
 
-	ToGetFeatureFlagCustomPropertyArrayOutput() GetFeatureFlagCustomPropertyArrayOutput
-	ToGetFeatureFlagCustomPropertyArrayOutputWithContext(context.Context) GetFeatureFlagCustomPropertyArrayOutput
+	ToGetFeatureFlagCustomPropertiesMapOutput() GetFeatureFlagCustomPropertiesMapOutput
+	ToGetFeatureFlagCustomPropertiesMapOutputWithContext(context.Context) GetFeatureFlagCustomPropertiesMapOutput
 }
 
-type GetFeatureFlagCustomPropertyArray []GetFeatureFlagCustomPropertyInput
+type GetFeatureFlagCustomPropertiesMap map[string]GetFeatureFlagCustomPropertiesInput
 
-func (GetFeatureFlagCustomPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagCustomProperty)(nil)).Elem()
+func (GetFeatureFlagCustomPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetFeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (i GetFeatureFlagCustomPropertyArray) ToGetFeatureFlagCustomPropertyArrayOutput() GetFeatureFlagCustomPropertyArrayOutput {
-	return i.ToGetFeatureFlagCustomPropertyArrayOutputWithContext(context.Background())
+func (i GetFeatureFlagCustomPropertiesMap) ToGetFeatureFlagCustomPropertiesMapOutput() GetFeatureFlagCustomPropertiesMapOutput {
+	return i.ToGetFeatureFlagCustomPropertiesMapOutputWithContext(context.Background())
 }
 
-func (i GetFeatureFlagCustomPropertyArray) ToGetFeatureFlagCustomPropertyArrayOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagCustomPropertyArrayOutput)
+func (i GetFeatureFlagCustomPropertiesMap) ToGetFeatureFlagCustomPropertiesMapOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagCustomPropertiesMapOutput)
 }
 
-type GetFeatureFlagCustomPropertyOutput struct{ *pulumi.OutputState }
+type GetFeatureFlagCustomPropertiesOutput struct{ *pulumi.OutputState }
 
-func (GetFeatureFlagCustomPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFeatureFlagCustomProperty)(nil)).Elem()
+func (GetFeatureFlagCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (o GetFeatureFlagCustomPropertyOutput) ToGetFeatureFlagCustomPropertyOutput() GetFeatureFlagCustomPropertyOutput {
+func (o GetFeatureFlagCustomPropertiesOutput) ToGetFeatureFlagCustomPropertiesOutput() GetFeatureFlagCustomPropertiesOutput {
 	return o
 }
 
-func (o GetFeatureFlagCustomPropertyOutput) ToGetFeatureFlagCustomPropertyOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertyOutput {
+func (o GetFeatureFlagCustomPropertiesOutput) ToGetFeatureFlagCustomPropertiesOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertiesOutput {
 	return o
 }
 
-// The unique custom property key.
-func (o GetFeatureFlagCustomPropertyOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFeatureFlagCustomProperty) string { return v.Key }).(pulumi.StringOutput)
+func (o GetFeatureFlagCustomPropertiesOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagCustomProperties) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The name of the custom property.
-func (o GetFeatureFlagCustomPropertyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFeatureFlagCustomProperty) string { return v.Name }).(pulumi.StringOutput)
+func (o GetFeatureFlagCustomPropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagCustomProperties) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of custom property value strings.
-func (o GetFeatureFlagCustomPropertyOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetFeatureFlagCustomProperty) []string { return v.Values }).(pulumi.StringArrayOutput)
+func (o GetFeatureFlagCustomPropertiesOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureFlagCustomProperties) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetFeatureFlagCustomPropertyArrayOutput struct{ *pulumi.OutputState }
+type GetFeatureFlagCustomPropertiesMapOutput struct{ *pulumi.OutputState }
 
-func (GetFeatureFlagCustomPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagCustomProperty)(nil)).Elem()
+func (GetFeatureFlagCustomPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetFeatureFlagCustomProperties)(nil)).Elem()
 }
 
-func (o GetFeatureFlagCustomPropertyArrayOutput) ToGetFeatureFlagCustomPropertyArrayOutput() GetFeatureFlagCustomPropertyArrayOutput {
+func (o GetFeatureFlagCustomPropertiesMapOutput) ToGetFeatureFlagCustomPropertiesMapOutput() GetFeatureFlagCustomPropertiesMapOutput {
 	return o
 }
 
-func (o GetFeatureFlagCustomPropertyArrayOutput) ToGetFeatureFlagCustomPropertyArrayOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertyArrayOutput {
+func (o GetFeatureFlagCustomPropertiesMapOutput) ToGetFeatureFlagCustomPropertiesMapOutputWithContext(ctx context.Context) GetFeatureFlagCustomPropertiesMapOutput {
 	return o
 }
 
-func (o GetFeatureFlagCustomPropertyArrayOutput) Index(i pulumi.IntInput) GetFeatureFlagCustomPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFlagCustomProperty {
-		return vs[0].([]GetFeatureFlagCustomProperty)[vs[1].(int)]
-	}).(GetFeatureFlagCustomPropertyOutput)
+func (o GetFeatureFlagCustomPropertiesMapOutput) MapIndex(k pulumi.StringInput) GetFeatureFlagCustomPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetFeatureFlagCustomProperties {
+		return vs[0].(map[string]GetFeatureFlagCustomProperties)[vs[1].(string)]
+	}).(GetFeatureFlagCustomPropertiesOutput)
 }
 
-type GetFeatureFlagDefault struct {
-	// The index of the variation the flag will default to in all new environments when off.
+type GetFeatureFlagDefaults struct {
 	OffVariation int `pulumi:"offVariation"`
-	// The index of the variation the flag will default to in all new environments when on.
-	OnVariation int `pulumi:"onVariation"`
+	OnVariation  int `pulumi:"onVariation"`
 }
 
-// GetFeatureFlagDefaultInput is an input type that accepts GetFeatureFlagDefaultArgs and GetFeatureFlagDefaultOutput values.
-// You can construct a concrete instance of `GetFeatureFlagDefaultInput` via:
+// GetFeatureFlagDefaultsInput is an input type that accepts GetFeatureFlagDefaultsArgs and GetFeatureFlagDefaultsOutput values.
+// You can construct a concrete instance of `GetFeatureFlagDefaultsInput` via:
 //
-//	GetFeatureFlagDefaultArgs{...}
-type GetFeatureFlagDefaultInput interface {
+//	GetFeatureFlagDefaultsArgs{...}
+type GetFeatureFlagDefaultsInput interface {
 	pulumi.Input
 
-	ToGetFeatureFlagDefaultOutput() GetFeatureFlagDefaultOutput
-	ToGetFeatureFlagDefaultOutputWithContext(context.Context) GetFeatureFlagDefaultOutput
+	ToGetFeatureFlagDefaultsOutput() GetFeatureFlagDefaultsOutput
+	ToGetFeatureFlagDefaultsOutputWithContext(context.Context) GetFeatureFlagDefaultsOutput
 }
 
-type GetFeatureFlagDefaultArgs struct {
-	// The index of the variation the flag will default to in all new environments when off.
+type GetFeatureFlagDefaultsArgs struct {
 	OffVariation pulumi.IntInput `pulumi:"offVariation"`
-	// The index of the variation the flag will default to in all new environments when on.
-	OnVariation pulumi.IntInput `pulumi:"onVariation"`
+	OnVariation  pulumi.IntInput `pulumi:"onVariation"`
 }
 
-func (GetFeatureFlagDefaultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFeatureFlagDefault)(nil)).Elem()
+func (GetFeatureFlagDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFlagDefaults)(nil)).Elem()
 }
 
-func (i GetFeatureFlagDefaultArgs) ToGetFeatureFlagDefaultOutput() GetFeatureFlagDefaultOutput {
-	return i.ToGetFeatureFlagDefaultOutputWithContext(context.Background())
+func (i GetFeatureFlagDefaultsArgs) ToGetFeatureFlagDefaultsOutput() GetFeatureFlagDefaultsOutput {
+	return i.ToGetFeatureFlagDefaultsOutputWithContext(context.Background())
 }
 
-func (i GetFeatureFlagDefaultArgs) ToGetFeatureFlagDefaultOutputWithContext(ctx context.Context) GetFeatureFlagDefaultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagDefaultOutput)
+func (i GetFeatureFlagDefaultsArgs) ToGetFeatureFlagDefaultsOutputWithContext(ctx context.Context) GetFeatureFlagDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagDefaultsOutput)
 }
 
-// GetFeatureFlagDefaultArrayInput is an input type that accepts GetFeatureFlagDefaultArray and GetFeatureFlagDefaultArrayOutput values.
-// You can construct a concrete instance of `GetFeatureFlagDefaultArrayInput` via:
-//
-//	GetFeatureFlagDefaultArray{ GetFeatureFlagDefaultArgs{...} }
-type GetFeatureFlagDefaultArrayInput interface {
-	pulumi.Input
+type GetFeatureFlagDefaultsOutput struct{ *pulumi.OutputState }
 
-	ToGetFeatureFlagDefaultArrayOutput() GetFeatureFlagDefaultArrayOutput
-	ToGetFeatureFlagDefaultArrayOutputWithContext(context.Context) GetFeatureFlagDefaultArrayOutput
+func (GetFeatureFlagDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFlagDefaults)(nil)).Elem()
 }
 
-type GetFeatureFlagDefaultArray []GetFeatureFlagDefaultInput
-
-func (GetFeatureFlagDefaultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagDefault)(nil)).Elem()
-}
-
-func (i GetFeatureFlagDefaultArray) ToGetFeatureFlagDefaultArrayOutput() GetFeatureFlagDefaultArrayOutput {
-	return i.ToGetFeatureFlagDefaultArrayOutputWithContext(context.Background())
-}
-
-func (i GetFeatureFlagDefaultArray) ToGetFeatureFlagDefaultArrayOutputWithContext(ctx context.Context) GetFeatureFlagDefaultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagDefaultArrayOutput)
-}
-
-type GetFeatureFlagDefaultOutput struct{ *pulumi.OutputState }
-
-func (GetFeatureFlagDefaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFeatureFlagDefault)(nil)).Elem()
-}
-
-func (o GetFeatureFlagDefaultOutput) ToGetFeatureFlagDefaultOutput() GetFeatureFlagDefaultOutput {
+func (o GetFeatureFlagDefaultsOutput) ToGetFeatureFlagDefaultsOutput() GetFeatureFlagDefaultsOutput {
 	return o
 }
 
-func (o GetFeatureFlagDefaultOutput) ToGetFeatureFlagDefaultOutputWithContext(ctx context.Context) GetFeatureFlagDefaultOutput {
+func (o GetFeatureFlagDefaultsOutput) ToGetFeatureFlagDefaultsOutputWithContext(ctx context.Context) GetFeatureFlagDefaultsOutput {
 	return o
 }
 
-// The index of the variation the flag will default to in all new environments when off.
-func (o GetFeatureFlagDefaultOutput) OffVariation() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFeatureFlagDefault) int { return v.OffVariation }).(pulumi.IntOutput)
+func (o GetFeatureFlagDefaultsOutput) OffVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFlagDefaults) int { return v.OffVariation }).(pulumi.IntOutput)
 }
 
-// The index of the variation the flag will default to in all new environments when on.
-func (o GetFeatureFlagDefaultOutput) OnVariation() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFeatureFlagDefault) int { return v.OnVariation }).(pulumi.IntOutput)
-}
-
-type GetFeatureFlagDefaultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetFeatureFlagDefaultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagDefault)(nil)).Elem()
-}
-
-func (o GetFeatureFlagDefaultArrayOutput) ToGetFeatureFlagDefaultArrayOutput() GetFeatureFlagDefaultArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagDefaultArrayOutput) ToGetFeatureFlagDefaultArrayOutputWithContext(ctx context.Context) GetFeatureFlagDefaultArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagDefaultArrayOutput) Index(i pulumi.IntInput) GetFeatureFlagDefaultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFlagDefault {
-		return vs[0].([]GetFeatureFlagDefault)[vs[1].(int)]
-	}).(GetFeatureFlagDefaultOutput)
+func (o GetFeatureFlagDefaultsOutput) OnVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFlagDefaults) int { return v.OnVariation }).(pulumi.IntOutput)
 }
 
 type GetFeatureFlagEnvironmentContextTarget struct {
-	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
-	ContextKind string `pulumi:"contextKind"`
-	// List of `user` strings to target.
-	Values []string `pulumi:"values"`
-	// The index of the variation to serve if a user target value is matched.
-	Variation int `pulumi:"variation"`
+	ContextKind string   `pulumi:"contextKind"`
+	Values      []string `pulumi:"values"`
+	Variation   int      `pulumi:"variation"`
 }
 
 // GetFeatureFlagEnvironmentContextTargetInput is an input type that accepts GetFeatureFlagEnvironmentContextTargetArgs and GetFeatureFlagEnvironmentContextTargetOutput values.
@@ -5265,12 +6440,9 @@ type GetFeatureFlagEnvironmentContextTargetInput interface {
 }
 
 type GetFeatureFlagEnvironmentContextTargetArgs struct {
-	// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
-	ContextKind pulumi.StringInput `pulumi:"contextKind"`
-	// List of `user` strings to target.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-	// The index of the variation to serve if a user target value is matched.
-	Variation pulumi.IntInput `pulumi:"variation"`
+	ContextKind pulumi.StringInput      `pulumi:"contextKind"`
+	Values      pulumi.StringArrayInput `pulumi:"values"`
+	Variation   pulumi.IntInput         `pulumi:"variation"`
 }
 
 func (GetFeatureFlagEnvironmentContextTargetArgs) ElementType() reflect.Type {
@@ -5324,17 +6496,14 @@ func (o GetFeatureFlagEnvironmentContextTargetOutput) ToGetFeatureFlagEnvironmen
 	return o
 }
 
-// The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
 func (o GetFeatureFlagEnvironmentContextTargetOutput) ContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentContextTarget) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// List of `user` strings to target.
 func (o GetFeatureFlagEnvironmentContextTargetOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentContextTarget) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// The index of the variation to serve if a user target value is matched.
 func (o GetFeatureFlagEnvironmentContextTargetOutput) Variation() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentContextTarget) int { return v.Variation }).(pulumi.IntOutput)
 }
@@ -5360,14 +6529,10 @@ func (o GetFeatureFlagEnvironmentContextTargetArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetFeatureFlagEnvironmentFallthrough struct {
-	// Group percentage rollout by a custom attribute. This argument is only valid if rolloutWeights is also specified.
-	BucketBy string `pulumi:"bucketBy"`
-	// The context kind associated with the specified rollout. This argument is only valid if rolloutWeights is also specified. If omitted, defaults to `user`.
-	ContextKind string `pulumi:"contextKind"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
-	RolloutWeights []int `pulumi:"rolloutWeights"`
-	// The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rolloutWeights`.
-	Variation int `pulumi:"variation"`
+	BucketBy       string `pulumi:"bucketBy"`
+	ContextKind    string `pulumi:"contextKind"`
+	RolloutWeights []int  `pulumi:"rolloutWeights"`
+	Variation      int    `pulumi:"variation"`
 }
 
 // GetFeatureFlagEnvironmentFallthroughInput is an input type that accepts GetFeatureFlagEnvironmentFallthroughArgs and GetFeatureFlagEnvironmentFallthroughOutput values.
@@ -5382,14 +6547,10 @@ type GetFeatureFlagEnvironmentFallthroughInput interface {
 }
 
 type GetFeatureFlagEnvironmentFallthroughArgs struct {
-	// Group percentage rollout by a custom attribute. This argument is only valid if rolloutWeights is also specified.
-	BucketBy pulumi.StringInput `pulumi:"bucketBy"`
-	// The context kind associated with the specified rollout. This argument is only valid if rolloutWeights is also specified. If omitted, defaults to `user`.
-	ContextKind pulumi.StringInput `pulumi:"contextKind"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
+	BucketBy       pulumi.StringInput   `pulumi:"bucketBy"`
+	ContextKind    pulumi.StringInput   `pulumi:"contextKind"`
 	RolloutWeights pulumi.IntArrayInput `pulumi:"rolloutWeights"`
-	// The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rolloutWeights`.
-	Variation pulumi.IntInput `pulumi:"variation"`
+	Variation      pulumi.IntInput      `pulumi:"variation"`
 }
 
 func (GetFeatureFlagEnvironmentFallthroughArgs) ElementType() reflect.Type {
@@ -5402,31 +6563,6 @@ func (i GetFeatureFlagEnvironmentFallthroughArgs) ToGetFeatureFlagEnvironmentFal
 
 func (i GetFeatureFlagEnvironmentFallthroughArgs) ToGetFeatureFlagEnvironmentFallthroughOutputWithContext(ctx context.Context) GetFeatureFlagEnvironmentFallthroughOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagEnvironmentFallthroughOutput)
-}
-
-// GetFeatureFlagEnvironmentFallthroughArrayInput is an input type that accepts GetFeatureFlagEnvironmentFallthroughArray and GetFeatureFlagEnvironmentFallthroughArrayOutput values.
-// You can construct a concrete instance of `GetFeatureFlagEnvironmentFallthroughArrayInput` via:
-//
-//	GetFeatureFlagEnvironmentFallthroughArray{ GetFeatureFlagEnvironmentFallthroughArgs{...} }
-type GetFeatureFlagEnvironmentFallthroughArrayInput interface {
-	pulumi.Input
-
-	ToGetFeatureFlagEnvironmentFallthroughArrayOutput() GetFeatureFlagEnvironmentFallthroughArrayOutput
-	ToGetFeatureFlagEnvironmentFallthroughArrayOutputWithContext(context.Context) GetFeatureFlagEnvironmentFallthroughArrayOutput
-}
-
-type GetFeatureFlagEnvironmentFallthroughArray []GetFeatureFlagEnvironmentFallthroughInput
-
-func (GetFeatureFlagEnvironmentFallthroughArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagEnvironmentFallthrough)(nil)).Elem()
-}
-
-func (i GetFeatureFlagEnvironmentFallthroughArray) ToGetFeatureFlagEnvironmentFallthroughArrayOutput() GetFeatureFlagEnvironmentFallthroughArrayOutput {
-	return i.ToGetFeatureFlagEnvironmentFallthroughArrayOutputWithContext(context.Background())
-}
-
-func (i GetFeatureFlagEnvironmentFallthroughArray) ToGetFeatureFlagEnvironmentFallthroughArrayOutputWithContext(ctx context.Context) GetFeatureFlagEnvironmentFallthroughArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFlagEnvironmentFallthroughArrayOutput)
 }
 
 type GetFeatureFlagEnvironmentFallthroughOutput struct{ *pulumi.OutputState }
@@ -5443,51 +6579,25 @@ func (o GetFeatureFlagEnvironmentFallthroughOutput) ToGetFeatureFlagEnvironmentF
 	return o
 }
 
-// Group percentage rollout by a custom attribute. This argument is only valid if rolloutWeights is also specified.
 func (o GetFeatureFlagEnvironmentFallthroughOutput) BucketBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentFallthrough) string { return v.BucketBy }).(pulumi.StringOutput)
 }
 
-// The context kind associated with the specified rollout. This argument is only valid if rolloutWeights is also specified. If omitted, defaults to `user`.
 func (o GetFeatureFlagEnvironmentFallthroughOutput) ContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentFallthrough) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 func (o GetFeatureFlagEnvironmentFallthroughOutput) RolloutWeights() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentFallthrough) []int { return v.RolloutWeights }).(pulumi.IntArrayOutput)
 }
 
-// The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rolloutWeights`.
 func (o GetFeatureFlagEnvironmentFallthroughOutput) Variation() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentFallthrough) int { return v.Variation }).(pulumi.IntOutput)
 }
 
-type GetFeatureFlagEnvironmentFallthroughArrayOutput struct{ *pulumi.OutputState }
-
-func (GetFeatureFlagEnvironmentFallthroughArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFeatureFlagEnvironmentFallthrough)(nil)).Elem()
-}
-
-func (o GetFeatureFlagEnvironmentFallthroughArrayOutput) ToGetFeatureFlagEnvironmentFallthroughArrayOutput() GetFeatureFlagEnvironmentFallthroughArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagEnvironmentFallthroughArrayOutput) ToGetFeatureFlagEnvironmentFallthroughArrayOutputWithContext(ctx context.Context) GetFeatureFlagEnvironmentFallthroughArrayOutput {
-	return o
-}
-
-func (o GetFeatureFlagEnvironmentFallthroughArrayOutput) Index(i pulumi.IntInput) GetFeatureFlagEnvironmentFallthroughOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFlagEnvironmentFallthrough {
-		return vs[0].([]GetFeatureFlagEnvironmentFallthrough)[vs[1].(int)]
-	}).(GetFeatureFlagEnvironmentFallthroughOutput)
-}
-
 type GetFeatureFlagEnvironmentPrerequisite struct {
-	// The prerequisite feature flag's `key`.
-	FlagKey string `pulumi:"flagKey"`
-	// The index of the prerequisite feature flag's variation to target.
-	Variation int `pulumi:"variation"`
+	FlagKey   string `pulumi:"flagKey"`
+	Variation int    `pulumi:"variation"`
 }
 
 // GetFeatureFlagEnvironmentPrerequisiteInput is an input type that accepts GetFeatureFlagEnvironmentPrerequisiteArgs and GetFeatureFlagEnvironmentPrerequisiteOutput values.
@@ -5502,10 +6612,8 @@ type GetFeatureFlagEnvironmentPrerequisiteInput interface {
 }
 
 type GetFeatureFlagEnvironmentPrerequisiteArgs struct {
-	// The prerequisite feature flag's `key`.
-	FlagKey pulumi.StringInput `pulumi:"flagKey"`
-	// The index of the prerequisite feature flag's variation to target.
-	Variation pulumi.IntInput `pulumi:"variation"`
+	FlagKey   pulumi.StringInput `pulumi:"flagKey"`
+	Variation pulumi.IntInput    `pulumi:"variation"`
 }
 
 func (GetFeatureFlagEnvironmentPrerequisiteArgs) ElementType() reflect.Type {
@@ -5559,12 +6667,10 @@ func (o GetFeatureFlagEnvironmentPrerequisiteOutput) ToGetFeatureFlagEnvironment
 	return o
 }
 
-// The prerequisite feature flag's `key`.
 func (o GetFeatureFlagEnvironmentPrerequisiteOutput) FlagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentPrerequisite) string { return v.FlagKey }).(pulumi.StringOutput)
 }
 
-// The index of the prerequisite feature flag's variation to target.
 func (o GetFeatureFlagEnvironmentPrerequisiteOutput) Variation() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentPrerequisite) int { return v.Variation }).(pulumi.IntOutput)
 }
@@ -5590,18 +6696,13 @@ func (o GetFeatureFlagEnvironmentPrerequisiteArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetFeatureFlagEnvironmentRule struct {
-	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
-	BucketBy *string `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
-	Clauses []GetFeatureFlagEnvironmentRuleClause `pulumi:"clauses"`
-	// The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
-	ContextKind *string `pulumi:"contextKind"`
-	// A human-readable description of the targeting rule.
-	Description *string `pulumi:"description"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
-	RolloutWeights []int `pulumi:"rolloutWeights"`
-	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`
-	Variation *int `pulumi:"variation"`
+	BucketBy string `pulumi:"bucketBy"`
+	// Clauses applied as the rule's logical condition.
+	Clauses        []GetFeatureFlagEnvironmentRuleClause `pulumi:"clauses"`
+	ContextKind    string                                `pulumi:"contextKind"`
+	Description    string                                `pulumi:"description"`
+	RolloutWeights []int                                 `pulumi:"rolloutWeights"`
+	Variation      int                                   `pulumi:"variation"`
 }
 
 // GetFeatureFlagEnvironmentRuleInput is an input type that accepts GetFeatureFlagEnvironmentRuleArgs and GetFeatureFlagEnvironmentRuleOutput values.
@@ -5616,18 +6717,13 @@ type GetFeatureFlagEnvironmentRuleInput interface {
 }
 
 type GetFeatureFlagEnvironmentRuleArgs struct {
-	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
-	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
-	Clauses GetFeatureFlagEnvironmentRuleClauseArrayInput `pulumi:"clauses"`
-	// The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
-	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
-	// A human-readable description of the targeting rule.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
-	RolloutWeights pulumi.IntArrayInput `pulumi:"rolloutWeights"`
-	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`
-	Variation pulumi.IntPtrInput `pulumi:"variation"`
+	BucketBy pulumi.StringInput `pulumi:"bucketBy"`
+	// Clauses applied as the rule's logical condition.
+	Clauses        GetFeatureFlagEnvironmentRuleClauseArrayInput `pulumi:"clauses"`
+	ContextKind    pulumi.StringInput                            `pulumi:"contextKind"`
+	Description    pulumi.StringInput                            `pulumi:"description"`
+	RolloutWeights pulumi.IntArrayInput                          `pulumi:"rolloutWeights"`
+	Variation      pulumi.IntInput                               `pulumi:"variation"`
 }
 
 func (GetFeatureFlagEnvironmentRuleArgs) ElementType() reflect.Type {
@@ -5681,34 +6777,29 @@ func (o GetFeatureFlagEnvironmentRuleOutput) ToGetFeatureFlagEnvironmentRuleOutp
 	return o
 }
 
-// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
-func (o GetFeatureFlagEnvironmentRuleOutput) BucketBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) *string { return v.BucketBy }).(pulumi.StringPtrOutput)
+func (o GetFeatureFlagEnvironmentRuleOutput) BucketBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) string { return v.BucketBy }).(pulumi.StringOutput)
 }
 
-// List of nested blocks specifying the logical clauses to evaluate
+// Clauses applied as the rule's logical condition.
 func (o GetFeatureFlagEnvironmentRuleOutput) Clauses() GetFeatureFlagEnvironmentRuleClauseArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) []GetFeatureFlagEnvironmentRuleClause { return v.Clauses }).(GetFeatureFlagEnvironmentRuleClauseArrayOutput)
 }
 
-// The context kind associated with the specified rollout. This argument is only valid if `rolloutWeights` is also specified. Defaults to `user` if omitted.
-func (o GetFeatureFlagEnvironmentRuleOutput) ContextKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) *string { return v.ContextKind }).(pulumi.StringPtrOutput)
+func (o GetFeatureFlagEnvironmentRuleOutput) ContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// A human-readable description of the targeting rule.
-func (o GetFeatureFlagEnvironmentRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetFeatureFlagEnvironmentRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 func (o GetFeatureFlagEnvironmentRuleOutput) RolloutWeights() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) []int { return v.RolloutWeights }).(pulumi.IntArrayOutput)
 }
 
-// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`
-func (o GetFeatureFlagEnvironmentRuleOutput) Variation() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) *int { return v.Variation }).(pulumi.IntPtrOutput)
+func (o GetFeatureFlagEnvironmentRuleOutput) Variation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRule) int { return v.Variation }).(pulumi.IntOutput)
 }
 
 type GetFeatureFlagEnvironmentRuleArrayOutput struct{ *pulumi.OutputState }
@@ -5732,17 +6823,17 @@ func (o GetFeatureFlagEnvironmentRuleArrayOutput) Index(i pulumi.IntInput) GetFe
 }
 
 type GetFeatureFlagEnvironmentRuleClause struct {
-	// The user attribute to operate on
+	// User attribute to operate on.
 	Attribute string `pulumi:"attribute"`
-	// The context kind associated with this rule clause. If omitted, defaults to `user`.
-	ContextKind *string `pulumi:"contextKind"`
-	// Whether to negate the rule clause.
-	Negate *bool `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// Context kind for the clause.
+	ContextKind string `pulumi:"contextKind"`
+	// Whether to negate the clause.
+	Negate bool `pulumi:"negate"`
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 	Op string `pulumi:"op"`
-	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-	ValueType *string `pulumi:"valueType"`
-	// The list of values associated with the rule clause.
+	// Type of each clause value (boolean / string / number).
+	ValueType string `pulumi:"valueType"`
+	// Values for the clause.
 	Values []string `pulumi:"values"`
 }
 
@@ -5758,17 +6849,17 @@ type GetFeatureFlagEnvironmentRuleClauseInput interface {
 }
 
 type GetFeatureFlagEnvironmentRuleClauseArgs struct {
-	// The user attribute to operate on
+	// User attribute to operate on.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	// The context kind associated with this rule clause. If omitted, defaults to `user`.
-	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
-	// Whether to negate the rule clause.
-	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// Context kind for the clause.
+	ContextKind pulumi.StringInput `pulumi:"contextKind"`
+	// Whether to negate the clause.
+	Negate pulumi.BoolInput `pulumi:"negate"`
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 	Op pulumi.StringInput `pulumi:"op"`
-	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
-	// The list of values associated with the rule clause.
+	// Type of each clause value (boolean / string / number).
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+	// Values for the clause.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5823,32 +6914,32 @@ func (o GetFeatureFlagEnvironmentRuleClauseOutput) ToGetFeatureFlagEnvironmentRu
 	return o
 }
 
-// The user attribute to operate on
+// User attribute to operate on.
 func (o GetFeatureFlagEnvironmentRuleClauseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// The context kind associated with this rule clause. If omitted, defaults to `user`.
-func (o GetFeatureFlagEnvironmentRuleClauseOutput) ContextKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) *string { return v.ContextKind }).(pulumi.StringPtrOutput)
+// Context kind for the clause.
+func (o GetFeatureFlagEnvironmentRuleClauseOutput) ContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// Whether to negate the rule clause.
-func (o GetFeatureFlagEnvironmentRuleClauseOutput) Negate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
+// Whether to negate the clause.
+func (o GetFeatureFlagEnvironmentRuleClauseOutput) Negate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) bool { return v.Negate }).(pulumi.BoolOutput)
 }
 
-// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 func (o GetFeatureFlagEnvironmentRuleClauseOutput) Op() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) string { return v.Op }).(pulumi.StringOutput)
 }
 
-// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-func (o GetFeatureFlagEnvironmentRuleClauseOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Type of each clause value (boolean / string / number).
+func (o GetFeatureFlagEnvironmentRuleClauseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-// The list of values associated with the rule clause.
+// Values for the clause.
 func (o GetFeatureFlagEnvironmentRuleClauseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentRuleClause) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5874,10 +6965,8 @@ func (o GetFeatureFlagEnvironmentRuleClauseArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetFeatureFlagEnvironmentTarget struct {
-	// List of `user` strings to target.
-	Values []string `pulumi:"values"`
-	// The index of the variation to serve if a user target value is matched.
-	Variation int `pulumi:"variation"`
+	Values    []string `pulumi:"values"`
+	Variation int      `pulumi:"variation"`
 }
 
 // GetFeatureFlagEnvironmentTargetInput is an input type that accepts GetFeatureFlagEnvironmentTargetArgs and GetFeatureFlagEnvironmentTargetOutput values.
@@ -5892,10 +6981,8 @@ type GetFeatureFlagEnvironmentTargetInput interface {
 }
 
 type GetFeatureFlagEnvironmentTargetArgs struct {
-	// List of `user` strings to target.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-	// The index of the variation to serve if a user target value is matched.
-	Variation pulumi.IntInput `pulumi:"variation"`
+	Values    pulumi.StringArrayInput `pulumi:"values"`
+	Variation pulumi.IntInput         `pulumi:"variation"`
 }
 
 func (GetFeatureFlagEnvironmentTargetArgs) ElementType() reflect.Type {
@@ -5949,12 +7036,10 @@ func (o GetFeatureFlagEnvironmentTargetOutput) ToGetFeatureFlagEnvironmentTarget
 	return o
 }
 
-// List of `user` strings to target.
 func (o GetFeatureFlagEnvironmentTargetOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentTarget) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// The index of the variation to serve if a user target value is matched.
 func (o GetFeatureFlagEnvironmentTargetOutput) Variation() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFeatureFlagEnvironmentTarget) int { return v.Variation }).(pulumi.IntOutput)
 }
@@ -5980,13 +7065,11 @@ func (o GetFeatureFlagEnvironmentTargetArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetFeatureFlagVariation struct {
-	// The variation's description.
-	Description *string `pulumi:"description"`
-	// The name of the variation.
-	Name *string `pulumi:"name"`
-	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-	//
-	// If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+	// Variation description.
+	Description string `pulumi:"description"`
+	// Variation name.
+	Name string `pulumi:"name"`
+	// Variation value (stringified per variation_type).
 	Value string `pulumi:"value"`
 }
 
@@ -6002,13 +7085,11 @@ type GetFeatureFlagVariationInput interface {
 }
 
 type GetFeatureFlagVariationArgs struct {
-	// The variation's description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of the variation.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-	//
-	// If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+	// Variation description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Variation name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variation value (stringified per variation_type).
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6063,19 +7144,17 @@ func (o GetFeatureFlagVariationOutput) ToGetFeatureFlagVariationOutputWithContex
 	return o
 }
 
-// The variation's description.
-func (o GetFeatureFlagVariationOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagVariation) *string { return v.Description }).(pulumi.StringPtrOutput)
+// Variation description.
+func (o GetFeatureFlagVariationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagVariation) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The name of the variation.
-func (o GetFeatureFlagVariationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagVariation) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Variation name.
+func (o GetFeatureFlagVariationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFlagVariation) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The variation value. The value's type must correspond to the `variationType` argument. For example: `variationType = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-//
-// If you wish to define an empty string variation, you must still define the value field on the variations block like so:
+// Variation value (stringified per variation_type).
 func (o GetFeatureFlagVariationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFeatureFlagVariation) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6100,254 +7179,270 @@ func (o GetFeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) GetFeatureF
 	}).(GetFeatureFlagVariationOutput)
 }
 
-type GetFlagTemplatesBooleanDefault struct {
-	// The description for the false variation.
+type GetFlagTemplatesBooleanDefaults struct {
+	// Description for the false variation.
 	FalseDescription string `pulumi:"falseDescription"`
-	// The display name for the false variation.
+	// Display name for the false variation.
 	FalseDisplayName string `pulumi:"falseDisplayName"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	// Variation index served when targeting is off (0 or 1).
 	OffVariation int `pulumi:"offVariation"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	// Variation index served when targeting is on (0 or 1).
 	OnVariation int `pulumi:"onVariation"`
-	// The description for the true variation.
+	// Description for the true variation.
 	TrueDescription string `pulumi:"trueDescription"`
-	// The display name for the true variation.
+	// Display name for the true variation.
 	TrueDisplayName string `pulumi:"trueDisplayName"`
 }
 
-// GetFlagTemplatesBooleanDefaultInput is an input type that accepts GetFlagTemplatesBooleanDefaultArgs and GetFlagTemplatesBooleanDefaultOutput values.
-// You can construct a concrete instance of `GetFlagTemplatesBooleanDefaultInput` via:
+// GetFlagTemplatesBooleanDefaultsInput is an input type that accepts GetFlagTemplatesBooleanDefaultsArgs and GetFlagTemplatesBooleanDefaultsOutput values.
+// You can construct a concrete instance of `GetFlagTemplatesBooleanDefaultsInput` via:
 //
-//	GetFlagTemplatesBooleanDefaultArgs{...}
-type GetFlagTemplatesBooleanDefaultInput interface {
+//	GetFlagTemplatesBooleanDefaultsArgs{...}
+type GetFlagTemplatesBooleanDefaultsInput interface {
 	pulumi.Input
 
-	ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput
-	ToGetFlagTemplatesBooleanDefaultOutputWithContext(context.Context) GetFlagTemplatesBooleanDefaultOutput
+	ToGetFlagTemplatesBooleanDefaultsOutput() GetFlagTemplatesBooleanDefaultsOutput
+	ToGetFlagTemplatesBooleanDefaultsOutputWithContext(context.Context) GetFlagTemplatesBooleanDefaultsOutput
 }
 
-type GetFlagTemplatesBooleanDefaultArgs struct {
-	// The description for the false variation.
+type GetFlagTemplatesBooleanDefaultsArgs struct {
+	// Description for the false variation.
 	FalseDescription pulumi.StringInput `pulumi:"falseDescription"`
-	// The display name for the false variation.
+	// Display name for the false variation.
 	FalseDisplayName pulumi.StringInput `pulumi:"falseDisplayName"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is off.
+	// Variation index served when targeting is off (0 or 1).
 	OffVariation pulumi.IntInput `pulumi:"offVariation"`
-	// The variation index of the boolean flag variation to serve when the flag's targeting is on.
+	// Variation index served when targeting is on (0 or 1).
 	OnVariation pulumi.IntInput `pulumi:"onVariation"`
-	// The description for the true variation.
+	// Description for the true variation.
 	TrueDescription pulumi.StringInput `pulumi:"trueDescription"`
-	// The display name for the true variation.
+	// Display name for the true variation.
 	TrueDisplayName pulumi.StringInput `pulumi:"trueDisplayName"`
 }
 
-func (GetFlagTemplatesBooleanDefaultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlagTemplatesBooleanDefault)(nil)).Elem()
+func (GetFlagTemplatesBooleanDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTemplatesBooleanDefaults)(nil)).Elem()
 }
 
-func (i GetFlagTemplatesBooleanDefaultArgs) ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput {
-	return i.ToGetFlagTemplatesBooleanDefaultOutputWithContext(context.Background())
+func (i GetFlagTemplatesBooleanDefaultsArgs) ToGetFlagTemplatesBooleanDefaultsOutput() GetFlagTemplatesBooleanDefaultsOutput {
+	return i.ToGetFlagTemplatesBooleanDefaultsOutputWithContext(context.Background())
 }
 
-func (i GetFlagTemplatesBooleanDefaultArgs) ToGetFlagTemplatesBooleanDefaultOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTemplatesBooleanDefaultOutput)
+func (i GetFlagTemplatesBooleanDefaultsArgs) ToGetFlagTemplatesBooleanDefaultsOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTemplatesBooleanDefaultsOutput)
 }
 
-// GetFlagTemplatesBooleanDefaultArrayInput is an input type that accepts GetFlagTemplatesBooleanDefaultArray and GetFlagTemplatesBooleanDefaultArrayOutput values.
-// You can construct a concrete instance of `GetFlagTemplatesBooleanDefaultArrayInput` via:
-//
-//	GetFlagTemplatesBooleanDefaultArray{ GetFlagTemplatesBooleanDefaultArgs{...} }
-type GetFlagTemplatesBooleanDefaultArrayInput interface {
-	pulumi.Input
+type GetFlagTemplatesBooleanDefaultsOutput struct{ *pulumi.OutputState }
 
-	ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput
-	ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(context.Context) GetFlagTemplatesBooleanDefaultArrayOutput
+func (GetFlagTemplatesBooleanDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTemplatesBooleanDefaults)(nil)).Elem()
 }
 
-type GetFlagTemplatesBooleanDefaultArray []GetFlagTemplatesBooleanDefaultInput
-
-func (GetFlagTemplatesBooleanDefaultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFlagTemplatesBooleanDefault)(nil)).Elem()
-}
-
-func (i GetFlagTemplatesBooleanDefaultArray) ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput {
-	return i.ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(context.Background())
-}
-
-func (i GetFlagTemplatesBooleanDefaultArray) ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTemplatesBooleanDefaultArrayOutput)
-}
-
-type GetFlagTemplatesBooleanDefaultOutput struct{ *pulumi.OutputState }
-
-func (GetFlagTemplatesBooleanDefaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlagTemplatesBooleanDefault)(nil)).Elem()
-}
-
-func (o GetFlagTemplatesBooleanDefaultOutput) ToGetFlagTemplatesBooleanDefaultOutput() GetFlagTemplatesBooleanDefaultOutput {
+func (o GetFlagTemplatesBooleanDefaultsOutput) ToGetFlagTemplatesBooleanDefaultsOutput() GetFlagTemplatesBooleanDefaultsOutput {
 	return o
 }
 
-func (o GetFlagTemplatesBooleanDefaultOutput) ToGetFlagTemplatesBooleanDefaultOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultOutput {
+func (o GetFlagTemplatesBooleanDefaultsOutput) ToGetFlagTemplatesBooleanDefaultsOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultsOutput {
 	return o
 }
 
-// The description for the false variation.
-func (o GetFlagTemplatesBooleanDefaultOutput) FalseDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.FalseDescription }).(pulumi.StringOutput)
+// Description for the false variation.
+func (o GetFlagTemplatesBooleanDefaultsOutput) FalseDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) string { return v.FalseDescription }).(pulumi.StringOutput)
 }
 
-// The display name for the false variation.
-func (o GetFlagTemplatesBooleanDefaultOutput) FalseDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.FalseDisplayName }).(pulumi.StringOutput)
+// Display name for the false variation.
+func (o GetFlagTemplatesBooleanDefaultsOutput) FalseDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) string { return v.FalseDisplayName }).(pulumi.StringOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is off.
-func (o GetFlagTemplatesBooleanDefaultOutput) OffVariation() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) int { return v.OffVariation }).(pulumi.IntOutput)
+// Variation index served when targeting is off (0 or 1).
+func (o GetFlagTemplatesBooleanDefaultsOutput) OffVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) int { return v.OffVariation }).(pulumi.IntOutput)
 }
 
-// The variation index of the boolean flag variation to serve when the flag's targeting is on.
-func (o GetFlagTemplatesBooleanDefaultOutput) OnVariation() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) int { return v.OnVariation }).(pulumi.IntOutput)
+// Variation index served when targeting is on (0 or 1).
+func (o GetFlagTemplatesBooleanDefaultsOutput) OnVariation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) int { return v.OnVariation }).(pulumi.IntOutput)
 }
 
-// The description for the true variation.
-func (o GetFlagTemplatesBooleanDefaultOutput) TrueDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.TrueDescription }).(pulumi.StringOutput)
+// Description for the true variation.
+func (o GetFlagTemplatesBooleanDefaultsOutput) TrueDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) string { return v.TrueDescription }).(pulumi.StringOutput)
 }
 
-// The display name for the true variation.
-func (o GetFlagTemplatesBooleanDefaultOutput) TrueDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlagTemplatesBooleanDefault) string { return v.TrueDisplayName }).(pulumi.StringOutput)
+// Display name for the true variation.
+func (o GetFlagTemplatesBooleanDefaultsOutput) TrueDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTemplatesBooleanDefaults) string { return v.TrueDisplayName }).(pulumi.StringOutput)
 }
 
-type GetFlagTemplatesBooleanDefaultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetFlagTemplatesBooleanDefaultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFlagTemplatesBooleanDefault)(nil)).Elem()
-}
-
-func (o GetFlagTemplatesBooleanDefaultArrayOutput) ToGetFlagTemplatesBooleanDefaultArrayOutput() GetFlagTemplatesBooleanDefaultArrayOutput {
-	return o
-}
-
-func (o GetFlagTemplatesBooleanDefaultArrayOutput) ToGetFlagTemplatesBooleanDefaultArrayOutputWithContext(ctx context.Context) GetFlagTemplatesBooleanDefaultArrayOutput {
-	return o
-}
-
-func (o GetFlagTemplatesBooleanDefaultArrayOutput) Index(i pulumi.IntInput) GetFlagTemplatesBooleanDefaultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlagTemplatesBooleanDefault {
-		return vs[0].([]GetFlagTemplatesBooleanDefault)[vs[1].(int)]
-	}).(GetFlagTemplatesBooleanDefaultOutput)
-}
-
-type GetFlagTriggerInstruction struct {
+type GetFlagTriggerInstructions struct {
 	// The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
 	Kind string `pulumi:"kind"`
 }
 
-// GetFlagTriggerInstructionInput is an input type that accepts GetFlagTriggerInstructionArgs and GetFlagTriggerInstructionOutput values.
-// You can construct a concrete instance of `GetFlagTriggerInstructionInput` via:
+// GetFlagTriggerInstructionsInput is an input type that accepts GetFlagTriggerInstructionsArgs and GetFlagTriggerInstructionsOutput values.
+// You can construct a concrete instance of `GetFlagTriggerInstructionsInput` via:
 //
-//	GetFlagTriggerInstructionArgs{...}
-type GetFlagTriggerInstructionInput interface {
+//	GetFlagTriggerInstructionsArgs{...}
+type GetFlagTriggerInstructionsInput interface {
 	pulumi.Input
 
-	ToGetFlagTriggerInstructionOutput() GetFlagTriggerInstructionOutput
-	ToGetFlagTriggerInstructionOutputWithContext(context.Context) GetFlagTriggerInstructionOutput
+	ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput
+	ToGetFlagTriggerInstructionsOutputWithContext(context.Context) GetFlagTriggerInstructionsOutput
 }
 
-type GetFlagTriggerInstructionArgs struct {
+type GetFlagTriggerInstructionsArgs struct {
 	// The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
 	Kind pulumi.StringInput `pulumi:"kind"`
 }
 
-func (GetFlagTriggerInstructionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlagTriggerInstruction)(nil)).Elem()
+func (GetFlagTriggerInstructionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTriggerInstructions)(nil)).Elem()
 }
 
-func (i GetFlagTriggerInstructionArgs) ToGetFlagTriggerInstructionOutput() GetFlagTriggerInstructionOutput {
-	return i.ToGetFlagTriggerInstructionOutputWithContext(context.Background())
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput {
+	return i.ToGetFlagTriggerInstructionsOutputWithContext(context.Background())
 }
 
-func (i GetFlagTriggerInstructionArgs) ToGetFlagTriggerInstructionOutputWithContext(ctx context.Context) GetFlagTriggerInstructionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionOutput)
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionsOutput)
 }
 
-// GetFlagTriggerInstructionArrayInput is an input type that accepts GetFlagTriggerInstructionArray and GetFlagTriggerInstructionArrayOutput values.
-// You can construct a concrete instance of `GetFlagTriggerInstructionArrayInput` via:
-//
-//	GetFlagTriggerInstructionArray{ GetFlagTriggerInstructionArgs{...} }
-type GetFlagTriggerInstructionArrayInput interface {
-	pulumi.Input
+type GetFlagTriggerInstructionsOutput struct{ *pulumi.OutputState }
 
-	ToGetFlagTriggerInstructionArrayOutput() GetFlagTriggerInstructionArrayOutput
-	ToGetFlagTriggerInstructionArrayOutputWithContext(context.Context) GetFlagTriggerInstructionArrayOutput
+func (GetFlagTriggerInstructionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTriggerInstructions)(nil)).Elem()
 }
 
-type GetFlagTriggerInstructionArray []GetFlagTriggerInstructionInput
-
-func (GetFlagTriggerInstructionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFlagTriggerInstruction)(nil)).Elem()
-}
-
-func (i GetFlagTriggerInstructionArray) ToGetFlagTriggerInstructionArrayOutput() GetFlagTriggerInstructionArrayOutput {
-	return i.ToGetFlagTriggerInstructionArrayOutputWithContext(context.Background())
-}
-
-func (i GetFlagTriggerInstructionArray) ToGetFlagTriggerInstructionArrayOutputWithContext(ctx context.Context) GetFlagTriggerInstructionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionArrayOutput)
-}
-
-type GetFlagTriggerInstructionOutput struct{ *pulumi.OutputState }
-
-func (GetFlagTriggerInstructionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlagTriggerInstruction)(nil)).Elem()
-}
-
-func (o GetFlagTriggerInstructionOutput) ToGetFlagTriggerInstructionOutput() GetFlagTriggerInstructionOutput {
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput {
 	return o
 }
 
-func (o GetFlagTriggerInstructionOutput) ToGetFlagTriggerInstructionOutputWithContext(ctx context.Context) GetFlagTriggerInstructionOutput {
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsOutput {
 	return o
 }
 
 // The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
-func (o GetFlagTriggerInstructionOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlagTriggerInstruction) string { return v.Kind }).(pulumi.StringOutput)
+func (o GetFlagTriggerInstructionsOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTriggerInstructions) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-type GetFlagTriggerInstructionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetFlagTriggerInstructionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetFlagTriggerInstruction)(nil)).Elem()
+type GetMetricGroupMetric struct {
+	// The key of the metric.
+	Key string `pulumi:"key"`
+	// The name of the metric when used within this metric group.
+	NameInGroup string `pulumi:"nameInGroup"`
 }
 
-func (o GetFlagTriggerInstructionArrayOutput) ToGetFlagTriggerInstructionArrayOutput() GetFlagTriggerInstructionArrayOutput {
+// GetMetricGroupMetricInput is an input type that accepts GetMetricGroupMetricArgs and GetMetricGroupMetricOutput values.
+// You can construct a concrete instance of `GetMetricGroupMetricInput` via:
+//
+//	GetMetricGroupMetricArgs{...}
+type GetMetricGroupMetricInput interface {
+	pulumi.Input
+
+	ToGetMetricGroupMetricOutput() GetMetricGroupMetricOutput
+	ToGetMetricGroupMetricOutputWithContext(context.Context) GetMetricGroupMetricOutput
+}
+
+type GetMetricGroupMetricArgs struct {
+	// The key of the metric.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The name of the metric when used within this metric group.
+	NameInGroup pulumi.StringInput `pulumi:"nameInGroup"`
+}
+
+func (GetMetricGroupMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricGroupMetric)(nil)).Elem()
+}
+
+func (i GetMetricGroupMetricArgs) ToGetMetricGroupMetricOutput() GetMetricGroupMetricOutput {
+	return i.ToGetMetricGroupMetricOutputWithContext(context.Background())
+}
+
+func (i GetMetricGroupMetricArgs) ToGetMetricGroupMetricOutputWithContext(ctx context.Context) GetMetricGroupMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricGroupMetricOutput)
+}
+
+// GetMetricGroupMetricArrayInput is an input type that accepts GetMetricGroupMetricArray and GetMetricGroupMetricArrayOutput values.
+// You can construct a concrete instance of `GetMetricGroupMetricArrayInput` via:
+//
+//	GetMetricGroupMetricArray{ GetMetricGroupMetricArgs{...} }
+type GetMetricGroupMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricGroupMetricArrayOutput() GetMetricGroupMetricArrayOutput
+	ToGetMetricGroupMetricArrayOutputWithContext(context.Context) GetMetricGroupMetricArrayOutput
+}
+
+type GetMetricGroupMetricArray []GetMetricGroupMetricInput
+
+func (GetMetricGroupMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricGroupMetric)(nil)).Elem()
+}
+
+func (i GetMetricGroupMetricArray) ToGetMetricGroupMetricArrayOutput() GetMetricGroupMetricArrayOutput {
+	return i.ToGetMetricGroupMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricGroupMetricArray) ToGetMetricGroupMetricArrayOutputWithContext(ctx context.Context) GetMetricGroupMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricGroupMetricArrayOutput)
+}
+
+type GetMetricGroupMetricOutput struct{ *pulumi.OutputState }
+
+func (GetMetricGroupMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricGroupMetric)(nil)).Elem()
+}
+
+func (o GetMetricGroupMetricOutput) ToGetMetricGroupMetricOutput() GetMetricGroupMetricOutput {
 	return o
 }
 
-func (o GetFlagTriggerInstructionArrayOutput) ToGetFlagTriggerInstructionArrayOutputWithContext(ctx context.Context) GetFlagTriggerInstructionArrayOutput {
+func (o GetMetricGroupMetricOutput) ToGetMetricGroupMetricOutputWithContext(ctx context.Context) GetMetricGroupMetricOutput {
 	return o
 }
 
-func (o GetFlagTriggerInstructionArrayOutput) Index(i pulumi.IntInput) GetFlagTriggerInstructionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlagTriggerInstruction {
-		return vs[0].([]GetFlagTriggerInstruction)[vs[1].(int)]
-	}).(GetFlagTriggerInstructionOutput)
+// The key of the metric.
+func (o GetMetricGroupMetricOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricGroupMetric) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The name of the metric when used within this metric group.
+func (o GetMetricGroupMetricOutput) NameInGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricGroupMetric) string { return v.NameInGroup }).(pulumi.StringOutput)
+}
+
+type GetMetricGroupMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricGroupMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricGroupMetric)(nil)).Elem()
+}
+
+func (o GetMetricGroupMetricArrayOutput) ToGetMetricGroupMetricArrayOutput() GetMetricGroupMetricArrayOutput {
+	return o
+}
+
+func (o GetMetricGroupMetricArrayOutput) ToGetMetricGroupMetricArrayOutputWithContext(ctx context.Context) GetMetricGroupMetricArrayOutput {
+	return o
+}
+
+func (o GetMetricGroupMetricArrayOutput) Index(i pulumi.IntInput) GetMetricGroupMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricGroupMetric {
+		return vs[0].([]GetMetricGroupMetric)[vs[1].(int)]
+	}).(GetMetricGroupMetricOutput)
 }
 
 type GetMetricUrl struct {
-	// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+	// The URL type.
 	Kind string `pulumi:"kind"`
-	// (Required for kind `regex`) The regex pattern to match by.
-	Pattern *string `pulumi:"pattern"`
-	// (Required for kind `substring`) The URL substring to match by.
-	Substring *string `pulumi:"substring"`
-	// (Required for kind `exact` and `canonical`) The exact or canonical URL.
-	Url *string `pulumi:"url"`
+	// The regex pattern to match by.
+	Pattern string `pulumi:"pattern"`
+	// The URL substring to match by.
+	Substring string `pulumi:"substring"`
+	// The exact or canonical URL.
+	Url string `pulumi:"url"`
 }
 
 // GetMetricUrlInput is an input type that accepts GetMetricUrlArgs and GetMetricUrlOutput values.
@@ -6362,14 +7457,14 @@ type GetMetricUrlInput interface {
 }
 
 type GetMetricUrlArgs struct {
-	// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+	// The URL type.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// (Required for kind `regex`) The regex pattern to match by.
-	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
-	// (Required for kind `substring`) The URL substring to match by.
-	Substring pulumi.StringPtrInput `pulumi:"substring"`
-	// (Required for kind `exact` and `canonical`) The exact or canonical URL.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The regex pattern to match by.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+	// The URL substring to match by.
+	Substring pulumi.StringInput `pulumi:"substring"`
+	// The exact or canonical URL.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetMetricUrlArgs) ElementType() reflect.Type {
@@ -6423,24 +7518,24 @@ func (o GetMetricUrlOutput) ToGetMetricUrlOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+// The URL type.
 func (o GetMetricUrlOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricUrl) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// (Required for kind `regex`) The regex pattern to match by.
-func (o GetMetricUrlOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMetricUrl) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+// The regex pattern to match by.
+func (o GetMetricUrlOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricUrl) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// (Required for kind `substring`) The URL substring to match by.
-func (o GetMetricUrlOutput) Substring() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMetricUrl) *string { return v.Substring }).(pulumi.StringPtrOutput)
+// The URL substring to match by.
+func (o GetMetricUrlOutput) Substring() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricUrl) string { return v.Substring }).(pulumi.StringOutput)
 }
 
-// (Required for kind `exact` and `canonical`) The exact or canonical URL.
-func (o GetMetricUrlOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMetricUrl) *string { return v.Url }).(pulumi.StringPtrOutput)
+// The exact or canonical URL.
+func (o GetMetricUrlOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricUrl) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetMetricUrlArrayOutput struct{ *pulumi.OutputState }
@@ -6461,106 +7556,6 @@ func (o GetMetricUrlArrayOutput) Index(i pulumi.IntInput) GetMetricUrlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricUrl {
 		return vs[0].([]GetMetricUrl)[vs[1].(int)]
 	}).(GetMetricUrlOutput)
-}
-
-type GetProjectClientSideAvailability struct {
-	UsingEnvironmentId *bool `pulumi:"usingEnvironmentId"`
-	UsingMobileKey     *bool `pulumi:"usingMobileKey"`
-}
-
-// GetProjectClientSideAvailabilityInput is an input type that accepts GetProjectClientSideAvailabilityArgs and GetProjectClientSideAvailabilityOutput values.
-// You can construct a concrete instance of `GetProjectClientSideAvailabilityInput` via:
-//
-//	GetProjectClientSideAvailabilityArgs{...}
-type GetProjectClientSideAvailabilityInput interface {
-	pulumi.Input
-
-	ToGetProjectClientSideAvailabilityOutput() GetProjectClientSideAvailabilityOutput
-	ToGetProjectClientSideAvailabilityOutputWithContext(context.Context) GetProjectClientSideAvailabilityOutput
-}
-
-type GetProjectClientSideAvailabilityArgs struct {
-	UsingEnvironmentId pulumi.BoolPtrInput `pulumi:"usingEnvironmentId"`
-	UsingMobileKey     pulumi.BoolPtrInput `pulumi:"usingMobileKey"`
-}
-
-func (GetProjectClientSideAvailabilityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectClientSideAvailability)(nil)).Elem()
-}
-
-func (i GetProjectClientSideAvailabilityArgs) ToGetProjectClientSideAvailabilityOutput() GetProjectClientSideAvailabilityOutput {
-	return i.ToGetProjectClientSideAvailabilityOutputWithContext(context.Background())
-}
-
-func (i GetProjectClientSideAvailabilityArgs) ToGetProjectClientSideAvailabilityOutputWithContext(ctx context.Context) GetProjectClientSideAvailabilityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectClientSideAvailabilityOutput)
-}
-
-// GetProjectClientSideAvailabilityArrayInput is an input type that accepts GetProjectClientSideAvailabilityArray and GetProjectClientSideAvailabilityArrayOutput values.
-// You can construct a concrete instance of `GetProjectClientSideAvailabilityArrayInput` via:
-//
-//	GetProjectClientSideAvailabilityArray{ GetProjectClientSideAvailabilityArgs{...} }
-type GetProjectClientSideAvailabilityArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectClientSideAvailabilityArrayOutput() GetProjectClientSideAvailabilityArrayOutput
-	ToGetProjectClientSideAvailabilityArrayOutputWithContext(context.Context) GetProjectClientSideAvailabilityArrayOutput
-}
-
-type GetProjectClientSideAvailabilityArray []GetProjectClientSideAvailabilityInput
-
-func (GetProjectClientSideAvailabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectClientSideAvailability)(nil)).Elem()
-}
-
-func (i GetProjectClientSideAvailabilityArray) ToGetProjectClientSideAvailabilityArrayOutput() GetProjectClientSideAvailabilityArrayOutput {
-	return i.ToGetProjectClientSideAvailabilityArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectClientSideAvailabilityArray) ToGetProjectClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectClientSideAvailabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectClientSideAvailabilityArrayOutput)
-}
-
-type GetProjectClientSideAvailabilityOutput struct{ *pulumi.OutputState }
-
-func (GetProjectClientSideAvailabilityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectClientSideAvailability)(nil)).Elem()
-}
-
-func (o GetProjectClientSideAvailabilityOutput) ToGetProjectClientSideAvailabilityOutput() GetProjectClientSideAvailabilityOutput {
-	return o
-}
-
-func (o GetProjectClientSideAvailabilityOutput) ToGetProjectClientSideAvailabilityOutputWithContext(ctx context.Context) GetProjectClientSideAvailabilityOutput {
-	return o
-}
-
-func (o GetProjectClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetProjectClientSideAvailability) *bool { return v.UsingEnvironmentId }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetProjectClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetProjectClientSideAvailability) *bool { return v.UsingMobileKey }).(pulumi.BoolPtrOutput)
-}
-
-type GetProjectClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectClientSideAvailability)(nil)).Elem()
-}
-
-func (o GetProjectClientSideAvailabilityArrayOutput) ToGetProjectClientSideAvailabilityArrayOutput() GetProjectClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetProjectClientSideAvailabilityArrayOutput) ToGetProjectClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetProjectClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) GetProjectClientSideAvailabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectClientSideAvailability {
-		return vs[0].([]GetProjectClientSideAvailability)[vs[1].(int)]
-	}).(GetProjectClientSideAvailabilityOutput)
 }
 
 type GetProjectDefaultClientSideAvailability struct {
@@ -6596,31 +7591,6 @@ func (i GetProjectDefaultClientSideAvailabilityArgs) ToGetProjectDefaultClientSi
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectDefaultClientSideAvailabilityOutput)
 }
 
-// GetProjectDefaultClientSideAvailabilityArrayInput is an input type that accepts GetProjectDefaultClientSideAvailabilityArray and GetProjectDefaultClientSideAvailabilityArrayOutput values.
-// You can construct a concrete instance of `GetProjectDefaultClientSideAvailabilityArrayInput` via:
-//
-//	GetProjectDefaultClientSideAvailabilityArray{ GetProjectDefaultClientSideAvailabilityArgs{...} }
-type GetProjectDefaultClientSideAvailabilityArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput
-	ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput
-}
-
-type GetProjectDefaultClientSideAvailabilityArray []GetProjectDefaultClientSideAvailabilityInput
-
-func (GetProjectDefaultClientSideAvailabilityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectDefaultClientSideAvailability)(nil)).Elem()
-}
-
-func (i GetProjectDefaultClientSideAvailabilityArray) ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput {
-	return i.ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectDefaultClientSideAvailabilityArray) ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectDefaultClientSideAvailabilityArrayOutput)
-}
-
 type GetProjectDefaultClientSideAvailabilityOutput struct{ *pulumi.OutputState }
 
 func (GetProjectDefaultClientSideAvailabilityOutput) ElementType() reflect.Type {
@@ -6643,29 +7613,8 @@ func (o GetProjectDefaultClientSideAvailabilityOutput) UsingMobileKey() pulumi.B
 	return o.ApplyT(func(v GetProjectDefaultClientSideAvailability) bool { return v.UsingMobileKey }).(pulumi.BoolOutput)
 }
 
-type GetProjectDefaultClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectDefaultClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectDefaultClientSideAvailability)(nil)).Elem()
-}
-
-func (o GetProjectDefaultClientSideAvailabilityArrayOutput) ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetProjectDefaultClientSideAvailabilityArrayOutput) ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput {
-	return o
-}
-
-func (o GetProjectDefaultClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) GetProjectDefaultClientSideAvailabilityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectDefaultClientSideAvailability {
-		return vs[0].([]GetProjectDefaultClientSideAvailability)[vs[1].(int)]
-	}).(GetProjectDefaultClientSideAvailabilityOutput)
-}
-
 type GetRelayProxyConfigurationPolicy struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -6690,7 +7639,6 @@ type GetRelayProxyConfigurationPolicyInput interface {
 
 type GetRelayProxyConfigurationPolicyArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -6754,7 +7702,6 @@ func (o GetRelayProxyConfigurationPolicyOutput) ToGetRelayProxyConfigurationPoli
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 func (o GetRelayProxyConfigurationPolicyOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -6799,11 +7746,444 @@ func (o GetRelayProxyConfigurationPolicyArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetRelayProxyConfigurationPolicyOutput)
 }
 
+type GetReleasePolicyGuardedReleaseConfig struct {
+	// The set of metric group keys monitored during the guarded release.
+	MetricGroupKeys []string `pulumi:"metricGroupKeys"`
+	// The set of metric keys monitored during the guarded release.
+	MetricKeys []string `pulumi:"metricKeys"`
+	// The minimum number of samples required before the policy makes a release decision.
+	MinSampleSize int `pulumi:"minSampleSize"`
+	// Whether to automatically roll back the release when a monitored metric regresses.
+	RollbackOnRegression bool `pulumi:"rollbackOnRegression"`
+	// The context kind key used as the randomization unit for the rollout.
+	RolloutContextKind string `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages.
+	Stages []GetReleasePolicyGuardedReleaseConfigStage `pulumi:"stages"`
+}
+
+// GetReleasePolicyGuardedReleaseConfigInput is an input type that accepts GetReleasePolicyGuardedReleaseConfigArgs and GetReleasePolicyGuardedReleaseConfigOutput values.
+// You can construct a concrete instance of `GetReleasePolicyGuardedReleaseConfigInput` via:
+//
+//	GetReleasePolicyGuardedReleaseConfigArgs{...}
+type GetReleasePolicyGuardedReleaseConfigInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyGuardedReleaseConfigOutput() GetReleasePolicyGuardedReleaseConfigOutput
+	ToGetReleasePolicyGuardedReleaseConfigOutputWithContext(context.Context) GetReleasePolicyGuardedReleaseConfigOutput
+}
+
+type GetReleasePolicyGuardedReleaseConfigArgs struct {
+	// The set of metric group keys monitored during the guarded release.
+	MetricGroupKeys pulumi.StringArrayInput `pulumi:"metricGroupKeys"`
+	// The set of metric keys monitored during the guarded release.
+	MetricKeys pulumi.StringArrayInput `pulumi:"metricKeys"`
+	// The minimum number of samples required before the policy makes a release decision.
+	MinSampleSize pulumi.IntInput `pulumi:"minSampleSize"`
+	// Whether to automatically roll back the release when a monitored metric regresses.
+	RollbackOnRegression pulumi.BoolInput `pulumi:"rollbackOnRegression"`
+	// The context kind key used as the randomization unit for the rollout.
+	RolloutContextKind pulumi.StringInput `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages.
+	Stages GetReleasePolicyGuardedReleaseConfigStageArrayInput `pulumi:"stages"`
+}
+
+func (GetReleasePolicyGuardedReleaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigArgs) ToGetReleasePolicyGuardedReleaseConfigOutput() GetReleasePolicyGuardedReleaseConfigOutput {
+	return i.ToGetReleasePolicyGuardedReleaseConfigOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigArgs) ToGetReleasePolicyGuardedReleaseConfigOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyGuardedReleaseConfigOutput)
+}
+
+type GetReleasePolicyGuardedReleaseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyGuardedReleaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfig)(nil)).Elem()
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigOutput) ToGetReleasePolicyGuardedReleaseConfigOutput() GetReleasePolicyGuardedReleaseConfigOutput {
+	return o
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigOutput) ToGetReleasePolicyGuardedReleaseConfigOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigOutput {
+	return o
+}
+
+// The set of metric group keys monitored during the guarded release.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) MetricGroupKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) []string { return v.MetricGroupKeys }).(pulumi.StringArrayOutput)
+}
+
+// The set of metric keys monitored during the guarded release.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) MetricKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) []string { return v.MetricKeys }).(pulumi.StringArrayOutput)
+}
+
+// The minimum number of samples required before the policy makes a release decision.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) MinSampleSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) int { return v.MinSampleSize }).(pulumi.IntOutput)
+}
+
+// Whether to automatically roll back the release when a monitored metric regresses.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) RollbackOnRegression() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) bool { return v.RollbackOnRegression }).(pulumi.BoolOutput)
+}
+
+// The context kind key used as the randomization unit for the rollout.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) RolloutContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) string { return v.RolloutContextKind }).(pulumi.StringOutput)
+}
+
+// An ordered list of rollout stages.
+func (o GetReleasePolicyGuardedReleaseConfigOutput) Stages() GetReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfig) []GetReleasePolicyGuardedReleaseConfigStage {
+		return v.Stages
+	}).(GetReleasePolicyGuardedReleaseConfigStageArrayOutput)
+}
+
+type GetReleasePolicyGuardedReleaseConfigStage struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation int `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis int `pulumi:"durationMillis"`
+}
+
+// GetReleasePolicyGuardedReleaseConfigStageInput is an input type that accepts GetReleasePolicyGuardedReleaseConfigStageArgs and GetReleasePolicyGuardedReleaseConfigStageOutput values.
+// You can construct a concrete instance of `GetReleasePolicyGuardedReleaseConfigStageInput` via:
+//
+//	GetReleasePolicyGuardedReleaseConfigStageArgs{...}
+type GetReleasePolicyGuardedReleaseConfigStageInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyGuardedReleaseConfigStageOutput() GetReleasePolicyGuardedReleaseConfigStageOutput
+	ToGetReleasePolicyGuardedReleaseConfigStageOutputWithContext(context.Context) GetReleasePolicyGuardedReleaseConfigStageOutput
+}
+
+type GetReleasePolicyGuardedReleaseConfigStageArgs struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation pulumi.IntInput `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis pulumi.IntInput `pulumi:"durationMillis"`
+}
+
+func (GetReleasePolicyGuardedReleaseConfigStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigStageArgs) ToGetReleasePolicyGuardedReleaseConfigStageOutput() GetReleasePolicyGuardedReleaseConfigStageOutput {
+	return i.ToGetReleasePolicyGuardedReleaseConfigStageOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigStageArgs) ToGetReleasePolicyGuardedReleaseConfigStageOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyGuardedReleaseConfigStageOutput)
+}
+
+// GetReleasePolicyGuardedReleaseConfigStageArrayInput is an input type that accepts GetReleasePolicyGuardedReleaseConfigStageArray and GetReleasePolicyGuardedReleaseConfigStageArrayOutput values.
+// You can construct a concrete instance of `GetReleasePolicyGuardedReleaseConfigStageArrayInput` via:
+//
+//	GetReleasePolicyGuardedReleaseConfigStageArray{ GetReleasePolicyGuardedReleaseConfigStageArgs{...} }
+type GetReleasePolicyGuardedReleaseConfigStageArrayInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyGuardedReleaseConfigStageArrayOutput() GetReleasePolicyGuardedReleaseConfigStageArrayOutput
+	ToGetReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(context.Context) GetReleasePolicyGuardedReleaseConfigStageArrayOutput
+}
+
+type GetReleasePolicyGuardedReleaseConfigStageArray []GetReleasePolicyGuardedReleaseConfigStageInput
+
+func (GetReleasePolicyGuardedReleaseConfigStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigStageArray) ToGetReleasePolicyGuardedReleaseConfigStageArrayOutput() GetReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return i.ToGetReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyGuardedReleaseConfigStageArray) ToGetReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyGuardedReleaseConfigStageArrayOutput)
+}
+
+type GetReleasePolicyGuardedReleaseConfigStageOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyGuardedReleaseConfigStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigStageOutput) ToGetReleasePolicyGuardedReleaseConfigStageOutput() GetReleasePolicyGuardedReleaseConfigStageOutput {
+	return o
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigStageOutput) ToGetReleasePolicyGuardedReleaseConfigStageOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigStageOutput {
+	return o
+}
+
+// The percentage of traffic (0-100) allocated to the new variation during this stage.
+func (o GetReleasePolicyGuardedReleaseConfigStageOutput) Allocation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfigStage) int { return v.Allocation }).(pulumi.IntOutput)
+}
+
+// The duration of this stage, in milliseconds.
+func (o GetReleasePolicyGuardedReleaseConfigStageOutput) DurationMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleasePolicyGuardedReleaseConfigStage) int { return v.DurationMillis }).(pulumi.IntOutput)
+}
+
+type GetReleasePolicyGuardedReleaseConfigStageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyGuardedReleaseConfigStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleasePolicyGuardedReleaseConfigStage)(nil)).Elem()
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigStageArrayOutput) ToGetReleasePolicyGuardedReleaseConfigStageArrayOutput() GetReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigStageArrayOutput) ToGetReleasePolicyGuardedReleaseConfigStageArrayOutputWithContext(ctx context.Context) GetReleasePolicyGuardedReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o GetReleasePolicyGuardedReleaseConfigStageArrayOutput) Index(i pulumi.IntInput) GetReleasePolicyGuardedReleaseConfigStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleasePolicyGuardedReleaseConfigStage {
+		return vs[0].([]GetReleasePolicyGuardedReleaseConfigStage)[vs[1].(int)]
+	}).(GetReleasePolicyGuardedReleaseConfigStageOutput)
+}
+
+type GetReleasePolicyProgressiveReleaseConfig struct {
+	// The context kind key used as the randomization unit for the rollout.
+	RolloutContextKind string `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages.
+	Stages []GetReleasePolicyProgressiveReleaseConfigStage `pulumi:"stages"`
+}
+
+// GetReleasePolicyProgressiveReleaseConfigInput is an input type that accepts GetReleasePolicyProgressiveReleaseConfigArgs and GetReleasePolicyProgressiveReleaseConfigOutput values.
+// You can construct a concrete instance of `GetReleasePolicyProgressiveReleaseConfigInput` via:
+//
+//	GetReleasePolicyProgressiveReleaseConfigArgs{...}
+type GetReleasePolicyProgressiveReleaseConfigInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyProgressiveReleaseConfigOutput() GetReleasePolicyProgressiveReleaseConfigOutput
+	ToGetReleasePolicyProgressiveReleaseConfigOutputWithContext(context.Context) GetReleasePolicyProgressiveReleaseConfigOutput
+}
+
+type GetReleasePolicyProgressiveReleaseConfigArgs struct {
+	// The context kind key used as the randomization unit for the rollout.
+	RolloutContextKind pulumi.StringInput `pulumi:"rolloutContextKind"`
+	// An ordered list of rollout stages.
+	Stages GetReleasePolicyProgressiveReleaseConfigStageArrayInput `pulumi:"stages"`
+}
+
+func (GetReleasePolicyProgressiveReleaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigArgs) ToGetReleasePolicyProgressiveReleaseConfigOutput() GetReleasePolicyProgressiveReleaseConfigOutput {
+	return i.ToGetReleasePolicyProgressiveReleaseConfigOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigArgs) ToGetReleasePolicyProgressiveReleaseConfigOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyProgressiveReleaseConfigOutput)
+}
+
+type GetReleasePolicyProgressiveReleaseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyProgressiveReleaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfig)(nil)).Elem()
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigOutput) ToGetReleasePolicyProgressiveReleaseConfigOutput() GetReleasePolicyProgressiveReleaseConfigOutput {
+	return o
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigOutput) ToGetReleasePolicyProgressiveReleaseConfigOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigOutput {
+	return o
+}
+
+// The context kind key used as the randomization unit for the rollout.
+func (o GetReleasePolicyProgressiveReleaseConfigOutput) RolloutContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReleasePolicyProgressiveReleaseConfig) string { return v.RolloutContextKind }).(pulumi.StringOutput)
+}
+
+// An ordered list of rollout stages.
+func (o GetReleasePolicyProgressiveReleaseConfigOutput) Stages() GetReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyProgressiveReleaseConfig) []GetReleasePolicyProgressiveReleaseConfigStage {
+		return v.Stages
+	}).(GetReleasePolicyProgressiveReleaseConfigStageArrayOutput)
+}
+
+type GetReleasePolicyProgressiveReleaseConfigStage struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation int `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis int `pulumi:"durationMillis"`
+}
+
+// GetReleasePolicyProgressiveReleaseConfigStageInput is an input type that accepts GetReleasePolicyProgressiveReleaseConfigStageArgs and GetReleasePolicyProgressiveReleaseConfigStageOutput values.
+// You can construct a concrete instance of `GetReleasePolicyProgressiveReleaseConfigStageInput` via:
+//
+//	GetReleasePolicyProgressiveReleaseConfigStageArgs{...}
+type GetReleasePolicyProgressiveReleaseConfigStageInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyProgressiveReleaseConfigStageOutput() GetReleasePolicyProgressiveReleaseConfigStageOutput
+	ToGetReleasePolicyProgressiveReleaseConfigStageOutputWithContext(context.Context) GetReleasePolicyProgressiveReleaseConfigStageOutput
+}
+
+type GetReleasePolicyProgressiveReleaseConfigStageArgs struct {
+	// The percentage of traffic (0-100) allocated to the new variation during this stage.
+	Allocation pulumi.IntInput `pulumi:"allocation"`
+	// The duration of this stage, in milliseconds.
+	DurationMillis pulumi.IntInput `pulumi:"durationMillis"`
+}
+
+func (GetReleasePolicyProgressiveReleaseConfigStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigStageArgs) ToGetReleasePolicyProgressiveReleaseConfigStageOutput() GetReleasePolicyProgressiveReleaseConfigStageOutput {
+	return i.ToGetReleasePolicyProgressiveReleaseConfigStageOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigStageArgs) ToGetReleasePolicyProgressiveReleaseConfigStageOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyProgressiveReleaseConfigStageOutput)
+}
+
+// GetReleasePolicyProgressiveReleaseConfigStageArrayInput is an input type that accepts GetReleasePolicyProgressiveReleaseConfigStageArray and GetReleasePolicyProgressiveReleaseConfigStageArrayOutput values.
+// You can construct a concrete instance of `GetReleasePolicyProgressiveReleaseConfigStageArrayInput` via:
+//
+//	GetReleasePolicyProgressiveReleaseConfigStageArray{ GetReleasePolicyProgressiveReleaseConfigStageArgs{...} }
+type GetReleasePolicyProgressiveReleaseConfigStageArrayInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutput() GetReleasePolicyProgressiveReleaseConfigStageArrayOutput
+	ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(context.Context) GetReleasePolicyProgressiveReleaseConfigStageArrayOutput
+}
+
+type GetReleasePolicyProgressiveReleaseConfigStageArray []GetReleasePolicyProgressiveReleaseConfigStageInput
+
+func (GetReleasePolicyProgressiveReleaseConfigStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigStageArray) ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutput() GetReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return i.ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyProgressiveReleaseConfigStageArray) ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyProgressiveReleaseConfigStageArrayOutput)
+}
+
+type GetReleasePolicyProgressiveReleaseConfigStageOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyProgressiveReleaseConfigStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigStageOutput) ToGetReleasePolicyProgressiveReleaseConfigStageOutput() GetReleasePolicyProgressiveReleaseConfigStageOutput {
+	return o
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigStageOutput) ToGetReleasePolicyProgressiveReleaseConfigStageOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigStageOutput {
+	return o
+}
+
+// The percentage of traffic (0-100) allocated to the new variation during this stage.
+func (o GetReleasePolicyProgressiveReleaseConfigStageOutput) Allocation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleasePolicyProgressiveReleaseConfigStage) int { return v.Allocation }).(pulumi.IntOutput)
+}
+
+// The duration of this stage, in milliseconds.
+func (o GetReleasePolicyProgressiveReleaseConfigStageOutput) DurationMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReleasePolicyProgressiveReleaseConfigStage) int { return v.DurationMillis }).(pulumi.IntOutput)
+}
+
+type GetReleasePolicyProgressiveReleaseConfigStageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyProgressiveReleaseConfigStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReleasePolicyProgressiveReleaseConfigStage)(nil)).Elem()
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigStageArrayOutput) ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutput() GetReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigStageArrayOutput) ToGetReleasePolicyProgressiveReleaseConfigStageArrayOutputWithContext(ctx context.Context) GetReleasePolicyProgressiveReleaseConfigStageArrayOutput {
+	return o
+}
+
+func (o GetReleasePolicyProgressiveReleaseConfigStageArrayOutput) Index(i pulumi.IntInput) GetReleasePolicyProgressiveReleaseConfigStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReleasePolicyProgressiveReleaseConfigStage {
+		return vs[0].([]GetReleasePolicyProgressiveReleaseConfigStage)[vs[1].(int)]
+	}).(GetReleasePolicyProgressiveReleaseConfigStageOutput)
+}
+
+type GetReleasePolicyScope struct {
+	// The set of environment keys this policy applies to.
+	EnvironmentKeys []string `pulumi:"environmentKeys"`
+	// The set of flag tags this policy applies to.
+	FlagTagKeys []string `pulumi:"flagTagKeys"`
+}
+
+// GetReleasePolicyScopeInput is an input type that accepts GetReleasePolicyScopeArgs and GetReleasePolicyScopeOutput values.
+// You can construct a concrete instance of `GetReleasePolicyScopeInput` via:
+//
+//	GetReleasePolicyScopeArgs{...}
+type GetReleasePolicyScopeInput interface {
+	pulumi.Input
+
+	ToGetReleasePolicyScopeOutput() GetReleasePolicyScopeOutput
+	ToGetReleasePolicyScopeOutputWithContext(context.Context) GetReleasePolicyScopeOutput
+}
+
+type GetReleasePolicyScopeArgs struct {
+	// The set of environment keys this policy applies to.
+	EnvironmentKeys pulumi.StringArrayInput `pulumi:"environmentKeys"`
+	// The set of flag tags this policy applies to.
+	FlagTagKeys pulumi.StringArrayInput `pulumi:"flagTagKeys"`
+}
+
+func (GetReleasePolicyScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyScope)(nil)).Elem()
+}
+
+func (i GetReleasePolicyScopeArgs) ToGetReleasePolicyScopeOutput() GetReleasePolicyScopeOutput {
+	return i.ToGetReleasePolicyScopeOutputWithContext(context.Background())
+}
+
+func (i GetReleasePolicyScopeArgs) ToGetReleasePolicyScopeOutputWithContext(ctx context.Context) GetReleasePolicyScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReleasePolicyScopeOutput)
+}
+
+type GetReleasePolicyScopeOutput struct{ *pulumi.OutputState }
+
+func (GetReleasePolicyScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReleasePolicyScope)(nil)).Elem()
+}
+
+func (o GetReleasePolicyScopeOutput) ToGetReleasePolicyScopeOutput() GetReleasePolicyScopeOutput {
+	return o
+}
+
+func (o GetReleasePolicyScopeOutput) ToGetReleasePolicyScopeOutputWithContext(ctx context.Context) GetReleasePolicyScopeOutput {
+	return o
+}
+
+// The set of environment keys this policy applies to.
+func (o GetReleasePolicyScopeOutput) EnvironmentKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyScope) []string { return v.EnvironmentKeys }).(pulumi.StringArrayOutput)
+}
+
+// The set of flag tags this policy applies to.
+func (o GetReleasePolicyScopeOutput) FlagTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReleasePolicyScope) []string { return v.FlagTagKeys }).(pulumi.StringArrayOutput)
+}
+
 type GetSegmentExcludedContext struct {
-	// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-	ContextKind string `pulumi:"contextKind"`
-	// List of target object keys included in or excluded from the segment.
-	Values []string `pulumi:"values"`
+	ContextKind string   `pulumi:"contextKind"`
+	Values      []string `pulumi:"values"`
 }
 
 // GetSegmentExcludedContextInput is an input type that accepts GetSegmentExcludedContextArgs and GetSegmentExcludedContextOutput values.
@@ -6818,10 +8198,8 @@ type GetSegmentExcludedContextInput interface {
 }
 
 type GetSegmentExcludedContextArgs struct {
-	// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-	ContextKind pulumi.StringInput `pulumi:"contextKind"`
-	// List of target object keys included in or excluded from the segment.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	ContextKind pulumi.StringInput      `pulumi:"contextKind"`
+	Values      pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (GetSegmentExcludedContextArgs) ElementType() reflect.Type {
@@ -6875,12 +8253,10 @@ func (o GetSegmentExcludedContextOutput) ToGetSegmentExcludedContextOutputWithCo
 	return o
 }
 
-// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
 func (o GetSegmentExcludedContextOutput) ContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSegmentExcludedContext) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// List of target object keys included in or excluded from the segment.
 func (o GetSegmentExcludedContextOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSegmentExcludedContext) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6906,10 +8282,8 @@ func (o GetSegmentExcludedContextArrayOutput) Index(i pulumi.IntInput) GetSegmen
 }
 
 type GetSegmentIncludedContext struct {
-	// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-	ContextKind string `pulumi:"contextKind"`
-	// List of target object keys included in or excluded from the segment.
-	Values []string `pulumi:"values"`
+	ContextKind string   `pulumi:"contextKind"`
+	Values      []string `pulumi:"values"`
 }
 
 // GetSegmentIncludedContextInput is an input type that accepts GetSegmentIncludedContextArgs and GetSegmentIncludedContextOutput values.
@@ -6924,10 +8298,8 @@ type GetSegmentIncludedContextInput interface {
 }
 
 type GetSegmentIncludedContextArgs struct {
-	// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-	ContextKind pulumi.StringInput `pulumi:"contextKind"`
-	// List of target object keys included in or excluded from the segment.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	ContextKind pulumi.StringInput      `pulumi:"contextKind"`
+	Values      pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (GetSegmentIncludedContextArgs) ElementType() reflect.Type {
@@ -6981,12 +8353,10 @@ func (o GetSegmentIncludedContextOutput) ToGetSegmentIncludedContextOutputWithCo
 	return o
 }
 
-// The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
 func (o GetSegmentIncludedContextOutput) ContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSegmentIncludedContext) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// List of target object keys included in or excluded from the segment.
 func (o GetSegmentIncludedContextOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSegmentIncludedContext) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -7012,14 +8382,14 @@ func (o GetSegmentIncludedContextArrayOutput) Index(i pulumi.IntInput) GetSegmen
 }
 
 type GetSegmentRule struct {
-	// The attribute by which to group contexts together.
-	BucketBy *string `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// Attribute for bucketing contexts.
+	BucketBy string `pulumi:"bucketBy"`
+	// Clauses applied as the rule's logical condition.
 	Clauses []GetSegmentRuleClause `pulumi:"clauses"`
-	// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
-	RolloutContextKind *string `pulumi:"rolloutContextKind"`
-	// The integer weight of the rule (between 1 and 100000).
-	Weight *int `pulumi:"weight"`
+	// Context kind for the rollout.
+	RolloutContextKind string `pulumi:"rolloutContextKind"`
+	// Rule weight (1-100000).
+	Weight int `pulumi:"weight"`
 }
 
 // GetSegmentRuleInput is an input type that accepts GetSegmentRuleArgs and GetSegmentRuleOutput values.
@@ -7034,14 +8404,14 @@ type GetSegmentRuleInput interface {
 }
 
 type GetSegmentRuleArgs struct {
-	// The attribute by which to group contexts together.
-	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
-	// List of nested blocks specifying the logical clauses to evaluate
+	// Attribute for bucketing contexts.
+	BucketBy pulumi.StringInput `pulumi:"bucketBy"`
+	// Clauses applied as the rule's logical condition.
 	Clauses GetSegmentRuleClauseArrayInput `pulumi:"clauses"`
-	// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
-	RolloutContextKind pulumi.StringPtrInput `pulumi:"rolloutContextKind"`
-	// The integer weight of the rule (between 1 and 100000).
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	// Context kind for the rollout.
+	RolloutContextKind pulumi.StringInput `pulumi:"rolloutContextKind"`
+	// Rule weight (1-100000).
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (GetSegmentRuleArgs) ElementType() reflect.Type {
@@ -7095,24 +8465,24 @@ func (o GetSegmentRuleOutput) ToGetSegmentRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The attribute by which to group contexts together.
-func (o GetSegmentRuleOutput) BucketBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSegmentRule) *string { return v.BucketBy }).(pulumi.StringPtrOutput)
+// Attribute for bucketing contexts.
+func (o GetSegmentRuleOutput) BucketBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSegmentRule) string { return v.BucketBy }).(pulumi.StringOutput)
 }
 
-// List of nested blocks specifying the logical clauses to evaluate
+// Clauses applied as the rule's logical condition.
 func (o GetSegmentRuleOutput) Clauses() GetSegmentRuleClauseArrayOutput {
 	return o.ApplyT(func(v GetSegmentRule) []GetSegmentRuleClause { return v.Clauses }).(GetSegmentRuleClauseArrayOutput)
 }
 
-// The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
-func (o GetSegmentRuleOutput) RolloutContextKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSegmentRule) *string { return v.RolloutContextKind }).(pulumi.StringPtrOutput)
+// Context kind for the rollout.
+func (o GetSegmentRuleOutput) RolloutContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSegmentRule) string { return v.RolloutContextKind }).(pulumi.StringOutput)
 }
 
-// The integer weight of the rule (between 1 and 100000).
-func (o GetSegmentRuleOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetSegmentRule) *int { return v.Weight }).(pulumi.IntPtrOutput)
+// Rule weight (1-100000).
+func (o GetSegmentRuleOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSegmentRule) int { return v.Weight }).(pulumi.IntOutput)
 }
 
 type GetSegmentRuleArrayOutput struct{ *pulumi.OutputState }
@@ -7136,17 +8506,17 @@ func (o GetSegmentRuleArrayOutput) Index(i pulumi.IntInput) GetSegmentRuleOutput
 }
 
 type GetSegmentRuleClause struct {
-	// The user attribute to operate on
+	// User attribute to operate on.
 	Attribute string `pulumi:"attribute"`
-	// The context kind associated with this rule clause. If omitted, defaults to `user`.
-	ContextKind *string `pulumi:"contextKind"`
-	// Whether to negate the rule clause.
-	Negate *bool `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// Context kind for the clause.
+	ContextKind string `pulumi:"contextKind"`
+	// Whether to negate the clause.
+	Negate bool `pulumi:"negate"`
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 	Op string `pulumi:"op"`
-	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-	ValueType *string `pulumi:"valueType"`
-	// The list of values associated with the rule clause.
+	// Type of each clause value (boolean / string / number).
+	ValueType string `pulumi:"valueType"`
+	// Values for the clause.
 	Values []string `pulumi:"values"`
 }
 
@@ -7162,17 +8532,17 @@ type GetSegmentRuleClauseInput interface {
 }
 
 type GetSegmentRuleClauseArgs struct {
-	// The user attribute to operate on
+	// User attribute to operate on.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	// The context kind associated with this rule clause. If omitted, defaults to `user`.
-	ContextKind pulumi.StringPtrInput `pulumi:"contextKind"`
-	// Whether to negate the rule clause.
-	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+	// Context kind for the clause.
+	ContextKind pulumi.StringInput `pulumi:"contextKind"`
+	// Whether to negate the clause.
+	Negate pulumi.BoolInput `pulumi:"negate"`
+	// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 	Op pulumi.StringInput `pulumi:"op"`
-	// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
-	// The list of values associated with the rule clause.
+	// Type of each clause value (boolean / string / number).
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+	// Values for the clause.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -7227,32 +8597,32 @@ func (o GetSegmentRuleClauseOutput) ToGetSegmentRuleClauseOutputWithContext(ctx 
 	return o
 }
 
-// The user attribute to operate on
+// User attribute to operate on.
 func (o GetSegmentRuleClauseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSegmentRuleClause) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// The context kind associated with this rule clause. If omitted, defaults to `user`.
-func (o GetSegmentRuleClauseOutput) ContextKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSegmentRuleClause) *string { return v.ContextKind }).(pulumi.StringPtrOutput)
+// Context kind for the clause.
+func (o GetSegmentRuleClauseOutput) ContextKind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSegmentRuleClause) string { return v.ContextKind }).(pulumi.StringOutput)
 }
 
-// Whether to negate the rule clause.
-func (o GetSegmentRuleClauseOutput) Negate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSegmentRuleClause) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
+// Whether to negate the clause.
+func (o GetSegmentRuleClauseOutput) Negate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSegmentRuleClause) bool { return v.Negate }).(pulumi.BoolOutput)
 }
 
-// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+// The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
 func (o GetSegmentRuleClauseOutput) Op() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSegmentRuleClause) string { return v.Op }).(pulumi.StringOutput)
 }
 
-// The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `valueType` defaults to `string`.
-func (o GetSegmentRuleClauseOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSegmentRuleClause) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+// Type of each clause value (boolean / string / number).
+func (o GetSegmentRuleClauseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSegmentRuleClause) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-// The list of values associated with the rule clause.
+// Values for the clause.
 func (o GetSegmentRuleClauseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSegmentRuleClause) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -7278,11 +8648,16 @@ func (o GetSegmentRuleClauseArrayOutput) Index(i pulumi.IntInput) GetSegmentRule
 }
 
 type GetTeamMaintainer struct {
-	Email     string `pulumi:"email"`
+	// Email of the maintainer.
+	Email string `pulumi:"email"`
+	// First name.
 	FirstName string `pulumi:"firstName"`
-	Id        string `pulumi:"id"`
-	LastName  string `pulumi:"lastName"`
-	Role      string `pulumi:"role"`
+	// Member ID.
+	Id string `pulumi:"id"`
+	// Last name.
+	LastName string `pulumi:"lastName"`
+	// Role.
+	Role string `pulumi:"role"`
 }
 
 // GetTeamMaintainerInput is an input type that accepts GetTeamMaintainerArgs and GetTeamMaintainerOutput values.
@@ -7297,11 +8672,16 @@ type GetTeamMaintainerInput interface {
 }
 
 type GetTeamMaintainerArgs struct {
-	Email     pulumi.StringInput `pulumi:"email"`
+	// Email of the maintainer.
+	Email pulumi.StringInput `pulumi:"email"`
+	// First name.
 	FirstName pulumi.StringInput `pulumi:"firstName"`
-	Id        pulumi.StringInput `pulumi:"id"`
-	LastName  pulumi.StringInput `pulumi:"lastName"`
-	Role      pulumi.StringInput `pulumi:"role"`
+	// Member ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Last name.
+	LastName pulumi.StringInput `pulumi:"lastName"`
+	// Role.
+	Role pulumi.StringInput `pulumi:"role"`
 }
 
 func (GetTeamMaintainerArgs) ElementType() reflect.Type {
@@ -7355,22 +8735,27 @@ func (o GetTeamMaintainerOutput) ToGetTeamMaintainerOutputWithContext(ctx contex
 	return o
 }
 
+// Email of the maintainer.
 func (o GetTeamMaintainerOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// First name.
 func (o GetTeamMaintainerOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMaintainer) string { return v.FirstName }).(pulumi.StringOutput)
 }
 
+// Member ID.
 func (o GetTeamMaintainerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Last name.
 func (o GetTeamMaintainerOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMaintainer) string { return v.LastName }).(pulumi.StringOutput)
 }
 
+// Role.
 func (o GetTeamMaintainerOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -7395,112 +8780,6 @@ func (o GetTeamMaintainerArrayOutput) Index(i pulumi.IntInput) GetTeamMaintainer
 	}).(GetTeamMaintainerOutput)
 }
 
-type GetTeamMemberRoleAttribute struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key string `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values []string `pulumi:"values"`
-}
-
-// GetTeamMemberRoleAttributeInput is an input type that accepts GetTeamMemberRoleAttributeArgs and GetTeamMemberRoleAttributeOutput values.
-// You can construct a concrete instance of `GetTeamMemberRoleAttributeInput` via:
-//
-//	GetTeamMemberRoleAttributeArgs{...}
-type GetTeamMemberRoleAttributeInput interface {
-	pulumi.Input
-
-	ToGetTeamMemberRoleAttributeOutput() GetTeamMemberRoleAttributeOutput
-	ToGetTeamMemberRoleAttributeOutputWithContext(context.Context) GetTeamMemberRoleAttributeOutput
-}
-
-type GetTeamMemberRoleAttributeArgs struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetTeamMemberRoleAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamMemberRoleAttributeArgs) ToGetTeamMemberRoleAttributeOutput() GetTeamMemberRoleAttributeOutput {
-	return i.ToGetTeamMemberRoleAttributeOutputWithContext(context.Background())
-}
-
-func (i GetTeamMemberRoleAttributeArgs) ToGetTeamMemberRoleAttributeOutputWithContext(ctx context.Context) GetTeamMemberRoleAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberRoleAttributeOutput)
-}
-
-// GetTeamMemberRoleAttributeArrayInput is an input type that accepts GetTeamMemberRoleAttributeArray and GetTeamMemberRoleAttributeArrayOutput values.
-// You can construct a concrete instance of `GetTeamMemberRoleAttributeArrayInput` via:
-//
-//	GetTeamMemberRoleAttributeArray{ GetTeamMemberRoleAttributeArgs{...} }
-type GetTeamMemberRoleAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetTeamMemberRoleAttributeArrayOutput() GetTeamMemberRoleAttributeArrayOutput
-	ToGetTeamMemberRoleAttributeArrayOutputWithContext(context.Context) GetTeamMemberRoleAttributeArrayOutput
-}
-
-type GetTeamMemberRoleAttributeArray []GetTeamMemberRoleAttributeInput
-
-func (GetTeamMemberRoleAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamMemberRoleAttributeArray) ToGetTeamMemberRoleAttributeArrayOutput() GetTeamMemberRoleAttributeArrayOutput {
-	return i.ToGetTeamMemberRoleAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetTeamMemberRoleAttributeArray) ToGetTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamMemberRoleAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberRoleAttributeArrayOutput)
-}
-
-type GetTeamMemberRoleAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetTeamMemberRoleAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamMemberRoleAttributeOutput) ToGetTeamMemberRoleAttributeOutput() GetTeamMemberRoleAttributeOutput {
-	return o
-}
-
-func (o GetTeamMemberRoleAttributeOutput) ToGetTeamMemberRoleAttributeOutputWithContext(ctx context.Context) GetTeamMemberRoleAttributeOutput {
-	return o
-}
-
-// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-func (o GetTeamMemberRoleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamMemberRoleAttribute) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-func (o GetTeamMemberRoleAttributeOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTeamMemberRoleAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetTeamMemberRoleAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTeamMemberRoleAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamMemberRoleAttributeArrayOutput) ToGetTeamMemberRoleAttributeArrayOutput() GetTeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamMemberRoleAttributeArrayOutput) ToGetTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamMemberRoleAttributeArrayOutput) Index(i pulumi.IntInput) GetTeamMemberRoleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMemberRoleAttribute {
-		return vs[0].([]GetTeamMemberRoleAttribute)[vs[1].(int)]
-	}).(GetTeamMemberRoleAttributeOutput)
-}
-
 type GetTeamMembersTeamMember struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 	CustomRoles []string `pulumi:"customRoles"`
@@ -7514,8 +8793,8 @@ type GetTeamMembersTeamMember struct {
 	LastName string `pulumi:"lastName"`
 	// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
 	Role string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []GetTeamMembersTeamMemberRoleAttribute `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 }
 
 // GetTeamMembersTeamMemberInput is an input type that accepts GetTeamMembersTeamMemberArgs and GetTeamMembersTeamMemberOutput values.
@@ -7542,8 +8821,8 @@ type GetTeamMembersTeamMemberArgs struct {
 	LastName pulumi.StringInput `pulumi:"lastName"`
 	// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
 	Role pulumi.StringInput `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes GetTeamMembersTeamMemberRoleAttributeArrayInput `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes pulumi.StringArrayMapInput `pulumi:"roleAttributes"`
 }
 
 func (GetTeamMembersTeamMemberArgs) ElementType() reflect.Type {
@@ -7627,9 +8906,9 @@ func (o GetTeamMembersTeamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-func (o GetTeamMembersTeamMemberOutput) RoleAttributes() GetTeamMembersTeamMemberRoleAttributeArrayOutput {
-	return o.ApplyT(func(v GetTeamMembersTeamMember) []GetTeamMembersTeamMemberRoleAttribute { return v.RoleAttributes }).(GetTeamMembersTeamMemberRoleAttributeArrayOutput)
+// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+func (o GetTeamMembersTeamMemberOutput) RoleAttributes() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) map[string][]string { return v.RoleAttributes }).(pulumi.StringArrayMapOutput)
 }
 
 type GetTeamMembersTeamMemberArrayOutput struct{ *pulumi.OutputState }
@@ -7652,223 +8931,9 @@ func (o GetTeamMembersTeamMemberArrayOutput) Index(i pulumi.IntInput) GetTeamMem
 	}).(GetTeamMembersTeamMemberOutput)
 }
 
-type GetTeamMembersTeamMemberRoleAttribute struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key string `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values []string `pulumi:"values"`
-}
-
-// GetTeamMembersTeamMemberRoleAttributeInput is an input type that accepts GetTeamMembersTeamMemberRoleAttributeArgs and GetTeamMembersTeamMemberRoleAttributeOutput values.
-// You can construct a concrete instance of `GetTeamMembersTeamMemberRoleAttributeInput` via:
-//
-//	GetTeamMembersTeamMemberRoleAttributeArgs{...}
-type GetTeamMembersTeamMemberRoleAttributeInput interface {
-	pulumi.Input
-
-	ToGetTeamMembersTeamMemberRoleAttributeOutput() GetTeamMembersTeamMemberRoleAttributeOutput
-	ToGetTeamMembersTeamMemberRoleAttributeOutputWithContext(context.Context) GetTeamMembersTeamMemberRoleAttributeOutput
-}
-
-type GetTeamMembersTeamMemberRoleAttributeArgs struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetTeamMembersTeamMemberRoleAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamMembersTeamMemberRoleAttributeArgs) ToGetTeamMembersTeamMemberRoleAttributeOutput() GetTeamMembersTeamMemberRoleAttributeOutput {
-	return i.ToGetTeamMembersTeamMemberRoleAttributeOutputWithContext(context.Background())
-}
-
-func (i GetTeamMembersTeamMemberRoleAttributeArgs) ToGetTeamMembersTeamMemberRoleAttributeOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberRoleAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMembersTeamMemberRoleAttributeOutput)
-}
-
-// GetTeamMembersTeamMemberRoleAttributeArrayInput is an input type that accepts GetTeamMembersTeamMemberRoleAttributeArray and GetTeamMembersTeamMemberRoleAttributeArrayOutput values.
-// You can construct a concrete instance of `GetTeamMembersTeamMemberRoleAttributeArrayInput` via:
-//
-//	GetTeamMembersTeamMemberRoleAttributeArray{ GetTeamMembersTeamMemberRoleAttributeArgs{...} }
-type GetTeamMembersTeamMemberRoleAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetTeamMembersTeamMemberRoleAttributeArrayOutput() GetTeamMembersTeamMemberRoleAttributeArrayOutput
-	ToGetTeamMembersTeamMemberRoleAttributeArrayOutputWithContext(context.Context) GetTeamMembersTeamMemberRoleAttributeArrayOutput
-}
-
-type GetTeamMembersTeamMemberRoleAttributeArray []GetTeamMembersTeamMemberRoleAttributeInput
-
-func (GetTeamMembersTeamMemberRoleAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMembersTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamMembersTeamMemberRoleAttributeArray) ToGetTeamMembersTeamMemberRoleAttributeArrayOutput() GetTeamMembersTeamMemberRoleAttributeArrayOutput {
-	return i.ToGetTeamMembersTeamMemberRoleAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetTeamMembersTeamMemberRoleAttributeArray) ToGetTeamMembersTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberRoleAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMembersTeamMemberRoleAttributeArrayOutput)
-}
-
-type GetTeamMembersTeamMemberRoleAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetTeamMembersTeamMemberRoleAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamMembersTeamMemberRoleAttributeOutput) ToGetTeamMembersTeamMemberRoleAttributeOutput() GetTeamMembersTeamMemberRoleAttributeOutput {
-	return o
-}
-
-func (o GetTeamMembersTeamMemberRoleAttributeOutput) ToGetTeamMembersTeamMemberRoleAttributeOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberRoleAttributeOutput {
-	return o
-}
-
-// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-func (o GetTeamMembersTeamMemberRoleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamMembersTeamMemberRoleAttribute) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-func (o GetTeamMembersTeamMemberRoleAttributeOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTeamMembersTeamMemberRoleAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetTeamMembersTeamMemberRoleAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTeamMembersTeamMemberRoleAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMembersTeamMemberRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamMembersTeamMemberRoleAttributeArrayOutput) ToGetTeamMembersTeamMemberRoleAttributeArrayOutput() GetTeamMembersTeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamMembersTeamMemberRoleAttributeArrayOutput) ToGetTeamMembersTeamMemberRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamMembersTeamMemberRoleAttributeArrayOutput) Index(i pulumi.IntInput) GetTeamMembersTeamMemberRoleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMembersTeamMemberRoleAttribute {
-		return vs[0].([]GetTeamMembersTeamMemberRoleAttribute)[vs[1].(int)]
-	}).(GetTeamMembersTeamMemberRoleAttributeOutput)
-}
-
-type GetTeamRoleAttribute struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key string `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values []string `pulumi:"values"`
-}
-
-// GetTeamRoleAttributeInput is an input type that accepts GetTeamRoleAttributeArgs and GetTeamRoleAttributeOutput values.
-// You can construct a concrete instance of `GetTeamRoleAttributeInput` via:
-//
-//	GetTeamRoleAttributeArgs{...}
-type GetTeamRoleAttributeInput interface {
-	pulumi.Input
-
-	ToGetTeamRoleAttributeOutput() GetTeamRoleAttributeOutput
-	ToGetTeamRoleAttributeOutputWithContext(context.Context) GetTeamRoleAttributeOutput
-}
-
-type GetTeamRoleAttributeArgs struct {
-	// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetTeamRoleAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamRoleAttributeArgs) ToGetTeamRoleAttributeOutput() GetTeamRoleAttributeOutput {
-	return i.ToGetTeamRoleAttributeOutputWithContext(context.Background())
-}
-
-func (i GetTeamRoleAttributeArgs) ToGetTeamRoleAttributeOutputWithContext(ctx context.Context) GetTeamRoleAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleAttributeOutput)
-}
-
-// GetTeamRoleAttributeArrayInput is an input type that accepts GetTeamRoleAttributeArray and GetTeamRoleAttributeArrayOutput values.
-// You can construct a concrete instance of `GetTeamRoleAttributeArrayInput` via:
-//
-//	GetTeamRoleAttributeArray{ GetTeamRoleAttributeArgs{...} }
-type GetTeamRoleAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetTeamRoleAttributeArrayOutput() GetTeamRoleAttributeArrayOutput
-	ToGetTeamRoleAttributeArrayOutputWithContext(context.Context) GetTeamRoleAttributeArrayOutput
-}
-
-type GetTeamRoleAttributeArray []GetTeamRoleAttributeInput
-
-func (GetTeamRoleAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamRoleAttribute)(nil)).Elem()
-}
-
-func (i GetTeamRoleAttributeArray) ToGetTeamRoleAttributeArrayOutput() GetTeamRoleAttributeArrayOutput {
-	return i.ToGetTeamRoleAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetTeamRoleAttributeArray) ToGetTeamRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamRoleAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleAttributeArrayOutput)
-}
-
-type GetTeamRoleAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetTeamRoleAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamRoleAttributeOutput) ToGetTeamRoleAttributeOutput() GetTeamRoleAttributeOutput {
-	return o
-}
-
-func (o GetTeamRoleAttributeOutput) ToGetTeamRoleAttributeOutputWithContext(ctx context.Context) GetTeamRoleAttributeOutput {
-	return o
-}
-
-// The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-func (o GetTeamRoleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamRoleAttribute) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-func (o GetTeamRoleAttributeOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTeamRoleAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetTeamRoleAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTeamRoleAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamRoleAttribute)(nil)).Elem()
-}
-
-func (o GetTeamRoleAttributeArrayOutput) ToGetTeamRoleAttributeArrayOutput() GetTeamRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamRoleAttributeArrayOutput) ToGetTeamRoleAttributeArrayOutputWithContext(ctx context.Context) GetTeamRoleAttributeArrayOutput {
-	return o
-}
-
-func (o GetTeamRoleAttributeArrayOutput) Index(i pulumi.IntInput) GetTeamRoleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamRoleAttribute {
-		return vs[0].([]GetTeamRoleAttribute)[vs[1].(int)]
-	}).(GetTeamRoleAttributeOutput)
-}
-
 type GetViewLinkedSegment struct {
-	// The environment ID of the segment.
 	EnvironmentId string `pulumi:"environmentId"`
-	// The key of the segment.
-	SegmentKey string `pulumi:"segmentKey"`
+	SegmentKey    string `pulumi:"segmentKey"`
 }
 
 // GetViewLinkedSegmentInput is an input type that accepts GetViewLinkedSegmentArgs and GetViewLinkedSegmentOutput values.
@@ -7883,10 +8948,8 @@ type GetViewLinkedSegmentInput interface {
 }
 
 type GetViewLinkedSegmentArgs struct {
-	// The environment ID of the segment.
 	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
-	// The key of the segment.
-	SegmentKey pulumi.StringInput `pulumi:"segmentKey"`
+	SegmentKey    pulumi.StringInput `pulumi:"segmentKey"`
 }
 
 func (GetViewLinkedSegmentArgs) ElementType() reflect.Type {
@@ -7940,12 +9003,10 @@ func (o GetViewLinkedSegmentOutput) ToGetViewLinkedSegmentOutputWithContext(ctx 
 	return o
 }
 
-// The environment ID of the segment.
 func (o GetViewLinkedSegmentOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
-// The key of the segment.
 func (o GetViewLinkedSegmentOutput) SegmentKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetViewLinkedSegment) string { return v.SegmentKey }).(pulumi.StringOutput)
 }
@@ -7972,7 +9033,6 @@ func (o GetViewLinkedSegmentArrayOutput) Index(i pulumi.IntInput) GetViewLinkedS
 
 type GetWebhookStatement struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
@@ -7997,7 +9057,6 @@ type GetWebhookStatementInput interface {
 
 type GetWebhookStatementArgs struct {
 	// The list of action specifiers defining the actions to which the statement applies.
-	// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
@@ -8061,7 +9120,6 @@ func (o GetWebhookStatementOutput) ToGetWebhookStatementOutputWithContext(ctx co
 }
 
 // The list of action specifiers defining the actions to which the statement applies.
-// Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 func (o GetWebhookStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWebhookStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -8109,24 +9167,24 @@ func (o GetWebhookStatementArrayOutput) Index(i pulumi.IntInput) GetWebhookState
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenInlineRoleInput)(nil)).Elem(), AccessTokenInlineRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenInlineRoleArrayInput)(nil)).Elem(), AccessTokenInlineRoleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementInput)(nil)).Elem(), AccessTokenPolicyStatementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementArrayInput)(nil)).Elem(), AccessTokenPolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiAgentGraphEdgesInput)(nil)).Elem(), AiAgentGraphEdgesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiAgentGraphEdgesMapInput)(nil)).Elem(), AiAgentGraphEdgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeInput)(nil)).Elem(), AiConfigVariationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeArrayInput)(nil)).Elem(), AiConfigVariationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageInput)(nil)).Elem(), AiConfigVariationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageArrayInput)(nil)).Elem(), AiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementInput)(nil)).Elem(), AuditLogSubscriptionStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementArrayInput)(nil)).Elem(), AuditLogSubscriptionStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyInput)(nil)).Elem(), CustomRolePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyArrayInput)(nil)).Elem(), CustomRolePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyStatementInput)(nil)).Elem(), CustomRolePolicyStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyStatementArrayInput)(nil)).Elem(), CustomRolePolicyStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingInput)(nil)).Elem(), EnvironmentApprovalSettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingArrayInput)(nil)).Elem(), EnvironmentApprovalSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingsInput)(nil)).Elem(), EnvironmentApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingsPtrInput)(nil)).Elem(), EnvironmentApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentSegmentApprovalSettingsInput)(nil)).Elem(), EnvironmentSegmentApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentSegmentApprovalSettingsPtrInput)(nil)).Elem(), EnvironmentSegmentApprovalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagClientSideAvailabilityInput)(nil)).Elem(), FeatureFlagClientSideAvailabilityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagClientSideAvailabilityArrayInput)(nil)).Elem(), FeatureFlagClientSideAvailabilityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertyInput)(nil)).Elem(), FeatureFlagCustomPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertyArrayInput)(nil)).Elem(), FeatureFlagCustomPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagClientSideAvailabilityPtrInput)(nil)).Elem(), FeatureFlagClientSideAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertiesInput)(nil)).Elem(), FeatureFlagCustomPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertiesMapInput)(nil)).Elem(), FeatureFlagCustomPropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagDefaultsInput)(nil)).Elem(), FeatureFlagDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagDefaultsPtrInput)(nil)).Elem(), FeatureFlagDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagEnvironmentContextTargetInput)(nil)).Elem(), FeatureFlagEnvironmentContextTargetArgs{})
@@ -8147,16 +9205,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagTemplatesBooleanDefaultsPtrInput)(nil)).Elem(), FlagTemplatesBooleanDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsPtrInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricGroupMetricInput)(nil)).Elem(), MetricGroupMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricGroupMetricArrayInput)(nil)).Elem(), MetricGroupMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricUrlInput)(nil)).Elem(), MetricUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricUrlArrayInput)(nil)).Elem(), MetricUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultClientSideAvailabilityInput)(nil)).Elem(), ProjectDefaultClientSideAvailabilityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultClientSideAvailabilityArrayInput)(nil)).Elem(), ProjectDefaultClientSideAvailabilityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentInput)(nil)).Elem(), ProjectEnvironmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentArrayInput)(nil)).Elem(), ProjectEnvironmentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentApprovalSettingInput)(nil)).Elem(), ProjectEnvironmentApprovalSettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentApprovalSettingArrayInput)(nil)).Elem(), ProjectEnvironmentApprovalSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultClientSideAvailabilityPtrInput)(nil)).Elem(), ProjectDefaultClientSideAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentsInput)(nil)).Elem(), ProjectEnvironmentsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentsMapInput)(nil)).Elem(), ProjectEnvironmentsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentsApprovalSettingsInput)(nil)).Elem(), ProjectEnvironmentsApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentsApprovalSettingsPtrInput)(nil)).Elem(), ProjectEnvironmentsApprovalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelayProxyConfigurationPolicyInput)(nil)).Elem(), RelayProxyConfigurationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelayProxyConfigurationPolicyArrayInput)(nil)).Elem(), RelayProxyConfigurationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigInput)(nil)).Elem(), ReleasePolicyGuardedReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigPtrInput)(nil)).Elem(), ReleasePolicyGuardedReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigStageInput)(nil)).Elem(), ReleasePolicyGuardedReleaseConfigStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyGuardedReleaseConfigStageArrayInput)(nil)).Elem(), ReleasePolicyGuardedReleaseConfigStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigInput)(nil)).Elem(), ReleasePolicyProgressiveReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigPtrInput)(nil)).Elem(), ReleasePolicyProgressiveReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigStageInput)(nil)).Elem(), ReleasePolicyProgressiveReleaseConfigStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyProgressiveReleaseConfigStageArrayInput)(nil)).Elem(), ReleasePolicyProgressiveReleaseConfigStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyScopeInput)(nil)).Elem(), ReleasePolicyScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReleasePolicyScopePtrInput)(nil)).Elem(), ReleasePolicyScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentExcludedContextInput)(nil)).Elem(), SegmentExcludedContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentExcludedContextArrayInput)(nil)).Elem(), SegmentExcludedContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentIncludedContextInput)(nil)).Elem(), SegmentIncludedContextArgs{})
@@ -8165,32 +9235,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleArrayInput)(nil)).Elem(), SegmentRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleClauseInput)(nil)).Elem(), SegmentRuleClauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleClauseArrayInput)(nil)).Elem(), SegmentRuleClauseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TeamMemberRoleAttributeInput)(nil)).Elem(), TeamMemberRoleAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TeamMemberRoleAttributeArrayInput)(nil)).Elem(), TeamMemberRoleAttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeInput)(nil)).Elem(), TeamRoleAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TeamRoleAttributeArrayInput)(nil)).Elem(), TeamRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentInput)(nil)).Elem(), ViewLinksSegmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ViewLinksSegmentArrayInput)(nil)).Elem(), ViewLinksSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementInput)(nil)).Elem(), WebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementArrayInput)(nil)).Elem(), WebhookStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiAgentGraphEdgesInput)(nil)).Elem(), GetAiAgentGraphEdgesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiAgentGraphEdgesMapInput)(nil)).Elem(), GetAiAgentGraphEdgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeInput)(nil)).Elem(), GetAiConfigVariationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeArrayInput)(nil)).Elem(), GetAiConfigVariationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageInput)(nil)).Elem(), GetAiConfigVariationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageArrayInput)(nil)).Elem(), GetAiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementArrayInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingInput)(nil)).Elem(), GetEnvironmentApprovalSettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingArrayInput)(nil)).Elem(), GetEnvironmentApprovalSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingsInput)(nil)).Elem(), GetEnvironmentApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentSegmentApprovalSettingsInput)(nil)).Elem(), GetEnvironmentSegmentApprovalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagClientSideAvailabilityInput)(nil)).Elem(), GetFeatureFlagClientSideAvailabilityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagClientSideAvailabilityArrayInput)(nil)).Elem(), GetFeatureFlagClientSideAvailabilityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagCustomPropertyInput)(nil)).Elem(), GetFeatureFlagCustomPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagCustomPropertyArrayInput)(nil)).Elem(), GetFeatureFlagCustomPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagDefaultInput)(nil)).Elem(), GetFeatureFlagDefaultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagDefaultArrayInput)(nil)).Elem(), GetFeatureFlagDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagCustomPropertiesInput)(nil)).Elem(), GetFeatureFlagCustomPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagCustomPropertiesMapInput)(nil)).Elem(), GetFeatureFlagCustomPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagDefaultsInput)(nil)).Elem(), GetFeatureFlagDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentContextTargetInput)(nil)).Elem(), GetFeatureFlagEnvironmentContextTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentContextTargetArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentContextTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentFallthroughInput)(nil)).Elem(), GetFeatureFlagEnvironmentFallthroughArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentFallthroughArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentFallthroughArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentPrerequisiteInput)(nil)).Elem(), GetFeatureFlagEnvironmentPrerequisiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentPrerequisiteArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentPrerequisiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentRuleInput)(nil)).Elem(), GetFeatureFlagEnvironmentRuleArgs{})
@@ -8201,18 +9266,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentTargetArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationInput)(nil)).Elem(), GetFeatureFlagVariationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationArrayInput)(nil)).Elem(), GetFeatureFlagVariationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTemplatesBooleanDefaultInput)(nil)).Elem(), GetFlagTemplatesBooleanDefaultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTemplatesBooleanDefaultArrayInput)(nil)).Elem(), GetFlagTemplatesBooleanDefaultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionInput)(nil)).Elem(), GetFlagTriggerInstructionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionArrayInput)(nil)).Elem(), GetFlagTriggerInstructionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTemplatesBooleanDefaultsInput)(nil)).Elem(), GetFlagTemplatesBooleanDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionsInput)(nil)).Elem(), GetFlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricGroupMetricInput)(nil)).Elem(), GetMetricGroupMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricGroupMetricArrayInput)(nil)).Elem(), GetMetricGroupMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricUrlInput)(nil)).Elem(), GetMetricUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricUrlArrayInput)(nil)).Elem(), GetMetricUrlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectClientSideAvailabilityInput)(nil)).Elem(), GetProjectClientSideAvailabilityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectClientSideAvailabilityArrayInput)(nil)).Elem(), GetProjectClientSideAvailabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectDefaultClientSideAvailabilityInput)(nil)).Elem(), GetProjectDefaultClientSideAvailabilityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectDefaultClientSideAvailabilityArrayInput)(nil)).Elem(), GetProjectDefaultClientSideAvailabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRelayProxyConfigurationPolicyInput)(nil)).Elem(), GetRelayProxyConfigurationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRelayProxyConfigurationPolicyArrayInput)(nil)).Elem(), GetRelayProxyConfigurationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfigInput)(nil)).Elem(), GetReleasePolicyGuardedReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfigStageInput)(nil)).Elem(), GetReleasePolicyGuardedReleaseConfigStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyGuardedReleaseConfigStageArrayInput)(nil)).Elem(), GetReleasePolicyGuardedReleaseConfigStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfigInput)(nil)).Elem(), GetReleasePolicyProgressiveReleaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfigStageInput)(nil)).Elem(), GetReleasePolicyProgressiveReleaseConfigStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyProgressiveReleaseConfigStageArrayInput)(nil)).Elem(), GetReleasePolicyProgressiveReleaseConfigStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReleasePolicyScopeInput)(nil)).Elem(), GetReleasePolicyScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentExcludedContextInput)(nil)).Elem(), GetSegmentExcludedContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentExcludedContextArrayInput)(nil)).Elem(), GetSegmentExcludedContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentIncludedContextInput)(nil)).Elem(), GetSegmentIncludedContextArgs{})
@@ -8223,38 +9292,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleClauseArrayInput)(nil)).Elem(), GetSegmentRuleClauseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerInput)(nil)).Elem(), GetTeamMaintainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerArrayInput)(nil)).Elem(), GetTeamMaintainerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberRoleAttributeInput)(nil)).Elem(), GetTeamMemberRoleAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberRoleAttributeArrayInput)(nil)).Elem(), GetTeamMemberRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberInput)(nil)).Elem(), GetTeamMembersTeamMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberArrayInput)(nil)).Elem(), GetTeamMembersTeamMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttributeInput)(nil)).Elem(), GetTeamMembersTeamMemberRoleAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberRoleAttributeArrayInput)(nil)).Elem(), GetTeamMembersTeamMemberRoleAttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeInput)(nil)).Elem(), GetTeamRoleAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleAttributeArrayInput)(nil)).Elem(), GetTeamRoleAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentInput)(nil)).Elem(), GetViewLinkedSegmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetViewLinkedSegmentArrayInput)(nil)).Elem(), GetViewLinkedSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementInput)(nil)).Elem(), GetWebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementArrayInput)(nil)).Elem(), GetWebhookStatementArray{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleOutput{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleArrayOutput{})
-	pulumi.RegisterOutputType(AccessTokenPolicyStatementOutput{})
-	pulumi.RegisterOutputType(AccessTokenPolicyStatementArrayOutput{})
+	pulumi.RegisterOutputType(AiAgentGraphEdgesOutput{})
+	pulumi.RegisterOutputType(AiAgentGraphEdgesMapOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationTypeOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationTypeArrayOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationMessageOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogSubscriptionStatementOutput{})
 	pulumi.RegisterOutputType(AuditLogSubscriptionStatementArrayOutput{})
-	pulumi.RegisterOutputType(CustomRolePolicyOutput{})
-	pulumi.RegisterOutputType(CustomRolePolicyArrayOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyStatementOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyStatementArrayOutput{})
-	pulumi.RegisterOutputType(EnvironmentApprovalSettingOutput{})
-	pulumi.RegisterOutputType(EnvironmentApprovalSettingArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(EnvironmentApprovalSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentSegmentApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(EnvironmentSegmentApprovalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFlagClientSideAvailabilityOutput{})
-	pulumi.RegisterOutputType(FeatureFlagClientSideAvailabilityArrayOutput{})
-	pulumi.RegisterOutputType(FeatureFlagCustomPropertyOutput{})
-	pulumi.RegisterOutputType(FeatureFlagCustomPropertyArrayOutput{})
+	pulumi.RegisterOutputType(FeatureFlagClientSideAvailabilityPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFlagCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(FeatureFlagCustomPropertiesMapOutput{})
 	pulumi.RegisterOutputType(FeatureFlagDefaultsOutput{})
 	pulumi.RegisterOutputType(FeatureFlagDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFlagEnvironmentContextTargetOutput{})
@@ -8275,16 +9338,28 @@ func init() {
 	pulumi.RegisterOutputType(FlagTemplatesBooleanDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(FlagTriggerInstructionsOutput{})
 	pulumi.RegisterOutputType(FlagTriggerInstructionsPtrOutput{})
+	pulumi.RegisterOutputType(MetricGroupMetricOutput{})
+	pulumi.RegisterOutputType(MetricGroupMetricArrayOutput{})
 	pulumi.RegisterOutputType(MetricUrlOutput{})
 	pulumi.RegisterOutputType(MetricUrlArrayOutput{})
 	pulumi.RegisterOutputType(ProjectDefaultClientSideAvailabilityOutput{})
-	pulumi.RegisterOutputType(ProjectDefaultClientSideAvailabilityArrayOutput{})
-	pulumi.RegisterOutputType(ProjectEnvironmentOutput{})
-	pulumi.RegisterOutputType(ProjectEnvironmentArrayOutput{})
-	pulumi.RegisterOutputType(ProjectEnvironmentApprovalSettingOutput{})
-	pulumi.RegisterOutputType(ProjectEnvironmentApprovalSettingArrayOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultClientSideAvailabilityPtrOutput{})
+	pulumi.RegisterOutputType(ProjectEnvironmentsOutput{})
+	pulumi.RegisterOutputType(ProjectEnvironmentsMapOutput{})
+	pulumi.RegisterOutputType(ProjectEnvironmentsApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(ProjectEnvironmentsApprovalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(RelayProxyConfigurationPolicyOutput{})
 	pulumi.RegisterOutputType(RelayProxyConfigurationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyGuardedReleaseConfigOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyGuardedReleaseConfigPtrOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyGuardedReleaseConfigStageOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyGuardedReleaseConfigStageArrayOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyProgressiveReleaseConfigOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyProgressiveReleaseConfigPtrOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyProgressiveReleaseConfigStageOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyProgressiveReleaseConfigStageArrayOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyScopeOutput{})
+	pulumi.RegisterOutputType(ReleasePolicyScopePtrOutput{})
 	pulumi.RegisterOutputType(SegmentExcludedContextOutput{})
 	pulumi.RegisterOutputType(SegmentExcludedContextArrayOutput{})
 	pulumi.RegisterOutputType(SegmentIncludedContextOutput{})
@@ -8293,32 +9368,27 @@ func init() {
 	pulumi.RegisterOutputType(SegmentRuleArrayOutput{})
 	pulumi.RegisterOutputType(SegmentRuleClauseOutput{})
 	pulumi.RegisterOutputType(SegmentRuleClauseArrayOutput{})
-	pulumi.RegisterOutputType(TeamMemberRoleAttributeOutput{})
-	pulumi.RegisterOutputType(TeamMemberRoleAttributeArrayOutput{})
-	pulumi.RegisterOutputType(TeamRoleAttributeOutput{})
-	pulumi.RegisterOutputType(TeamRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ViewLinksSegmentOutput{})
 	pulumi.RegisterOutputType(ViewLinksSegmentArrayOutput{})
 	pulumi.RegisterOutputType(WebhookStatementOutput{})
 	pulumi.RegisterOutputType(WebhookStatementArrayOutput{})
+	pulumi.RegisterOutputType(GetAiAgentGraphEdgesOutput{})
+	pulumi.RegisterOutputType(GetAiAgentGraphEdgesMapOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationTypeOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationMessageOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementArrayOutput{})
-	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingOutput{})
-	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentSegmentApprovalSettingsOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagClientSideAvailabilityOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagClientSideAvailabilityArrayOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagCustomPropertyOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagCustomPropertyArrayOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagDefaultOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFlagCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(GetFeatureFlagCustomPropertiesMapOutput{})
+	pulumi.RegisterOutputType(GetFeatureFlagDefaultsOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentContextTargetOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentContextTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentFallthroughOutput{})
-	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentFallthroughArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentPrerequisiteOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentPrerequisiteArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentRuleOutput{})
@@ -8329,18 +9399,22 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationArrayOutput{})
-	pulumi.RegisterOutputType(GetFlagTemplatesBooleanDefaultOutput{})
-	pulumi.RegisterOutputType(GetFlagTemplatesBooleanDefaultArrayOutput{})
-	pulumi.RegisterOutputType(GetFlagTriggerInstructionOutput{})
-	pulumi.RegisterOutputType(GetFlagTriggerInstructionArrayOutput{})
+	pulumi.RegisterOutputType(GetFlagTemplatesBooleanDefaultsOutput{})
+	pulumi.RegisterOutputType(GetFlagTriggerInstructionsOutput{})
+	pulumi.RegisterOutputType(GetMetricGroupMetricOutput{})
+	pulumi.RegisterOutputType(GetMetricGroupMetricArrayOutput{})
 	pulumi.RegisterOutputType(GetMetricUrlOutput{})
 	pulumi.RegisterOutputType(GetMetricUrlArrayOutput{})
-	pulumi.RegisterOutputType(GetProjectClientSideAvailabilityOutput{})
-	pulumi.RegisterOutputType(GetProjectClientSideAvailabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectDefaultClientSideAvailabilityOutput{})
-	pulumi.RegisterOutputType(GetProjectDefaultClientSideAvailabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetRelayProxyConfigurationPolicyOutput{})
 	pulumi.RegisterOutputType(GetRelayProxyConfigurationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyGuardedReleaseConfigOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyGuardedReleaseConfigStageOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyGuardedReleaseConfigStageArrayOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyProgressiveReleaseConfigOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyProgressiveReleaseConfigStageOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyProgressiveReleaseConfigStageArrayOutput{})
+	pulumi.RegisterOutputType(GetReleasePolicyScopeOutput{})
 	pulumi.RegisterOutputType(GetSegmentExcludedContextOutput{})
 	pulumi.RegisterOutputType(GetSegmentExcludedContextArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentIncludedContextOutput{})
@@ -8351,14 +9425,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSegmentRuleClauseArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamMaintainerOutput{})
 	pulumi.RegisterOutputType(GetTeamMaintainerArrayOutput{})
-	pulumi.RegisterOutputType(GetTeamMemberRoleAttributeOutput{})
-	pulumi.RegisterOutputType(GetTeamMemberRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamMembersTeamMemberOutput{})
 	pulumi.RegisterOutputType(GetTeamMembersTeamMemberArrayOutput{})
-	pulumi.RegisterOutputType(GetTeamMembersTeamMemberRoleAttributeOutput{})
-	pulumi.RegisterOutputType(GetTeamMembersTeamMemberRoleAttributeArrayOutput{})
-	pulumi.RegisterOutputType(GetTeamRoleAttributeOutput{})
-	pulumi.RegisterOutputType(GetTeamRoleAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetViewLinkedSegmentOutput{})
 	pulumi.RegisterOutputType(GetViewLinkedSegmentArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementOutput{})

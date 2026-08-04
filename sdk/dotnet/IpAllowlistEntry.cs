@@ -17,6 +17,41 @@ namespace Pulumi.Launchdarkly
     /// &gt; **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
     /// 
     /// This resource allows you to create and manage IP allowlist entries within your LaunchDarkly account.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Launchdarkly = Pulumi.Launchdarkly;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // IP allowlist entries are an Enterprise feature and use a beta API.
+    ///     // The ip_address may be a single address or a CIDR block. Changing it forces a new entry.
+    ///     var office = new Launchdarkly.IpAllowlistEntry("office", new()
+    ///     {
+    ///         IpAddress = "203.0.113.0/24",
+    ///         Description = "Corporate office network",
+    ///     });
+    /// 
+    ///     var vpn = new Launchdarkly.IpAllowlistEntry("vpn", new()
+    ///     {
+    ///         IpAddress = "198.51.100.42",
+    ///         Description = "VPN egress IP",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// LaunchDarkly IP allowlist entries are imported using the entry's server-assigned ID
+    /// 
+    /// ```sh
+    /// $ pulumi import launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry office 51f9c4a2-1b3d-4e5f-8a9b-0c1d2e3f4a5b
+    /// ```
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry")]
     public partial class IpAllowlistEntry : global::Pulumi.CustomResource
@@ -25,7 +60,7 @@ namespace Pulumi.Launchdarkly
         /// A human-readable description of the IP allowlist entry.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The IP address or CIDR block for the allowlist entry. Changing this forces a new resource to be created.

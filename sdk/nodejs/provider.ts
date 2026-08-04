@@ -26,7 +26,7 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+     * The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
     declare public readonly access_token: pulumi.Output<string | undefined>;
     /**
@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["access_token"] = args?.access_token ? pulumi.secret(args.access_token) : undefined;
             resourceInputs["api_host"] = args?.api_host;
+            resourceInputs["archiveFlagsOnDestroy"] = pulumi.output(args?.archiveFlagsOnDestroy).apply(JSON.stringify);
             resourceInputs["http_timeout"] = pulumi.output(args?.http_timeout).apply(JSON.stringify);
             resourceInputs["maxConcurrency"] = pulumi.output(args?.maxConcurrency).apply(JSON.stringify);
             resourceInputs["oauth_token"] = args?.oauth_token ? pulumi.secret(args.oauth_token) : undefined;
@@ -76,13 +77,17 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
+     * The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `accessToken` or `oauthToken`.
      */
     access_token?: pulumi.Input<string | undefined>;
     /**
      * The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
      */
     api_host?: pulumi.Input<string | undefined>;
+    /**
+     * When `true`, removing a `launchdarkly.FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `launchdarkly.FeatureFlag`. Other resources continue to be deleted on destroy.
+     */
+    archiveFlagsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.
      */

@@ -14,31 +14,31 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetSegmentRuleResult
     {
         /// <summary>
-        /// The attribute by which to group contexts together.
+        /// Attribute for bucketing contexts.
         /// </summary>
-        public readonly string? BucketBy;
+        public readonly string BucketBy;
         /// <summary>
-        /// List of nested blocks specifying the logical clauses to evaluate
+        /// Clauses applied as the rule's logical condition.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSegmentRuleClauseResult> Clauses;
         /// <summary>
-        /// The context kind associated with this segment rule. This argument is only valid if `Weight` is also specified. If omitted, defaults to `User`.
+        /// Context kind for the rollout.
         /// </summary>
-        public readonly string? RolloutContextKind;
+        public readonly string RolloutContextKind;
         /// <summary>
-        /// The integer weight of the rule (between 1 and 100000).
+        /// Rule weight (1-100000).
         /// </summary>
-        public readonly int? Weight;
+        public readonly int Weight;
 
         [OutputConstructor]
         private GetSegmentRuleResult(
-            string? bucketBy,
+            string bucketBy,
 
             ImmutableArray<Outputs.GetSegmentRuleClauseResult> clauses,
 
-            string? rolloutContextKind,
+            string rolloutContextKind,
 
-            int? weight)
+            int weight)
         {
             BucketBy = bucketBy;
             Clauses = clauses;

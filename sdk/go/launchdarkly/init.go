@@ -23,14 +23,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "launchdarkly:index/accessToken:AccessToken":
 		r = &AccessToken{}
+	case "launchdarkly:index/aiAgentGraph:AiAgentGraph":
+		r = &AiAgentGraph{}
 	case "launchdarkly:index/aiConfig:AiConfig":
 		r = &AiConfig{}
 	case "launchdarkly:index/aiConfigVariation:AiConfigVariation":
 		r = &AiConfigVariation{}
 	case "launchdarkly:index/aiTool:AiTool":
 		r = &AiTool{}
+	case "launchdarkly:index/announcement:Announcement":
+		r = &Announcement{}
 	case "launchdarkly:index/auditLogSubscription:AuditLogSubscription":
 		r = &AuditLogSubscription{}
+	case "launchdarkly:index/bigSegmentStoreIntegration:BigSegmentStoreIntegration":
+		r = &BigSegmentStoreIntegration{}
+	case "launchdarkly:index/contextKind:ContextKind":
+		r = &ContextKind{}
 	case "launchdarkly:index/customRole:CustomRole":
 		r = &CustomRole{}
 	case "launchdarkly:index/destination:Destination":
@@ -41,22 +49,34 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureFlag{}
 	case "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment":
 		r = &FeatureFlagEnvironment{}
+	case "launchdarkly:index/flagImportConfiguration:FlagImportConfiguration":
+		r = &FlagImportConfiguration{}
 	case "launchdarkly:index/flagTemplates:FlagTemplates":
 		r = &FlagTemplates{}
 	case "launchdarkly:index/flagTrigger:FlagTrigger":
 		r = &FlagTrigger{}
+	case "launchdarkly:index/integrationDeliveryConfiguration:IntegrationDeliveryConfiguration":
+		r = &IntegrationDeliveryConfiguration{}
 	case "launchdarkly:index/ipAllowlistConfig:IpAllowlistConfig":
 		r = &IpAllowlistConfig{}
 	case "launchdarkly:index/ipAllowlistEntry:IpAllowlistEntry":
 		r = &IpAllowlistEntry{}
 	case "launchdarkly:index/metric:Metric":
 		r = &Metric{}
+	case "launchdarkly:index/metricGroup:MetricGroup":
+		r = &MetricGroup{}
 	case "launchdarkly:index/modelConfig:ModelConfig":
 		r = &ModelConfig{}
+	case "launchdarkly:index/oauthClient:OauthClient":
+		r = &OauthClient{}
 	case "launchdarkly:index/project:Project":
 		r = &Project{}
 	case "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration":
 		r = &RelayProxyConfiguration{}
+	case "launchdarkly:index/releasePolicy:ReleasePolicy":
+		r = &ReleasePolicy{}
+	case "launchdarkly:index/sdkKey:SdkKey":
+		r = &SdkKey{}
 	case "launchdarkly:index/segment:Segment":
 		r = &Segment{}
 	case "launchdarkly:index/team:Team":
@@ -111,6 +131,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/aiAgentGraph",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/aiConfig",
 		&module{version},
 	)
@@ -126,7 +151,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/announcement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/auditLogSubscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/bigSegmentStoreIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/contextKind",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -156,12 +196,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/flagImportConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/flagTemplates",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/flagTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/integrationDeliveryConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -181,7 +231,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/metricGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/modelConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/oauthClient",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -192,6 +252,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
 		"index/relayProxyConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/releasePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/sdkKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

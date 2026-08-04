@@ -58,13 +58,13 @@ export interface GetTeamMembersResult {
      */
     readonly emails: string[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * - The 24 character alphanumeric ID of the team member.
      */
     readonly id: string;
     /**
      * A boolean to determine whether to ignore members that weren't found.
      */
-    readonly ignoreMissing?: boolean;
+    readonly ignoreMissing: boolean;
     /**
      * The members that were found. The following attributes are available for each member:
      */

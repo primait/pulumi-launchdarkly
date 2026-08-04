@@ -13,6 +13,29 @@ import * as utilities from "./utilities";
  * This resource allows you to create and manage LaunchDarkly audit log subscriptions.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = new launchdarkly.AuditLogSubscription("example", {
+ *     integrationKey: "datadog",
+ *     name: "Example Datadog Subscription",
+ *     config: {
+ *         api_key: "yoursecretkey",
+ *         host_url: "https://api.datadoghq.com",
+ *     },
+ *     tags: [
+ *         "integrations",
+ *         "terraform",
+ *     ],
+ *     statements: [{
+ *         actions: ["*"],
+ *         effect: "allow",
+ *         resources: ["proj/*:env/*:flag/*"],
+ *     }],
+ * });
+ * ```
  */
 export class AuditLogSubscription extends pulumi.CustomResource {
     /**
@@ -43,11 +66,11 @@ export class AuditLogSubscription extends pulumi.CustomResource {
     }
 
     /**
-     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Terraform accepts these only in snake case, regardless of the case shown in the manifest.
      */
     declare public readonly config: pulumi.Output<{[key: string]: string}>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly integrationKey: pulumi.Output<string>;
     /**
@@ -55,17 +78,17 @@ export class AuditLogSubscription extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Whether or not you want your subscription enabled, i.e. to actively send events.
+     * Whether your subscription is enabled and actively sending events.
      */
     declare public readonly on: pulumi.Output<boolean>;
     /**
-     * A block representing the resources to which you wish to subscribe.
+     * The resources to which you wish to subscribe.
      */
     declare public readonly statements: pulumi.Output<outputs.AuditLogSubscriptionStatement[]>;
     /**
      * Tags associated with your resource.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
 
     /**
      * Create a AuditLogSubscription resource with the given unique name, arguments, and options.
@@ -117,11 +140,11 @@ export class AuditLogSubscription extends pulumi.CustomResource {
  */
 export interface AuditLogSubscriptionState {
     /**
-     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Terraform accepts these only in snake case, regardless of the case shown in the manifest.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     integrationKey?: pulumi.Input<string | undefined>;
     /**
@@ -129,11 +152,11 @@ export interface AuditLogSubscriptionState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Whether or not you want your subscription enabled, i.e. to actively send events.
+     * Whether your subscription is enabled and actively sending events.
      */
     on?: pulumi.Input<boolean | undefined>;
     /**
-     * A block representing the resources to which you wish to subscribe.
+     * The resources to which you wish to subscribe.
      */
     statements?: pulumi.Input<pulumi.Input<inputs.AuditLogSubscriptionStatement>[] | undefined>;
     /**
@@ -147,11 +170,11 @@ export interface AuditLogSubscriptionState {
  */
 export interface AuditLogSubscriptionArgs {
     /**
-     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Terraform accepts these only in snake case, regardless of the case shown in the manifest.
      */
     config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     integrationKey: pulumi.Input<string>;
     /**
@@ -159,11 +182,11 @@ export interface AuditLogSubscriptionArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Whether or not you want your subscription enabled, i.e. to actively send events.
+     * Whether your subscription is enabled and actively sending events.
      */
     on: pulumi.Input<boolean>;
     /**
-     * A block representing the resources to which you wish to subscribe.
+     * The resources to which you wish to subscribe.
      */
     statements: pulumi.Input<pulumi.Input<inputs.AuditLogSubscriptionStatement>[]>;
     /**

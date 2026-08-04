@@ -81,13 +81,13 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * Specifies whether the webhook is enabled.
      */
-    declare public readonly on: pulumi.Output<boolean | undefined>;
+    declare public readonly on: pulumi.Output<boolean>;
     /**
      * The secret used to sign the webhook.
      */
     declare public readonly secret: pulumi.Output<string | undefined>;
     /**
-     * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+     * List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
      */
     declare public readonly statements: pulumi.Output<outputs.WebhookStatement[] | undefined>;
     /**
@@ -154,7 +154,7 @@ export interface WebhookState {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
-     * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+     * List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
      */
     statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[] | undefined>;
     /**
@@ -184,7 +184,7 @@ export interface WebhookArgs {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
-     * List of policy statement blocks used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://docs.launchdarkly.com/integrations/webhooks#adding-a-policy-filter).
+     * List of policy statements used to filter webhook events. For more information on webhook policy filters read [Adding a policy filter](https://launchdarkly.com/docs/home/infrastructure/webhooks#adding-a-policy-filter).
      */
     statements?: pulumi.Input<pulumi.Input<inputs.WebhookStatement>[] | undefined>;
     /**

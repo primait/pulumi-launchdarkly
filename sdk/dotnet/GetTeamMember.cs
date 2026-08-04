@@ -99,18 +99,6 @@ namespace Pulumi.Launchdarkly
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
-        [Input("roleAttributes")]
-        private List<Inputs.GetTeamMemberRoleAttributeArgs>? _roleAttributes;
-
-        /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-        /// </summary>
-        public List<Inputs.GetTeamMemberRoleAttributeArgs> RoleAttributes
-        {
-            get => _roleAttributes ?? (_roleAttributes = new List<Inputs.GetTeamMemberRoleAttributeArgs>());
-            set => _roleAttributes = value;
-        }
-
         public GetTeamMemberArgs()
         {
         }
@@ -124,18 +112,6 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
-
-        [Input("roleAttributes")]
-        private InputList<Inputs.GetTeamMemberRoleAttributeInputArgs>? _roleAttributes;
-
-        /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-        /// </summary>
-        public InputList<Inputs.GetTeamMemberRoleAttributeInputArgs> RoleAttributes
-        {
-            get => _roleAttributes ?? (_roleAttributes = new InputList<Inputs.GetTeamMemberRoleAttributeInputArgs>());
-            set => _roleAttributes = value;
-        }
 
         public GetTeamMemberInvokeArgs()
         {
@@ -156,25 +132,25 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// The team member's given name.
+        /// First name.
         /// </summary>
         public readonly string FirstName;
         /// <summary>
-        /// The 24 character alphanumeric ID of the team member.
+        /// The 24-character member ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The team member's family name.
+        /// Last name.
         /// </summary>
         public readonly string LastName;
         /// <summary>
-        /// The role associated with team member. Possible roles are `Owner`, `Reader`, `Writer`, or `Admin`.
+        /// The role associated with the team member. Possible roles are `Owner`, `Reader`, `Writer`, or `Admin`.
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        /// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTeamMemberRoleAttributeResult> RoleAttributes;
+        public readonly ImmutableDictionary<string, ImmutableArray<string>> RoleAttributes;
 
         [OutputConstructor]
         private GetTeamMemberResult(
@@ -190,7 +166,7 @@ namespace Pulumi.Launchdarkly
 
             string role,
 
-            ImmutableArray<Outputs.GetTeamMemberRoleAttributeResult> roleAttributes)
+            ImmutableDictionary<string, ImmutableArray<string>> roleAttributes)
         {
             CustomRoles = customRoles;
             Email = email;

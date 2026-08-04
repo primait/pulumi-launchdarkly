@@ -27,12 +27,12 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, api_key=None, approval_settings=None, client_side_id=None, color=None, confirm_changes=None, critical=None, default_track_events=None, default_ttl=None, id=None, key=None, mobile_key=None, name=None, project_key=None, require_comments=None, secure_mode=None, tags=None):
+    def __init__(__self__, api_key=None, approval_settings=None, client_side_id=None, color=None, confirm_changes=None, critical=None, default_track_events=None, default_ttl=None, id=None, key=None, mobile_key=None, name=None, project_key=None, require_comments=None, secure_mode=None, segment_approval_settings=None, tags=None):
         if api_key and not isinstance(api_key, str):
             raise TypeError("Expected argument 'api_key' to be a str")
         pulumi.set(__self__, "api_key", api_key)
-        if approval_settings and not isinstance(approval_settings, list):
-            raise TypeError("Expected argument 'approval_settings' to be a list")
+        if approval_settings and not isinstance(approval_settings, dict):
+            raise TypeError("Expected argument 'approval_settings' to be a dict")
         pulumi.set(__self__, "approval_settings", approval_settings)
         if client_side_id and not isinstance(client_side_id, str):
             raise TypeError("Expected argument 'client_side_id' to be a str")
@@ -73,6 +73,9 @@ class GetEnvironmentResult:
         if secure_mode and not isinstance(secure_mode, bool):
             raise TypeError("Expected argument 'secure_mode' to be a bool")
         pulumi.set(__self__, "secure_mode", secure_mode)
+        if segment_approval_settings and not isinstance(segment_approval_settings, dict):
+            raise TypeError("Expected argument 'segment_approval_settings' to be a dict")
+        pulumi.set(__self__, "segment_approval_settings", segment_approval_settings)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -87,7 +90,10 @@ class GetEnvironmentResult:
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> Sequence['outputs.GetEnvironmentApprovalSettingResult']:
+    def approval_settings(self) -> 'outputs.GetEnvironmentApprovalSettingsResult':
+        """
+        Approval settings for this environment / project.
+        """
         return pulumi.get(self, "approval_settings")
 
     @_builtins.property
@@ -101,19 +107,22 @@ class GetEnvironmentResult:
     @_builtins.property
     @pulumi.getter
     def color(self) -> _builtins.str:
+        """
+        The color swatch as an RGB hex value with no leading `#`.
+        """
         return pulumi.get(self, "color")
 
     @_builtins.property
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> _builtins.bool:
         """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+        Whether flag/segment changes require confirmation.
         """
         return pulumi.get(self, "confirm_changes")
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[_builtins.bool]:
+    def critical(self) -> _builtins.bool:
         """
         Denotes whether the environment is critical.
         """
@@ -123,7 +132,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> _builtins.bool:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        Whether data export is enabled for new flags.
         """
         return pulumi.get(self, "default_track_events")
 
@@ -131,7 +140,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> _builtins.int:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        The default TTL (0-60 minutes).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -139,7 +148,7 @@ class GetEnvironmentResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID in the format `project_key/key`.
         """
         return pulumi.get(self, "id")
 
@@ -162,6 +171,9 @@ class GetEnvironmentResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the environment.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -176,7 +188,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> _builtins.bool:
         """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        Whether flag/segment changes require comments.
         """
         return pulumi.get(self, "require_comments")
 
@@ -184,15 +196,23 @@ class GetEnvironmentResult:
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> _builtins.bool:
         """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+        Whether secure mode is enabled.
         """
         return pulumi.get(self, "secure_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentApprovalSettings")
+    def segment_approval_settings(self) -> 'outputs.GetEnvironmentSegmentApprovalSettingsResult':
+        """
+        Approval settings for segment changes in this environment.
+        """
+        return pulumi.get(self, "segment_approval_settings")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags associated with your resource.
+        Tags.
         """
         return pulumi.get(self, "tags")
 
@@ -218,6 +238,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             project_key=self.project_key,
             require_comments=self.require_comments,
             secure_mode=self.secure_mode,
+            segment_approval_settings=self.segment_approval_settings,
             tags=self.tags)
 
 
@@ -268,6 +289,7 @@ def get_environment(critical: Optional[_builtins.bool] = None,
         project_key=pulumi.get(__ret__, 'project_key'),
         require_comments=pulumi.get(__ret__, 'require_comments'),
         secure_mode=pulumi.get(__ret__, 'secure_mode'),
+        segment_approval_settings=pulumi.get(__ret__, 'segment_approval_settings'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_environment_output(critical: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                            key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -315,4 +337,5 @@ def get_environment_output(critical: pulumi.Input[Optional[Optional[_builtins.bo
         project_key=pulumi.get(__response__, 'project_key'),
         require_comments=pulumi.get(__response__, 'require_comments'),
         secure_mode=pulumi.get(__response__, 'secure_mode'),
+        segment_approval_settings=pulumi.get(__response__, 'segment_approval_settings'),
         tags=pulumi.get(__response__, 'tags')))

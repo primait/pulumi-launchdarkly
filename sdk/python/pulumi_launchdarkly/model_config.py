@@ -33,17 +33,17 @@ class ModelConfigArgs:
         """
         The set of arguments for constructing a ModelConfig resource.
 
-        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_id: The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_id: The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "model_id", model_id)
@@ -69,7 +69,7 @@ class ModelConfigArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -81,7 +81,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="modelId")
     def model_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_id")
 
@@ -93,7 +93,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -105,7 +105,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="costPerInputToken")
     def cost_per_input_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_input_token")
 
@@ -117,7 +117,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="costPerOutputToken")
     def cost_per_output_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_output_token")
 
@@ -129,7 +129,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="customParameters")
     def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "custom_parameters")
 
@@ -141,7 +141,7 @@ class ModelConfigArgs:
     @pulumi.getter
     def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "icon")
 
@@ -153,7 +153,7 @@ class ModelConfigArgs:
     @pulumi.getter(name="modelProvider")
     def model_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_provider")
 
@@ -165,7 +165,7 @@ class ModelConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "name")
 
@@ -177,7 +177,7 @@ class ModelConfigArgs:
     @pulumi.getter
     def params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "params")
 
@@ -189,7 +189,7 @@ class ModelConfigArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "tags")
 
@@ -217,18 +217,18 @@ class _ModelConfigState:
         """
         Input properties used for looking up and filtering ModelConfig resources.
 
-        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.bool] global_: Whether the model config is available globally.
-        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_id: The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_id: The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] version: The version of the model config.
         """
         if cost_per_input_token is not None:
@@ -262,7 +262,7 @@ class _ModelConfigState:
     @pulumi.getter(name="costPerInputToken")
     def cost_per_input_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_input_token")
 
@@ -274,7 +274,7 @@ class _ModelConfigState:
     @pulumi.getter(name="costPerOutputToken")
     def cost_per_output_token(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_output_token")
 
@@ -286,7 +286,7 @@ class _ModelConfigState:
     @pulumi.getter(name="customParameters")
     def custom_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "custom_parameters")
 
@@ -310,7 +310,7 @@ class _ModelConfigState:
     @pulumi.getter
     def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "icon")
 
@@ -322,7 +322,7 @@ class _ModelConfigState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -334,7 +334,7 @@ class _ModelConfigState:
     @pulumi.getter(name="modelId")
     def model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_id")
 
@@ -346,7 +346,7 @@ class _ModelConfigState:
     @pulumi.getter(name="modelProvider")
     def model_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_provider")
 
@@ -358,7 +358,7 @@ class _ModelConfigState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "name")
 
@@ -370,7 +370,7 @@ class _ModelConfigState:
     @pulumi.getter
     def params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "params")
 
@@ -382,7 +382,7 @@ class _ModelConfigState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -394,7 +394,7 @@ class _ModelConfigState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "tags")
 
@@ -436,9 +436,7 @@ class ModelConfig(pulumi.CustomResource):
         """
         Provides a LaunchDarkly model config resource.
 
-        This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Since the API does not support updates, any field change will force recreation of the resource.
-
-        > **Important:** If an `AiConfigVariation` references this model config via `model_config_key`, use a Terraform resource reference (e.g. `launchdarkly_model_config.example.key`) so Terraform can order destruction correctly. A literal string key will cause the delete to fail because the API rejects deleting a model config that is still in use.
+        This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Because the API does not support updates, any field change forces recreation of the resource.
 
         ## Example Usage
 
@@ -467,17 +465,17 @@ class ModelConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_id: The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_id: The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         ...
     @overload
@@ -488,9 +486,7 @@ class ModelConfig(pulumi.CustomResource):
         """
         Provides a LaunchDarkly model config resource.
 
-        This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Since the API does not support updates, any field change will force recreation of the resource.
-
-        > **Important:** If an `AiConfigVariation` references this model config via `model_config_key`, use a Terraform resource reference (e.g. `launchdarkly_model_config.example.key`) so Terraform can order destruction correctly. A literal string key will cause the delete to fail because the API rejects deleting a model config that is still in use.
+        This resource allows you to create and manage AI model configurations within your LaunchDarkly project. Because the API does not support updates, any field change forces recreation of the resource.
 
         ## Example Usage
 
@@ -601,18 +597,18 @@ class ModelConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_input_token: The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.float] cost_per_output_token: The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] custom_parameters: A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.bool] global_: Whether the model config is available globally.
-        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_id: The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] icon: The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_id: The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] model_provider: The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] params: A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] version: The version of the model config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -636,25 +632,25 @@ class ModelConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="costPerInputToken")
-    def cost_per_input_token(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def cost_per_input_token(self) -> pulumi.Output[_builtins.float]:
         """
-        The cost per input token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per input token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_input_token")
 
     @_builtins.property
     @pulumi.getter(name="costPerOutputToken")
-    def cost_per_output_token(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def cost_per_output_token(self) -> pulumi.Output[_builtins.float]:
         """
-        The cost per output token for the model. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The cost per output token for the model. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "cost_per_output_token")
 
     @_builtins.property
     @pulumi.getter(name="customParameters")
-    def custom_parameters(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def custom_parameters(self) -> pulumi.Output[_builtins.str]:
         """
-        A JSON string representing custom parameters for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing custom parameters for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "custom_parameters")
 
@@ -668,9 +664,9 @@ class ModelConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def icon(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def icon(self) -> pulumi.Output[_builtins.str]:
         """
-        The icon for the model config. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The icon for the model config. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "icon")
 
@@ -678,7 +674,7 @@ class ModelConfig(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The model config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -686,15 +682,15 @@ class ModelConfig(pulumi.CustomResource):
     @pulumi.getter(name="modelId")
     def model_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The model identifier (e.g. `gpt-4`, `claude-3`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model identifier. For example, `gpt-4` or `claude-3`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_id")
 
     @_builtins.property
     @pulumi.getter(name="modelProvider")
-    def model_provider(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def model_provider(self) -> pulumi.Output[_builtins.str]:
         """
-        The provider name for the model config (e.g. `openai`, `anthropic`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The provider name for the model config. For example, `openai` or `anthropic`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "model_provider")
 
@@ -702,15 +698,15 @@ class ModelConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The model config's human-readable name. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The model config's human-readable name. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def params(self) -> pulumi.Output[_builtins.str]:
         """
-        A JSON string representing the model parameters (e.g. `{"temperature": 0.7, "maxTokens": 4096}`). A change in this field will force the destruction of the existing resource and the creation of a new one.
+        A JSON string representing the model parameters. For example, `{"temperature": 0.7, "maxTokens": 4096}`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "params")
 
@@ -718,15 +714,15 @@ class ModelConfig(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Tags associated with your resource.
+        Tags associated with your resource. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "tags")
 

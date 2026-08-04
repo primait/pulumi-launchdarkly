@@ -20,21 +20,27 @@ __all__ = ['TeamRoleMappingArgs', 'TeamRoleMapping']
 class TeamRoleMappingArgs:
     def __init__(__self__, *,
                  custom_role_keys: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 team_key: pulumi.Input[_builtins.str]):
+                 team_key: pulumi.Input[_builtins.str],
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None):
         """
         The set of arguments for constructing a TeamRoleMapping resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         :param pulumi.Input[_builtins.str] team_key: The team key.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+               
+               > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
         """
         pulumi.set(__self__, "custom_role_keys", custom_role_keys)
         pulumi.set(__self__, "team_key", team_key)
+        if role_attributes is not None:
+            pulumi.set(__self__, "role_attributes", role_attributes)
 
     @_builtins.property
     @pulumi.getter(name="customRoleKeys")
     def custom_role_keys(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
 
@@ -54,20 +60,40 @@ class TeamRoleMappingArgs:
     def team_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "team_key", value)
 
+    @_builtins.property
+    @pulumi.getter(name="roleAttributes")
+    def role_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+
+        > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        """
+        return pulumi.get(self, "role_attributes")
+
+    @role_attributes.setter
+    def role_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "role_attributes", value)
+
 
 @pulumi.input_type
 class _TeamRoleMappingState:
     def __init__(__self__, *,
                  custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  team_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamRoleMapping resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+               
+               > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
         :param pulumi.Input[_builtins.str] team_key: The team key.
         """
         if custom_role_keys is not None:
             pulumi.set(__self__, "custom_role_keys", custom_role_keys)
+        if role_attributes is not None:
+            pulumi.set(__self__, "role_attributes", role_attributes)
         if team_key is not None:
             pulumi.set(__self__, "team_key", team_key)
 
@@ -75,13 +101,27 @@ class _TeamRoleMappingState:
     @pulumi.getter(name="customRoleKeys")
     def custom_role_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
 
     @custom_role_keys.setter
     def custom_role_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_role_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleAttributes")
+    def role_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+
+        > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        """
+        return pulumi.get(self, "role_attributes")
+
+    @role_attributes.setter
+    def role_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "role_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="teamKey")
@@ -103,12 +143,13 @@ class TeamRoleMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  team_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly team to custom role mapping resource.
 
-        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
+        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://launchdarkly.com/docs/home/account/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
 
         > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
@@ -124,6 +165,28 @@ class TeamRoleMapping(pulumi.CustomResource):
                 "platform",
                 "nomad-administrators",
             ])
+        ```
+
+        ### Scoping a shared custom role across teams
+
+        Use `role_attributes` to give the same shared custom role different scopes per team. The values resolve into the role's policy via the `${roleAttribute/<key>}` template, so a single role definition can drive per-team access boundaries (see [Role scope](https://launchdarkly.com/docs/home/account/roles/role-scope)).
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        team_x = launchdarkly.TeamRoleMapping("team_x",
+            team_key="team-x",
+            custom_role_keys=["my-shared-role"],
+            role_attributes={
+                "domain": ["DomainX"],
+            })
+        team_y = launchdarkly.TeamRoleMapping("team_y",
+            team_key="team-y",
+            custom_role_keys=["my-shared-role"],
+            role_attributes={
+                "domain": ["DomainY"],
+            })
         ```
 
         ## Import
@@ -137,7 +200,10 @@ class TeamRoleMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+               
+               > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
         :param pulumi.Input[_builtins.str] team_key: The team key.
         """
         ...
@@ -149,7 +215,7 @@ class TeamRoleMapping(pulumi.CustomResource):
         """
         Provides a LaunchDarkly team to custom role mapping resource.
 
-        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://docs.launchdarkly.com/home/account-security/sso/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
+        This resource allows you to manage the custom roles associated with a LaunchDarkly team. This is useful if the LaunchDarkly team is created and managed externally, such as via [team sync with SCIM](https://launchdarkly.com/docs/home/account/scim#team-sync-with-scim). If you wish to create and manage the team using Terraform, we recommend using the `Team` resource instead.
 
         > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
@@ -165,6 +231,28 @@ class TeamRoleMapping(pulumi.CustomResource):
                 "platform",
                 "nomad-administrators",
             ])
+        ```
+
+        ### Scoping a shared custom role across teams
+
+        Use `role_attributes` to give the same shared custom role different scopes per team. The values resolve into the role's policy via the `${roleAttribute/<key>}` template, so a single role definition can drive per-team access boundaries (see [Role scope](https://launchdarkly.com/docs/home/account/roles/role-scope)).
+
+        ```python
+        import pulumi
+        import pulumi_launchdarkly as launchdarkly
+
+        team_x = launchdarkly.TeamRoleMapping("team_x",
+            team_key="team-x",
+            custom_role_keys=["my-shared-role"],
+            role_attributes={
+                "domain": ["DomainX"],
+            })
+        team_y = launchdarkly.TeamRoleMapping("team_y",
+            team_key="team-y",
+            custom_role_keys=["my-shared-role"],
+            role_attributes={
+                "domain": ["DomainY"],
+            })
         ```
 
         ## Import
@@ -192,6 +280,7 @@ class TeamRoleMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  team_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -205,6 +294,7 @@ class TeamRoleMapping(pulumi.CustomResource):
             if custom_role_keys is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_role_keys'")
             __props__.__dict__["custom_role_keys"] = custom_role_keys
+            __props__.__dict__["role_attributes"] = role_attributes
             if team_key is None and not opts.urn:
                 raise TypeError("Missing required property 'team_key'")
             __props__.__dict__["team_key"] = team_key
@@ -219,6 +309,7 @@ class TeamRoleMapping(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_role_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             team_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'TeamRoleMapping':
         """
         Get an existing TeamRoleMapping resource's state with the given name, id, and optional extra
@@ -227,7 +318,10 @@ class TeamRoleMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_role_keys: List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] role_attributes: Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+               
+               > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
         :param pulumi.Input[_builtins.str] team_key: The team key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -235,6 +329,7 @@ class TeamRoleMapping(pulumi.CustomResource):
         __props__ = _TeamRoleMappingState.__new__(_TeamRoleMappingState)
 
         __props__.__dict__["custom_role_keys"] = custom_role_keys
+        __props__.__dict__["role_attributes"] = role_attributes
         __props__.__dict__["team_key"] = team_key
         return TeamRoleMapping(resource_name, opts=opts, __props__=__props__)
 
@@ -242,9 +337,19 @@ class TeamRoleMapping(pulumi.CustomResource):
     @pulumi.getter(name="customRoleKeys")
     def custom_role_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of custom role keys the team will access. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
+        List of custom role keys granted to the team. The referenced custom roles must already exist in LaunchDarkly. If they don't, the provider may behave unexpectedly.
         """
         return pulumi.get(self, "custom_role_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="roleAttributes")
+    def role_attributes(self) -> pulumi.Output[Optional[Mapping[str, Sequence[_builtins.str]]]]:
+        """
+        Map of role-attribute keys to lists of resource keys. Applied to the team as a whole. Every custom role granted to this team receives these scopes. Leave unset (or remove from configuration) to keep the team's role attributes unchanged from the LaunchDarkly side.
+
+        > **Note:** `role_attributes` is also exposed on the `Team` resource. If you manage the same team with both resources, only one of them should own `role_attributes`. Add `lifecycle { ignore_changes = [role_attributes] }` on whichever resource isn't the primary owner to avoid plan churn.
+        """
+        return pulumi.get(self, "role_attributes")
 
     @_builtins.property
     @pulumi.getter(name="teamKey")

@@ -19,7 +19,7 @@ namespace Pulumi.Launchdarkly
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
+        /// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         [Output("access_token")]
         public Output<string?> Access_token { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Launchdarkly
         private Input<string>? _access_token;
 
         /// <summary>
-        /// The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
+        /// The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `AccessToken` or `OauthToken`.
         /// </summary>
         public Input<string>? Access_token
         {
@@ -97,6 +97,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("api_host")]
         public Input<string>? Api_host { get; set; }
+
+        /// <summary>
+        /// When `True`, removing a `launchdarkly.FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `False`, which preserves the existing destroy-deletes behavior. This setting affects only `launchdarkly.FeatureFlag`. Other resources continue to be deleted on destroy.
+        /// </summary>
+        [Input("archiveFlagsOnDestroy", json: true)]
+        public Input<bool>? ArchiveFlagsOnDestroy { get; set; }
 
         /// <summary>
         /// The HTTP timeout (in seconds) when making API calls to LaunchDarkly. Defaults to 20 seconds.

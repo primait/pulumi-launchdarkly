@@ -109,7 +109,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFlagTriggerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in.
+        /// The unique key of the environment the flag trigger runs in.
         /// </summary>
         [Input("envKey", required: true)]
         public string EnvKey { get; set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetFlagTriggerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in.
+        /// The unique key of the environment the flag trigger runs in.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Launchdarkly
     {
         public readonly bool Enabled;
         /// <summary>
-        /// The unique key of the environment the flag trigger will work in.
+        /// The unique key of the environment the flag trigger runs in.
         /// </summary>
         public readonly string EnvKey;
         /// <summary>
@@ -190,7 +190,7 @@ namespace Pulumi.Launchdarkly
         /// `
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableArray<Outputs.GetFlagTriggerInstructionResult> Instructions;
+        public readonly Outputs.GetFlagTriggerInstructionsResult Instructions;
         public readonly string IntegrationKey;
         public readonly string MaintainerId;
         public readonly string ProjectKey;
@@ -206,7 +206,7 @@ namespace Pulumi.Launchdarkly
 
             string id,
 
-            ImmutableArray<Outputs.GetFlagTriggerInstructionResult> instructions,
+            Outputs.GetFlagTriggerInstructionsResult instructions,
 
             string integrationKey,
 

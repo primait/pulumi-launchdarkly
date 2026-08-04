@@ -21,7 +21,6 @@ class ViewArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  project_key: pulumi.Input[_builtins.str],
-                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -30,9 +29,8 @@ class ViewArgs:
         """
         The set of arguments for constructing a View resource.
 
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The view's description.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
@@ -41,8 +39,6 @@ class ViewArgs:
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
-        if archived is not None:
-            pulumi.set(__self__, "archived", archived)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if maintainer_id is not None:
@@ -58,7 +54,7 @@ class ViewArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -70,25 +66,13 @@ class ViewArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @project_key.setter
     def project_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether the view is archived.
-        """
-        return pulumi.get(self, "archived")
-
-    @archived.setter
-    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter
@@ -154,7 +138,6 @@ class ViewArgs:
 @pulumi.input_type
 class _ViewState:
     def __init__(__self__, *,
-                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -165,17 +148,14 @@ class _ViewState:
         """
         Input properties used for looking up and filtering View resources.
 
-        :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
-        if archived is not None:
-            pulumi.set(__self__, "archived", archived)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if key is not None:
@@ -193,18 +173,6 @@ class _ViewState:
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether the view is archived.
-        """
-        return pulumi.get(self, "archived")
-
-    @archived.setter
-    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "archived", value)
-
-    @_builtins.property
-    @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The view's description.
@@ -219,7 +187,7 @@ class _ViewState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -267,7 +235,7 @@ class _ViewState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -294,7 +262,6 @@ class View(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -339,16 +306,23 @@ class View(pulumi.CustomResource):
             tags=["team-managed"])
         ```
 
+        ## Import
+
+        LaunchDarkly views are imported using the resource's ID in the form `project_key/view_key`
+
+        ```sh
+        $ pulumi import launchdarkly:index/view:View example example-project/example-view-key
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         ...
@@ -393,6 +367,14 @@ class View(pulumi.CustomResource):
             tags=["team-managed"])
         ```
 
+        ## Import
+
+        LaunchDarkly views are imported using the resource's ID in the form `project_key/view_key`
+
+        ```sh
+        $ pulumi import launchdarkly:index/view:View example example-project/example-view-key
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.
@@ -409,7 +391,6 @@ class View(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,7 +407,6 @@ class View(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ViewArgs.__new__(ViewArgs)
 
-            __props__.__dict__["archived"] = archived
             __props__.__dict__["description"] = description
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
@@ -448,7 +428,6 @@ class View(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archived: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -463,20 +442,18 @@ class View(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] archived: Whether the view is archived.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ViewState.__new__(_ViewState)
 
-        __props__.__dict__["archived"] = archived
         __props__.__dict__["description"] = description
         __props__.__dict__["key"] = key
         __props__.__dict__["maintainer_id"] = maintainer_id
@@ -485,14 +462,6 @@ class View(pulumi.CustomResource):
         __props__.__dict__["project_key"] = project_key
         __props__.__dict__["tags"] = tags
         return View(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter
-    def archived(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether the view is archived.
-        """
-        return pulumi.get(self, "archived")
 
     @_builtins.property
     @pulumi.getter
@@ -506,7 +475,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The view's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -538,7 +507,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 

@@ -64,39 +64,39 @@ type LookupSegmentArgs struct {
 
 // A collection of values returned by getSegment.
 type LookupSegmentResult struct {
-	// The segment's creation date represented as a UNIX epoch timestamp.
+	// UNIX epoch ms timestamp.
 	CreationDate int `pulumi:"creationDate"`
-	// The description of the segment's purpose.
+	// Segment description.
 	Description string `pulumi:"description"`
 	// The segment's environment key.
 	EnvKey string `pulumi:"envKey"`
-	// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+	// Non-user target objects excluded from the segment.
 	ExcludedContexts []GetSegmentExcludedContext `pulumi:"excludedContexts"`
-	// List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+	// User keys excluded from the segment.
 	Excludeds []string `pulumi:"excludeds"`
-	// The provider-assigned unique ID for this managed resource.
+	// Composite ID `project_key/env_key/key`.
 	Id string `pulumi:"id"`
-	// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+	// Non-user target objects included in the segment.
 	IncludedContexts []GetSegmentIncludedContext `pulumi:"includedContexts"`
-	// List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+	// User keys included in the segment.
 	Includeds []string `pulumi:"includeds"`
 	// The unique key that references the segment.
 	Key string `pulumi:"key"`
-	// The human-friendly name for the segment.
+	// Human-friendly name for the segment.
 	Name string `pulumi:"name"`
 	// The segment's project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+	// Custom rules applied to the segment.
 	Rules []GetSegmentRule `pulumi:"rules"`
-	// Tags associated with your resource.
+	// Tags.
 	Tags []string `pulumi:"tags"`
-	// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+	// Whether this is a big segment.
 	Unbounded bool `pulumi:"unbounded"`
-	// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
+	// Context kind for the big segment.
 	UnboundedContextKind string `pulumi:"unboundedContextKind"`
-	// A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// View keys linked to this segment.
 	ViewKeys []string `pulumi:"viewKeys"`
-	// A list of view keys that this segment is linked to.
+	// Legacy view keys list (backwards-compat).
 	Views []string `pulumi:"views"`
 }
 
@@ -138,12 +138,12 @@ func (o LookupSegmentResultOutput) ToLookupSegmentResultOutputWithContext(ctx co
 	return o
 }
 
-// The segment's creation date represented as a UNIX epoch timestamp.
+// UNIX epoch ms timestamp.
 func (o LookupSegmentResultOutput) CreationDate() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSegmentResult) int { return v.CreationDate }).(pulumi.IntOutput)
 }
 
-// The description of the segment's purpose.
+// Segment description.
 func (o LookupSegmentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -153,27 +153,27 @@ func (o LookupSegmentResultOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.EnvKey }).(pulumi.StringOutput)
 }
 
-// List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+// Non-user target objects excluded from the segment.
 func (o LookupSegmentResultOutput) ExcludedContexts() GetSegmentExcludedContextArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []GetSegmentExcludedContext { return v.ExcludedContexts }).(GetSegmentExcludedContextArrayOutput)
 }
 
-// List of user keys excluded from the segment. To target on other context kinds, use the excludedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+// User keys excluded from the segment.
 func (o LookupSegmentResultOutput) Excludeds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []string { return v.Excludeds }).(pulumi.StringArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Composite ID `project_key/env_key/key`.
 func (o LookupSegmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+// Non-user target objects included in the segment.
 func (o LookupSegmentResultOutput) IncludedContexts() GetSegmentIncludedContextArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []GetSegmentIncludedContext { return v.IncludedContexts }).(GetSegmentIncludedContextArrayOutput)
 }
 
-// List of user keys included in the segment. To target on other context kinds, use the includedContexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
+// User keys included in the segment.
 func (o LookupSegmentResultOutput) Includeds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []string { return v.Includeds }).(pulumi.StringArrayOutput)
 }
@@ -183,7 +183,7 @@ func (o LookupSegmentResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The human-friendly name for the segment.
+// Human-friendly name for the segment.
 func (o LookupSegmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -193,32 +193,32 @@ func (o LookupSegmentResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// List of nested custom rule blocks to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+// Custom rules applied to the segment.
 func (o LookupSegmentResultOutput) Rules() GetSegmentRuleArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []GetSegmentRule { return v.Rules }).(GetSegmentRuleArrayOutput)
 }
 
-// Tags associated with your resource.
+// Tags.
 func (o LookupSegmentResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Whether to create a standard segment (`false`) or a Big Segment (`true`). Standard segments include rule-based and smaller list-based segments. Big Segments include larger list-based segments and synced segments. Only use a Big Segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for Big Segments with Terraform.
+// Whether this is a big segment.
 func (o LookupSegmentResultOutput) Unbounded() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSegmentResult) bool { return v.Unbounded }).(pulumi.BoolOutput)
 }
 
-// For Big Segments, the targeted context kind. If this attribute is not specified it will default to `user`.
+// Context kind for the big segment.
 func (o LookupSegmentResultOutput) UnboundedContextKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSegmentResult) string { return v.UnboundedContextKind }).(pulumi.StringOutput)
 }
 
-// A set of view keys to link this segment to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this segment will be linked to the specified views. The field is also computed, meaning Terraform will read back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Simply removing the field from your configuration will leave existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same segment. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+// View keys linked to this segment.
 func (o LookupSegmentResultOutput) ViewKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []string { return v.ViewKeys }).(pulumi.StringArrayOutput)
 }
 
-// A list of view keys that this segment is linked to.
+// Legacy view keys list (backwards-compat).
 func (o LookupSegmentResultOutput) Views() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSegmentResult) []string { return v.Views }).(pulumi.StringArrayOutput)
 }

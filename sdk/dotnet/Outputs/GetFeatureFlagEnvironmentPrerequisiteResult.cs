@@ -13,13 +13,7 @@ namespace Pulumi.Launchdarkly.Outputs
     [OutputType]
     public sealed class GetFeatureFlagEnvironmentPrerequisiteResult
     {
-        /// <summary>
-        /// The prerequisite feature flag's `Key`.
-        /// </summary>
         public readonly string FlagKey;
-        /// <summary>
-        /// The index of the prerequisite feature flag's variation to target.
-        /// </summary>
         public readonly int Variation;
 
         [OutputConstructor]

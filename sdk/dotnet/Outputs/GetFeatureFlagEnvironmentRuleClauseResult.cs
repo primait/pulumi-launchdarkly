@@ -14,27 +14,27 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetFeatureFlagEnvironmentRuleClauseResult
     {
         /// <summary>
-        /// The user attribute to operate on
+        /// User attribute to operate on.
         /// </summary>
         public readonly string Attribute;
         /// <summary>
-        /// The context kind associated with this rule clause. If omitted, defaults to `User`.
+        /// Context kind for the clause.
         /// </summary>
-        public readonly string? ContextKind;
+        public readonly string ContextKind;
         /// <summary>
-        /// Whether to negate the rule clause.
+        /// Whether to negate the clause.
         /// </summary>
-        public readonly bool? Negate;
+        public readonly bool Negate;
         /// <summary>
-        /// The operator associated with the rule clause. Available options are `In`, `endsWith`, `startsWith`, `Matches`, `Contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `Before`, `After`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        /// The operator associated with the rule clause. Available options are `In`, `endsWith`, `startsWith`, `Matches`, `Contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `Before`, `After`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
         /// </summary>
         public readonly string Op;
         /// <summary>
-        /// The type for each of the clause's values. Available types are `Boolean`, `String`, and `Number`. If omitted, `ValueType` defaults to `String`.
+        /// Type of each clause value (boolean / string / number).
         /// </summary>
-        public readonly string? ValueType;
+        public readonly string ValueType;
         /// <summary>
-        /// The list of values associated with the rule clause.
+        /// Values for the clause.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 
@@ -42,13 +42,13 @@ namespace Pulumi.Launchdarkly.Outputs
         private GetFeatureFlagEnvironmentRuleClauseResult(
             string attribute,
 
-            string? contextKind,
+            string contextKind,
 
-            bool? negate,
+            bool negate,
 
             string op,
 
-            string? valueType,
+            string valueType,
 
             ImmutableArray<string> values)
         {

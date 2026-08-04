@@ -34,16 +34,16 @@ class AiConfigArgs:
         """
         The set of arguments for constructing a AiConfig resource.
 
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The AI Config's description.
         :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
@@ -68,7 +68,7 @@ class AiConfigArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -80,7 +80,7 @@ class AiConfigArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -152,7 +152,7 @@ class AiConfigArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -176,7 +176,7 @@ class AiConfigArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this AI Config.
         """
         return pulumi.get(self, "tags")
 
@@ -208,13 +208,13 @@ class _AiConfigState:
         :param pulumi.Input[_builtins.str] description: The AI Config's description.
         :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
         :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]] variations: A list of variation summaries for this AI Config.
         :param pulumi.Input[_builtins.int] version: The version of the AI Config.
         """
@@ -297,7 +297,7 @@ class _AiConfigState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -333,7 +333,7 @@ class _AiConfigState:
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -357,7 +357,7 @@ class _AiConfigState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -369,7 +369,7 @@ class _AiConfigState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with your resource.
+        Tags associated with this AI Config.
         """
         return pulumi.get(self, "tags")
 
@@ -453,13 +453,13 @@ class AiConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The AI Config's description.
         :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
         """
         ...
     @overload
@@ -581,13 +581,13 @@ class AiConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The AI Config's description.
         :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
-        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
+        :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]] variations: A list of variation summaries for this AI Config.
         :param pulumi.Input[_builtins.int] version: The version of the AI Config.
         """
@@ -646,7 +646,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -668,9 +668,9 @@ class AiConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -686,15 +686,15 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Tags associated with your resource.
+        Tags associated with this AI Config.
         """
         return pulumi.get(self, "tags")
 

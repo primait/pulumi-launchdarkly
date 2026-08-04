@@ -14,30 +14,11 @@ import * as utilities from "./utilities";
  *
  * > **Beta:** This resource uses a beta API. Beta resources may change or be removed in future versions.
  *
- * This resource allows you to efficiently link multiple flags and/or segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
+ * This resource allows you to efficiently link multiple flags and segments to a specific view. This is particularly useful for administrators organizing resources by team or deployment unit.
  *
  * > **Note:** This resource manages ALL links for the specified resource types within a view. Adding or removing items from the configuration will link or unlink those resources accordingly.
  *
- * ## Alternative Approach: viewKeys on Individual Resources
- *
- * For modular Terraform configurations where flags and segments are defined in separate files or modules, you can use the `viewKeys` field directly on the resource instead of using this centralized `viewLinks` resource:
- *
- * - **Feature Flags**: Use the `viewKeys` attribute on `launchdarkly.FeatureFlag` resources
- * - **Segments**: Use the `viewKeys` attribute on `launchdarkly.Segment` resources
- *
- * **When to use `viewLinks` (this resource):**
- * - Managing many flags/segments for a single view (bulk operations)
- * - Centralized view management across your infrastructure
- * - Administrative view organization
- *
- * **When to use `viewKeys` on individual resources:**
- * - Modular Terraform structures with separate files per flag/segment
- * - Each team/module manages their own resources
- * - Want view membership defined alongside the resource
- *
- * > **Warning:** Do not use both `viewLinks` and `viewKeys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts; when detected, Terraform logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
- *
- * See the feature flag resource documentation and segment resource documentation for details on the `viewKeys` attribute.
+ * > **Warning:** Do not use both `viewLinks` and `viewKeys` to manage the same flag or segment's view associations. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the managing resource's configured associations. Choose one approach per resource.
  *
  * ## Example Usage
  *
@@ -63,12 +44,12 @@ import * as utilities from "./utilities";
  *     ],
  *     segments: [
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "frontend-beta-users",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "frontend-beta-users",
  *         },
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "premium-customers",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "premium-customers",
  *         },
  *     ],
  * });
@@ -107,12 +88,12 @@ import * as utilities from "./utilities";
  *     ],
  *     segments: [
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "high-volume-api-users",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "high-volume-api-users",
  *         },
  *         {
- *             environmentId: "507f1f77bcf86cd799439022",
- *             segmentKey: "database-migration-pilot",
+ *             environment_id: "507f1f77bcf86cd799439022",
+ *             segment_key: "database-migration-pilot",
  *         },
  *     ],
  * });
@@ -122,19 +103,27 @@ import * as utilities from "./utilities";
  *     viewKey: "user-segments-view",
  *     segments: [
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "vip-customers",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "vip-customers",
  *         },
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "enterprise-customers",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "enterprise-customers",
  *         },
  *         {
- *             environmentId: "507f1f77bcf86cd799439011",
- *             segmentKey: "trial-users",
+ *             environment_id: "507f1f77bcf86cd799439011",
+ *             segment_key: "trial-users",
  *         },
  *     ],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * LaunchDarkly view links are imported using the resource's ID in the form `project_key/view_key`
+ *
+ * ```sh
+ * $ pulumi import launchdarkly:index/viewLinks:ViewLinks example example-project/example-view-key
  * ```
  */
 export class ViewLinks extends pulumi.CustomResource {
@@ -168,17 +157,17 @@ export class ViewLinks extends pulumi.CustomResource {
     /**
      * A set of feature flag keys to link to the view.
      */
-    declare public readonly flags: pulumi.Output<string[] | undefined>;
+    declare public readonly flags: pulumi.Output<string[]>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
      * A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
      */
-    declare public readonly segments: pulumi.Output<outputs.ViewLinksSegment[] | undefined>;
+    declare public readonly segments: pulumi.Output<outputs.ViewLinksSegment[]>;
     /**
-     * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly viewKey: pulumi.Output<string>;
 
@@ -226,7 +215,7 @@ export interface ViewLinksState {
      */
     flags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
@@ -234,7 +223,7 @@ export interface ViewLinksState {
      */
     segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
-     * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey?: pulumi.Input<string | undefined>;
 }
@@ -248,7 +237,7 @@ export interface ViewLinksArgs {
      */
     flags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**
@@ -256,7 +245,7 @@ export interface ViewLinksArgs {
      */
     segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
-     * The view key to link resources to. A change in this field will force the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey: pulumi.Input<string>;
 }

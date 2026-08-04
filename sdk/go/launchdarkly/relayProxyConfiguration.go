@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://docs.launchdarkly.com/home/relay-proxy/automatic-configuration).
+// Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
 //
 // > **Note:** Relay Proxy automatic configuration is available to customers on an Enterprise LaunchDarkly plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 //
 // This resource allows you to create and manage Relay Proxy configurations within your LaunchDarkly organization.
 //
-// > **Note:** This resource will store the full plaintext secret for your Relay Proxy configuration's unique key in Terraform state. Be sure your state is configured securely before using this resource. See https://www.terraform.io/docs/state/sensitive-data.html for more details.
+// > **Note:** This resource stores the full plaintext secret for your Relay Proxy configuration's unique key in Terraform state. Be sure your state is configured securely before using this resource. To learn more, read Sensitive data in state.
 //
 // ## Example Usage
 //
@@ -59,13 +59,13 @@ import (
 //
 // ## Import
 //
-// Relay Proxy configurations can be imported using the configuration's unique 24 character ID, e.g.
+// Import a Relay Proxy configuration using the configuration's unique 24-character ID. For example:
 //
 // ```sh
 // $ pulumi import launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration example 51d440e30c9ff61457c710f6
 // ```
 //
-// The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting 'Edit configuration':
+// You can find the unique Relay Proxy ID in the Relay Proxy edit page URL, which you can locate by clicking the three-dot menu on your Relay Proxy item in the UI and selecting "Edit configuration":
 //
 // ```sh
 // https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
@@ -75,11 +75,11 @@ type RelayProxyConfiguration struct {
 
 	// The last 4 characters of the Relay Proxy configuration's unique key.
 	DisplayKey pulumi.StringOutput `pulumi:"displayKey"`
-	// The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
+	// The Relay Proxy configuration's unique key. Because LaunchDarkly exposes the `fullKey` only on creation, it is unavailable when you import the resource.
 	FullKey pulumi.StringOutput `pulumi:"fullKey"`
 	// The human-readable name for your Relay Proxy configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+	// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 	Policies RelayProxyConfigurationPolicyArrayOutput `pulumi:"policies"`
 }
 
@@ -122,22 +122,22 @@ func GetRelayProxyConfiguration(ctx *pulumi.Context,
 type relayProxyConfigurationState struct {
 	// The last 4 characters of the Relay Proxy configuration's unique key.
 	DisplayKey *string `pulumi:"displayKey"`
-	// The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
+	// The Relay Proxy configuration's unique key. Because LaunchDarkly exposes the `fullKey` only on creation, it is unavailable when you import the resource.
 	FullKey *string `pulumi:"fullKey"`
 	// The human-readable name for your Relay Proxy configuration.
 	Name *string `pulumi:"name"`
-	// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+	// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 	Policies []RelayProxyConfigurationPolicy `pulumi:"policies"`
 }
 
 type RelayProxyConfigurationState struct {
 	// The last 4 characters of the Relay Proxy configuration's unique key.
 	DisplayKey pulumi.StringPtrInput
-	// The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
+	// The Relay Proxy configuration's unique key. Because LaunchDarkly exposes the `fullKey` only on creation, it is unavailable when you import the resource.
 	FullKey pulumi.StringPtrInput
 	// The human-readable name for your Relay Proxy configuration.
 	Name pulumi.StringPtrInput
-	// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+	// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 	Policies RelayProxyConfigurationPolicyArrayInput
 }
 
@@ -148,7 +148,7 @@ func (RelayProxyConfigurationState) ElementType() reflect.Type {
 type relayProxyConfigurationArgs struct {
 	// The human-readable name for your Relay Proxy configuration.
 	Name *string `pulumi:"name"`
-	// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+	// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 	Policies []RelayProxyConfigurationPolicy `pulumi:"policies"`
 }
 
@@ -156,7 +156,7 @@ type relayProxyConfigurationArgs struct {
 type RelayProxyConfigurationArgs struct {
 	// The human-readable name for your Relay Proxy configuration.
 	Name pulumi.StringPtrInput
-	// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+	// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 	Policies RelayProxyConfigurationPolicyArrayInput
 }
 
@@ -252,7 +252,7 @@ func (o RelayProxyConfigurationOutput) DisplayKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RelayProxyConfiguration) pulumi.StringOutput { return v.DisplayKey }).(pulumi.StringOutput)
 }
 
-// The Relay Proxy configuration's unique key. Because the `fullKey` is only exposed upon creation, it will not be available if the resource is imported.
+// The Relay Proxy configuration's unique key. Because LaunchDarkly exposes the `fullKey` only on creation, it is unavailable when you import the resource.
 func (o RelayProxyConfigurationOutput) FullKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RelayProxyConfiguration) pulumi.StringOutput { return v.FullKey }).(pulumi.StringOutput)
 }
@@ -262,7 +262,7 @@ func (o RelayProxyConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RelayProxyConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Relay Proxy configuration's rule policy block. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://docs.launchdarkly.com/home/members/role-policies#understanding-policies).
+// The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
 func (o RelayProxyConfigurationOutput) Policies() RelayProxyConfigurationPolicyArrayOutput {
 	return o.ApplyT(func(v *RelayProxyConfiguration) RelayProxyConfigurationPolicyArrayOutput { return v.Policies }).(RelayProxyConfigurationPolicyArrayOutput)
 }

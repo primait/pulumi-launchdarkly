@@ -16,12 +16,17 @@ from .. import _utilities
 
 access_token: Optional[str]
 """
-The [personal access token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#personal-tokens) or [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
+The [personal access token](https://launchdarkly.com/docs/home/account/api#personal-tokens) or [service token](https://launchdarkly.com/docs/home/account/api#service-tokens) used to authenticate with LaunchDarkly. You can also set this with the `LAUNCHDARKLY_ACCESS_TOKEN` environment variable. You must provide either `access_token` or `oauth_token`.
 """
 
 api_host: Optional[str]
 """
 The LaunchDarkly host address. If this argument is not specified, the default host address is `https://app.launchdarkly.com`
+"""
+
+archiveFlagsOnDestroy: Optional[bool]
+"""
+When `true`, removing a `FeatureFlag` resource from your Terraform configuration archives the flag in LaunchDarkly instead of deleting it. The flag's key is retained on the server, so re-applying a configuration that recreates the same flag key will fail with an error directing you to `terraform import` the archived flag. Defaults to `false`, which preserves the existing destroy-deletes behavior. This setting affects only `FeatureFlag`. Other resources continue to be deleted on destroy.
 """
 
 http_timeout: Optional[int]

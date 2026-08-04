@@ -76,7 +76,7 @@ namespace Pulumi.Launchdarkly
         public Output<bool?> IsInverted { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -94,10 +94,10 @@ namespace Pulumi.Launchdarkly
         public Output<string> MaintainerTeamKey { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// The AI Config's human-readable name.
@@ -106,13 +106,13 @@ namespace Pulumi.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this AI Config.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsInverted { get; set; }
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this AI Config.
         /// </summary>
         public InputList<string> Tags
         {
@@ -275,7 +275,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsInverted { get; set; }
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        /// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with your resource.
+        /// Tags associated with this AI Config.
         /// </summary>
         public InputList<string> Tags
         {

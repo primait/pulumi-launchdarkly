@@ -54,8 +54,6 @@ func LookupTeamMember(ctx *pulumi.Context, args *LookupTeamMemberArgs, opts ...p
 type LookupTeamMemberArgs struct {
 	// The unique email address associated with the team member.
 	Email string `pulumi:"email"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []GetTeamMemberRoleAttribute `pulumi:"roleAttributes"`
 }
 
 // A collection of values returned by getTeamMember.
@@ -64,16 +62,16 @@ type LookupTeamMemberResult struct {
 	CustomRoles []string `pulumi:"customRoles"`
 	// The unique email address associated with the team member.
 	Email string `pulumi:"email"`
-	// The team member's given name.
+	// First name.
 	FirstName string `pulumi:"firstName"`
-	// The 24 character alphanumeric ID of the team member.
+	// The 24-character member ID.
 	Id string `pulumi:"id"`
-	// The team member's family name.
+	// Last name.
 	LastName string `pulumi:"lastName"`
-	// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+	// The role associated with the team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
 	Role string `pulumi:"role"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes []GetTeamMemberRoleAttribute `pulumi:"roleAttributes"`
+	// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+	RoleAttributes map[string][]string `pulumi:"roleAttributes"`
 }
 
 func LookupTeamMemberOutput(ctx *pulumi.Context, args LookupTeamMemberOutputArgs, opts ...pulumi.InvokeOption) LookupTeamMemberResultOutput {
@@ -89,8 +87,6 @@ func LookupTeamMemberOutput(ctx *pulumi.Context, args LookupTeamMemberOutputArgs
 type LookupTeamMemberOutputArgs struct {
 	// The unique email address associated with the team member.
 	Email pulumi.StringInput `pulumi:"email"`
-	// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-	RoleAttributes GetTeamMemberRoleAttributeArrayInput `pulumi:"roleAttributes"`
 }
 
 func (LookupTeamMemberOutputArgs) ElementType() reflect.Type {
@@ -122,29 +118,29 @@ func (o LookupTeamMemberResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// The team member's given name.
+// First name.
 func (o LookupTeamMemberResultOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.FirstName }).(pulumi.StringOutput)
 }
 
-// The 24 character alphanumeric ID of the team member.
+// The 24-character member ID.
 func (o LookupTeamMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The team member's family name.
+// Last name.
 func (o LookupTeamMemberResultOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.LastName }).(pulumi.StringOutput)
 }
 
-// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+// The role associated with the team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
 func (o LookupTeamMemberResultOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
-func (o LookupTeamMemberResultOutput) RoleAttributes() GetTeamMemberRoleAttributeArrayOutput {
-	return o.ApplyT(func(v LookupTeamMemberResult) []GetTeamMemberRoleAttribute { return v.RoleAttributes }).(GetTeamMemberRoleAttributeArrayOutput)
+// A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
+func (o LookupTeamMemberResultOutput) RoleAttributes() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v LookupTeamMemberResult) map[string][]string { return v.RoleAttributes }).(pulumi.StringArrayMapOutput)
 }
 
 func init() {

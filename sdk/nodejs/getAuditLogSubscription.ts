@@ -51,7 +51,7 @@ export interface GetAuditLogSubscriptionArgs {
  */
 export interface GetAuditLogSubscriptionResult {
     /**
-     * The set of configuration fields corresponding to the value defined for `integrationKey`. Refer to the `formVariables` field in the corresponding `integrations/<integration_key>/manifest.json` file in [this repo](https://github.com/launchdarkly/integration-framework/tree/master/integrations) for a full list of fields for the integration you wish to configure. **IMPORTANT**: Please note that Terraform will only accept these in snake case, regardless of the case shown in the manifest.
+     * The set of configuration fields corresponding to the value defined for `integrationKey`.
      */
     readonly config: {[key: string]: string};
     /**
@@ -63,11 +63,11 @@ export interface GetAuditLogSubscriptionResult {
      */
     readonly integrationKey: string;
     /**
-     * A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
+     * A human-friendly name for your audit log subscription.
      */
     readonly name: string;
     /**
-     * Whether or not you want your subscription enabled, i.e. to actively send events.
+     * Whether or not the subscription is enabled.
      */
     readonly on: boolean;
     /**
@@ -75,7 +75,7 @@ export interface GetAuditLogSubscriptionResult {
      */
     readonly statements: outputs.GetAuditLogSubscriptionStatement[];
     /**
-     * Tags associated with your resource.
+     * Tags associated with the audit log subscription.
      */
     readonly tags: string[];
 }

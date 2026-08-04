@@ -17,15 +17,15 @@ from . import outputs
 
 __all__ = [
     'AccessTokenInlineRole',
-    'AccessTokenPolicyStatement',
+    'AiAgentGraphEdges',
     'AiConfigVariation',
     'AiConfigVariationMessage',
     'AuditLogSubscriptionStatement',
-    'CustomRolePolicy',
     'CustomRolePolicyStatement',
-    'EnvironmentApprovalSetting',
+    'EnvironmentApprovalSettings',
+    'EnvironmentSegmentApprovalSettings',
     'FeatureFlagClientSideAvailability',
-    'FeatureFlagCustomProperty',
+    'FeatureFlagCustomProperties',
     'FeatureFlagDefaults',
     'FeatureFlagEnvironmentContextTarget',
     'FeatureFlagEnvironmentFallthrough',
@@ -36,26 +36,32 @@ __all__ = [
     'FeatureFlagVariation',
     'FlagTemplatesBooleanDefaults',
     'FlagTriggerInstructions',
+    'MetricGroupMetric',
     'MetricUrl',
     'ProjectDefaultClientSideAvailability',
-    'ProjectEnvironment',
-    'ProjectEnvironmentApprovalSetting',
+    'ProjectEnvironments',
+    'ProjectEnvironmentsApprovalSettings',
     'RelayProxyConfigurationPolicy',
+    'ReleasePolicyGuardedReleaseConfig',
+    'ReleasePolicyGuardedReleaseConfigStage',
+    'ReleasePolicyProgressiveReleaseConfig',
+    'ReleasePolicyProgressiveReleaseConfigStage',
+    'ReleasePolicyScope',
     'SegmentExcludedContext',
     'SegmentIncludedContext',
     'SegmentRule',
     'SegmentRuleClause',
-    'TeamMemberRoleAttribute',
-    'TeamRoleAttribute',
     'ViewLinksSegment',
     'WebhookStatement',
+    'GetAiAgentGraphEdgesResult',
     'GetAiConfigVariationResult',
     'GetAiConfigVariationMessageResult',
     'GetAuditLogSubscriptionStatementResult',
-    'GetEnvironmentApprovalSettingResult',
+    'GetEnvironmentApprovalSettingsResult',
+    'GetEnvironmentSegmentApprovalSettingsResult',
     'GetFeatureFlagClientSideAvailabilityResult',
-    'GetFeatureFlagCustomPropertyResult',
-    'GetFeatureFlagDefaultResult',
+    'GetFeatureFlagCustomPropertiesResult',
+    'GetFeatureFlagDefaultsResult',
     'GetFeatureFlagEnvironmentContextTargetResult',
     'GetFeatureFlagEnvironmentFallthroughResult',
     'GetFeatureFlagEnvironmentPrerequisiteResult',
@@ -63,21 +69,23 @@ __all__ = [
     'GetFeatureFlagEnvironmentRuleClauseResult',
     'GetFeatureFlagEnvironmentTargetResult',
     'GetFeatureFlagVariationResult',
-    'GetFlagTemplatesBooleanDefaultResult',
-    'GetFlagTriggerInstructionResult',
+    'GetFlagTemplatesBooleanDefaultsResult',
+    'GetFlagTriggerInstructionsResult',
+    'GetMetricGroupMetricResult',
     'GetMetricUrlResult',
-    'GetProjectClientSideAvailabilityResult',
     'GetProjectDefaultClientSideAvailabilityResult',
     'GetRelayProxyConfigurationPolicyResult',
+    'GetReleasePolicyGuardedReleaseConfigResult',
+    'GetReleasePolicyGuardedReleaseConfigStageResult',
+    'GetReleasePolicyProgressiveReleaseConfigResult',
+    'GetReleasePolicyProgressiveReleaseConfigStageResult',
+    'GetReleasePolicyScopeResult',
     'GetSegmentExcludedContextResult',
     'GetSegmentIncludedContextResult',
     'GetSegmentRuleResult',
     'GetSegmentRuleClauseResult',
     'GetTeamMaintainerResult',
-    'GetTeamMemberRoleAttributeResult',
     'GetTeamMembersTeamMemberResult',
-    'GetTeamMembersTeamMemberRoleAttributeResult',
-    'GetTeamRoleAttributeResult',
     'GetViewLinkedSegmentResult',
     'GetWebhookStatementResult',
 ]
@@ -112,7 +120,7 @@ class AccessTokenInlineRole(dict):
         """
         :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
@@ -140,7 +148,7 @@ class AccessTokenInlineRole(dict):
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -170,90 +178,75 @@ class AccessTokenInlineRole(dict):
 
 
 @pulumi.output_type
-class AccessTokenPolicyStatement(dict):
+class AiAgentGraphEdges(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "notActions":
-            suggest = "not_actions"
-        elif key == "notResources":
-            suggest = "not_resources"
+        if key == "sourceConfig":
+            suggest = "source_config"
+        elif key == "targetConfig":
+            suggest = "target_config"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AccessTokenPolicyStatement. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in AiAgentGraphEdges. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        AccessTokenPolicyStatement.__key_warning(key)
+        AiAgentGraphEdges.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        AccessTokenPolicyStatement.__key_warning(key)
+        AiAgentGraphEdges.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 effect: _builtins.str,
-                 actions: Optional[Sequence[_builtins.str]] = None,
-                 not_actions: Optional[Sequence[_builtins.str]] = None,
-                 not_resources: Optional[Sequence[_builtins.str]] = None,
-                 resources: Optional[Sequence[_builtins.str]] = None):
+                 source_config: _builtins.str,
+                 target_config: _builtins.str,
+                 handoff: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None):
         """
-        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
-        :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
-        :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
+        :param _builtins.str source_config: The AI Config key that is the source of this edge.
+        :param _builtins.str target_config: The AI Config key that is the target of this edge.
+        :param _builtins.str handoff: A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        :param _builtins.str key: The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
         """
-        pulumi.set(__self__, "effect", effect)
-        if actions is not None:
-            pulumi.set(__self__, "actions", actions)
-        if not_actions is not None:
-            pulumi.set(__self__, "not_actions", not_actions)
-        if not_resources is not None:
-            pulumi.set(__self__, "not_resources", not_resources)
-        if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "source_config", source_config)
+        pulumi.set(__self__, "target_config", target_config)
+        if handoff is not None:
+            pulumi.set(__self__, "handoff", handoff)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> _builtins.str:
+        """
+        The AI Config key that is the source of this edge.
+        """
+        return pulumi.get(self, "source_config")
+
+    @_builtins.property
+    @pulumi.getter(name="targetConfig")
+    def target_config(self) -> _builtins.str:
+        """
+        The AI Config key that is the target of this edge.
+        """
+        return pulumi.get(self, "target_config")
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> _builtins.str:
+    def handoff(self) -> Optional[_builtins.str]:
         """
-        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        A JSON string representing the handoff options from the source AI Config to the target AI Config.
         """
-        return pulumi.get(self, "effect")
+        return pulumi.get(self, "handoff")
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[Sequence[_builtins.str]]:
+    def key(self) -> Optional[_builtins.str]:
         """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
         """
-        return pulumi.get(self, "actions")
-
-    @_builtins.property
-    @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of action specifiers defining the actions to which the statement does not apply.
-        """
-        return pulumi.get(self, "not_actions")
-
-    @_builtins.property
-    @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of resource specifiers defining the resources to which the statement does not apply.
-        """
-        return pulumi.get(self, "not_resources")
-
-    @_builtins.property
-    @pulumi.getter
-    def resources(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of resource specifiers defining the resources to which the statement applies.
-        """
-        return pulumi.get(self, "resources")
+        return pulumi.get(self, "key")
 
 
 @pulumi.output_type
@@ -276,43 +269,26 @@ class AiConfigVariation(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 variation_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: The variation's key.
-        :param _builtins.str name: The variation's name.
-        :param _builtins.str variation_id: The variation's ID.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if variation_id is not None:
-            pulumi.set(__self__, "variation_id", variation_id)
+                 key: _builtins.str,
+                 name: _builtins.str,
+                 variation_id: _builtins.str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "variation_id", variation_id)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
-        """
-        The variation's key.
-        """
+    def key(self) -> _builtins.str:
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        The variation's name.
-        """
+    def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="variationId")
-    def variation_id(self) -> Optional[_builtins.str]:
-        """
-        The variation's ID.
-        """
+    def variation_id(self) -> _builtins.str:
         return pulumi.get(self, "variation_id")
 
 
@@ -375,7 +351,7 @@ class AuditLogSubscriptionStatement(dict):
         """
         :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
@@ -403,7 +379,7 @@ class AuditLogSubscriptionStatement(dict):
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -429,32 +405,6 @@ class AuditLogSubscriptionStatement(dict):
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
-        return pulumi.get(self, "resources")
-
-
-@pulumi.output_type
-class CustomRolePolicy(dict):
-    def __init__(__self__, *,
-                 actions: Sequence[_builtins.str],
-                 effect: _builtins.str,
-                 resources: Sequence[_builtins.str]):
-        pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "resources", resources)
-
-    @_builtins.property
-    @pulumi.getter
-    def actions(self) -> Sequence[_builtins.str]:
-        return pulumi.get(self, "actions")
-
-    @_builtins.property
-    @pulumi.getter
-    def effect(self) -> _builtins.str:
-        return pulumi.get(self, "effect")
-
-    @_builtins.property
-    @pulumi.getter
-    def resources(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "resources")
 
 
@@ -488,7 +438,7 @@ class CustomRolePolicyStatement(dict):
         """
         :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
@@ -516,7 +466,7 @@ class CustomRolePolicyStatement(dict):
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -546,7 +496,7 @@ class CustomRolePolicyStatement(dict):
 
 
 @pulumi.output_type
-class EnvironmentApprovalSetting(dict):
+class EnvironmentApprovalSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -566,14 +516,14 @@ class EnvironmentApprovalSetting(dict):
             suggest = "service_kind"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EnvironmentApprovalSetting. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentApprovalSettings. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        EnvironmentApprovalSetting.__key_warning(key)
+        EnvironmentApprovalSettings.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        EnvironmentApprovalSetting.__key_warning(key)
+        EnvironmentApprovalSettings.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -594,9 +544,9 @@ class EnvironmentApprovalSetting(dict):
         :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
                
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
                	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         if auto_apply_approved_changes is not None:
             pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
@@ -669,7 +619,7 @@ class EnvironmentApprovalSetting(dict):
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
         	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         """
         return pulumi.get(self, "service_config")
@@ -678,7 +628,145 @@ class EnvironmentApprovalSetting(dict):
     @pulumi.getter(name="serviceKind")
     def service_kind(self) -> Optional[_builtins.str]:
         """
-        The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        """
+        return pulumi.get(self, "service_kind")
+
+
+@pulumi.output_type
+class EnvironmentSegmentApprovalSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoApplyApprovedChanges":
+            suggest = "auto_apply_approved_changes"
+        elif key == "canApplyDeclinedChanges":
+            suggest = "can_apply_declined_changes"
+        elif key == "canReviewOwnRequest":
+            suggest = "can_review_own_request"
+        elif key == "minNumApprovals":
+            suggest = "min_num_approvals"
+        elif key == "requiredApprovalTags":
+            suggest = "required_approval_tags"
+        elif key == "serviceConfig":
+            suggest = "service_config"
+        elif key == "serviceKind":
+            suggest = "service_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentSegmentApprovalSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentSegmentApprovalSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentSegmentApprovalSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_apply_approved_changes: Optional[_builtins.bool] = None,
+                 can_apply_declined_changes: Optional[_builtins.bool] = None,
+                 can_review_own_request: Optional[_builtins.bool] = None,
+                 min_num_approvals: Optional[_builtins.int] = None,
+                 required: Optional[_builtins.bool] = None,
+                 required_approval_tags: Optional[Sequence[_builtins.str]] = None,
+                 service_config: Optional[Mapping[str, _builtins.str]] = None,
+                 service_kind: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool auto_apply_approved_changes: Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+        :param _builtins.bool can_apply_declined_changes: Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+        :param _builtins.bool can_review_own_request: Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+        :param _builtins.int min_num_approvals: The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+        :param _builtins.bool required: Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+        :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which segments with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+        :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
+               
+               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+               	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        """
+        if auto_apply_approved_changes is not None:
+            pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
+        if can_apply_declined_changes is not None:
+            pulumi.set(__self__, "can_apply_declined_changes", can_apply_declined_changes)
+        if can_review_own_request is not None:
+            pulumi.set(__self__, "can_review_own_request", can_review_own_request)
+        if min_num_approvals is not None:
+            pulumi.set(__self__, "min_num_approvals", min_num_approvals)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if required_approval_tags is not None:
+            pulumi.set(__self__, "required_approval_tags", required_approval_tags)
+        if service_config is not None:
+            pulumi.set(__self__, "service_config", service_config)
+        if service_kind is not None:
+            pulumi.set(__self__, "service_kind", service_kind)
+
+    @_builtins.property
+    @pulumi.getter(name="autoApplyApprovedChanges")
+    def auto_apply_approved_changes(self) -> Optional[_builtins.bool]:
+        """
+        Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+        """
+        return pulumi.get(self, "auto_apply_approved_changes")
+
+    @_builtins.property
+    @pulumi.getter(name="canApplyDeclinedChanges")
+    def can_apply_declined_changes(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+        """
+        return pulumi.get(self, "can_apply_declined_changes")
+
+    @_builtins.property
+    @pulumi.getter(name="canReviewOwnRequest")
+    def can_review_own_request(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+        """
+        return pulumi.get(self, "can_review_own_request")
+
+    @_builtins.property
+    @pulumi.getter(name="minNumApprovals")
+    def min_num_approvals(self) -> Optional[_builtins.int]:
+        """
+        The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+        """
+        return pulumi.get(self, "min_num_approvals")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` for changes to segments in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter(name="requiredApprovalTags")
+    def required_approval_tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        An array of tags used to specify which segments with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+        """
+        return pulumi.get(self, "required_approval_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConfig")
+    def service_config(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
+
+        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+        """
+        return pulumi.get(self, "service_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKind")
+    def service_kind(self) -> Optional[_builtins.str]:
+        """
+        The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         return pulumi.get(self, "service_kind")
 
@@ -734,27 +822,20 @@ class FeatureFlagClientSideAvailability(dict):
 
 
 @pulumi.output_type
-class FeatureFlagCustomProperty(dict):
+class FeatureFlagCustomProperties(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
                  name: _builtins.str,
-                 values: Sequence[_builtins.str]):
+                 values: Sequence[_builtins.str],
+                 key: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The unique custom property key.
         :param _builtins.str name: The name of the custom property.
         :param Sequence[_builtins.str] values: The list of custom property value strings.
+        :param _builtins.str key: The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
         """
-        pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The unique custom property key.
-        """
-        return pulumi.get(self, "key")
+        if key is not None:
+            pulumi.set(__self__, "key", key)
 
     @_builtins.property
     @pulumi.getter
@@ -771,6 +852,14 @@ class FeatureFlagCustomProperty(dict):
         The list of custom property value strings.
         """
         return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The unique custom property key. Must equal the map key. It defaults to the map key when omitted.
+        """
+        return pulumi.get(self, "key")
 
 
 @pulumi.output_type
@@ -798,8 +887,8 @@ class FeatureFlagDefaults(dict):
                  off_variation: _builtins.int,
                  on_variation: _builtins.int):
         """
-        :param _builtins.int off_variation: The index of the variation the flag will default to in all new environments when off.
-        :param _builtins.int on_variation: The index of the variation the flag will default to in all new environments when on.
+        :param _builtins.int off_variation: The index of the variation the flag defaults to in all new environments when off.
+        :param _builtins.int on_variation: The index of the variation the flag defaults to in all new environments when on.
         """
         pulumi.set(__self__, "off_variation", off_variation)
         pulumi.set(__self__, "on_variation", on_variation)
@@ -808,7 +897,7 @@ class FeatureFlagDefaults(dict):
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> _builtins.int:
         """
-        The index of the variation the flag will default to in all new environments when off.
+        The index of the variation the flag defaults to in all new environments when off.
         """
         return pulumi.get(self, "off_variation")
 
@@ -816,7 +905,7 @@ class FeatureFlagDefaults(dict):
     @pulumi.getter(name="onVariation")
     def on_variation(self) -> _builtins.int:
         """
-        The index of the variation the flag will default to in all new environments when on.
+        The index of the variation the flag defaults to in all new environments when on.
         """
         return pulumi.get(self, "on_variation")
 
@@ -845,7 +934,7 @@ class FeatureFlagEnvironmentContextTarget(dict):
                  values: Sequence[_builtins.str],
                  variation: _builtins.int):
         """
-        :param _builtins.str context_kind: The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+        :param _builtins.str context_kind: The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
         :param Sequence[_builtins.str] values: List of `user` strings to target.
         :param _builtins.int variation: The index of the variation to serve if a user target value is matched.
         """
@@ -857,7 +946,7 @@ class FeatureFlagEnvironmentContextTarget(dict):
     @pulumi.getter(name="contextKind")
     def context_kind(self) -> _builtins.str:
         """
-        The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
+        The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets`.
         """
         return pulumi.get(self, "context_kind")
 
@@ -1024,24 +1113,23 @@ class FeatureFlagEnvironmentRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 clauses: Sequence['outputs.FeatureFlagEnvironmentRuleClause'],
                  bucket_by: Optional[_builtins.str] = None,
-                 clauses: Optional[Sequence['outputs.FeatureFlagEnvironmentRuleClause']] = None,
                  context_kind: Optional[_builtins.str] = None,
                  description: Optional[_builtins.str] = None,
                  rollout_weights: Optional[Sequence[_builtins.int]] = None,
                  variation: Optional[_builtins.int] = None):
         """
+        :param Sequence['FeatureFlagEnvironmentRuleClauseArgs'] clauses: List of clauses specifying the logical conditions to evaluate
         :param _builtins.str bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
-        :param Sequence['FeatureFlagEnvironmentRuleClauseArgs'] clauses: List of nested blocks specifying the logical clauses to evaluate
         :param _builtins.str context_kind: The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
         :param _builtins.str description: A human-readable description of the targeting rule.
         :param Sequence[_builtins.int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         :param _builtins.int variation: The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
         """
+        pulumi.set(__self__, "clauses", clauses)
         if bucket_by is not None:
             pulumi.set(__self__, "bucket_by", bucket_by)
-        if clauses is not None:
-            pulumi.set(__self__, "clauses", clauses)
         if context_kind is not None:
             pulumi.set(__self__, "context_kind", context_kind)
         if description is not None:
@@ -1052,20 +1140,20 @@ class FeatureFlagEnvironmentRule(dict):
             pulumi.set(__self__, "variation", variation)
 
     @_builtins.property
+    @pulumi.getter
+    def clauses(self) -> Sequence['outputs.FeatureFlagEnvironmentRuleClause']:
+        """
+        List of clauses specifying the logical conditions to evaluate
+        """
+        return pulumi.get(self, "clauses")
+
+    @_builtins.property
     @pulumi.getter(name="bucketBy")
     def bucket_by(self) -> Optional[_builtins.str]:
         """
         Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
         """
         return pulumi.get(self, "bucket_by")
-
-    @_builtins.property
-    @pulumi.getter
-    def clauses(self) -> Optional[Sequence['outputs.FeatureFlagEnvironmentRuleClause']]:
-        """
-        List of nested blocks specifying the logical clauses to evaluate
-        """
-        return pulumi.get(self, "clauses")
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
@@ -1130,7 +1218,7 @@ class FeatureFlagEnvironmentRuleClause(dict):
                  value_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str attribute: The user attribute to operate on
-        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         :param Sequence[_builtins.str] values: The list of values associated with the rule clause.
         :param _builtins.str context_kind: The context kind associated with this rule clause. If omitted, defaults to `user`.
         :param _builtins.bool negate: Whether to negate the rule clause.
@@ -1158,7 +1246,7 @@ class FeatureFlagEnvironmentRuleClause(dict):
     @pulumi.getter
     def op(self) -> _builtins.str:
         """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         """
         return pulumi.get(self, "op")
 
@@ -1231,7 +1319,7 @@ class FeatureFlagVariation(dict):
                  description: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+        :param _builtins.str value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
         :param _builtins.str description: The feature flag's description.
         :param _builtins.str name: The human-readable name of the feature flag.
         """
@@ -1245,7 +1333,7 @@ class FeatureFlagVariation(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
+        The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
         """
         return pulumi.get(self, "value")
 
@@ -1302,14 +1390,6 @@ class FlagTemplatesBooleanDefaults(dict):
                  on_variation: _builtins.int,
                  true_description: _builtins.str,
                  true_display_name: _builtins.str):
-        """
-        :param _builtins.str false_description: The description for the false variation.
-        :param _builtins.str false_display_name: The display name for the false variation.
-        :param _builtins.int off_variation: The variation index of the boolean flag variation to serve when the flag's targeting is off.
-        :param _builtins.int on_variation: The variation index of the boolean flag variation to serve when the flag's targeting is on.
-        :param _builtins.str true_description: The description for the true variation.
-        :param _builtins.str true_display_name: The display name for the true variation.
-        """
         pulumi.set(__self__, "false_description", false_description)
         pulumi.set(__self__, "false_display_name", false_display_name)
         pulumi.set(__self__, "off_variation", off_variation)
@@ -1320,49 +1400,31 @@ class FlagTemplatesBooleanDefaults(dict):
     @_builtins.property
     @pulumi.getter(name="falseDescription")
     def false_description(self) -> _builtins.str:
-        """
-        The description for the false variation.
-        """
         return pulumi.get(self, "false_description")
 
     @_builtins.property
     @pulumi.getter(name="falseDisplayName")
     def false_display_name(self) -> _builtins.str:
-        """
-        The display name for the false variation.
-        """
         return pulumi.get(self, "false_display_name")
 
     @_builtins.property
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> _builtins.int:
-        """
-        The variation index of the boolean flag variation to serve when the flag's targeting is off.
-        """
         return pulumi.get(self, "off_variation")
 
     @_builtins.property
     @pulumi.getter(name="onVariation")
     def on_variation(self) -> _builtins.int:
-        """
-        The variation index of the boolean flag variation to serve when the flag's targeting is on.
-        """
         return pulumi.get(self, "on_variation")
 
     @_builtins.property
     @pulumi.getter(name="trueDescription")
     def true_description(self) -> _builtins.str:
-        """
-        The description for the true variation.
-        """
         return pulumi.get(self, "true_description")
 
     @_builtins.property
     @pulumi.getter(name="trueDisplayName")
     def true_display_name(self) -> _builtins.str:
-        """
-        The display name for the true variation.
-        """
         return pulumi.get(self, "true_display_name")
 
 
@@ -1382,6 +1444,53 @@ class FlagTriggerInstructions(dict):
         The action to perform when triggering. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`.
         """
         return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class MetricGroupMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameInGroup":
+            suggest = "name_in_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricGroupMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricGroupMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricGroupMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 name_in_group: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of the metric to include in the group.
+        :param _builtins.str name_in_group: The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
+        """
+        pulumi.set(__self__, "key", key)
+        if name_in_group is not None:
+            pulumi.set(__self__, "name_in_group", name_in_group)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key of the metric to include in the group.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="nameInGroup")
+    def name_in_group(self) -> Optional[_builtins.str]:
+        """
+        The name of the metric when used within this metric group. Can differ from the metric's own name. Required for `funnel` metric groups and not permitted for `standard` metric groups.
+        """
+        return pulumi.get(self, "name_in_group")
 
 
 @pulumi.output_type
@@ -1477,7 +1586,7 @@ class ProjectDefaultClientSideAvailability(dict):
 
 
 @pulumi.output_type
-class ProjectEnvironment(dict):
+class ProjectEnvironments(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1501,48 +1610,47 @@ class ProjectEnvironment(dict):
             suggest = "secure_mode"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectEnvironment. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ProjectEnvironments. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ProjectEnvironment.__key_warning(key)
+        ProjectEnvironments.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ProjectEnvironment.__key_warning(key)
+        ProjectEnvironments.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  color: _builtins.str,
-                 key: _builtins.str,
                  name: _builtins.str,
                  api_key: Optional[_builtins.str] = None,
-                 approval_settings: Optional[Sequence['outputs.ProjectEnvironmentApprovalSetting']] = None,
+                 approval_settings: Optional['outputs.ProjectEnvironmentsApprovalSettings'] = None,
                  client_side_id: Optional[_builtins.str] = None,
                  confirm_changes: Optional[_builtins.bool] = None,
                  critical: Optional[_builtins.bool] = None,
                  default_track_events: Optional[_builtins.bool] = None,
                  default_ttl: Optional[_builtins.int] = None,
+                 key: Optional[_builtins.str] = None,
                  mobile_key: Optional[_builtins.str] = None,
                  require_comments: Optional[_builtins.bool] = None,
                  secure_mode: Optional[_builtins.bool] = None,
                  tags: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`
-        :param _builtins.str key: The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param _builtins.str name: The name of the environment.
         :param _builtins.str api_key: The environment's SDK key.
         :param _builtins.str client_side_id: The environment's client-side ID.
-        :param _builtins.bool confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+        :param _builtins.bool confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
         :param _builtins.bool critical: Denotes whether the environment is critical.
-        :param _builtins.bool default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
-        :param _builtins.int default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        :param _builtins.bool default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
+        :param _builtins.int default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
+        :param _builtins.str key: The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
         :param _builtins.str mobile_key: The environment's mobile key.
-        :param _builtins.bool require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
-        :param _builtins.bool secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+        :param _builtins.bool require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
+        :param _builtins.bool secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
         :param Sequence[_builtins.str] tags: Tags associated with your resource.
         """
         pulumi.set(__self__, "color", color)
-        pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -1558,6 +1666,8 @@ class ProjectEnvironment(dict):
             pulumi.set(__self__, "default_track_events", default_track_events)
         if default_ttl is not None:
             pulumi.set(__self__, "default_ttl", default_ttl)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
         if mobile_key is not None:
             pulumi.set(__self__, "mobile_key", mobile_key)
         if require_comments is not None:
@@ -1577,14 +1687,6 @@ class ProjectEnvironment(dict):
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         """
         The name of the environment.
@@ -1601,7 +1703,7 @@ class ProjectEnvironment(dict):
 
     @_builtins.property
     @pulumi.getter(name="approvalSettings")
-    def approval_settings(self) -> Optional[Sequence['outputs.ProjectEnvironmentApprovalSetting']]:
+    def approval_settings(self) -> Optional['outputs.ProjectEnvironmentsApprovalSettings']:
         return pulumi.get(self, "approval_settings")
 
     @_builtins.property
@@ -1616,7 +1718,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="confirmChanges")
     def confirm_changes(self) -> Optional[_builtins.bool]:
         """
-        Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
+        Set to `true` if this environment requires confirmation for flag and segment changes. This field defaults to `false` when not set.
         """
         return pulumi.get(self, "confirm_changes")
 
@@ -1632,7 +1734,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> Optional[_builtins.bool]:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field defaults to `false` when not set. To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -1640,9 +1742,17 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[_builtins.int]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
+        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field defaults to `0` when not set. To learn more, read [TTL settings](https://launchdarkly.com/docs/home/account/environment#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The project-unique key for the environment. Must equal the map key. It defaults to the map key when omitted. Changing it (or the map key) replaces the environment.
+        """
+        return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter(name="mobileKey")
@@ -1656,7 +1766,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="requireComments")
     def require_comments(self) -> Optional[_builtins.bool]:
         """
-        Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
+        Set to `true` if this environment requires comments for flag and segment changes. This field defaults to `false` when not set.
         """
         return pulumi.get(self, "require_comments")
 
@@ -1664,7 +1774,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="secureMode")
     def secure_mode(self) -> Optional[_builtins.bool]:
         """
-        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
+        Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field defaults to `false` when not set.
         """
         return pulumi.get(self, "secure_mode")
 
@@ -1678,7 +1788,7 @@ class ProjectEnvironment(dict):
 
 
 @pulumi.output_type
-class ProjectEnvironmentApprovalSetting(dict):
+class ProjectEnvironmentsApprovalSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1698,14 +1808,14 @@ class ProjectEnvironmentApprovalSetting(dict):
             suggest = "service_kind"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectEnvironmentApprovalSetting. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ProjectEnvironmentsApprovalSettings. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ProjectEnvironmentApprovalSetting.__key_warning(key)
+        ProjectEnvironmentsApprovalSettings.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ProjectEnvironmentApprovalSetting.__key_warning(key)
+        ProjectEnvironmentsApprovalSettings.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1726,9 +1836,9 @@ class ProjectEnvironmentApprovalSetting(dict):
         :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
                
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
                	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         if auto_apply_approved_changes is not None:
             pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
@@ -1801,7 +1911,7 @@ class ProjectEnvironmentApprovalSetting(dict):
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
+        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
         	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         """
         return pulumi.get(self, "service_config")
@@ -1810,7 +1920,7 @@ class ProjectEnvironmentApprovalSetting(dict):
     @pulumi.getter(name="serviceKind")
     def service_kind(self) -> Optional[_builtins.str]:
         """
-        The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         return pulumi.get(self, "service_kind")
 
@@ -1845,7 +1955,7 @@ class RelayProxyConfigurationPolicy(dict):
         """
         :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
@@ -1873,7 +1983,7 @@ class RelayProxyConfigurationPolicy(dict):
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -1900,6 +2010,300 @@ class RelayProxyConfigurationPolicy(dict):
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class ReleasePolicyGuardedReleaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricGroupKeys":
+            suggest = "metric_group_keys"
+        elif key == "metricKeys":
+            suggest = "metric_keys"
+        elif key == "minSampleSize":
+            suggest = "min_sample_size"
+        elif key == "rollbackOnRegression":
+            suggest = "rollback_on_regression"
+        elif key == "rolloutContextKind":
+            suggest = "rollout_context_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleasePolicyGuardedReleaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleasePolicyGuardedReleaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleasePolicyGuardedReleaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_group_keys: Optional[Sequence[_builtins.str]] = None,
+                 metric_keys: Optional[Sequence[_builtins.str]] = None,
+                 min_sample_size: Optional[_builtins.int] = None,
+                 rollback_on_regression: Optional[_builtins.bool] = None,
+                 rollout_context_kind: Optional[_builtins.str] = None,
+                 stages: Optional[Sequence['outputs.ReleasePolicyGuardedReleaseConfigStage']] = None):
+        """
+        :param Sequence[_builtins.str] metric_group_keys: The set of metric group keys to monitor during the guarded release.
+        :param Sequence[_builtins.str] metric_keys: The set of metric keys to monitor during the guarded release.
+        :param _builtins.int min_sample_size: The minimum number of samples required before the policy makes a release decision.
+        :param _builtins.bool rollback_on_regression: Whether to automatically roll back the release when a monitored metric regresses.
+        :param _builtins.str rollout_context_kind: The context kind key to use as the randomization unit for the rollout.
+        :param Sequence['ReleasePolicyGuardedReleaseConfigStageArgs'] stages: An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+        """
+        if metric_group_keys is not None:
+            pulumi.set(__self__, "metric_group_keys", metric_group_keys)
+        if metric_keys is not None:
+            pulumi.set(__self__, "metric_keys", metric_keys)
+        if min_sample_size is not None:
+            pulumi.set(__self__, "min_sample_size", min_sample_size)
+        if rollback_on_regression is not None:
+            pulumi.set(__self__, "rollback_on_regression", rollback_on_regression)
+        if rollout_context_kind is not None:
+            pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
+        if stages is not None:
+            pulumi.set(__self__, "stages", stages)
+
+    @_builtins.property
+    @pulumi.getter(name="metricGroupKeys")
+    def metric_group_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The set of metric group keys to monitor during the guarded release.
+        """
+        return pulumi.get(self, "metric_group_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="metricKeys")
+    def metric_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The set of metric keys to monitor during the guarded release.
+        """
+        return pulumi.get(self, "metric_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="minSampleSize")
+    def min_sample_size(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of samples required before the policy makes a release decision.
+        """
+        return pulumi.get(self, "min_sample_size")
+
+    @_builtins.property
+    @pulumi.getter(name="rollbackOnRegression")
+    def rollback_on_regression(self) -> Optional[_builtins.bool]:
+        """
+        Whether to automatically roll back the release when a monitored metric regresses.
+        """
+        return pulumi.get(self, "rollback_on_regression")
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutContextKind")
+    def rollout_context_kind(self) -> Optional[_builtins.str]:
+        """
+        The context kind key to use as the randomization unit for the rollout.
+        """
+        return pulumi.get(self, "rollout_context_kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def stages(self) -> Optional[Sequence['outputs.ReleasePolicyGuardedReleaseConfigStage']]:
+        """
+        An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+        """
+        return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class ReleasePolicyGuardedReleaseConfigStage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationMillis":
+            suggest = "duration_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleasePolicyGuardedReleaseConfigStage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleasePolicyGuardedReleaseConfigStage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleasePolicyGuardedReleaseConfigStage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocation: _builtins.int,
+                 duration_millis: _builtins.int):
+        """
+        :param _builtins.int allocation: The percentage of traffic (0-100) allocated to the new variation during this stage.
+        :param _builtins.int duration_millis: The duration of this stage, in milliseconds.
+        """
+        pulumi.set(__self__, "allocation", allocation)
+        pulumi.set(__self__, "duration_millis", duration_millis)
+
+    @_builtins.property
+    @pulumi.getter
+    def allocation(self) -> _builtins.int:
+        """
+        The percentage of traffic (0-100) allocated to the new variation during this stage.
+        """
+        return pulumi.get(self, "allocation")
+
+    @_builtins.property
+    @pulumi.getter(name="durationMillis")
+    def duration_millis(self) -> _builtins.int:
+        """
+        The duration of this stage, in milliseconds.
+        """
+        return pulumi.get(self, "duration_millis")
+
+
+@pulumi.output_type
+class ReleasePolicyProgressiveReleaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rolloutContextKind":
+            suggest = "rollout_context_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleasePolicyProgressiveReleaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleasePolicyProgressiveReleaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleasePolicyProgressiveReleaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rollout_context_kind: Optional[_builtins.str] = None,
+                 stages: Optional[Sequence['outputs.ReleasePolicyProgressiveReleaseConfigStage']] = None):
+        """
+        :param _builtins.str rollout_context_kind: The context kind key to use as the randomization unit for the rollout.
+        :param Sequence['ReleasePolicyProgressiveReleaseConfigStageArgs'] stages: An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+        """
+        if rollout_context_kind is not None:
+            pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
+        if stages is not None:
+            pulumi.set(__self__, "stages", stages)
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutContextKind")
+    def rollout_context_kind(self) -> Optional[_builtins.str]:
+        """
+        The context kind key to use as the randomization unit for the rollout.
+        """
+        return pulumi.get(self, "rollout_context_kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def stages(self) -> Optional[Sequence['outputs.ReleasePolicyProgressiveReleaseConfigStage']]:
+        """
+        An ordered list of rollout stages. Each stage advances the rollout to the given allocation for the given duration.
+        """
+        return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class ReleasePolicyProgressiveReleaseConfigStage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationMillis":
+            suggest = "duration_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleasePolicyProgressiveReleaseConfigStage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleasePolicyProgressiveReleaseConfigStage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleasePolicyProgressiveReleaseConfigStage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocation: _builtins.int,
+                 duration_millis: _builtins.int):
+        """
+        :param _builtins.int allocation: The percentage of traffic (0-100) allocated to the new variation during this stage.
+        :param _builtins.int duration_millis: The duration of this stage, in milliseconds.
+        """
+        pulumi.set(__self__, "allocation", allocation)
+        pulumi.set(__self__, "duration_millis", duration_millis)
+
+    @_builtins.property
+    @pulumi.getter
+    def allocation(self) -> _builtins.int:
+        """
+        The percentage of traffic (0-100) allocated to the new variation during this stage.
+        """
+        return pulumi.get(self, "allocation")
+
+    @_builtins.property
+    @pulumi.getter(name="durationMillis")
+    def duration_millis(self) -> _builtins.int:
+        """
+        The duration of this stage, in milliseconds.
+        """
+        return pulumi.get(self, "duration_millis")
+
+
+@pulumi.output_type
+class ReleasePolicyScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentKeys":
+            suggest = "environment_keys"
+        elif key == "flagTagKeys":
+            suggest = "flag_tag_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleasePolicyScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleasePolicyScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleasePolicyScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_keys: Optional[Sequence[_builtins.str]] = None,
+                 flag_tag_keys: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] environment_keys: The set of environment keys this policy applies to.
+        :param Sequence[_builtins.str] flag_tag_keys: The set of flag tags this policy applies to.
+        """
+        if environment_keys is not None:
+            pulumi.set(__self__, "environment_keys", environment_keys)
+        if flag_tag_keys is not None:
+            pulumi.set(__self__, "flag_tag_keys", flag_tag_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentKeys")
+    def environment_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The set of environment keys this policy applies to.
+        """
+        return pulumi.get(self, "environment_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="flagTagKeys")
+    def flag_tag_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The set of flag tags this policy applies to.
+        """
+        return pulumi.get(self, "flag_tag_keys")
 
 
 @pulumi.output_type
@@ -2016,24 +2420,31 @@ class SegmentRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 clauses: Sequence['outputs.SegmentRuleClause'],
                  bucket_by: Optional[_builtins.str] = None,
-                 clauses: Optional[Sequence['outputs.SegmentRuleClause']] = None,
                  rollout_context_kind: Optional[_builtins.str] = None,
                  weight: Optional[_builtins.int] = None):
         """
+        :param Sequence['SegmentRuleClauseArgs'] clauses: List of clauses specifying the logical conditions to evaluate
         :param _builtins.str bucket_by: The attribute by which to group contexts together.
-        :param Sequence['SegmentRuleClauseArgs'] clauses: List of nested blocks specifying the logical clauses to evaluate
         :param _builtins.str rollout_context_kind: The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
         :param _builtins.int weight: The integer weight of the rule (between 1 and 100000).
         """
+        pulumi.set(__self__, "clauses", clauses)
         if bucket_by is not None:
             pulumi.set(__self__, "bucket_by", bucket_by)
-        if clauses is not None:
-            pulumi.set(__self__, "clauses", clauses)
         if rollout_context_kind is not None:
             pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def clauses(self) -> Sequence['outputs.SegmentRuleClause']:
+        """
+        List of clauses specifying the logical conditions to evaluate
+        """
+        return pulumi.get(self, "clauses")
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
@@ -2042,14 +2453,6 @@ class SegmentRule(dict):
         The attribute by which to group contexts together.
         """
         return pulumi.get(self, "bucket_by")
-
-    @_builtins.property
-    @pulumi.getter
-    def clauses(self) -> Optional[Sequence['outputs.SegmentRuleClause']]:
-        """
-        List of nested blocks specifying the logical clauses to evaluate
-        """
-        return pulumi.get(self, "clauses")
 
     @_builtins.property
     @pulumi.getter(name="rolloutContextKind")
@@ -2098,7 +2501,7 @@ class SegmentRuleClause(dict):
                  value_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str attribute: The user attribute to operate on
-        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         :param Sequence[_builtins.str] values: The list of values associated with the rule clause.
         :param _builtins.str context_kind: The context kind associated with this rule clause. If omitted, defaults to `user`.
         :param _builtins.bool negate: Whether to negate the rule clause.
@@ -2126,7 +2529,7 @@ class SegmentRuleClause(dict):
     @pulumi.getter
     def op(self) -> _builtins.str:
         """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
+        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
         """
         return pulumi.get(self, "op")
 
@@ -2161,64 +2564,6 @@ class SegmentRuleClause(dict):
         The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
         """
         return pulumi.get(self, "value_type")
-
-
-@pulumi.output_type
-class TeamMemberRoleAttribute(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        :param Sequence[_builtins.str] values: A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class TeamRoleAttribute(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        :param Sequence[_builtins.str] values: A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -2299,7 +2644,7 @@ class WebhookStatement(dict):
         """
         :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
@@ -2327,7 +2672,7 @@ class WebhookStatement(dict):
     def actions(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://launchdarkly.com/docs/home/account/roles/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -2354,6 +2699,57 @@ class WebhookStatement(dict):
         The list of resource specifiers defining the resources to which the statement applies.
         """
         return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetAiAgentGraphEdgesResult(dict):
+    def __init__(__self__, *,
+                 handoff: _builtins.str,
+                 key: _builtins.str,
+                 source_config: _builtins.str,
+                 target_config: _builtins.str):
+        """
+        :param _builtins.str handoff: A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        :param _builtins.str key: The unique key for this edge within the graph. Always equals the map key.
+        :param _builtins.str source_config: The AI Config key that is the source of this edge.
+        :param _builtins.str target_config: The AI Config key that is the target of this edge.
+        """
+        pulumi.set(__self__, "handoff", handoff)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "source_config", source_config)
+        pulumi.set(__self__, "target_config", target_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def handoff(self) -> _builtins.str:
+        """
+        A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        """
+        return pulumi.get(self, "handoff")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The unique key for this edge within the graph. Always equals the map key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> _builtins.str:
+        """
+        The AI Config key that is the source of this edge.
+        """
+        return pulumi.get(self, "source_config")
+
+    @_builtins.property
+    @pulumi.getter(name="targetConfig")
+    def target_config(self) -> _builtins.str:
+        """
+        The AI Config key that is the target of this edge.
+        """
+        return pulumi.get(self, "target_config")
 
 
 @pulumi.output_type
@@ -2402,8 +2798,8 @@ class GetAiConfigVariationMessageResult(dict):
                  content: _builtins.str,
                  role: _builtins.str):
         """
-        :param _builtins.str content: The content of the message.
-        :param _builtins.str role: The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        :param _builtins.str content: Content of the message.
+        :param _builtins.str role: Role of the message.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "role", role)
@@ -2412,7 +2808,7 @@ class GetAiConfigVariationMessageResult(dict):
     @pulumi.getter
     def content(self) -> _builtins.str:
         """
-        The content of the message.
+        Content of the message.
         """
         return pulumi.get(self, "content")
 
@@ -2420,7 +2816,7 @@ class GetAiConfigVariationMessageResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The role of the message. Must be one of `system`, `user`, `assistant`, or `developer`.
+        Role of the message.
         """
         return pulumi.get(self, "role")
 
@@ -2428,28 +2824,31 @@ class GetAiConfigVariationMessageResult(dict):
 @pulumi.output_type
 class GetAuditLogSubscriptionStatementResult(dict):
     def __init__(__self__, *,
+                 actions: Sequence[_builtins.str],
                  effect: _builtins.str,
-                 actions: Optional[Sequence[_builtins.str]] = None,
-                 not_actions: Optional[Sequence[_builtins.str]] = None,
-                 not_resources: Optional[Sequence[_builtins.str]] = None,
-                 resources: Optional[Sequence[_builtins.str]] = None):
+                 not_actions: Sequence[_builtins.str],
+                 not_resources: Sequence[_builtins.str],
+                 resources: Sequence[_builtins.str]):
         """
-        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
         """
+        pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
-        if actions is not None:
-            pulumi.set(__self__, "actions", actions)
-        if not_actions is not None:
-            pulumi.set(__self__, "not_actions", not_actions)
-        if not_resources is not None:
-            pulumi.set(__self__, "not_resources", not_resources)
-        if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "not_actions", not_actions)
+        pulumi.set(__self__, "not_resources", not_resources)
+        pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence[_builtins.str]:
+        """
+        The list of action specifiers defining the actions to which the statement applies.
+        """
+        return pulumi.get(self, "actions")
 
     @_builtins.property
     @pulumi.getter
@@ -2460,17 +2859,8 @@ class GetAuditLogSubscriptionStatementResult(dict):
         return pulumi.get(self, "effect")
 
     @_builtins.property
-    @pulumi.getter
-    def actions(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        return pulumi.get(self, "actions")
-
-    @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[Sequence[_builtins.str]]:
+    def not_actions(self) -> Sequence[_builtins.str]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
@@ -2478,7 +2868,7 @@ class GetAuditLogSubscriptionStatementResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[Sequence[_builtins.str]]:
+    def not_resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
@@ -2486,7 +2876,7 @@ class GetAuditLogSubscriptionStatementResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[Sequence[_builtins.str]]:
+    def resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
@@ -2494,29 +2884,27 @@ class GetAuditLogSubscriptionStatementResult(dict):
 
 
 @pulumi.output_type
-class GetEnvironmentApprovalSettingResult(dict):
+class GetEnvironmentApprovalSettingsResult(dict):
     def __init__(__self__, *,
+                 auto_apply_approved_changes: _builtins.bool,
                  can_apply_declined_changes: _builtins.bool,
                  can_review_own_request: _builtins.bool,
                  min_num_approvals: _builtins.int,
                  required: _builtins.bool,
                  required_approval_tags: Sequence[_builtins.str],
                  service_config: Mapping[str, _builtins.str],
-                 service_kind: _builtins.str,
-                 auto_apply_approved_changes: Optional[_builtins.bool] = None):
+                 service_kind: _builtins.str):
         """
-        :param _builtins.bool can_apply_declined_changes: Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
-        :param _builtins.bool can_review_own_request: Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
-        :param _builtins.int min_num_approvals: The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
-        :param _builtins.bool required: Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
-        :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
-        :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
-               
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-               	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
-        :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
-        :param _builtins.bool auto_apply_approved_changes: Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+        :param _builtins.bool auto_apply_approved_changes: Whether to auto-apply changes once all approvers have approved.
+        :param _builtins.bool can_apply_declined_changes: Whether changes can be applied with the minimum number of approvals despite declines.
+        :param _builtins.bool can_review_own_request: Whether requesters can approve their own requests.
+        :param _builtins.int min_num_approvals: Minimum approvers required (1-5).
+        :param _builtins.bool required: Whether changes require approval.
+        :param Sequence[_builtins.str] required_approval_tags: Flag tags requiring approval (only one of required / required*approval*tags is set).
+        :param Mapping[str, _builtins.str] service_config: Service-specific approval config.
+        :param _builtins.str service_kind: Approval service. Valid values are `servicenow` and `launchdarkly`.
         """
+        pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
         pulumi.set(__self__, "can_apply_declined_changes", can_apply_declined_changes)
         pulumi.set(__self__, "can_review_own_request", can_review_own_request)
         pulumi.set(__self__, "min_num_approvals", min_num_approvals)
@@ -2524,14 +2912,20 @@ class GetEnvironmentApprovalSettingResult(dict):
         pulumi.set(__self__, "required_approval_tags", required_approval_tags)
         pulumi.set(__self__, "service_config", service_config)
         pulumi.set(__self__, "service_kind", service_kind)
-        if auto_apply_approved_changes is not None:
-            pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
+
+    @_builtins.property
+    @pulumi.getter(name="autoApplyApprovedChanges")
+    def auto_apply_approved_changes(self) -> _builtins.bool:
+        """
+        Whether to auto-apply changes once all approvers have approved.
+        """
+        return pulumi.get(self, "auto_apply_approved_changes")
 
     @_builtins.property
     @pulumi.getter(name="canApplyDeclinedChanges")
     def can_apply_declined_changes(self) -> _builtins.bool:
         """
-        Set to `true` if changes can be applied as long as the `min_num_approvals` is met, regardless of whether any reviewers have declined a request. Defaults to `true`.
+        Whether changes can be applied with the minimum number of approvals despite declines.
         """
         return pulumi.get(self, "can_apply_declined_changes")
 
@@ -2539,7 +2933,7 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter(name="canReviewOwnRequest")
     def can_review_own_request(self) -> _builtins.bool:
         """
-        Set to `true` if requesters can approve or decline their own request. They may always comment. Defaults to `false`.
+        Whether requesters can approve their own requests.
         """
         return pulumi.get(self, "can_review_own_request")
 
@@ -2547,7 +2941,7 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter(name="minNumApprovals")
     def min_num_approvals(self) -> _builtins.int:
         """
-        The number of approvals required before an approval request can be applied. This number must be between 1 and 5. Defaults to 1.
+        Minimum approvers required (1-5).
         """
         return pulumi.get(self, "min_num_approvals")
 
@@ -2555,7 +2949,7 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter
     def required(self) -> _builtins.bool:
         """
-        Set to `true` for changes to flags in this environment to require approval. You may only set `required` to true if `required_approval_tags` is not set and vice versa. Defaults to `false`.
+        Whether changes require approval.
         """
         return pulumi.get(self, "required")
 
@@ -2563,7 +2957,7 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter(name="requiredApprovalTags")
     def required_approval_tags(self) -> Sequence[_builtins.str]:
         """
-        An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
+        Flag tags requiring approval (only one of required / required*approval*tags is set).
         """
         return pulumi.get(self, "required_approval_tags")
 
@@ -2571,10 +2965,7 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter(name="serviceConfig")
     def service_config(self) -> Mapping[str, _builtins.str]:
         """
-        The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
-
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly will use when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+        Service-specific approval config.
         """
         return pulumi.get(self, "service_config")
 
@@ -2582,17 +2973,104 @@ class GetEnvironmentApprovalSettingResult(dict):
     @pulumi.getter(name="serviceKind")
     def service_kind(self) -> _builtins.str:
         """
-        The kind of service associated with this approval. This determines which platform is used for requesting approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
+        Approval service. Valid values are `servicenow` and `launchdarkly`.
         """
         return pulumi.get(self, "service_kind")
 
+
+@pulumi.output_type
+class GetEnvironmentSegmentApprovalSettingsResult(dict):
+    def __init__(__self__, *,
+                 auto_apply_approved_changes: _builtins.bool,
+                 can_apply_declined_changes: _builtins.bool,
+                 can_review_own_request: _builtins.bool,
+                 min_num_approvals: _builtins.int,
+                 required: _builtins.bool,
+                 required_approval_tags: Sequence[_builtins.str],
+                 service_config: Mapping[str, _builtins.str],
+                 service_kind: _builtins.str):
+        """
+        :param _builtins.bool auto_apply_approved_changes: Whether to auto-apply changes once all approvers have approved.
+        :param _builtins.bool can_apply_declined_changes: Whether changes can be applied with the minimum number of approvals despite declines.
+        :param _builtins.bool can_review_own_request: Whether requesters can approve their own requests.
+        :param _builtins.int min_num_approvals: Minimum approvers required (1-5).
+        :param _builtins.bool required: Whether segment changes require approval.
+        :param Sequence[_builtins.str] required_approval_tags: Segment tags requiring approval (only one of required / required*approval*tags is set).
+        :param Mapping[str, _builtins.str] service_config: Service-specific approval config.
+        :param _builtins.str service_kind: Approval service. Valid values are `servicenow` and `launchdarkly`.
+        """
+        pulumi.set(__self__, "auto_apply_approved_changes", auto_apply_approved_changes)
+        pulumi.set(__self__, "can_apply_declined_changes", can_apply_declined_changes)
+        pulumi.set(__self__, "can_review_own_request", can_review_own_request)
+        pulumi.set(__self__, "min_num_approvals", min_num_approvals)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "required_approval_tags", required_approval_tags)
+        pulumi.set(__self__, "service_config", service_config)
+        pulumi.set(__self__, "service_kind", service_kind)
+
     @_builtins.property
     @pulumi.getter(name="autoApplyApprovedChanges")
-    def auto_apply_approved_changes(self) -> Optional[_builtins.bool]:
+    def auto_apply_approved_changes(self) -> _builtins.bool:
         """
-        Automatically apply changes that have been approved by all reviewers. This field is only applicable for approval service kinds other than `launchdarkly`.
+        Whether to auto-apply changes once all approvers have approved.
         """
         return pulumi.get(self, "auto_apply_approved_changes")
+
+    @_builtins.property
+    @pulumi.getter(name="canApplyDeclinedChanges")
+    def can_apply_declined_changes(self) -> _builtins.bool:
+        """
+        Whether changes can be applied with the minimum number of approvals despite declines.
+        """
+        return pulumi.get(self, "can_apply_declined_changes")
+
+    @_builtins.property
+    @pulumi.getter(name="canReviewOwnRequest")
+    def can_review_own_request(self) -> _builtins.bool:
+        """
+        Whether requesters can approve their own requests.
+        """
+        return pulumi.get(self, "can_review_own_request")
+
+    @_builtins.property
+    @pulumi.getter(name="minNumApprovals")
+    def min_num_approvals(self) -> _builtins.int:
+        """
+        Minimum approvers required (1-5).
+        """
+        return pulumi.get(self, "min_num_approvals")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        """
+        Whether segment changes require approval.
+        """
+        return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter(name="requiredApprovalTags")
+    def required_approval_tags(self) -> Sequence[_builtins.str]:
+        """
+        Segment tags requiring approval (only one of required / required*approval*tags is set).
+        """
+        return pulumi.get(self, "required_approval_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConfig")
+    def service_config(self) -> Mapping[str, _builtins.str]:
+        """
+        Service-specific approval config.
+        """
+        return pulumi.get(self, "service_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKind")
+    def service_kind(self) -> _builtins.str:
+        """
+        Approval service. Valid values are `servicenow` and `launchdarkly`.
+        """
+        return pulumi.get(self, "service_kind")
 
 
 @pulumi.output_type
@@ -2600,41 +3078,26 @@ class GetFeatureFlagClientSideAvailabilityResult(dict):
     def __init__(__self__, *,
                  using_environment_id: _builtins.bool,
                  using_mobile_key: _builtins.bool):
-        """
-        :param _builtins.bool using_environment_id: Whether this flag is available to SDKs using the client-side ID.
-        :param _builtins.bool using_mobile_key: Whether this flag is available to SDKs using a mobile key.
-        """
         pulumi.set(__self__, "using_environment_id", using_environment_id)
         pulumi.set(__self__, "using_mobile_key", using_mobile_key)
 
     @_builtins.property
     @pulumi.getter(name="usingEnvironmentId")
     def using_environment_id(self) -> _builtins.bool:
-        """
-        Whether this flag is available to SDKs using the client-side ID.
-        """
         return pulumi.get(self, "using_environment_id")
 
     @_builtins.property
     @pulumi.getter(name="usingMobileKey")
     def using_mobile_key(self) -> _builtins.bool:
-        """
-        Whether this flag is available to SDKs using a mobile key.
-        """
         return pulumi.get(self, "using_mobile_key")
 
 
 @pulumi.output_type
-class GetFeatureFlagCustomPropertyResult(dict):
+class GetFeatureFlagCustomPropertiesResult(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  name: _builtins.str,
                  values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The unique custom property key.
-        :param _builtins.str name: The name of the custom property.
-        :param Sequence[_builtins.str] values: The list of custom property value strings.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -2642,54 +3105,35 @@ class GetFeatureFlagCustomPropertyResult(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
-        """
-        The unique custom property key.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The name of the custom property.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
-        """
-        The list of custom property value strings.
-        """
         return pulumi.get(self, "values")
 
 
 @pulumi.output_type
-class GetFeatureFlagDefaultResult(dict):
+class GetFeatureFlagDefaultsResult(dict):
     def __init__(__self__, *,
                  off_variation: _builtins.int,
                  on_variation: _builtins.int):
-        """
-        :param _builtins.int off_variation: The index of the variation the flag will default to in all new environments when off.
-        :param _builtins.int on_variation: The index of the variation the flag will default to in all new environments when on.
-        """
         pulumi.set(__self__, "off_variation", off_variation)
         pulumi.set(__self__, "on_variation", on_variation)
 
     @_builtins.property
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> _builtins.int:
-        """
-        The index of the variation the flag will default to in all new environments when off.
-        """
         return pulumi.get(self, "off_variation")
 
     @_builtins.property
     @pulumi.getter(name="onVariation")
     def on_variation(self) -> _builtins.int:
-        """
-        The index of the variation the flag will default to in all new environments when on.
-        """
         return pulumi.get(self, "on_variation")
 
 
@@ -2699,11 +3143,6 @@ class GetFeatureFlagEnvironmentContextTargetResult(dict):
                  context_kind: _builtins.str,
                  values: Sequence[_builtins.str],
                  variation: _builtins.int):
-        """
-        :param _builtins.str context_kind: The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
-        :param Sequence[_builtins.str] values: List of `user` strings to target.
-        :param _builtins.int variation: The index of the variation to serve if a user target value is matched.
-        """
         pulumi.set(__self__, "context_kind", context_kind)
         pulumi.set(__self__, "values", values)
         pulumi.set(__self__, "variation", variation)
@@ -2711,25 +3150,16 @@ class GetFeatureFlagEnvironmentContextTargetResult(dict):
     @_builtins.property
     @pulumi.getter(name="contextKind")
     def context_kind(self) -> _builtins.str:
-        """
-        The context kind on which the flag should target in this environment. User (`user`) targets should be specified as `targets` attribute blocks.
-        """
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
-        """
-        List of `user` strings to target.
-        """
         return pulumi.get(self, "values")
 
     @_builtins.property
     @pulumi.getter
     def variation(self) -> _builtins.int:
-        """
-        The index of the variation to serve if a user target value is matched.
-        """
         return pulumi.get(self, "variation")
 
 
@@ -2738,51 +3168,32 @@ class GetFeatureFlagEnvironmentFallthroughResult(dict):
     def __init__(__self__, *,
                  bucket_by: _builtins.str,
                  context_kind: _builtins.str,
-                 variation: _builtins.int,
-                 rollout_weights: Optional[Sequence[_builtins.int]] = None):
-        """
-        :param _builtins.str bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
-        :param _builtins.str context_kind: The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
-        :param _builtins.int variation: The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
-        :param Sequence[_builtins.int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        """
+                 rollout_weights: Sequence[_builtins.int],
+                 variation: _builtins.int):
         pulumi.set(__self__, "bucket_by", bucket_by)
         pulumi.set(__self__, "context_kind", context_kind)
+        pulumi.set(__self__, "rollout_weights", rollout_weights)
         pulumi.set(__self__, "variation", variation)
-        if rollout_weights is not None:
-            pulumi.set(__self__, "rollout_weights", rollout_weights)
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
     def bucket_by(self) -> _builtins.str:
-        """
-        Group percentage rollout by a custom attribute. This argument is only valid if rollout_weights is also specified.
-        """
         return pulumi.get(self, "bucket_by")
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
     def context_kind(self) -> _builtins.str:
-        """
-        The context kind associated with the specified rollout. This argument is only valid if rollout_weights is also specified. If omitted, defaults to `user`.
-        """
         return pulumi.get(self, "context_kind")
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutWeights")
+    def rollout_weights(self) -> Sequence[_builtins.int]:
+        return pulumi.get(self, "rollout_weights")
 
     @_builtins.property
     @pulumi.getter
     def variation(self) -> _builtins.int:
-        """
-        The default integer variation index to serve if no `prerequisites`, `target`, or `rules` apply. You must specify either `variation` or `rollout_weights`.
-        """
         return pulumi.get(self, "variation")
-
-    @_builtins.property
-    @pulumi.getter(name="rolloutWeights")
-    def rollout_weights(self) -> Optional[Sequence[_builtins.int]]:
-        """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        """
-        return pulumi.get(self, "rollout_weights")
 
 
 @pulumi.output_type
@@ -2790,106 +3201,70 @@ class GetFeatureFlagEnvironmentPrerequisiteResult(dict):
     def __init__(__self__, *,
                  flag_key: _builtins.str,
                  variation: _builtins.int):
-        """
-        :param _builtins.str flag_key: The prerequisite feature flag's `key`.
-        :param _builtins.int variation: The index of the prerequisite feature flag's variation to target.
-        """
         pulumi.set(__self__, "flag_key", flag_key)
         pulumi.set(__self__, "variation", variation)
 
     @_builtins.property
     @pulumi.getter(name="flagKey")
     def flag_key(self) -> _builtins.str:
-        """
-        The prerequisite feature flag's `key`.
-        """
         return pulumi.get(self, "flag_key")
 
     @_builtins.property
     @pulumi.getter
     def variation(self) -> _builtins.int:
-        """
-        The index of the prerequisite feature flag's variation to target.
-        """
         return pulumi.get(self, "variation")
 
 
 @pulumi.output_type
 class GetFeatureFlagEnvironmentRuleResult(dict):
     def __init__(__self__, *,
-                 bucket_by: Optional[_builtins.str] = None,
-                 clauses: Optional[Sequence['outputs.GetFeatureFlagEnvironmentRuleClauseResult']] = None,
-                 context_kind: Optional[_builtins.str] = None,
-                 description: Optional[_builtins.str] = None,
-                 rollout_weights: Optional[Sequence[_builtins.int]] = None,
-                 variation: Optional[_builtins.int] = None):
+                 bucket_by: _builtins.str,
+                 clauses: Sequence['outputs.GetFeatureFlagEnvironmentRuleClauseResult'],
+                 context_kind: _builtins.str,
+                 description: _builtins.str,
+                 rollout_weights: Sequence[_builtins.int],
+                 variation: _builtins.int):
         """
-        :param _builtins.str bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
-        :param Sequence['GetFeatureFlagEnvironmentRuleClauseArgs'] clauses: List of nested blocks specifying the logical clauses to evaluate
-        :param _builtins.str context_kind: The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
-        :param _builtins.str description: A human-readable description of the targeting rule.
-        :param Sequence[_builtins.int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        :param _builtins.int variation: The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
+        :param Sequence['GetFeatureFlagEnvironmentRuleClauseArgs'] clauses: Clauses applied as the rule's logical condition.
         """
-        if bucket_by is not None:
-            pulumi.set(__self__, "bucket_by", bucket_by)
-        if clauses is not None:
-            pulumi.set(__self__, "clauses", clauses)
-        if context_kind is not None:
-            pulumi.set(__self__, "context_kind", context_kind)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if rollout_weights is not None:
-            pulumi.set(__self__, "rollout_weights", rollout_weights)
-        if variation is not None:
-            pulumi.set(__self__, "variation", variation)
+        pulumi.set(__self__, "bucket_by", bucket_by)
+        pulumi.set(__self__, "clauses", clauses)
+        pulumi.set(__self__, "context_kind", context_kind)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "rollout_weights", rollout_weights)
+        pulumi.set(__self__, "variation", variation)
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
-    def bucket_by(self) -> Optional[_builtins.str]:
-        """
-        Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
-        """
+    def bucket_by(self) -> _builtins.str:
         return pulumi.get(self, "bucket_by")
 
     @_builtins.property
     @pulumi.getter
-    def clauses(self) -> Optional[Sequence['outputs.GetFeatureFlagEnvironmentRuleClauseResult']]:
+    def clauses(self) -> Sequence['outputs.GetFeatureFlagEnvironmentRuleClauseResult']:
         """
-        List of nested blocks specifying the logical clauses to evaluate
+        Clauses applied as the rule's logical condition.
         """
         return pulumi.get(self, "clauses")
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[_builtins.str]:
-        """
-        The context kind associated with the specified rollout. This argument is only valid if `rollout_weights` is also specified. Defaults to `user` if omitted.
-        """
+    def context_kind(self) -> _builtins.str:
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
-        """
-        A human-readable description of the targeting rule.
-        """
+    def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="rolloutWeights")
-    def rollout_weights(self) -> Optional[Sequence[_builtins.int]]:
-        """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
-        """
+    def rollout_weights(self) -> Sequence[_builtins.int]:
         return pulumi.get(self, "rollout_weights")
 
     @_builtins.property
     @pulumi.getter
-    def variation(self) -> Optional[_builtins.int]:
-        """
-        The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`
-        """
+    def variation(self) -> _builtins.int:
         return pulumi.get(self, "variation")
 
 
@@ -2897,76 +3272,73 @@ class GetFeatureFlagEnvironmentRuleResult(dict):
 class GetFeatureFlagEnvironmentRuleClauseResult(dict):
     def __init__(__self__, *,
                  attribute: _builtins.str,
+                 context_kind: _builtins.str,
+                 negate: _builtins.bool,
                  op: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 context_kind: Optional[_builtins.str] = None,
-                 negate: Optional[_builtins.bool] = None,
-                 value_type: Optional[_builtins.str] = None):
+                 value_type: _builtins.str,
+                 values: Sequence[_builtins.str]):
         """
-        :param _builtins.str attribute: The user attribute to operate on
-        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        :param Sequence[_builtins.str] values: The list of values associated with the rule clause.
-        :param _builtins.str context_kind: The context kind associated with this rule clause. If omitted, defaults to `user`.
-        :param _builtins.bool negate: Whether to negate the rule clause.
-        :param _builtins.str value_type: The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+        :param _builtins.str attribute: User attribute to operate on.
+        :param _builtins.str context_kind: Context kind for the clause.
+        :param _builtins.bool negate: Whether to negate the clause.
+        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
+        :param _builtins.str value_type: Type of each clause value (boolean / string / number).
+        :param Sequence[_builtins.str] values: Values for the clause.
         """
         pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "context_kind", context_kind)
+        pulumi.set(__self__, "negate", negate)
         pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value_type", value_type)
         pulumi.set(__self__, "values", values)
-        if context_kind is not None:
-            pulumi.set(__self__, "context_kind", context_kind)
-        if negate is not None:
-            pulumi.set(__self__, "negate", negate)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
 
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> _builtins.str:
         """
-        The user attribute to operate on
+        User attribute to operate on.
         """
         return pulumi.get(self, "attribute")
 
     @_builtins.property
-    @pulumi.getter
-    def op(self) -> _builtins.str:
-        """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        """
-        return pulumi.get(self, "op")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        The list of values associated with the rule clause.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[_builtins.str]:
+    def context_kind(self) -> _builtins.str:
         """
-        The context kind associated with this rule clause. If omitted, defaults to `user`.
+        Context kind for the clause.
         """
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[_builtins.bool]:
+    def negate(self) -> _builtins.bool:
         """
-        Whether to negate the rule clause.
+        Whether to negate the clause.
         """
         return pulumi.get(self, "negate")
 
     @_builtins.property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[_builtins.str]:
+    @pulumi.getter
+    def op(self) -> _builtins.str:
         """
-        The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> _builtins.str:
+        """
+        Type of each clause value (boolean / string / number).
         """
         return pulumi.get(self, "value_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Values for the clause.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -2974,78 +3346,62 @@ class GetFeatureFlagEnvironmentTargetResult(dict):
     def __init__(__self__, *,
                  values: Sequence[_builtins.str],
                  variation: _builtins.int):
-        """
-        :param Sequence[_builtins.str] values: List of `user` strings to target.
-        :param _builtins.int variation: The index of the variation to serve if a user target value is matched.
-        """
         pulumi.set(__self__, "values", values)
         pulumi.set(__self__, "variation", variation)
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
-        """
-        List of `user` strings to target.
-        """
         return pulumi.get(self, "values")
 
     @_builtins.property
     @pulumi.getter
     def variation(self) -> _builtins.int:
-        """
-        The index of the variation to serve if a user target value is matched.
-        """
         return pulumi.get(self, "variation")
 
 
 @pulumi.output_type
 class GetFeatureFlagVariationResult(dict):
     def __init__(__self__, *,
-                 value: _builtins.str,
-                 description: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None):
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 value: _builtins.str):
         """
-        :param _builtins.str value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-               
-               If you wish to define an empty string variation, you must still define the value field on the variations block like so:
-        :param _builtins.str description: The variation's description.
-        :param _builtins.str name: The name of the variation.
+        :param _builtins.str description: Variation description.
+        :param _builtins.str name: Variation name.
+        :param _builtins.str value: Variation value (stringified per variation_type).
         """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
+    def description(self) -> _builtins.str:
         """
-        The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but please note that any trailing zeroes on floats will be trimmed (i.e. `1.1` and `1.100` will both be converted to `1.1`).
-
-        If you wish to define an empty string variation, you must still define the value field on the variations block like so:
-        """
-        return pulumi.get(self, "value")
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
-        """
-        The variation's description.
+        Variation description.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
-        The name of the variation.
+        Variation name.
         """
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Variation value (stringified per variation_type).
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
-class GetFlagTemplatesBooleanDefaultResult(dict):
+class GetFlagTemplatesBooleanDefaultsResult(dict):
     def __init__(__self__, *,
                  false_description: _builtins.str,
                  false_display_name: _builtins.str,
@@ -3054,12 +3410,12 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
                  true_description: _builtins.str,
                  true_display_name: _builtins.str):
         """
-        :param _builtins.str false_description: The description for the false variation.
-        :param _builtins.str false_display_name: The display name for the false variation.
-        :param _builtins.int off_variation: The variation index of the boolean flag variation to serve when the flag's targeting is off.
-        :param _builtins.int on_variation: The variation index of the boolean flag variation to serve when the flag's targeting is on.
-        :param _builtins.str true_description: The description for the true variation.
-        :param _builtins.str true_display_name: The display name for the true variation.
+        :param _builtins.str false_description: Description for the false variation.
+        :param _builtins.str false_display_name: Display name for the false variation.
+        :param _builtins.int off_variation: Variation index served when targeting is off (0 or 1).
+        :param _builtins.int on_variation: Variation index served when targeting is on (0 or 1).
+        :param _builtins.str true_description: Description for the true variation.
+        :param _builtins.str true_display_name: Display name for the true variation.
         """
         pulumi.set(__self__, "false_description", false_description)
         pulumi.set(__self__, "false_display_name", false_display_name)
@@ -3072,7 +3428,7 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="falseDescription")
     def false_description(self) -> _builtins.str:
         """
-        The description for the false variation.
+        Description for the false variation.
         """
         return pulumi.get(self, "false_description")
 
@@ -3080,7 +3436,7 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="falseDisplayName")
     def false_display_name(self) -> _builtins.str:
         """
-        The display name for the false variation.
+        Display name for the false variation.
         """
         return pulumi.get(self, "false_display_name")
 
@@ -3088,7 +3444,7 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="offVariation")
     def off_variation(self) -> _builtins.int:
         """
-        The variation index of the boolean flag variation to serve when the flag's targeting is off.
+        Variation index served when targeting is off (0 or 1).
         """
         return pulumi.get(self, "off_variation")
 
@@ -3096,7 +3452,7 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="onVariation")
     def on_variation(self) -> _builtins.int:
         """
-        The variation index of the boolean flag variation to serve when the flag's targeting is on.
+        Variation index served when targeting is on (0 or 1).
         """
         return pulumi.get(self, "on_variation")
 
@@ -3104,7 +3460,7 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="trueDescription")
     def true_description(self) -> _builtins.str:
         """
-        The description for the true variation.
+        Description for the true variation.
         """
         return pulumi.get(self, "true_description")
 
@@ -3112,13 +3468,13 @@ class GetFlagTemplatesBooleanDefaultResult(dict):
     @pulumi.getter(name="trueDisplayName")
     def true_display_name(self) -> _builtins.str:
         """
-        The display name for the true variation.
+        Display name for the true variation.
         """
         return pulumi.get(self, "true_display_name")
 
 
 @pulumi.output_type
-class GetFlagTriggerInstructionResult(dict):
+class GetFlagTriggerInstructionsResult(dict):
     def __init__(__self__, *,
                  kind: _builtins.str):
         """
@@ -3136,78 +3492,83 @@ class GetFlagTriggerInstructionResult(dict):
 
 
 @pulumi.output_type
+class GetMetricGroupMetricResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 name_in_group: _builtins.str):
+        """
+        :param _builtins.str key: The key of the metric.
+        :param _builtins.str name_in_group: The name of the metric when used within this metric group.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name_in_group", name_in_group)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key of the metric.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="nameInGroup")
+    def name_in_group(self) -> _builtins.str:
+        """
+        The name of the metric when used within this metric group.
+        """
+        return pulumi.get(self, "name_in_group")
+
+
+@pulumi.output_type
 class GetMetricUrlResult(dict):
     def __init__(__self__, *,
                  kind: _builtins.str,
-                 pattern: Optional[_builtins.str] = None,
-                 substring: Optional[_builtins.str] = None,
-                 url: Optional[_builtins.str] = None):
+                 pattern: _builtins.str,
+                 substring: _builtins.str,
+                 url: _builtins.str):
         """
-        :param _builtins.str kind: The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
-        :param _builtins.str pattern: (Required for kind `regex`) The regex pattern to match by.
-        :param _builtins.str substring: (Required for kind `substring`) The URL substring to match by.
-        :param _builtins.str url: (Required for kind `exact` and `canonical`) The exact or canonical URL.
+        :param _builtins.str kind: The URL type.
+        :param _builtins.str pattern: The regex pattern to match by.
+        :param _builtins.str substring: The URL substring to match by.
+        :param _builtins.str url: The exact or canonical URL.
         """
         pulumi.set(__self__, "kind", kind)
-        if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
-        if substring is not None:
-            pulumi.set(__self__, "substring", substring)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "substring", substring)
+        pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
     def kind(self) -> _builtins.str:
         """
-        The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+        The URL type.
         """
         return pulumi.get(self, "kind")
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[_builtins.str]:
+    def pattern(self) -> _builtins.str:
         """
-        (Required for kind `regex`) The regex pattern to match by.
+        The regex pattern to match by.
         """
         return pulumi.get(self, "pattern")
 
     @_builtins.property
     @pulumi.getter
-    def substring(self) -> Optional[_builtins.str]:
+    def substring(self) -> _builtins.str:
         """
-        (Required for kind `substring`) The URL substring to match by.
+        The URL substring to match by.
         """
         return pulumi.get(self, "substring")
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[_builtins.str]:
+    def url(self) -> _builtins.str:
         """
-        (Required for kind `exact` and `canonical`) The exact or canonical URL.
+        The exact or canonical URL.
         """
         return pulumi.get(self, "url")
-
-
-@pulumi.output_type
-class GetProjectClientSideAvailabilityResult(dict):
-    def __init__(__self__, *,
-                 using_environment_id: Optional[_builtins.bool] = None,
-                 using_mobile_key: Optional[_builtins.bool] = None):
-        if using_environment_id is not None:
-            pulumi.set(__self__, "using_environment_id", using_environment_id)
-        if using_mobile_key is not None:
-            pulumi.set(__self__, "using_mobile_key", using_mobile_key)
-
-    @_builtins.property
-    @pulumi.getter(name="usingEnvironmentId")
-    def using_environment_id(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "using_environment_id")
-
-    @_builtins.property
-    @pulumi.getter(name="usingMobileKey")
-    def using_mobile_key(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "using_mobile_key")
 
 
 @pulumi.output_type
@@ -3232,28 +3593,31 @@ class GetProjectDefaultClientSideAvailabilityResult(dict):
 @pulumi.output_type
 class GetRelayProxyConfigurationPolicyResult(dict):
     def __init__(__self__, *,
+                 actions: Sequence[_builtins.str],
                  effect: _builtins.str,
-                 actions: Optional[Sequence[_builtins.str]] = None,
-                 not_actions: Optional[Sequence[_builtins.str]] = None,
-                 not_resources: Optional[Sequence[_builtins.str]] = None,
-                 resources: Optional[Sequence[_builtins.str]] = None):
+                 not_actions: Sequence[_builtins.str],
+                 not_resources: Sequence[_builtins.str],
+                 resources: Sequence[_builtins.str]):
         """
-        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
         """
+        pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
-        if actions is not None:
-            pulumi.set(__self__, "actions", actions)
-        if not_actions is not None:
-            pulumi.set(__self__, "not_actions", not_actions)
-        if not_resources is not None:
-            pulumi.set(__self__, "not_resources", not_resources)
-        if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "not_actions", not_actions)
+        pulumi.set(__self__, "not_resources", not_resources)
+        pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence[_builtins.str]:
+        """
+        The list of action specifiers defining the actions to which the statement applies.
+        """
+        return pulumi.get(self, "actions")
 
     @_builtins.property
     @pulumi.getter
@@ -3264,17 +3628,8 @@ class GetRelayProxyConfigurationPolicyResult(dict):
         return pulumi.get(self, "effect")
 
     @_builtins.property
-    @pulumi.getter
-    def actions(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        return pulumi.get(self, "actions")
-
-    @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[Sequence[_builtins.str]]:
+    def not_actions(self) -> Sequence[_builtins.str]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
@@ -3282,7 +3637,7 @@ class GetRelayProxyConfigurationPolicyResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[Sequence[_builtins.str]]:
+    def not_resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
@@ -3290,7 +3645,7 @@ class GetRelayProxyConfigurationPolicyResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[Sequence[_builtins.str]]:
+    def resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """
@@ -3298,31 +3653,210 @@ class GetRelayProxyConfigurationPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetReleasePolicyGuardedReleaseConfigResult(dict):
+    def __init__(__self__, *,
+                 metric_group_keys: Sequence[_builtins.str],
+                 metric_keys: Sequence[_builtins.str],
+                 min_sample_size: _builtins.int,
+                 rollback_on_regression: _builtins.bool,
+                 rollout_context_kind: _builtins.str,
+                 stages: Sequence['outputs.GetReleasePolicyGuardedReleaseConfigStageResult']):
+        """
+        :param Sequence[_builtins.str] metric_group_keys: The set of metric group keys monitored during the guarded release.
+        :param Sequence[_builtins.str] metric_keys: The set of metric keys monitored during the guarded release.
+        :param _builtins.int min_sample_size: The minimum number of samples required before the policy makes a release decision.
+        :param _builtins.bool rollback_on_regression: Whether to automatically roll back the release when a monitored metric regresses.
+        :param _builtins.str rollout_context_kind: The context kind key used as the randomization unit for the rollout.
+        :param Sequence['GetReleasePolicyGuardedReleaseConfigStageArgs'] stages: An ordered list of rollout stages.
+        """
+        pulumi.set(__self__, "metric_group_keys", metric_group_keys)
+        pulumi.set(__self__, "metric_keys", metric_keys)
+        pulumi.set(__self__, "min_sample_size", min_sample_size)
+        pulumi.set(__self__, "rollback_on_regression", rollback_on_regression)
+        pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
+        pulumi.set(__self__, "stages", stages)
+
+    @_builtins.property
+    @pulumi.getter(name="metricGroupKeys")
+    def metric_group_keys(self) -> Sequence[_builtins.str]:
+        """
+        The set of metric group keys monitored during the guarded release.
+        """
+        return pulumi.get(self, "metric_group_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="metricKeys")
+    def metric_keys(self) -> Sequence[_builtins.str]:
+        """
+        The set of metric keys monitored during the guarded release.
+        """
+        return pulumi.get(self, "metric_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="minSampleSize")
+    def min_sample_size(self) -> _builtins.int:
+        """
+        The minimum number of samples required before the policy makes a release decision.
+        """
+        return pulumi.get(self, "min_sample_size")
+
+    @_builtins.property
+    @pulumi.getter(name="rollbackOnRegression")
+    def rollback_on_regression(self) -> _builtins.bool:
+        """
+        Whether to automatically roll back the release when a monitored metric regresses.
+        """
+        return pulumi.get(self, "rollback_on_regression")
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutContextKind")
+    def rollout_context_kind(self) -> _builtins.str:
+        """
+        The context kind key used as the randomization unit for the rollout.
+        """
+        return pulumi.get(self, "rollout_context_kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def stages(self) -> Sequence['outputs.GetReleasePolicyGuardedReleaseConfigStageResult']:
+        """
+        An ordered list of rollout stages.
+        """
+        return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class GetReleasePolicyGuardedReleaseConfigStageResult(dict):
+    def __init__(__self__, *,
+                 allocation: _builtins.int,
+                 duration_millis: _builtins.int):
+        """
+        :param _builtins.int allocation: The percentage of traffic (0-100) allocated to the new variation during this stage.
+        :param _builtins.int duration_millis: The duration of this stage, in milliseconds.
+        """
+        pulumi.set(__self__, "allocation", allocation)
+        pulumi.set(__self__, "duration_millis", duration_millis)
+
+    @_builtins.property
+    @pulumi.getter
+    def allocation(self) -> _builtins.int:
+        """
+        The percentage of traffic (0-100) allocated to the new variation during this stage.
+        """
+        return pulumi.get(self, "allocation")
+
+    @_builtins.property
+    @pulumi.getter(name="durationMillis")
+    def duration_millis(self) -> _builtins.int:
+        """
+        The duration of this stage, in milliseconds.
+        """
+        return pulumi.get(self, "duration_millis")
+
+
+@pulumi.output_type
+class GetReleasePolicyProgressiveReleaseConfigResult(dict):
+    def __init__(__self__, *,
+                 rollout_context_kind: _builtins.str,
+                 stages: Sequence['outputs.GetReleasePolicyProgressiveReleaseConfigStageResult']):
+        """
+        :param _builtins.str rollout_context_kind: The context kind key used as the randomization unit for the rollout.
+        :param Sequence['GetReleasePolicyProgressiveReleaseConfigStageArgs'] stages: An ordered list of rollout stages.
+        """
+        pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
+        pulumi.set(__self__, "stages", stages)
+
+    @_builtins.property
+    @pulumi.getter(name="rolloutContextKind")
+    def rollout_context_kind(self) -> _builtins.str:
+        """
+        The context kind key used as the randomization unit for the rollout.
+        """
+        return pulumi.get(self, "rollout_context_kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def stages(self) -> Sequence['outputs.GetReleasePolicyProgressiveReleaseConfigStageResult']:
+        """
+        An ordered list of rollout stages.
+        """
+        return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class GetReleasePolicyProgressiveReleaseConfigStageResult(dict):
+    def __init__(__self__, *,
+                 allocation: _builtins.int,
+                 duration_millis: _builtins.int):
+        """
+        :param _builtins.int allocation: The percentage of traffic (0-100) allocated to the new variation during this stage.
+        :param _builtins.int duration_millis: The duration of this stage, in milliseconds.
+        """
+        pulumi.set(__self__, "allocation", allocation)
+        pulumi.set(__self__, "duration_millis", duration_millis)
+
+    @_builtins.property
+    @pulumi.getter
+    def allocation(self) -> _builtins.int:
+        """
+        The percentage of traffic (0-100) allocated to the new variation during this stage.
+        """
+        return pulumi.get(self, "allocation")
+
+    @_builtins.property
+    @pulumi.getter(name="durationMillis")
+    def duration_millis(self) -> _builtins.int:
+        """
+        The duration of this stage, in milliseconds.
+        """
+        return pulumi.get(self, "duration_millis")
+
+
+@pulumi.output_type
+class GetReleasePolicyScopeResult(dict):
+    def __init__(__self__, *,
+                 environment_keys: Sequence[_builtins.str],
+                 flag_tag_keys: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] environment_keys: The set of environment keys this policy applies to.
+        :param Sequence[_builtins.str] flag_tag_keys: The set of flag tags this policy applies to.
+        """
+        pulumi.set(__self__, "environment_keys", environment_keys)
+        pulumi.set(__self__, "flag_tag_keys", flag_tag_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentKeys")
+    def environment_keys(self) -> Sequence[_builtins.str]:
+        """
+        The set of environment keys this policy applies to.
+        """
+        return pulumi.get(self, "environment_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="flagTagKeys")
+    def flag_tag_keys(self) -> Sequence[_builtins.str]:
+        """
+        The set of flag tags this policy applies to.
+        """
+        return pulumi.get(self, "flag_tag_keys")
+
+
+@pulumi.output_type
 class GetSegmentExcludedContextResult(dict):
     def __init__(__self__, *,
                  context_kind: _builtins.str,
                  values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str context_kind: The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        :param Sequence[_builtins.str] values: List of target object keys included in or excluded from the segment.
-        """
         pulumi.set(__self__, "context_kind", context_kind)
         pulumi.set(__self__, "values", values)
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
     def context_kind(self) -> _builtins.str:
-        """
-        The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        """
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
-        """
-        List of target object keys included in or excluded from the segment.
-        """
         return pulumi.get(self, "values")
 
 
@@ -3331,81 +3865,67 @@ class GetSegmentIncludedContextResult(dict):
     def __init__(__self__, *,
                  context_kind: _builtins.str,
                  values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str context_kind: The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        :param Sequence[_builtins.str] values: List of target object keys included in or excluded from the segment.
-        """
         pulumi.set(__self__, "context_kind", context_kind)
         pulumi.set(__self__, "values", values)
 
     @_builtins.property
     @pulumi.getter(name="contextKind")
     def context_kind(self) -> _builtins.str:
-        """
-        The context kind associated with this segment target. To target on user contexts, use the included and excluded attributes.
-        """
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
-        """
-        List of target object keys included in or excluded from the segment.
-        """
         return pulumi.get(self, "values")
 
 
 @pulumi.output_type
 class GetSegmentRuleResult(dict):
     def __init__(__self__, *,
-                 bucket_by: Optional[_builtins.str] = None,
-                 clauses: Optional[Sequence['outputs.GetSegmentRuleClauseResult']] = None,
-                 rollout_context_kind: Optional[_builtins.str] = None,
-                 weight: Optional[_builtins.int] = None):
+                 bucket_by: _builtins.str,
+                 clauses: Sequence['outputs.GetSegmentRuleClauseResult'],
+                 rollout_context_kind: _builtins.str,
+                 weight: _builtins.int):
         """
-        :param _builtins.str bucket_by: The attribute by which to group contexts together.
-        :param Sequence['GetSegmentRuleClauseArgs'] clauses: List of nested blocks specifying the logical clauses to evaluate
-        :param _builtins.str rollout_context_kind: The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
-        :param _builtins.int weight: The integer weight of the rule (between 1 and 100000).
+        :param _builtins.str bucket_by: Attribute for bucketing contexts.
+        :param Sequence['GetSegmentRuleClauseArgs'] clauses: Clauses applied as the rule's logical condition.
+        :param _builtins.str rollout_context_kind: Context kind for the rollout.
+        :param _builtins.int weight: Rule weight (1-100000).
         """
-        if bucket_by is not None:
-            pulumi.set(__self__, "bucket_by", bucket_by)
-        if clauses is not None:
-            pulumi.set(__self__, "clauses", clauses)
-        if rollout_context_kind is not None:
-            pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+        pulumi.set(__self__, "bucket_by", bucket_by)
+        pulumi.set(__self__, "clauses", clauses)
+        pulumi.set(__self__, "rollout_context_kind", rollout_context_kind)
+        pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
     @pulumi.getter(name="bucketBy")
-    def bucket_by(self) -> Optional[_builtins.str]:
+    def bucket_by(self) -> _builtins.str:
         """
-        The attribute by which to group contexts together.
+        Attribute for bucketing contexts.
         """
         return pulumi.get(self, "bucket_by")
 
     @_builtins.property
     @pulumi.getter
-    def clauses(self) -> Optional[Sequence['outputs.GetSegmentRuleClauseResult']]:
+    def clauses(self) -> Sequence['outputs.GetSegmentRuleClauseResult']:
         """
-        List of nested blocks specifying the logical clauses to evaluate
+        Clauses applied as the rule's logical condition.
         """
         return pulumi.get(self, "clauses")
 
     @_builtins.property
     @pulumi.getter(name="rolloutContextKind")
-    def rollout_context_kind(self) -> Optional[_builtins.str]:
+    def rollout_context_kind(self) -> _builtins.str:
         """
-        The context kind associated with this segment rule. This argument is only valid if `weight` is also specified. If omitted, defaults to `user`.
+        Context kind for the rollout.
         """
         return pulumi.get(self, "rollout_context_kind")
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[_builtins.int]:
+    def weight(self) -> _builtins.int:
         """
-        The integer weight of the rule (between 1 and 100000).
+        Rule weight (1-100000).
         """
         return pulumi.get(self, "weight")
 
@@ -3414,76 +3934,73 @@ class GetSegmentRuleResult(dict):
 class GetSegmentRuleClauseResult(dict):
     def __init__(__self__, *,
                  attribute: _builtins.str,
+                 context_kind: _builtins.str,
+                 negate: _builtins.bool,
                  op: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 context_kind: Optional[_builtins.str] = None,
-                 negate: Optional[_builtins.bool] = None,
-                 value_type: Optional[_builtins.str] = None):
+                 value_type: _builtins.str,
+                 values: Sequence[_builtins.str]):
         """
-        :param _builtins.str attribute: The user attribute to operate on
-        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        :param Sequence[_builtins.str] values: The list of values associated with the rule clause.
-        :param _builtins.str context_kind: The context kind associated with this rule clause. If omitted, defaults to `user`.
-        :param _builtins.bool negate: Whether to negate the rule clause.
-        :param _builtins.str value_type: The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+        :param _builtins.str attribute: User attribute to operate on.
+        :param _builtins.str context_kind: Context kind for the clause.
+        :param _builtins.bool negate: Whether to negate the clause.
+        :param _builtins.str op: The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
+        :param _builtins.str value_type: Type of each clause value (boolean / string / number).
+        :param Sequence[_builtins.str] values: Values for the clause.
         """
         pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "context_kind", context_kind)
+        pulumi.set(__self__, "negate", negate)
         pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value_type", value_type)
         pulumi.set(__self__, "values", values)
-        if context_kind is not None:
-            pulumi.set(__self__, "context_kind", context_kind)
-        if negate is not None:
-            pulumi.set(__self__, "negate", negate)
-        if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
 
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> _builtins.str:
         """
-        The user attribute to operate on
+        User attribute to operate on.
         """
         return pulumi.get(self, "attribute")
 
     @_builtins.property
-    @pulumi.getter
-    def op(self) -> _builtins.str:
-        """
-        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. Read LaunchDarkly's [Operators](https://docs.launchdarkly.com/sdk/concepts/flag-evaluation-rules#operators) documentation for more information.
-        """
-        return pulumi.get(self, "op")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        The list of values associated with the rule clause.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
     @pulumi.getter(name="contextKind")
-    def context_kind(self) -> Optional[_builtins.str]:
+    def context_kind(self) -> _builtins.str:
         """
-        The context kind associated with this rule clause. If omitted, defaults to `user`.
+        Context kind for the clause.
         """
         return pulumi.get(self, "context_kind")
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[_builtins.bool]:
+    def negate(self) -> _builtins.bool:
         """
-        Whether to negate the rule clause.
+        Whether to negate the clause.
         """
         return pulumi.get(self, "negate")
 
     @_builtins.property
-    @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[_builtins.str]:
+    @pulumi.getter
+    def op(self) -> _builtins.str:
         """
-        The type for each of the clause's values. Available types are `boolean`, `string`, and `number`. If omitted, `value_type` defaults to `string`.
+        The operator associated with the rule clause. Available options are `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `greaterThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`. To learn more, read [Operators](https://launchdarkly.com/docs/sdk/concepts/flag-evaluation-rules#operators).
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> _builtins.str:
+        """
+        Type of each clause value (boolean / string / number).
         """
         return pulumi.get(self, "value_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Values for the clause.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -3494,6 +4011,13 @@ class GetTeamMaintainerResult(dict):
                  id: _builtins.str,
                  last_name: _builtins.str,
                  role: _builtins.str):
+        """
+        :param _builtins.str email: Email of the maintainer.
+        :param _builtins.str first_name: First name.
+        :param _builtins.str id: Member ID.
+        :param _builtins.str last_name: Last name.
+        :param _builtins.str role: Role.
+        """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_name", first_name)
         pulumi.set(__self__, "id", id)
@@ -3503,56 +4027,42 @@ class GetTeamMaintainerResult(dict):
     @_builtins.property
     @pulumi.getter
     def email(self) -> _builtins.str:
+        """
+        Email of the maintainer.
+        """
         return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="firstName")
     def first_name(self) -> _builtins.str:
+        """
+        First name.
+        """
         return pulumi.get(self, "first_name")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Member ID.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="lastName")
     def last_name(self) -> _builtins.str:
+        """
+        Last name.
+        """
         return pulumi.get(self, "last_name")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> _builtins.str:
+        """
+        Role.
+        """
         return pulumi.get(self, "role")
-
-
-@pulumi.output_type
-class GetTeamMemberRoleAttributeResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        :param Sequence[_builtins.str] values: A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -3564,7 +4074,7 @@ class GetTeamMembersTeamMemberResult(dict):
                  id: _builtins.str,
                  last_name: _builtins.str,
                  role: _builtins.str,
-                 role_attributes: Sequence['outputs.GetTeamMembersTeamMemberRoleAttributeResult']):
+                 role_attributes: Mapping[str, Sequence[_builtins.str]]):
         """
         :param Sequence[_builtins.str] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
         :param _builtins.str email: The unique email address associated with the team member.
@@ -3572,7 +4082,7 @@ class GetTeamMembersTeamMemberResult(dict):
         :param _builtins.str id: The 24 character alphanumeric ID of the team member.
         :param _builtins.str last_name: The team member's family name.
         :param _builtins.str role: The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
-        :param Sequence['GetTeamMembersTeamMemberRoleAttributeArgs'] role_attributes: A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        :param Mapping[str, Sequence[_builtins.str]] role_attributes: A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         pulumi.set(__self__, "custom_roles", custom_roles)
         pulumi.set(__self__, "email", email)
@@ -3632,69 +4142,11 @@ class GetTeamMembersTeamMemberResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="roleAttributes")
-    def role_attributes(self) -> Sequence['outputs.GetTeamMembersTeamMemberRoleAttributeResult']:
+    def role_attributes(self) -> Mapping[str, Sequence[_builtins.str]]:
         """
-        A role attributes block. One block must be defined per role attribute. The key is the role attribute key and the value is a string array of resource keys that apply.
+        A map of role attributes, keyed by the role attribute key with a string array of resource keys as each value. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the key would be `testAttribute` and the values the keys of the projects you wanted to assign access to.
         """
         return pulumi.get(self, "role_attributes")
-
-
-@pulumi.output_type
-class GetTeamMembersTeamMemberRoleAttributeResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        :param Sequence[_builtins.str] values: A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        return pulumi.get(self, "values")
-
-
-@pulumi.output_type
-class GetTeamRoleAttributeResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str]):
-        """
-        :param _builtins.str key: The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        :param Sequence[_builtins.str] values: A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        The key / name of your role attribute. In the example `$${roleAttribute/testAttribute}`, the key is `testAttribute`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for your role attribute. For example, if your policy statement defines the resource `"proj/$${roleAttribute/testAttribute}"`, the values would be the keys of the projects you wanted to assign access to.
-        """
-        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -3702,55 +4154,48 @@ class GetViewLinkedSegmentResult(dict):
     def __init__(__self__, *,
                  environment_id: _builtins.str,
                  segment_key: _builtins.str):
-        """
-        :param _builtins.str environment_id: The environment ID of the segment.
-        :param _builtins.str segment_key: The key of the segment.
-        """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "segment_key", segment_key)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> _builtins.str:
-        """
-        The environment ID of the segment.
-        """
         return pulumi.get(self, "environment_id")
 
     @_builtins.property
     @pulumi.getter(name="segmentKey")
     def segment_key(self) -> _builtins.str:
-        """
-        The key of the segment.
-        """
         return pulumi.get(self, "segment_key")
 
 
 @pulumi.output_type
 class GetWebhookStatementResult(dict):
     def __init__(__self__, *,
+                 actions: Sequence[_builtins.str],
                  effect: _builtins.str,
-                 actions: Optional[Sequence[_builtins.str]] = None,
-                 not_actions: Optional[Sequence[_builtins.str]] = None,
-                 not_resources: Optional[Sequence[_builtins.str]] = None,
-                 resources: Optional[Sequence[_builtins.str]] = None):
+                 not_actions: Sequence[_builtins.str],
+                 not_resources: Sequence[_builtins.str],
+                 resources: Sequence[_builtins.str]):
         """
-        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] actions: The list of action specifiers defining the actions to which the statement applies.
-               Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param _builtins.str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
         :param Sequence[_builtins.str] not_actions: The list of action specifiers defining the actions to which the statement does not apply.
         :param Sequence[_builtins.str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply.
         :param Sequence[_builtins.str] resources: The list of resource specifiers defining the resources to which the statement applies.
         """
+        pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
-        if actions is not None:
-            pulumi.set(__self__, "actions", actions)
-        if not_actions is not None:
-            pulumi.set(__self__, "not_actions", not_actions)
-        if not_resources is not None:
-            pulumi.set(__self__, "not_resources", not_resources)
-        if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "not_actions", not_actions)
+        pulumi.set(__self__, "not_resources", not_resources)
+        pulumi.set(__self__, "resources", resources)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence[_builtins.str]:
+        """
+        The list of action specifiers defining the actions to which the statement applies.
+        """
+        return pulumi.get(self, "actions")
 
     @_builtins.property
     @pulumi.getter
@@ -3761,17 +4206,8 @@ class GetWebhookStatementResult(dict):
         return pulumi.get(self, "effect")
 
     @_builtins.property
-    @pulumi.getter
-    def actions(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The list of action specifiers defining the actions to which the statement applies.
-        Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        """
-        return pulumi.get(self, "actions")
-
-    @_builtins.property
     @pulumi.getter(name="notActions")
-    def not_actions(self) -> Optional[Sequence[_builtins.str]]:
+    def not_actions(self) -> Sequence[_builtins.str]:
         """
         The list of action specifiers defining the actions to which the statement does not apply.
         """
@@ -3779,7 +4215,7 @@ class GetWebhookStatementResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="notResources")
-    def not_resources(self) -> Optional[Sequence[_builtins.str]]:
+    def not_resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement does not apply.
         """
@@ -3787,7 +4223,7 @@ class GetWebhookStatementResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[Sequence[_builtins.str]]:
+    def resources(self) -> Sequence[_builtins.str]:
         """
         The list of resource specifiers defining the resources to which the statement applies.
         """

@@ -63,7 +63,7 @@ export interface GetAiConfigResult {
      */
     readonly evaluationMetricKey: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID in the format `project_key/key`.
      */
     readonly id: string;
     /**
@@ -83,7 +83,7 @@ export interface GetAiConfigResult {
      */
     readonly maintainerTeamKey: string;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`.
+     * The AI Config's mode. Must be `completion`, `agent`, or `judge`.
      */
     readonly mode: string;
     /**

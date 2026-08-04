@@ -47,17 +47,11 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
-     * A map describing which client-side SDKs can use new flags by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
-     *
-     * @deprecated 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatibility.
+     * Which client-side SDKs can use new flags by default.
      */
-    readonly clientSideAvailabilities: outputs.GetProjectClientSideAvailability[];
+    readonly defaultClientSideAvailability: outputs.GetProjectDefaultClientSideAvailability;
     /**
-     * A block describing which client-side SDKs can use new flags by default.
-     */
-    readonly defaultClientSideAvailabilities: outputs.GetProjectDefaultClientSideAvailability[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
+     * The project's ID.
      */
     readonly id: string;
     /**
@@ -77,7 +71,7 @@ export interface GetProjectResult {
      */
     readonly requireViewAssociationForNewSegments: boolean;
     /**
-     * Tags associated with your resource.
+     * Tags.
      */
     readonly tags: string[];
 }
