@@ -8,9 +8,9 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly AI Config data source.
+ * Provides a LaunchDarkly AgentControl config data source.
  *
- * This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+ * This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -37,7 +37,7 @@ export function getAiConfig(args: GetAiConfigArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetAiConfigArgs {
     /**
-     * The AI Config's unique key.
+     * The AgentControl config's unique key.
      */
     key: string;
     /**
@@ -51,15 +51,15 @@ export interface GetAiConfigArgs {
  */
 export interface GetAiConfigResult {
     /**
-     * A timestamp of when the AI Config was created.
+     * A timestamp of when the AgentControl config was created.
      */
     readonly creationDate: number;
     /**
-     * The AI Config's description.
+     * The AgentControl config's description.
      */
     readonly description: string;
     /**
-     * The key of the evaluation metric associated with this AI Config.
+     * The key of the evaluation metric associated with this AgentControl config.
      */
     readonly evaluationMetricKey: string;
     /**
@@ -71,23 +71,23 @@ export interface GetAiConfigResult {
      */
     readonly isInverted: boolean;
     /**
-     * The AI Config's unique key.
+     * The AgentControl config's unique key.
      */
     readonly key: string;
     /**
-     * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+     * The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
      */
     readonly maintainerId: string;
     /**
-     * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+     * The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
      */
     readonly maintainerTeamKey: string;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`.
+     * The AgentControl config's mode. Must be `completion`, `agent`, or `judge`.
      */
     readonly mode: string;
     /**
-     * The AI Config's human-readable name.
+     * The AgentControl config's human-readable name.
      */
     readonly name: string;
     /**
@@ -99,18 +99,18 @@ export interface GetAiConfigResult {
      */
     readonly tags: string[];
     /**
-     * A list of variation summaries for this AI Config.
+     * A list of variation summaries for this AgentControl config.
      */
     readonly variations: outputs.GetAiConfigVariation[];
     /**
-     * The version of the AI Config.
+     * The version of the AgentControl config.
      */
     readonly version: number;
 }
 /**
- * Provides a LaunchDarkly AI Config data source.
+ * Provides a LaunchDarkly AgentControl config data source.
  *
- * This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+ * This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -137,7 +137,7 @@ export function getAiConfigOutput(args: GetAiConfigOutputArgs, opts?: pulumi.Inv
  */
 export interface GetAiConfigOutputArgs {
     /**
-     * The AI Config's unique key.
+     * The AgentControl config's unique key.
      */
     key: pulumi.Input<string>;
     /**

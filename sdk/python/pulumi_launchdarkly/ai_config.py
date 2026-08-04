@@ -34,16 +34,16 @@ class AiConfigArgs:
         """
         The set of arguments for constructing a AiConfig resource.
 
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] description: The AI Config's description.
-        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
+        :param pulumi.Input[_builtins.str] description: The AgentControl config's description.
+        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AgentControl config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
-        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
+        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
+        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
+        :param pulumi.Input[_builtins.str] mode: The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The AgentControl config's human-readable name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AgentControl config.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
@@ -68,7 +68,7 @@ class AiConfigArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -92,7 +92,7 @@ class AiConfigArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's description.
+        The AgentControl config's description.
         """
         return pulumi.get(self, "description")
 
@@ -104,7 +104,7 @@ class AiConfigArgs:
     @pulumi.getter(name="evaluationMetricKey")
     def evaluation_metric_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key of the evaluation metric associated with this AI Config.
+        The key of the evaluation metric associated with this AgentControl config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
@@ -128,7 +128,7 @@ class AiConfigArgs:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
+        The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -140,7 +140,7 @@ class AiConfigArgs:
     @pulumi.getter(name="maintainerTeamKey")
     def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
+        The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
@@ -152,7 +152,7 @@ class AiConfigArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -164,7 +164,7 @@ class AiConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's human-readable name.
+        The AgentControl config's human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -176,7 +176,7 @@ class AiConfigArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with this AI Config.
+        Tags associated with this AgentControl config.
         """
         return pulumi.get(self, "tags")
 
@@ -204,19 +204,19 @@ class _AiConfigState:
         """
         Input properties used for looking up and filtering AiConfig resources.
 
-        :param pulumi.Input[_builtins.int] creation_date: A timestamp of when the AI Config was created.
-        :param pulumi.Input[_builtins.str] description: The AI Config's description.
-        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
+        :param pulumi.Input[_builtins.int] creation_date: A timestamp of when the AgentControl config was created.
+        :param pulumi.Input[_builtins.str] description: The AgentControl config's description.
+        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AgentControl config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
-        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
+        :param pulumi.Input[_builtins.str] key: The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
+        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
+        :param pulumi.Input[_builtins.str] mode: The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The AgentControl config's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
-        :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]] variations: A list of variation summaries for this AI Config.
-        :param pulumi.Input[_builtins.int] version: The version of the AI Config.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AgentControl config.
+        :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationArgs']]] variations: A list of variation summaries for this AgentControl config.
+        :param pulumi.Input[_builtins.int] version: The version of the AgentControl config.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -249,7 +249,7 @@ class _AiConfigState:
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        A timestamp of when the AI Config was created.
+        A timestamp of when the AgentControl config was created.
         """
         return pulumi.get(self, "creation_date")
 
@@ -261,7 +261,7 @@ class _AiConfigState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's description.
+        The AgentControl config's description.
         """
         return pulumi.get(self, "description")
 
@@ -273,7 +273,7 @@ class _AiConfigState:
     @pulumi.getter(name="evaluationMetricKey")
     def evaluation_metric_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key of the evaluation metric associated with this AI Config.
+        The key of the evaluation metric associated with this AgentControl config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
@@ -297,7 +297,7 @@ class _AiConfigState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -309,7 +309,7 @@ class _AiConfigState:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
+        The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -321,7 +321,7 @@ class _AiConfigState:
     @pulumi.getter(name="maintainerTeamKey")
     def maintainer_team_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
+        The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
@@ -333,7 +333,7 @@ class _AiConfigState:
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -345,7 +345,7 @@ class _AiConfigState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config's human-readable name.
+        The AgentControl config's human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -369,7 +369,7 @@ class _AiConfigState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Tags associated with this AI Config.
+        Tags associated with this AgentControl config.
         """
         return pulumi.get(self, "tags")
 
@@ -381,7 +381,7 @@ class _AiConfigState:
     @pulumi.getter
     def variations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationArgs']]]]:
         """
-        A list of variation summaries for this AI Config.
+        A list of variation summaries for this AgentControl config.
         """
         return pulumi.get(self, "variations")
 
@@ -393,7 +393,7 @@ class _AiConfigState:
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The version of the AI Config.
+        The version of the AgentControl config.
         """
         return pulumi.get(self, "version")
 
@@ -420,9 +420,9 @@ class AiConfig(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a LaunchDarkly AI Config resource.
+        Provides a LaunchDarkly AgentControl config resource.
 
-        This resource allows you to create and manage AI Configurations within your LaunchDarkly project.
+        This resource allows you to create and manage AgentControl configurations within your LaunchDarkly project.
 
         ## Example Usage
 
@@ -441,7 +441,7 @@ class AiConfig(pulumi.CustomResource):
 
         ## Import
 
-        LaunchDarkly AI Configs can be imported using the format `project_key/config_key`
+        LaunchDarkly AgentControl configs can be imported using the format `project_key/config_key`
 
         ```sh
         $ pulumi import launchdarkly:index/aiConfig:AiConfig example example-project/customer-assistant
@@ -450,16 +450,16 @@ class AiConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The AI Config's description.
-        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
+        :param pulumi.Input[_builtins.str] description: The AgentControl config's description.
+        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AgentControl config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
-        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
+        :param pulumi.Input[_builtins.str] key: The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
+        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
+        :param pulumi.Input[_builtins.str] mode: The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The AgentControl config's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AgentControl config.
         """
         ...
     @overload
@@ -468,9 +468,9 @@ class AiConfig(pulumi.CustomResource):
                  args: AiConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a LaunchDarkly AI Config resource.
+        Provides a LaunchDarkly AgentControl config resource.
 
-        This resource allows you to create and manage AI Configurations within your LaunchDarkly project.
+        This resource allows you to create and manage AgentControl configurations within your LaunchDarkly project.
 
         ## Example Usage
 
@@ -489,7 +489,7 @@ class AiConfig(pulumi.CustomResource):
 
         ## Import
 
-        LaunchDarkly AI Configs can be imported using the format `project_key/config_key`
+        LaunchDarkly AgentControl configs can be imported using the format `project_key/config_key`
 
         ```sh
         $ pulumi import launchdarkly:index/aiConfig:AiConfig example example-project/customer-assistant
@@ -577,19 +577,19 @@ class AiConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] creation_date: A timestamp of when the AI Config was created.
-        :param pulumi.Input[_builtins.str] description: The AI Config's description.
-        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AI Config.
+        :param pulumi.Input[_builtins.int] creation_date: A timestamp of when the AgentControl config was created.
+        :param pulumi.Input[_builtins.str] description: The AgentControl config's description.
+        :param pulumi.Input[_builtins.str] evaluation_metric_key: The key of the evaluation metric associated with this AgentControl config.
         :param pulumi.Input[_builtins.bool] is_inverted: Whether the evaluation metric is inverted.
-        :param pulumi.Input[_builtins.str] key: The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
-        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
-        :param pulumi.Input[_builtins.str] mode: The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] name: The AI Config's human-readable name.
+        :param pulumi.Input[_builtins.str] key: The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
+        :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
+        :param pulumi.Input[_builtins.str] mode: The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] name: The AgentControl config's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AI Config.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]] variations: A list of variation summaries for this AI Config.
-        :param pulumi.Input[_builtins.int] version: The version of the AI Config.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AgentControl config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]] variations: A list of variation summaries for this AgentControl config.
+        :param pulumi.Input[_builtins.int] version: The version of the AgentControl config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -614,7 +614,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[_builtins.int]:
         """
-        A timestamp of when the AI Config was created.
+        A timestamp of when the AgentControl config was created.
         """
         return pulumi.get(self, "creation_date")
 
@@ -622,7 +622,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The AI Config's description.
+        The AgentControl config's description.
         """
         return pulumi.get(self, "description")
 
@@ -630,7 +630,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter(name="evaluationMetricKey")
     def evaluation_metric_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The key of the evaluation metric associated with this AI Config.
+        The key of the evaluation metric associated with this AgentControl config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
@@ -646,7 +646,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -654,7 +654,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
+        The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -662,7 +662,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter(name="maintainerTeamKey")
     def maintainer_team_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
+        The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
@@ -670,7 +670,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "mode")
 
@@ -678,7 +678,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config's human-readable name.
+        The AgentControl config's human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -694,7 +694,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Tags associated with this AI Config.
+        Tags associated with this AgentControl config.
         """
         return pulumi.get(self, "tags")
 
@@ -702,7 +702,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def variations(self) -> pulumi.Output[Sequence['outputs.AiConfigVariation']]:
         """
-        A list of variation summaries for this AI Config.
+        A list of variation summaries for this AgentControl config.
         """
         return pulumi.get(self, "variations")
 
@@ -710,7 +710,7 @@ class AiConfig(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.int]:
         """
-        The version of the AI Config.
+        The version of the AgentControl config.
         """
         return pulumi.get(self, "version")
 

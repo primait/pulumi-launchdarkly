@@ -8,9 +8,9 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly AI Config resource.
+ * Provides a LaunchDarkly AgentControl config resource.
  *
- * This resource allows you to create and manage AI Configurations within your LaunchDarkly project.
+ * This resource allows you to create and manage AgentControl configurations within your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * LaunchDarkly AI Configs can be imported using the format `project_key/config_key`
+ * LaunchDarkly AgentControl configs can be imported using the format `project_key/config_key`
  *
  * ```sh
  * $ pulumi import launchdarkly:index/aiConfig:AiConfig example example-project/customer-assistant
@@ -65,15 +65,15 @@ export class AiConfig extends pulumi.CustomResource {
     }
 
     /**
-     * A timestamp of when the AI Config was created.
+     * A timestamp of when the AgentControl config was created.
      */
     declare public /*out*/ readonly creationDate: pulumi.Output<number>;
     /**
-     * The AI Config's description.
+     * The AgentControl config's description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The key of the evaluation metric associated with this AI Config.
+     * The key of the evaluation metric associated with this AgentControl config.
      */
     declare public readonly evaluationMetricKey: pulumi.Output<string | undefined>;
     /**
@@ -81,23 +81,23 @@ export class AiConfig extends pulumi.CustomResource {
      */
     declare public readonly isInverted: pulumi.Output<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
-     * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+     * The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
      */
     declare public readonly maintainerId: pulumi.Output<string>;
     /**
-     * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+     * The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
      */
     declare public readonly maintainerTeamKey: pulumi.Output<string>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly mode: pulumi.Output<string>;
     /**
-     * The AI Config's human-readable name.
+     * The AgentControl config's human-readable name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -105,15 +105,15 @@ export class AiConfig extends pulumi.CustomResource {
      */
     declare public readonly projectKey: pulumi.Output<string>;
     /**
-     * Tags associated with this AI Config.
+     * Tags associated with this AgentControl config.
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
-     * A list of variation summaries for this AI Config.
+     * A list of variation summaries for this AgentControl config.
      */
     declare public /*out*/ readonly variations: pulumi.Output<outputs.AiConfigVariation[]>;
     /**
-     * The version of the AI Config.
+     * The version of the AgentControl config.
      */
     declare public /*out*/ readonly version: pulumi.Output<number>;
 
@@ -175,15 +175,15 @@ export class AiConfig extends pulumi.CustomResource {
  */
 export interface AiConfigState {
     /**
-     * A timestamp of when the AI Config was created.
+     * A timestamp of when the AgentControl config was created.
      */
     creationDate?: pulumi.Input<number | undefined>;
     /**
-     * The AI Config's description.
+     * The AgentControl config's description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The key of the evaluation metric associated with this AI Config.
+     * The key of the evaluation metric associated with this AgentControl config.
      */
     evaluationMetricKey?: pulumi.Input<string | undefined>;
     /**
@@ -191,23 +191,23 @@ export interface AiConfigState {
      */
     isInverted?: pulumi.Input<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+     * The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
      */
     maintainerId?: pulumi.Input<string | undefined>;
     /**
-     * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+     * The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     mode?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's human-readable name.
+     * The AgentControl config's human-readable name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -215,15 +215,15 @@ export interface AiConfigState {
      */
     projectKey?: pulumi.Input<string | undefined>;
     /**
-     * Tags associated with this AI Config.
+     * Tags associated with this AgentControl config.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of variation summaries for this AI Config.
+     * A list of variation summaries for this AgentControl config.
      */
     variations?: pulumi.Input<pulumi.Input<inputs.AiConfigVariation>[] | undefined>;
     /**
-     * The version of the AI Config.
+     * The version of the AgentControl config.
      */
     version?: pulumi.Input<number | undefined>;
 }
@@ -233,11 +233,11 @@ export interface AiConfigState {
  */
 export interface AiConfigArgs {
     /**
-     * The AI Config's description.
+     * The AgentControl config's description.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The key of the evaluation metric associated with this AI Config.
+     * The key of the evaluation metric associated with this AgentControl config.
      */
     evaluationMetricKey?: pulumi.Input<string | undefined>;
     /**
@@ -245,23 +245,23 @@ export interface AiConfigArgs {
      */
     isInverted?: pulumi.Input<boolean | undefined>;
     /**
-     * The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
-     * The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+     * The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
      */
     maintainerId?: pulumi.Input<string | undefined>;
     /**
-     * The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+     * The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
      */
     maintainerTeamKey?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     mode?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config's human-readable name.
+     * The AgentControl config's human-readable name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export interface AiConfigArgs {
      */
     projectKey: pulumi.Input<string>;
     /**
-     * Tags associated with this AI Config.
+     * Tags associated with this AgentControl config.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

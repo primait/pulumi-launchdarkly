@@ -117,6 +117,31 @@ import (
 //			}
 //			// Example: Feature flag with view associations
 //			// This approach is ideal for modular Terraform where each flag is managed in its own file
+//			//
+//			// Always reference the view rather than repeating its key as a string literal.
+//			// A view must exist before Terraform can link a flag to it, and Terraform only
+//			// knows to create the view first if the flag references it. With a string literal
+//			// there is no dependency between the two resources, so Terraform can create the
+//			// flag first and the apply fails with "view does not exist". Referencing the view
+//			// also rules out a mistyped key.
+//			paymentsTeam, err := launchdarkly.NewView(ctx, "payments_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("example-project"),
+//				Key:               pulumi.String("payments-team"),
+//				Name:              pulumi.String("Payments Team"),
+//				MaintainerTeamKey: pulumi.String("payments"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frontendTeam, err := launchdarkly.NewView(ctx, "frontend_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("example-project"),
+//				Key:               pulumi.String("frontend-team"),
+//				Name:              pulumi.String("Frontend Team"),
+//				MaintainerTeamKey: pulumi.String("frontend"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = launchdarkly.NewFeatureFlag(ctx, "checkout_flow", &launchdarkly.FeatureFlagArgs{
 //				ProjectKey:    pulumi.String("example-project"),
 //				Key:           pulumi.String("checkout-flow-redesign"),
@@ -124,8 +149,8 @@ import (
 //				Description:   pulumi.String("New checkout experience with improved UX"),
 //				VariationType: pulumi.String("boolean"),
 //				ViewKeys: pulumi.StringArray{
-//					pulumi.String("payments-team"),
-//					pulumi.String("frontend-team"),
+//					paymentsTeam.Key,
+//					frontendTeam.Key,
 //				},
 //				Tags: pulumi.StringArray{
 //					pulumi.String("checkout"),
@@ -139,13 +164,24 @@ import (
 //			// Example: Flag managed in a module that can specify its own views
 //			// This enables a modular structure where each team/domain can manage their flags
 //			// without needing to coordinate with a central view_links resource
+//			//
+//			// When the view is owned by another configuration or state (for example a
+//			// platform team's workspace), use the data source. This asserts the view already
+//			// exists, so a typo or a missing view fails during plan instead of mid-apply.
+//			mobileTeam, err := launchdarkly.GetView(ctx, &launchdarkly.LookupViewArgs{
+//				ProjectKey: "example-project",
+//				Key:        "mobile-team",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = launchdarkly.NewFeatureFlag(ctx, "mobile_app_feature", &launchdarkly.FeatureFlagArgs{
 //				ProjectKey:    pulumi.String("example-project"),
 //				Key:           pulumi.String("mobile-push-notifications"),
 //				Name:          pulumi.String("Mobile Push Notifications"),
 //				VariationType: pulumi.String("boolean"),
 //				ViewKeys: pulumi.StringArray{
-//					pulumi.String("mobile-team"),
+//					pulumi.String(mobileTeam.Key),
 //				},
 //				Tags: pulumi.StringArray{
 //					pulumi.String("mobile"),
@@ -201,7 +237,7 @@ type FeatureFlag struct {
 	VariationType pulumi.StringOutput `pulumi:"variationType"`
 	// An array of possible variations for the flag.
 	Variations FeatureFlagVariationArrayOutput `pulumi:"variations"`
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 	ViewKeys pulumi.StringArrayOutput `pulumi:"viewKeys"`
 }
 
@@ -277,7 +313,7 @@ type featureFlagState struct {
 	VariationType *string `pulumi:"variationType"`
 	// An array of possible variations for the flag.
 	Variations []FeatureFlagVariation `pulumi:"variations"`
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 	ViewKeys []string `pulumi:"viewKeys"`
 }
 
@@ -312,7 +348,7 @@ type FeatureFlagState struct {
 	VariationType pulumi.StringPtrInput
 	// An array of possible variations for the flag.
 	Variations FeatureFlagVariationArrayInput
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 	ViewKeys pulumi.StringArrayInput
 }
 
@@ -351,7 +387,7 @@ type featureFlagArgs struct {
 	VariationType string `pulumi:"variationType"`
 	// An array of possible variations for the flag.
 	Variations []FeatureFlagVariation `pulumi:"variations"`
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 	ViewKeys []string `pulumi:"viewKeys"`
 }
 
@@ -387,7 +423,7 @@ type FeatureFlagArgs struct {
 	VariationType pulumi.StringInput
 	// An array of possible variations for the flag.
 	Variations FeatureFlagVariationArrayInput
-	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+	// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 	ViewKeys pulumi.StringArrayInput
 }
 
@@ -553,7 +589,7 @@ func (o FeatureFlagOutput) Variations() FeatureFlagVariationArrayOutput {
 	return o.ApplyT(func(v *FeatureFlag) FeatureFlagVariationArrayOutput { return v.Variations }).(FeatureFlagVariationArrayOutput)
 }
 
-// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+// A set of view keys to link this flag to. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
 func (o FeatureFlagOutput) ViewKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringArrayOutput { return v.ViewKeys }).(pulumi.StringArrayOutput)
 }

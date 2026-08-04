@@ -35,11 +35,11 @@ class AiAgentGraphArgs:
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this agent graph. Conflicts with `maintainer_id`.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the agent graph.
-        :param pulumi.Input[_builtins.str] root_config_key: The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[_builtins.str] root_config_key: The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_key", project_key)
@@ -96,7 +96,7 @@ class AiAgentGraphArgs:
     @pulumi.getter
     def edges(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]]]:
         """
-        The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "edges")
 
@@ -144,7 +144,7 @@ class AiAgentGraphArgs:
     @pulumi.getter(name="rootConfigKey")
     def root_config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "root_config_key")
 
@@ -171,14 +171,14 @@ class _AiAgentGraphState:
 
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the agent graph, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] last_modified: The timestamp of the agent graph's last update, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this agent graph. Conflicts with `maintainer_id`.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the agent graph.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] root_config_key: The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[_builtins.str] root_config_key: The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -229,7 +229,7 @@ class _AiAgentGraphState:
     @pulumi.getter
     def edges(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AiAgentGraphEdgesArgs']]]]:
         """
-        The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "edges")
 
@@ -313,7 +313,7 @@ class _AiAgentGraphState:
     @pulumi.getter(name="rootConfigKey")
     def root_config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "root_config_key")
 
@@ -340,7 +340,7 @@ class AiAgentGraph(pulumi.CustomResource):
         """
         Provides a LaunchDarkly AI agent graph resource.
 
-        An agent graph represents a directed graph of AI Configs, connecting them with edges that describe handoffs from one AI Config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
+        An agent graph represents a directed graph of AgentControl configs, connecting them with edges that describe handoffs from one AgentControl config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
 
         ## Example Usage
 
@@ -389,13 +389,13 @@ class AiAgentGraph(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this agent graph. Conflicts with `maintainer_id`.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the agent graph.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] root_config_key: The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[_builtins.str] root_config_key: The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         ...
     @overload
@@ -406,7 +406,7 @@ class AiAgentGraph(pulumi.CustomResource):
         """
         Provides a LaunchDarkly AI agent graph resource.
 
-        An agent graph represents a directed graph of AI Configs, connecting them with edges that describe handoffs from one AI Config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
+        An agent graph represents a directed graph of AgentControl configs, connecting them with edges that describe handoffs from one AgentControl config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
 
         ## Example Usage
 
@@ -527,14 +527,14 @@ class AiAgentGraph(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the agent graph, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] last_modified: The timestamp of the agent graph's last update, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this agent graph. Conflicts with `maintainer_id`.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the agent graph.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] root_config_key: The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[_builtins.str] root_config_key: The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -572,7 +572,7 @@ class AiAgentGraph(pulumi.CustomResource):
     @pulumi.getter
     def edges(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.AiAgentGraphEdges']]]:
         """
-        The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "edges")
 
@@ -628,7 +628,7 @@ class AiAgentGraph(pulumi.CustomResource):
     @pulumi.getter(name="rootConfigKey")
     def root_config_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The AI Config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        The AgentControl config key of the root node of the graph. If `root_config_key` or `edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         """
         return pulumi.get(self, "root_config_key")
 

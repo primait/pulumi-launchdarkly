@@ -75,7 +75,7 @@ class GetAiConfigResult:
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> _builtins.int:
         """
-        A timestamp of when the AI Config was created.
+        A timestamp of when the AgentControl config was created.
         """
         return pulumi.get(self, "creation_date")
 
@@ -83,7 +83,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The AI Config's description.
+        The AgentControl config's description.
         """
         return pulumi.get(self, "description")
 
@@ -91,7 +91,7 @@ class GetAiConfigResult:
     @pulumi.getter(name="evaluationMetricKey")
     def evaluation_metric_key(self) -> _builtins.str:
         """
-        The key of the evaluation metric associated with this AI Config.
+        The key of the evaluation metric associated with this AgentControl config.
         """
         return pulumi.get(self, "evaluation_metric_key")
 
@@ -115,7 +115,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The AI Config's unique key.
+        The AgentControl config's unique key.
         """
         return pulumi.get(self, "key")
 
@@ -123,7 +123,7 @@ class GetAiConfigResult:
     @pulumi.getter(name="maintainerId")
     def maintainer_id(self) -> _builtins.str:
         """
-        The member ID of the maintainer for this AI Config. Conflicts with `maintainer_team_key`.
+        The member ID of the maintainer for this AgentControl config. Conflicts with `maintainer_team_key`.
         """
         return pulumi.get(self, "maintainer_id")
 
@@ -131,7 +131,7 @@ class GetAiConfigResult:
     @pulumi.getter(name="maintainerTeamKey")
     def maintainer_team_key(self) -> _builtins.str:
         """
-        The team key of the maintainer team for this AI Config. Conflicts with `maintainer_id`.
+        The team key of the maintainer team for this AgentControl config. Conflicts with `maintainer_id`.
         """
         return pulumi.get(self, "maintainer_team_key")
 
@@ -139,7 +139,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def mode(self) -> _builtins.str:
         """
-        The AI Config's mode. Must be `completion`, `agent`, or `judge`.
+        The AgentControl config's mode. Must be `completion`, `agent`, or `judge`.
         """
         return pulumi.get(self, "mode")
 
@@ -147,7 +147,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The AI Config's human-readable name.
+        The AgentControl config's human-readable name.
         """
         return pulumi.get(self, "name")
 
@@ -171,7 +171,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def variations(self) -> Sequence['outputs.GetAiConfigVariationResult']:
         """
-        A list of variation summaries for this AI Config.
+        A list of variation summaries for this AgentControl config.
         """
         return pulumi.get(self, "variations")
 
@@ -179,7 +179,7 @@ class GetAiConfigResult:
     @pulumi.getter
     def version(self) -> _builtins.int:
         """
-        The version of the AI Config.
+        The version of the AgentControl config.
         """
         return pulumi.get(self, "version")
 
@@ -210,9 +210,9 @@ def get_ai_config(key: Optional[_builtins.str] = None,
                   project_key: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiConfigResult:
     """
-    Provides a LaunchDarkly AI Config data source.
+    Provides a LaunchDarkly AgentControl config data source.
 
-    This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+    This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
 
     ## Example Usage
 
@@ -225,7 +225,7 @@ def get_ai_config(key: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str key: The AI Config's unique key.
+    :param _builtins.str key: The AgentControl config's unique key.
     :param _builtins.str project_key: The project key.
     """
     __args__ = dict()
@@ -253,9 +253,9 @@ def get_ai_config_output(key: pulumi.Input[Optional[_builtins.str]] = None,
                          project_key: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiConfigResult]:
     """
-    Provides a LaunchDarkly AI Config data source.
+    Provides a LaunchDarkly AgentControl config data source.
 
-    This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+    This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
 
     ## Example Usage
 
@@ -268,7 +268,7 @@ def get_ai_config_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str key: The AI Config's unique key.
+    :param _builtins.str key: The AgentControl config's unique key.
     :param _builtins.str project_key: The project key.
     """
     __args__ = dict()

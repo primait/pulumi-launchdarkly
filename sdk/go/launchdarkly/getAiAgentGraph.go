@@ -13,7 +13,7 @@ import (
 
 // Provides a LaunchDarkly AI agent graph data source.
 //
-// This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+// This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -65,7 +65,7 @@ type LookupAiAgentGraphResult struct {
 	CreationDate int `pulumi:"creationDate"`
 	// A description of the agent graph.
 	Description string `pulumi:"description"`
-	// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config.
+	// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config.
 	Edges map[string]GetAiAgentGraphEdges `pulumi:"edges"`
 	// The composite ID of the agent graph in the format `project_key/key`.
 	Id string `pulumi:"id"`
@@ -81,7 +81,7 @@ type LookupAiAgentGraphResult struct {
 	Name string `pulumi:"name"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
-	// The AI Config key of the root node of the graph.
+	// The AgentControl config key of the root node of the graph.
 	RootConfigKey string `pulumi:"rootConfigKey"`
 }
 
@@ -131,7 +131,7 @@ func (o LookupAiAgentGraphResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiAgentGraphResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config.
+// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config.
 func (o LookupAiAgentGraphResultOutput) Edges() GetAiAgentGraphEdgesMapOutput {
 	return o.ApplyT(func(v LookupAiAgentGraphResult) map[string]GetAiAgentGraphEdges { return v.Edges }).(GetAiAgentGraphEdgesMapOutput)
 }
@@ -171,7 +171,7 @@ func (o LookupAiAgentGraphResultOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiAgentGraphResult) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// The AI Config key of the root node of the graph.
+// The AgentControl config key of the root node of the graph.
 func (o LookupAiAgentGraphResultOutput) RootConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiAgentGraphResult) string { return v.RootConfigKey }).(pulumi.StringOutput)
 }

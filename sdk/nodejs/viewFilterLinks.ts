@@ -21,16 +21,39 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
+ * // Each view these links target must exist before Terraform creates the links.
+ * // Declare them (or read them with a launchdarkly_view data source when another
+ * // configuration owns them) and reference view_key rather than repeating the key
+ * // as a string literal. That reference is what tells Terraform to create the view
+ * // first, and it rules out typos.
+ * const frontendTeam = new launchdarkly.View("frontend_team", {
+ *     projectKey: "my-project",
+ *     key: "frontend-team",
+ *     name: "Frontend Team",
+ *     maintainerTeamKey: "frontend",
+ * });
+ * const platformTeam = new launchdarkly.View("platform_team", {
+ *     projectKey: "my-project",
+ *     key: "platform-team",
+ *     name: "Platform Team",
+ *     maintainerTeamKey: "platform",
+ * });
+ * const betaProgram = new launchdarkly.View("beta_program", {
+ *     projectKey: "my-project",
+ *     key: "beta-program",
+ *     name: "Beta Program",
+ *     maintainerTeamKey: "product",
+ * });
  * // Link all flags tagged "frontend" to a view
  * const frontendFlags = new launchdarkly.ViewFilterLinks("frontend_flags", {
  *     projectKey: "my-project",
- *     viewKey: "frontend-team",
+ *     viewKey: frontendTeam.key,
  *     flagFilter: "tags:frontend",
  * });
  * // Link both flags and segments matching a tag
  * const platformResources = new launchdarkly.ViewFilterLinks("platform_resources", {
  *     projectKey: "my-project",
- *     viewKey: "platform-team",
+ *     viewKey: platformTeam.key,
  *     flagFilter: "tags:platform",
  *     segmentFilter: "tags anyOf [\"platform\"]",
  *     segmentFilterEnvironmentId: myProject.environments.production.clientSideId,
@@ -38,7 +61,7 @@ import * as utilities from "./utilities";
  * // Link only segments matching a filter
  * const betaSegments = new launchdarkly.ViewFilterLinks("beta_segments", {
  *     projectKey: "my-project",
- *     viewKey: "beta-program",
+ *     viewKey: betaProgram.key,
  *     segmentFilter: "tags anyOf [\"beta\"]",
  *     segmentFilterEnvironmentId: myProject.environments.production.clientSideId,
  * });

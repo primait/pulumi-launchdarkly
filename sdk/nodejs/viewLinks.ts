@@ -26,10 +26,45 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * // Example: Frontend team view with bulk flag and segment assignments
- * const frontendTeam = new launchdarkly.ViewLinks("frontend_team", {
+ * // Each view these links target must exist before Terraform creates the links.
+ * // Declare them (or read them with a launchdarkly_view data source when another
+ * // configuration owns them) and reference view_key rather than repeating the key
+ * // as a string literal. That reference is what tells Terraform to create the view
+ * // first, and it rules out typos.
+ * const frontendTeam = new launchdarkly.View("frontend_team", {
  *     projectKey: "my-project",
- *     viewKey: "frontend-team",
+ *     key: "frontend-team",
+ *     name: "Frontend Team",
+ *     maintainerTeamKey: "frontend",
+ * });
+ * const mobileTeam = new launchdarkly.View("mobile_team", {
+ *     projectKey: "my-project",
+ *     key: "mobile-team",
+ *     name: "Mobile Team",
+ *     maintainerTeamKey: "mobile",
+ * });
+ * const sharedFeatures = new launchdarkly.View("shared_features", {
+ *     projectKey: "my-project",
+ *     key: "shared-features",
+ *     name: "Shared Features",
+ *     maintainerTeamKey: "platform",
+ * });
+ * const backendTeam = new launchdarkly.View("backend_team", {
+ *     projectKey: "my-project",
+ *     key: "backend-team",
+ *     name: "Backend Team",
+ *     maintainerTeamKey: "backend",
+ * });
+ * const userSegments = new launchdarkly.View("user_segments", {
+ *     projectKey: "my-project",
+ *     key: "user-segments-view",
+ *     name: "User Segments",
+ *     maintainerTeamKey: "platform",
+ * });
+ * // Example: Frontend team view with bulk flag and segment assignments
+ * const frontendTeamViewLinks = new launchdarkly.ViewLinks("frontend_team", {
+ *     projectKey: "my-project",
+ *     viewKey: frontendTeam.key,
  *     flags: [
  *         "feature-login",
  *         "feature-dashboard",
@@ -54,9 +89,9 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Example: Mobile team view with different flags
- * const mobileTeam = new launchdarkly.ViewLinks("mobile_team", {
+ * const mobileTeamViewLinks = new launchdarkly.ViewLinks("mobile_team", {
  *     projectKey: "my-project",
- *     viewKey: "mobile-team",
+ *     viewKey: mobileTeam.key,
  *     flags: [
  *         "feature-mobile-login",
  *         "feature-push-notifications",
@@ -67,9 +102,9 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Example: Shared features across teams
- * const sharedFeatures = new launchdarkly.ViewLinks("shared_features", {
+ * const sharedFeaturesViewLinks = new launchdarkly.ViewLinks("shared_features", {
  *     projectKey: "my-project",
- *     viewKey: "shared-features",
+ *     viewKey: sharedFeatures.key,
  *     flags: [
  *         "feature-maintenance-mode",
  *         "feature-emergency-banner",
@@ -78,9 +113,9 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Demonstrating updates - adding/removing flags and segments from a view
- * const backendTeam = new launchdarkly.ViewLinks("backend_team", {
+ * const backendTeamViewLinks = new launchdarkly.ViewLinks("backend_team", {
  *     projectKey: "my-project",
- *     viewKey: "backend-team",
+ *     viewKey: backendTeam.key,
  *     flags: [
  *         "feature-database-migration",
  *         "feature-cache-optimization",
@@ -100,7 +135,7 @@ import * as utilities from "./utilities";
  * // Example: View with only segments (no flags)
  * const segmentsOnly = new launchdarkly.ViewLinks("segments_only", {
  *     projectKey: "my-project",
- *     viewKey: "user-segments-view",
+ *     viewKey: userSegments.key,
  *     segments: [
  *         {
  *             environment_id: "507f1f77bcf86cd799439011",

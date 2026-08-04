@@ -82,7 +82,7 @@ class GetAiAgentGraphResult:
     @pulumi.getter
     def edges(self) -> Mapping[str, 'outputs.GetAiAgentGraphEdgesResult']:
         """
-        The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config.
+        The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config.
         """
         return pulumi.get(self, "edges")
 
@@ -146,7 +146,7 @@ class GetAiAgentGraphResult:
     @pulumi.getter(name="rootConfigKey")
     def root_config_key(self) -> _builtins.str:
         """
-        The AI Config key of the root node of the graph.
+        The AgentControl config key of the root node of the graph.
         """
         return pulumi.get(self, "root_config_key")
 
@@ -176,7 +176,7 @@ def get_ai_agent_graph(key: Optional[_builtins.str] = None,
     """
     Provides a LaunchDarkly AI agent graph data source.
 
-    This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+    This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
 
     ## Example Usage
 
@@ -216,7 +216,7 @@ def get_ai_agent_graph_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     """
     Provides a LaunchDarkly AI agent graph data source.
 
-    This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+    This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
 
     ## Example Usage
 

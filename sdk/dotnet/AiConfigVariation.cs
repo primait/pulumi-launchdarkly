@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
-    /// Provides a LaunchDarkly AI Config variation resource.
+    /// Provides a LaunchDarkly AgentControl config variation resource.
     /// 
-    /// This resource allows you to create and manage AI Config variations within your LaunchDarkly project.
+    /// This resource allows you to create and manage AgentControl config variations within your LaunchDarkly project.
     /// 
     /// ## Example Usage
     /// 
@@ -24,6 +24,15 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var responseQualityJudge = new Launchdarkly.AiConfig("response_quality_judge", new()
+    ///     {
+    ///         ProjectKey = exampleLaunchdarklyProject.Key,
+    ///         Key = "response-quality-judge",
+    ///         Name = "Response Quality Judge",
+    ///         Mode = "judge",
+    ///         EvaluationMetricKey = "$ld:ai:judge:response-quality",
+    ///     });
+    /// 
     ///     var example = new Launchdarkly.AiConfigVariation("example", new()
     ///     {
     ///         ProjectKey = exampleLaunchdarklyProject.Key,
@@ -44,6 +53,13 @@ namespace Pulumi.Launchdarkly
     ///                 Content = "{{ ldctx.query }}",
     ///             },
     ///         },
+    ///         Judges = responseQualityJudge.Key.Apply(key =&gt; 
+    ///         {
+    ///             { key, 
+    ///             {
+    ///                 { "samplingRate", 0.1 },
+    ///             } },
+    ///         }),
     ///     });
     /// 
     /// });
@@ -51,7 +67,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// ## Import
     /// 
-    /// LaunchDarkly AI Config variations can be imported using the format `project_key/config_key/variation_key`
+    /// LaunchDarkly AgentControl config variations can be imported using the format `project_key/config_key/variation_key`
     /// 
     /// ```sh
     /// $ pulumi import launchdarkly:index/aiConfigVariation:AiConfigVariation example example-project/customer-assistant/helpful-v1
@@ -61,7 +77,7 @@ namespace Pulumi.Launchdarkly
     public partial class AiConfigVariation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("configKey")]
         public Output<string> ConfigKey { get; private set; } = null!;
@@ -83,6 +99,12 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Output("instructions")]
         public Output<string?> Instructions { get; private set; } = null!;
+
+        /// <summary>
+        /// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        /// </summary>
+        [Output("judges")]
+        public Output<ImmutableDictionary<string, Outputs.AiConfigVariationJudges>?> Judges { get; private set; } = null!;
 
         /// <summary>
         /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -127,7 +149,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        /// A set of AI tool keys to associate with this variation.
         /// </summary>
         [Output("toolKeys")]
         public Output<ImmutableArray<string>> ToolKeys { get; private set; } = null!;
@@ -192,7 +214,7 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigVariationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("configKey", required: true)]
         public Input<string> ConfigKey { get; set; } = null!;
@@ -208,6 +230,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("instructions")]
         public Input<string>? Instructions { get; set; }
+
+        [Input("judges")]
+        private InputMap<Inputs.AiConfigVariationJudgesArgs>? _judges;
+
+        /// <summary>
+        /// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        /// </summary>
+        public InputMap<Inputs.AiConfigVariationJudgesArgs> Judges
+        {
+            get => _judges ?? (_judges = new InputMap<Inputs.AiConfigVariationJudgesArgs>());
+            set => _judges = value;
+        }
 
         /// <summary>
         /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -261,7 +295,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _toolKeys;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        /// A set of AI tool keys to associate with this variation.
         /// </summary>
         public InputList<string> ToolKeys
         {
@@ -278,7 +312,7 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigVariationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("configKey")]
         public Input<string>? ConfigKey { get; set; }
@@ -300,6 +334,18 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         [Input("instructions")]
         public Input<string>? Instructions { get; set; }
+
+        [Input("judges")]
+        private InputMap<Inputs.AiConfigVariationJudgesGetArgs>? _judges;
+
+        /// <summary>
+        /// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        /// </summary>
+        public InputMap<Inputs.AiConfigVariationJudgesGetArgs> Judges
+        {
+            get => _judges ?? (_judges = new InputMap<Inputs.AiConfigVariationJudgesGetArgs>());
+            set => _judges = value;
+        }
 
         /// <summary>
         /// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -353,7 +399,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _toolKeys;
 
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        /// A set of AI tool keys to associate with this variation.
         /// </summary>
         public InputList<string> ToolKeys
         {

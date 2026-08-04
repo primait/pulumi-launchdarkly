@@ -270,22 +270,42 @@ class ViewFilterLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
+        # Each view these links target must exist before Terraform creates the links.
+        # Declare them (or read them with a launchdarkly_view data source when another
+        # configuration owns them) and reference view_key rather than repeating the key
+        # as a string literal. That reference is what tells Terraform to create the view
+        # first, and it rules out typos.
+        frontend_team = launchdarkly.View("frontend_team",
+            project_key="my-project",
+            key="frontend-team",
+            name="Frontend Team",
+            maintainer_team_key="frontend")
+        platform_team = launchdarkly.View("platform_team",
+            project_key="my-project",
+            key="platform-team",
+            name="Platform Team",
+            maintainer_team_key="platform")
+        beta_program = launchdarkly.View("beta_program",
+            project_key="my-project",
+            key="beta-program",
+            name="Beta Program",
+            maintainer_team_key="product")
         # Link all flags tagged "frontend" to a view
         frontend_flags = launchdarkly.ViewFilterLinks("frontend_flags",
             project_key="my-project",
-            view_key="frontend-team",
+            view_key=frontend_team.key,
             flag_filter="tags:frontend")
         # Link both flags and segments matching a tag
         platform_resources = launchdarkly.ViewFilterLinks("platform_resources",
             project_key="my-project",
-            view_key="platform-team",
+            view_key=platform_team.key,
             flag_filter="tags:platform",
             segment_filter="tags anyOf [\\"platform\\"]",
             segment_filter_environment_id=my_project["environments"]["production"]["clientSideId"])
         # Link only segments matching a filter
         beta_segments = launchdarkly.ViewFilterLinks("beta_segments",
             project_key="my-project",
-            view_key="beta-program",
+            view_key=beta_program.key,
             segment_filter="tags anyOf [\\"beta\\"]",
             segment_filter_environment_id=my_project["environments"]["production"]["clientSideId"])
         ```
@@ -331,22 +351,42 @@ class ViewFilterLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
+        # Each view these links target must exist before Terraform creates the links.
+        # Declare them (or read them with a launchdarkly_view data source when another
+        # configuration owns them) and reference view_key rather than repeating the key
+        # as a string literal. That reference is what tells Terraform to create the view
+        # first, and it rules out typos.
+        frontend_team = launchdarkly.View("frontend_team",
+            project_key="my-project",
+            key="frontend-team",
+            name="Frontend Team",
+            maintainer_team_key="frontend")
+        platform_team = launchdarkly.View("platform_team",
+            project_key="my-project",
+            key="platform-team",
+            name="Platform Team",
+            maintainer_team_key="platform")
+        beta_program = launchdarkly.View("beta_program",
+            project_key="my-project",
+            key="beta-program",
+            name="Beta Program",
+            maintainer_team_key="product")
         # Link all flags tagged "frontend" to a view
         frontend_flags = launchdarkly.ViewFilterLinks("frontend_flags",
             project_key="my-project",
-            view_key="frontend-team",
+            view_key=frontend_team.key,
             flag_filter="tags:frontend")
         # Link both flags and segments matching a tag
         platform_resources = launchdarkly.ViewFilterLinks("platform_resources",
             project_key="my-project",
-            view_key="platform-team",
+            view_key=platform_team.key,
             flag_filter="tags:platform",
             segment_filter="tags anyOf [\\"platform\\"]",
             segment_filter_environment_id=my_project["environments"]["production"]["clientSideId"])
         # Link only segments matching a filter
         beta_segments = launchdarkly.ViewFilterLinks("beta_segments",
             project_key="my-project",
-            view_key="beta-program",
+            view_key=beta_program.key,
             segment_filter="tags anyOf [\\"beta\\"]",
             segment_filter_environment_id=my_project["environments"]["production"]["clientSideId"])
         ```

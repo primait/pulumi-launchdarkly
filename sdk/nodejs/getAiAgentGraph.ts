@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a LaunchDarkly AI agent graph data source.
  *
- * This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+ * This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -59,7 +59,7 @@ export interface GetAiAgentGraphResult {
      */
     readonly description: string;
     /**
-     * The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config.
+     * The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config.
      */
     readonly edges: {[key: string]: outputs.GetAiAgentGraphEdges};
     /**
@@ -91,14 +91,14 @@ export interface GetAiAgentGraphResult {
      */
     readonly projectKey: string;
     /**
-     * The AI Config key of the root node of the graph.
+     * The AgentControl config key of the root node of the graph.
      */
     readonly rootConfigKey: string;
 }
 /**
  * Provides a LaunchDarkly AI agent graph data source.
  *
- * This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+ * This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
  *
  * ## Example Usage
  *

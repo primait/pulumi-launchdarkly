@@ -32,7 +32,7 @@ export interface AccessTokenInlineRole {
 
 export interface AiAgentGraphEdges {
     /**
-     * A JSON string representing the handoff options from the source AI Config to the target AI Config.
+     * A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
      */
     handoff?: pulumi.Input<string | undefined>;
     /**
@@ -40,11 +40,11 @@ export interface AiAgentGraphEdges {
      */
     key?: pulumi.Input<string | undefined>;
     /**
-     * The AI Config key that is the source of this edge.
+     * The AgentControl config key that is the source of this edge.
      */
     sourceConfig: pulumi.Input<string>;
     /**
-     * The AI Config key that is the target of this edge.
+     * The AgentControl config key that is the target of this edge.
      */
     targetConfig: pulumi.Input<string>;
 }
@@ -53,6 +53,13 @@ export interface AiConfigVariation {
     key: pulumi.Input<string>;
     name: pulumi.Input<string>;
     variationId: pulumi.Input<string>;
+}
+
+export interface AiConfigVariationJudges {
+    /**
+     * The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+     */
+    samplingRate: pulumi.Input<number>;
 }
 
 export interface AiConfigVariationMessage {

@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly AI agent graph data source.
         /// 
-        /// This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+        /// This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly AI agent graph data source.
         /// 
-        /// This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+        /// This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.Launchdarkly
         /// <summary>
         /// Provides a LaunchDarkly AI agent graph data source.
         /// 
-        /// This data source allows you to retrieve information about an agent graph, a directed graph of AI Configs, in your LaunchDarkly project.
+        /// This data source allows you to retrieve information about an agent graph, a directed graph of AgentControl configs, in your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -147,7 +147,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config.
+        /// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetAiAgentGraphEdgesResult> Edges;
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string ProjectKey;
         /// <summary>
-        /// The AI Config key of the root node of the graph.
+        /// The AgentControl config key of the root node of the graph.
         /// </summary>
         public readonly string RootConfigKey;
 

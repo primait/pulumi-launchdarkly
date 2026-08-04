@@ -8,9 +8,9 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly AI Config variation resource.
+ * Provides a LaunchDarkly AgentControl config variation resource.
  *
- * This resource allows you to create and manage AI Config variations within your LaunchDarkly project.
+ * This resource allows you to create and manage AgentControl config variations within your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -18,6 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
+ * const responseQualityJudge = new launchdarkly.AiConfig("response_quality_judge", {
+ *     projectKey: exampleLaunchdarklyProject.key,
+ *     key: "response-quality-judge",
+ *     name: "Response Quality Judge",
+ *     mode: "judge",
+ *     evaluationMetricKey: "$ld:ai:judge:response-quality",
+ * });
  * const example = new launchdarkly.AiConfigVariation("example", {
  *     projectKey: exampleLaunchdarklyProject.key,
  *     configKey: exampleLaunchdarklyAiConfig.key,
@@ -34,12 +41,17 @@ import * as utilities from "./utilities";
  *             content: "{{ ldctx.query }}",
  *         },
  *     ],
+ *     judges: responseQualityJudge.key.apply(key => {
+ *         [key]: {
+ *             samplingRate: 0.1,
+ *         },
+ *     }),
  * });
  * ```
  *
  * ## Import
  *
- * LaunchDarkly AI Config variations can be imported using the format `project_key/config_key/variation_key`
+ * LaunchDarkly AgentControl config variations can be imported using the format `project_key/config_key/variation_key`
  *
  * ```sh
  * $ pulumi import launchdarkly:index/aiConfigVariation:AiConfigVariation example example-project/customer-assistant/helpful-v1
@@ -74,7 +86,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
     }
 
     /**
-     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly configKey: pulumi.Output<string>;
     /**
@@ -89,6 +101,10 @@ export class AiConfigVariation extends pulumi.CustomResource {
      * The variation's instructions. Used in agent mode.
      */
     declare public readonly instructions: pulumi.Output<string | undefined>;
+    /**
+     * The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+     */
+    declare public readonly judges: pulumi.Output<{[key: string]: outputs.AiConfigVariationJudges} | undefined>;
     /**
      * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
@@ -118,7 +134,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
      */
     declare public readonly state: pulumi.Output<string>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+     * A set of AI tool keys to associate with this variation.
      */
     declare public readonly toolKeys: pulumi.Output<string[]>;
     /**
@@ -147,6 +163,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
             resourceInputs["creationDate"] = state?.creationDate;
             resourceInputs["description"] = state?.description;
             resourceInputs["instructions"] = state?.instructions;
+            resourceInputs["judges"] = state?.judges;
             resourceInputs["key"] = state?.key;
             resourceInputs["messages"] = state?.messages;
             resourceInputs["model"] = state?.model;
@@ -171,6 +188,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
             resourceInputs["configKey"] = args?.configKey;
             resourceInputs["description"] = args?.description;
             resourceInputs["instructions"] = args?.instructions;
+            resourceInputs["judges"] = args?.judges;
             resourceInputs["key"] = args?.key;
             resourceInputs["messages"] = args?.messages;
             resourceInputs["model"] = args?.model;
@@ -193,7 +211,7 @@ export class AiConfigVariation extends pulumi.CustomResource {
  */
 export interface AiConfigVariationState {
     /**
-     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     configKey?: pulumi.Input<string | undefined>;
     /**
@@ -208,6 +226,10 @@ export interface AiConfigVariationState {
      * The variation's instructions. Used in agent mode.
      */
     instructions?: pulumi.Input<string | undefined>;
+    /**
+     * The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+     */
+    judges?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AiConfigVariationJudges>} | undefined>;
     /**
      * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
@@ -237,7 +259,7 @@ export interface AiConfigVariationState {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+     * A set of AI tool keys to associate with this variation.
      */
     toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -255,7 +277,7 @@ export interface AiConfigVariationState {
  */
 export interface AiConfigVariationArgs {
     /**
-     * The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     configKey: pulumi.Input<string>;
     /**
@@ -266,6 +288,10 @@ export interface AiConfigVariationArgs {
      * The variation's instructions. Used in agent mode.
      */
     instructions?: pulumi.Input<string | undefined>;
+    /**
+     * The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+     */
+    judges?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AiConfigVariationJudges>} | undefined>;
     /**
      * The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
@@ -295,7 +321,7 @@ export interface AiConfigVariationArgs {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+     * A set of AI tool keys to associate with this variation.
      */
     toolKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

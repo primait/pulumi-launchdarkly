@@ -294,7 +294,6 @@ class View(pulumi.CustomResource):
                 "terraform",
                 "example",
             ],
-            generate_sdk_keys=True,
             maintainer_id="507f1f77bcf86cd799439011")
         # Alternative example with team maintainer instead of individual maintainer
         team_maintained = launchdarkly.View("team_maintained",
@@ -355,7 +354,6 @@ class View(pulumi.CustomResource):
                 "terraform",
                 "example",
             ],
-            generate_sdk_keys=True,
             maintainer_id="507f1f77bcf86cd799439011")
         # Alternative example with team maintainer instead of individual maintainer
         team_maintained = launchdarkly.View("team_maintained",

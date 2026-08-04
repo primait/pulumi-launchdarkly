@@ -21,6 +21,8 @@ __all__ = [
     'AiAgentGraphEdgesArgsDict',
     'AiConfigVariationArgs',
     'AiConfigVariationArgsDict',
+    'AiConfigVariationJudgesArgs',
+    'AiConfigVariationJudgesArgsDict',
     'AiConfigVariationMessageArgs',
     'AiConfigVariationMessageArgsDict',
     'AuditLogSubscriptionStatementArgs',
@@ -205,15 +207,15 @@ class AccessTokenInlineRoleArgs:
 class AiAgentGraphEdgesArgsDict(TypedDict):
     source_config: pulumi.Input[_builtins.str]
     """
-    The AI Config key that is the source of this edge.
+    The AgentControl config key that is the source of this edge.
     """
     target_config: pulumi.Input[_builtins.str]
     """
-    The AI Config key that is the target of this edge.
+    The AgentControl config key that is the target of this edge.
     """
     handoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    A JSON string representing the handoff options from the source AI Config to the target AI Config.
+    A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
     """
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -228,9 +230,9 @@ class AiAgentGraphEdgesArgs:
                  handoff: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] source_config: The AI Config key that is the source of this edge.
-        :param pulumi.Input[_builtins.str] target_config: The AI Config key that is the target of this edge.
-        :param pulumi.Input[_builtins.str] handoff: A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        :param pulumi.Input[_builtins.str] source_config: The AgentControl config key that is the source of this edge.
+        :param pulumi.Input[_builtins.str] target_config: The AgentControl config key that is the target of this edge.
+        :param pulumi.Input[_builtins.str] handoff: A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         :param pulumi.Input[_builtins.str] key: The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
         """
         pulumi.set(__self__, "source_config", source_config)
@@ -244,7 +246,7 @@ class AiAgentGraphEdgesArgs:
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config key that is the source of this edge.
+        The AgentControl config key that is the source of this edge.
         """
         return pulumi.get(self, "source_config")
 
@@ -256,7 +258,7 @@ class AiAgentGraphEdgesArgs:
     @pulumi.getter(name="targetConfig")
     def target_config(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config key that is the target of this edge.
+        The AgentControl config key that is the target of this edge.
         """
         return pulumi.get(self, "target_config")
 
@@ -268,7 +270,7 @@ class AiAgentGraphEdgesArgs:
     @pulumi.getter
     def handoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         """
         return pulumi.get(self, "handoff")
 
@@ -330,6 +332,34 @@ class AiConfigVariationArgs:
     @variation_id.setter
     def variation_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "variation_id", value)
+
+
+class AiConfigVariationJudgesArgsDict(TypedDict):
+    sampling_rate: pulumi.Input[_builtins.float]
+    """
+    The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+    """
+
+@pulumi.input_type
+class AiConfigVariationJudgesArgs:
+    def __init__(__self__, *,
+                 sampling_rate: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.float] sampling_rate: The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+        """
+        pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> pulumi.Input[_builtins.float]:
+        """
+        The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @sampling_rate.setter
+    def sampling_rate(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "sampling_rate", value)
 
 
 class AiConfigVariationMessageArgsDict(TypedDict):

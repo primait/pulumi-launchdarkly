@@ -26,6 +26,7 @@ class AiConfigVariationInitArgs:
                  project_key: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]] = None,
                  messages: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35,17 +36,18 @@ class AiConfigVariationInitArgs:
         """
         The set of arguments for constructing a AiConfigVariation resource.
 
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation.
         """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "key", key)
@@ -54,6 +56,8 @@ class AiConfigVariationInitArgs:
             pulumi.set(__self__, "description", description)
         if instructions is not None:
             pulumi.set(__self__, "instructions", instructions)
+        if judges is not None:
+            pulumi.set(__self__, "judges", judges)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if model is not None:
@@ -71,7 +75,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -126,6 +130,18 @@ class AiConfigVariationInitArgs:
     @instructions.setter
     def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def judges(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]]:
+        """
+        The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        """
+        return pulumi.get(self, "judges")
+
+    @judges.setter
+    def judges(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]]):
+        pulumi.set(self, "judges", value)
 
     @_builtins.property
     @pulumi.getter
@@ -191,7 +207,7 @@ class AiConfigVariationInitArgs:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        A set of AI tool keys to associate with this variation.
         """
         return pulumi.get(self, "tool_keys")
 
@@ -207,6 +223,7 @@ class _AiConfigVariationState:
                  creation_date: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  messages: pulumi.Input[Optional[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
@@ -220,10 +237,11 @@ class _AiConfigVariationState:
         """
         Input properties used for looking up and filtering AiConfigVariation resources.
 
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the variation.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['AiConfigVariationMessageArgs']]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
@@ -231,7 +249,7 @@ class _AiConfigVariationState:
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation.
         :param pulumi.Input[_builtins.str] variation_id: The internal ID of the variation.
         :param pulumi.Input[_builtins.int] version: The version number of the variation.
         """
@@ -243,6 +261,8 @@ class _AiConfigVariationState:
             pulumi.set(__self__, "description", description)
         if instructions is not None:
             pulumi.set(__self__, "instructions", instructions)
+        if judges is not None:
+            pulumi.set(__self__, "judges", judges)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if messages is not None:
@@ -268,7 +288,7 @@ class _AiConfigVariationState:
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -311,6 +331,18 @@ class _AiConfigVariationState:
     @instructions.setter
     def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def judges(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]]:
+        """
+        The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        """
+        return pulumi.get(self, "judges")
+
+    @judges.setter
+    def judges(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AiConfigVariationJudgesArgs']]]]):
+        pulumi.set(self, "judges", value)
 
     @_builtins.property
     @pulumi.getter
@@ -400,7 +432,7 @@ class _AiConfigVariationState:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        A set of AI tool keys to associate with this variation.
         """
         return pulumi.get(self, "tool_keys")
 
@@ -442,6 +474,7 @@ class AiConfigVariation(pulumi.CustomResource):
                  config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
@@ -452,9 +485,9 @@ class AiConfigVariation(pulumi.CustomResource):
                  tool_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a LaunchDarkly AI Config variation resource.
+        Provides a LaunchDarkly AgentControl config variation resource.
 
-        This resource allows you to create and manage AI Config variations within your LaunchDarkly project.
+        This resource allows you to create and manage AgentControl config variations within your LaunchDarkly project.
 
         ## Example Usage
 
@@ -462,6 +495,12 @@ class AiConfigVariation(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
+        response_quality_judge = launchdarkly.AiConfig("response_quality_judge",
+            project_key=example_launchdarkly_project["key"],
+            key="response-quality-judge",
+            name="Response Quality Judge",
+            mode="judge",
+            evaluation_metric_key="$ld:ai:judge:response-quality")
         example = launchdarkly.AiConfigVariation("example",
             project_key=example_launchdarkly_project["key"],
             config_key=example_launchdarkly_ai_config["key"],
@@ -477,12 +516,17 @@ class AiConfigVariation(pulumi.CustomResource):
                     "role": "user",
                     "content": "{{ ldctx.query }}",
                 },
-            ])
+            ],
+            judges=response_quality_judge.key.apply(lambda key: {
+                key: {
+                    "samplingRate": 0.1,
+                },
+            }))
         ```
 
         ## Import
 
-        LaunchDarkly AI Config variations can be imported using the format `project_key/config_key/variation_key`
+        LaunchDarkly AgentControl config variations can be imported using the format `project_key/config_key/variation_key`
 
         ```sh
         $ pulumi import launchdarkly:index/aiConfigVariation:AiConfigVariation example example-project/customer-assistant/helpful-v1
@@ -491,9 +535,10 @@ class AiConfigVariation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
@@ -501,7 +546,7 @@ class AiConfigVariation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation.
         """
         ...
     @overload
@@ -510,9 +555,9 @@ class AiConfigVariation(pulumi.CustomResource):
                  args: AiConfigVariationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a LaunchDarkly AI Config variation resource.
+        Provides a LaunchDarkly AgentControl config variation resource.
 
-        This resource allows you to create and manage AI Config variations within your LaunchDarkly project.
+        This resource allows you to create and manage AgentControl config variations within your LaunchDarkly project.
 
         ## Example Usage
 
@@ -520,6 +565,12 @@ class AiConfigVariation(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
+        response_quality_judge = launchdarkly.AiConfig("response_quality_judge",
+            project_key=example_launchdarkly_project["key"],
+            key="response-quality-judge",
+            name="Response Quality Judge",
+            mode="judge",
+            evaluation_metric_key="$ld:ai:judge:response-quality")
         example = launchdarkly.AiConfigVariation("example",
             project_key=example_launchdarkly_project["key"],
             config_key=example_launchdarkly_ai_config["key"],
@@ -535,12 +586,17 @@ class AiConfigVariation(pulumi.CustomResource):
                     "role": "user",
                     "content": "{{ ldctx.query }}",
                 },
-            ])
+            ],
+            judges=response_quality_judge.key.apply(lambda key: {
+                key: {
+                    "samplingRate": 0.1,
+                },
+            }))
         ```
 
         ## Import
 
-        LaunchDarkly AI Config variations can be imported using the format `project_key/config_key/variation_key`
+        LaunchDarkly AgentControl config variations can be imported using the format `project_key/config_key/variation_key`
 
         ```sh
         $ pulumi import launchdarkly:index/aiConfigVariation:AiConfigVariation example example-project/customer-assistant/helpful-v1
@@ -565,6 +621,7 @@ class AiConfigVariation(pulumi.CustomResource):
                  config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
@@ -587,6 +644,7 @@ class AiConfigVariation(pulumi.CustomResource):
             __props__.__dict__["config_key"] = config_key
             __props__.__dict__["description"] = description
             __props__.__dict__["instructions"] = instructions
+            __props__.__dict__["judges"] = judges
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -616,6 +674,7 @@ class AiConfigVariation(pulumi.CustomResource):
             creation_date: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
@@ -633,10 +692,11 @@ class AiConfigVariation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config_key: The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] config_key: The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the variation.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
@@ -644,7 +704,7 @@ class AiConfigVariation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] state: The state of the variation. Must be `archived` or `published`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tool_keys: A set of AI tool keys to associate with this variation.
         :param pulumi.Input[_builtins.str] variation_id: The internal ID of the variation.
         :param pulumi.Input[_builtins.int] version: The version number of the variation.
         """
@@ -656,6 +716,7 @@ class AiConfigVariation(pulumi.CustomResource):
         __props__.__dict__["creation_date"] = creation_date
         __props__.__dict__["description"] = description
         __props__.__dict__["instructions"] = instructions
+        __props__.__dict__["judges"] = judges
         __props__.__dict__["key"] = key
         __props__.__dict__["messages"] = messages
         __props__.__dict__["model"] = model
@@ -672,7 +733,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "config_key")
 
@@ -699,6 +760,14 @@ class AiConfigVariation(pulumi.CustomResource):
         The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def judges(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.AiConfigVariationJudges']]]:
+        """
+        The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        """
+        return pulumi.get(self, "judges")
 
     @_builtins.property
     @pulumi.getter
@@ -760,7 +829,7 @@ class AiConfigVariation(pulumi.CustomResource):
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        A set of AI tool keys to associate with this variation.
         """
         return pulumi.get(self, "tool_keys")
 

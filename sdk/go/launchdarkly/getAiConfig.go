@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly AI Config data source.
+// Provides a LaunchDarkly AgentControl config data source.
 //
-// This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+// This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -53,7 +53,7 @@ func LookupAiConfig(ctx *pulumi.Context, args *LookupAiConfigArgs, opts ...pulum
 
 // A collection of arguments for invoking getAiConfig.
 type LookupAiConfigArgs struct {
-	// The AI Config's unique key.
+	// The AgentControl config's unique key.
 	Key string `pulumi:"key"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
@@ -61,33 +61,33 @@ type LookupAiConfigArgs struct {
 
 // A collection of values returned by getAiConfig.
 type LookupAiConfigResult struct {
-	// A timestamp of when the AI Config was created.
+	// A timestamp of when the AgentControl config was created.
 	CreationDate int `pulumi:"creationDate"`
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description string `pulumi:"description"`
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey string `pulumi:"evaluationMetricKey"`
 	// The ID in the format `project_key/key`.
 	Id string `pulumi:"id"`
 	// Whether the evaluation metric is inverted.
 	IsInverted bool `pulumi:"isInverted"`
-	// The AI Config's unique key.
+	// The AgentControl config's unique key.
 	Key string `pulumi:"key"`
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId string `pulumi:"maintainerId"`
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`.
 	Mode string `pulumi:"mode"`
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name string `pulumi:"name"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
 	// Tags associated with your resource.
 	Tags []string `pulumi:"tags"`
-	// A list of variation summaries for this AI Config.
+	// A list of variation summaries for this AgentControl config.
 	Variations []GetAiConfigVariationType `pulumi:"variations"`
-	// The version of the AI Config.
+	// The version of the AgentControl config.
 	Version int `pulumi:"version"`
 }
 
@@ -102,7 +102,7 @@ func LookupAiConfigOutput(ctx *pulumi.Context, args LookupAiConfigOutputArgs, op
 
 // A collection of arguments for invoking getAiConfig.
 type LookupAiConfigOutputArgs struct {
-	// The AI Config's unique key.
+	// The AgentControl config's unique key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The project key.
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
@@ -127,17 +127,17 @@ func (o LookupAiConfigResultOutput) ToLookupAiConfigResultOutputWithContext(ctx 
 	return o
 }
 
-// A timestamp of when the AI Config was created.
+// A timestamp of when the AgentControl config was created.
 func (o LookupAiConfigResultOutput) CreationDate() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) int { return v.CreationDate }).(pulumi.IntOutput)
 }
 
-// The AI Config's description.
+// The AgentControl config's description.
 func (o LookupAiConfigResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The key of the evaluation metric associated with this AI Config.
+// The key of the evaluation metric associated with this AgentControl config.
 func (o LookupAiConfigResultOutput) EvaluationMetricKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.EvaluationMetricKey }).(pulumi.StringOutput)
 }
@@ -152,27 +152,27 @@ func (o LookupAiConfigResultOutput) IsInverted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) bool { return v.IsInverted }).(pulumi.BoolOutput)
 }
 
-// The AI Config's unique key.
+// The AgentControl config's unique key.
 func (o LookupAiConfigResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 func (o LookupAiConfigResultOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.MaintainerId }).(pulumi.StringOutput)
 }
 
-// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 func (o LookupAiConfigResultOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The AI Config's mode. Must be `completion`, `agent`, or `judge`.
+// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`.
 func (o LookupAiConfigResultOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The AI Config's human-readable name.
+// The AgentControl config's human-readable name.
 func (o LookupAiConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -187,12 +187,12 @@ func (o LookupAiConfigResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of variation summaries for this AI Config.
+// A list of variation summaries for this AgentControl config.
 func (o LookupAiConfigResultOutput) Variations() GetAiConfigVariationTypeArrayOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) []GetAiConfigVariationType { return v.Variations }).(GetAiConfigVariationTypeArrayOutput)
 }
 
-// The version of the AI Config.
+// The version of the AgentControl config.
 func (o LookupAiConfigResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiConfigResult) int { return v.Version }).(pulumi.IntOutput)
 }

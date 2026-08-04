@@ -13,7 +13,7 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class AiAgentGraphEdgesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        /// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         /// </summary>
         [Input("handoff")]
         public Input<string>? Handoff { get; set; }
@@ -25,13 +25,13 @@ namespace Pulumi.Launchdarkly.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The AI Config key that is the source of this edge.
+        /// The AgentControl config key that is the source of this edge.
         /// </summary>
         [Input("sourceConfig", required: true)]
         public Input<string> SourceConfig { get; set; } = null!;
 
         /// <summary>
-        /// The AI Config key that is the target of this edge.
+        /// The AgentControl config key that is the target of this edge.
         /// </summary>
         [Input("targetConfig", required: true)]
         public Input<string> TargetConfig { get; set; } = null!;

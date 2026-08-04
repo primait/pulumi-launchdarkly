@@ -30,11 +30,40 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Each view these links target must exist before Terraform creates the links.
+    ///     // Declare them (or read them with a launchdarkly_view data source when another
+    ///     // configuration owns them) and reference view_key rather than repeating the key
+    ///     // as a string literal. That reference is what tells Terraform to create the view
+    ///     // first, and it rules out typos.
+    ///     var frontendTeam = new Launchdarkly.View("frontend_team", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "frontend-team",
+    ///         Name = "Frontend Team",
+    ///         MaintainerTeamKey = "frontend",
+    ///     });
+    /// 
+    ///     var platformTeam = new Launchdarkly.View("platform_team", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "platform-team",
+    ///         Name = "Platform Team",
+    ///         MaintainerTeamKey = "platform",
+    ///     });
+    /// 
+    ///     var betaProgram = new Launchdarkly.View("beta_program", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "beta-program",
+    ///         Name = "Beta Program",
+    ///         MaintainerTeamKey = "product",
+    ///     });
+    /// 
     ///     // Link all flags tagged "frontend" to a view
     ///     var frontendFlags = new Launchdarkly.ViewFilterLinks("frontend_flags", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "frontend-team",
+    ///         ViewKey = frontendTeam.Key,
     ///         FlagFilter = "tags:frontend",
     ///     });
     /// 
@@ -42,7 +71,7 @@ namespace Pulumi.Launchdarkly
     ///     var platformResources = new Launchdarkly.ViewFilterLinks("platform_resources", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "platform-team",
+    ///         ViewKey = platformTeam.Key,
     ///         FlagFilter = "tags:platform",
     ///         SegmentFilter = "tags anyOf [\"platform\"]",
     ///         SegmentFilterEnvironmentId = myProject.Environments.Production.ClientSideId,
@@ -52,7 +81,7 @@ namespace Pulumi.Launchdarkly
     ///     var betaSegments = new Launchdarkly.ViewFilterLinks("beta_segments", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "beta-program",
+    ///         ViewKey = betaProgram.Key,
     ///         SegmentFilter = "tags anyOf [\"beta\"]",
     ///         SegmentFilterEnvironmentId = myProject.Environments.Production.ClientSideId,
     ///     });

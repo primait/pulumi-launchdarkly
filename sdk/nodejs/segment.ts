@@ -177,6 +177,25 @@ import * as utilities from "./utilities";
  * });
  * // Example: Segment with view associations
  * // This approach is ideal for modular Terraform where each segment is managed in its own file
+ * //
+ * // Always reference the view rather than repeating its key as a string literal.
+ * // A view must exist before Terraform can link a segment to it, and Terraform only
+ * // knows to create the view first if the segment references it. With a string
+ * // literal there is no dependency between the two resources, so Terraform can
+ * // create the segment first and the apply fails with "view does not exist".
+ * // Referencing the view also rules out a mistyped key.
+ * const salesTeam = new launchdarkly.View("sales_team", {
+ *     projectKey: "example-project",
+ *     key: "sales-team",
+ *     name: "Sales Team",
+ *     maintainerTeamKey: "sales",
+ * });
+ * const customerSuccess = new launchdarkly.View("customer_success", {
+ *     projectKey: "example-project",
+ *     key: "customer-success",
+ *     name: "Customer Success",
+ *     maintainerTeamKey: "customer-success",
+ * });
  * const premiumUsers = new launchdarkly.Segment("premium_users", {
  *     key: "premium-users",
  *     projectKey: "example-project",
@@ -184,8 +203,8 @@ import * as utilities from "./utilities";
  *     name: "Premium Users",
  *     description: "Users with premium subscriptions",
  *     viewKeys: [
- *         "sales-team",
- *         "customer-success",
+ *         salesTeam.key,
+ *         customerSuccess.key,
  *     ],
  *     tags: [
  *         "premium",
@@ -205,12 +224,20 @@ import * as utilities from "./utilities";
  * // Example: Segment managed in a module that can specify its own views
  * // This enables a modular structure where each team/domain can manage their segments
  * // without needing to coordinate with a central view_links resource
+ * //
+ * // When the view is owned by another configuration or state (for example a
+ * // platform team's workspace), use the data source. This asserts the view already
+ * // exists, so a typo or a missing view fails during plan instead of mid-apply.
+ * const productTeam = launchdarkly.getView({
+ *     projectKey: "example-project",
+ *     key: "product-team",
+ * });
  * const betaTesters = new launchdarkly.Segment("beta_testers", {
  *     key: "beta-testers",
  *     projectKey: "example-project",
  *     envKey: "staging",
  *     name: "Beta Testers",
- *     viewKeys: ["product-team"],
+ *     viewKeys: [productTeam.then(productTeam => productTeam.key)],
  *     tags: [
  *         "beta",
  *         "testing",
@@ -315,7 +342,7 @@ export class Segment extends pulumi.CustomResource {
      */
     declare public readonly unboundedContextKind: pulumi.Output<string>;
     /**
-     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a segment to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     declare public readonly viewKeys: pulumi.Output<string[]>;
 
@@ -440,7 +467,7 @@ export interface SegmentState {
      */
     unboundedContextKind?: pulumi.Input<string | undefined>;
     /**
-     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a segment to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -502,7 +529,7 @@ export interface SegmentArgs {
      */
     unboundedContextKind?: pulumi.Input<string | undefined>;
     /**
-     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
+     * A set of view keys to link this segment to. This is an alternative to using the `launchdarkly.ViewLinks` resource for managing view associations. When set, this segment is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `viewKeys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a segment to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `viewKeys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `viewKeys` and `launchdarkly.ViewLinks` to manage the same segment. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `viewKeys`. Choose one approach per resource.
      */
     viewKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
