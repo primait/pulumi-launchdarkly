@@ -43,8 +43,7 @@ import (
 //					pulumi.String("terraform"),
 //					pulumi.String("example"),
 //				},
-//				GenerateSdkKeys: true,
-//				MaintainerId:    pulumi.String("507f1f77bcf86cd799439011"),
+//				MaintainerId: pulumi.String("507f1f77bcf86cd799439011"),
 //			})
 //			if err != nil {
 //				return err

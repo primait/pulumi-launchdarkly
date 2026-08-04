@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  *         "terraform",
  *         "example",
  *     ],
- *     generateSdkKeys: true,
  *     maintainerId: "507f1f77bcf86cd799439011",
  * });
  * // Alternative example with team maintainer instead of individual maintainer

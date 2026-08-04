@@ -192,10 +192,40 @@ class ViewLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
-        # Example: Frontend team view with bulk flag and segment assignments
-        frontend_team = launchdarkly.ViewLinks("frontend_team",
+        # Each view these links target must exist before Terraform creates the links.
+        # Declare them (or read them with a launchdarkly_view data source when another
+        # configuration owns them) and reference view_key rather than repeating the key
+        # as a string literal. That reference is what tells Terraform to create the view
+        # first, and it rules out typos.
+        frontend_team = launchdarkly.View("frontend_team",
             project_key="my-project",
-            view_key="frontend-team",
+            key="frontend-team",
+            name="Frontend Team",
+            maintainer_team_key="frontend")
+        mobile_team = launchdarkly.View("mobile_team",
+            project_key="my-project",
+            key="mobile-team",
+            name="Mobile Team",
+            maintainer_team_key="mobile")
+        shared_features = launchdarkly.View("shared_features",
+            project_key="my-project",
+            key="shared-features",
+            name="Shared Features",
+            maintainer_team_key="platform")
+        backend_team = launchdarkly.View("backend_team",
+            project_key="my-project",
+            key="backend-team",
+            name="Backend Team",
+            maintainer_team_key="backend")
+        user_segments = launchdarkly.View("user_segments",
+            project_key="my-project",
+            key="user-segments-view",
+            name="User Segments",
+            maintainer_team_key="platform")
+        # Example: Frontend team view with bulk flag and segment assignments
+        frontend_team_view_links = launchdarkly.ViewLinks("frontend_team",
+            project_key="my-project",
+            view_key=frontend_team.key,
             flags=[
                 "feature-login",
                 "feature-dashboard",
@@ -219,9 +249,9 @@ class ViewLinks(pulumi.CustomResource):
                 },
             ])
         # Example: Mobile team view with different flags
-        mobile_team = launchdarkly.ViewLinks("mobile_team",
+        mobile_team_view_links = launchdarkly.ViewLinks("mobile_team",
             project_key="my-project",
-            view_key="mobile-team",
+            view_key=mobile_team.key,
             flags=[
                 "feature-mobile-login",
                 "feature-push-notifications",
@@ -231,9 +261,9 @@ class ViewLinks(pulumi.CustomResource):
                 "feature-app-rating",
             ])
         # Example: Shared features across teams
-        shared_features = launchdarkly.ViewLinks("shared_features",
+        shared_features_view_links = launchdarkly.ViewLinks("shared_features",
             project_key="my-project",
-            view_key="shared-features",
+            view_key=shared_features.key,
             flags=[
                 "feature-maintenance-mode",
                 "feature-emergency-banner",
@@ -241,9 +271,9 @@ class ViewLinks(pulumi.CustomResource):
                 "feature-logging-level",
             ])
         # Demonstrating updates - adding/removing flags and segments from a view
-        backend_team = launchdarkly.ViewLinks("backend_team",
+        backend_team_view_links = launchdarkly.ViewLinks("backend_team",
             project_key="my-project",
-            view_key="backend-team",
+            view_key=backend_team.key,
             flags=[
                 "feature-database-migration",
                 "feature-cache-optimization",
@@ -262,7 +292,7 @@ class ViewLinks(pulumi.CustomResource):
         # Example: View with only segments (no flags)
         segments_only = launchdarkly.ViewLinks("segments_only",
             project_key="my-project",
-            view_key="user-segments-view",
+            view_key=user_segments.key,
             segments=[
                 {
                     "environment_id": "507f1f77bcf86cd799439011",
@@ -320,10 +350,40 @@ class ViewLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
-        # Example: Frontend team view with bulk flag and segment assignments
-        frontend_team = launchdarkly.ViewLinks("frontend_team",
+        # Each view these links target must exist before Terraform creates the links.
+        # Declare them (or read them with a launchdarkly_view data source when another
+        # configuration owns them) and reference view_key rather than repeating the key
+        # as a string literal. That reference is what tells Terraform to create the view
+        # first, and it rules out typos.
+        frontend_team = launchdarkly.View("frontend_team",
             project_key="my-project",
-            view_key="frontend-team",
+            key="frontend-team",
+            name="Frontend Team",
+            maintainer_team_key="frontend")
+        mobile_team = launchdarkly.View("mobile_team",
+            project_key="my-project",
+            key="mobile-team",
+            name="Mobile Team",
+            maintainer_team_key="mobile")
+        shared_features = launchdarkly.View("shared_features",
+            project_key="my-project",
+            key="shared-features",
+            name="Shared Features",
+            maintainer_team_key="platform")
+        backend_team = launchdarkly.View("backend_team",
+            project_key="my-project",
+            key="backend-team",
+            name="Backend Team",
+            maintainer_team_key="backend")
+        user_segments = launchdarkly.View("user_segments",
+            project_key="my-project",
+            key="user-segments-view",
+            name="User Segments",
+            maintainer_team_key="platform")
+        # Example: Frontend team view with bulk flag and segment assignments
+        frontend_team_view_links = launchdarkly.ViewLinks("frontend_team",
+            project_key="my-project",
+            view_key=frontend_team.key,
             flags=[
                 "feature-login",
                 "feature-dashboard",
@@ -347,9 +407,9 @@ class ViewLinks(pulumi.CustomResource):
                 },
             ])
         # Example: Mobile team view with different flags
-        mobile_team = launchdarkly.ViewLinks("mobile_team",
+        mobile_team_view_links = launchdarkly.ViewLinks("mobile_team",
             project_key="my-project",
-            view_key="mobile-team",
+            view_key=mobile_team.key,
             flags=[
                 "feature-mobile-login",
                 "feature-push-notifications",
@@ -359,9 +419,9 @@ class ViewLinks(pulumi.CustomResource):
                 "feature-app-rating",
             ])
         # Example: Shared features across teams
-        shared_features = launchdarkly.ViewLinks("shared_features",
+        shared_features_view_links = launchdarkly.ViewLinks("shared_features",
             project_key="my-project",
-            view_key="shared-features",
+            view_key=shared_features.key,
             flags=[
                 "feature-maintenance-mode",
                 "feature-emergency-banner",
@@ -369,9 +429,9 @@ class ViewLinks(pulumi.CustomResource):
                 "feature-logging-level",
             ])
         # Demonstrating updates - adding/removing flags and segments from a view
-        backend_team = launchdarkly.ViewLinks("backend_team",
+        backend_team_view_links = launchdarkly.ViewLinks("backend_team",
             project_key="my-project",
-            view_key="backend-team",
+            view_key=backend_team.key,
             flags=[
                 "feature-database-migration",
                 "feature-cache-optimization",
@@ -390,7 +450,7 @@ class ViewLinks(pulumi.CustomResource):
         # Example: View with only segments (no flags)
         segments_only = launchdarkly.ViewLinks("segments_only",
             project_key="my-project",
-            view_key="user-segments-view",
+            view_key=user_segments.key,
             segments=[
                 {
                     "environment_id": "507f1f77bcf86cd799439011",

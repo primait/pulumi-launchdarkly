@@ -12,9 +12,9 @@ namespace Pulumi.Launchdarkly
     public static class GetAiConfig
     {
         /// <summary>
-        /// Provides a LaunchDarkly AI Config data source.
+        /// Provides a LaunchDarkly AgentControl config data source.
         /// 
-        /// This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -39,9 +39,9 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiConfigResult>("launchdarkly:index/getAiConfig:getAiConfig", args ?? new GetAiConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly AI Config data source.
+        /// Provides a LaunchDarkly AgentControl config data source.
         /// 
-        /// This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -66,9 +66,9 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.Invoke<GetAiConfigResult>("launchdarkly:index/getAiConfig:getAiConfig", args ?? new GetAiConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly AI Config data source.
+        /// Provides a LaunchDarkly AgentControl config data source.
         /// 
-        /// This data source allows you to retrieve AI configuration information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl configuration information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -97,7 +97,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The AI Config's unique key.
+        /// The AgentControl config's unique key.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The AI Config's unique key.
+        /// The AgentControl config's unique key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -139,15 +139,15 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigResult
     {
         /// <summary>
-        /// A timestamp of when the AI Config was created.
+        /// A timestamp of when the AgentControl config was created.
         /// </summary>
         public readonly int CreationDate;
         /// <summary>
-        /// The AI Config's description.
+        /// The AgentControl config's description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The key of the evaluation metric associated with this AI Config.
+        /// The key of the evaluation metric associated with this AgentControl config.
         /// </summary>
         public readonly string EvaluationMetricKey;
         /// <summary>
@@ -159,23 +159,23 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly bool IsInverted;
         /// <summary>
-        /// The AI Config's unique key.
+        /// The AgentControl config's unique key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The member ID of the maintainer for this AI Config. Conflicts with `MaintainerTeamKey`.
+        /// The member ID of the maintainer for this AgentControl config. Conflicts with `MaintainerTeamKey`.
         /// </summary>
         public readonly string MaintainerId;
         /// <summary>
-        /// The team key of the maintainer team for this AI Config. Conflicts with `MaintainerId`.
+        /// The team key of the maintainer team for this AgentControl config. Conflicts with `MaintainerId`.
         /// </summary>
         public readonly string MaintainerTeamKey;
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`.
+        /// The AgentControl config's mode. Must be `Completion`, `Agent`, or `Judge`.
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The AI Config's human-readable name.
+        /// The AgentControl config's human-readable name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -187,11 +187,11 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// A list of variation summaries for this AI Config.
+        /// A list of variation summaries for this AgentControl config.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiConfigVariationResult> Variations;
         /// <summary>
-        /// The version of the AI Config.
+        /// The version of the AgentControl config.
         /// </summary>
         public readonly int Version;
 

@@ -38,10 +38,60 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Each view these links target must exist before Terraform creates the links.
+//			// Declare them (or read them with a launchdarkly_view data source when another
+//			// configuration owns them) and reference view_key rather than repeating the key
+//			// as a string literal. That reference is what tells Terraform to create the view
+//			// first, and it rules out typos.
+//			frontendTeam, err := launchdarkly.NewView(ctx, "frontend_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("frontend-team"),
+//				Name:              pulumi.String("Frontend Team"),
+//				MaintainerTeamKey: pulumi.String("frontend"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mobileTeam, err := launchdarkly.NewView(ctx, "mobile_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("mobile-team"),
+//				Name:              pulumi.String("Mobile Team"),
+//				MaintainerTeamKey: pulumi.String("mobile"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sharedFeatures, err := launchdarkly.NewView(ctx, "shared_features", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("shared-features"),
+//				Name:              pulumi.String("Shared Features"),
+//				MaintainerTeamKey: pulumi.String("platform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			backendTeam, err := launchdarkly.NewView(ctx, "backend_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("backend-team"),
+//				Name:              pulumi.String("Backend Team"),
+//				MaintainerTeamKey: pulumi.String("backend"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			userSegments, err := launchdarkly.NewView(ctx, "user_segments", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("user-segments-view"),
+//				Name:              pulumi.String("User Segments"),
+//				MaintainerTeamKey: pulumi.String("platform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Example: Frontend team view with bulk flag and segment assignments
-//			_, err := launchdarkly.NewViewLinks(ctx, "frontend_team", &launchdarkly.ViewLinksArgs{
+//			_, err = launchdarkly.NewViewLinks(ctx, "frontend_team", &launchdarkly.ViewLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("frontend-team"),
+//				ViewKey:    frontendTeam.Key,
 //				Flags: pulumi.StringArray{
 //					pulumi.String("feature-login"),
 //					pulumi.String("feature-dashboard"),
@@ -71,7 +121,7 @@ import (
 //			// Example: Mobile team view with different flags
 //			_, err = launchdarkly.NewViewLinks(ctx, "mobile_team", &launchdarkly.ViewLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("mobile-team"),
+//				ViewKey:    mobileTeam.Key,
 //				Flags: pulumi.StringArray{
 //					pulumi.String("feature-mobile-login"),
 //					pulumi.String("feature-push-notifications"),
@@ -87,7 +137,7 @@ import (
 //			// Example: Shared features across teams
 //			_, err = launchdarkly.NewViewLinks(ctx, "shared_features", &launchdarkly.ViewLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("shared-features"),
+//				ViewKey:    sharedFeatures.Key,
 //				Flags: pulumi.StringArray{
 //					pulumi.String("feature-maintenance-mode"),
 //					pulumi.String("feature-emergency-banner"),
@@ -101,7 +151,7 @@ import (
 //			// Demonstrating updates - adding/removing flags and segments from a view
 //			_, err = launchdarkly.NewViewLinks(ctx, "backend_team", &launchdarkly.ViewLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("backend-team"),
+//				ViewKey:    backendTeam.Key,
 //				Flags: pulumi.StringArray{
 //					pulumi.String("feature-database-migration"),
 //					pulumi.String("feature-cache-optimization"),
@@ -124,7 +174,7 @@ import (
 //			// Example: View with only segments (no flags)
 //			_, err = launchdarkly.NewViewLinks(ctx, "segments_only", &launchdarkly.ViewLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("user-segments-view"),
+//				ViewKey:    userSegments.Key,
 //				Segments: launchdarkly.ViewLinksSegmentArray{
 //					&launchdarkly.ViewLinksSegmentArgs{
 //						Environment_id: "507f1f77bcf86cd799439011",

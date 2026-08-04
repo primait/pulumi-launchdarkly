@@ -8,9 +8,9 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly AI Config variation data source.
+ * Provides a LaunchDarkly AgentControl config variation data source.
  *
- * This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+ * This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -39,7 +39,7 @@ export function getAiConfigVariation(args: GetAiConfigVariationArgs, opts?: pulu
  */
 export interface GetAiConfigVariationArgs {
     /**
-     * The AI Config key that this variation belongs to.
+     * The AgentControl config key that this variation belongs to.
      */
     configKey: string;
     /**
@@ -57,7 +57,7 @@ export interface GetAiConfigVariationArgs {
  */
 export interface GetAiConfigVariationResult {
     /**
-     * The AI Config key that this variation belongs to.
+     * The AgentControl config key that this variation belongs to.
      */
     readonly configKey: string;
     /**
@@ -76,6 +76,10 @@ export interface GetAiConfigVariationResult {
      * The variation's instructions. Used in agent mode.
      */
     readonly instructions: string;
+    /**
+     * The judges attached to this variation, keyed by the key of the judge AgentControl config.
+     */
+    readonly judges: {[key: string]: outputs.GetAiConfigVariationJudges};
     /**
      * The variation's unique key.
      */
@@ -105,7 +109,7 @@ export interface GetAiConfigVariationResult {
      */
     readonly state: string;
     /**
-     * A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+     * A set of AI tool keys associated with this variation.
      */
     readonly toolKeys: string[];
     /**
@@ -118,9 +122,9 @@ export interface GetAiConfigVariationResult {
     readonly version: number;
 }
 /**
- * Provides a LaunchDarkly AI Config variation data source.
+ * Provides a LaunchDarkly AgentControl config variation data source.
  *
- * This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+ * This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
  *
  * ## Example Usage
  *
@@ -149,7 +153,7 @@ export function getAiConfigVariationOutput(args: GetAiConfigVariationOutputArgs,
  */
 export interface GetAiConfigVariationOutputArgs {
     /**
-     * The AI Config key that this variation belongs to.
+     * The AgentControl config key that this variation belongs to.
      */
     configKey: pulumi.Input<string>;
     /**

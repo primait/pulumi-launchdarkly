@@ -12,7 +12,7 @@ namespace Pulumi.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly AI agent graph resource.
     /// 
-    /// An agent graph represents a directed graph of AI Configs, connecting them with edges that describe handoffs from one AI Config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
+    /// An agent graph represents a directed graph of AgentControl configs, connecting them with edges that describe handoffs from one AgentControl config to another. This resource allows you to create and manage agent graphs within a LaunchDarkly project.
     /// 
     /// ## Example Usage
     /// 
@@ -95,7 +95,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         [Output("edges")]
         public Output<ImmutableDictionary<string, Outputs.AiAgentGraphEdges>?> Edges { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Launchdarkly
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The AgentControl config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         [Output("rootConfigKey")]
         public Output<string?> RootConfigKey { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Launchdarkly
         private InputMap<Inputs.AiAgentGraphEdgesArgs>? _edges;
 
         /// <summary>
-        /// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         public InputMap<Inputs.AiAgentGraphEdgesArgs> Edges
         {
@@ -238,7 +238,7 @@ namespace Pulumi.Launchdarkly
         public Input<string> ProjectKey { get; set; } = null!;
 
         /// <summary>
-        /// The AI Config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The AgentControl config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         [Input("rootConfigKey")]
         public Input<string>? RootConfigKey { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.Launchdarkly
         private InputMap<Inputs.AiAgentGraphEdgesGetArgs>? _edges;
 
         /// <summary>
-        /// The edges in the graph, keyed by edge key. Each edge connects a source AI Config to a target AI Config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `Edges` or `RootConfigKey` is set, both must be set, and `Edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         public InputMap<Inputs.AiAgentGraphEdgesGetArgs> Edges
         {
@@ -312,7 +312,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? ProjectKey { get; set; }
 
         /// <summary>
-        /// The AI Config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        /// The AgentControl config key of the root node of the graph. If `RootConfigKey` or `Edges` is set, both must be set. A graph with neither defined is a metadata-only graph. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         /// </summary>
         [Input("rootConfigKey")]
         public Input<string>? RootConfigKey { get; set; }

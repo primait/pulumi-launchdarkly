@@ -12,9 +12,9 @@ namespace Pulumi.Launchdarkly
     public static class GetAiConfigVariation
     {
         /// <summary>
-        /// Provides a LaunchDarkly AI Config variation data source.
+        /// Provides a LaunchDarkly AgentControl config variation data source.
         /// 
-        /// This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -40,9 +40,9 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiConfigVariationResult>("launchdarkly:index/getAiConfigVariation:getAiConfigVariation", args ?? new GetAiConfigVariationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly AI Config variation data source.
+        /// Provides a LaunchDarkly AgentControl config variation data source.
         /// 
-        /// This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -68,9 +68,9 @@ namespace Pulumi.Launchdarkly
             => global::Pulumi.Deployment.Instance.Invoke<GetAiConfigVariationResult>("launchdarkly:index/getAiConfigVariation:getAiConfigVariation", args ?? new GetAiConfigVariationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a LaunchDarkly AI Config variation data source.
+        /// Provides a LaunchDarkly AgentControl config variation data source.
         /// 
-        /// This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+        /// This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
         /// 
         /// ## Example Usage
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigVariationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to.
+        /// The AgentControl config key that this variation belongs to.
         /// </summary>
         [Input("configKey", required: true)]
         public string ConfigKey { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigVariationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to.
+        /// The AgentControl config key that this variation belongs to.
         /// </summary>
         [Input("configKey", required: true)]
         public Input<string> ConfigKey { get; set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetAiConfigVariationResult
     {
         /// <summary>
-        /// The AI Config key that this variation belongs to.
+        /// The AgentControl config key that this variation belongs to.
         /// </summary>
         public readonly string ConfigKey;
         /// <summary>
@@ -173,6 +173,10 @@ namespace Pulumi.Launchdarkly
         /// The variation's instructions. Used in agent mode.
         /// </summary>
         public readonly string Instructions;
+        /// <summary>
+        /// The judges attached to this variation, keyed by the key of the judge AgentControl config.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetAiConfigVariationJudgesResult> Judges;
         /// <summary>
         /// The variation's unique key.
         /// </summary>
@@ -202,7 +206,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        /// A set of AI tool keys associated with this variation.
         /// </summary>
         public readonly ImmutableArray<string> ToolKeys;
         /// <summary>
@@ -225,6 +229,8 @@ namespace Pulumi.Launchdarkly
             string id,
 
             string instructions,
+
+            ImmutableDictionary<string, Outputs.GetAiConfigVariationJudgesResult> judges,
 
             string key,
 
@@ -251,6 +257,7 @@ namespace Pulumi.Launchdarkly
             Description = description;
             Id = id;
             Instructions = instructions;
+            Judges = judges;
             Key = key;
             Messages = messages;
             Model = model;

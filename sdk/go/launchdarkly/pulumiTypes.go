@@ -150,13 +150,13 @@ func (o AccessTokenInlineRoleArrayOutput) Index(i pulumi.IntInput) AccessTokenIn
 }
 
 type AiAgentGraphEdges struct {
-	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 	Handoff *string `pulumi:"handoff"`
 	// The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
 	Key *string `pulumi:"key"`
-	// The AI Config key that is the source of this edge.
+	// The AgentControl config key that is the source of this edge.
 	SourceConfig string `pulumi:"sourceConfig"`
-	// The AI Config key that is the target of this edge.
+	// The AgentControl config key that is the target of this edge.
 	TargetConfig string `pulumi:"targetConfig"`
 }
 
@@ -172,13 +172,13 @@ type AiAgentGraphEdgesInput interface {
 }
 
 type AiAgentGraphEdgesArgs struct {
-	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 	Handoff pulumi.StringPtrInput `pulumi:"handoff"`
 	// The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The AI Config key that is the source of this edge.
+	// The AgentControl config key that is the source of this edge.
 	SourceConfig pulumi.StringInput `pulumi:"sourceConfig"`
-	// The AI Config key that is the target of this edge.
+	// The AgentControl config key that is the target of this edge.
 	TargetConfig pulumi.StringInput `pulumi:"targetConfig"`
 }
 
@@ -233,7 +233,7 @@ func (o AiAgentGraphEdgesOutput) ToAiAgentGraphEdgesOutputWithContext(ctx contex
 	return o
 }
 
-// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 func (o AiAgentGraphEdgesOutput) Handoff() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiAgentGraphEdges) *string { return v.Handoff }).(pulumi.StringPtrOutput)
 }
@@ -243,12 +243,12 @@ func (o AiAgentGraphEdgesOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiAgentGraphEdges) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The AI Config key that is the source of this edge.
+// The AgentControl config key that is the source of this edge.
 func (o AiAgentGraphEdgesOutput) SourceConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v AiAgentGraphEdges) string { return v.SourceConfig }).(pulumi.StringOutput)
 }
 
-// The AI Config key that is the target of this edge.
+// The AgentControl config key that is the target of this edge.
 func (o AiAgentGraphEdgesOutput) TargetConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v AiAgentGraphEdges) string { return v.TargetConfig }).(pulumi.StringOutput)
 }
@@ -377,6 +377,103 @@ func (o AiConfigVariationTypeArrayOutput) Index(i pulumi.IntInput) AiConfigVaria
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiConfigVariationType {
 		return vs[0].([]AiConfigVariationType)[vs[1].(int)]
 	}).(AiConfigVariationTypeOutput)
+}
+
+type AiConfigVariationJudges struct {
+	// The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+	SamplingRate float64 `pulumi:"samplingRate"`
+}
+
+// AiConfigVariationJudgesInput is an input type that accepts AiConfigVariationJudgesArgs and AiConfigVariationJudgesOutput values.
+// You can construct a concrete instance of `AiConfigVariationJudgesInput` via:
+//
+//	AiConfigVariationJudgesArgs{...}
+type AiConfigVariationJudgesInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationJudgesOutput() AiConfigVariationJudgesOutput
+	ToAiConfigVariationJudgesOutputWithContext(context.Context) AiConfigVariationJudgesOutput
+}
+
+type AiConfigVariationJudgesArgs struct {
+	// The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+	SamplingRate pulumi.Float64Input `pulumi:"samplingRate"`
+}
+
+func (AiConfigVariationJudgesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationJudges)(nil)).Elem()
+}
+
+func (i AiConfigVariationJudgesArgs) ToAiConfigVariationJudgesOutput() AiConfigVariationJudgesOutput {
+	return i.ToAiConfigVariationJudgesOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationJudgesArgs) ToAiConfigVariationJudgesOutputWithContext(ctx context.Context) AiConfigVariationJudgesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationJudgesOutput)
+}
+
+// AiConfigVariationJudgesMapInput is an input type that accepts AiConfigVariationJudgesMap and AiConfigVariationJudgesMapOutput values.
+// You can construct a concrete instance of `AiConfigVariationJudgesMapInput` via:
+//
+//	AiConfigVariationJudgesMap{ "key": AiConfigVariationJudgesArgs{...} }
+type AiConfigVariationJudgesMapInput interface {
+	pulumi.Input
+
+	ToAiConfigVariationJudgesMapOutput() AiConfigVariationJudgesMapOutput
+	ToAiConfigVariationJudgesMapOutputWithContext(context.Context) AiConfigVariationJudgesMapOutput
+}
+
+type AiConfigVariationJudgesMap map[string]AiConfigVariationJudgesInput
+
+func (AiConfigVariationJudgesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AiConfigVariationJudges)(nil)).Elem()
+}
+
+func (i AiConfigVariationJudgesMap) ToAiConfigVariationJudgesMapOutput() AiConfigVariationJudgesMapOutput {
+	return i.ToAiConfigVariationJudgesMapOutputWithContext(context.Background())
+}
+
+func (i AiConfigVariationJudgesMap) ToAiConfigVariationJudgesMapOutputWithContext(ctx context.Context) AiConfigVariationJudgesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiConfigVariationJudgesMapOutput)
+}
+
+type AiConfigVariationJudgesOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationJudgesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiConfigVariationJudges)(nil)).Elem()
+}
+
+func (o AiConfigVariationJudgesOutput) ToAiConfigVariationJudgesOutput() AiConfigVariationJudgesOutput {
+	return o
+}
+
+func (o AiConfigVariationJudgesOutput) ToAiConfigVariationJudgesOutputWithContext(ctx context.Context) AiConfigVariationJudgesOutput {
+	return o
+}
+
+// The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+func (o AiConfigVariationJudgesOutput) SamplingRate() pulumi.Float64Output {
+	return o.ApplyT(func(v AiConfigVariationJudges) float64 { return v.SamplingRate }).(pulumi.Float64Output)
+}
+
+type AiConfigVariationJudgesMapOutput struct{ *pulumi.OutputState }
+
+func (AiConfigVariationJudgesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AiConfigVariationJudges)(nil)).Elem()
+}
+
+func (o AiConfigVariationJudgesMapOutput) ToAiConfigVariationJudgesMapOutput() AiConfigVariationJudgesMapOutput {
+	return o
+}
+
+func (o AiConfigVariationJudgesMapOutput) ToAiConfigVariationJudgesMapOutputWithContext(ctx context.Context) AiConfigVariationJudgesMapOutput {
+	return o
+}
+
+func (o AiConfigVariationJudgesMapOutput) MapIndex(k pulumi.StringInput) AiConfigVariationJudgesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AiConfigVariationJudges {
+		return vs[0].(map[string]AiConfigVariationJudges)[vs[1].(string)]
+	}).(AiConfigVariationJudgesOutput)
 }
 
 type AiConfigVariationMessage struct {
@@ -5499,13 +5596,13 @@ func (o WebhookStatementArrayOutput) Index(i pulumi.IntInput) WebhookStatementOu
 }
 
 type GetAiAgentGraphEdges struct {
-	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 	Handoff string `pulumi:"handoff"`
 	// The unique key for this edge within the graph. Always equals the map key.
 	Key string `pulumi:"key"`
-	// The AI Config key that is the source of this edge.
+	// The AgentControl config key that is the source of this edge.
 	SourceConfig string `pulumi:"sourceConfig"`
-	// The AI Config key that is the target of this edge.
+	// The AgentControl config key that is the target of this edge.
 	TargetConfig string `pulumi:"targetConfig"`
 }
 
@@ -5521,13 +5618,13 @@ type GetAiAgentGraphEdgesInput interface {
 }
 
 type GetAiAgentGraphEdgesArgs struct {
-	// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+	// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 	Handoff pulumi.StringInput `pulumi:"handoff"`
 	// The unique key for this edge within the graph. Always equals the map key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The AI Config key that is the source of this edge.
+	// The AgentControl config key that is the source of this edge.
 	SourceConfig pulumi.StringInput `pulumi:"sourceConfig"`
-	// The AI Config key that is the target of this edge.
+	// The AgentControl config key that is the target of this edge.
 	TargetConfig pulumi.StringInput `pulumi:"targetConfig"`
 }
 
@@ -5582,7 +5679,7 @@ func (o GetAiAgentGraphEdgesOutput) ToGetAiAgentGraphEdgesOutputWithContext(ctx 
 	return o
 }
 
-// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
 func (o GetAiAgentGraphEdgesOutput) Handoff() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.Handoff }).(pulumi.StringOutput)
 }
@@ -5592,12 +5689,12 @@ func (o GetAiAgentGraphEdgesOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The AI Config key that is the source of this edge.
+// The AgentControl config key that is the source of this edge.
 func (o GetAiAgentGraphEdgesOutput) SourceConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.SourceConfig }).(pulumi.StringOutput)
 }
 
-// The AI Config key that is the target of this edge.
+// The AgentControl config key that is the target of this edge.
 func (o GetAiAgentGraphEdgesOutput) TargetConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiAgentGraphEdges) string { return v.TargetConfig }).(pulumi.StringOutput)
 }
@@ -5735,6 +5832,103 @@ func (o GetAiConfigVariationTypeArrayOutput) Index(i pulumi.IntInput) GetAiConfi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiConfigVariationType {
 		return vs[0].([]GetAiConfigVariationType)[vs[1].(int)]
 	}).(GetAiConfigVariationTypeOutput)
+}
+
+type GetAiConfigVariationJudges struct {
+	// The fraction of generations this judge evaluates.
+	SamplingRate float64 `pulumi:"samplingRate"`
+}
+
+// GetAiConfigVariationJudgesInput is an input type that accepts GetAiConfigVariationJudgesArgs and GetAiConfigVariationJudgesOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationJudgesInput` via:
+//
+//	GetAiConfigVariationJudgesArgs{...}
+type GetAiConfigVariationJudgesInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationJudgesOutput() GetAiConfigVariationJudgesOutput
+	ToGetAiConfigVariationJudgesOutputWithContext(context.Context) GetAiConfigVariationJudgesOutput
+}
+
+type GetAiConfigVariationJudgesArgs struct {
+	// The fraction of generations this judge evaluates.
+	SamplingRate pulumi.Float64Input `pulumi:"samplingRate"`
+}
+
+func (GetAiConfigVariationJudgesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationJudges)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationJudgesArgs) ToGetAiConfigVariationJudgesOutput() GetAiConfigVariationJudgesOutput {
+	return i.ToGetAiConfigVariationJudgesOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationJudgesArgs) ToGetAiConfigVariationJudgesOutputWithContext(ctx context.Context) GetAiConfigVariationJudgesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationJudgesOutput)
+}
+
+// GetAiConfigVariationJudgesMapInput is an input type that accepts GetAiConfigVariationJudgesMap and GetAiConfigVariationJudgesMapOutput values.
+// You can construct a concrete instance of `GetAiConfigVariationJudgesMapInput` via:
+//
+//	GetAiConfigVariationJudgesMap{ "key": GetAiConfigVariationJudgesArgs{...} }
+type GetAiConfigVariationJudgesMapInput interface {
+	pulumi.Input
+
+	ToGetAiConfigVariationJudgesMapOutput() GetAiConfigVariationJudgesMapOutput
+	ToGetAiConfigVariationJudgesMapOutputWithContext(context.Context) GetAiConfigVariationJudgesMapOutput
+}
+
+type GetAiConfigVariationJudgesMap map[string]GetAiConfigVariationJudgesInput
+
+func (GetAiConfigVariationJudgesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiConfigVariationJudges)(nil)).Elem()
+}
+
+func (i GetAiConfigVariationJudgesMap) ToGetAiConfigVariationJudgesMapOutput() GetAiConfigVariationJudgesMapOutput {
+	return i.ToGetAiConfigVariationJudgesMapOutputWithContext(context.Background())
+}
+
+func (i GetAiConfigVariationJudgesMap) ToGetAiConfigVariationJudgesMapOutputWithContext(ctx context.Context) GetAiConfigVariationJudgesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiConfigVariationJudgesMapOutput)
+}
+
+type GetAiConfigVariationJudgesOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationJudgesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiConfigVariationJudges)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationJudgesOutput) ToGetAiConfigVariationJudgesOutput() GetAiConfigVariationJudgesOutput {
+	return o
+}
+
+func (o GetAiConfigVariationJudgesOutput) ToGetAiConfigVariationJudgesOutputWithContext(ctx context.Context) GetAiConfigVariationJudgesOutput {
+	return o
+}
+
+// The fraction of generations this judge evaluates.
+func (o GetAiConfigVariationJudgesOutput) SamplingRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiConfigVariationJudges) float64 { return v.SamplingRate }).(pulumi.Float64Output)
+}
+
+type GetAiConfigVariationJudgesMapOutput struct{ *pulumi.OutputState }
+
+func (GetAiConfigVariationJudgesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiConfigVariationJudges)(nil)).Elem()
+}
+
+func (o GetAiConfigVariationJudgesMapOutput) ToGetAiConfigVariationJudgesMapOutput() GetAiConfigVariationJudgesMapOutput {
+	return o
+}
+
+func (o GetAiConfigVariationJudgesMapOutput) ToGetAiConfigVariationJudgesMapOutputWithContext(ctx context.Context) GetAiConfigVariationJudgesMapOutput {
+	return o
+}
+
+func (o GetAiConfigVariationJudgesMapOutput) MapIndex(k pulumi.StringInput) GetAiConfigVariationJudgesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAiConfigVariationJudges {
+		return vs[0].(map[string]GetAiConfigVariationJudges)[vs[1].(string)]
+	}).(GetAiConfigVariationJudgesOutput)
 }
 
 type GetAiConfigVariationMessage struct {
@@ -9171,6 +9365,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiAgentGraphEdgesMapInput)(nil)).Elem(), AiAgentGraphEdgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeInput)(nil)).Elem(), AiConfigVariationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationTypeArrayInput)(nil)).Elem(), AiConfigVariationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationJudgesInput)(nil)).Elem(), AiConfigVariationJudgesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationJudgesMapInput)(nil)).Elem(), AiConfigVariationJudgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageInput)(nil)).Elem(), AiConfigVariationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiConfigVariationMessageArrayInput)(nil)).Elem(), AiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementInput)(nil)).Elem(), AuditLogSubscriptionStatementArgs{})
@@ -9243,6 +9439,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiAgentGraphEdgesMapInput)(nil)).Elem(), GetAiAgentGraphEdgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeInput)(nil)).Elem(), GetAiConfigVariationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationTypeArrayInput)(nil)).Elem(), GetAiConfigVariationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationJudgesInput)(nil)).Elem(), GetAiConfigVariationJudgesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationJudgesMapInput)(nil)).Elem(), GetAiConfigVariationJudgesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageInput)(nil)).Elem(), GetAiConfigVariationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiConfigVariationMessageArrayInput)(nil)).Elem(), GetAiConfigVariationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArgs{})
@@ -9304,6 +9502,8 @@ func init() {
 	pulumi.RegisterOutputType(AiAgentGraphEdgesMapOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationTypeOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationJudgesOutput{})
+	pulumi.RegisterOutputType(AiConfigVariationJudgesMapOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationMessageOutput{})
 	pulumi.RegisterOutputType(AiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogSubscriptionStatementOutput{})
@@ -9376,6 +9576,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAiAgentGraphEdgesMapOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationTypeOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationJudgesOutput{})
+	pulumi.RegisterOutputType(GetAiConfigVariationJudgesMapOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationMessageOutput{})
 	pulumi.RegisterOutputType(GetAiConfigVariationMessageArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementOutput{})

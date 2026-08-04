@@ -32,11 +32,56 @@ namespace Pulumi.Launchdarkly
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Example: Frontend team view with bulk flag and segment assignments
-    ///     var frontendTeam = new Launchdarkly.ViewLinks("frontend_team", new()
+    ///     // Each view these links target must exist before Terraform creates the links.
+    ///     // Declare them (or read them with a launchdarkly_view data source when another
+    ///     // configuration owns them) and reference view_key rather than repeating the key
+    ///     // as a string literal. That reference is what tells Terraform to create the view
+    ///     // first, and it rules out typos.
+    ///     var frontendTeam = new Launchdarkly.View("frontend_team", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "frontend-team",
+    ///         Key = "frontend-team",
+    ///         Name = "Frontend Team",
+    ///         MaintainerTeamKey = "frontend",
+    ///     });
+    /// 
+    ///     var mobileTeam = new Launchdarkly.View("mobile_team", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "mobile-team",
+    ///         Name = "Mobile Team",
+    ///         MaintainerTeamKey = "mobile",
+    ///     });
+    /// 
+    ///     var sharedFeatures = new Launchdarkly.View("shared_features", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "shared-features",
+    ///         Name = "Shared Features",
+    ///         MaintainerTeamKey = "platform",
+    ///     });
+    /// 
+    ///     var backendTeam = new Launchdarkly.View("backend_team", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "backend-team",
+    ///         Name = "Backend Team",
+    ///         MaintainerTeamKey = "backend",
+    ///     });
+    /// 
+    ///     var userSegments = new Launchdarkly.View("user_segments", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         Key = "user-segments-view",
+    ///         Name = "User Segments",
+    ///         MaintainerTeamKey = "platform",
+    ///     });
+    /// 
+    ///     // Example: Frontend team view with bulk flag and segment assignments
+    ///     var frontendTeamViewLinks = new Launchdarkly.ViewLinks("frontend_team", new()
+    ///     {
+    ///         ProjectKey = "my-project",
+    ///         ViewKey = frontendTeam.Key,
     ///         Flags = new[]
     ///         {
     ///             "feature-login",
@@ -66,10 +111,10 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: Mobile team view with different flags
-    ///     var mobileTeam = new Launchdarkly.ViewLinks("mobile_team", new()
+    ///     var mobileTeamViewLinks = new Launchdarkly.ViewLinks("mobile_team", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "mobile-team",
+    ///         ViewKey = mobileTeam.Key,
     ///         Flags = new[]
     ///         {
     ///             "feature-mobile-login",
@@ -82,10 +127,10 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: Shared features across teams
-    ///     var sharedFeatures = new Launchdarkly.ViewLinks("shared_features", new()
+    ///     var sharedFeaturesViewLinks = new Launchdarkly.ViewLinks("shared_features", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "shared-features",
+    ///         ViewKey = sharedFeatures.Key,
     ///         Flags = new[]
     ///         {
     ///             "feature-maintenance-mode",
@@ -96,10 +141,10 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Demonstrating updates - adding/removing flags and segments from a view
-    ///     var backendTeam = new Launchdarkly.ViewLinks("backend_team", new()
+    ///     var backendTeamViewLinks = new Launchdarkly.ViewLinks("backend_team", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "backend-team",
+    ///         ViewKey = backendTeam.Key,
     ///         Flags = new[]
     ///         {
     ///             "feature-database-migration",
@@ -125,7 +170,7 @@ namespace Pulumi.Launchdarkly
     ///     var segmentsOnly = new Launchdarkly.ViewLinks("segments_only", new()
     ///     {
     ///         ProjectKey = "my-project",
-    ///         ViewKey = "user-segments-view",
+    ///         ViewKey = userSegments.Key,
     ///         Segments = new[]
     ///         {
     ///             new Launchdarkly.Inputs.ViewLinksSegmentArgs

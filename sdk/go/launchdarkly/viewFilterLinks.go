@@ -36,10 +36,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Each view these links target must exist before Terraform creates the links.
+//			// Declare them (or read them with a launchdarkly_view data source when another
+//			// configuration owns them) and reference view_key rather than repeating the key
+//			// as a string literal. That reference is what tells Terraform to create the view
+//			// first, and it rules out typos.
+//			frontendTeam, err := launchdarkly.NewView(ctx, "frontend_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("frontend-team"),
+//				Name:              pulumi.String("Frontend Team"),
+//				MaintainerTeamKey: pulumi.String("frontend"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			platformTeam, err := launchdarkly.NewView(ctx, "platform_team", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("platform-team"),
+//				Name:              pulumi.String("Platform Team"),
+//				MaintainerTeamKey: pulumi.String("platform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			betaProgram, err := launchdarkly.NewView(ctx, "beta_program", &launchdarkly.ViewArgs{
+//				ProjectKey:        pulumi.String("my-project"),
+//				Key:               pulumi.String("beta-program"),
+//				Name:              pulumi.String("Beta Program"),
+//				MaintainerTeamKey: pulumi.String("product"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Link all flags tagged "frontend" to a view
-//			_, err := launchdarkly.NewViewFilterLinks(ctx, "frontend_flags", &launchdarkly.ViewFilterLinksArgs{
+//			_, err = launchdarkly.NewViewFilterLinks(ctx, "frontend_flags", &launchdarkly.ViewFilterLinksArgs{
 //				ProjectKey: pulumi.String("my-project"),
-//				ViewKey:    pulumi.String("frontend-team"),
+//				ViewKey:    frontendTeam.Key,
 //				FlagFilter: pulumi.String("tags:frontend"),
 //			})
 //			if err != nil {
@@ -48,7 +80,7 @@ import (
 //			// Link both flags and segments matching a tag
 //			_, err = launchdarkly.NewViewFilterLinks(ctx, "platform_resources", &launchdarkly.ViewFilterLinksArgs{
 //				ProjectKey:                 pulumi.String("my-project"),
-//				ViewKey:                    pulumi.String("platform-team"),
+//				ViewKey:                    platformTeam.Key,
 //				FlagFilter:                 pulumi.String("tags:platform"),
 //				SegmentFilter:              pulumi.String("tags anyOf [\"platform\"]"),
 //				SegmentFilterEnvironmentId: pulumi.Any(myProject.Environments.Production.ClientSideId),
@@ -59,7 +91,7 @@ import (
 //			// Link only segments matching a filter
 //			_, err = launchdarkly.NewViewFilterLinks(ctx, "beta_segments", &launchdarkly.ViewFilterLinksArgs{
 //				ProjectKey:                 pulumi.String("my-project"),
-//				ViewKey:                    pulumi.String("beta-program"),
+//				ViewKey:                    betaProgram.Key,
 //				SegmentFilter:              pulumi.String("tags anyOf [\"beta\"]"),
 //				SegmentFilterEnvironmentId: pulumi.Any(myProject.Environments.Production.ClientSideId),
 //			})

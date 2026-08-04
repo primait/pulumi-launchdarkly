@@ -27,7 +27,7 @@ class GetAiConfigVariationResult:
     """
     A collection of values returned by getAiConfigVariation.
     """
-    def __init__(__self__, config_key=None, creation_date=None, description=None, id=None, instructions=None, key=None, messages=None, model=None, model_config_key=None, name=None, project_key=None, state=None, tool_keys=None, variation_id=None, version=None):
+    def __init__(__self__, config_key=None, creation_date=None, description=None, id=None, instructions=None, judges=None, key=None, messages=None, model=None, model_config_key=None, name=None, project_key=None, state=None, tool_keys=None, variation_id=None, version=None):
         if config_key and not isinstance(config_key, str):
             raise TypeError("Expected argument 'config_key' to be a str")
         pulumi.set(__self__, "config_key", config_key)
@@ -43,6 +43,9 @@ class GetAiConfigVariationResult:
         if instructions and not isinstance(instructions, str):
             raise TypeError("Expected argument 'instructions' to be a str")
         pulumi.set(__self__, "instructions", instructions)
+        if judges and not isinstance(judges, dict):
+            raise TypeError("Expected argument 'judges' to be a dict")
+        pulumi.set(__self__, "judges", judges)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
@@ -78,7 +81,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter(name="configKey")
     def config_key(self) -> _builtins.str:
         """
-        The AI Config key that this variation belongs to.
+        The AgentControl config key that this variation belongs to.
         """
         return pulumi.get(self, "config_key")
 
@@ -113,6 +116,14 @@ class GetAiConfigVariationResult:
         The variation's instructions. Used in agent mode.
         """
         return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter
+    def judges(self) -> Mapping[str, 'outputs.GetAiConfigVariationJudgesResult']:
+        """
+        The judges attached to this variation, keyed by the key of the judge AgentControl config.
+        """
+        return pulumi.get(self, "judges")
 
     @_builtins.property
     @pulumi.getter
@@ -174,7 +185,7 @@ class GetAiConfigVariationResult:
     @pulumi.getter(name="toolKeys")
     def tool_keys(self) -> Sequence[_builtins.str]:
         """
-        A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+        A set of AI tool keys associated with this variation.
         """
         return pulumi.get(self, "tool_keys")
 
@@ -206,6 +217,7 @@ class AwaitableGetAiConfigVariationResult(GetAiConfigVariationResult):
             description=self.description,
             id=self.id,
             instructions=self.instructions,
+            judges=self.judges,
             key=self.key,
             messages=self.messages,
             model=self.model,
@@ -223,9 +235,9 @@ def get_ai_config_variation(config_key: Optional[_builtins.str] = None,
                             project_key: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiConfigVariationResult:
     """
-    Provides a LaunchDarkly AI Config variation data source.
+    Provides a LaunchDarkly AgentControl config variation data source.
 
-    This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+    This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
 
     ## Example Usage
 
@@ -239,7 +251,7 @@ def get_ai_config_variation(config_key: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str config_key: The AI Config key that this variation belongs to.
+    :param _builtins.str config_key: The AgentControl config key that this variation belongs to.
     :param _builtins.str key: The variation's unique key.
     :param _builtins.str project_key: The project key.
     """
@@ -256,6 +268,7 @@ def get_ai_config_variation(config_key: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         instructions=pulumi.get(__ret__, 'instructions'),
+        judges=pulumi.get(__ret__, 'judges'),
         key=pulumi.get(__ret__, 'key'),
         messages=pulumi.get(__ret__, 'messages'),
         model=pulumi.get(__ret__, 'model'),
@@ -271,9 +284,9 @@ def get_ai_config_variation_output(config_key: pulumi.Input[Optional[_builtins.s
                                    project_key: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiConfigVariationResult]:
     """
-    Provides a LaunchDarkly AI Config variation data source.
+    Provides a LaunchDarkly AgentControl config variation data source.
 
-    This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+    This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
 
     ## Example Usage
 
@@ -287,7 +300,7 @@ def get_ai_config_variation_output(config_key: pulumi.Input[Optional[_builtins.s
     ```
 
 
-    :param _builtins.str config_key: The AI Config key that this variation belongs to.
+    :param _builtins.str config_key: The AgentControl config key that this variation belongs to.
     :param _builtins.str key: The variation's unique key.
     :param _builtins.str project_key: The project key.
     """
@@ -303,6 +316,7 @@ def get_ai_config_variation_output(config_key: pulumi.Input[Optional[_builtins.s
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         instructions=pulumi.get(__response__, 'instructions'),
+        judges=pulumi.get(__response__, 'judges'),
         key=pulumi.get(__response__, 'key'),
         messages=pulumi.get(__response__, 'messages'),
         model=pulumi.get(__response__, 'model'),

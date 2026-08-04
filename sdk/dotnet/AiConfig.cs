@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Launchdarkly
 {
     /// <summary>
-    /// Provides a LaunchDarkly AI Config resource.
+    /// Provides a LaunchDarkly AgentControl config resource.
     /// 
-    /// This resource allows you to create and manage AI Configurations within your LaunchDarkly project.
+    /// This resource allows you to create and manage AgentControl configurations within your LaunchDarkly project.
     /// 
     /// ## Example Usage
     /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Launchdarkly
     /// 
     /// ## Import
     /// 
-    /// LaunchDarkly AI Configs can be imported using the format `project_key/config_key`
+    /// LaunchDarkly AgentControl configs can be imported using the format `project_key/config_key`
     /// 
     /// ```sh
     /// $ pulumi import launchdarkly:index/aiConfig:AiConfig example example-project/customer-assistant
@@ -52,19 +52,19 @@ namespace Pulumi.Launchdarkly
     public partial class AiConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A timestamp of when the AI Config was created.
+        /// A timestamp of when the AgentControl config was created.
         /// </summary>
         [Output("creationDate")]
         public Output<int> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's description.
+        /// The AgentControl config's description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The key of the evaluation metric associated with this AI Config.
+        /// The key of the evaluation metric associated with this AgentControl config.
         /// </summary>
         [Output("evaluationMetricKey")]
         public Output<string?> EvaluationMetricKey { get; private set; } = null!;
@@ -76,31 +76,31 @@ namespace Pulumi.Launchdarkly
         public Output<bool?> IsInverted { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The member ID of the maintainer for this AI Config. Conflicts with `MaintainerTeamKey`.
+        /// The member ID of the maintainer for this AgentControl config. Conflicts with `MaintainerTeamKey`.
         /// </summary>
         [Output("maintainerId")]
         public Output<string> MaintainerId { get; private set; } = null!;
 
         /// <summary>
-        /// The team key of the maintainer team for this AI Config. Conflicts with `MaintainerId`.
+        /// The team key of the maintainer team for this AgentControl config. Conflicts with `MaintainerId`.
         /// </summary>
         [Output("maintainerTeamKey")]
         public Output<string> MaintainerTeamKey { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The AI Config's human-readable name.
+        /// The AgentControl config's human-readable name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -112,19 +112,19 @@ namespace Pulumi.Launchdarkly
         public Output<string> ProjectKey { get; private set; } = null!;
 
         /// <summary>
-        /// Tags associated with this AI Config.
+        /// Tags associated with this AgentControl config.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A list of variation summaries for this AI Config.
+        /// A list of variation summaries for this AgentControl config.
         /// </summary>
         [Output("variations")]
         public Output<ImmutableArray<Outputs.AiConfigVariation>> Variations { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the AI Config.
+        /// The version of the AgentControl config.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -177,13 +177,13 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AI Config's description.
+        /// The AgentControl config's description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The key of the evaluation metric associated with this AI Config.
+        /// The key of the evaluation metric associated with this AgentControl config.
         /// </summary>
         [Input("evaluationMetricKey")]
         public Input<string>? EvaluationMetricKey { get; set; }
@@ -195,31 +195,31 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsInverted { get; set; }
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The member ID of the maintainer for this AI Config. Conflicts with `MaintainerTeamKey`.
+        /// The member ID of the maintainer for this AgentControl config. Conflicts with `MaintainerTeamKey`.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The team key of the maintainer team for this AI Config. Conflicts with `MaintainerId`.
+        /// The team key of the maintainer team for this AgentControl config. Conflicts with `MaintainerId`.
         /// </summary>
         [Input("maintainerTeamKey")]
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The AI Config's human-readable name.
+        /// The AgentControl config's human-readable name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with this AI Config.
+        /// Tags associated with this AgentControl config.
         /// </summary>
         public InputList<string> Tags
         {
@@ -251,19 +251,19 @@ namespace Pulumi.Launchdarkly
     public sealed class AiConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A timestamp of when the AI Config was created.
+        /// A timestamp of when the AgentControl config was created.
         /// </summary>
         [Input("creationDate")]
         public Input<int>? CreationDate { get; set; }
 
         /// <summary>
-        /// The AI Config's description.
+        /// The AgentControl config's description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The key of the evaluation metric associated with this AI Config.
+        /// The key of the evaluation metric associated with this AgentControl config.
         /// </summary>
         [Input("evaluationMetricKey")]
         public Input<string>? EvaluationMetricKey { get; set; }
@@ -275,31 +275,31 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? IsInverted { get; set; }
 
         /// <summary>
-        /// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The member ID of the maintainer for this AI Config. Conflicts with `MaintainerTeamKey`.
+        /// The member ID of the maintainer for this AgentControl config. Conflicts with `MaintainerTeamKey`.
         /// </summary>
         [Input("maintainerId")]
         public Input<string>? MaintainerId { get; set; }
 
         /// <summary>
-        /// The team key of the maintainer team for this AI Config. Conflicts with `MaintainerId`.
+        /// The team key of the maintainer team for this AgentControl config. Conflicts with `MaintainerId`.
         /// </summary>
         [Input("maintainerTeamKey")]
         public Input<string>? MaintainerTeamKey { get; set; }
 
         /// <summary>
-        /// The AI Config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The AgentControl config's mode. Must be `Completion`, `Agent`, or `Judge`. Defaults to `Completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The AI Config's human-readable name.
+        /// The AgentControl config's human-readable name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Launchdarkly
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with this AI Config.
+        /// Tags associated with this AgentControl config.
         /// </summary>
         public InputList<string> Tags
         {
@@ -326,7 +326,7 @@ namespace Pulumi.Launchdarkly
         private InputList<Inputs.AiConfigVariationGetArgs>? _variations;
 
         /// <summary>
-        /// A list of variation summaries for this AI Config.
+        /// A list of variation summaries for this AgentControl config.
         /// </summary>
         public InputList<Inputs.AiConfigVariationGetArgs> Variations
         {
@@ -335,7 +335,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The version of the AI Config.
+        /// The version of the AgentControl config.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

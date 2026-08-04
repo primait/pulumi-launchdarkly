@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly AI Config variation resource.
+// Provides a LaunchDarkly AgentControl config variation resource.
 //
-// This resource allows you to create and manage AI Config variations within your LaunchDarkly project.
+// This resource allows you to create and manage AgentControl config variations within your LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -30,7 +30,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.NewAiConfigVariation(ctx, "example", &launchdarkly.AiConfigVariationArgs{
+//			responseQualityJudge, err := launchdarkly.NewAiConfig(ctx, "response_quality_judge", &launchdarkly.AiConfigArgs{
+//				ProjectKey:          pulumi.Any(exampleLaunchdarklyProject.Key),
+//				Key:                 pulumi.String("response-quality-judge"),
+//				Name:                pulumi.String("Response Quality Judge"),
+//				Mode:                pulumi.String("judge"),
+//				EvaluationMetricKey: pulumi.String("$ld:ai:judge:response-quality"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = launchdarkly.NewAiConfigVariation(ctx, "example", &launchdarkly.AiConfigVariationArgs{
 //				ProjectKey:     pulumi.Any(exampleLaunchdarklyProject.Key),
 //				ConfigKey:      pulumi.Any(exampleLaunchdarklyAiConfig.Key),
 //				Key:            pulumi.String("helpful-v1"),
@@ -46,6 +56,13 @@ import (
 //						Content: pulumi.String("{{ ldctx.query }}"),
 //					},
 //				},
+//				Judges: responseQualityJudge.Key.ApplyT(func(key string) (map[string]map[string]interface{}, error) {
+//					return map[string]map[string]interface{}{
+//						key: map[string]interface{}{
+//							"samplingRate": 0.1,
+//						},
+//					}, nil
+//				}).(pulumi.MapOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -58,7 +75,7 @@ import (
 //
 // ## Import
 //
-// LaunchDarkly AI Config variations can be imported using the format `project_key/config_key/variation_key`
+// LaunchDarkly AgentControl config variations can be imported using the format `project_key/config_key/variation_key`
 //
 // ```sh
 // $ pulumi import launchdarkly:index/aiConfigVariation:AiConfigVariation example example-project/customer-assistant/helpful-v1
@@ -66,7 +83,7 @@ import (
 type AiConfigVariation struct {
 	pulumi.CustomResourceState
 
-	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringOutput `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate pulumi.IntOutput `pulumi:"creationDate"`
@@ -74,6 +91,8 @@ type AiConfigVariation struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrOutput `pulumi:"instructions"`
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+	Judges AiConfigVariationJudgesMapOutput `pulumi:"judges"`
 	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
@@ -88,7 +107,7 @@ type AiConfigVariation struct {
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys to associate with this variation.
 	ToolKeys pulumi.StringArrayOutput `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId pulumi.StringOutput `pulumi:"variationId"`
@@ -135,7 +154,7 @@ func GetAiConfigVariation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiConfigVariation resources.
 type aiConfigVariationState struct {
-	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey *string `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate *int `pulumi:"creationDate"`
@@ -143,6 +162,8 @@ type aiConfigVariationState struct {
 	Description *string `pulumi:"description"`
 	// The variation's instructions. Used in agent mode.
 	Instructions *string `pulumi:"instructions"`
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+	Judges map[string]AiConfigVariationJudges `pulumi:"judges"`
 	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
@@ -157,7 +178,7 @@ type aiConfigVariationState struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State *string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys to associate with this variation.
 	ToolKeys []string `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId *string `pulumi:"variationId"`
@@ -166,7 +187,7 @@ type aiConfigVariationState struct {
 }
 
 type AiConfigVariationState struct {
-	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringPtrInput
 	// The creation timestamp of the variation.
 	CreationDate pulumi.IntPtrInput
@@ -174,6 +195,8 @@ type AiConfigVariationState struct {
 	Description pulumi.StringPtrInput
 	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrInput
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+	Judges AiConfigVariationJudgesMapInput
 	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// A list of messages for completion mode. Each message has a `role` and `content`.
@@ -188,7 +211,7 @@ type AiConfigVariationState struct {
 	ProjectKey pulumi.StringPtrInput
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringPtrInput
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys to associate with this variation.
 	ToolKeys pulumi.StringArrayInput
 	// The internal ID of the variation.
 	VariationId pulumi.StringPtrInput
@@ -201,12 +224,14 @@ func (AiConfigVariationState) ElementType() reflect.Type {
 }
 
 type aiConfigVariationArgs struct {
-	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey string `pulumi:"configKey"`
 	// The variation's description. Used in agent mode.
 	Description *string `pulumi:"description"`
 	// The variation's instructions. Used in agent mode.
 	Instructions *string `pulumi:"instructions"`
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+	Judges map[string]AiConfigVariationJudges `pulumi:"judges"`
 	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// A list of messages for completion mode. Each message has a `role` and `content`.
@@ -221,18 +246,20 @@ type aiConfigVariationArgs struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State *string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys to associate with this variation.
 	ToolKeys []string `pulumi:"toolKeys"`
 }
 
 // The set of arguments for constructing a AiConfigVariation resource.
 type AiConfigVariationArgs struct {
-	// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ConfigKey pulumi.StringInput
 	// The variation's description. Used in agent mode.
 	Description pulumi.StringPtrInput
 	// The variation's instructions. Used in agent mode.
 	Instructions pulumi.StringPtrInput
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+	Judges AiConfigVariationJudgesMapInput
 	// The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// A list of messages for completion mode. Each message has a `role` and `content`.
@@ -247,7 +274,7 @@ type AiConfigVariationArgs struct {
 	ProjectKey pulumi.StringInput
 	// The state of the variation. Must be `archived` or `published`.
 	State pulumi.StringPtrInput
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys to associate with this variation.
 	ToolKeys pulumi.StringArrayInput
 }
 
@@ -338,7 +365,7 @@ func (o AiConfigVariationOutput) ToAiConfigVariationOutputWithContext(ctx contex
 	return o
 }
 
-// The AI Config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigVariationOutput) ConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.ConfigKey }).(pulumi.StringOutput)
 }
@@ -356,6 +383,11 @@ func (o AiConfigVariationOutput) Description() pulumi.StringPtrOutput {
 // The variation's instructions. Used in agent mode.
 func (o AiConfigVariationOutput) Instructions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringPtrOutput { return v.Instructions }).(pulumi.StringPtrOutput)
+}
+
+// The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+func (o AiConfigVariationOutput) Judges() AiConfigVariationJudgesMapOutput {
+	return o.ApplyT(func(v *AiConfigVariation) AiConfigVariationJudgesMapOutput { return v.Judges }).(AiConfigVariationJudgesMapOutput)
 }
 
 // The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -393,7 +425,7 @@ func (o AiConfigVariationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+// A set of AI tool keys to associate with this variation.
 func (o AiConfigVariationOutput) ToolKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiConfigVariation) pulumi.StringArrayOutput { return v.ToolKeys }).(pulumi.StringArrayOutput)
 }

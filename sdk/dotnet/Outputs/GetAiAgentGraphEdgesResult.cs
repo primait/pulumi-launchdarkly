@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class GetAiAgentGraphEdgesResult
     {
         /// <summary>
-        /// A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        /// A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         /// </summary>
         public readonly string Handoff;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Launchdarkly.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The AI Config key that is the source of this edge.
+        /// The AgentControl config key that is the source of this edge.
         /// </summary>
         public readonly string SourceConfig;
         /// <summary>
-        /// The AI Config key that is the target of this edge.
+        /// The AgentControl config key that is the target of this edge.
         /// </summary>
         public readonly string TargetConfig;
 

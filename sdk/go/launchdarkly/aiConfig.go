@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly AI Config resource.
+// Provides a LaunchDarkly AgentControl config resource.
 //
-// This resource allows you to create and manage AI Configurations within your LaunchDarkly project.
+// This resource allows you to create and manage AgentControl configurations within your LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -51,7 +51,7 @@ import (
 //
 // ## Import
 //
-// LaunchDarkly AI Configs can be imported using the format `project_key/config_key`
+// LaunchDarkly AgentControl configs can be imported using the format `project_key/config_key`
 //
 // ```sh
 // $ pulumi import launchdarkly:index/aiConfig:AiConfig example example-project/customer-assistant
@@ -59,31 +59,31 @@ import (
 type AiConfig struct {
 	pulumi.CustomResourceState
 
-	// A timestamp of when the AI Config was created.
+	// A timestamp of when the AgentControl config was created.
 	CreationDate pulumi.IntOutput `pulumi:"creationDate"`
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey pulumi.StringPtrOutput `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrOutput `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringOutput `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
-	// Tags associated with this AI Config.
+	// Tags associated with this AgentControl config.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// A list of variation summaries for this AI Config.
+	// A list of variation summaries for this AgentControl config.
 	Variations AiConfigVariationTypeArrayOutput `pulumi:"variations"`
-	// The version of the AI Config.
+	// The version of the AgentControl config.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
 
@@ -123,60 +123,60 @@ func GetAiConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiConfig resources.
 type aiConfigState struct {
-	// A timestamp of when the AI Config was created.
+	// A timestamp of when the AgentControl config was created.
 	CreationDate *int `pulumi:"creationDate"`
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description *string `pulumi:"description"`
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey *string `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted *bool `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode *string `pulumi:"mode"`
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name *string `pulumi:"name"`
 	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
-	// Tags associated with this AI Config.
+	// Tags associated with this AgentControl config.
 	Tags []string `pulumi:"tags"`
-	// A list of variation summaries for this AI Config.
+	// A list of variation summaries for this AgentControl config.
 	Variations []AiConfigVariationType `pulumi:"variations"`
-	// The version of the AI Config.
+	// The version of the AgentControl config.
 	Version *int `pulumi:"version"`
 }
 
 type AiConfigState struct {
-	// A timestamp of when the AI Config was created.
+	// A timestamp of when the AgentControl config was created.
 	CreationDate pulumi.IntPtrInput
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description pulumi.StringPtrInput
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey pulumi.StringPtrInput
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrInput
-	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode pulumi.StringPtrInput
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name pulumi.StringPtrInput
 	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
-	// Tags associated with this AI Config.
+	// Tags associated with this AgentControl config.
 	Tags pulumi.StringArrayInput
-	// A list of variation summaries for this AI Config.
+	// A list of variation summaries for this AgentControl config.
 	Variations AiConfigVariationTypeArrayInput
-	// The version of the AI Config.
+	// The version of the AgentControl config.
 	Version pulumi.IntPtrInput
 }
 
@@ -185,49 +185,49 @@ func (AiConfigState) ElementType() reflect.Type {
 }
 
 type aiConfigArgs struct {
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description *string `pulumi:"description"`
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey *string `pulumi:"evaluationMetricKey"`
 	// Whether the evaluation metric is inverted.
 	IsInverted *bool `pulumi:"isInverted"`
-	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId *string `pulumi:"maintainerId"`
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey *string `pulumi:"maintainerTeamKey"`
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode *string `pulumi:"mode"`
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name *string `pulumi:"name"`
 	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
-	// Tags associated with this AI Config.
+	// Tags associated with this AgentControl config.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AiConfig resource.
 type AiConfigArgs struct {
-	// The AI Config's description.
+	// The AgentControl config's description.
 	Description pulumi.StringPtrInput
-	// The key of the evaluation metric associated with this AI Config.
+	// The key of the evaluation metric associated with this AgentControl config.
 	EvaluationMetricKey pulumi.StringPtrInput
 	// Whether the evaluation metric is inverted.
 	IsInverted pulumi.BoolPtrInput
-	// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
-	// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+	// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 	MaintainerId pulumi.StringPtrInput
-	// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+	// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 	MaintainerTeamKey pulumi.StringPtrInput
-	// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Mode pulumi.StringPtrInput
-	// The AI Config's human-readable name.
+	// The AgentControl config's human-readable name.
 	Name pulumi.StringPtrInput
 	// The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
-	// Tags associated with this AI Config.
+	// Tags associated with this AgentControl config.
 	Tags pulumi.StringArrayInput
 }
 
@@ -318,17 +318,17 @@ func (o AiConfigOutput) ToAiConfigOutputWithContext(ctx context.Context) AiConfi
 	return o
 }
 
-// A timestamp of when the AI Config was created.
+// A timestamp of when the AgentControl config was created.
 func (o AiConfigOutput) CreationDate() pulumi.IntOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.IntOutput { return v.CreationDate }).(pulumi.IntOutput)
 }
 
-// The AI Config's description.
+// The AgentControl config's description.
 func (o AiConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The key of the evaluation metric associated with this AI Config.
+// The key of the evaluation metric associated with this AgentControl config.
 func (o AiConfigOutput) EvaluationMetricKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringPtrOutput { return v.EvaluationMetricKey }).(pulumi.StringPtrOutput)
 }
@@ -338,27 +338,27 @@ func (o AiConfigOutput) IsInverted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.BoolPtrOutput { return v.IsInverted }).(pulumi.BoolPtrOutput)
 }
 
-// The AI Config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The AgentControl config's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The member ID of the maintainer for this AI Config. Conflicts with `maintainerTeamKey`.
+// The member ID of the maintainer for this AgentControl config. Conflicts with `maintainerTeamKey`.
 func (o AiConfigOutput) MaintainerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.MaintainerId }).(pulumi.StringOutput)
 }
 
-// The team key of the maintainer team for this AI Config. Conflicts with `maintainerId`.
+// The team key of the maintainer team for this AgentControl config. Conflicts with `maintainerId`.
 func (o AiConfigOutput) MaintainerTeamKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.MaintainerTeamKey }).(pulumi.StringOutput)
 }
 
-// The AI Config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The AgentControl config's mode. Must be `completion`, `agent`, or `judge`. Defaults to `completion`. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o AiConfigOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The AI Config's human-readable name.
+// The AgentControl config's human-readable name.
 func (o AiConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -368,17 +368,17 @@ func (o AiConfigOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-// Tags associated with this AI Config.
+// Tags associated with this AgentControl config.
 func (o AiConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A list of variation summaries for this AI Config.
+// A list of variation summaries for this AgentControl config.
 func (o AiConfigOutput) Variations() AiConfigVariationTypeArrayOutput {
 	return o.ApplyT(func(v *AiConfig) AiConfigVariationTypeArrayOutput { return v.Variations }).(AiConfigVariationTypeArrayOutput)
 }
 
-// The version of the AI Config.
+// The version of the AgentControl config.
 func (o AiConfigOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *AiConfig) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }

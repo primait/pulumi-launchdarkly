@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a LaunchDarkly AI Config variation data source.
+// Provides a LaunchDarkly AgentControl config variation data source.
 //
-// This data source allows you to retrieve AI Config variation information from your LaunchDarkly project.
+// This data source allows you to retrieve AgentControl config variation information from your LaunchDarkly project.
 //
 // ## Example Usage
 //
@@ -54,7 +54,7 @@ func LookupAiConfigVariation(ctx *pulumi.Context, args *LookupAiConfigVariationA
 
 // A collection of arguments for invoking getAiConfigVariation.
 type LookupAiConfigVariationArgs struct {
-	// The AI Config key that this variation belongs to.
+	// The AgentControl config key that this variation belongs to.
 	ConfigKey string `pulumi:"configKey"`
 	// The variation's unique key.
 	Key string `pulumi:"key"`
@@ -64,7 +64,7 @@ type LookupAiConfigVariationArgs struct {
 
 // A collection of values returned by getAiConfigVariation.
 type LookupAiConfigVariationResult struct {
-	// The AI Config key that this variation belongs to.
+	// The AgentControl config key that this variation belongs to.
 	ConfigKey string `pulumi:"configKey"`
 	// The creation timestamp of the variation.
 	CreationDate int `pulumi:"creationDate"`
@@ -74,6 +74,8 @@ type LookupAiConfigVariationResult struct {
 	Id string `pulumi:"id"`
 	// The variation's instructions. Used in agent mode.
 	Instructions string `pulumi:"instructions"`
+	// The judges attached to this variation, keyed by the key of the judge AgentControl config.
+	Judges map[string]GetAiConfigVariationJudges `pulumi:"judges"`
 	// The variation's unique key.
 	Key string `pulumi:"key"`
 	// A list of messages for completion mode.
@@ -88,7 +90,7 @@ type LookupAiConfigVariationResult struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The state of the variation. Must be `archived` or `published`.
 	State string `pulumi:"state"`
-	// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+	// A set of AI tool keys associated with this variation.
 	ToolKeys []string `pulumi:"toolKeys"`
 	// The internal ID of the variation.
 	VariationId string `pulumi:"variationId"`
@@ -107,7 +109,7 @@ func LookupAiConfigVariationOutput(ctx *pulumi.Context, args LookupAiConfigVaria
 
 // A collection of arguments for invoking getAiConfigVariation.
 type LookupAiConfigVariationOutputArgs struct {
-	// The AI Config key that this variation belongs to.
+	// The AgentControl config key that this variation belongs to.
 	ConfigKey pulumi.StringInput `pulumi:"configKey"`
 	// The variation's unique key.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -134,7 +136,7 @@ func (o LookupAiConfigVariationResultOutput) ToLookupAiConfigVariationResultOutp
 	return o
 }
 
-// The AI Config key that this variation belongs to.
+// The AgentControl config key that this variation belongs to.
 func (o LookupAiConfigVariationResultOutput) ConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.ConfigKey }).(pulumi.StringOutput)
 }
@@ -157,6 +159,11 @@ func (o LookupAiConfigVariationResultOutput) Id() pulumi.StringOutput {
 // The variation's instructions. Used in agent mode.
 func (o LookupAiConfigVariationResultOutput) Instructions() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.Instructions }).(pulumi.StringOutput)
+}
+
+// The judges attached to this variation, keyed by the key of the judge AgentControl config.
+func (o LookupAiConfigVariationResultOutput) Judges() GetAiConfigVariationJudgesMapOutput {
+	return o.ApplyT(func(v LookupAiConfigVariationResult) map[string]GetAiConfigVariationJudges { return v.Judges }).(GetAiConfigVariationJudgesMapOutput)
 }
 
 // The variation's unique key.
@@ -194,7 +201,7 @@ func (o LookupAiConfigVariationResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// A set of AI tool keys to associate with this variation. **Note:** The API does not currently return tool associations on read, so Terraform cannot detect drift for this field. Changes made outside of Terraform is not reflected in state.
+// A set of AI tool keys associated with this variation.
 func (o LookupAiConfigVariationResultOutput) ToolKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAiConfigVariationResult) []string { return v.ToolKeys }).(pulumi.StringArrayOutput)
 }

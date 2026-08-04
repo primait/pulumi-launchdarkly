@@ -19,6 +19,7 @@ __all__ = [
     'AccessTokenInlineRole',
     'AiAgentGraphEdges',
     'AiConfigVariation',
+    'AiConfigVariationJudges',
     'AiConfigVariationMessage',
     'AuditLogSubscriptionStatement',
     'CustomRolePolicyStatement',
@@ -55,6 +56,7 @@ __all__ = [
     'WebhookStatement',
     'GetAiAgentGraphEdgesResult',
     'GetAiConfigVariationResult',
+    'GetAiConfigVariationJudgesResult',
     'GetAiConfigVariationMessageResult',
     'GetAuditLogSubscriptionStatementResult',
     'GetEnvironmentApprovalSettingsResult',
@@ -204,9 +206,9 @@ class AiAgentGraphEdges(dict):
                  handoff: Optional[_builtins.str] = None,
                  key: Optional[_builtins.str] = None):
         """
-        :param _builtins.str source_config: The AI Config key that is the source of this edge.
-        :param _builtins.str target_config: The AI Config key that is the target of this edge.
-        :param _builtins.str handoff: A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        :param _builtins.str source_config: The AgentControl config key that is the source of this edge.
+        :param _builtins.str target_config: The AgentControl config key that is the target of this edge.
+        :param _builtins.str handoff: A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         :param _builtins.str key: The unique key for this edge within the graph. Must equal the map key. It defaults to the map key when omitted.
         """
         pulumi.set(__self__, "source_config", source_config)
@@ -220,7 +222,7 @@ class AiAgentGraphEdges(dict):
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> _builtins.str:
         """
-        The AI Config key that is the source of this edge.
+        The AgentControl config key that is the source of this edge.
         """
         return pulumi.get(self, "source_config")
 
@@ -228,7 +230,7 @@ class AiAgentGraphEdges(dict):
     @pulumi.getter(name="targetConfig")
     def target_config(self) -> _builtins.str:
         """
-        The AI Config key that is the target of this edge.
+        The AgentControl config key that is the target of this edge.
         """
         return pulumi.get(self, "target_config")
 
@@ -236,7 +238,7 @@ class AiAgentGraphEdges(dict):
     @pulumi.getter
     def handoff(self) -> Optional[_builtins.str]:
         """
-        A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         """
         return pulumi.get(self, "handoff")
 
@@ -290,6 +292,41 @@ class AiConfigVariation(dict):
     @pulumi.getter(name="variationId")
     def variation_id(self) -> _builtins.str:
         return pulumi.get(self, "variation_id")
+
+
+@pulumi.output_type
+class AiConfigVariationJudges(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRate":
+            suggest = "sampling_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiConfigVariationJudges. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiConfigVariationJudges.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiConfigVariationJudges.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sampling_rate: _builtins.float):
+        """
+        :param _builtins.float sampling_rate: The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+        """
+        pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> _builtins.float:
+        """
+        The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+        """
+        return pulumi.get(self, "sampling_rate")
 
 
 @pulumi.output_type
@@ -2709,10 +2746,10 @@ class GetAiAgentGraphEdgesResult(dict):
                  source_config: _builtins.str,
                  target_config: _builtins.str):
         """
-        :param _builtins.str handoff: A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        :param _builtins.str handoff: A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         :param _builtins.str key: The unique key for this edge within the graph. Always equals the map key.
-        :param _builtins.str source_config: The AI Config key that is the source of this edge.
-        :param _builtins.str target_config: The AI Config key that is the target of this edge.
+        :param _builtins.str source_config: The AgentControl config key that is the source of this edge.
+        :param _builtins.str target_config: The AgentControl config key that is the target of this edge.
         """
         pulumi.set(__self__, "handoff", handoff)
         pulumi.set(__self__, "key", key)
@@ -2723,7 +2760,7 @@ class GetAiAgentGraphEdgesResult(dict):
     @pulumi.getter
     def handoff(self) -> _builtins.str:
         """
-        A JSON string representing the handoff options from the source AI Config to the target AI Config.
+        A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
         """
         return pulumi.get(self, "handoff")
 
@@ -2739,7 +2776,7 @@ class GetAiAgentGraphEdgesResult(dict):
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> _builtins.str:
         """
-        The AI Config key that is the source of this edge.
+        The AgentControl config key that is the source of this edge.
         """
         return pulumi.get(self, "source_config")
 
@@ -2747,7 +2784,7 @@ class GetAiAgentGraphEdgesResult(dict):
     @pulumi.getter(name="targetConfig")
     def target_config(self) -> _builtins.str:
         """
-        The AI Config key that is the target of this edge.
+        The AgentControl config key that is the target of this edge.
         """
         return pulumi.get(self, "target_config")
 
@@ -2790,6 +2827,24 @@ class GetAiConfigVariationResult(dict):
         The variation's ID.
         """
         return pulumi.get(self, "variation_id")
+
+
+@pulumi.output_type
+class GetAiConfigVariationJudgesResult(dict):
+    def __init__(__self__, *,
+                 sampling_rate: _builtins.float):
+        """
+        :param _builtins.float sampling_rate: The fraction of generations this judge evaluates.
+        """
+        pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> _builtins.float:
+        """
+        The fraction of generations this judge evaluates.
+        """
+        return pulumi.get(self, "sampling_rate")
 
 
 @pulumi.output_type

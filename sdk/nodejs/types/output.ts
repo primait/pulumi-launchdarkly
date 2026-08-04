@@ -32,7 +32,7 @@ export interface AccessTokenInlineRole {
 
 export interface AiAgentGraphEdges {
     /**
-     * A JSON string representing the handoff options from the source AI Config to the target AI Config.
+     * A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
      */
     handoff?: string;
     /**
@@ -40,11 +40,11 @@ export interface AiAgentGraphEdges {
      */
     key: string;
     /**
-     * The AI Config key that is the source of this edge.
+     * The AgentControl config key that is the source of this edge.
      */
     sourceConfig: string;
     /**
-     * The AI Config key that is the target of this edge.
+     * The AgentControl config key that is the target of this edge.
      */
     targetConfig: string;
 }
@@ -53,6 +53,13 @@ export interface AiConfigVariation {
     key: string;
     name: string;
     variationId: string;
+}
+
+export interface AiConfigVariationJudges {
+    /**
+     * The fraction of generations this judge evaluates. Must be between `0.0` and `1.0`. Stored with 32-bit float precision.
+     */
+    samplingRate: number;
 }
 
 export interface AiConfigVariationMessage {
@@ -370,7 +377,7 @@ export interface FlagTriggerInstructions {
 
 export interface GetAiAgentGraphEdges {
     /**
-     * A JSON string representing the handoff options from the source AI Config to the target AI Config.
+     * A JSON string representing the handoff options from the source AgentControl config to the target AgentControl config.
      */
     handoff: string;
     /**
@@ -378,11 +385,11 @@ export interface GetAiAgentGraphEdges {
      */
     key: string;
     /**
-     * The AI Config key that is the source of this edge.
+     * The AgentControl config key that is the source of this edge.
      */
     sourceConfig: string;
     /**
-     * The AI Config key that is the target of this edge.
+     * The AgentControl config key that is the target of this edge.
      */
     targetConfig: string;
 }
@@ -400,6 +407,13 @@ export interface GetAiConfigVariation {
      * The variation's ID.
      */
     variationId: string;
+}
+
+export interface GetAiConfigVariationJudges {
+    /**
+     * The fraction of generations this judge evaluates.
+     */
+    samplingRate: number;
 }
 
 export interface GetAiConfigVariationMessage {
