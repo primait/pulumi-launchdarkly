@@ -224,7 +224,7 @@ namespace Pulumi.Launchdarkly
         public Output<ImmutableArray<Outputs.ViewLinksSegment>> Segments { get; private set; } = null!;
 
         /// <summary>
-        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("viewKey")]
         public Output<string> ViewKey { get; private set; } = null!;
@@ -307,7 +307,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("viewKey", required: true)]
         public Input<string> ViewKey { get; set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.Launchdarkly
         }
 
         /// <summary>
-        /// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("viewKey")]
         public Input<string>? ViewKey { get; set; }

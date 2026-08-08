@@ -29,7 +29,7 @@ class ViewFilterLinksArgs:
         The set of arguments for constructing a ViewFilterLinks resource.
 
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] flag_filter: A filter expression to match feature flags for linking to the view. Uses the same filter syntax as the flag list API endpoint. For example, `tags:frontend` or `status:active`.
         :param pulumi.Input[_builtins.bool] reconcile_on_apply: Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform shows an in-place update on each apply and `resolved_at` changes every run.
         :param pulumi.Input[_builtins.str] segment_filter: A filter expression to match segments for linking to the view. Uses the segment query filter syntax. For example, `tags anyOf ["backend"]`, `query = "my-segment"`, or `unbounded = true`. Requires `segment_filter_environment_id` to be set.
@@ -62,7 +62,7 @@ class ViewFilterLinksArgs:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -138,7 +138,7 @@ class _ViewFilterLinksState:
         :param pulumi.Input[_builtins.str] resolved_at: Timestamp of the last successful filter resolution. This value updates when the resource is created or updated, and on every apply when `reconcile_on_apply` is true.
         :param pulumi.Input[_builtins.str] segment_filter: A filter expression to match segments for linking to the view. Uses the segment query filter syntax. For example, `tags anyOf ["backend"]`, `query = "my-segment"`, or `unbounded = true`. Requires `segment_filter_environment_id` to be set.
         :param pulumi.Input[_builtins.str] segment_filter_environment_id: The environment ID to use when resolving segment filters. Required when `segment_filter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         if flag_filter is not None:
             pulumi.set(__self__, "flag_filter", flag_filter)
@@ -231,7 +231,7 @@ class _ViewFilterLinksState:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -326,7 +326,7 @@ class ViewFilterLinks(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] reconcile_on_apply: Whether to re-resolve configured filters on every `pulumi up` even when no resource arguments changed. When true, Terraform shows an in-place update on each apply and `resolved_at` changes every run.
         :param pulumi.Input[_builtins.str] segment_filter: A filter expression to match segments for linking to the view. Uses the segment query filter syntax. For example, `tags anyOf ["backend"]`, `query = "my-segment"`, or `unbounded = true`. Requires `segment_filter_environment_id` to be set.
         :param pulumi.Input[_builtins.str] segment_filter_environment_id: The environment ID to use when resolving segment filters. Required when `segment_filter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         ...
     @overload
@@ -471,7 +471,7 @@ class ViewFilterLinks(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resolved_at: Timestamp of the last successful filter resolution. This value updates when the resource is created or updated, and on every apply when `reconcile_on_apply` is true.
         :param pulumi.Input[_builtins.str] segment_filter: A filter expression to match segments for linking to the view. Uses the segment query filter syntax. For example, `tags anyOf ["backend"]`, `query = "my-segment"`, or `unbounded = true`. Requires `segment_filter_environment_id` to be set.
         :param pulumi.Input[_builtins.str] segment_filter_environment_id: The environment ID to use when resolving segment filters. Required when `segment_filter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -538,7 +538,7 @@ class ViewFilterLinks(pulumi.CustomResource):
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 

@@ -40,7 +40,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetViewArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The view's unique key.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -60,7 +60,7 @@ namespace Pulumi.Launchdarkly
     public sealed class GetViewInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The view's unique key.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Launchdarkly
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The view's unique key.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
         /// </summary>
         public readonly string Key;
         /// <summary>

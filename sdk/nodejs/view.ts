@@ -82,7 +82,7 @@ export class View extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly key: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export interface ViewState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string | undefined>;
     /**
@@ -190,7 +190,7 @@ export interface ViewArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
