@@ -80,7 +80,7 @@ type View struct {
 
 	// The view's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrOutput `pulumi:"maintainerId"`
@@ -132,7 +132,7 @@ func GetView(ctx *pulumi.Context,
 type viewState struct {
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId *string `pulumi:"maintainerId"`
@@ -149,7 +149,7 @@ type viewState struct {
 type ViewState struct {
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrInput
@@ -170,7 +170,7 @@ func (ViewState) ElementType() reflect.Type {
 type viewArgs struct {
 	// The view's description.
 	Description *string `pulumi:"description"`
-	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId *string `pulumi:"maintainerId"`
@@ -188,7 +188,7 @@ type viewArgs struct {
 type ViewArgs struct {
 	// The view's description.
 	Description pulumi.StringPtrInput
-	// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The member ID of the maintainer for this view. Exactly one of `maintainerId` and `maintainerTeamKey` must be set.
 	MaintainerId pulumi.StringPtrInput
@@ -294,7 +294,7 @@ func (o ViewOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ViewOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }

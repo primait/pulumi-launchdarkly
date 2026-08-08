@@ -29,7 +29,7 @@ class ViewLinksArgs:
         The set of arguments for constructing a ViewLinks resource.
 
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
         :param pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
         """
@@ -56,7 +56,7 @@ class ViewLinksArgs:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -102,7 +102,7 @@ class _ViewLinksState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['ViewLinksSegmentArgs']]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
@@ -153,7 +153,7 @@ class _ViewLinksState:
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 
@@ -323,7 +323,7 @@ class ViewLinks(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         ...
     @overload
@@ -536,7 +536,7 @@ class ViewLinks(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: A set of feature flag keys to link to the view.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ViewLinksSegmentArgs', 'ViewLinksSegmentArgsDict']]]] segments: A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
-        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] view_key: The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -576,7 +576,7 @@ class ViewLinks(pulumi.CustomResource):
     @pulumi.getter(name="viewKey")
     def view_key(self) -> pulumi.Output[_builtins.str]:
         """
-        The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "view_key")
 

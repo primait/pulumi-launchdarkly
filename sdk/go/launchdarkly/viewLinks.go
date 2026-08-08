@@ -215,7 +215,7 @@ type ViewLinks struct {
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
 	Segments ViewLinksSegmentArrayOutput `pulumi:"segments"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringOutput `pulumi:"viewKey"`
 }
 
@@ -261,7 +261,7 @@ type viewLinksState struct {
 	ProjectKey *string `pulumi:"projectKey"`
 	// A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
 	Segments []ViewLinksSegment `pulumi:"segments"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey *string `pulumi:"viewKey"`
 }
 
@@ -272,7 +272,7 @@ type ViewLinksState struct {
 	ProjectKey pulumi.StringPtrInput
 	// A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
 	Segments ViewLinksSegmentArrayInput
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringPtrInput
 }
 
@@ -287,7 +287,7 @@ type viewLinksArgs struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
 	Segments []ViewLinksSegment `pulumi:"segments"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey string `pulumi:"viewKey"`
 }
 
@@ -299,7 +299,7 @@ type ViewLinksArgs struct {
 	ProjectKey pulumi.StringInput
 	// A set of segments to link to the view. Each segment is identified by its environment ID and segment key.
 	Segments ViewLinksSegmentArrayInput
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringInput
 }
 
@@ -405,7 +405,7 @@ func (o ViewLinksOutput) Segments() ViewLinksSegmentArrayOutput {
 	return o.ApplyT(func(v *ViewLinks) ViewLinksSegmentArrayOutput { return v.Segments }).(ViewLinksSegmentArrayOutput)
 }
 
-// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ViewLinksOutput) ViewKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ViewLinks) pulumi.StringOutput { return v.ViewKey }).(pulumi.StringOutput)
 }

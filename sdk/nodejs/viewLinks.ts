@@ -202,7 +202,7 @@ export class ViewLinks extends pulumi.CustomResource {
      */
     declare public readonly segments: pulumi.Output<outputs.ViewLinksSegment[]>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly viewKey: pulumi.Output<string>;
 
@@ -258,7 +258,7 @@ export interface ViewLinksState {
      */
     segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey?: pulumi.Input<string | undefined>;
 }
@@ -280,7 +280,7 @@ export interface ViewLinksArgs {
      */
     segments?: pulumi.Input<pulumi.Input<inputs.ViewLinksSegment>[] | undefined>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey: pulumi.Input<string>;
 }

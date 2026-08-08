@@ -26,7 +26,7 @@ func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getView.
 type LookupViewArgs struct {
-	// The view's unique key.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
 	Key string `pulumi:"key"`
 	// The project key.
 	ProjectKey string `pulumi:"projectKey"`
@@ -38,7 +38,7 @@ type LookupViewResult struct {
 	Description string `pulumi:"description"`
 	// View ID.
 	Id string `pulumi:"id"`
-	// The view's unique key.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
 	Key string `pulumi:"key"`
 	// Feature flag keys linked to this view.
 	LinkedFlags []string `pulumi:"linkedFlags"`
@@ -67,7 +67,7 @@ func LookupViewOutput(ctx *pulumi.Context, args LookupViewOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getView.
 type LookupViewOutputArgs struct {
-	// The view's unique key.
+	// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The project key.
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
@@ -102,7 +102,7 @@ func (o LookupViewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The view's unique key.
+// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
 func (o LookupViewResultOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Key }).(pulumi.StringOutput)
 }
