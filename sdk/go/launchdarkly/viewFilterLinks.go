@@ -126,7 +126,7 @@ type ViewFilterLinks struct {
 	SegmentFilter pulumi.StringPtrOutput `pulumi:"segmentFilter"`
 	// The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
 	SegmentFilterEnvironmentId pulumi.StringPtrOutput `pulumi:"segmentFilterEnvironmentId"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringOutput `pulumi:"viewKey"`
 }
 
@@ -178,7 +178,7 @@ type viewFilterLinksState struct {
 	SegmentFilter *string `pulumi:"segmentFilter"`
 	// The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
 	SegmentFilterEnvironmentId *string `pulumi:"segmentFilterEnvironmentId"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey *string `pulumi:"viewKey"`
 }
 
@@ -195,7 +195,7 @@ type ViewFilterLinksState struct {
 	SegmentFilter pulumi.StringPtrInput
 	// The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
 	SegmentFilterEnvironmentId pulumi.StringPtrInput
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringPtrInput
 }
 
@@ -214,7 +214,7 @@ type viewFilterLinksArgs struct {
 	SegmentFilter *string `pulumi:"segmentFilter"`
 	// The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
 	SegmentFilterEnvironmentId *string `pulumi:"segmentFilterEnvironmentId"`
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey string `pulumi:"viewKey"`
 }
 
@@ -230,7 +230,7 @@ type ViewFilterLinksArgs struct {
 	SegmentFilter pulumi.StringPtrInput
 	// The environment ID to use when resolving segment filters. Required when `segmentFilter` is set. This is the environment's opaque ID. For example, `launchdarkly_project.environments["<env_key>"].client_side_id`.
 	SegmentFilterEnvironmentId pulumi.StringPtrInput
-	// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ViewKey pulumi.StringInput
 }
 
@@ -351,7 +351,7 @@ func (o ViewFilterLinksOutput) SegmentFilterEnvironmentId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *ViewFilterLinks) pulumi.StringPtrOutput { return v.SegmentFilterEnvironmentId }).(pulumi.StringPtrOutput)
 }
 
-// The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o ViewFilterLinksOutput) ViewKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ViewFilterLinks) pulumi.StringOutput { return v.ViewKey }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ class ViewArgs:
         """
         The set of arguments for constructing a View resource.
 
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The view's description.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
@@ -54,7 +54,7 @@ class ViewArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -149,7 +149,7 @@ class _ViewState:
         Input properties used for looking up and filtering View resources.
 
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
@@ -187,7 +187,7 @@ class _ViewState:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -317,7 +317,7 @@ class View(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
@@ -441,7 +441,7 @@ class View(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The view's description.
-        :param pulumi.Input[_builtins.str] key: The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[_builtins.str] key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this view. Exactly one of `maintainer_id` and `maintainer_team_key` must be set.
         :param pulumi.Input[_builtins.str] name: The view's name.
@@ -473,7 +473,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
         """
-        The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 

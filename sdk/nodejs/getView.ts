@@ -25,7 +25,7 @@ export function getView(args: GetViewArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetViewArgs {
     /**
-     * The view's unique key.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
      */
     key: string;
     /**
@@ -47,7 +47,7 @@ export interface GetViewResult {
      */
     readonly id: string;
     /**
-     * The view's unique key.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
      */
     readonly key: string;
     /**
@@ -97,7 +97,7 @@ export function getViewOutput(args: GetViewOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetViewOutputArgs {
     /**
-     * The view's unique key.
+     * The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
      */
     key: pulumi.Input<string>;
     /**

@@ -79,7 +79,7 @@ class GetViewResult:
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The view's unique key.
+        The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
         """
         return pulumi.get(self, "key")
 
@@ -167,7 +167,7 @@ def get_view(key: Optional[_builtins.str] = None,
     This data source allows you to retrieve view information from your LaunchDarkly project.
 
 
-    :param _builtins.str key: The view's unique key.
+    :param _builtins.str key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
     :param _builtins.str project_key: The project key.
     """
     __args__ = dict()
@@ -196,7 +196,7 @@ def get_view_output(key: pulumi.Input[Optional[_builtins.str]] = None,
     This data source allows you to retrieve view information from your LaunchDarkly project.
 
 
-    :param _builtins.str key: The view's unique key.
+    :param _builtins.str key: The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase.
     :param _builtins.str project_key: The project key.
     """
     __args__ = dict()
