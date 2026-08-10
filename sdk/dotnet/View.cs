@@ -77,7 +77,7 @@ namespace Pulumi.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The view's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
+        /// The view's unique key. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

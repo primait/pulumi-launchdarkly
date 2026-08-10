@@ -128,7 +128,7 @@ export class ViewFilterLinks extends pulumi.CustomResource {
      */
     declare public readonly segmentFilterEnvironmentId: pulumi.Output<string | undefined>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly viewKey: pulumi.Output<string>;
 
@@ -202,7 +202,7 @@ export interface ViewFilterLinksState {
      */
     segmentFilterEnvironmentId?: pulumi.Input<string | undefined>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey?: pulumi.Input<string | undefined>;
 }
@@ -232,7 +232,7 @@ export interface ViewFilterLinksArgs {
      */
     segmentFilterEnvironmentId?: pulumi.Input<string | undefined>;
     /**
-     * The view key to link resources to. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The view key to link resources to. Must be lowercase. LaunchDarkly normalizes view keys to lowercase. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     viewKey: pulumi.Input<string>;
 }
