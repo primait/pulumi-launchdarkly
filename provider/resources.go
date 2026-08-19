@@ -26,6 +26,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/primait/pulumi-launchdarkly/provider/pkg/version"
 )
@@ -227,5 +228,126 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
+	// Migrate Pulumi state written by pulumi-launchdarkly <= 0.0.x
+	// (terraform-provider-launchdarkly v2, terraform-plugin-sdk/v2) so it can be
+	// read by this v3 (plugin-framework) based provider. See the comment on
+	// bumpStateSchemaVersion for the rationale.
+	//
+	// Every resource prima-pulumi creates whose upstream schema version is > 0
+	// carries Terraform state upgraders that cannot consume the object-shaped
+	// state persisted by the Pulumi bridge, so each needs a PreStateUpgradeHook.
+	// launchdarkly_feature_flag additionally needs custom_properties converted
+	// from the old list-of-blocks shape to the new map shape.
+	if r, ok := prov.Resources["launchdarkly_feature_flag"]; ok {
+		r.PreStateUpgradeHook = migrateFeatureFlagState
+	}
+	for _, tfName := range []string{
+		"launchdarkly_feature_flag_environment",
+		"launchdarkly_segment",
+		"launchdarkly_metric",
+	} {
+		if r, ok := prov.Resources[tfName]; ok {
+			r.PreStateUpgradeHook = bumpStateSchemaVersion
+		}
+	}
+
 	return prov
+}
+
+// bumpStateSchemaVersion upgrades Pulumi state written by pulumi-launchdarkly
+// <= 0.0.x (terraform-provider-launchdarkly v2, terraform-plugin-sdk/v2) so it
+// can be read by the v3 (plugin-framework) based provider without invoking the
+// upstream Terraform state upgraders.
+//
+// The upstream v0/v1 upgraders operate on the raw terraform-plugin-sdk/v2 state
+// shape, in which single-nested blocks (MaxItems: 1, e.g. fallthrough) are
+// encoded as single-element lists. The Pulumi bridge has always flattened those
+// MaxItemsOne blocks into objects, so the state it persisted is already in the
+// object shape that the v3 plugin-framework schema expects. Feeding that
+// object-shaped state to the v0 upgrader fails with errors such as:
+//
+//	AttributeName("fallthrough"): invalid JSON, expected "[", got "{"
+//
+// Because the persisted Pulumi state already matches the current schema shape,
+// we record it at the current schema version and skip the upgraders. Fields
+// with a genuine type change (e.g. custom_properties on launchdarkly_feature_flag,
+// which became a map) fail earlier during encoding and are handled by a
+// dedicated hook instead.
+func bumpStateSchemaVersion(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	if args.PriorStateSchemaVersion >= args.ResourceSchemaVersion {
+		return args.PriorStateSchemaVersion, args.PriorState, nil
+	}
+	return args.ResourceSchemaVersion, args.PriorState, nil
+}
+
+// migrateFeatureFlagState upgrades Pulumi state written by pulumi-launchdarkly
+// <= 0.0.x for launchdarkly_feature_flag.
+//
+// In addition to the version bump performed by bumpStateSchemaVersion, this
+// resource has one field whose Pulumi representation genuinely changed shape:
+// custom_properties went from a set/list of {key, name, value} blocks to a map
+// keyed by the property key, with elements {name, values, key}. Old state
+// stores the list shape, which the bridge cannot encode against the new map
+// schema and fails with:
+//
+//	objectEncoder failed on property "custom_properties": Expected an Object PropertyValue, found []
+//
+// We convert custom_properties to the new map shape (the old plural
+// client_side_availabilities key is simply dropped and reconciled on the next
+// diff) and then record the current schema version to skip the upstream
+// upgraders, exactly as bumpStateSchemaVersion does.
+func migrateFeatureFlagState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	// Only migrate state written before the current schema version.
+	if args.PriorStateSchemaVersion >= args.ResourceSchemaVersion {
+		return args.PriorStateSchemaVersion, args.PriorState, nil
+	}
+
+	state := args.PriorState
+	if cp, ok := state["customProperties"]; ok && cp.IsArray() {
+		entries := cp.ArrayValue()
+		if len(entries) == 0 {
+			// Empty in old state means "unset"; the new map schema treats an
+			// absent value the same way, avoiding a spurious empty-map diff.
+			delete(state, "customProperties")
+		} else {
+			state["customProperties"] = convertCustomPropertiesToMap(entries)
+		}
+	}
+
+	return args.ResourceSchemaVersion, state, nil
+}
+
+// convertCustomPropertiesToMap converts the old list-of-blocks representation of
+// custom_properties into the new map representation keyed by the property key.
+func convertCustomPropertiesToMap(entries []resource.PropertyValue) resource.PropertyValue {
+	properties := resource.PropertyMap{}
+	for _, entry := range entries {
+		if !entry.IsObject() {
+			continue
+		}
+		obj := entry.ObjectValue()
+
+		key := ""
+		if k, ok := obj["key"]; ok && k.IsString() {
+			key = k.StringValue()
+		}
+
+		element := resource.PropertyMap{}
+		if name, ok := obj["name"]; ok {
+			element["name"] = name
+		}
+		// The old element field "value" (list of strings) is named "values" in
+		// the new schema.
+		if values, ok := obj["value"]; ok {
+			element["values"] = values
+		} else if values, ok := obj["values"]; ok {
+			element["values"] = values
+		}
+		if key != "" {
+			element["key"] = resource.NewStringProperty(key)
+		}
+
+		properties[resource.PropertyKey(key)] = resource.NewObjectProperty(element)
+	}
+	return resource.NewObjectProperty(properties)
 }
