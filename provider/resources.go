@@ -233,21 +233,20 @@ func Provider() tfbridge.ProviderInfo {
 	// read by this v3 (plugin-framework) based provider. See the comment on
 	// bumpStateSchemaVersion for the rationale.
 	//
-	// Every resource prima-pulumi creates whose upstream schema version is > 0
-	// carries Terraform state upgraders that cannot consume the object-shaped
-	// state persisted by the Pulumi bridge, so each needs a PreStateUpgradeHook.
-	// launchdarkly_feature_flag additionally needs custom_properties converted
-	// from the old list-of-blocks shape to the new map shape.
-	if r, ok := prov.Resources["launchdarkly_feature_flag"]; ok {
-		r.PreStateUpgradeHook = migrateFeatureFlagState
+	// Resources whose old state already has the current Pulumi shape only need a
+	// schema-version bump; the remaining hooks also migrate renamed fields.
+	stateMigrations := map[string]tfbridge.PreStateUpgradeHook{
+		"launchdarkly_access_token":             migrateAccessTokenState,
+		"launchdarkly_custom_role":              migrateCustomRoleState,
+		"launchdarkly_feature_flag":             migrateFeatureFlagState,
+		"launchdarkly_feature_flag_environment": bumpStateSchemaVersion,
+		"launchdarkly_metric":                   migrateMetricState,
+		"launchdarkly_project":                  migrateProjectState,
+		"launchdarkly_segment":                  bumpStateSchemaVersion,
 	}
-	for _, tfName := range []string{
-		"launchdarkly_feature_flag_environment",
-		"launchdarkly_segment",
-		"launchdarkly_metric",
-	} {
+	for tfName, hook := range stateMigrations {
 		if r, ok := prov.Resources[tfName]; ok {
-			r.PreStateUpgradeHook = bumpStateSchemaVersion
+			r.PreStateUpgradeHook = hook
 		}
 	}
 
@@ -268,11 +267,9 @@ func Provider() tfbridge.ProviderInfo {
 //
 //	AttributeName("fallthrough"): invalid JSON, expected "[", got "{"
 //
-// Because the persisted Pulumi state already matches the current schema shape,
-// we record it at the current schema version and skip the upgraders. Fields
-// with a genuine type change (e.g. custom_properties on launchdarkly_feature_flag,
-// which became a map) fail earlier during encoding and are handled by a
-// dedicated hook instead.
+// This is sufficient only where legacy Pulumi state already matches the
+// current Pulumi schema. Resources with renamed or re-keyed fields use a
+// resource-specific hook below before their schema version is advanced.
 func bumpStateSchemaVersion(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
 	if args.PriorStateSchemaVersion >= args.ResourceSchemaVersion {
 		return args.PriorStateSchemaVersion, args.PriorState, nil
@@ -283,71 +280,190 @@ func bumpStateSchemaVersion(args tfbridge.PreStateUpgradeHookArgs) (int64, resou
 // migrateFeatureFlagState upgrades Pulumi state written by pulumi-launchdarkly
 // <= 0.0.x for launchdarkly_feature_flag.
 //
-// In addition to the version bump performed by bumpStateSchemaVersion, this
-// resource has one field whose Pulumi representation genuinely changed shape:
-// custom_properties went from a set/list of {key, name, value} blocks to a map
-// keyed by the property key, with elements {name, values, key}. Old state
-// stores the list shape, which the bridge cannot encode against the new map
-// schema and fails with:
-//
-//	objectEncoder failed on property "custom_properties": Expected an Object PropertyValue, found []
-//
-// We convert custom_properties to the new map shape (the old plural
-// client_side_availabilities key is simply dropped and reconciled on the next
-// diff) and then record the current schema version to skip the upstream
-// upgraders, exactly as bumpStateSchemaVersion does.
+// The old Pulumi schema represented client-side availability as the plural
+// clientSideAvailabilities array and customProperties as an array of objects.
+// v3 uses a single clientSideAvailability object and a map keyed by property
+// key. includeInSnippet was replaced by client-side availability.
 func migrateFeatureFlagState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
-	// Only migrate state written before the current schema version.
+	return migrateLegacyState(args, func(state resource.PropertyMap) {
+		moveFirstArrayElement(state, "clientSideAvailabilities", "clientSideAvailability")
+		if propertyIsUnset(state, "clientSideAvailability") {
+			if includeInSnippet, ok := state["includeInSnippet"]; ok {
+				state["clientSideAvailability"] = resource.NewObjectProperty(resource.PropertyMap{
+					"usingEnvironmentId": includeInSnippet,
+					"usingMobileKey":     resource.NewBoolProperty(false),
+				})
+			}
+		}
+		delete(state, "includeInSnippet")
+		convertCustomPropertiesToMap(state)
+	})
+}
+
+// migrateMetricState renames randomizationUnits and removes the obsolete
+// isActive field from metric state.
+func migrateMetricState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	return migrateLegacyState(args, func(state resource.PropertyMap) {
+		moveProperty(state, "randomizationUnits", "analysisUnits")
+		delete(state, "isActive")
+	})
+}
+
+// migrateProjectState converts the legacy environment array to a map keyed by
+// environment key and applies the v2 includeInSnippet compatibility mapping.
+func migrateProjectState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	return migrateLegacyState(args, func(state resource.PropertyMap) {
+		moveFirstArrayElement(state, "defaultClientSideAvailabilities", "defaultClientSideAvailability")
+		if propertyIsUnset(state, "defaultClientSideAvailability") {
+			if includeInSnippet, ok := state["includeInSnippet"]; ok {
+				state["defaultClientSideAvailability"] = resource.NewObjectProperty(resource.PropertyMap{
+					"usingEnvironmentId": includeInSnippet,
+					"usingMobileKey":     resource.NewBoolProperty(true),
+				})
+			}
+		}
+		delete(state, "includeInSnippet")
+		convertArrayToMap(state, "environments", "key", convertProjectEnvironment)
+	})
+}
+
+// migrateAccessTokenState moves the removed policyStatements field to
+// inlineRoles and discards the obsolete expire field.
+func migrateAccessTokenState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	return migrateLegacyState(args, func(state resource.PropertyMap) {
+		moveProperty(state, "policyStatements", "inlineRoles")
+		delete(state, "expire")
+	})
+}
+
+// migrateCustomRoleState preserves the legacy policies value under the v3
+// policyStatements field.
+func migrateCustomRoleState(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+	return migrateLegacyState(args, func(state resource.PropertyMap) {
+		moveProperty(state, "policies", "policyStatements")
+	})
+}
+
+func migrateLegacyState(
+	args tfbridge.PreStateUpgradeHookArgs,
+	transform func(resource.PropertyMap),
+) (int64, resource.PropertyMap, error) {
 	if args.PriorStateSchemaVersion >= args.ResourceSchemaVersion {
 		return args.PriorStateSchemaVersion, args.PriorState, nil
 	}
 
 	state := args.PriorState
-	if cp, ok := state["customProperties"]; ok && cp.IsArray() {
-		entries := cp.ArrayValue()
-		if len(entries) == 0 {
-			// Empty in old state means "unset"; the new map schema treats an
-			// absent value the same way, avoiding a spurious empty-map diff.
-			delete(state, "customProperties")
-		} else {
-			state["customProperties"] = convertCustomPropertiesToMap(entries)
-		}
-	}
-
+	transform(state)
 	return args.ResourceSchemaVersion, state, nil
 }
 
-// convertCustomPropertiesToMap converts the old list-of-blocks representation of
-// custom_properties into the new map representation keyed by the property key.
-func convertCustomPropertiesToMap(entries []resource.PropertyValue) resource.PropertyValue {
-	properties := resource.PropertyMap{}
-	for _, entry := range entries {
-		if !entry.IsObject() {
-			continue
-		}
-		obj := entry.ObjectValue()
-
-		key := ""
-		if k, ok := obj["key"]; ok && k.IsString() {
-			key = k.StringValue()
-		}
-
-		element := resource.PropertyMap{}
-		if name, ok := obj["name"]; ok {
-			element["name"] = name
-		}
-		// The old element field "value" (list of strings) is named "values" in
-		// the new schema.
-		if values, ok := obj["value"]; ok {
-			element["values"] = values
-		} else if values, ok := obj["values"]; ok {
-			element["values"] = values
-		}
-		if key != "" {
-			element["key"] = resource.NewStringProperty(key)
-		}
-
-		properties[resource.PropertyKey(key)] = resource.NewObjectProperty(element)
+// moveProperty transfers a legacy field only when the v3 field is absent,
+// null, or an empty list. A populated v3 field remains authoritative.
+func moveProperty(state resource.PropertyMap, from, to resource.PropertyKey) {
+	if !propertyIsUnset(state, to) {
+		delete(state, from)
+		return
 	}
-	return resource.NewObjectProperty(properties)
+	if value, exists := state[from]; exists {
+		state[to] = value
+		delete(state, from)
+	}
+}
+
+// flattenFirstArrayElement converts a v2 single nested block to its v3 object
+// representation. Empty blocks are treated as unset.
+func flattenFirstArrayElement(state resource.PropertyMap, key resource.PropertyKey) {
+	value, exists := state[key]
+	if !exists || !value.IsArray() {
+		return
+	}
+	entries := value.ArrayValue()
+	if len(entries) == 0 {
+		delete(state, key)
+		return
+	}
+	state[key] = entries[0]
+}
+
+// moveFirstArrayElement transfers a legacy singleton array to its v3 object
+// field without overwriting a populated v3 value.
+func moveFirstArrayElement(state resource.PropertyMap, from, to resource.PropertyKey) {
+	if !propertyIsUnset(state, to) {
+		delete(state, from)
+		return
+	}
+	value, exists := state[from]
+	if !exists {
+		return
+	}
+	if value.IsArray() {
+		entries := value.ArrayValue()
+		if len(entries) > 0 {
+			state[to] = entries[0]
+		}
+	} else {
+		state[to] = value
+	}
+	delete(state, from)
+}
+
+func propertyIsUnset(state resource.PropertyMap, key resource.PropertyKey) bool {
+	value, exists := state[key]
+	return !exists || value.IsNull() || (value.IsArray() && len(value.ArrayValue()) == 0)
+}
+
+// convertArrayToMap re-keys a legacy array of objects into a v3 object/map
+// using an element field as the map key. The optional converter handles
+// element-level shape changes.
+func convertArrayToMap(
+	state resource.PropertyMap,
+	key, mapKey resource.PropertyKey,
+	convert func(resource.PropertyMap) resource.PropertyMap,
+) {
+	if cp, ok := state[key]; ok && cp.IsArray() {
+		entries := cp.ArrayValue()
+		properties := resource.PropertyMap{}
+		for _, entry := range entries {
+			if !entry.IsObject() {
+				continue
+			}
+			obj := entry.ObjectValue()
+			entryKey, ok := obj[mapKey]
+			if !ok || !entryKey.IsString() || entryKey.StringValue() == "" {
+				continue
+			}
+			if convert != nil {
+				obj = convert(obj)
+			}
+			properties[resource.PropertyKey(entryKey.StringValue())] = resource.NewObjectProperty(obj)
+		}
+		if len(properties) == 0 {
+			delete(state, key)
+			return
+		}
+		state[key] = resource.NewObjectProperty(properties)
+	}
+}
+
+// convertCustomPropertiesToMap converts feature flag customProperties from the
+// v2 array form to the v3 map form keyed by property key.
+func convertCustomPropertiesToMap(state resource.PropertyMap) {
+	convertArrayToMap(state, "customProperties", "key", convertCustomProperty)
+}
+
+// convertCustomProperty accepts the upstream Terraform v2 spelling (value) as
+// well as the Pulumi v2 spelling (values), which is already the v3 field name.
+func convertCustomProperty(obj resource.PropertyMap) resource.PropertyMap {
+	if values, ok := obj["value"]; ok {
+		obj["values"] = values
+		delete(obj, "value")
+	}
+	return obj
+}
+
+// convertProjectEnvironment flattens the nested v2 approvalSettings block
+// while its containing environment is re-keyed into the v3 map.
+func convertProjectEnvironment(obj resource.PropertyMap) resource.PropertyMap {
+	flattenFirstArrayElement(obj, "approvalSettings")
+	return obj
 }
