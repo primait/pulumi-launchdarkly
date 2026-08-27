@@ -149,3 +149,75 @@ func legacyStateArgs(state resource.PropertyMap) tfbridge.PreStateUpgradeHookArg
 		ResourceSchemaVersion:   1,
 	}
 }
+
+// TestBumpStateSchemaVersionDropsRawStateDelta covers the core-infra case: state
+// written by an intermediate v3 release carries the current schema version yet an
+// unrecoverable raw-state delta. bumpStateSchemaVersion (used by
+// feature_flag_environment and segment) must still drop the delta.
+func TestBumpStateSchemaVersionDropsRawStateDelta(t *testing.T) {
+	t.Parallel()
+	state := resource.PropertyMap{
+		"offVariation":   resource.NewNumberProperty(1),
+		rawStateDeltaKey: resource.NewObjectProperty(resource.PropertyMap{}),
+	}
+	version, migrated, err := bumpStateSchemaVersion("feature_flag_environment")(tfbridge.PreStateUpgradeHookArgs{
+		PriorState:              state,
+		PriorStateSchemaVersion: 1,
+		ResourceSchemaVersion:   1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if version != 1 {
+		t.Fatalf("unexpected schema version: %d", version)
+	}
+	if _, exists := migrated[rawStateDeltaKey]; exists {
+		t.Fatal("raw state delta was not dropped")
+	}
+	if migrated["offVariation"].NumberValue() != 1 {
+		t.Fatalf("offVariation changed: %#v", migrated["offVariation"])
+	}
+}
+
+// TestMigrateFeatureFlagStateDropsRawStateDelta covers the same case for the
+// feature_flag hook, where the state is already in v3 shape (customProperties is
+// a map) but still holds an unrecoverable delta.
+func TestMigrateFeatureFlagStateDropsRawStateDelta(t *testing.T) {
+	t.Parallel()
+	state := resource.PropertyMap{
+		"customProperties": resource.NewObjectProperty(resource.PropertyMap{}),
+		rawStateDeltaKey:   resource.NewObjectProperty(resource.PropertyMap{}),
+	}
+	_, migrated, err := migrateFeatureFlagState(tfbridge.PreStateUpgradeHookArgs{
+		PriorState:              state,
+		PriorStateSchemaVersion: 2,
+		ResourceSchemaVersion:   2,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, exists := migrated[rawStateDeltaKey]; exists {
+		t.Fatal("raw state delta was not dropped")
+	}
+}
+
+// TestMigrateLegacyStateDropsRawStateDeltaOnOldState ensures the delta is also
+// dropped on genuinely old (pre-v3) state alongside the field migration.
+func TestMigrateLegacyStateDropsRawStateDeltaOnOldState(t *testing.T) {
+	t.Parallel()
+	state := resource.PropertyMap{
+		"isActive":           resource.NewBoolProperty(true),
+		"randomizationUnits": resource.NewArrayProperty([]resource.PropertyValue{resource.NewStringProperty("user")}),
+		rawStateDeltaKey:     resource.NewObjectProperty(resource.PropertyMap{}),
+	}
+	_, migrated, err := migrateMetricState(legacyStateArgs(state))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, exists := migrated[rawStateDeltaKey]; exists {
+		t.Fatal("raw state delta was not dropped")
+	}
+	if migrated["analysisUnits"].ArrayValue()[0].StringValue() != "user" {
+		t.Fatalf("unexpected analysisUnits: %#v", migrated["analysisUnits"])
+	}
+}
