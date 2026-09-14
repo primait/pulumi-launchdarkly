@@ -8,6 +8,7 @@ require (
 	github.com/launchdarkly/terraform-provider-launchdarkly v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/pkg/v3 v3.246.0
+	github.com/pulumi/pulumi/sdk/v3 v3.246.0
 )
 
 replace github.com/launchdarkly/terraform-provider-launchdarkly => ../upstream
@@ -178,7 +179,6 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.107.1 // indirect
 	github.com/pulumi/pulumi-java v1.30.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.36.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.246.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
@@ -244,7 +244,7 @@ require (
 	google.golang.org/genproto v0.0.0-20260316180232-0b37fe3546d5 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad // indirect
-	google.golang.org/grpc v1.82.1 // indirect
+	google.golang.org/grpc v1.82.2 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/validator.v2 v2.0.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
