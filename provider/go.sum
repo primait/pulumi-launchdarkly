@@ -455,6 +455,10 @@ github.com/opentofu/registry-address/v2 v2.0.0-20250611143131-d0a99bd8acdd h1:YA
 github.com/opentofu/registry-address/v2 v2.0.0-20250611143131-d0a99bd8acdd/go.mod h1:7M92SvuJm1WBriIpa4j0XmruU9pxkgPXmRdc6FfAvAk=
 github.com/opentofu/svchost v0.0.0-20250610175836-86c9e5e3d8c8 h1:J3pmsVB+nGdfNp5HWdEAC96asYgc7S6J724ICrYDCTk=
 github.com/opentofu/svchost v0.0.0-20250610175836-86c9e5e3d8c8/go.mod h1:0kKTcD9hUrbAz41GWp8USa/+OuI8QKirU3qdCWNa3jI=
+github.com/opentracing-contrib/go-grpc v0.1.4 h1:m9VukGYQ+tfcgtwdsifjjFtAoWRqmcbnGhgRQcZ+ZQA=
+github.com/opentracing-contrib/go-grpc v0.1.4/go.mod h1:xP8rkWX/qdQJVTkf01D6Fc002zN0WUMKsvuKg7Tf93E=
+github.com/opentracing-contrib/go-grpc/test v0.0.0-20260727233914-064b4d2bcbbf h1:xfFA+XblffDh3LsTrbSG1MHpmrXsY/9GQI4sbCnY+kI=
+github.com/opentracing-contrib/go-grpc/test v0.0.0-20260727233914-064b4d2bcbbf/go.mod h1:AYO7D5MbvWwD7/UggkDbqyW0pDt7KZyQkHCn4IC2i/w=
 github.com/opentracing/basictracer-go v1.1.0 h1:Oa1fTSBvAl8pa3U+IJYqrKm0NALwH9OsgwOqDv4xJW0=
 github.com/opentracing/basictracer-go v1.1.0/go.mod h1:V2HZueSJEp879yv285Aap1BS69fQMD+MNP1mRs6mBQc=
 github.com/opentracing/opentracing-go v1.1.0/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
@@ -618,8 +622,8 @@ go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0 h1:Oyrsyzu
 go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0/go.mod h1:C2NGBr+kAB4bk3xtMXfZ94gqFDtg/GkI7e9zqGh5Beg=
 go.opentelemetry.io/otel v1.45.0 h1:pdrWmLHofpubmArBv1LgFSv1Z0Ie/ppdZzu+kUN5EeU=
 go.opentelemetry.io/otel v1.45.0/go.mod h1:XZxIqPapzEYnhNSScF5DIqXhm/rYi0FzCe2XddAwZfQ=
-go.opentelemetry.io/otel/bridge/opentracing v1.33.0 h1:eH88qvKdY7ns7Xu6WlJBQNOzZ3MVvBR6tEl2euaYS9w=
-go.opentelemetry.io/otel/bridge/opentracing v1.33.0/go.mod h1:FNai/nhRSn/kHyv+V1zaf/30BU8hO/DXo0MvV0PaUS8=
+go.opentelemetry.io/otel/bridge/opentracing v1.45.0 h1:hFf959SYHZpFc8ZWlqiYlnH3Ke5w4fcWZh7He+CmqXk=
+go.opentelemetry.io/otel/bridge/opentracing v1.45.0/go.mod h1:etOoQoentzhTX0XTaRJmwlsiQx8TXD7mHo76YxNeBYg=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.44.0 h1:4YsVu3B8+3qtWYYrsUYgn0OG78pN0rnNPRGX4SbokQI=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.44.0/go.mod h1:+wnlSn0mD1ADVMe3v9Z/WIaiz6q6gL2J/ejaAmdmv80=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.44.0 h1:qazEJlUOQzhCpzQpFETGby7EdqjI1wsd0W+6Gg1SCTU=
@@ -760,8 +764,8 @@ google.golang.org/genproto v0.0.0-20260316180232-0b37fe3546d5 h1:JNfk58HZ8lfmXbY
 google.golang.org/genproto v0.0.0-20260316180232-0b37fe3546d5/go.mod h1:x5julN69+ED4PcFk/XWayw35O0lf/nGa4aNgODCmNmw=
 google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad h1:3iLyITS/sySRwbUKoC7ogfj2Yr1Cjs0pfaRKj5U5HEw=
 google.golang.org/genproto/googleapis/api v0.0.0-20260610212136-7ab31c22f7ad/go.mod h1:KdNqO+rCIWgFumrNBSEDlDNrkrQnpkax7Tv1WxNY8V4=
-google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad h1:45WmJvIV6C2+O/jjLkPUH+F3aOj/1miDoU2DD0+NWbg=
-google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad/go.mod h1:4Hqkh8ycfw05ld/3BWL7rJOSfebL2Q+DVDeRgYgxUU8=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d h1:IL4hdHzcUv2l/gcg98/Rj3FbtE6axwqslOW8SW0C+S0=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d/go.mod h1:4Hqkh8ycfw05ld/3BWL7rJOSfebL2Q+DVDeRgYgxUU8=
 google.golang.org/grpc v1.83.2 h1:EManeRomTObA0BU7I8vXgg/78uE5MJ9M8B39EX2WscU=
 google.golang.org/grpc v1.83.2/go.mod h1:YPI1hK3kDked6iHvgX3tR0y+nX/qpMFKhPgFsokw1S8=
 google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
