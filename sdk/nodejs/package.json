@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/launchdarkly",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "A Pulumi package for creating and managing launchdarkly cloud resources.",
     "keywords": [
         "launchdarkly",
@@ -22,7 +22,7 @@
     "pulumi": {
         "resource": true,
         "name": "launchdarkly",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "server": "github://api.github.com/primait/pulumi-launchdarkly"
     }
 }
