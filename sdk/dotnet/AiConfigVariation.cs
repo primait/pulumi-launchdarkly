@@ -31,6 +31,7 @@ namespace Pulumi.Launchdarkly
     ///         Name = "Response Quality Judge",
     ///         Mode = "judge",
     ///         EvaluationMetricKey = "$ld:ai:judge:response-quality",
+    ///         IsInverted = false,
     ///     });
     /// 
     ///     var example = new Launchdarkly.AiConfigVariation("example", new()
