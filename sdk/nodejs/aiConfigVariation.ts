@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  *     name: "Response Quality Judge",
  *     mode: "judge",
  *     evaluationMetricKey: "$ld:ai:judge:response-quality",
+ *     isInverted: false,
  * });
  * const example = new launchdarkly.AiConfigVariation("example", {
  *     projectKey: exampleLaunchdarklyProject.key,

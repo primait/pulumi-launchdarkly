@@ -36,6 +36,7 @@ import (
 //				Name:                pulumi.String("Response Quality Judge"),
 //				Mode:                pulumi.String("judge"),
 //				EvaluationMetricKey: pulumi.String("$ld:ai:judge:response-quality"),
+//				IsInverted:          pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

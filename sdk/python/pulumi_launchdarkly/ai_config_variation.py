@@ -500,7 +500,8 @@ class AiConfigVariation(pulumi.CustomResource):
             key="response-quality-judge",
             name="Response Quality Judge",
             mode="judge",
-            evaluation_metric_key="$ld:ai:judge:response-quality")
+            evaluation_metric_key="$ld:ai:judge:response-quality",
+            is_inverted=False)
         example = launchdarkly.AiConfigVariation("example",
             project_key=example_launchdarkly_project["key"],
             config_key=example_launchdarkly_ai_config["key"],
@@ -570,7 +571,8 @@ class AiConfigVariation(pulumi.CustomResource):
             key="response-quality-judge",
             name="Response Quality Judge",
             mode="judge",
-            evaluation_metric_key="$ld:ai:judge:response-quality")
+            evaluation_metric_key="$ld:ai:judge:response-quality",
+            is_inverted=False)
         example = launchdarkly.AiConfigVariation("example",
             project_key=example_launchdarkly_project["key"],
             config_key=example_launchdarkly_ai_config["key"],
