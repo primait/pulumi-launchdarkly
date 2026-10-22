@@ -581,8 +581,8 @@ class EnvironmentApprovalSettings(dict):
         :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
                
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-               	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+                    - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+                    - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         if auto_apply_approved_changes is not None:
@@ -656,8 +656,8 @@ class EnvironmentApprovalSettings(dict):
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+             - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+             - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         """
         return pulumi.get(self, "service_config")
 
@@ -719,8 +719,8 @@ class EnvironmentSegmentApprovalSettings(dict):
         :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which segments with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
                
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-               	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+                    - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+                    - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         if auto_apply_approved_changes is not None:
@@ -794,8 +794,8 @@ class EnvironmentSegmentApprovalSettings(dict):
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+             - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+             - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         """
         return pulumi.get(self, "service_config")
 
@@ -1873,8 +1873,8 @@ class ProjectEnvironmentsApprovalSettings(dict):
         :param Sequence[_builtins.str] required_approval_tags: An array of tags used to specify which flags with those tags require approval. You may only set `required_approval_tags` if `required` is set to `false` and vice versa.
         :param Mapping[str, _builtins.str] service_config: The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
                
-               	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-               	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+                    - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+                    - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         :param _builtins.str service_kind: The kind of service associated with this approval. This determines which platform requests approval. Valid values are `servicenow`, `launchdarkly`. If you use a value other than `launchdarkly`, you must have already configured the integration in the LaunchDarkly UI or your apply will fail.
         """
         if auto_apply_approved_changes is not None:
@@ -1948,8 +1948,8 @@ class ProjectEnvironmentsApprovalSettings(dict):
         """
         The configuration for the service associated with this approval. This is specific to each approval service. For a `service_kind` of `servicenow`, the following fields apply:
 
-        	 - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-        	 - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+             - `template` (String) The sys_id of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+             - `detail_column` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
         """
         return pulumi.get(self, "service_config")
 

@@ -234,7 +234,7 @@ class AuditLogSubscription(pulumi.CustomResource):
                  integration_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on: pulumi.Input[Optional[_builtins.bool]] = None,
-                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict', 'outputs.AuditLogSubscriptionStatement']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -273,7 +273,7 @@ class AuditLogSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         :param pulumi.Input[_builtins.bool] on: Whether your subscription is enabled and actively sending events.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]] statements: The resources to which you wish to subscribe.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict', 'outputs.AuditLogSubscriptionStatement']]]] statements: The resources to which you wish to subscribe.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         ...
@@ -331,7 +331,7 @@ class AuditLogSubscription(pulumi.CustomResource):
                  integration_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on: pulumi.Input[Optional[_builtins.bool]] = None,
-                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+                 statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict', 'outputs.AuditLogSubscriptionStatement']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -370,7 +370,7 @@ class AuditLogSubscription(pulumi.CustomResource):
             integration_key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             on: pulumi.Input[Optional[_builtins.bool]] = None,
-            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]]] = None,
+            statements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict', 'outputs.AuditLogSubscriptionStatement']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AuditLogSubscription':
         """
         Get an existing AuditLogSubscription resource's state with the given name, id, and optional extra
@@ -383,7 +383,7 @@ class AuditLogSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] integration_key: The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: A human-friendly name for your audit log subscription viewable from within the LaunchDarkly Integrations page.
         :param pulumi.Input[_builtins.bool] on: Whether your subscription is enabled and actively sending events.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict']]]] statements: The resources to which you wish to subscribe.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuditLogSubscriptionStatementArgs', 'AuditLogSubscriptionStatementArgsDict', 'outputs.AuditLogSubscriptionStatement']]]] statements: The resources to which you wish to subscribe.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

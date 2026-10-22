@@ -86,12 +86,8 @@ type LookupAiAgentGraphResult struct {
 }
 
 func LookupAiAgentGraphOutput(ctx *pulumi.Context, args LookupAiAgentGraphOutputArgs, opts ...pulumi.InvokeOption) LookupAiAgentGraphResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiAgentGraphResultOutput, error) {
-			args := v.(LookupAiAgentGraphArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getAiAgentGraph:getAiAgentGraph", args, LookupAiAgentGraphResultOutput{}, options).(LookupAiAgentGraphResultOutput), nil
-		}).(LookupAiAgentGraphResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getAiAgentGraph:getAiAgentGraph", args, LookupAiAgentGraphResultOutput{}, options).(LookupAiAgentGraphResultOutput)
 }
 
 // A collection of arguments for invoking getAiAgentGraph.

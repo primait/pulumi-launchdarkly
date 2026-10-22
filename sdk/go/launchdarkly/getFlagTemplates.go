@@ -74,12 +74,8 @@ type LookupFlagTemplatesResult struct {
 }
 
 func LookupFlagTemplatesOutput(ctx *pulumi.Context, args LookupFlagTemplatesOutputArgs, opts ...pulumi.InvokeOption) LookupFlagTemplatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagTemplatesResultOutput, error) {
-			args := v.(LookupFlagTemplatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getFlagTemplates:getFlagTemplates", args, LookupFlagTemplatesResultOutput{}, options).(LookupFlagTemplatesResultOutput), nil
-		}).(LookupFlagTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getFlagTemplates:getFlagTemplates", args, LookupFlagTemplatesResultOutput{}, options).(LookupFlagTemplatesResultOutput)
 }
 
 // A collection of arguments for invoking getFlagTemplates.

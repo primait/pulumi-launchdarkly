@@ -77,12 +77,8 @@ type LookupRelayProxyConfigurationResult struct {
 }
 
 func LookupRelayProxyConfigurationOutput(ctx *pulumi.Context, args LookupRelayProxyConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupRelayProxyConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRelayProxyConfigurationResultOutput, error) {
-			args := v.(LookupRelayProxyConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args, LookupRelayProxyConfigurationResultOutput{}, options).(LookupRelayProxyConfigurationResultOutput), nil
-		}).(LookupRelayProxyConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", args, LookupRelayProxyConfigurationResultOutput{}, options).(LookupRelayProxyConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getRelayProxyConfiguration.

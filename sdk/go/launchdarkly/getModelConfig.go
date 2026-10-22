@@ -92,12 +92,8 @@ type LookupModelConfigResult struct {
 }
 
 func LookupModelConfigOutput(ctx *pulumi.Context, args LookupModelConfigOutputArgs, opts ...pulumi.InvokeOption) LookupModelConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupModelConfigResultOutput, error) {
-			args := v.(LookupModelConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getModelConfig:getModelConfig", args, LookupModelConfigResultOutput{}, options).(LookupModelConfigResultOutput), nil
-		}).(LookupModelConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getModelConfig:getModelConfig", args, LookupModelConfigResultOutput{}, options).(LookupModelConfigResultOutput)
 }
 
 // A collection of arguments for invoking getModelConfig.

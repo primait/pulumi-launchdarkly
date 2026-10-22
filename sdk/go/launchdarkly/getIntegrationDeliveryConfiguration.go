@@ -92,12 +92,8 @@ type LookupIntegrationDeliveryConfigurationResult struct {
 }
 
 func LookupIntegrationDeliveryConfigurationOutput(ctx *pulumi.Context, args LookupIntegrationDeliveryConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationDeliveryConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationDeliveryConfigurationResultOutput, error) {
-			args := v.(LookupIntegrationDeliveryConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getIntegrationDeliveryConfiguration:getIntegrationDeliveryConfiguration", args, LookupIntegrationDeliveryConfigurationResultOutput{}, options).(LookupIntegrationDeliveryConfigurationResultOutput), nil
-		}).(LookupIntegrationDeliveryConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getIntegrationDeliveryConfiguration:getIntegrationDeliveryConfiguration", args, LookupIntegrationDeliveryConfigurationResultOutput{}, options).(LookupIntegrationDeliveryConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getIntegrationDeliveryConfiguration.

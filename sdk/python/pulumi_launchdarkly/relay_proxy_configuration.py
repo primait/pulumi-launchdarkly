@@ -138,7 +138,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict', 'outputs.RelayProxyConfigurationPolicy']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly Relay Proxy configuration resource for use with the Relay Proxy's [automatic configuration feature](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
@@ -182,7 +182,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The human-readable name for your Relay Proxy configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]] policies: The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict', 'outputs.RelayProxyConfigurationPolicy']]]] policies: The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
         """
         ...
     @overload
@@ -245,7 +245,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict', 'outputs.RelayProxyConfigurationPolicy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,7 +276,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
             display_key: pulumi.Input[Optional[_builtins.str]] = None,
             full_key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]]] = None) -> 'RelayProxyConfiguration':
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict', 'outputs.RelayProxyConfigurationPolicy']]]]] = None) -> 'RelayProxyConfiguration':
         """
         Get an existing RelayProxyConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -287,7 +287,7 @@ class RelayProxyConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_key: The last 4 characters of the Relay Proxy configuration's unique key.
         :param pulumi.Input[_builtins.str] full_key: The Relay Proxy configuration's unique key. Because LaunchDarkly exposes the `full_key` only on creation, it is unavailable when you import the resource.
         :param pulumi.Input[_builtins.str] name: The human-readable name for your Relay Proxy configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict']]]] policies: The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RelayProxyConfigurationPolicyArgs', 'RelayProxyConfigurationPolicyArgsDict', 'outputs.RelayProxyConfigurationPolicy']]]] policies: The Relay Proxy configuration's rule policy. This determines what content the Relay Proxy receives. To learn more, read [Understanding policies](https://launchdarkly.com/docs/home/account/roles/role-policies#understanding-policies).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

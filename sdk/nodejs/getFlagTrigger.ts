@@ -52,8 +52,7 @@ export interface GetFlagTriggerArgs {
     flagKey: string;
     /**
      * The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-     * `
-     * https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+     * `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
      * `
      */
     id: string;
@@ -75,8 +74,7 @@ export interface GetFlagTriggerResult {
     readonly flagKey: string;
     /**
      * The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-     * `
-     * https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+     * `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
      * `
      */
     readonly id: string;
@@ -131,8 +129,7 @@ export interface GetFlagTriggerOutputArgs {
     flagKey: pulumi.Input<string>;
     /**
      * The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-     * `
-     * https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+     * `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
      * `
      */
     id: pulumi.Input<string>;

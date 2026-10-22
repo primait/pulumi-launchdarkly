@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"storeId":  "e6379ca0-17c2-4f58-bb8d-06ea232b01b5",
 //				"apiToken": "my-fastly-api-token",
 //			})

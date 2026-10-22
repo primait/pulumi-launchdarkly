@@ -86,12 +86,8 @@ type LookupMetricGroupResult struct {
 }
 
 func LookupMetricGroupOutput(ctx *pulumi.Context, args LookupMetricGroupOutputArgs, opts ...pulumi.InvokeOption) LookupMetricGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMetricGroupResultOutput, error) {
-			args := v.(LookupMetricGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getMetricGroup:getMetricGroup", args, LookupMetricGroupResultOutput{}, options).(LookupMetricGroupResultOutput), nil
-		}).(LookupMetricGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getMetricGroup:getMetricGroup", args, LookupMetricGroupResultOutput{}, options).(LookupMetricGroupResultOutput)
 }
 
 // A collection of arguments for invoking getMetricGroup.

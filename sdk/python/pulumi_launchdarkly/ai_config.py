@@ -568,7 +568,7 @@ class AiConfig(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]]] = None,
+            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict', 'outputs.AiConfigVariation']]]]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'AiConfig':
         """
         Get an existing AiConfig resource's state with the given name, id, and optional extra
@@ -588,7 +588,7 @@ class AiConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The AgentControl config's human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this AgentControl config.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict']]]] variations: A list of variation summaries for this AgentControl config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationArgs', 'AiConfigVariationArgsDict', 'outputs.AiConfigVariation']]]] variations: A list of variation summaries for this AgentControl config.
         :param pulumi.Input[_builtins.int] version: The version of the AgentControl config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -78,12 +78,8 @@ type LookupAuditLogSubscriptionResult struct {
 }
 
 func LookupAuditLogSubscriptionOutput(ctx *pulumi.Context, args LookupAuditLogSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAuditLogSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuditLogSubscriptionResultOutput, error) {
-			args := v.(LookupAuditLogSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription", args, LookupAuditLogSubscriptionResultOutput{}, options).(LookupAuditLogSubscriptionResultOutput), nil
-		}).(LookupAuditLogSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription", args, LookupAuditLogSubscriptionResultOutput{}, options).(LookupAuditLogSubscriptionResultOutput)
 }
 
 // A collection of arguments for invoking getAuditLogSubscription.

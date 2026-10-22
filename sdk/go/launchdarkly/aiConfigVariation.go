@@ -57,9 +57,9 @@ import (
 //						Content: pulumi.String("{{ ldctx.query }}"),
 //					},
 //				},
-//				Judges: responseQualityJudge.Key.ApplyT(func(key string) (map[string]map[string]interface{}, error) {
-//					return map[string]map[string]interface{}{
-//						key: map[string]interface{}{
+//				Judges: responseQualityJudge.Key.ApplyT(func(key string) (map[string]map[string]float64, error) {
+//					return map[string]map[string]float64{
+//						key: map[string]float64{
 //							"samplingRate": 0.1,
 //						},
 //					}, nil

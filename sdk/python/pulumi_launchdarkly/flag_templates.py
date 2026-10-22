@@ -152,7 +152,7 @@ class FlagTemplates(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict', 'outputs.FlagTemplatesBooleanDefaults']]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -191,7 +191,7 @@ class FlagTemplates(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict', 'outputs.FlagTemplatesBooleanDefaults']] boolean_defaults: Default boolean variation settings.
         :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         ...
@@ -247,7 +247,7 @@ class FlagTemplates(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+                 boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict', 'outputs.FlagTemplatesBooleanDefaults']]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -278,7 +278,7 @@ class FlagTemplates(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']]] = None,
+            boolean_defaults: pulumi.Input[Optional[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict', 'outputs.FlagTemplatesBooleanDefaults']]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             temporary: pulumi.Input[Optional[_builtins.bool]] = None) -> 'FlagTemplates':
@@ -289,7 +289,7 @@ class FlagTemplates(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict']] boolean_defaults: Default boolean variation settings.
+        :param pulumi.Input[Union['FlagTemplatesBooleanDefaultsArgs', 'FlagTemplatesBooleanDefaultsArgsDict', 'outputs.FlagTemplatesBooleanDefaults']] boolean_defaults: Default boolean variation settings.
         :param pulumi.Input[_builtins.str] project_key: The project key.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -101,12 +101,8 @@ type LookupSegmentResult struct {
 }
 
 func LookupSegmentOutput(ctx *pulumi.Context, args LookupSegmentOutputArgs, opts ...pulumi.InvokeOption) LookupSegmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSegmentResultOutput, error) {
-			args := v.(LookupSegmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getSegment:getSegment", args, LookupSegmentResultOutput{}, options).(LookupSegmentResultOutput), nil
-		}).(LookupSegmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getSegment:getSegment", args, LookupSegmentResultOutput{}, options).(LookupSegmentResultOutput)
 }
 
 // A collection of arguments for invoking getSegment.

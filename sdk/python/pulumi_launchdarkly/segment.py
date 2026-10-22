@@ -505,14 +505,14 @@ class Segment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict', 'outputs.SegmentExcludedContext']]]]] = None,
                  excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict', 'outputs.SegmentIncludedContext']]]]] = None,
                  includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict', 'outputs.SegmentRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
                  unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -764,14 +764,14 @@ class Segment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
         :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict', 'outputs.SegmentExcludedContext']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict', 'outputs.SegmentIncludedContext']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
         :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict', 'outputs.SegmentRule']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -1042,14 +1042,14 @@ class Segment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+                 excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict', 'outputs.SegmentExcludedContext']]]]] = None,
                  excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+                 included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict', 'outputs.SegmentIncludedContext']]]]] = None,
                  includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict', 'outputs.SegmentRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
                  unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1097,14 +1097,14 @@ class Segment(pulumi.CustomResource):
             creation_date: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             env_key: pulumi.Input[Optional[_builtins.str]] = None,
-            excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]]] = None,
+            excluded_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict', 'outputs.SegmentExcludedContext']]]]] = None,
             excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]]] = None,
+            included_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict', 'outputs.SegmentIncludedContext']]]]] = None,
             includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict', 'outputs.SegmentRule']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             unbounded: pulumi.Input[Optional[_builtins.bool]] = None,
             unbounded_context_kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1119,14 +1119,14 @@ class Segment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] creation_date: The segment's creation date represented as a UNIX epoch timestamp.
         :param pulumi.Input[_builtins.str] description: The description of the segment's purpose.
         :param pulumi.Input[_builtins.str] env_key: The segment's environment key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentExcludedContextArgs', 'SegmentExcludedContextArgsDict', 'outputs.SegmentExcludedContext']]]] excluded_contexts: List of non-user target objects excluded from the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludeds: List of user keys excluded from the segment. To target on other context kinds, use the excluded_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentIncludedContextArgs', 'SegmentIncludedContextArgsDict', 'outputs.SegmentIncludedContext']]]] included_contexts: List of non-user target objects included in the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includeds: List of user keys included in the segment. To target on other context kinds, use the included_contexts block attribute. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[_builtins.str] key: The unique key that references the segment. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the segment.
         :param pulumi.Input[_builtins.str] project_key: The segment's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SegmentRuleArgs', 'SegmentRuleArgsDict', 'outputs.SegmentRule']]]] rules: List of custom rules to apply to the segment. This attribute is not valid when `unbounded` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] unbounded: Whether to create a standard segment (`false`) or a big segment (`true`). Standard segments include rule-based and smaller list-based segments. Big segments include larger list-based segments and synced segments. Only use a big segment if you need to add more than 15,000 individual targets. It is not possible to manage the list of targeted contexts for big segments with Terraform. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] unbounded_context_kind: For big segments, the targeted context kind. If this attribute is not specified it defaults to `user`. A change in this field forces the destruction of the existing resource and the creation of a new one.

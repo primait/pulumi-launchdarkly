@@ -82,8 +82,7 @@ class GetFlagTriggerResult:
     def id(self) -> _builtins.str:
         """
         The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-        `
-        https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+        `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
         `
         """
         return pulumi.get(self, "id")
@@ -159,8 +158,7 @@ def get_flag_trigger(env_key: Optional[_builtins.str] = None,
     :param _builtins.str env_key: The unique key of the environment the flag trigger runs in.
     :param _builtins.str flag_key: The unique key of the associated flag.
     :param _builtins.str id: The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-           `
-           https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+           `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
            `
     """
     __args__ = dict()
@@ -209,8 +207,7 @@ def get_flag_trigger_output(env_key: pulumi.Input[Optional[_builtins.str]] = Non
     :param _builtins.str env_key: The unique key of the environment the flag trigger runs in.
     :param _builtins.str flag_key: The unique key of the associated flag.
     :param _builtins.str id: The Terraform trigger ID. The unique trigger ID can be found in your saved trigger URL:
-           `
-           https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
+           `https://app.launchdarkly.com/webhook/triggers/THIS_IS_YOUR_TRIGGER_ID/aff25a53-17d9-4112-a9b8-12718d1a2e79
            `
     """
     __args__ = dict()

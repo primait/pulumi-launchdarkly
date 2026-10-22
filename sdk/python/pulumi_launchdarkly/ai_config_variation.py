@@ -474,9 +474,9 @@ class AiConfigVariation(pulumi.CustomResource):
                  config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict', 'outputs.AiConfigVariationJudges']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict', 'outputs.AiConfigVariationMessage']]]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -539,9 +539,9 @@ class AiConfigVariation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] config_key: The AgentControl config key that this variation belongs to. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict', 'outputs.AiConfigVariationJudges']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict', 'outputs.AiConfigVariationMessage']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.
@@ -623,9 +623,9 @@ class AiConfigVariation(pulumi.CustomResource):
                  config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instructions: pulumi.Input[Optional[_builtins.str]] = None,
-                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
+                 judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict', 'outputs.AiConfigVariationJudges']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict', 'outputs.AiConfigVariationMessage']]]]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -676,9 +676,9 @@ class AiConfigVariation(pulumi.CustomResource):
             creation_date: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instructions: pulumi.Input[Optional[_builtins.str]] = None,
-            judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]]] = None,
+            judges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict', 'outputs.AiConfigVariationJudges']]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
-            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict', 'outputs.AiConfigVariationMessage']]]]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
             model_config_key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -698,9 +698,9 @@ class AiConfigVariation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the variation.
         :param pulumi.Input[_builtins.str] description: The variation's description. Used in agent mode.
         :param pulumi.Input[_builtins.str] instructions: The variation's instructions. Used in agent mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiConfigVariationJudgesArgs', 'AiConfigVariationJudgesArgsDict', 'outputs.AiConfigVariationJudges']]]] judges: The judges attached to this variation, keyed by the key of the judge AgentControl config (an AgentControl config with `mode = "judge"`). Applying this attribute replaces all judge attachments on the variation; removing it detaches all judges.
         :param pulumi.Input[_builtins.str] key: The variation's unique key. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AiConfigVariationMessageArgs', 'AiConfigVariationMessageArgsDict', 'outputs.AiConfigVariationMessage']]]] messages: A list of messages for completion mode. Each message has a `role` and `content`.
         :param pulumi.Input[_builtins.str] model: A JSON string representing the inline model configuration for the variation. Conflicts with `model_config_key`.
         :param pulumi.Input[_builtins.str] model_config_key: The key of a model config resource to use for this variation. Conflicts with `model`.
         :param pulumi.Input[_builtins.str] name: The variation's human-readable name.

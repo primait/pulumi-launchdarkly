@@ -92,12 +92,8 @@ type LookupAiConfigResult struct {
 }
 
 func LookupAiConfigOutput(ctx *pulumi.Context, args LookupAiConfigOutputArgs, opts ...pulumi.InvokeOption) LookupAiConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiConfigResultOutput, error) {
-			args := v.(LookupAiConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getAiConfig:getAiConfig", args, LookupAiConfigResultOutput{}, options).(LookupAiConfigResultOutput), nil
-		}).(LookupAiConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getAiConfig:getAiConfig", args, LookupAiConfigResultOutput{}, options).(LookupAiConfigResultOutput)
 }
 
 // A collection of arguments for invoking getAiConfig.
