@@ -14,6 +14,12 @@ linters:
       - common-false-positives
       - legacy
       - std-error-handling
+    rules:
+      # Keep the existing version package used by the build's linker flags.
+      - path: (^|/)pkg/version/version\.go$
+        linters:
+          - revive
+        text: 'var-naming: avoid package names that conflict with Go standard library package names'
     paths:
       - schema.go
       - pulumiManifest.go

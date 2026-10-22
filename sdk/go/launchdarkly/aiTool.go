@@ -34,8 +34,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"type": "object",
-//				"properties": map[string]interface{}{
-//					"query": map[string]interface{}{
+//				"properties": map[string]map[string]string{
+//					"query": map[string]string{
 //						"type":        "string",
 //						"description": "The search query",
 //					},

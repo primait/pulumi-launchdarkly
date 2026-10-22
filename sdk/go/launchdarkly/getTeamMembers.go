@@ -75,12 +75,8 @@ type GetTeamMembersResult struct {
 }
 
 func GetTeamMembersOutput(ctx *pulumi.Context, args GetTeamMembersOutputArgs, opts ...pulumi.InvokeOption) GetTeamMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTeamMembersResultOutput, error) {
-			args := v.(GetTeamMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getTeamMembers:getTeamMembers", args, GetTeamMembersResultOutput{}, options).(GetTeamMembersResultOutput), nil
-		}).(GetTeamMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getTeamMembers:getTeamMembers", args, GetTeamMembersResultOutput{}, options).(GetTeamMembersResultOutput)
 }
 
 // A collection of arguments for invoking getTeamMembers.

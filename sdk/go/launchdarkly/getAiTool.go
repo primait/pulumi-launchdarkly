@@ -84,12 +84,8 @@ type LookupAiToolResult struct {
 }
 
 func LookupAiToolOutput(ctx *pulumi.Context, args LookupAiToolOutputArgs, opts ...pulumi.InvokeOption) LookupAiToolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiToolResultOutput, error) {
-			args := v.(LookupAiToolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getAiTool:getAiTool", args, LookupAiToolResultOutput{}, options).(LookupAiToolResultOutput), nil
-		}).(LookupAiToolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getAiTool:getAiTool", args, LookupAiToolResultOutput{}, options).(LookupAiToolResultOutput)
 }
 
 // A collection of arguments for invoking getAiTool.

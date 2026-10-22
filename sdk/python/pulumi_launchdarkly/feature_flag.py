@@ -551,9 +551,9 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
-                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
-                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict', 'outputs.FeatureFlagClientSideAvailability']]] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]]] = None,
+                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']]] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -564,7 +564,7 @@ class FeatureFlag(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
                  variation_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict', 'outputs.FeatureFlagVariation']]]]] = None,
                  view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -711,9 +711,9 @@ class FeatureFlag(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
-        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
+        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict', 'outputs.FeatureFlagClientSideAvailability']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -724,7 +724,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict', 'outputs.FeatureFlagVariation']]]] variations: An array of possible variations for the flag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. View keys must be lowercase. LaunchDarkly normalizes view keys to lowercase. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `view_keys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         ...
@@ -890,9 +890,9 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
-                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
-                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
-                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+                 client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict', 'outputs.FeatureFlagClientSideAvailability']]] = None,
+                 custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]]] = None,
+                 defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']]] = None,
                  deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -903,7 +903,7 @@ class FeatureFlag(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temporary: pulumi.Input[Optional[_builtins.bool]] = None,
                  variation_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+                 variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict', 'outputs.FeatureFlagVariation']]]]] = None,
                  view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -949,9 +949,9 @@ class FeatureFlag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             archived: pulumi.Input[Optional[_builtins.bool]] = None,
-            client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']]] = None,
-            custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]]] = None,
-            defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']]] = None,
+            client_side_availability: pulumi.Input[Optional[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict', 'outputs.FeatureFlagClientSideAvailability']]] = None,
+            custom_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]]] = None,
+            defaults: pulumi.Input[Optional[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']]] = None,
             deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -962,7 +962,7 @@ class FeatureFlag(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             temporary: pulumi.Input[Optional[_builtins.bool]] = None,
             variation_type: pulumi.Input[Optional[_builtins.str]] = None,
-            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
+            variations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict', 'outputs.FeatureFlagVariation']]]]] = None,
             view_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FeatureFlag':
         """
         Get an existing FeatureFlag resource's state with the given name, id, and optional extra
@@ -972,9 +972,9 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] archived: Specifies whether the flag is archived or not. Note that you cannot create a new flag that is archived, but can update a flag to be archived.
-        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
-        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
+        :param pulumi.Input[Union['FeatureFlagClientSideAvailabilityArgs', 'FeatureFlagClientSideAvailabilityArgsDict', 'outputs.FeatureFlagClientSideAvailability']] client_side_availability: Whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. Once set, if removed, it retains its last set value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
+        :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
         :param pulumi.Input[_builtins.str] description: The feature flag's description.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -985,7 +985,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with your resource.
         :param pulumi.Input[_builtins.bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[_builtins.str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: An array of possible variations for the flag.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict', 'outputs.FeatureFlagVariation']]]] variations: An array of possible variations for the flag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] view_keys: A set of view keys to link this flag to. View keys must be lowercase. LaunchDarkly normalizes view keys to lowercase. This is an alternative to using the `ViewLinks` resource for managing view associations. When set, this flag is linked to the specified views. Reference the view rather than repeating its key as a string literal. For example, use `view_keys = [launchdarkly_view.my_view.key]`, or `[data.launchdarkly_view.my_view.key]` when another configuration owns the view. A view must exist before Terraform can link a flag to it, and that reference is what tells Terraform to create the view first. The field is also computed, so Terraform reads back the current view associations from LaunchDarkly to detect drift. To explicitly remove all view associations, set `view_keys = []`. Removing the field from your configuration leaves existing associations unchanged. **Important**: Avoid using both `view_keys` and `ViewLinks` to manage the same flag. Mixed ownership can cause conflicts. When Terraform detects them, it logs a warning and reconciles to the configured `view_keys`. Choose one approach per resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

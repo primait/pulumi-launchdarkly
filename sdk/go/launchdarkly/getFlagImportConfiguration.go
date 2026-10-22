@@ -85,12 +85,8 @@ type LookupFlagImportConfigurationResult struct {
 }
 
 func LookupFlagImportConfigurationOutput(ctx *pulumi.Context, args LookupFlagImportConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupFlagImportConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagImportConfigurationResultOutput, error) {
-			args := v.(LookupFlagImportConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getFlagImportConfiguration:getFlagImportConfiguration", args, LookupFlagImportConfigurationResultOutput{}, options).(LookupFlagImportConfigurationResultOutput), nil
-		}).(LookupFlagImportConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getFlagImportConfiguration:getFlagImportConfiguration", args, LookupFlagImportConfigurationResultOutput{}, options).(LookupFlagImportConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getFlagImportConfiguration.

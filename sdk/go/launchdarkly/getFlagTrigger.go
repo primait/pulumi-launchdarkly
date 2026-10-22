@@ -87,12 +87,8 @@ type LookupFlagTriggerResult struct {
 }
 
 func LookupFlagTriggerOutput(ctx *pulumi.Context, args LookupFlagTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupFlagTriggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagTriggerResultOutput, error) {
-			args := v.(LookupFlagTriggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getFlagTrigger:getFlagTrigger", args, LookupFlagTriggerResultOutput{}, options).(LookupFlagTriggerResultOutput), nil
-		}).(LookupFlagTriggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getFlagTrigger:getFlagTrigger", args, LookupFlagTriggerResultOutput{}, options).(LookupFlagTriggerResultOutput)
 }
 
 // A collection of arguments for invoking getFlagTrigger.

@@ -443,7 +443,7 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict', 'outputs.EnvironmentApprovalSettings']]] = None,
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  critical: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -454,7 +454,7 @@ class Environment(pulumi.CustomResource):
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
+                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict', 'outputs.EnvironmentSegmentApprovalSettings']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -528,7 +528,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
         :param pulumi.Input[_builtins.str] name: Human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
-        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict', 'outputs.EnvironmentSegmentApprovalSettings']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
                
                > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """
@@ -617,7 +617,7 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict', 'outputs.EnvironmentApprovalSettings']]] = None,
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  critical: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -628,7 +628,7 @@ class Environment(pulumi.CustomResource):
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
                  secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
+                 segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict', 'outputs.EnvironmentSegmentApprovalSettings']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -674,7 +674,7 @@ class Environment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_key: pulumi.Input[Optional[_builtins.str]] = None,
-            approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict']]] = None,
+            approval_settings: pulumi.Input[Optional[Union['EnvironmentApprovalSettingsArgs', 'EnvironmentApprovalSettingsArgsDict', 'outputs.EnvironmentApprovalSettings']]] = None,
             client_side_id: pulumi.Input[Optional[_builtins.str]] = None,
             color: pulumi.Input[Optional[_builtins.str]] = None,
             confirm_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -687,7 +687,7 @@ class Environment(pulumi.CustomResource):
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             require_comments: pulumi.Input[Optional[_builtins.bool]] = None,
             secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-            segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']]] = None,
+            segment_approval_settings: pulumi.Input[Optional[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict', 'outputs.EnvironmentSegmentApprovalSettings']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
@@ -701,7 +701,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: The project-unique key for the environment.
         :param pulumi.Input[_builtins.str] name: Human-readable name.
         :param pulumi.Input[_builtins.str] project_key: The LaunchDarkly project key.
-        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
+        :param pulumi.Input[Union['EnvironmentSegmentApprovalSettingsArgs', 'EnvironmentSegmentApprovalSettingsArgsDict', 'outputs.EnvironmentSegmentApprovalSettings']] segment_approval_settings: Configure approval settings for segment changes in this environment. This is configured via LaunchDarkly's beta approvals API, separate from flag `approval_settings`.
                
                > **Warning:** Enabling segment approvals (`required = true`) while you manage `Segment` resources in Terraform will cause every subsequent segment change to require manual approval before it can be applied, so your applies will not complete until a reviewer approves them. This is a known limitation tracked in [issue #370](https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370). Only enable this if you are prepared to approve segment changes out of band.
         """

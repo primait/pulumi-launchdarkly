@@ -92,12 +92,8 @@ type LookupBigSegmentStoreIntegrationResult struct {
 }
 
 func LookupBigSegmentStoreIntegrationOutput(ctx *pulumi.Context, args LookupBigSegmentStoreIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupBigSegmentStoreIntegrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBigSegmentStoreIntegrationResultOutput, error) {
-			args := v.(LookupBigSegmentStoreIntegrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getBigSegmentStoreIntegration:getBigSegmentStoreIntegration", args, LookupBigSegmentStoreIntegrationResultOutput{}, options).(LookupBigSegmentStoreIntegrationResultOutput), nil
-		}).(LookupBigSegmentStoreIntegrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getBigSegmentStoreIntegration:getBigSegmentStoreIntegration", args, LookupBigSegmentStoreIntegrationResultOutput{}, options).(LookupBigSegmentStoreIntegrationResultOutput)
 }
 
 // A collection of arguments for invoking getBigSegmentStoreIntegration.

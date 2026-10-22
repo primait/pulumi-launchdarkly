@@ -279,13 +279,13 @@ class ReleasePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict']]] = None,
+                 guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict', 'outputs.ReleasePolicyGuardedReleaseConfig']]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict']]] = None,
+                 progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict', 'outputs.ReleasePolicyProgressiveReleaseConfig']]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  release_method: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict', 'outputs.ReleasePolicyScope']]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly release policy resource.
@@ -360,13 +360,13 @@ class ReleasePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict']] guarded_release_config: Configuration for a `guarded-release`. May only be set when `release_method` is `guarded-release`.
+        :param pulumi.Input[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict', 'outputs.ReleasePolicyGuardedReleaseConfig']] guarded_release_config: Configuration for a `guarded-release`. May only be set when `release_method` is `guarded-release`.
         :param pulumi.Input[_builtins.str] key: The unique human-readable key that references the release policy. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the release policy.
-        :param pulumi.Input[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict']] progressive_release_config: Configuration for a `progressive-release`. May only be set when `release_method` is `progressive-release`.
+        :param pulumi.Input[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict', 'outputs.ReleasePolicyProgressiveReleaseConfig']] progressive_release_config: Configuration for a `progressive-release`. May only be set when `release_method` is `progressive-release`.
         :param pulumi.Input[_builtins.str] project_key: The release policy's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] release_method: The release method this policy uses. Must be one of `guarded-release` or `progressive-release`. Set `guarded_release_config` for a `guarded-release` and `progressive_release_config` for a `progressive-release`.
-        :param pulumi.Input[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict']] scope: The scope that determines which environments and flags this release policy applies to.
+        :param pulumi.Input[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict', 'outputs.ReleasePolicyScope']] scope: The scope that determines which environments and flags this release policy applies to.
         """
         ...
     @overload
@@ -460,13 +460,13 @@ class ReleasePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict']]] = None,
+                 guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict', 'outputs.ReleasePolicyGuardedReleaseConfig']]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict']]] = None,
+                 progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict', 'outputs.ReleasePolicyProgressiveReleaseConfig']]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  release_method: pulumi.Input[Optional[_builtins.str]] = None,
-                 scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict', 'outputs.ReleasePolicyScope']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,14 +500,14 @@ class ReleasePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict']]] = None,
+            guarded_release_config: pulumi.Input[Optional[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict', 'outputs.ReleasePolicyGuardedReleaseConfig']]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict']]] = None,
+            progressive_release_config: pulumi.Input[Optional[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict', 'outputs.ReleasePolicyProgressiveReleaseConfig']]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             rank: pulumi.Input[Optional[_builtins.int]] = None,
             release_method: pulumi.Input[Optional[_builtins.str]] = None,
-            scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict']]] = None) -> 'ReleasePolicy':
+            scope: pulumi.Input[Optional[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict', 'outputs.ReleasePolicyScope']]] = None) -> 'ReleasePolicy':
         """
         Get an existing ReleasePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -515,14 +515,14 @@ class ReleasePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict']] guarded_release_config: Configuration for a `guarded-release`. May only be set when `release_method` is `guarded-release`.
+        :param pulumi.Input[Union['ReleasePolicyGuardedReleaseConfigArgs', 'ReleasePolicyGuardedReleaseConfigArgsDict', 'outputs.ReleasePolicyGuardedReleaseConfig']] guarded_release_config: Configuration for a `guarded-release`. May only be set when `release_method` is `guarded-release`.
         :param pulumi.Input[_builtins.str] key: The unique human-readable key that references the release policy. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the release policy.
-        :param pulumi.Input[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict']] progressive_release_config: Configuration for a `progressive-release`. May only be set when `release_method` is `progressive-release`.
+        :param pulumi.Input[Union['ReleasePolicyProgressiveReleaseConfigArgs', 'ReleasePolicyProgressiveReleaseConfigArgsDict', 'outputs.ReleasePolicyProgressiveReleaseConfig']] progressive_release_config: Configuration for a `progressive-release`. May only be set when `release_method` is `progressive-release`.
         :param pulumi.Input[_builtins.str] project_key: The release policy's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] rank: The rank of the release policy within the project. LaunchDarkly assigns and orders the rank. Reorder release policies in the LaunchDarkly UI.
         :param pulumi.Input[_builtins.str] release_method: The release method this policy uses. Must be one of `guarded-release` or `progressive-release`. Set `guarded_release_config` for a `guarded-release` and `progressive_release_config` for a `progressive-release`.
-        :param pulumi.Input[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict']] scope: The scope that determines which environments and flags this release policy applies to.
+        :param pulumi.Input[Union['ReleasePolicyScopeArgs', 'ReleasePolicyScopeArgsDict', 'outputs.ReleasePolicyScope']] scope: The scope that determines which environments and flags this release policy applies to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

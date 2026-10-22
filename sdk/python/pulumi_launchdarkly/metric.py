@@ -648,7 +648,7 @@ class Metric(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  unit: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict', 'outputs.MetricUrl']]]]] = None,
                  __props__=None):
         """
         Provides a LaunchDarkly metric resource.
@@ -704,7 +704,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict', 'outputs.MetricUrl']]]] urls: List of URLs that you want to associate with the metric.
         """
         ...
     @overload
@@ -779,7 +779,7 @@ class Metric(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  unit: pulumi.Input[Optional[_builtins.str]] = None,
                  unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict', 'outputs.MetricUrl']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -841,7 +841,7 @@ class Metric(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             unit: pulumi.Input[Optional[_builtins.str]] = None,
             unit_aggregation_type: pulumi.Input[Optional[_builtins.str]] = None,
-            urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict', 'outputs.MetricUrl']]]]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Metric':
         """
         Get an existing Metric resource's state with the given name, id, and optional extra
@@ -867,7 +867,7 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with this resource.
         :param pulumi.Input[_builtins.str] unit: (Required for kind `custom`) The unit for numeric `custom` metrics.
         :param pulumi.Input[_builtins.str] unit_aggregation_type: The method by which multiple unit event values are aggregated. Available choices are `average` and `sum`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict']]]] urls: List of URLs that you want to associate with the metric.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricUrlArgs', 'MetricUrlArgsDict', 'outputs.MetricUrl']]]] urls: List of URLs that you want to associate with the metric.
         :param pulumi.Input[_builtins.int] version: Version of the metric
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

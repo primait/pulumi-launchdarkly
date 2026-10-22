@@ -54,8 +54,7 @@ class GetRelayProxyConfigurationResult:
     def id(self) -> _builtins.str:
         """
         The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-        `
-        https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+        `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
         `
         """
         return pulumi.get(self, "id")
@@ -111,8 +110,7 @@ def get_relay_proxy_configuration(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-           `
-           https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+           `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
            `
     """
     __args__ = dict()
@@ -147,8 +145,7 @@ def get_relay_proxy_configuration_output(id: pulumi.Input[Optional[_builtins.str
 
 
     :param _builtins.str id: The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-           `
-           https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+           `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
            `
     """
     __args__ = dict()

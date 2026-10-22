@@ -149,8 +149,8 @@ export interface EnvironmentApprovalSettings {
     /**
      * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
      *
-     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-     * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+     *      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+     *      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
      */
     serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -187,8 +187,8 @@ export interface EnvironmentSegmentApprovalSettings {
     /**
      * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
      *
-     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-     * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+     *      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+     *      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
      */
     serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -494,8 +494,8 @@ export interface ProjectEnvironmentsApprovalSettings {
     /**
      * The configuration for the service associated with this approval. This is specific to each approval service. For a `serviceKind` of `servicenow`, the following fields apply:
      *
-     * 	 - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
-     * 	 - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
+     *      - `template` (String) The sysId of the Standard Change Request Template in ServiceNow that LaunchDarkly uses when creating the change request.
+     *      - `detailColumn` (String) The name of the ServiceNow Change Request column LaunchDarkly uses to populate detailed approval request information. This is most commonly "justification".
      */
     serviceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

@@ -77,12 +77,8 @@ type LookupFeatureFlagResult struct {
 }
 
 func LookupFeatureFlagOutput(ctx *pulumi.Context, args LookupFeatureFlagOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureFlagResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFeatureFlagResultOutput, error) {
-			args := v.(LookupFeatureFlagArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getFeatureFlag:getFeatureFlag", args, LookupFeatureFlagResultOutput{}, options).(LookupFeatureFlagResultOutput), nil
-		}).(LookupFeatureFlagResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getFeatureFlag:getFeatureFlag", args, LookupFeatureFlagResultOutput{}, options).(LookupFeatureFlagResultOutput)
 }
 
 // A collection of arguments for invoking getFeatureFlag.

@@ -314,7 +314,7 @@ class MetricGroup(pulumi.CustomResource):
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict', 'outputs.MetricGroupMetric']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -374,7 +374,7 @@ class MetricGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric group. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The type of the metric group. Available choices are `funnel` and `standard`. A `funnel` metric group is an ordered list of metrics. A `standard` metric group is an unordered collection. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric group. If not set when the metric group is created, the provider assigns the member associated with the access token. Service tokens have no associated member, so configurations using one must set this explicitly.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict']]]] metrics: An ordered list of the metrics in this metric group. Must contain at least two metrics. For `funnel` metric groups the order is significant and each metric requires a `name_in_group`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict', 'outputs.MetricGroupMetric']]]] metrics: An ordered list of the metrics in this metric group. Must contain at least two metrics. For `funnel` metric groups the order is significant and each metric requires a `name_in_group`.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric group.
         :param pulumi.Input[_builtins.str] project_key: The metric group's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the metric group.
@@ -453,7 +453,7 @@ class MetricGroup(pulumi.CustomResource):
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict', 'outputs.MetricGroupMetric']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_key: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -497,7 +497,7 @@ class MetricGroup(pulumi.CustomResource):
             key: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
-            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict', 'outputs.MetricGroupMetric']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_key: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -513,7 +513,7 @@ class MetricGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key: The unique key that references the metric group. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] kind: The type of the metric group. Available choices are `funnel` and `standard`. A `funnel` metric group is an ordered list of metrics. A `standard` metric group is an unordered collection. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The LaunchDarkly member ID of the member who maintains the metric group. If not set when the metric group is created, the provider assigns the member associated with the access token. Service tokens have no associated member, so configurations using one must set this explicitly.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict']]]] metrics: An ordered list of the metrics in this metric group. Must contain at least two metrics. For `funnel` metric groups the order is significant and each metric requires a `name_in_group`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricGroupMetricArgs', 'MetricGroupMetricArgsDict', 'outputs.MetricGroupMetric']]]] metrics: An ordered list of the metrics in this metric group. Must contain at least two metrics. For `funnel` metric groups the order is significant and each metric requires a `name_in_group`.
         :param pulumi.Input[_builtins.str] name: The human-friendly name for the metric group.
         :param pulumi.Input[_builtins.str] project_key: The metric group's project key. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the metric group.

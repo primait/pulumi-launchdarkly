@@ -91,12 +91,8 @@ type LookupSdkKeyResult struct {
 }
 
 func LookupSdkKeyOutput(ctx *pulumi.Context, args LookupSdkKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSdkKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSdkKeyResultOutput, error) {
-			args := v.(LookupSdkKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getSdkKey:getSdkKey", args, LookupSdkKeyResultOutput{}, options).(LookupSdkKeyResultOutput), nil
-		}).(LookupSdkKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getSdkKey:getSdkKey", args, LookupSdkKeyResultOutput{}, options).(LookupSdkKeyResultOutput)
 }
 
 // A collection of arguments for invoking getSdkKey.

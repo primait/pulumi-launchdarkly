@@ -329,7 +329,7 @@ class AiAgentGraph(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]]] = None,
+                 edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict', 'outputs.AiAgentGraphEdges']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -389,7 +389,7 @@ class AiAgentGraph(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict', 'outputs.AiAgentGraphEdges']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The team key of the maintainer team for this agent graph. Conflicts with `maintainer_id`.
@@ -468,7 +468,7 @@ class AiAgentGraph(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]]] = None,
+                 edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict', 'outputs.AiAgentGraphEdges']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  maintainer_team_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -510,7 +510,7 @@ class AiAgentGraph(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_date: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]]] = None,
+            edges: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict', 'outputs.AiAgentGraphEdges']]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified: pulumi.Input[Optional[_builtins.int]] = None,
             maintainer_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -527,7 +527,7 @@ class AiAgentGraph(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] creation_date: The creation timestamp of the agent graph, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] description: A description of the agent graph.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AiAgentGraphEdgesArgs', 'AiAgentGraphEdgesArgsDict', 'outputs.AiAgentGraphEdges']]]] edges: The edges in the graph, keyed by edge key. Each edge connects a source AgentControl config to a target AgentControl config. If `edges` or `root_config_key` is set, both must be set, and `edges` must contain at least one edge. Clearing this (reverting to a metadata-only graph) forces the destruction and recreation of the resource.
         :param pulumi.Input[_builtins.str] key: The unique key of the agent graph. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.int] last_modified: The timestamp of the agent graph's last update, in Unix epoch milliseconds.
         :param pulumi.Input[_builtins.str] maintainer_id: The member ID of the maintainer for this agent graph. Defaults to the member associated with the access token. Conflicts with `maintainer_team_key`.

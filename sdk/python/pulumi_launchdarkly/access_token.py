@@ -252,7 +252,7 @@ class AccessToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_api_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict']]]]] = None,
+                 inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict', 'outputs.AccessTokenInlineRole']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -295,7 +295,7 @@ class AccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: A list of custom role IDs to use as access limits for the access token.
         :param pulumi.Input[_builtins.int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict']]]] inline_roles: Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict', 'outputs.AccessTokenInlineRole']]]] inline_roles: Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
         :param pulumi.Input[_builtins.str] name: A human-friendly name for the access token.
         :param pulumi.Input[_builtins.str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[_builtins.bool] service_token: Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.
@@ -357,7 +357,7 @@ class AccessToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_api_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict']]]]] = None,
+                 inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict', 'outputs.AccessTokenInlineRole']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -391,7 +391,7 @@ class AccessToken(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             default_api_version: pulumi.Input[Optional[_builtins.int]] = None,
-            inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict']]]]] = None,
+            inline_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict', 'outputs.AccessTokenInlineRole']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
             service_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -405,7 +405,7 @@ class AccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_roles: A list of custom role IDs to use as access limits for the access token.
         :param pulumi.Input[_builtins.int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field forces the destruction of the existing resource and the creation of a new one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict']]]] inline_roles: Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessTokenInlineRoleArgs', 'AccessTokenInlineRoleArgsDict', 'outputs.AccessTokenInlineRole']]]] inline_roles: Define inline custom roles. An array of statements with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Using polices](https://launchdarkly.com/docs/home/account/roles/role-policies).
         :param pulumi.Input[_builtins.str] name: A human-friendly name for the access token.
         :param pulumi.Input[_builtins.str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[_builtins.bool] service_token: Whether the token is a [service token](https://launchdarkly.com/docs/home/account/api#service-tokens). A change in this field forces the destruction of the existing resource and the creation of a new one.

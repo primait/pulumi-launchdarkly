@@ -40,8 +40,7 @@ export function getRelayProxyConfiguration(args: GetRelayProxyConfigurationArgs,
 export interface GetRelayProxyConfigurationArgs {
     /**
      * The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-     * `
-     * https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+     * `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
      * `
      */
     id: string;
@@ -57,8 +56,7 @@ export interface GetRelayProxyConfigurationResult {
     readonly displayKey: string;
     /**
      * The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-     * `
-     * https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+     * `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
      * `
      */
     readonly id: string;
@@ -104,8 +102,7 @@ export function getRelayProxyConfigurationOutput(args: GetRelayProxyConfiguratio
 export interface GetRelayProxyConfigurationOutputArgs {
     /**
      * The Relay Proxy configuration's unique 24 character ID. The unique relay proxy ID can be found in the relay proxy edit page URL, which you can locate by clicking the three dot menu on your relay proxy item in the UI and selecting "Edit configuration":
-     * `
-     * https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
+     * `https://app.launchdarkly.com/settings/relay/THIS_IS_YOUR_RELAY_PROXY_ID/edit
      * `
      */
     id: pulumi.Input<string>;

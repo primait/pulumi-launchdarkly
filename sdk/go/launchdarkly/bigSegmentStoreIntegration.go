@@ -59,7 +59,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"tableName":  "launchdarkly-big-segments",
 //				"region":     "us-east-1",
 //				"roleArn":    "arn:aws:iam::123456789012:role/launchdarkly-big-segments",

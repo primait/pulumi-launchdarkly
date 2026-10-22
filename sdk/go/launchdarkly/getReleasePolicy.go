@@ -84,12 +84,8 @@ type LookupReleasePolicyResult struct {
 }
 
 func LookupReleasePolicyOutput(ctx *pulumi.Context, args LookupReleasePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupReleasePolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReleasePolicyResultOutput, error) {
-			args := v.(LookupReleasePolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getReleasePolicy:getReleasePolicy", args, LookupReleasePolicyResultOutput{}, options).(LookupReleasePolicyResultOutput), nil
-		}).(LookupReleasePolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getReleasePolicy:getReleasePolicy", args, LookupReleasePolicyResultOutput{}, options).(LookupReleasePolicyResultOutput)
 }
 
 // A collection of arguments for invoking getReleasePolicy.

@@ -84,12 +84,8 @@ type LookupContextKindResult struct {
 }
 
 func LookupContextKindOutput(ctx *pulumi.Context, args LookupContextKindOutputArgs, opts ...pulumi.InvokeOption) LookupContextKindResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContextKindResultOutput, error) {
-			args := v.(LookupContextKindArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("launchdarkly:index/getContextKind:getContextKind", args, LookupContextKindResultOutput{}, options).(LookupContextKindResultOutput), nil
-		}).(LookupContextKindResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("launchdarkly:index/getContextKind:getContextKind", args, LookupContextKindResultOutput{}, options).(LookupContextKindResultOutput)
 }
 
 // A collection of arguments for invoking getContextKind.

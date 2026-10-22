@@ -288,8 +288,8 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
-                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
+                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict', 'outputs.ProjectDefaultClientSideAvailability']]] = None,
+                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict', 'outputs.ProjectEnvironments']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -368,8 +368,8 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']] default_client_side_availability: Which client-side SDKs can use new flags by default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
+        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict', 'outputs.ProjectDefaultClientSideAvailability']] default_client_side_availability: Which client-side SDKs can use new flags by default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict', 'outputs.ProjectEnvironments']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
                > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
                
@@ -473,8 +473,8 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
-                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
+                 default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict', 'outputs.ProjectDefaultClientSideAvailability']]] = None,
+                 environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict', 'outputs.ProjectEnvironments']]]]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -510,8 +510,8 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']]] = None,
-            environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]]] = None,
+            default_client_side_availability: pulumi.Input[Optional[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict', 'outputs.ProjectDefaultClientSideAvailability']]] = None,
+            environments: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict', 'outputs.ProjectEnvironments']]]]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             require_view_association_for_new_flags: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -524,8 +524,8 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict']] default_client_side_availability: Which client-side SDKs can use new flags by default.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
+        :param pulumi.Input[Union['ProjectDefaultClientSideAvailabilityArgs', 'ProjectDefaultClientSideAvailabilityArgsDict', 'outputs.ProjectDefaultClientSideAvailability']] default_client_side_availability: Which client-side SDKs can use new flags by default.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ProjectEnvironmentsArgs', 'ProjectEnvironmentsArgsDict', 'outputs.ProjectEnvironments']]]] environments: Map of environments that belong to the project, keyed by environment `key`. This is the complete, authoritative set of the project's environments: any environment not present in the map is deleted on apply. Reordering, adding, or removing one environment does not affect the others. A project must have at least one environment.
                
                > **Warning:** Changing an environment's key, which is the map key, deletes that environment, including its SDK keys and all of its flag targeting, and creates a new one. This is irreversible.
                
