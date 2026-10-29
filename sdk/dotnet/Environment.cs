@@ -57,9 +57,9 @@ namespace Pulumi.Launchdarkly
     /// 
     ///     // Segment approvals are configured separately from flag approval_settings,
     ///     // via LaunchDarkly's beta approvals API. Note: enabling segment approvals
-    ///     // while you manage launchdarkly_segment resources in Terraform will make
+    ///     // while you manage launchdarkly_segment resources in Pulumi will make
     ///     // every subsequent segment change require manual approval before it can be
-    ///     // applied. See https://github.com/launchdarkly/terraform-provider-launchdarkly/issues/370.
+    ///     // applied. See https://github.com/launchdarkly/pulumi-provider-launchdarkly/issues/370.
     ///     var segmentApprovalsExample = new Launchdarkly.Environment("segment_approvals_example", new()
     ///     {
     ///         Name = "Segment Approvals Example Environment",

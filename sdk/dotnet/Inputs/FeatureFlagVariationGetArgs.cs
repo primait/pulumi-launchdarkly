@@ -13,7 +13,7 @@ namespace Pulumi.Launchdarkly.Inputs
     public sealed class FeatureFlagVariationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The feature flag's description.
+        /// The feature flag's description. Must be 1024 characters or fewer.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -2651,7 +2651,7 @@ func (o FeatureFlagEnvironmentTargetArrayOutput) Index(i pulumi.IntInput) Featur
 }
 
 type FeatureFlagVariation struct {
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the feature flag.
 	Name *string `pulumi:"name"`
@@ -2671,7 +2671,7 @@ type FeatureFlagVariationInput interface {
 }
 
 type FeatureFlagVariationArgs struct {
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The human-readable name of the feature flag.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2730,7 +2730,7 @@ func (o FeatureFlagVariationOutput) ToFeatureFlagVariationOutputWithContext(ctx 
 	return o
 }
 
-// The feature flag's description.
+// The feature flag's description. Must be 1024 characters or fewer.
 func (o FeatureFlagVariationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFlagVariation) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

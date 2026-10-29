@@ -49,7 +49,7 @@ class FeatureFlagArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
-        :param pulumi.Input[_builtins.str] description: The feature flag's description.
+        :param pulumi.Input[_builtins.str] description: The feature flag's description. Must be 1024 characters or fewer.
         :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
@@ -198,7 +198,7 @@ class FeatureFlagArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's description.
+        The feature flag's description. Must be 1024 characters or fewer.
         """
         return pulumi.get(self, "description")
 
@@ -306,7 +306,7 @@ class _FeatureFlagState:
         :param pulumi.Input[Mapping[str, pulumi.Input['FeatureFlagCustomPropertiesArgs']]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
-        :param pulumi.Input[_builtins.str] description: The feature flag's description.
+        :param pulumi.Input[_builtins.str] description: The feature flag's description. Must be 1024 characters or fewer.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
@@ -415,7 +415,7 @@ class _FeatureFlagState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's description.
+        The feature flag's description. Must be 1024 characters or fewer.
         """
         return pulumi.get(self, "description")
 
@@ -645,12 +645,12 @@ class FeatureFlag(pulumi.CustomResource):
                 "off_variation": 0,
             })
         # Example: Feature flag with view associations
-        # This approach is ideal for modular Terraform where each flag is managed in its own file
+        # This approach is ideal for modular Pulumi where each flag is managed in its own file
         #
         # Always reference the view rather than repeating its key as a string literal.
-        # A view must exist before Terraform can link a flag to it, and Terraform only
+        # A view must exist before Pulumi can link a flag to it, and Pulumi only
         # knows to create the view first if the flag references it. With a string literal
-        # there is no dependency between the two resources, so Terraform can create the
+        # there is no dependency between the two resources, so Pulumi can create the
         # flag first and the apply fails with "view does not exist". Referencing the view
         # also rules out a mistyped key.
         payments_team = launchdarkly.View("payments_team",
@@ -683,7 +683,7 @@ class FeatureFlag(pulumi.CustomResource):
         # without needing to coordinate with a central view_links resource
         #
         # When the view is owned by another configuration or state (for example a
-        # platform team's workspace), use the data source. This asserts the view already
+        # platform team's workspace), use the function. This asserts the view already
         # exists, so a typo or a missing view fails during plan instead of mid-apply.
         mobile_team = launchdarkly.get_view(project_key="example-project",
             key="mobile-team")
@@ -715,7 +715,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
-        :param pulumi.Input[_builtins.str] description: The feature flag's description.
+        :param pulumi.Input[_builtins.str] description: The feature flag's description. Must be 1024 characters or fewer.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
@@ -811,12 +811,12 @@ class FeatureFlag(pulumi.CustomResource):
                 "off_variation": 0,
             })
         # Example: Feature flag with view associations
-        # This approach is ideal for modular Terraform where each flag is managed in its own file
+        # This approach is ideal for modular Pulumi where each flag is managed in its own file
         #
         # Always reference the view rather than repeating its key as a string literal.
-        # A view must exist before Terraform can link a flag to it, and Terraform only
+        # A view must exist before Pulumi can link a flag to it, and Pulumi only
         # knows to create the view first if the flag references it. With a string literal
-        # there is no dependency between the two resources, so Terraform can create the
+        # there is no dependency between the two resources, so Pulumi can create the
         # flag first and the apply fails with "view does not exist". Referencing the view
         # also rules out a mistyped key.
         payments_team = launchdarkly.View("payments_team",
@@ -849,7 +849,7 @@ class FeatureFlag(pulumi.CustomResource):
         # without needing to coordinate with a central view_links resource
         #
         # When the view is owned by another configuration or state (for example a
-        # platform team's workspace), use the data source. This asserts the view already
+        # platform team's workspace), use the function. This asserts the view already
         # exists, so a typo or a missing view fails during plan instead of mid-apply.
         mobile_team = launchdarkly.get_view(project_key="example-project",
             key="mobile-team")
@@ -976,7 +976,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['FeatureFlagCustomPropertiesArgs', 'FeatureFlagCustomPropertiesArgsDict', 'outputs.FeatureFlagCustomProperties']]]] custom_properties: The feature flag's [custom properties](https://launchdarkly.com/docs/home/infrastructure/custom-properties), keyed by the custom property key. Adding or removing one custom property does not affect the others.
         :param pulumi.Input[Union['FeatureFlagDefaultsArgs', 'FeatureFlagDefaultsArgsDict', 'outputs.FeatureFlagDefaults']] defaults: The indices of the variations to use as the default on and off variations in all new environments. The provider does not change flag configurations in existing environments if you remove this field.
         :param pulumi.Input[_builtins.bool] deprecated: Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
-        :param pulumi.Input[_builtins.str] description: The feature flag's description.
+        :param pulumi.Input[_builtins.str] description: The feature flag's description. Must be 1024 characters or fewer.
         :param pulumi.Input[_builtins.str] key: The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[_builtins.str] maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID. `maintainer_team_key` cannot be set if `maintainer_id` is set. If neither is set, it is automatically set to the member ID associated with the API key used by your LaunchDarkly Terraform provider or the most recently-set maintainer.
         :param pulumi.Input[_builtins.str] maintainer_team_key: The key of the associated team that maintains this feature flag. `maintainer_id` cannot be set if `maintainer_team_key` is set
@@ -1054,7 +1054,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The feature flag's description.
+        The feature flag's description. Must be 1024 characters or fewer.
         """
         return pulumi.get(self, "description")
 

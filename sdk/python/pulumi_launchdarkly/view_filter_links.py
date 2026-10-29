@@ -270,10 +270,10 @@ class ViewFilterLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
-        # Each view these links target must exist before Terraform creates the links.
-        # Declare them (or read them with a launchdarkly_view data source when another
+        # Each view these links target must exist before Pulumi creates the links.
+        # Declare them (or read them with a launchdarkly_view function when another
         # configuration owns them) and reference view_key rather than repeating the key
-        # as a string literal. That reference is what tells Terraform to create the view
+        # as a string literal. That reference is what tells Pulumi to create the view
         # first, and it rules out typos.
         frontend_team = launchdarkly.View("frontend_team",
             project_key="my-project",
@@ -351,10 +351,10 @@ class ViewFilterLinks(pulumi.CustomResource):
         import pulumi
         import pulumi_launchdarkly as launchdarkly
 
-        # Each view these links target must exist before Terraform creates the links.
-        # Declare them (or read them with a launchdarkly_view data source when another
+        # Each view these links target must exist before Pulumi creates the links.
+        # Declare them (or read them with a launchdarkly_view function when another
         # configuration owns them) and reference view_key rather than repeating the key
-        # as a string literal. That reference is what tells Terraform to create the view
+        # as a string literal. That reference is what tells Pulumi to create the view
         # first, and it rules out typos.
         frontend_team = launchdarkly.View("frontend_team",
             project_key="my-project",
