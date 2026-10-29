@@ -1660,7 +1660,7 @@ class FeatureFlagVariationArgsDict(TypedDict):
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The feature flag's description.
+    The feature flag's description. Must be 1024 characters or fewer.
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1675,7 +1675,7 @@ class FeatureFlagVariationArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] value: The variation value. The value's type must correspond to the `variation_type` argument. For example: `variation_type = "boolean"` accepts only `true` or `false`. The `number` variation type accepts both floats and ints, but the provider trims any trailing zeroes on floats. For example, it converts both `1.1` and `1.100` to `1.1`.
-        :param pulumi.Input[_builtins.str] description: The feature flag's description.
+        :param pulumi.Input[_builtins.str] description: The feature flag's description. Must be 1024 characters or fewer.
         :param pulumi.Input[_builtins.str] name: The human-readable name of the feature flag.
         """
         pulumi.set(__self__, "value", value)
@@ -1700,7 +1700,7 @@ class FeatureFlagVariationArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The feature flag's description.
+        The feature flag's description. Must be 1024 characters or fewer.
         """
         return pulumi.get(self, "description")
 

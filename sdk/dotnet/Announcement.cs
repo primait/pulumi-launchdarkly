@@ -32,8 +32,8 @@ namespace Pulumi.Launchdarkly
     ///         Message = "LaunchDarkly will be undergoing **scheduled maintenance** on January 1st. The app may be briefly unavailable.",
     ///         Severity = "warning",
     ///         IsDismissible = true,
-    ///         StartTime = 1893456000000,
-    ///         EndTime = 1924992000000,
+    ///         StartTime = (int)1893456000000,
+    ///         EndTime = (int)1924992000000,
     ///     });
     /// 
     /// });

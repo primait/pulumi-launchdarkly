@@ -116,12 +116,12 @@ import (
 //				return err
 //			}
 //			// Example: Feature flag with view associations
-//			// This approach is ideal for modular Terraform where each flag is managed in its own file
+//			// This approach is ideal for modular Pulumi where each flag is managed in its own file
 //			//
 //			// Always reference the view rather than repeating its key as a string literal.
-//			// A view must exist before Terraform can link a flag to it, and Terraform only
+//			// A view must exist before Pulumi can link a flag to it, and Pulumi only
 //			// knows to create the view first if the flag references it. With a string literal
-//			// there is no dependency between the two resources, so Terraform can create the
+//			// there is no dependency between the two resources, so Pulumi can create the
 //			// flag first and the apply fails with "view does not exist". Referencing the view
 //			// also rules out a mistyped key.
 //			paymentsTeam, err := launchdarkly.NewView(ctx, "payments_team", &launchdarkly.ViewArgs{
@@ -166,7 +166,7 @@ import (
 //			// without needing to coordinate with a central view_links resource
 //			//
 //			// When the view is owned by another configuration or state (for example a
-//			// platform team's workspace), use the data source. This asserts the view already
+//			// platform team's workspace), use the function. This asserts the view already
 //			// exists, so a typo or a missing view fails during plan instead of mid-apply.
 //			mobileTeam, err := launchdarkly.GetView(ctx, &launchdarkly.LookupViewArgs{
 //				ProjectKey: "example-project",
@@ -217,7 +217,7 @@ type FeatureFlag struct {
 	Defaults FeatureFlagDefaultsPtrOutput `pulumi:"defaults"`
 	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
 	Deprecated pulumi.BoolOutput `pulumi:"deprecated"`
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -293,7 +293,7 @@ type featureFlagState struct {
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
 	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
 	Deprecated *bool `pulumi:"deprecated"`
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description *string `pulumi:"description"`
 	// The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
@@ -328,7 +328,7 @@ type FeatureFlagState struct {
 	Defaults FeatureFlagDefaultsPtrInput
 	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
 	Deprecated pulumi.BoolPtrInput
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description pulumi.StringPtrInput
 	// The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
@@ -367,7 +367,7 @@ type featureFlagArgs struct {
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
 	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
 	Deprecated *bool `pulumi:"deprecated"`
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description *string `pulumi:"description"`
 	// The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
@@ -403,7 +403,7 @@ type FeatureFlagArgs struct {
 	Defaults FeatureFlagDefaultsPtrInput
 	// Specifies whether the flag is deprecated or not. Note that you cannot create a new flag that is deprecated, but can update a flag to be deprecated.
 	Deprecated pulumi.BoolPtrInput
-	// The feature flag's description.
+	// The feature flag's description. Must be 1024 characters or fewer.
 	Description pulumi.StringPtrInput
 	// The unique feature flag key that references the flag in your application code. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
@@ -539,7 +539,7 @@ func (o FeatureFlagOutput) Deprecated() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolOutput { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
-// The feature flag's description.
+// The feature flag's description. Must be 1024 characters or fewer.
 func (o FeatureFlagOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

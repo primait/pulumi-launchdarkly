@@ -111,12 +111,12 @@ namespace Pulumi.Launchdarkly
     ///     });
     /// 
     ///     // Example: Feature flag with view associations
-    ///     // This approach is ideal for modular Terraform where each flag is managed in its own file
+    ///     // This approach is ideal for modular Pulumi where each flag is managed in its own file
     ///     //
     ///     // Always reference the view rather than repeating its key as a string literal.
-    ///     // A view must exist before Terraform can link a flag to it, and Terraform only
+    ///     // A view must exist before Pulumi can link a flag to it, and Pulumi only
     ///     // knows to create the view first if the flag references it. With a string literal
-    ///     // there is no dependency between the two resources, so Terraform can create the
+    ///     // there is no dependency between the two resources, so Pulumi can create the
     ///     // flag first and the apply fails with "view does not exist". Referencing the view
     ///     // also rules out a mistyped key.
     ///     var paymentsTeam = new Launchdarkly.View("payments_team", new()
@@ -160,7 +160,7 @@ namespace Pulumi.Launchdarkly
     ///     // without needing to coordinate with a central view_links resource
     ///     //
     ///     // When the view is owned by another configuration or state (for example a
-    ///     // platform team's workspace), use the data source. This asserts the view already
+    ///     // platform team's workspace), use the function. This asserts the view already
     ///     // exists, so a typo or a missing view fails during plan instead of mid-apply.
     ///     var mobileTeam = Launchdarkly.GetView.Invoke(new()
     ///     {
@@ -230,7 +230,7 @@ namespace Pulumi.Launchdarkly
         public Output<bool> Deprecated { get; private set; } = null!;
 
         /// <summary>
-        /// The feature flag's description.
+        /// The feature flag's description. Must be 1024 characters or fewer.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Deprecated { get; set; }
 
         /// <summary>
-        /// The feature flag's description.
+        /// The feature flag's description. Must be 1024 characters or fewer.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.Launchdarkly
         public Input<bool>? Deprecated { get; set; }
 
         /// <summary>
-        /// The feature flag's description.
+        /// The feature flag's description. Must be 1024 characters or fewer.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

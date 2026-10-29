@@ -86,12 +86,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Example: Feature flag with view associations
- * // This approach is ideal for modular Terraform where each flag is managed in its own file
+ * // This approach is ideal for modular Pulumi where each flag is managed in its own file
  * //
  * // Always reference the view rather than repeating its key as a string literal.
- * // A view must exist before Terraform can link a flag to it, and Terraform only
+ * // A view must exist before Pulumi can link a flag to it, and Pulumi only
  * // knows to create the view first if the flag references it. With a string literal
- * // there is no dependency between the two resources, so Terraform can create the
+ * // there is no dependency between the two resources, so Pulumi can create the
  * // flag first and the apply fails with "view does not exist". Referencing the view
  * // also rules out a mistyped key.
  * const paymentsTeam = new launchdarkly.View("payments_team", {
@@ -127,7 +127,7 @@ import * as utilities from "./utilities";
  * // without needing to coordinate with a central view_links resource
  * //
  * // When the view is owned by another configuration or state (for example a
- * // platform team's workspace), use the data source. This asserts the view already
+ * // platform team's workspace), use the function. This asserts the view already
  * // exists, so a typo or a missing view fails during plan instead of mid-apply.
  * const mobileTeam = launchdarkly.getView({
  *     projectKey: "example-project",
@@ -203,7 +203,7 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     declare public readonly deprecated: pulumi.Output<boolean>;
     /**
-     * The feature flag's description.
+     * The feature flag's description. Must be 1024 characters or fewer.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -337,7 +337,7 @@ export interface FeatureFlagState {
      */
     deprecated?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature flag's description.
+     * The feature flag's description. Must be 1024 characters or fewer.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -407,7 +407,7 @@ export interface FeatureFlagArgs {
      */
     deprecated?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature flag's description.
+     * The feature flag's description. Must be 1024 characters or fewer.
      */
     description?: pulumi.Input<string | undefined>;
     /**

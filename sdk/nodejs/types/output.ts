@@ -346,7 +346,7 @@ export interface FeatureFlagEnvironmentTarget {
 
 export interface FeatureFlagVariation {
     /**
-     * The feature flag's description.
+     * The feature flag's description. Must be 1024 characters or fewer.
      */
     description: string;
     /**

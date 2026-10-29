@@ -72,12 +72,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]string{
-//				{
+//			tmpJSON0, err := json.Marshal([]interface{}{
+//				map[string]string{
 //					"ldContextKind":         "user",
 //					"mparticleUserIdentity": "customer_id",
 //				},
-//				{
+//				map[string]string{
 //					"ldContextKind":         "device",
 //					"mparticleUserIdentity": "google",
 //				},

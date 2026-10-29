@@ -14,7 +14,7 @@ namespace Pulumi.Launchdarkly.Outputs
     public sealed class FeatureFlagVariation
     {
         /// <summary>
-        /// The feature flag's description.
+        /// The feature flag's description. Must be 1024 characters or fewer.
         /// </summary>
         public readonly string? Description;
         /// <summary>

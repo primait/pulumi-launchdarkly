@@ -176,12 +176,12 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Example: Segment with view associations
- * // This approach is ideal for modular Terraform where each segment is managed in its own file
+ * // This approach is ideal for modular Pulumi where each segment is managed in its own file
  * //
  * // Always reference the view rather than repeating its key as a string literal.
- * // A view must exist before Terraform can link a segment to it, and Terraform only
+ * // A view must exist before Pulumi can link a segment to it, and Pulumi only
  * // knows to create the view first if the segment references it. With a string
- * // literal there is no dependency between the two resources, so Terraform can
+ * // literal there is no dependency between the two resources, so Pulumi can
  * // create the segment first and the apply fails with "view does not exist".
  * // Referencing the view also rules out a mistyped key.
  * const salesTeam = new launchdarkly.View("sales_team", {
@@ -226,7 +226,7 @@ import * as utilities from "./utilities";
  * // without needing to coordinate with a central view_links resource
  * //
  * // When the view is owned by another configuration or state (for example a
- * // platform team's workspace), use the data source. This asserts the view already
+ * // platform team's workspace), use the function. This asserts the view already
  * // exists, so a typo or a missing view fails during plan instead of mid-apply.
  * const productTeam = launchdarkly.getView({
  *     projectKey: "example-project",
