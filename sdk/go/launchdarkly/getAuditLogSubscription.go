@@ -55,7 +55,7 @@ func LookupAuditLogSubscription(ctx *pulumi.Context, args *LookupAuditLogSubscri
 type LookupAuditLogSubscriptionArgs struct {
 	// The audit log subscription ID.
 	Id string `pulumi:"id"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `new-relic-v2`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
 	IntegrationKey string `pulumi:"integrationKey"`
 }
 
@@ -65,7 +65,7 @@ type LookupAuditLogSubscriptionResult struct {
 	Config map[string]string `pulumi:"config"`
 	// The audit log subscription ID.
 	Id string `pulumi:"id"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `new-relic-v2`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
 	IntegrationKey string `pulumi:"integrationKey"`
 	// A human-friendly name for your audit log subscription.
 	Name string `pulumi:"name"`
@@ -86,7 +86,7 @@ func LookupAuditLogSubscriptionOutput(ctx *pulumi.Context, args LookupAuditLogSu
 type LookupAuditLogSubscriptionOutputArgs struct {
 	// The audit log subscription ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
+	// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `new-relic-v2`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
 	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
 }
 
@@ -119,7 +119,7 @@ func (o LookupAuditLogSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
+// The integration key. Supported integration keys are `chronosphere`, `cloudtrail`, `datadog`, `dynatrace`, `dynatrace-v2`, `elastic`, `grafana`, `honeycomb`, `jira`, `kosli`, `last9`, `logdna`, `mattermost`, `msteams`, `new-relic-apm`, `new-relic-v2`, `pagerduty`, `signalfx`, `slack`, `splunk`, and `vercel-native`.
 func (o LookupAuditLogSubscriptionResultOutput) IntegrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuditLogSubscriptionResult) string { return v.IntegrationKey }).(pulumi.StringOutput)
 }
