@@ -95,7 +95,7 @@ export class FlagTrigger extends pulumi.CustomResource {
      */
     declare public readonly instructions: pulumi.Output<outputs.FlagTriggerInstructions>;
     /**
-     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     declare public readonly integrationKey: pulumi.Output<string>;
     /**
@@ -189,7 +189,7 @@ export interface FlagTriggerState {
      */
     instructions?: pulumi.Input<inputs.FlagTriggerInstructions | undefined>;
     /**
-     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     integrationKey?: pulumi.Input<string | undefined>;
     /**
@@ -227,7 +227,7 @@ export interface FlagTriggerArgs {
      */
     instructions: pulumi.Input<inputs.FlagTriggerInstructions>;
     /**
-     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+     * The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
      */
     integrationKey: pulumi.Input<string>;
     /**

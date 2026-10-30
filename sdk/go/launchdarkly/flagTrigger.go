@@ -79,7 +79,7 @@ type FlagTrigger struct {
 	FlagKey pulumi.StringOutput `pulumi:"flagKey"`
 	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsOutput `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringOutput `pulumi:"integrationKey"`
 	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
@@ -149,7 +149,7 @@ type flagTriggerState struct {
 	FlagKey *string `pulumi:"flagKey"`
 	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions *FlagTriggerInstructions `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey *string `pulumi:"integrationKey"`
 	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId *string `pulumi:"maintainerId"`
@@ -168,7 +168,7 @@ type FlagTriggerState struct {
 	FlagKey pulumi.StringPtrInput
 	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsPtrInput
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringPtrInput
 	// The ID of the member responsible for maintaining the flag trigger. If created via Terraform, this value is the ID of the member associated with the API key used for your provider configuration.
 	MaintainerId pulumi.StringPtrInput
@@ -191,7 +191,7 @@ type flagTriggerArgs struct {
 	FlagKey string `pulumi:"flagKey"`
 	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructions `pulumi:"instructions"`
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey string `pulumi:"integrationKey"`
 	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
@@ -207,7 +207,7 @@ type FlagTriggerArgs struct {
 	FlagKey pulumi.StringInput
 	// The instruction containing the action to perform when invoking the trigger. Currently supported flag actions are `turnFlagOn` and `turnFlagOff`. This must be passed as the key-value pair `{ kind = "<flag_action>" }`.
 	Instructions FlagTriggerInstructionsInput
-	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+	// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	IntegrationKey pulumi.StringInput
 	// The unique key of the project encompassing the associated flag. A change in this field forces the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
@@ -320,7 +320,7 @@ func (o FlagTriggerOutput) Instructions() FlagTriggerInstructionsOutput {
 	return o.ApplyT(func(v *FlagTrigger) FlagTriggerInstructionsOutput { return v.Instructions }).(FlagTriggerInstructionsOutput)
 }
 
-// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
+// The unique identifier of the integration you intend to set your trigger up with. Currently supported are `generic-trigger`, `datadog`, `dynatrace`, `dynatrace-cloud-automation`, `honeycomb`, `new-relic-apm`, `new-relic-v2`, and `signalfx`. `generic-trigger` should be used for integrations not explicitly supported. A change in this field forces the destruction of the existing resource and the creation of a new one.
 func (o FlagTriggerOutput) IntegrationKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagTrigger) pulumi.StringOutput { return v.IntegrationKey }).(pulumi.StringOutput)
 }
